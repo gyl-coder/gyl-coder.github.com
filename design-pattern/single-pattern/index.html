@@ -22,14 +22,18 @@
   
 
   
-    <meta name="description" content="在介绍单例模式之前，我们先了解一下，什么是设计模式？设计模式（Design Pattern）：是一套被反复使用，多数人知晓的，经过分类编目的，代码设计经验的总结。目的：使用设计模式是为了可重用性代码，让代码更容易被他人理解，保证代码可靠性。
+    <meta name="description" content="在介绍单例模式之前，我们先了解一下，什么是设计模式？
+**设计模式（Design Pattern）：**是一套被反复使用，多数人知晓的，经过分类编目的，代码设计经验的总结。
+**目的：**使用设计模式是为了可重用性代码，让代码更容易被他人理解，保证代码可靠性。
 本文将会用到的关键词：
 
 单例：Singleton
-实例：instanc...">
+...">
   
 
   <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="yanliang's blog" type="application/atom+xml">
   
 
   <!-- import meta -->
@@ -292,7 +296,7 @@
                   
                   
                   >
-                  <i class='fa fa-ellipsis-v fa-spin fa-fw'></i>更多
+                  <i class='fa fa-ellipsis-v fa-fw'></i>更多
                 </a>
                 
                   <ul class="list-v">
@@ -360,13 +364,29 @@
                       
             
               <li>
-                <a class="menuitem flat-box faa-parent animated-hover" href=https://github.com/gyl-coder
+                <a class="menuitem flat-box faa-parent animated-hover" href=https://jri8wpidaura.leanapp.cn/comments
                   
                   
                   
-                    id="https:githubcomgyl-coder"
+                    id="https:jri8wpidauraleanappcncomments"
                   >
-                  <i class='fab fa-github fa-fw fa-fw'></i>我的Github
+                  <i class='fas fa-comments faa-tada fa-fw fa-fw'></i>评论管理
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/catchTheCat/
+                  
+                  
+                  
+                    id="catchTheCat"
+                  >
+                  <i class='fas fa-cat fa-fw'></i>围住小猫
                 </a>
                 
               </li>
@@ -569,7 +589,7 @@
                   
                   
                   >
-                  <i class='fa fa-ellipsis-v fa-spin fa-fw'></i>更多
+                  <i class='fa fa-ellipsis-v fa-fw'></i>更多
                 </a>
                 
                   <ul class="list-v">
@@ -637,13 +657,29 @@
                       
             
               <li>
-                <a class="menuitem flat-box faa-parent animated-hover" href=https://github.com/gyl-coder
+                <a class="menuitem flat-box faa-parent animated-hover" href=https://jri8wpidaura.leanapp.cn/comments
                   
                   
                   
-                    id="https:githubcomgyl-coder"
+                    id="https:jri8wpidauraleanappcncomments"
                   >
-                  <i class='fab fa-github fa-fw fa-fw'></i>我的Github
+                  <i class='fas fa-comments faa-tada fa-fw fa-fw'></i>评论管理
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/catchTheCat/
+                  
+                  
+                  
+                    id="catchTheCat"
+                  >
+                  <i class='fas fa-cat fa-fw'></i>围住小猫
                 </a>
                 
               </li>
@@ -821,7 +857,9 @@
         <div class="article-entry" itemprop="articleBody">
           
           
-          <p>在介绍单例模式之前，我们先了解一下，什么是设计模式？<br><strong>设计模式（Design Pattern）：</strong>是一套被反复使用，多数人知晓的，经过分类编目的，代码设计经验的总结。<br><strong>目的：</strong>使用设计模式是为了可重用性代码，让代码更容易被他人理解，保证代码可靠性。</p>
+          <p>在介绍单例模式之前，我们先了解一下，什么是设计模式？<br>
+**设计模式（Design Pattern）：**是一套被反复使用，多数人知晓的，经过分类编目的，代码设计经验的总结。<br>
+**目的：**使用设计模式是为了可重用性代码，让代码更容易被他人理解，保证代码可靠性。</p>
 <p>本文将会用到的关键词：</p>
 <ul>
 <li>单例：Singleton</li>
@@ -829,7 +867,8 @@
 <li>同步：synchronized</li>
 <li>类装载器：ClassLoader</li>
 </ul>
-<p><strong>单例模式：</strong><br>单例，顾名思义就是只能有一个、不能再出现第二个。就如同地球上没有两片一模一样的树叶一样。</p>
+<p><strong>单例模式：</strong><br>
+单例，顾名思义就是只能有一个、不能再出现第二个。就如同地球上没有两片一模一样的树叶一样。</p>
 <p>在这里就是说：一个类只能有一个实例，并且整个项目系统都能访问该实例。</p>
 <p>单例模式共分为两大类：</p>
 <ul>
@@ -837,70 +876,80 @@
 <li>饿汉模式：实例在类装载时创建</li>
 </ul>
 <a id="more"></a>
-
 <p><strong>单例模式UML图</strong></p>
 <img src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/design-pattern/5596129-7195be2372a2f898.png'>
-
-<h2 id="饿汉模式"><a href="#饿汉模式" class="headerlink" title="饿汉模式"></a>饿汉模式</h2><p>按照定义我们可以写出一个基本代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用private将构造方法私有化，以防外界通过该构造方法创建多个实例</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 由于不能使用构造方法创建实例，所以需要在类的内部创建该类的唯一实例</span></span><br><span class="line">    <span class="comment">// 使用static修饰singleton 在外界可以通过类名调用该实例   类名.成员名</span></span><br><span class="line">    <span class="keyword">static</span> Singleton singleton = <span class="keyword">new</span> Singleton();   <span class="comment">// 1</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 如果使用private封装该实例，则需要添加get方法实现对外界的开放</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance = <span class="keyword">new</span> Singleton();    <span class="comment">// 2</span></span><br><span class="line">    <span class="comment">// 添加static，将该方法变成类所有   通过类名访问</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//1和2选一种即可，推荐2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>对于饿汉模式来说，这种写法已经很‘perfect’了，唯一的缺点就是，由于instance的初始化是在类加载时进行的，类加载是由ClassLoader来实现的，如果初始化太早，就会造成资源浪费。<br>当然，如果所需的单例占用的资源很少，并且也不依赖于其他数据，那么这种实现方式也是很好的。</p>
-<h3 id="类装载的时机："><a href="#类装载的时机：" class="headerlink" title="类装载的时机："></a>类装载的时机：</h3><ul>
+<h2 id="饿汉模式"><a class="header-anchor" href="#饿汉模式">¶</a>饿汉模式</h2>
+<p>按照定义我们可以写出一个基本代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 使用private将构造方法私有化，以防外界通过该构造方法创建多个实例</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 由于不能使用构造方法创建实例，所以需要在类的内部创建该类的唯一实例</span></span><br><span class="line">	<span class="comment">// 使用static修饰singleton 在外界可以通过类名调用该实例   类名.成员名</span></span><br><span class="line">	<span class="keyword">static</span> Singleton singleton = <span class="keyword">new</span> Singleton();   <span class="comment">// 1</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 如果使用private封装该实例，则需要添加get方法实现对外界的开放</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> Singleton instance = <span class="keyword">new</span> Singleton();    <span class="comment">// 2</span></span><br><span class="line">	<span class="comment">// 添加static，将该方法变成类所有   通过类名访问</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> instance;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//1和2选一种即可，推荐2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对于饿汉模式来说，这种写法已经很‘perfect’了，唯一的缺点就是，由于instance的初始化是在类加载时进行的，类加载是由ClassLoader来实现的，如果初始化太早，就会造成资源浪费。<br>
+当然，如果所需的单例占用的资源很少，并且也不依赖于其他数据，那么这种实现方式也是很好的。</p>
+<h3 id="类装载的时机："><a class="header-anchor" href="#类装载的时机：">¶</a>类装载的时机：</h3>
+<ul>
 <li>new一个对象时</li>
 <li>使用反射创建它的实例时</li>
 <li>子类被加载时，如果父类还没有加载，就先加载父类</li>
 <li>JVM启动时执行主类 会先被加载</li>
 </ul>
-<h2 id="懒汉模式"><a href="#懒汉模式" class="headerlink" title="懒汉模式"></a>懒汉模式</h2><p>懒汉模式的代码如下</p>
+<h2 id="懒汉模式"><a class="header-anchor" href="#懒汉模式">¶</a>懒汉模式</h2>
+<p>懒汉模式的代码如下</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 代码一</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance = <span class="keyword">null</span>;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span></span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;</span><br><span class="line">            instance = <span class="keyword">new</span> Singleton(); </span><br><span class="line">        &#125;        </span><br><span class="line">        <span class="keyword">return</span> instance; </span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>每次获取instance之前先进行判断，如果instance为空就new一个出来，否则就直接返回已存在的instance。</p>
 <p>这种写法在单线程的时候是没问题的。但是，当有多个线程一起工作的时候，如果有两个线程同时运行到  if (instance == null)，都判断为null（第一个线程判断为空之后，并没有继续向下执行，当第二个线程判断的时候instance依然为空），最终两个线程就各自会创建一个实例出来。这样就破环了单例模式 实例的唯一性</p>
 <p>要想保证实例的唯一性就需要使用<strong>synchronized</strong>，加上一个同步锁</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 代码二</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance = <span class="keyword">null</span>;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">synchronized</span>(Singleton.class)&#123;</span><br><span class="line">            <span class="keyword">if</span> (instance == <span class="keyword">null</span>)</span><br><span class="line">                instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 代码二</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance = <span class="keyword">null</span>;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">	</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">synchronized</span>(Singleton.class)&#123;</span><br><span class="line">			<span class="keyword">if</span> (instance == <span class="keyword">null</span>)</span><br><span class="line">				instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>加上synchronized关键字之后，getInstance方法就会锁上了。如果有两个线程（T1、T2）同时执行到这个方法时，会有其中一个线程T1获得同步锁，得以继续执行，而另一个线程T2则需要等待，当第T1执行完毕getInstance之后（完成了null判断、对象创建、获得返回值之后），T2线程才会执行执行。</p>
 <p>所以这段代码也就避免了<strong>代码一</strong>中，可能出现因为多线程导致多个实例的情况。但是，这种写法也有一个问题：给getInstance方法加锁，虽然避免了可能会出现的多个实例问题，但是会强制除T1之外的所有线程等待，实际上会对程序的执行效率造成负面影响。</p>
-<h3 id="双重检查（Double-Check）"><a href="#双重检查（Double-Check）" class="headerlink" title="双重检查（Double-Check）"></a>双重检查（Double-Check）</h3><p><strong>代码二</strong>相对于<strong>代码一</strong>的效率问题，其实是为了解决1%几率的问题，而使用了一个100%出现的防护盾。那有一个优化的思路，就是把100%出现的防护盾，也改为1%的几率出现，使之只出现在可能会导致多个实例出现的地方。<br>代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 代码三</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance = <span class="keyword">null</span>;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">synchronized</span>(Singleton.class)&#123;</span><br><span class="line">                <span class="keyword">if</span> (instance == <span class="keyword">null</span>)</span><br><span class="line">                    instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<h3 id="双重检查（Double-Check）"><a class="header-anchor" href="#双重检查（Double-Check）">¶</a>双重检查（Double-Check）</h3>
+<p><strong>代码二</strong>相对于<strong>代码一</strong>的效率问题，其实是为了解决1%几率的问题，而使用了一个100%出现的防护盾。那有一个优化的思路，就是把100%出现的防护盾，也改为1%的几率出现，使之只出现在可能会导致多个实例出现的地方。<br>
+代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 代码三</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance = <span class="keyword">null</span>;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">	</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (instance == <span class="keyword">null</span>)&#123;</span><br><span class="line">			<span class="keyword">synchronized</span>(Singleton.class)&#123;</span><br><span class="line">				<span class="keyword">if</span> (instance == <span class="keyword">null</span>)</span><br><span class="line">					instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这段代码看起来有点复杂，注意其中有两次if(instance==null)的判断，这个叫做『双重检查 Double-Check』。</p>
 <ul>
 <li>第一个 if(instance==null)，其实是为了解决<strong>代码二</strong>中的效率问题，只有instance为null的时候，才进入synchronized的代码段大大减少了几率。</li>
 <li>第二个if(instance==null)，则是跟<strong>代码二</strong>一样，是为了防止可能出现多个实例的情况。</li>
 </ul>
 <p>这段代码看起来已经完美无瑕了。当然，只是『看起来』，还是有小概率出现问题的。想要充分理解需要先弄清楚以下几个概念：原子操作、指令重排。</p>
-<p><strong>原子操作</strong><br>简单来说，原子操作（atomic）就是不可分割的操作，在计算机中，就是指不会因为线程调度被打断的操作。比如，简单的赋值是一个原子操作：</p>
+<p><strong>原子操作</strong><br>
+简单来说，原子操作（atomic）就是不可分割的操作，在计算机中，就是指不会因为线程调度被打断的操作。比如，简单的赋值是一个原子操作：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">m = <span class="number">6</span>; <span class="comment">// 这是个原子操作</span></span><br></pre></td></tr></table></figure>
-
 <p>假如m原先的值为0，那么对于这个操作，要么执行成功m变成了6，要么是没执行 m还是0，而不会出现诸如m=3这种中间态——即使是在并发的线程中。</p>
 <p>但是，声明并赋值就不是一个原子操作：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>  n=<span class="number">6</span>;<span class="comment">//这不是一个原子操作</span></span><br></pre></td></tr></table></figure>
-
 <p>对于这个语句，至少有两个操作：①声明一个变量n   ②给n赋值为6——这样就会有一个中间状态：变量n已经被声明了但是还没有被赋值的状态。这样，在多线程中，由于线程执行顺序的不确定性，如果两个线程都使用m，就可能会导致不稳定的结果出现。</p>
-<p><strong>指令重排</strong><br>简单来说，就是计算机为了提高执行效率，会做的一些优化，在不影响最终结果的情况下，可能会对一些语句的执行顺序进行调整。比如，这一段代码：</p>
+<p><strong>指令重排</strong><br>
+简单来说，就是计算机为了提高执行效率，会做的一些优化，在不影响最终结果的情况下，可能会对一些语句的执行顺序进行调整。比如，这一段代码：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a ;   <span class="comment">// 语句1 </span></span><br><span class="line">a = <span class="number">8</span> ;   <span class="comment">// 语句2</span></span><br><span class="line"><span class="keyword">int</span> b = <span class="number">9</span> ;     <span class="comment">// 语句3</span></span><br><span class="line"><span class="keyword">int</span> c = a + b ; <span class="comment">// 语句4</span></span><br></pre></td></tr></table></figure>
-
-<p>正常来说，对于顺序结构，执行的顺序是自上到下，也即1234。但是，由于指令重排<br>的原因，因为不影响最终的结果，所以，实际执行的顺序可能会变成3124或者1324。</p>
+<p>正常来说，对于顺序结构，执行的顺序是自上到下，也即1234。但是，由于指令重排<br>
+的原因，因为不影响最终的结果，所以，实际执行的顺序可能会变成3124或者1324。</p>
 <p>由于语句3和4没有原子性的问题，语句3和语句4也可能会拆分成原子操作，再重排。——也就是说，对于非原子性的操作，在不影响最终结果的情况下，其拆分成的原子操作可能会被重新排列执行顺序。</p>
 <p>OK，了解了原子操作和指令重排的概念之后，我们再继续看代码三的问题。</p>
 <p>主要在于singleton = new Singleton()这句，这并非是一个原子操作，事实上在 JVM 中这句话大概做了下面 3 件事情。</p>
-<p>  　　1. 给 singleton 分配内存<br>  　　2. 调用 Singleton 的构造函数来初始化成员变量，形成实例<br>  　　3. 将singleton对象指向分配的内存空间（执行完这步 singleton才是非 null了）</p>
-<p>在JVM的即时编译器中存在指令重排序的优化。<br>　　<br>也就是说上面的第二步和第三步的顺序是不能保证的，最终的执行顺序可能是 1-2-3 也可能是 1-3-2。如果是后者，则在 3 执行完毕、2 未执行之前，被线程二抢占了，这时 instance 已经是非 null 了（但却没有初始化），所以线程二会直接返回 instance，然后使用，然后顺理成章地报错。<br>　　<br>再稍微解释一下，就是说，由于有一个『instance已经不为null但是仍没有完成初始化』的中间状态，而这个时候，如果有其他线程刚好运行到第一层if (instance ==null)这里，这里读取到的instance已经不为null了，所以就直接把这个中间状态的instance拿去用了，就会产生问题。这里的关键在于线程T1对instance的写操作没有完成，线程T2就执行了读操作。<br>　　<br><strong>对于代码三出现的问题，解决方案为：给instance的声明加上volatile关键字</strong><br>代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> Singleton instance = <span class="keyword">null</span>;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">synchronized</span>(Singleton.class)&#123;</span><br><span class="line">                <span class="keyword">if</span> (instance == <span class="keyword">null</span>)</span><br><span class="line">                    instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<p>1. 给 singleton 分配内存<br>
+　　2. 调用 Singleton 的构造函数来初始化成员变量，形成实例<br>
+　　3. 将singleton对象指向分配的内存空间（执行完这步 singleton才是非 null了）</p>
+<p>在JVM的即时编译器中存在指令重排序的优化。<br>
+　　<br>
+也就是说上面的第二步和第三步的顺序是不能保证的，最终的执行顺序可能是 1-2-3 也可能是 1-3-2。如果是后者，则在 3 执行完毕、2 未执行之前，被线程二抢占了，这时 instance 已经是非 null 了（但却没有初始化），所以线程二会直接返回 instance，然后使用，然后顺理成章地报错。<br>
+　　<br>
+再稍微解释一下，就是说，由于有一个『instance已经不为null但是仍没有完成初始化』的中间状态，而这个时候，如果有其他线程刚好运行到第一层if (instance ==null)这里，这里读取到的instance已经不为null了，所以就直接把这个中间状态的instance拿去用了，就会产生问题。这里的关键在于线程T1对instance的写操作没有完成，线程T2就执行了读操作。<br>
+　　<br>
+<strong>对于代码三出现的问题，解决方案为：给instance的声明加上volatile关键字</strong><br>
+代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> Singleton instance = <span class="keyword">null</span>;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">	</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (instance == <span class="keyword">null</span>)&#123;</span><br><span class="line">			<span class="keyword">synchronized</span>(Singleton.class)&#123;</span><br><span class="line">				<span class="keyword">if</span> (instance == <span class="keyword">null</span>)</span><br><span class="line">					instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>volatile</strong>关键字的一个作用是禁止指令重排，把instance声明为volatile之后，对它的写操作就会有一个内存屏障，这样，在它的赋值完成之前，就不用会调用读操作。</p>
 <p>注意：volatile阻止的不是singleton = new Singleton()这句话内部[1-2-3]的指令重排，而是保证了在一个写操作（[1-2-3]）完成之前，不会调用读操作（if (instance == null)）。</p>
-<h2 id="其它方法"><a href="#其它方法" class="headerlink" title="其它方法"></a>其它方法</h2><h3 id="静态内部类"><a href="#静态内部类" class="headerlink" title="静态内部类"></a>静态内部类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonHolder</span> </span>&#123;</span><br><span class="line">       <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton INSTANCE = <span class="keyword">new</span> Singleton();</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span> <span class="params">()</span></span>&#123;&#125;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       <span class="keyword">return</span> SingletonHolder.INSTANCE;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<h2 id="其它方法"><a class="header-anchor" href="#其它方法">¶</a>其它方法</h2>
+<h3 id="静态内部类"><a class="header-anchor" href="#静态内部类">¶</a>静态内部类</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonHolder</span> </span>&#123;</span><br><span class="line">       <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton INSTANCE = <span class="keyword">new</span> Singleton();</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span> <span class="params">()</span></span>&#123;&#125;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       <span class="keyword">return</span> SingletonHolder.INSTANCE;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这种写法的巧妙之处在于：对于内部类SingletonHolder，它是一个饿汉式的单例实现，在SingletonHolder初始化的时候会由ClassLoader来保证同步，使INSTANCE是一个真单例。</p>
-<p>同时，由于SingletonHolder是一个内部类，只在外部类的Singleton的getInstance()中被使用，所以它被加载的时机也就是在getInstance()方法第一次被调用的时候。<br>　　<br>它利用了ClassLoader来保证了同步，同时又能让开发者控制类加载的时机。从内部看是一个饿汉式的单例，但是从外部看来，又的确是懒汉式的实现</p>
-<h3 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> SingleInstance &#123;</span><br><span class="line">  INSTANCE;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fun1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       <span class="comment">// do something</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;<span class="comment">// 使用SingleInstance.INSTANCE.fun1();</span></span><br></pre></td></tr></table></figure>
-
+<p>同时，由于SingletonHolder是一个内部类，只在外部类的Singleton的getInstance()中被使用，所以它被加载的时机也就是在getInstance()方法第一次被调用的时候。<br>
+　　<br>
+它利用了ClassLoader来保证了同步，同时又能让开发者控制类加载的时机。从内部看是一个饿汉式的单例，但是从外部看来，又的确是懒汉式的实现</p>
+<h3 id="枚举"><a class="header-anchor" href="#枚举">¶</a>枚举</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> SingleInstance &#123;</span><br><span class="line">  INSTANCE;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fun1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       <span class="comment">// do something</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;<span class="comment">// 使用SingleInstance.INSTANCE.fun1();</span></span><br></pre></td></tr></table></figure>
 <p>是不是很简单？而且因为自动序列化机制，保证了线程的绝对安全。三个词概括该方式：简单、高效、安全</p>
 <p>这种写法在功能上与共有域方法相近，但是它更简洁，无偿地提供了序列化机制，绝对防止对此实例化，即使是在面对复杂的序列化或者反射攻击的时候。虽然这中方法还没有广泛采用，但是单元素的枚举类型已经成为实现Singleton的最佳方法。</p>
 <div><a class='link-card' title='https://pan.baidu.com/s/1pWotEu9Z883hqWUM_Xu7vQ' target="_blank" rel="noopener" href='https://pan.baidu.com/s/1pWotEu9Z883hqWUM_Xu7vQ'><div class='left'><img src=https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png></div><div class='right'><p class='text'>视频讲解</p><p class='url'>https://pan.baidu.com/s/1pWotEu9Z883hqWUM_Xu7vQ</p></div></a></div>
-
 <p>密码： <psw>lt0t</psw></p>
 
           
@@ -993,7 +1042,9 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gyl-coder.top/design-pattern/single-pattern/&title=单例模式 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/sheji.svg&summary=在介绍单例模式之前，我们先了解一下，什么是设计模式？设计模式（Design Pattern）：是一套被反复使用，多数人知晓的，经过分类编目的，代码设计经验的总结。目的：使用设计模式是为了可重用性代码，让代码更容易被他人理解，保证代码可靠性。
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gyl-coder.top/design-pattern/single-pattern/&title=单例模式 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/sheji.svg&summary=在介绍单例模式之前，我们先了解一下，什么是设计模式？
+**设计模式（Design Pattern）：**是一套被反复使用，多数人知晓的，经过分类编目的，代码设计经验的总结。
+**目的：**使用设计模式是为了可重用性代码，让代码更容易被他人理解，保证代码可靠性。
 本文将会用到的关键词：
 
 单例：Singleton
@@ -1001,7 +1052,8 @@
 同步：synchronized
 类装载器：ClassLoader
 
-单例模式：单例，顾名思义就是只能有一个、不能再出现第二个。就如同地球上没有两片一模一样的树叶一样。
+单例模式：
+单例，顾名思义就是只能有一个、不能再出现第二个。就如同地球上没有两片一模一样的树叶一样。
 在这里就是说：一个类只能有一个实例，并且整个项目系统都能访问该实例。
 单例模式共分为两大类：
 
@@ -1019,7 +1071,9 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://gyl-coder.top/design-pattern/single-pattern/&title=单例模式 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/sheji.svg&summary=在介绍单例模式之前，我们先了解一下，什么是设计模式？设计模式（Design Pattern）：是一套被反复使用，多数人知晓的，经过分类编目的，代码设计经验的总结。目的：使用设计模式是为了可重用性代码，让代码更容易被他人理解，保证代码可靠性。
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://gyl-coder.top/design-pattern/single-pattern/&title=单例模式 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/sheji.svg&summary=在介绍单例模式之前，我们先了解一下，什么是设计模式？
+**设计模式（Design Pattern）：**是一套被反复使用，多数人知晓的，经过分类编目的，代码设计经验的总结。
+**目的：**使用设计模式是为了可重用性代码，让代码更容易被他人理解，保证代码可靠性。
 本文将会用到的关键词：
 
 单例：Singleton
@@ -1027,7 +1081,8 @@
 同步：synchronized
 类装载器：ClassLoader
 
-单例模式：单例，顾名思义就是只能有一个、不能再出现第二个。就如同地球上没有两片一模一样的树叶一样。
+单例模式：
+单例，顾名思义就是只能有一个、不能再出现第二个。就如同地球上没有两片一模一样的树叶一样。
 在这里就是说：一个类只能有一个实例，并且整个项目系统都能访问该实例。
 单例模式共分为两大类：
 
@@ -1045,7 +1100,9 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://gyl-coder.top/design-pattern/single-pattern/&title=单例模式 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/sheji.svg&summary=在介绍单例模式之前，我们先了解一下，什么是设计模式？设计模式（Design Pattern）：是一套被反复使用，多数人知晓的，经过分类编目的，代码设计经验的总结。目的：使用设计模式是为了可重用性代码，让代码更容易被他人理解，保证代码可靠性。
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://gyl-coder.top/design-pattern/single-pattern/&title=单例模式 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/sheji.svg&summary=在介绍单例模式之前，我们先了解一下，什么是设计模式？
+**设计模式（Design Pattern）：**是一套被反复使用，多数人知晓的，经过分类编目的，代码设计经验的总结。
+**目的：**使用设计模式是为了可重用性代码，让代码更容易被他人理解，保证代码可靠性。
 本文将会用到的关键词：
 
 单例：Singleton
@@ -1053,7 +1110,8 @@
 同步：synchronized
 类装载器：ClassLoader
 
-单例模式：单例，顾名思义就是只能有一个、不能再出现第二个。就如同地球上没有两片一模一样的树叶一样。
+单例模式：
+单例，顾名思义就是只能有一个、不能再出现第二个。就如同地球上没有两片一模一样的树叶一样。
 在这里就是说：一个类只能有一个实例，并且整个项目系统都能访问该实例。
 单例模式共分为两大类：
 
@@ -1109,7 +1167,7 @@
       <p ct><i class='fas fa-comments'></i> 评论</p>
       
       <section id="comments">
-        <div id="valine_container" class="valine_thread">
+        <div id="minivaline_container">
   <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
@@ -1185,6 +1243,7 @@
 
 
         </div>
+        <!--
       
     
       
@@ -1242,11 +1301,86 @@
     
       
         <div class='copyright'>
-        <p><a href="https://gyl-coder.top/">Copyright © 2019-2020 Yanliang</a></p>
+        <p><a href="https://gyl-coder.top">Copyright © 2019-2020 Yanliang</a></p>
 
         </div>
       
     
+    -->
+
+      <!--自定义footer样式-->
+      <!--自定义footer样式-->
+<br>
+Copyright <i class="far fa-copyright"></i> 2019-2020
+<a href="/" target="_blank"> YANLIANG'S BLOG </a>丨
+<!-- 在网页底部添加网站运行时间 -->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+
+    function createtime() {
+        var grt = new Date("07/01/2019 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime() + 250);
+        days = (now - grt) / 1000 / 60 / 60 / 24;
+        dnum = Math.floor(days);
+        hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+        hnum = Math.floor(hours);
+        if (String(hnum).length == 1) {
+            hnum = "0" + hnum;
+        }
+        minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes);
+        if (String(mnum).length == 1) {
+            mnum = "0" + mnum;
+        }
+        seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds);
+        if (String(snum).length == 1) {
+            snum = "0" + snum;
+        }
+        document.getElementById("timeDate").innerHTML = "网站已运行 " + dnum + " 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+
+    setInterval("createtime()", 250);
+</script>
+<br/>
+<br/>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://hexo.io/" target="_blank" title="由 Hexo 强力驱动">
+        <span class="badge-subject">Powered</span><span class="badge-value bg-blue">Hexo</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://github.com/" target="_blank"
+       title="静态网页托管于 GitHub Pages 和 Coding Pages">
+        <span class="badge-subject">Hosted</span><span
+                class="badge-value bg-brightgreen">GitHub &amp; Coding</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://www.aliyun.com/" target="_blank" title="阿里云提供域名相关服务">
+        <span class="badge-subject">DNS</span><span class="badge-value bg-blueviolet">Aliyun</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://www.jsdelivr.com/" target="_blank"
+       title="jsDelivr 提供 CDN 加速服务">
+        <span class="badge-subject">CDN</span><span class="badge-value bg-orange">jsDelivr</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://github.com/volantis-x/hexo-theme-volantis/"
+       target="_blank" title="站点使用 Volantis 主题">
+        <span class="badge-subject">Theme</span><span class="badge-value bg-blue">Volantis</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
+       target="_blank" title="本站点采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议进行许可">
+        <span class="badge-subject"><i class="fa fa-copyright"></i></span><span
+                class="badge-value bg-gradient">BY-NC-SA 4.0</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://github.com/botui/botui" target="_blank" title="A JavaScript framework to create conversational UIs.">
+        <span class="badge-subject">AI机器人</span><span class="badge-value bg-blueviolet">botui</span></a>
+</div>
+
   </footer>
 
 
@@ -1313,14 +1447,14 @@
         
           
     <li>
-      <a class='vlts-menu fix-cursor-default' href=https://volantis.js.org/contributors/
+      <a class='vlts-menu fix-cursor-default' href=/friends/
         
         
         
         
-          id="https:volantisjsorgcontributors"
+          id="friends"
         >
-        <i class='fa fa-fan fa-spin fa-fw'></i> 加入社区
+        <i class='fa fa-fan fa-spin fa-fw'></i> 小伙伴们
       </a>
     </li>
   
@@ -1333,30 +1467,14 @@
         
           
     <li>
-      <a class='vlts-menu fix-cursor-default' href=https://github.com/volantis-x/volantis-docs/
+      <a class='vlts-menu fix-cursor-default' href=/catchTheCat/
         
         
         
         
-          id="https:githubcomvolantis-xvolantis-docs"
+          id="catchTheCat"
         >
-        <i class='fa fa-code-branch fa-fw'></i> 本站源码
-      </a>
-    </li>
-  
-        
-      
-        
-          
-    <li>
-      <a class='vlts-menu fix-cursor-default' href=https://github.com/volantis-x/hexo-theme-volantis/
-        
-        
-        
-        
-          id="https:githubcomvolantis-xhexo-theme-volantis"
-        >
-        <i class='fa fa-code-branch fa-fw'></i> 主题源码
+        <i class='fas fa-cat fa-fw'></i> 围住小猫
       </a>
     </li>
   
@@ -1623,72 +1741,54 @@
 
   
   
-<script src="/js/valine.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/minivaline@3/dist/MiniValine.min.js"></script>
+
+
+
+
 
 
 <script>
-  var GUEST_INFO = ['nick', 'mail', 'link'];
-  var meta = 'nick,mail,link'.split(',').filter(function (item) {
-    return GUEST_INFO.indexOf(item) > -1
-  });
-  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
-  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
-    return REQUIRED_FIELDS.indexOf(item) > -1
-  });
-
-  function emoji(path, idx, ext) {
-    return path + "/" + path + "-" + idx + "." + ext;
-  }
-
-  var emojiMaps = {};
-  for (var i = 1; i <= 54; i++) {
-    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
-  }
-  for (var i = 1; i <= 101; i++) {
-    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
-  }
-  for (var i = 1; i <= 116; i++) {
-    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
-  }
-  for (var i = 1; i <= 125; i++) {
-    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
-  }
-  for (var i = 1; i <= 4; i++) {
-    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
-  }
-
-  function pjax_valine() {
-    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
+function pjax_minivaline() {
+  let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
       decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
-    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
-      "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
+  let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
+    "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
 
-    let ALLPATH = '';
-    if(ALLPATH != '') pageUrl = ALLPATH;
+  let ALLPATH = '';
+  if(ALLPATH != '') pageUrl = ALLPATH;
 
-    var valine = new Valine();
-    valine.init({
-      el: '#valine_container',
-      meta: meta,
-      placeholder: pagePlaceholder,
-      path: pageUrl,
-      appId: "jRi8wpIdG8v9VbC6wddXHTlL-gzGzoHsz",
-      appKey: "oVqMw78YKASJThLN03bSqgve",
-      pageSize: '10',
-      avatar: 'robohash',
-      lang: 'zh-cn',
-      visitor: 'true',
-      highlight: 'true',
-      mathJax: 'false',
-      enableQQ: 'true',
-      requiredFields: requiredFields,
-      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
-      emojiMaps: emojiMaps
-    })
+  new MiniValine({
+    el: '#minivaline_container',
+    appId: 'jRi8wpIdG8v9VbC6wddXHTlL-gzGzoHsz',
+    appKey: 'oVqMw78YKASJThLN03bSqgve',
+    mode: 'xCss',
+    placeholder: pagePlaceholder,
+    path: pageUrl,
+    lang: '',
+    adminEmailMd5: '6e52e95ab454c5a82b0eb13055d79bd5',
+    tagMeta: ["管理员", "小伙伴", "访客"],
+    master: ["6e52e95ab454c5a82b0eb13055d79bd5"],
+    friends: ["b5bd5d836c7a0091aa8473e79ed4c25e", "adb7d1cd192658a55c0ad22a3309cecf", "3ce1e6c77b4910f1871106cb30dc62b0", "cfce8dc43725cc14ffcd9fb4892d5bfc"],
+    math: false,  /*布尔值 字符串无效 下同*/
+    md: true,
+    enableQQ: false,
+    NoRecordIP: true,
+    visitor: false,
+    maxNest: 6,
+    pageSize: 6,
+    barrager: 0,
+    role: 'admin',
+    closeFlag: false,
+    cloudflag: false,
+    region: false,
+    closeUA: false,
+    emoticonUrl: ["https://cdn.jsdelivr.net/npm/alus@latest", "https://cdn.jsdelivr.net/gh/MiniValine/qq@latest", "https://cdn.jsdelivr.net/gh/MiniValine/Bilibilis@latest", "https://cdn.jsdelivr.net/gh/MiniValine/tieba@latest", "https://cdn.jsdelivr.net/gh/MiniValine/twemoji@latest", "https://cdn.jsdelivr.net/gh/MiniValine/weibo@latest"],
+    serverURLs: ''
+    });
   }
-
   $(function () {
-    pjax_valine();
+    pjax_minivaline();
   });
 </script>
 
@@ -2026,8 +2126,8 @@
           pjax_initCopyCode();
         
         
-          pjax_valine();
         
+          pjax_minivaline();
         
         
         

@@ -27,6 +27,8 @@
 
   <!-- feed -->
   
+    <link rel="alternate" href="/atom.xml" title="yanliang's blog" type="application/atom+xml">
+  
 
   <!-- import meta -->
   
@@ -288,7 +290,7 @@
                   
                   
                   >
-                  <i class='fa fa-ellipsis-v fa-spin fa-fw'></i>更多
+                  <i class='fa fa-ellipsis-v fa-fw'></i>更多
                 </a>
                 
                   <ul class="list-v">
@@ -356,13 +358,29 @@
                       
             
               <li>
-                <a class="menuitem flat-box faa-parent animated-hover" href=https://github.com/gyl-coder
+                <a class="menuitem flat-box faa-parent animated-hover" href=https://jri8wpidaura.leanapp.cn/comments
                   
                   
                   
-                    id="https:githubcomgyl-coder"
+                    id="https:jri8wpidauraleanappcncomments"
                   >
-                  <i class='fab fa-github fa-fw fa-fw'></i>我的Github
+                  <i class='fas fa-comments faa-tada fa-fw fa-fw'></i>评论管理
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/catchTheCat/
+                  
+                  
+                  
+                    id="catchTheCat"
+                  >
+                  <i class='fas fa-cat fa-fw'></i>围住小猫
                 </a>
                 
               </li>
@@ -565,7 +583,7 @@
                   
                   
                   >
-                  <i class='fa fa-ellipsis-v fa-spin fa-fw'></i>更多
+                  <i class='fa fa-ellipsis-v fa-fw'></i>更多
                 </a>
                 
                   <ul class="list-v">
@@ -633,13 +651,29 @@
                       
             
               <li>
-                <a class="menuitem flat-box faa-parent animated-hover" href=https://github.com/gyl-coder
+                <a class="menuitem flat-box faa-parent animated-hover" href=https://jri8wpidaura.leanapp.cn/comments
                   
                   
                   
-                    id="https:githubcomgyl-coder"
+                    id="https:jri8wpidauraleanappcncomments"
                   >
-                  <i class='fab fa-github fa-fw fa-fw'></i>我的Github
+                  <i class='fas fa-comments faa-tada fa-fw fa-fw'></i>评论管理
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/catchTheCat/
+                  
+                  
+                  
+                    id="catchTheCat"
+                  >
+                  <i class='fas fa-cat fa-fw'></i>围住小猫
                 </a>
                 
               </li>
@@ -801,26 +835,37 @@
           
           <p>首先在finally和try中对数据的操作时数据分为 基本数据类型和引用数据类型，他们存放的地方也不一样，一个是栈区另一个是在堆区。</p>
 <a id="more"></a>
-
-<h3 id="finally中没有return"><a href="#finally中没有return" class="headerlink" title="finally中没有return"></a>finally中没有return</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span>  <span class="keyword">static</span>  <span class="keyword">int</span> a=<span class="number">2</span>;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">        System.out.println(<span class="string">&quot;test输出的结果 &quot;</span>+test());</span><br><span class="line">        System.out.println(<span class="string">&quot;main 自加后 a=&quot;</span>+(a++));</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">private</span>  <span class="keyword">static</span>  <span class="keyword">int</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            a+=<span class="number">3</span>;</span><br><span class="line">            System.out.println(<span class="string">&quot;try  a=&quot;</span>+a);</span><br><span class="line">            <span class="keyword">return</span> a;</span><br><span class="line">        &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line"> </span><br><span class="line">        &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">            ++a;</span><br><span class="line">            System.out.println(<span class="string">&quot;finally a=&quot;</span>+a);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
+<h3 id="finally中没有return"><a class="header-anchor" href="#finally中没有return">¶</a>finally中没有return</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span>  <span class="keyword">static</span>  <span class="keyword">int</span> a=<span class="number">2</span>;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">        System.out.println(<span class="string">&quot;test输出的结果 &quot;</span>+test());</span><br><span class="line">        System.out.println(<span class="string">&quot;main 自加后 a=&quot;</span>+(a++));</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">private</span>  <span class="keyword">static</span>  <span class="keyword">int</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            a+=<span class="number">3</span>;</span><br><span class="line">            System.out.println(<span class="string">&quot;try  a=&quot;</span>+a);</span><br><span class="line">            <span class="keyword">return</span> a;</span><br><span class="line">        &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line"> </span><br><span class="line">        &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">            ++a;</span><br><span class="line">            System.out.println(<span class="string">&quot;finally a=&quot;</span>+a);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <p>输出结果:</p>
-<p>try  a=5<br>finally a=6<br>test输出的结果 5<br>main a=6</p>
+<p>try  a=5<br>
+finally a=6<br>
+test输出的结果 5<br>
+main a=6</p>
 <p>结论: 可见方法test的返回值不受finally中的影响，但是变量a还是受到了影响，值改变了，返回值是存放在栈中的，return是就           已经把返回值压入栈了，相当于一个临时变量。在finally中并不会影响返回值</p>
-<h3 id="finally中加入return"><a href="#finally中加入return" class="headerlink" title="finally中加入return"></a>finally中加入return</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span>  <span class="keyword">static</span>  <span class="keyword">int</span> a=<span class="number">2</span>;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">        System.out.println(<span class="string">&quot;test输出的结果 &quot;</span>+test());</span><br><span class="line">        System.out.println(<span class="string">&quot;main 自加后 a=&quot;</span>+(a++));</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">private</span>  <span class="keyword">static</span>  <span class="keyword">int</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            a+=<span class="number">3</span>;</span><br><span class="line">            System.out.println(<span class="string">&quot;try  a=&quot;</span>+a);</span><br><span class="line">            <span class="keyword">return</span> a;</span><br><span class="line">        &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line"> </span><br><span class="line">        &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">            ++a;</span><br><span class="line">            System.out.println(<span class="string">&quot;finally a=&quot;</span>+a);</span><br><span class="line">            <span class="keyword">return</span> a;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
+<h3 id="finally中加入return"><a class="header-anchor" href="#finally中加入return">¶</a>finally中加入return</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span>  <span class="keyword">static</span>  <span class="keyword">int</span> a=<span class="number">2</span>;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">        System.out.println(<span class="string">&quot;test输出的结果 &quot;</span>+test());</span><br><span class="line">        System.out.println(<span class="string">&quot;main 自加后 a=&quot;</span>+(a++));</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">private</span>  <span class="keyword">static</span>  <span class="keyword">int</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            a+=<span class="number">3</span>;</span><br><span class="line">            System.out.println(<span class="string">&quot;try  a=&quot;</span>+a);</span><br><span class="line">            <span class="keyword">return</span> a;</span><br><span class="line">        &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line"> </span><br><span class="line">        &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">            ++a;</span><br><span class="line">            System.out.println(<span class="string">&quot;finally a=&quot;</span>+a);</span><br><span class="line">            <span class="keyword">return</span> a;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <p>输出结果:</p>
-<p>try  a=5<br>finally a=6<br>test输出的结果 6<br>main a=6</p>
+<p>try  a=5<br>
+finally a=6<br>
+test输出的结果 6<br>
+main a=6</p>
 <p>结论: 此时test方法的返回值是6和a的值相等， 在try,catch中的返回值可以发现被finally的返回值给屏蔽了，所以如果finally中              有return则会屏蔽当前方法中的返回值</p>
-<h3 id="现在对引用变量进行分析"><a href="#现在对引用变量进行分析" class="headerlink" title="现在对引用变量进行分析"></a>现在对引用变量进行分析</h3><p>finally中没有return </p>
+<h3 id="现在对引用变量进行分析"><a class="header-anchor" href="#现在对引用变量进行分析">¶</a>现在对引用变量进行分析</h3>
+<p>finally中没有return</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span>  <span class="keyword">static</span> List&lt;String&gt; list=<span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;test输出的结果 &quot;</span>+test());</span><br><span class="line">        System.out.println(<span class="string">&quot;main list=&quot;</span>+list.toString());</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span>  <span class="keyword">static</span>  List <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            list.add(<span class="string">&quot;33&quot;</span>);</span><br><span class="line">            System.out.println(<span class="string">&quot;try  list=&quot;</span>+list.toString());</span><br><span class="line">            <span class="keyword">return</span> list;</span><br><span class="line">        &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line"> </span><br><span class="line">        &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">            list.add(<span class="string">&quot;66&quot;</span>);</span><br><span class="line">            System.out.println(<span class="string">&quot;finally list=&quot;</span>+list.toString());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>输出结果:</p>
-<p>try  list=[33]<br>finally list=[33, 66]<br>test输出的结果 [33, 66]<br>main list=[33, 66]</p>
+<p>try  list=[33]<br>
+finally list=[33, 66]<br>
+test输出的结果 [33, 66]<br>
+main list=[33, 66]</p>
 <p>结论: 通过结果可以知道 test的返回值内容也是跟集合list一样的， 因为list是引用类型所以堆区中存放了内存地址，在finally对值          进行改变时还是只想同一个地址，只是地址的内容变化了</p>
 <p>2 finally中有return 、</p>
 <p>输出值:</p>
-<p>try  list=[33]<br>finally list=[33, 66]<br>test输出的结果 [33, 66]<br>main list=[33, 66]</p>
+<p>try  list=[33]<br>
+finally list=[33, 66]<br>
+test输出的结果 [33, 66]<br>
+main list=[33, 66]</p>
 <p>结论:可见引用类型时finally有没有return都会对当前方法的返回值产生影响</p>
 
           
@@ -986,7 +1031,7 @@
       <p ct><i class='fas fa-comments'></i> 评论</p>
       
       <section id="comments">
-        <div id="valine_container" class="valine_thread">
+        <div id="minivaline_container">
   <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
@@ -1062,6 +1107,7 @@
 
 
         </div>
+        <!--
       
     
       
@@ -1119,11 +1165,86 @@
     
       
         <div class='copyright'>
-        <p><a href="https://gyl-coder.top/">Copyright © 2019-2020 Yanliang</a></p>
+        <p><a href="https://gyl-coder.top">Copyright © 2019-2020 Yanliang</a></p>
 
         </div>
       
     
+    -->
+
+      <!--自定义footer样式-->
+      <!--自定义footer样式-->
+<br>
+Copyright <i class="far fa-copyright"></i> 2019-2020
+<a href="/" target="_blank"> YANLIANG'S BLOG </a>丨
+<!-- 在网页底部添加网站运行时间 -->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+
+    function createtime() {
+        var grt = new Date("07/01/2019 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime() + 250);
+        days = (now - grt) / 1000 / 60 / 60 / 24;
+        dnum = Math.floor(days);
+        hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+        hnum = Math.floor(hours);
+        if (String(hnum).length == 1) {
+            hnum = "0" + hnum;
+        }
+        minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes);
+        if (String(mnum).length == 1) {
+            mnum = "0" + mnum;
+        }
+        seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds);
+        if (String(snum).length == 1) {
+            snum = "0" + snum;
+        }
+        document.getElementById("timeDate").innerHTML = "网站已运行 " + dnum + " 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+
+    setInterval("createtime()", 250);
+</script>
+<br/>
+<br/>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://hexo.io/" target="_blank" title="由 Hexo 强力驱动">
+        <span class="badge-subject">Powered</span><span class="badge-value bg-blue">Hexo</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://github.com/" target="_blank"
+       title="静态网页托管于 GitHub Pages 和 Coding Pages">
+        <span class="badge-subject">Hosted</span><span
+                class="badge-value bg-brightgreen">GitHub &amp; Coding</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://www.aliyun.com/" target="_blank" title="阿里云提供域名相关服务">
+        <span class="badge-subject">DNS</span><span class="badge-value bg-blueviolet">Aliyun</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://www.jsdelivr.com/" target="_blank"
+       title="jsDelivr 提供 CDN 加速服务">
+        <span class="badge-subject">CDN</span><span class="badge-value bg-orange">jsDelivr</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://github.com/volantis-x/hexo-theme-volantis/"
+       target="_blank" title="站点使用 Volantis 主题">
+        <span class="badge-subject">Theme</span><span class="badge-value bg-blue">Volantis</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
+       target="_blank" title="本站点采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议进行许可">
+        <span class="badge-subject"><i class="fa fa-copyright"></i></span><span
+                class="badge-value bg-gradient">BY-NC-SA 4.0</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://github.com/botui/botui" target="_blank" title="A JavaScript framework to create conversational UIs.">
+        <span class="badge-subject">AI机器人</span><span class="badge-value bg-blueviolet">botui</span></a>
+</div>
+
   </footer>
 
 
@@ -1190,14 +1311,14 @@
         
           
     <li>
-      <a class='vlts-menu fix-cursor-default' href=https://volantis.js.org/contributors/
+      <a class='vlts-menu fix-cursor-default' href=/friends/
         
         
         
         
-          id="https:volantisjsorgcontributors"
+          id="friends"
         >
-        <i class='fa fa-fan fa-spin fa-fw'></i> 加入社区
+        <i class='fa fa-fan fa-spin fa-fw'></i> 小伙伴们
       </a>
     </li>
   
@@ -1210,30 +1331,14 @@
         
           
     <li>
-      <a class='vlts-menu fix-cursor-default' href=https://github.com/volantis-x/volantis-docs/
+      <a class='vlts-menu fix-cursor-default' href=/catchTheCat/
         
         
         
         
-          id="https:githubcomvolantis-xvolantis-docs"
+          id="catchTheCat"
         >
-        <i class='fa fa-code-branch fa-fw'></i> 本站源码
-      </a>
-    </li>
-  
-        
-      
-        
-          
-    <li>
-      <a class='vlts-menu fix-cursor-default' href=https://github.com/volantis-x/hexo-theme-volantis/
-        
-        
-        
-        
-          id="https:githubcomvolantis-xhexo-theme-volantis"
-        >
-        <i class='fa fa-code-branch fa-fw'></i> 主题源码
+        <i class='fas fa-cat fa-fw'></i> 围住小猫
       </a>
     </li>
   
@@ -1500,72 +1605,54 @@
 
   
   
-<script src="/js/valine.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/minivaline@3/dist/MiniValine.min.js"></script>
+
+
+
+
 
 
 <script>
-  var GUEST_INFO = ['nick', 'mail', 'link'];
-  var meta = 'nick,mail,link'.split(',').filter(function (item) {
-    return GUEST_INFO.indexOf(item) > -1
-  });
-  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
-  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
-    return REQUIRED_FIELDS.indexOf(item) > -1
-  });
-
-  function emoji(path, idx, ext) {
-    return path + "/" + path + "-" + idx + "." + ext;
-  }
-
-  var emojiMaps = {};
-  for (var i = 1; i <= 54; i++) {
-    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
-  }
-  for (var i = 1; i <= 101; i++) {
-    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
-  }
-  for (var i = 1; i <= 116; i++) {
-    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
-  }
-  for (var i = 1; i <= 125; i++) {
-    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
-  }
-  for (var i = 1; i <= 4; i++) {
-    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
-  }
-
-  function pjax_valine() {
-    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
+function pjax_minivaline() {
+  let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
       decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
-    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
-      "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
+  let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
+    "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
 
-    let ALLPATH = '';
-    if(ALLPATH != '') pageUrl = ALLPATH;
+  let ALLPATH = '';
+  if(ALLPATH != '') pageUrl = ALLPATH;
 
-    var valine = new Valine();
-    valine.init({
-      el: '#valine_container',
-      meta: meta,
-      placeholder: pagePlaceholder,
-      path: pageUrl,
-      appId: "jRi8wpIdG8v9VbC6wddXHTlL-gzGzoHsz",
-      appKey: "oVqMw78YKASJThLN03bSqgve",
-      pageSize: '10',
-      avatar: 'robohash',
-      lang: 'zh-cn',
-      visitor: 'true',
-      highlight: 'true',
-      mathJax: 'false',
-      enableQQ: 'true',
-      requiredFields: requiredFields,
-      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
-      emojiMaps: emojiMaps
-    })
+  new MiniValine({
+    el: '#minivaline_container',
+    appId: 'jRi8wpIdG8v9VbC6wddXHTlL-gzGzoHsz',
+    appKey: 'oVqMw78YKASJThLN03bSqgve',
+    mode: 'xCss',
+    placeholder: pagePlaceholder,
+    path: pageUrl,
+    lang: '',
+    adminEmailMd5: '6e52e95ab454c5a82b0eb13055d79bd5',
+    tagMeta: ["管理员", "小伙伴", "访客"],
+    master: ["6e52e95ab454c5a82b0eb13055d79bd5"],
+    friends: ["b5bd5d836c7a0091aa8473e79ed4c25e", "adb7d1cd192658a55c0ad22a3309cecf", "3ce1e6c77b4910f1871106cb30dc62b0", "cfce8dc43725cc14ffcd9fb4892d5bfc"],
+    math: false,  /*布尔值 字符串无效 下同*/
+    md: true,
+    enableQQ: false,
+    NoRecordIP: true,
+    visitor: false,
+    maxNest: 6,
+    pageSize: 6,
+    barrager: 0,
+    role: 'admin',
+    closeFlag: false,
+    cloudflag: false,
+    region: false,
+    closeUA: false,
+    emoticonUrl: ["https://cdn.jsdelivr.net/npm/alus@latest", "https://cdn.jsdelivr.net/gh/MiniValine/qq@latest", "https://cdn.jsdelivr.net/gh/MiniValine/Bilibilis@latest", "https://cdn.jsdelivr.net/gh/MiniValine/tieba@latest", "https://cdn.jsdelivr.net/gh/MiniValine/twemoji@latest", "https://cdn.jsdelivr.net/gh/MiniValine/weibo@latest"],
+    serverURLs: ''
+    });
   }
-
   $(function () {
-    pjax_valine();
+    pjax_minivaline();
   });
 </script>
 
@@ -1903,8 +1990,8 @@
           pjax_initCopyCode();
         
         
-          pjax_valine();
         
+          pjax_minivaline();
         
         
         

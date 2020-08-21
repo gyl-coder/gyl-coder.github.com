@@ -22,11 +22,14 @@
   
 
   
-    <meta name="description" content="问题背景我们在用kafka的时候，偶尔会遇到这样这样一个问题。
+    <meta name="description" content="¶问题背景
+我们在用kafka的时候，偶尔会遇到这样这样一个问题。
 我们写的kafka的客户端程序，在启动的时候，会无缘无故的 卡住（阻塞） 如下图所示：">
   
 
   <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="yanliang's blog" type="application/atom+xml">
   
 
   <!-- import meta -->
@@ -289,7 +292,7 @@
                   
                   
                   >
-                  <i class='fa fa-ellipsis-v fa-spin fa-fw'></i>更多
+                  <i class='fa fa-ellipsis-v fa-fw'></i>更多
                 </a>
                 
                   <ul class="list-v">
@@ -357,13 +360,29 @@
                       
             
               <li>
-                <a class="menuitem flat-box faa-parent animated-hover" href=https://github.com/gyl-coder
+                <a class="menuitem flat-box faa-parent animated-hover" href=https://jri8wpidaura.leanapp.cn/comments
                   
                   
                   
-                    id="https:githubcomgyl-coder"
+                    id="https:jri8wpidauraleanappcncomments"
                   >
-                  <i class='fab fa-github fa-fw fa-fw'></i>我的Github
+                  <i class='fas fa-comments faa-tada fa-fw fa-fw'></i>评论管理
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/catchTheCat/
+                  
+                  
+                  
+                    id="catchTheCat"
+                  >
+                  <i class='fas fa-cat fa-fw'></i>围住小猫
                 </a>
                 
               </li>
@@ -566,7 +585,7 @@
                   
                   
                   >
-                  <i class='fa fa-ellipsis-v fa-spin fa-fw'></i>更多
+                  <i class='fa fa-ellipsis-v fa-fw'></i>更多
                 </a>
                 
                   <ul class="list-v">
@@ -634,13 +653,29 @@
                       
             
               <li>
-                <a class="menuitem flat-box faa-parent animated-hover" href=https://github.com/gyl-coder
+                <a class="menuitem flat-box faa-parent animated-hover" href=https://jri8wpidaura.leanapp.cn/comments
                   
                   
                   
-                    id="https:githubcomgyl-coder"
+                    id="https:jri8wpidauraleanappcncomments"
                   >
-                  <i class='fab fa-github fa-fw fa-fw'></i>我的Github
+                  <i class='fas fa-comments faa-tada fa-fw fa-fw'></i>评论管理
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/catchTheCat/
+                  
+                  
+                  
+                    id="catchTheCat"
+                  >
+                  <i class='fas fa-cat fa-fw'></i>围住小猫
                 </a>
                 
               </li>
@@ -818,22 +853,19 @@
         <div class="article-entry" itemprop="articleBody">
           
           
-          <h2 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h2><p>我们在用kafka的时候，偶尔会遇到这样这样一个问题。</p>
+          <h2 id="问题背景"><a class="header-anchor" href="#问题背景">¶</a>问题背景</h2>
+<p>我们在用kafka的时候，偶尔会遇到这样这样一个问题。</p>
 <p>我们写的kafka的客户端程序，在启动的时候，会无缘无故的 <code>卡住（阻塞）</code> 如下图所示：</p>
 <a id="more"></a>
-
 <img src='https://images.cnblogs.com/cnblogs_com/yoke/1578513/o_2a7aaf.png'>
-
 <p>这时程序会长时间阻塞在这里，无法继续进行后续操作。</p>
-<h2 id="问题排查"><a href="#问题排查" class="headerlink" title="问题排查"></a>问题排查</h2><p>因为日志没有任何报错信息，但是又可以肯定当前项目并没有完全启动成功。感觉像是程序当中有个地方卡到了。通过 <code>VisualVM</code> 工具dump 线程相关的信息，很快发现了问题所在。原来卡在了consumer初始化的地方。</p>
+<h2 id="问题排查"><a class="header-anchor" href="#问题排查">¶</a>问题排查</h2>
+<p>因为日志没有任何报错信息，但是又可以肯定当前项目并没有完全启动成功。感觉像是程序当中有个地方卡到了。通过 <code>VisualVM</code> 工具dump 线程相关的信息，很快发现了问题所在。原来卡在了consumer初始化的地方。</p>
 <img src='https://images.cnblogs.com/cnblogs_com/yoke/1578513/o_51456456.png'>
-
 <img src='https://images.cnblogs.com/cnblogs_com/yoke/1578513/o_564564132.png'>
-
 <p>一下是我这边的处理方式，大家可以参考下。如果有更好的方式欢迎大家相互交流。</p>
 <p>以下方法是在初始化Consumer的时候进行处理的：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> KafkaConsumerImpl <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (group == <span class="keyword">null</span> || group.isEmpty()) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">&quot;phoenix.mq.group is empty&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    Properties props = <span class="keyword">new</span> Properties();</span><br><span class="line">    </span><br><span class="line">    props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, namesrvAddr);</span><br><span class="line">    props.put(ConsumerConfig.GROUP_ID_CONFIG, group);</span><br><span class="line">    <span class="comment">// 是否允许自动提交offset，这里设为false，下面手动提交</span></span><br><span class="line">    props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, <span class="string">&quot;false&quot;</span>);</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    consumer = <span class="keyword">new</span> KafkaConsumer&lt;&gt;(props);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// consumer 订阅的topic及partition</span></span><br><span class="line">    topicPartition = <span class="keyword">new</span> TopicPartition(<span class="keyword">this</span>.topic, <span class="keyword">this</span>.partitionId);</span><br><span class="line">    <span class="keyword">this</span>.partitions = Collections.singletonList(topicPartition);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 元数据初始化和连接测试，3次失败后抛出异常</span></span><br><span class="line">    Callable&lt;Boolean&gt; call = <span class="keyword">new</span> Callable&lt;Boolean&gt;() &#123;</span><br><span class="line">        <span class="keyword">boolean</span> res = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">int</span> tryTimes = <span class="number">3</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> Boolean <span class="title">call</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">            <span class="keyword">while</span> (tryTimes-- &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    consumer.assign(partitions);</span><br><span class="line">                    <span class="comment">// 默认初始化offset当前最大值</span></span><br><span class="line">                    nextBeginOffset = consumer.position(topicPartition);</span><br><span class="line">                    res = <span class="keyword">true</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (e <span class="keyword">instanceof</span> InterruptedException) &#123;</span><br><span class="line">                        <span class="keyword">break</span>; <span class="comment">// 如果position在阻塞状态时，调用了 task.cancel 会抛出此异常。直接退出即可</span></span><br><span class="line">                    &#125;</span><br><span class="line">                    LOG.error(e.getMessage(), e);</span><br><span class="line">                    LOG.error(<span class="string">&quot; ==&gt; error when trying to fetch metadata for kafka. topic&lt;&#123;&#125;&gt;, partition&lt;&#123;&#125;&gt;&quot;</span>, topic,</span><br><span class="line">                            partitionId);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// sleep</span></span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    Thread.sleep(<span class="number">2000</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> res;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    FutureTask&lt;Boolean&gt; task = <span class="keyword">new</span> FutureTask&lt;&gt;(call);</span><br><span class="line">    <span class="keyword">new</span> Thread(task).start();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">boolean</span> isOk = <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        isOk = task.get(<span class="number">10000</span>, TimeUnit.MILLISECONDS);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        LOG.error(<span class="string">&quot;Get task result timeout&quot;</span>, e);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    task.cancel(<span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (isOk) &#123;</span><br><span class="line">        LOG.info(<span class="string">&quot; ==&gt; init kafka consumer succeed: servers&lt;&#123;&#125;&gt;, topic&lt;&#123;&#125;&gt;, partition&lt;&#123;&#125;&gt;, nextBeginOffset&lt;&#123;&#125;&gt;&quot;</span>,</span><br><span class="line">                namesrvAddr, topic, partitionId, nextBeginOffset);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(String.format(</span><br><span class="line">                <span class="string">&quot; ==&gt; init kafka consumer failed. please check the conf (listeners or advertised.listeners or ...) and try to ping the host name in the conf value&quot;</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> KafkaConsumerImpl <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (group == <span class="keyword">null</span> || group.isEmpty()) &#123;</span><br><span class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">&quot;phoenix.mq.group is empty&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	Properties props = <span class="keyword">new</span> Properties();</span><br><span class="line">	</span><br><span class="line">	props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, namesrvAddr);</span><br><span class="line">	props.put(ConsumerConfig.GROUP_ID_CONFIG, group);</span><br><span class="line">	<span class="comment">// 是否允许自动提交offset，这里设为false，下面手动提交</span></span><br><span class="line">	props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, <span class="string">&quot;false&quot;</span>);</span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">	consumer = <span class="keyword">new</span> KafkaConsumer&lt;&gt;(props);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// consumer 订阅的topic及partition</span></span><br><span class="line">	topicPartition = <span class="keyword">new</span> TopicPartition(<span class="keyword">this</span>.topic, <span class="keyword">this</span>.partitionId);</span><br><span class="line">	<span class="keyword">this</span>.partitions = Collections.singletonList(topicPartition);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 元数据初始化和连接测试，3次失败后抛出异常</span></span><br><span class="line">	Callable&lt;Boolean&gt; call = <span class="keyword">new</span> Callable&lt;Boolean&gt;() &#123;</span><br><span class="line">		<span class="keyword">boolean</span> res = <span class="keyword">false</span>;</span><br><span class="line">		<span class="keyword">int</span> tryTimes = <span class="number">3</span>;</span><br><span class="line">        </span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> Boolean <span class="title">call</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">			<span class="keyword">while</span> (tryTimes-- &gt; <span class="number">0</span>) &#123;</span><br><span class="line">				<span class="keyword">try</span> &#123;</span><br><span class="line">					consumer.assign(partitions);</span><br><span class="line">					<span class="comment">// 默认初始化offset当前最大值</span></span><br><span class="line">					nextBeginOffset = consumer.position(topicPartition);</span><br><span class="line">					res = <span class="keyword">true</span>;</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">					<span class="keyword">if</span> (e <span class="keyword">instanceof</span> InterruptedException) &#123;</span><br><span class="line">						<span class="keyword">break</span>; <span class="comment">// 如果position在阻塞状态时，调用了 task.cancel 会抛出此异常。直接退出即可</span></span><br><span class="line">					&#125;</span><br><span class="line">					LOG.error(e.getMessage(), e);</span><br><span class="line">					LOG.error(<span class="string">&quot; ==&gt; error when trying to fetch metadata for kafka. topic&lt;&#123;&#125;&gt;, partition&lt;&#123;&#125;&gt;&quot;</span>, topic,</span><br><span class="line">							partitionId);</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="comment">// sleep</span></span><br><span class="line">				<span class="keyword">try</span> &#123;</span><br><span class="line">					Thread.sleep(<span class="number">2000</span>);</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">					e.printStackTrace();</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">return</span> res;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line">	FutureTask&lt;Boolean&gt; task = <span class="keyword">new</span> FutureTask&lt;&gt;(call);</span><br><span class="line">	<span class="keyword">new</span> Thread(task).start();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">boolean</span> isOk = <span class="keyword">false</span>;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		isOk = task.get(<span class="number">10000</span>, TimeUnit.MILLISECONDS);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">		LOG.error(<span class="string">&quot;Get task result timeout&quot;</span>, e);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	task.cancel(<span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (isOk) &#123;</span><br><span class="line">		LOG.info(<span class="string">&quot; ==&gt; init kafka consumer succeed: servers&lt;&#123;&#125;&gt;, topic&lt;&#123;&#125;&gt;, partition&lt;&#123;&#125;&gt;, nextBeginOffset&lt;&#123;&#125;&gt;&quot;</span>,</span><br><span class="line">				namesrvAddr, topic, partitionId, nextBeginOffset);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(String.format(</span><br><span class="line">				<span class="string">&quot; ==&gt; init kafka consumer failed. please check the conf (listeners or advertised.listeners or ...) and try to ping the host name in the conf value&quot;</span>));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>利用 FutureTask 的特性，定义一个定时任务， 在初始化Consumer的时候，尝试去连接kafka，如果配置的kafka的地址有误，或者配置出错在这里可以通过抛出错误体现出来。</p>
 <p>最后通过<code>task.get()</code> 方法返回的结果来判断 Consumer 是否成功初始化。</p>
 
@@ -927,7 +959,8 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gyl-coder.top/kafka/kafka-listeners-config/&title=kafka的listeners配置错误导致主线程阻塞 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/Kafka.svg&summary=问题背景我们在用kafka的时候，偶尔会遇到这样这样一个问题。
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gyl-coder.top/kafka/kafka-listeners-config/&title=kafka的listeners配置错误导致主线程阻塞 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/Kafka.svg&summary=¶问题背景
+我们在用kafka的时候，偶尔会遇到这样这样一个问题。
 我们写的kafka的客户端程序，在启动的时候，会无缘无故的 卡住（阻塞） 如下图所示："
           
           >
@@ -940,7 +973,8 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://gyl-coder.top/kafka/kafka-listeners-config/&title=kafka的listeners配置错误导致主线程阻塞 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/Kafka.svg&summary=问题背景我们在用kafka的时候，偶尔会遇到这样这样一个问题。
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://gyl-coder.top/kafka/kafka-listeners-config/&title=kafka的listeners配置错误导致主线程阻塞 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/Kafka.svg&summary=¶问题背景
+我们在用kafka的时候，偶尔会遇到这样这样一个问题。
 我们写的kafka的客户端程序，在启动的时候，会无缘无故的 卡住（阻塞） 如下图所示："
           
           >
@@ -953,7 +987,8 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://gyl-coder.top/kafka/kafka-listeners-config/&title=kafka的listeners配置错误导致主线程阻塞 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/Kafka.svg&summary=问题背景我们在用kafka的时候，偶尔会遇到这样这样一个问题。
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://gyl-coder.top/kafka/kafka-listeners-config/&title=kafka的listeners配置错误导致主线程阻塞 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/Kafka.svg&summary=¶问题背景
+我们在用kafka的时候，偶尔会遇到这样这样一个问题。
 我们写的kafka的客户端程序，在启动的时候，会无缘无故的 卡住（阻塞） 如下图所示："
           
           >
@@ -988,8 +1023,8 @@
                 <p class='title'>kafka中的ISR、AR代表什么？ISR的伸缩性又指什么？<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
                 <p class='content'>相信大家已经对 kafka 的基本概念已经有一定的了解了，下面直接来分析一下 ISR 和 AR 的概念。
 
-
-ISR and AR简单来说，分区中的所有副本统称为 AR (Assigned Re...</p>
+¶ISR and AR
+简单来说，分区中的所有副本统称为 AR (Assigned R...</p>
               </a>
             
           </div>
@@ -1006,7 +1041,7 @@ ISR and AR简单来说，分区中的所有副本统称为 AR (Assigned Re...</p
       <p ct><i class='fas fa-comments'></i> 评论</p>
       
       <section id="comments">
-        <div id="valine_container" class="valine_thread">
+        <div id="minivaline_container">
   <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
@@ -1082,6 +1117,7 @@ ISR and AR简单来说，分区中的所有副本统称为 AR (Assigned Re...</p
 
 
         </div>
+        <!--
       
     
       
@@ -1139,11 +1175,86 @@ ISR and AR简单来说，分区中的所有副本统称为 AR (Assigned Re...</p
     
       
         <div class='copyright'>
-        <p><a href="https://gyl-coder.top/">Copyright © 2019-2020 Yanliang</a></p>
+        <p><a href="https://gyl-coder.top">Copyright © 2019-2020 Yanliang</a></p>
 
         </div>
       
     
+    -->
+
+      <!--自定义footer样式-->
+      <!--自定义footer样式-->
+<br>
+Copyright <i class="far fa-copyright"></i> 2019-2020
+<a href="/" target="_blank"> YANLIANG'S BLOG </a>丨
+<!-- 在网页底部添加网站运行时间 -->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+
+    function createtime() {
+        var grt = new Date("07/01/2019 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime() + 250);
+        days = (now - grt) / 1000 / 60 / 60 / 24;
+        dnum = Math.floor(days);
+        hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+        hnum = Math.floor(hours);
+        if (String(hnum).length == 1) {
+            hnum = "0" + hnum;
+        }
+        minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes);
+        if (String(mnum).length == 1) {
+            mnum = "0" + mnum;
+        }
+        seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds);
+        if (String(snum).length == 1) {
+            snum = "0" + snum;
+        }
+        document.getElementById("timeDate").innerHTML = "网站已运行 " + dnum + " 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+
+    setInterval("createtime()", 250);
+</script>
+<br/>
+<br/>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://hexo.io/" target="_blank" title="由 Hexo 强力驱动">
+        <span class="badge-subject">Powered</span><span class="badge-value bg-blue">Hexo</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://github.com/" target="_blank"
+       title="静态网页托管于 GitHub Pages 和 Coding Pages">
+        <span class="badge-subject">Hosted</span><span
+                class="badge-value bg-brightgreen">GitHub &amp; Coding</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://www.aliyun.com/" target="_blank" title="阿里云提供域名相关服务">
+        <span class="badge-subject">DNS</span><span class="badge-value bg-blueviolet">Aliyun</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://www.jsdelivr.com/" target="_blank"
+       title="jsDelivr 提供 CDN 加速服务">
+        <span class="badge-subject">CDN</span><span class="badge-value bg-orange">jsDelivr</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://github.com/volantis-x/hexo-theme-volantis/"
+       target="_blank" title="站点使用 Volantis 主题">
+        <span class="badge-subject">Theme</span><span class="badge-value bg-blue">Volantis</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
+       target="_blank" title="本站点采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议进行许可">
+        <span class="badge-subject"><i class="fa fa-copyright"></i></span><span
+                class="badge-value bg-gradient">BY-NC-SA 4.0</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://github.com/botui/botui" target="_blank" title="A JavaScript framework to create conversational UIs.">
+        <span class="badge-subject">AI机器人</span><span class="badge-value bg-blueviolet">botui</span></a>
+</div>
+
   </footer>
 
 
@@ -1210,14 +1321,14 @@ ISR and AR简单来说，分区中的所有副本统称为 AR (Assigned Re...</p
         
           
     <li>
-      <a class='vlts-menu fix-cursor-default' href=https://volantis.js.org/contributors/
+      <a class='vlts-menu fix-cursor-default' href=/friends/
         
         
         
         
-          id="https:volantisjsorgcontributors"
+          id="friends"
         >
-        <i class='fa fa-fan fa-spin fa-fw'></i> 加入社区
+        <i class='fa fa-fan fa-spin fa-fw'></i> 小伙伴们
       </a>
     </li>
   
@@ -1230,30 +1341,14 @@ ISR and AR简单来说，分区中的所有副本统称为 AR (Assigned Re...</p
         
           
     <li>
-      <a class='vlts-menu fix-cursor-default' href=https://github.com/volantis-x/volantis-docs/
+      <a class='vlts-menu fix-cursor-default' href=/catchTheCat/
         
         
         
         
-          id="https:githubcomvolantis-xvolantis-docs"
+          id="catchTheCat"
         >
-        <i class='fa fa-code-branch fa-fw'></i> 本站源码
-      </a>
-    </li>
-  
-        
-      
-        
-          
-    <li>
-      <a class='vlts-menu fix-cursor-default' href=https://github.com/volantis-x/hexo-theme-volantis/
-        
-        
-        
-        
-          id="https:githubcomvolantis-xhexo-theme-volantis"
-        >
-        <i class='fa fa-code-branch fa-fw'></i> 主题源码
+        <i class='fas fa-cat fa-fw'></i> 围住小猫
       </a>
     </li>
   
@@ -1520,72 +1615,54 @@ ISR and AR简单来说，分区中的所有副本统称为 AR (Assigned Re...</p
 
   
   
-<script src="/js/valine.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/minivaline@3/dist/MiniValine.min.js"></script>
+
+
+
+
 
 
 <script>
-  var GUEST_INFO = ['nick', 'mail', 'link'];
-  var meta = 'nick,mail,link'.split(',').filter(function (item) {
-    return GUEST_INFO.indexOf(item) > -1
-  });
-  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
-  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
-    return REQUIRED_FIELDS.indexOf(item) > -1
-  });
-
-  function emoji(path, idx, ext) {
-    return path + "/" + path + "-" + idx + "." + ext;
-  }
-
-  var emojiMaps = {};
-  for (var i = 1; i <= 54; i++) {
-    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
-  }
-  for (var i = 1; i <= 101; i++) {
-    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
-  }
-  for (var i = 1; i <= 116; i++) {
-    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
-  }
-  for (var i = 1; i <= 125; i++) {
-    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
-  }
-  for (var i = 1; i <= 4; i++) {
-    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
-  }
-
-  function pjax_valine() {
-    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
+function pjax_minivaline() {
+  let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
       decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
-    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
-      "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
+  let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
+    "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
 
-    let ALLPATH = '';
-    if(ALLPATH != '') pageUrl = ALLPATH;
+  let ALLPATH = '';
+  if(ALLPATH != '') pageUrl = ALLPATH;
 
-    var valine = new Valine();
-    valine.init({
-      el: '#valine_container',
-      meta: meta,
-      placeholder: pagePlaceholder,
-      path: pageUrl,
-      appId: "jRi8wpIdG8v9VbC6wddXHTlL-gzGzoHsz",
-      appKey: "oVqMw78YKASJThLN03bSqgve",
-      pageSize: '10',
-      avatar: 'robohash',
-      lang: 'zh-cn',
-      visitor: 'true',
-      highlight: 'true',
-      mathJax: 'false',
-      enableQQ: 'true',
-      requiredFields: requiredFields,
-      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
-      emojiMaps: emojiMaps
-    })
+  new MiniValine({
+    el: '#minivaline_container',
+    appId: 'jRi8wpIdG8v9VbC6wddXHTlL-gzGzoHsz',
+    appKey: 'oVqMw78YKASJThLN03bSqgve',
+    mode: 'xCss',
+    placeholder: pagePlaceholder,
+    path: pageUrl,
+    lang: '',
+    adminEmailMd5: '6e52e95ab454c5a82b0eb13055d79bd5',
+    tagMeta: ["管理员", "小伙伴", "访客"],
+    master: ["6e52e95ab454c5a82b0eb13055d79bd5"],
+    friends: ["b5bd5d836c7a0091aa8473e79ed4c25e", "adb7d1cd192658a55c0ad22a3309cecf", "3ce1e6c77b4910f1871106cb30dc62b0", "cfce8dc43725cc14ffcd9fb4892d5bfc"],
+    math: false,  /*布尔值 字符串无效 下同*/
+    md: true,
+    enableQQ: false,
+    NoRecordIP: true,
+    visitor: false,
+    maxNest: 6,
+    pageSize: 6,
+    barrager: 0,
+    role: 'admin',
+    closeFlag: false,
+    cloudflag: false,
+    region: false,
+    closeUA: false,
+    emoticonUrl: ["https://cdn.jsdelivr.net/npm/alus@latest", "https://cdn.jsdelivr.net/gh/MiniValine/qq@latest", "https://cdn.jsdelivr.net/gh/MiniValine/Bilibilis@latest", "https://cdn.jsdelivr.net/gh/MiniValine/tieba@latest", "https://cdn.jsdelivr.net/gh/MiniValine/twemoji@latest", "https://cdn.jsdelivr.net/gh/MiniValine/weibo@latest"],
+    serverURLs: ''
+    });
   }
-
   $(function () {
-    pjax_valine();
+    pjax_minivaline();
   });
 </script>
 
@@ -1923,8 +2000,8 @@ ISR and AR简单来说，分区中的所有副本统称为 AR (Assigned Re...</p
           pjax_initCopyCode();
         
         
-          pjax_valine();
         
+          pjax_minivaline();
         
         
         

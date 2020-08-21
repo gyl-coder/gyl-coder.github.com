@@ -27,6 +27,8 @@
 
   <!-- feed -->
   
+    <link rel="alternate" href="/atom.xml" title="yanliang's blog" type="application/atom+xml">
+  
 
   <!-- import meta -->
   
@@ -288,7 +290,7 @@
                   
                   
                   >
-                  <i class='fa fa-ellipsis-v fa-spin fa-fw'></i>更多
+                  <i class='fa fa-ellipsis-v fa-fw'></i>更多
                 </a>
                 
                   <ul class="list-v">
@@ -356,13 +358,29 @@
                       
             
               <li>
-                <a class="menuitem flat-box faa-parent animated-hover" href=https://github.com/gyl-coder
+                <a class="menuitem flat-box faa-parent animated-hover" href=https://jri8wpidaura.leanapp.cn/comments
                   
                   
                   
-                    id="https:githubcomgyl-coder"
+                    id="https:jri8wpidauraleanappcncomments"
                   >
-                  <i class='fab fa-github fa-fw fa-fw'></i>我的Github
+                  <i class='fas fa-comments faa-tada fa-fw fa-fw'></i>评论管理
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/catchTheCat/
+                  
+                  
+                  
+                    id="catchTheCat"
+                  >
+                  <i class='fas fa-cat fa-fw'></i>围住小猫
                 </a>
                 
               </li>
@@ -565,7 +583,7 @@
                   
                   
                   >
-                  <i class='fa fa-ellipsis-v fa-spin fa-fw'></i>更多
+                  <i class='fa fa-ellipsis-v fa-fw'></i>更多
                 </a>
                 
                   <ul class="list-v">
@@ -633,13 +651,29 @@
                       
             
               <li>
-                <a class="menuitem flat-box faa-parent animated-hover" href=https://github.com/gyl-coder
+                <a class="menuitem flat-box faa-parent animated-hover" href=https://jri8wpidaura.leanapp.cn/comments
                   
                   
                   
-                    id="https:githubcomgyl-coder"
+                    id="https:jri8wpidauraleanappcncomments"
                   >
-                  <i class='fab fa-github fa-fw fa-fw'></i>我的Github
+                  <i class='fas fa-comments faa-tada fa-fw fa-fw'></i>评论管理
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/catchTheCat/
+                  
+                  
+                  
+                    id="catchTheCat"
+                  >
+                  <i class='fas fa-cat fa-fw'></i>围住小猫
                 </a>
                 
               </li>
@@ -803,22 +837,25 @@
 <p>MyBatis 原本是Apache 的一个开源项目IBatis，2010年6月这个项目由 Apache Software Foundation 迁移到了 Google Code，随后更名为 <red>MyBatis</red> 。</p>
 <p>iBatis 一词来源于 “internet” 和 “abatis” 的组合，是一个基于Java的持久层框架。</p>
 <div><a class='link-card' title='https://mybatis.org/mybatis-3/' target="_blank" rel="noopener" href='https://mybatis.org/mybatis-3/'><div class='left'><img src=https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png></div><div class='right'><p class='text'>官网地址</p><p class='url'>https://mybatis.org/mybatis-3/</p></div></a></div>
-
 <a id="more"></a>
-
 <p>上面简单介绍了一下 MyBatis ，下面我们来看下MyBatis 的优势</p>
-<h2 id="MyBatis-的优势-amp-劣势"><a href="#MyBatis-的优势-amp-劣势" class="headerlink" title="MyBatis 的优势&amp;劣势"></a>MyBatis 的优势&amp;劣势</h2><h3 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h3><p>我认为 MyBatis 有以下几点优势</p>
+<h2 id="MyBatis-的优势-劣势"><a class="header-anchor" href="#MyBatis-的优势-劣势">¶</a>MyBatis 的优势&amp;劣势</h2>
+<h3 id="优势"><a class="header-anchor" href="#优势">¶</a>优势</h3>
+<p>我认为 MyBatis 有以下几点优势</p>
 <ul>
 <li><strong>简单易学</strong> MyBatis 本身体积较小且没有第三方依赖，使用起来简单容易上手。源码也比较容易看懂</li>
 <li><strong>边界清晰</strong> MyBatis 是一个半自动化的持久层框架，Sql 和 Java代码分开，功能边界较为清晰。一个专注业务，一个专注数据。</li>
 <li><strong>代码量相对较少</strong> 因为MyBatis核心是对JDBC代码的封装，避免开发人员写大量重复的代码。</li>
 </ul>
-<h3 id="劣势"><a href="#劣势" class="headerlink" title="劣势"></a>劣势</h3><ul>
+<h3 id="劣势"><a class="header-anchor" href="#劣势">¶</a>劣势</h3>
+<ul>
 <li>依赖SQL 要求开发人员有一定的SQL 功底</li>
 <li>SQL 语句的编写工作量大（表多，表结构复杂时）</li>
 <li>数据库移植性差（针对不同的数据库SQL 有差异）</li>
 </ul>
-<h2 id="MyBatis-基本应用"><a href="#MyBatis-基本应用" class="headerlink" title="MyBatis 基本应用"></a>MyBatis 基本应用</h2><h3 id="开发步骤"><a href="#开发步骤" class="headerlink" title="开发步骤"></a>开发步骤</h3><p>如果要在工程中使用MyBatis 基本流程如下：</p>
+<h2 id="MyBatis-基本应用"><a class="header-anchor" href="#MyBatis-基本应用">¶</a>MyBatis 基本应用</h2>
+<h3 id="开发步骤"><a class="header-anchor" href="#开发步骤">¶</a>开发步骤</h3>
+<p>如果要在工程中使用MyBatis 基本流程如下：</p>
 <ol>
 <li>在pom 文件中添加Mybatis 的依赖</li>
 <li>创建表结构</li>
@@ -828,39 +865,42 @@
 <li>编写测试类</li>
 </ol>
 <p>下面我们通过使用MyBatis 对一个User 实体进行CRUD 操作。</p>
-<h4 id="引入相关依赖"><a href="#引入相关依赖" class="headerlink" title="引入相关依赖"></a>引入相关依赖</h4><p>在工程所在的 pom 文件中加入以下依赖</p>
+<h4 id="引入相关依赖"><a class="header-anchor" href="#引入相关依赖">¶</a>引入相关依赖</h4>
+<p>在工程所在的 pom 文件中加入以下依赖</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&lt;properties&gt;</span><br><span class="line">    &lt;project.build.sourceEncoding&gt;UTF-8&lt;&#x2F;project.build.sourceEncoding&gt;</span><br><span class="line">    &lt;maven.compiler.encoding&gt;UTF-8&lt;&#x2F;maven.compiler.encoding&gt;</span><br><span class="line">    &lt;java.version&gt;1.8&lt;&#x2F;java.version&gt;</span><br><span class="line">    &lt;maven.compiler.source&gt;1.8&lt;&#x2F;maven.compiler.source&gt;</span><br><span class="line">    &lt;maven.compiler.target&gt;1.8&lt;&#x2F;maven.compiler.target&gt;</span><br><span class="line">&lt;&#x2F;properties&gt;</span><br><span class="line">&lt;dependencies&gt;</span><br><span class="line">    &lt;!--mybatis 依赖--&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.mybatis&lt;&#x2F;groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;mybatis&lt;&#x2F;artifactId&gt;</span><br><span class="line">        &lt;version&gt;3.4.5&lt;&#x2F;version&gt;</span><br><span class="line">    &lt;&#x2F;dependency&gt;</span><br><span class="line">    &lt;!--mysql 依赖--&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;mysql&lt;&#x2F;groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;mysql-connector-java&lt;&#x2F;artifactId&gt;</span><br><span class="line">        &lt;version&gt;5.1.6&lt;&#x2F;version&gt;</span><br><span class="line">        &lt;scope&gt;runtime&lt;&#x2F;scope&gt;</span><br><span class="line">    &lt;&#x2F;dependency&gt;</span><br><span class="line">    &lt;!-- 单元测试依赖 --&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;junit&lt;&#x2F;groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;junit&lt;&#x2F;artifactId&gt;</span><br><span class="line">        &lt;version&gt;4.12&lt;&#x2F;version&gt;</span><br><span class="line">    &lt;&#x2F;dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.projectlombok&lt;&#x2F;groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;lombok&lt;&#x2F;artifactId&gt;</span><br><span class="line">        &lt;optional&gt;true&lt;&#x2F;optional&gt;</span><br><span class="line">    &lt;&#x2F;dependency&gt;</span><br><span class="line">&lt;&#x2F;dependencies&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="创建User-表结构"><a href="#创建User-表结构" class="headerlink" title="创建User 表结构"></a>创建User 表结构</h4><p>在数据库中建立一个简单的User 表结构</p>
+<h4 id="创建User-表结构"><a class="header-anchor" href="#创建User-表结构">¶</a>创建User 表结构</h4>
+<p>在数据库中建立一个简单的User 表结构</p>
 <table>
 <thead>
 <tr>
-<th align="center">字段名</th>
-<th align="center">字段类型</th>
-<th align="center">长度</th>
+<th style="text-align:center">字段名</th>
+<th style="text-align:center">字段类型</th>
+<th style="text-align:center">长度</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">id</td>
-<td align="center">int</td>
-<td align="center">11</td>
+<tbody>
+<tr>
+<td style="text-align:center">id</td>
+<td style="text-align:center">int</td>
+<td style="text-align:center">11</td>
 </tr>
 <tr>
-<td align="center">username</td>
-<td align="center">varchar</td>
-<td align="center">50</td>
+<td style="text-align:center">username</td>
+<td style="text-align:center">varchar</td>
+<td style="text-align:center">50</td>
 </tr>
 <tr>
-<td align="center">password</td>
-<td align="center">varchar</td>
-<td align="center">50</td>
+<td style="text-align:center">password</td>
+<td style="text-align:center">varchar</td>
+<td style="text-align:center">50</td>
 </tr>
-</tbody></table>
-<h4 id="编写User-实体"><a href="#编写User-实体" class="headerlink" title="编写User 实体"></a>编写User 实体</h4><p>这里为了减少代码量，引入了 lombok </p>
+</tbody>
+</table>
+<h4 id="编写User-实体"><a class="header-anchor" href="#编写User-实体">¶</a>编写User 实体</h4>
+<p>这里为了减少代码量，引入了 lombok</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">@Getter</span><br><span class="line">@Setter</span><br><span class="line">@ToString</span><br><span class="line">public class User &#123;</span><br><span class="line"></span><br><span class="line">    &#x2F;** 用户Id *&#x2F;</span><br><span class="line">    private int id;</span><br><span class="line"></span><br><span class="line">    &#x2F;** 用户名 *&#x2F;</span><br><span class="line">    private String username;</span><br><span class="line"></span><br><span class="line">    &#x2F;** 用户密码 *&#x2F;</span><br><span class="line">    private String password;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="编写UserMapper-映射文件"><a href="#编写UserMapper-映射文件" class="headerlink" title="编写UserMapper 映射文件"></a>编写UserMapper 映射文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot; ?&gt;</span><br><span class="line">&lt;!DOCTYPE mapper </span><br><span class="line"> PUBLIC &quot;-&#x2F;&#x2F;mybatis.org&#x2F;&#x2F;DTD Mapper 3.0&#x2F;&#x2F;EN&quot; </span><br><span class="line"> &quot;http:&#x2F;&#x2F;mybatis.org&#x2F;dtd&#x2F;mybatis-3-mapper.dtd&quot;&gt;</span><br><span class="line"> </span><br><span class="line">&lt;mapper namespace&#x3D;&quot;com.yanliang.mockTest.dao.IUserDao&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 查询所有 --&gt;</span><br><span class="line">    &lt;select id&#x3D;&quot;selectList&quot; resultType&#x3D;&quot;com.yanliang.mockTest.User&quot;&gt;</span><br><span class="line">        select * from user</span><br><span class="line">    &lt;&#x2F;select&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 查询单个对象 --&gt;</span><br><span class="line">    &lt;select id&#x3D;&quot;selectOne&quot; resultType&#x3D;&quot;com.yanliang.mockTest.User&quot; paramterType&#x3D;&quot;com.yanliang.mockTest.User&quot;&gt;</span><br><span class="line">        select * from user where id &#x3D; #&#123;id&#125; and username &#x3D; #&#123;username&#125;</span><br><span class="line">    &lt;&#x2F;select&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!--    插入--&gt;</span><br><span class="line">    &lt;insert id&#x3D;&quot;insert&quot; parameterType&#x3D;&quot;com.yanliang.mockTest.User&quot;&gt;</span><br><span class="line">        insert into user</span><br><span class="line">        values ( #&#123;id&#125;, #&#123;username&#125; )</span><br><span class="line">    &lt;&#x2F;insert&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!--    删除--&gt;</span><br><span class="line">    &lt;delete id&#x3D;&quot;delete&quot; parameterType&#x3D;&quot;java.lang.Integer&quot;&gt;</span><br><span class="line">        delete from user where id &#x3D; #&#123;id&#125;</span><br><span class="line">    &lt;&#x2F;delete&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!--    更新--&gt;</span><br><span class="line">    &lt;update id&#x3D;&quot;update&quot; parameterType&#x3D;&quot;com.yanliang.mockTest.User&quot;&gt;</span><br><span class="line">        update user set username &#x3D; #&#123;username&#125;</span><br><span class="line">        where id &#x3D; #&#123;id&#125;</span><br><span class="line">    &lt;&#x2F;update&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;mapper&gt;</span><br></pre></td></tr></table></figure>
-
+<h4 id="编写UserMapper-映射文件"><a class="header-anchor" href="#编写UserMapper-映射文件">¶</a>编写UserMapper 映射文件</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot; ?&gt;</span><br><span class="line">&lt;!DOCTYPE mapper </span><br><span class="line"> PUBLIC &quot;-&#x2F;&#x2F;mybatis.org&#x2F;&#x2F;DTD Mapper 3.0&#x2F;&#x2F;EN&quot; </span><br><span class="line"> &quot;http:&#x2F;&#x2F;mybatis.org&#x2F;dtd&#x2F;mybatis-3-mapper.dtd&quot;&gt;</span><br><span class="line"> </span><br><span class="line">&lt;mapper namespace&#x3D;&quot;com.yanliang.mockTest.dao.IUserDao&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 查询所有 --&gt;</span><br><span class="line">    &lt;select id&#x3D;&quot;selectList&quot; resultType&#x3D;&quot;com.yanliang.mockTest.User&quot;&gt;</span><br><span class="line">        select * from user</span><br><span class="line">    &lt;&#x2F;select&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 查询单个对象 --&gt;</span><br><span class="line">    &lt;select id&#x3D;&quot;selectOne&quot; resultType&#x3D;&quot;com.yanliang.mockTest.User&quot; paramterType&#x3D;&quot;com.yanliang.mockTest.User&quot;&gt;</span><br><span class="line">        select * from user where id &#x3D; #&#123;id&#125; and username &#x3D; #&#123;username&#125;</span><br><span class="line">    &lt;&#x2F;select&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!--    插入--&gt;</span><br><span class="line">    &lt;insert id&#x3D;&quot;insert&quot; parameterType&#x3D;&quot;com.yanliang.mockTest.User&quot;&gt;</span><br><span class="line">        insert into user</span><br><span class="line">        values ( #&#123;id&#125;, #&#123;username&#125; )</span><br><span class="line">    &lt;&#x2F;insert&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!--    删除--&gt;</span><br><span class="line">    &lt;delete id&#x3D;&quot;delete&quot; parameterType&#x3D;&quot;java.lang.Integer&quot;&gt;</span><br><span class="line">        delete from user where id &#x3D; #&#123;id&#125;</span><br><span class="line">    &lt;&#x2F;delete&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!--    更新--&gt;</span><br><span class="line">    &lt;update id&#x3D;&quot;update&quot; parameterType&#x3D;&quot;com.yanliang.mockTest.User&quot;&gt;</span><br><span class="line">        update user set username &#x3D; #&#123;username&#125;</span><br><span class="line">        where id &#x3D; #&#123;id&#125;</span><br><span class="line">    &lt;&#x2F;update&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;mapper&gt;</span><br></pre></td></tr></table></figure>
 
           
             <div class='article_footer'>
@@ -1038,7 +1078,7 @@ HashMap最多只允许一条记...</p>
       <p ct><i class='fas fa-comments'></i> 评论</p>
       
       <section id="comments">
-        <div id="valine_container" class="valine_thread">
+        <div id="minivaline_container">
   <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
@@ -1074,7 +1114,7 @@ HashMap最多只允许一条记...</p>
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MyBatis-%E7%9A%84%E4%BC%98%E5%8A%BF-amp-%E5%8A%A3%E5%8A%BF"><span class="toc-text">MyBatis 的优势&amp;劣势</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%8A%BF"><span class="toc-text">优势</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A3%E5%8A%BF"><span class="toc-text">劣势</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MyBatis-%E5%9F%BA%E6%9C%AC%E5%BA%94%E7%94%A8"><span class="toc-text">MyBatis 基本应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E6%AD%A5%E9%AA%A4"><span class="toc-text">开发步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%95%E5%85%A5%E7%9B%B8%E5%85%B3%E4%BE%9D%E8%B5%96"><span class="toc-text">引入相关依赖</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BAUser-%E8%A1%A8%E7%BB%93%E6%9E%84"><span class="toc-text">创建User 表结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%96%E5%86%99User-%E5%AE%9E%E4%BD%93"><span class="toc-text">编写User 实体</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%96%E5%86%99UserMapper-%E6%98%A0%E5%B0%84%E6%96%87%E4%BB%B6"><span class="toc-text">编写UserMapper 映射文件</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MyBatis-%E7%9A%84%E4%BC%98%E5%8A%BF-%E5%8A%A3%E5%8A%BF"><span class="toc-text">MyBatis 的优势&amp;劣势</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%8A%BF"><span class="toc-text">优势</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A3%E5%8A%BF"><span class="toc-text">劣势</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MyBatis-%E5%9F%BA%E6%9C%AC%E5%BA%94%E7%94%A8"><span class="toc-text">MyBatis 基本应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E6%AD%A5%E9%AA%A4"><span class="toc-text">开发步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%95%E5%85%A5%E7%9B%B8%E5%85%B3%E4%BE%9D%E8%B5%96"><span class="toc-text">引入相关依赖</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BAUser-%E8%A1%A8%E7%BB%93%E6%9E%84"><span class="toc-text">创建User 表结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%96%E5%86%99User-%E5%AE%9E%E4%BD%93"><span class="toc-text">编写User 实体</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%96%E5%86%99UserMapper-%E6%98%A0%E5%B0%84%E6%96%87%E4%BB%B6"><span class="toc-text">编写UserMapper 映射文件</span></a></li></ol></li></ol></li></ol>
     </div>
   </section>
 
@@ -1114,6 +1154,7 @@ HashMap最多只允许一条记...</p>
 
 
         </div>
+        <!--
       
     
       
@@ -1171,11 +1212,86 @@ HashMap最多只允许一条记...</p>
     
       
         <div class='copyright'>
-        <p><a href="https://gyl-coder.top/">Copyright © 2019-2020 Yanliang</a></p>
+        <p><a href="https://gyl-coder.top">Copyright © 2019-2020 Yanliang</a></p>
 
         </div>
       
     
+    -->
+
+      <!--自定义footer样式-->
+      <!--自定义footer样式-->
+<br>
+Copyright <i class="far fa-copyright"></i> 2019-2020
+<a href="/" target="_blank"> YANLIANG'S BLOG </a>丨
+<!-- 在网页底部添加网站运行时间 -->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+
+    function createtime() {
+        var grt = new Date("07/01/2019 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime() + 250);
+        days = (now - grt) / 1000 / 60 / 60 / 24;
+        dnum = Math.floor(days);
+        hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+        hnum = Math.floor(hours);
+        if (String(hnum).length == 1) {
+            hnum = "0" + hnum;
+        }
+        minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes);
+        if (String(mnum).length == 1) {
+            mnum = "0" + mnum;
+        }
+        seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds);
+        if (String(snum).length == 1) {
+            snum = "0" + snum;
+        }
+        document.getElementById("timeDate").innerHTML = "网站已运行 " + dnum + " 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+
+    setInterval("createtime()", 250);
+</script>
+<br/>
+<br/>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://hexo.io/" target="_blank" title="由 Hexo 强力驱动">
+        <span class="badge-subject">Powered</span><span class="badge-value bg-blue">Hexo</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://github.com/" target="_blank"
+       title="静态网页托管于 GitHub Pages 和 Coding Pages">
+        <span class="badge-subject">Hosted</span><span
+                class="badge-value bg-brightgreen">GitHub &amp; Coding</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://www.aliyun.com/" target="_blank" title="阿里云提供域名相关服务">
+        <span class="badge-subject">DNS</span><span class="badge-value bg-blueviolet">Aliyun</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://www.jsdelivr.com/" target="_blank"
+       title="jsDelivr 提供 CDN 加速服务">
+        <span class="badge-subject">CDN</span><span class="badge-value bg-orange">jsDelivr</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://github.com/volantis-x/hexo-theme-volantis/"
+       target="_blank" title="站点使用 Volantis 主题">
+        <span class="badge-subject">Theme</span><span class="badge-value bg-blue">Volantis</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
+       target="_blank" title="本站点采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议进行许可">
+        <span class="badge-subject"><i class="fa fa-copyright"></i></span><span
+                class="badge-value bg-gradient">BY-NC-SA 4.0</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://github.com/botui/botui" target="_blank" title="A JavaScript framework to create conversational UIs.">
+        <span class="badge-subject">AI机器人</span><span class="badge-value bg-blueviolet">botui</span></a>
+</div>
+
   </footer>
 
 
@@ -1242,14 +1358,14 @@ HashMap最多只允许一条记...</p>
         
           
     <li>
-      <a class='vlts-menu fix-cursor-default' href=https://volantis.js.org/contributors/
+      <a class='vlts-menu fix-cursor-default' href=/friends/
         
         
         
         
-          id="https:volantisjsorgcontributors"
+          id="friends"
         >
-        <i class='fa fa-fan fa-spin fa-fw'></i> 加入社区
+        <i class='fa fa-fan fa-spin fa-fw'></i> 小伙伴们
       </a>
     </li>
   
@@ -1262,30 +1378,14 @@ HashMap最多只允许一条记...</p>
         
           
     <li>
-      <a class='vlts-menu fix-cursor-default' href=https://github.com/volantis-x/volantis-docs/
+      <a class='vlts-menu fix-cursor-default' href=/catchTheCat/
         
         
         
         
-          id="https:githubcomvolantis-xvolantis-docs"
+          id="catchTheCat"
         >
-        <i class='fa fa-code-branch fa-fw'></i> 本站源码
-      </a>
-    </li>
-  
-        
-      
-        
-          
-    <li>
-      <a class='vlts-menu fix-cursor-default' href=https://github.com/volantis-x/hexo-theme-volantis/
-        
-        
-        
-        
-          id="https:githubcomvolantis-xhexo-theme-volantis"
-        >
-        <i class='fa fa-code-branch fa-fw'></i> 主题源码
+        <i class='fas fa-cat fa-fw'></i> 围住小猫
       </a>
     </li>
   
@@ -1552,72 +1652,54 @@ HashMap最多只允许一条记...</p>
 
   
   
-<script src="/js/valine.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/minivaline@3/dist/MiniValine.min.js"></script>
+
+
+
+
 
 
 <script>
-  var GUEST_INFO = ['nick', 'mail', 'link'];
-  var meta = 'nick,mail,link'.split(',').filter(function (item) {
-    return GUEST_INFO.indexOf(item) > -1
-  });
-  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
-  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
-    return REQUIRED_FIELDS.indexOf(item) > -1
-  });
-
-  function emoji(path, idx, ext) {
-    return path + "/" + path + "-" + idx + "." + ext;
-  }
-
-  var emojiMaps = {};
-  for (var i = 1; i <= 54; i++) {
-    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
-  }
-  for (var i = 1; i <= 101; i++) {
-    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
-  }
-  for (var i = 1; i <= 116; i++) {
-    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
-  }
-  for (var i = 1; i <= 125; i++) {
-    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
-  }
-  for (var i = 1; i <= 4; i++) {
-    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
-  }
-
-  function pjax_valine() {
-    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
+function pjax_minivaline() {
+  let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
       decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
-    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
-      "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
+  let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
+    "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
 
-    let ALLPATH = '';
-    if(ALLPATH != '') pageUrl = ALLPATH;
+  let ALLPATH = '';
+  if(ALLPATH != '') pageUrl = ALLPATH;
 
-    var valine = new Valine();
-    valine.init({
-      el: '#valine_container',
-      meta: meta,
-      placeholder: pagePlaceholder,
-      path: pageUrl,
-      appId: "jRi8wpIdG8v9VbC6wddXHTlL-gzGzoHsz",
-      appKey: "oVqMw78YKASJThLN03bSqgve",
-      pageSize: '10',
-      avatar: 'robohash',
-      lang: 'zh-cn',
-      visitor: 'true',
-      highlight: 'true',
-      mathJax: 'false',
-      enableQQ: 'true',
-      requiredFields: requiredFields,
-      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
-      emojiMaps: emojiMaps
-    })
+  new MiniValine({
+    el: '#minivaline_container',
+    appId: 'jRi8wpIdG8v9VbC6wddXHTlL-gzGzoHsz',
+    appKey: 'oVqMw78YKASJThLN03bSqgve',
+    mode: 'xCss',
+    placeholder: pagePlaceholder,
+    path: pageUrl,
+    lang: '',
+    adminEmailMd5: '6e52e95ab454c5a82b0eb13055d79bd5',
+    tagMeta: ["管理员", "小伙伴", "访客"],
+    master: ["6e52e95ab454c5a82b0eb13055d79bd5"],
+    friends: ["b5bd5d836c7a0091aa8473e79ed4c25e", "adb7d1cd192658a55c0ad22a3309cecf", "3ce1e6c77b4910f1871106cb30dc62b0", "cfce8dc43725cc14ffcd9fb4892d5bfc"],
+    math: false,  /*布尔值 字符串无效 下同*/
+    md: true,
+    enableQQ: false,
+    NoRecordIP: true,
+    visitor: false,
+    maxNest: 6,
+    pageSize: 6,
+    barrager: 0,
+    role: 'admin',
+    closeFlag: false,
+    cloudflag: false,
+    region: false,
+    closeUA: false,
+    emoticonUrl: ["https://cdn.jsdelivr.net/npm/alus@latest", "https://cdn.jsdelivr.net/gh/MiniValine/qq@latest", "https://cdn.jsdelivr.net/gh/MiniValine/Bilibilis@latest", "https://cdn.jsdelivr.net/gh/MiniValine/tieba@latest", "https://cdn.jsdelivr.net/gh/MiniValine/twemoji@latest", "https://cdn.jsdelivr.net/gh/MiniValine/weibo@latest"],
+    serverURLs: ''
+    });
   }
-
   $(function () {
-    pjax_valine();
+    pjax_minivaline();
   });
 </script>
 
@@ -1955,8 +2037,8 @@ HashMap最多只允许一条记...</p>
           pjax_initCopyCode();
         
         
-          pjax_valine();
         
+          pjax_minivaline();
         
         
         

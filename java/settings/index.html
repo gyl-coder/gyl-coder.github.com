@@ -31,6 +31,8 @@ pom.xml 文件是本地项目配置文件。
 
   <!-- feed -->
   
+    <link rel="alternate" href="/atom.xml" title="yanliang's blog" type="application/atom+xml">
+  
 
   <!-- import meta -->
   
@@ -292,7 +294,7 @@ pom.xml 文件是本地项目配置文件。
                   
                   
                   >
-                  <i class='fa fa-ellipsis-v fa-spin fa-fw'></i>更多
+                  <i class='fa fa-ellipsis-v fa-fw'></i>更多
                 </a>
                 
                   <ul class="list-v">
@@ -360,13 +362,29 @@ pom.xml 文件是本地项目配置文件。
                       
             
               <li>
-                <a class="menuitem flat-box faa-parent animated-hover" href=https://github.com/gyl-coder
+                <a class="menuitem flat-box faa-parent animated-hover" href=https://jri8wpidaura.leanapp.cn/comments
                   
                   
                   
-                    id="https:githubcomgyl-coder"
+                    id="https:jri8wpidauraleanappcncomments"
                   >
-                  <i class='fab fa-github fa-fw fa-fw'></i>我的Github
+                  <i class='fas fa-comments faa-tada fa-fw fa-fw'></i>评论管理
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/catchTheCat/
+                  
+                  
+                  
+                    id="catchTheCat"
+                  >
+                  <i class='fas fa-cat fa-fw'></i>围住小猫
                 </a>
                 
               </li>
@@ -569,7 +587,7 @@ pom.xml 文件是本地项目配置文件。
                   
                   
                   >
-                  <i class='fa fa-ellipsis-v fa-spin fa-fw'></i>更多
+                  <i class='fa fa-ellipsis-v fa-fw'></i>更多
                 </a>
                 
                   <ul class="list-v">
@@ -637,13 +655,29 @@ pom.xml 文件是本地项目配置文件。
                       
             
               <li>
-                <a class="menuitem flat-box faa-parent animated-hover" href=https://github.com/gyl-coder
+                <a class="menuitem flat-box faa-parent animated-hover" href=https://jri8wpidaura.leanapp.cn/comments
                   
                   
                   
-                    id="https:githubcomgyl-coder"
+                    id="https:jri8wpidauraleanappcncomments"
                   >
-                  <i class='fab fa-github fa-fw fa-fw'></i>我的Github
+                  <i class='fas fa-comments faa-tada fa-fw fa-fw'></i>评论管理
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/catchTheCat/
+                  
+                  
+                  
+                    id="catchTheCat"
+                  >
+                  <i class='fas fa-cat fa-fw'></i>围住小猫
                 </a>
                 
               </li>
@@ -809,25 +843,30 @@ pom.xml 文件是本地项目配置文件。
 <li>pom.xml 文件是本地<strong>项目配置文件</strong>。</li>
 </ul>
 <a id="more"></a>
-
-<h2 id="settings-xml-文件位置"><a href="#settings-xml-文件位置" class="headerlink" title="settings.xml 文件位置"></a>settings.xml 文件位置</h2><p>settings.xml 文件一般位于两个位置：</p>
+<h2 id="settings-xml-文件位置"><a class="header-anchor" href="#settings-xml-文件位置">¶</a>settings.xml 文件位置</h2>
+<p>settings.xml 文件一般位于两个位置：</p>
 <ul>
-<li><p>全局配置</p>
-<p>  ${maven.home}/conf/settings.xml</p>
+<li>
+<p>全局配置</p>
+<p>${maven.home}/conf/settings.xml</p>
 </li>
-<li><p>用户配置</p>
-<p>  ${user.home}/.m2/settings.xml</p>
+<li>
+<p>用户配置</p>
+<p>${user.home}/.m2/settings.xml</p>
 </li>
 </ul>
 <blockquote>
-<p><strong>注意：</strong>用户配置优先于全局配置。<code>$&#123;user.home&#125;</code> 和和所有其他系统属性只能在 3.0+版本上使用。</p>
+<p>**注意：**用户配置优先于全局配置。<code>$&#123;user.home&#125;</code> 和和所有其他系统属性只能在 3.0+版本上使用。</p>
 </blockquote>
-<h2 id="配置优先级"><a href="#配置优先级" class="headerlink" title="配置优先级"></a>配置优先级</h2><blockquote>
-<p><strong>重要：</strong>局部配置优先于全局配置</p>
+<h2 id="配置优先级"><a class="header-anchor" href="#配置优先级">¶</a>配置优先级</h2>
+<blockquote>
+<p>**重要：**局部配置优先于全局配置</p>
 </blockquote>
 <p>配置优先级从高到低：<code>pom.xml &gt; user settings &gt; global settings</code></p>
 <p>如果这些文件同时存在，在应用配置时，会合并它们的内容，如果有重复的配置，优先级高的配置会覆盖优先级低的。</p>
-<h2 id="settings-xml-元素详解"><a href="#settings-xml-元素详解" class="headerlink" title="settings.xml 元素详解"></a>settings.xml 元素详解</h2><h3 id="顶级元素概览"><a href="#顶级元素概览" class="headerlink" title="顶级元素概览"></a>顶级元素概览</h3><pre><code>&lt;settings xmlns=&quot;http://maven.apache.org/SETTINGS/1.0.0&quot;
+<h2 id="settings-xml-元素详解"><a class="header-anchor" href="#settings-xml-元素详解">¶</a>settings.xml 元素详解</h2>
+<h3 id="顶级元素概览"><a class="header-anchor" href="#顶级元素概览">¶</a>顶级元素概览</h3>
+<pre><code>&lt;settings xmlns=&quot;http://maven.apache.org/SETTINGS/1.0.0&quot;
       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
       xsi:schemaLocation=&quot;http://maven.apache.org/SETTINGS/1.0.0
                           https://maven.apache.org/xsd/settings-1.0.0.xsd&quot;&gt;
@@ -841,21 +880,31 @@ pom.xml 文件是本地项目配置文件。
   &lt;proxies/&gt;
   &lt;profiles/&gt;
   &lt;activeProfiles/&gt;
-&lt;/settings&gt;</code></pre>
-<h3 id="LocalRepository"><a href="#LocalRepository" class="headerlink" title="LocalRepository"></a>LocalRepository</h3><p><strong>作用：</strong>该值表示构建系统本地仓库的路径。</p>
+&lt;/settings&gt;
+</code></pre>
+<h3 id="LocalRepository"><a class="header-anchor" href="#LocalRepository">¶</a>LocalRepository</h3>
+<p>**作用：**该值表示构建系统本地仓库的路径。</p>
 <p>默认值：<code>~/.m2/repository</code></p>
-<pre><code>&lt;localRepository&gt;$&#123;user.home&#125;/.m2/repository&lt;/localRepository&gt;</code></pre>
-<h3 id="InteractiveMode"><a href="#InteractiveMode" class="headerlink" title="InteractiveMode"></a>InteractiveMode</h3><p><strong>作用</strong>：表示 maven 是否需要和用户交互以获得输入。</p>
+<pre><code>&lt;localRepository&gt;$&#123;user.home&#125;/.m2/repository&lt;/localRepository&gt;
+</code></pre>
+<h3 id="InteractiveMode"><a class="header-anchor" href="#InteractiveMode">¶</a>InteractiveMode</h3>
+<p><strong>作用</strong>：表示 maven 是否需要和用户交互以获得输入。</p>
 <p>如果 maven 需要和用户交互以获得输入，则设置成 true，反之则应为 false。默认为 true。</p>
-<pre><code>&lt;interactiveMode&gt;true&lt;/interactiveMode&gt;</code></pre>
-<h3 id="UsePluginRegistry"><a href="#UsePluginRegistry" class="headerlink" title="UsePluginRegistry"></a>UsePluginRegistry</h3><p><strong>作用</strong>：maven 是否需要使用 <code>plugin-registry.xml</code> 文件来管理插件版本。</p>
+<pre><code>&lt;interactiveMode&gt;true&lt;/interactiveMode&gt;
+</code></pre>
+<h3 id="UsePluginRegistry"><a class="header-anchor" href="#UsePluginRegistry">¶</a>UsePluginRegistry</h3>
+<p><strong>作用</strong>：maven 是否需要使用 <code>plugin-registry.xml</code> 文件来管理插件版本。</p>
 <p>如果需要让 maven 使用文件<code>~/.m2/plugin-registry.xml</code> 来管理插件版本，则设为 true。默认为 false。</p>
-<pre><code>&lt;usePluginRegistry&gt;false&lt;/usePluginRegistry&gt;</code></pre>
-<h3 id="Offline"><a href="#Offline" class="headerlink" title="Offline"></a>Offline</h3><p><strong>作用</strong>：表示 maven 是否需要在离线模式下运行。</p>
+<pre><code>&lt;usePluginRegistry&gt;false&lt;/usePluginRegistry&gt;
+</code></pre>
+<h3 id="Offline"><a class="header-anchor" href="#Offline">¶</a>Offline</h3>
+<p><strong>作用</strong>：表示 maven 是否需要在离线模式下运行。</p>
 <p>如果构建系统需要在离线模式下运行，则为 true，默认为 false。</p>
 <p>当由于网络设置原因或者安全因素，构建服务器不能连接远程仓库的时候，该配置就十分有用。</p>
-<pre><code>&lt;offline&gt;false&lt;/offline&gt;</code></pre>
-<h3 id="PluginGroups"><a href="#PluginGroups" class="headerlink" title="PluginGroups"></a>PluginGroups</h3><p><strong>作用</strong>：当插件的组织 id（groupId）没有显式提供时，供搜寻插件组织 Id（groupId）的列表。</p>
+<pre><code>&lt;offline&gt;false&lt;/offline&gt;
+</code></pre>
+<h3 id="PluginGroups"><a class="header-anchor" href="#PluginGroups">¶</a>PluginGroups</h3>
+<p><strong>作用</strong>：当插件的组织 id（groupId）没有显式提供时，供搜寻插件组织 Id（groupId）的列表。</p>
 <p>该元素包含一个 pluginGroup 元素列表，每个子元素包含了一个组织 Id（groupId）。</p>
 <p>当我们使用某个插件，并且没有在命令行为其提供组织 Id（groupId）的时候，Maven 就会使用该列表。默认情况下该列表包含了 <code>org.apache.maven.plugins</code> 和 <code>org.codehaus.mojo</code>。</p>
 <pre><code>&lt;settings xmlns=&quot;http://maven.apache.org/SETTINGS/1.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
@@ -867,8 +916,10 @@ pom.xml 文件是本地项目配置文件。
     &lt;pluginGroup&gt;org.codehaus.mojo&lt;/pluginGroup&gt;
   &lt;/pluginGroups&gt;
   ...
-&lt;/settings&gt;</code></pre>
-<h3 id="Servers"><a href="#Servers" class="headerlink" title="Servers"></a>Servers</h3><p><strong>作用</strong>：一般，仓库的下载和部署是在 pom.xml 文件中的 <code>repositories</code> 和 <code>distributionManagement</code> 元素中定义的。然而，一般类似用户名、密码（<strong>有些仓库访问是需要安全认证的</strong>）等信息不应该在 pom.xml 文件中配置，这些信息可以配置在 <code>settings.xml</code> 中。</p>
+&lt;/settings&gt;
+</code></pre>
+<h3 id="Servers"><a class="header-anchor" href="#Servers">¶</a>Servers</h3>
+<p><strong>作用</strong>：一般，仓库的下载和部署是在 pom.xml 文件中的 <code>repositories</code> 和 <code>distributionManagement</code> 元素中定义的。然而，一般类似用户名、密码（<strong>有些仓库访问是需要安全认证的</strong>）等信息不应该在 pom.xml 文件中配置，这些信息可以配置在 <code>settings.xml</code> 中。</p>
 <pre><code>&lt;settings xmlns=&quot;http://maven.apache.org/SETTINGS/1.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
   xsi:schemaLocation=&quot;http://maven.apache.org/SETTINGS/1.0.0
                       https://maven.apache.org/xsd/settings-1.0.0.xsd&quot;&gt;
@@ -894,8 +945,10 @@ pom.xml 文件是本地项目配置文件。
     &lt;/server&gt;
   &lt;/servers&gt;
   ...
-&lt;/settings&gt;</code></pre>
-<h3 id="Mirrors"><a href="#Mirrors" class="headerlink" title="Mirrors"></a>Mirrors</h3><p><strong>作用</strong>：为仓库列表配置的下载镜像列表。</p>
+&lt;/settings&gt;
+</code></pre>
+<h3 id="Mirrors"><a class="header-anchor" href="#Mirrors">¶</a>Mirrors</h3>
+<p><strong>作用</strong>：为仓库列表配置的下载镜像列表。</p>
 <pre><code>&lt;settings xmlns=&quot;http://maven.apache.org/SETTINGS/1.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
   xsi:schemaLocation=&quot;http://maven.apache.org/SETTINGS/1.0.0
                       https://maven.apache.org/xsd/settings-1.0.0.xsd&quot;&gt;
@@ -914,8 +967,10 @@ pom.xml 文件是本地项目配置文件。
     &lt;/mirror&gt;
   &lt;/mirrors&gt;
   ...
-&lt;/settings&gt;</code></pre>
-<h3 id="Proxies"><a href="#Proxies" class="headerlink" title="Proxies"></a>Proxies</h3><p><strong>作用</strong>：用来配置不同的代理。</p>
+&lt;/settings&gt;
+</code></pre>
+<h3 id="Proxies"><a class="header-anchor" href="#Proxies">¶</a>Proxies</h3>
+<p><strong>作用</strong>：用来配置不同的代理。</p>
 <pre><code>&lt;settings xmlns=&quot;http://maven.apache.org/SETTINGS/1.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
   xsi:schemaLocation=&quot;http://maven.apache.org/SETTINGS/1.0.0
                       https://maven.apache.org/xsd/settings-1.0.0.xsd&quot;&gt;
@@ -942,8 +997,10 @@ pom.xml 文件是本地项目配置文件。
     &lt;/proxy&gt;
   &lt;/proxies&gt;
   ...
-&lt;/settings&gt;</code></pre>
-<h3 id="Profiles"><a href="#Profiles" class="headerlink" title="Profiles"></a>Profiles</h3><p><strong>作用</strong>：根据环境参数来调整构建配置的列表。</p>
+&lt;/settings&gt;
+</code></pre>
+<h3 id="Profiles"><a class="header-anchor" href="#Profiles">¶</a>Profiles</h3>
+<p><strong>作用</strong>：根据环境参数来调整构建配置的列表。</p>
 <p><code>settings.xml</code> 中的 <code>profile</code> 元素是 <code>pom.xml</code> 中 <code>profile</code> 元素的<strong>裁剪版本</strong>。</p>
 <p>它包含了<code>id</code>、<code>activation</code>、<code>repositories</code>、<code>pluginRepositories</code> 和 <code>properties</code> 元素。这里的 profile 元素只包含这五个子元素是因为这里只关心构建系统这个整体（这正是 settings.xml 文件的角色定位），而非单独的项目对象模型设置。如果一个 <code>settings.xml</code> 中的 <code>profile</code> 被激活，它的值会覆盖任何其它定义在 <code>pom.xml</code> 中带有相同 id 的 <code>profile</code>。</p>
 <pre><code>&lt;settings xmlns=&quot;http://maven.apache.org/SETTINGS/1.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
@@ -965,8 +1022,10 @@ pom.xml 文件是本地项目配置文件。
     &lt;/profile&gt;
   &lt;/profiles&gt;
   ...
-&lt;/settings&gt;</code></pre>
-<h3 id="Activation"><a href="#Activation" class="headerlink" title="Activation"></a>Activation</h3><p><strong>作用</strong>：自动触发 <code>profile</code> 的条件逻辑。</p>
+&lt;/settings&gt;
+</code></pre>
+<h3 id="Activation"><a class="header-anchor" href="#Activation">¶</a>Activation</h3>
+<p><strong>作用</strong>：自动触发 <code>profile</code> 的条件逻辑。</p>
 <p>如 <code>pom.xml</code> 中的 <code>profile</code> 一样，<code>profile</code> 的作用在于它能够在某些特定的环境中自动使用某些特定的值；这些环境通过 <code>activation</code> 元素指定。<code>activation</code> 元素并不是激活 <code>profile</code> 的唯一方式。<code>settings.xml</code> 文件中的 <code>activeProfile</code> 元素可以包含 <code>profile</code> 的 <code>id</code>。<code>profile</code> 也可以通过在命令行，使用 <code>-P</code> 标记和逗号分隔的列表来显式的激活（如，<code>-P test</code>）。</p>
 <pre><code>&lt;activation&gt;
   &lt;!--profile默认是否激活的标识 --&gt;
@@ -977,7 +1036,7 @@ pom.xml 文件是本地项目配置文件。
   &lt;os&gt;
     &lt;!--激活profile的操作系统的名字 --&gt;
     &lt;name&gt;Windows XP&lt;/name&gt;
-    &lt;!--激活profile的操作系统所属家族(如 &#39;windows&#39;) --&gt;
+    &lt;!--激活profile的操作系统所属家族(如 'windows') --&gt;
     &lt;family&gt;Windows&lt;/family&gt;
     &lt;!--激活profile的操作系统体系结构 --&gt;
     &lt;arch&gt;x86&lt;/arch&gt;
@@ -998,11 +1057,13 @@ pom.xml 文件是本地项目配置文件。
     &lt;!--如果指定的文件不存在，则激活profile。 --&gt;
     &lt;missing&gt;$&#123;basedir&#125;/file1.properties&lt;/missing&gt;
   &lt;/file&gt;
-&lt;/activation&gt;</code></pre>
+&lt;/activation&gt;
+</code></pre>
 <blockquote>
 <p>注：在 maven 工程的 pom.xml 所在目录下执行 mvn help:active-profiles 命令可以查看中央仓储的 profile 是否在工程中生效。</p>
 </blockquote>
-<h3 id="properties"><a href="#properties" class="headerlink" title="properties"></a>properties</h3><p><strong>作用</strong>：对应<code>profile</code>的扩展属性列表。</p>
+<h3 id="properties"><a class="header-anchor" href="#properties">¶</a>properties</h3>
+<p><strong>作用</strong>：对应<code>profile</code>的扩展属性列表。</p>
 <p>maven 属性和 ant 中的属性一样，可以用来存放一些值。这些值可以在 <code>pom.xml</code> 中的任何地方使用标记${X}来使用，这里 X 是指属性的名称。属性有五种不同的形式，并且都能在 settings.xml 文件中访问。</p>
 <pre><code>&lt;!--
   1. env.X: 在一个变量前加上&quot;env.&quot;的前缀，会返回一个shell环境变量。例如,&quot;env.PATH&quot;指代了$path环境变量（在Windows上是%PATH%）。
@@ -1013,10 +1074,11 @@ pom.xml 文件是本地项目配置文件。
  --&gt;
 &lt;properties&gt;
   &lt;user.install&gt;$&#123;user.home&#125;/our-project&lt;/user.install&gt;
-&lt;/properties&gt;</code></pre>
+&lt;/properties&gt;
+</code></pre>
 <div class="note "><p>注：如果该 profile 被激活，则可以在pom.xml中使用${user.install}。</p></div> 
-
-<h3 id="Repositories"><a href="#Repositories" class="headerlink" title="Repositories"></a>Repositories</h3><p><strong>作用</strong>：远程仓库列表，它是 maven 用来填充构建系统本地仓库所使用的一组远程仓库。</p>
+<h3 id="Repositories"><a class="header-anchor" href="#Repositories">¶</a>Repositories</h3>
+<p><strong>作用</strong>：远程仓库列表，它是 maven 用来填充构建系统本地仓库所使用的一组远程仓库。</p>
 <pre><code>&lt;repositories&gt;
   &lt;!--包含需要连接到远程仓库的信息 --&gt;
   &lt;repository&gt;
@@ -1044,14 +1106,19 @@ pom.xml 文件是本地项目配置文件。
     &lt;!--用于定位和排序构件的仓库布局类型-可以是default（默认）或者legacy（遗留）。Maven 2为其仓库提供了一个默认的布局；然而，Maven 1.x有一种不同的布局。我们可以使用该元素指定布局是default（默认）还是legacy（遗留）。 --&gt;
     &lt;layout&gt;default&lt;/layout&gt;
   &lt;/repository&gt;
-&lt;/repositories&gt;</code></pre>
-<h3 id="pluginRepositories"><a href="#pluginRepositories" class="headerlink" title="pluginRepositories"></a>pluginRepositories</h3><p><strong>作用</strong>：发现插件的远程仓库列表。</p>
+&lt;/repositories&gt;
+</code></pre>
+<h3 id="pluginRepositories"><a class="header-anchor" href="#pluginRepositories">¶</a>pluginRepositories</h3>
+<p><strong>作用</strong>：发现插件的远程仓库列表。</p>
 <p>和 <code>repository</code> 类似，只是 <code>repository</code> 是管理 jar 包依赖的仓库，<code>pluginRepositories</code> 则是管理插件的仓库。maven 插件是一种特殊类型的构件。由于这个原因，插件仓库独立于其它仓库。<code>pluginRepositories</code> 元素的结构和 <code>repositories</code> 元素的结构类似。每个 <code>pluginRepository</code> 元素指定一个 Maven 可以用来寻找新插件的远程地址。</p>
-<pre><code>pluginRepositoriespluginRepositoryreleasesenabledupdatePolicychecksumPolicyreleasessnapshotsenabledupdatePolicychecksumPolicysnapshotsidnameurllayoutpluginRepositorypluginRepositories</code></pre>
-<h3 id="ActiveProfiles"><a href="#ActiveProfiles" class="headerlink" title="ActiveProfiles"></a>ActiveProfiles</h3><p><strong>作用</strong>：手动激活 profiles 的列表，按照<code>profile</code>被应用的顺序定义<code>activeProfile</code>。</p>
+<pre><code>pluginRepositoriespluginRepositoryreleasesenabledupdatePolicychecksumPolicyreleasessnapshotsenabledupdatePolicychecksumPolicysnapshotsidnameurllayoutpluginRepositorypluginRepositories
+</code></pre>
+<h3 id="ActiveProfiles"><a class="header-anchor" href="#ActiveProfiles">¶</a>ActiveProfiles</h3>
+<p><strong>作用</strong>：手动激活 profiles 的列表，按照<code>profile</code>被应用的顺序定义<code>activeProfile</code>。</p>
 <p>该元素包含了一组 <code>activeProfile</code> 元素，每个 <code>activeProfile</code> 都含有一个 profile id。任何在 <code>activeProfile</code> 中定义的 profile id，不论环境设置如何，其对应的 <code>profile</code> 都会被激活。如果没有匹配的 <code>profile</code>，则什么都不会发生。</p>
 <p>例如，env-test 是一个 activeProfile，则在 pom.xml（或者 profile.xml）中对应 id 的 profile 会被激活。如果运行过程中找不到这样一个 profile，Maven 则会像往常一样运行。</p>
-<pre><code>settingsactiveProfilesactiveProfileactiveProfileactiveProfilessettings</code></pre>
+<pre><code>settingsactiveProfilesactiveProfileactiveProfileactiveProfilessettings
+</code></pre>
 
           
             <div class='article_footer'>
@@ -1235,7 +1302,7 @@ AOP为什么叫做切面...</p>
       <p ct><i class='fas fa-comments'></i> 评论</p>
       
       <section id="comments">
-        <div id="valine_container" class="valine_thread">
+        <div id="minivaline_container">
   <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
@@ -1311,6 +1378,7 @@ AOP为什么叫做切面...</p>
 
 
         </div>
+        <!--
       
     
       
@@ -1368,11 +1436,86 @@ AOP为什么叫做切面...</p>
     
       
         <div class='copyright'>
-        <p><a href="https://gyl-coder.top/">Copyright © 2019-2020 Yanliang</a></p>
+        <p><a href="https://gyl-coder.top">Copyright © 2019-2020 Yanliang</a></p>
 
         </div>
       
     
+    -->
+
+      <!--自定义footer样式-->
+      <!--自定义footer样式-->
+<br>
+Copyright <i class="far fa-copyright"></i> 2019-2020
+<a href="/" target="_blank"> YANLIANG'S BLOG </a>丨
+<!-- 在网页底部添加网站运行时间 -->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+
+    function createtime() {
+        var grt = new Date("07/01/2019 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime() + 250);
+        days = (now - grt) / 1000 / 60 / 60 / 24;
+        dnum = Math.floor(days);
+        hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+        hnum = Math.floor(hours);
+        if (String(hnum).length == 1) {
+            hnum = "0" + hnum;
+        }
+        minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes);
+        if (String(mnum).length == 1) {
+            mnum = "0" + mnum;
+        }
+        seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds);
+        if (String(snum).length == 1) {
+            snum = "0" + snum;
+        }
+        document.getElementById("timeDate").innerHTML = "网站已运行 " + dnum + " 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+
+    setInterval("createtime()", 250);
+</script>
+<br/>
+<br/>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://hexo.io/" target="_blank" title="由 Hexo 强力驱动">
+        <span class="badge-subject">Powered</span><span class="badge-value bg-blue">Hexo</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://github.com/" target="_blank"
+       title="静态网页托管于 GitHub Pages 和 Coding Pages">
+        <span class="badge-subject">Hosted</span><span
+                class="badge-value bg-brightgreen">GitHub &amp; Coding</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://www.aliyun.com/" target="_blank" title="阿里云提供域名相关服务">
+        <span class="badge-subject">DNS</span><span class="badge-value bg-blueviolet">Aliyun</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://www.jsdelivr.com/" target="_blank"
+       title="jsDelivr 提供 CDN 加速服务">
+        <span class="badge-subject">CDN</span><span class="badge-value bg-orange">jsDelivr</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://github.com/volantis-x/hexo-theme-volantis/"
+       target="_blank" title="站点使用 Volantis 主题">
+        <span class="badge-subject">Theme</span><span class="badge-value bg-blue">Volantis</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
+       target="_blank" title="本站点采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议进行许可">
+        <span class="badge-subject"><i class="fa fa-copyright"></i></span><span
+                class="badge-value bg-gradient">BY-NC-SA 4.0</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://github.com/botui/botui" target="_blank" title="A JavaScript framework to create conversational UIs.">
+        <span class="badge-subject">AI机器人</span><span class="badge-value bg-blueviolet">botui</span></a>
+</div>
+
   </footer>
 
 
@@ -1439,14 +1582,14 @@ AOP为什么叫做切面...</p>
         
           
     <li>
-      <a class='vlts-menu fix-cursor-default' href=https://volantis.js.org/contributors/
+      <a class='vlts-menu fix-cursor-default' href=/friends/
         
         
         
         
-          id="https:volantisjsorgcontributors"
+          id="friends"
         >
-        <i class='fa fa-fan fa-spin fa-fw'></i> 加入社区
+        <i class='fa fa-fan fa-spin fa-fw'></i> 小伙伴们
       </a>
     </li>
   
@@ -1459,30 +1602,14 @@ AOP为什么叫做切面...</p>
         
           
     <li>
-      <a class='vlts-menu fix-cursor-default' href=https://github.com/volantis-x/volantis-docs/
+      <a class='vlts-menu fix-cursor-default' href=/catchTheCat/
         
         
         
         
-          id="https:githubcomvolantis-xvolantis-docs"
+          id="catchTheCat"
         >
-        <i class='fa fa-code-branch fa-fw'></i> 本站源码
-      </a>
-    </li>
-  
-        
-      
-        
-          
-    <li>
-      <a class='vlts-menu fix-cursor-default' href=https://github.com/volantis-x/hexo-theme-volantis/
-        
-        
-        
-        
-          id="https:githubcomvolantis-xhexo-theme-volantis"
-        >
-        <i class='fa fa-code-branch fa-fw'></i> 主题源码
+        <i class='fas fa-cat fa-fw'></i> 围住小猫
       </a>
     </li>
   
@@ -1749,72 +1876,54 @@ AOP为什么叫做切面...</p>
 
   
   
-<script src="/js/valine.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/minivaline@3/dist/MiniValine.min.js"></script>
+
+
+
+
 
 
 <script>
-  var GUEST_INFO = ['nick', 'mail', 'link'];
-  var meta = 'nick,mail,link'.split(',').filter(function (item) {
-    return GUEST_INFO.indexOf(item) > -1
-  });
-  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
-  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
-    return REQUIRED_FIELDS.indexOf(item) > -1
-  });
-
-  function emoji(path, idx, ext) {
-    return path + "/" + path + "-" + idx + "." + ext;
-  }
-
-  var emojiMaps = {};
-  for (var i = 1; i <= 54; i++) {
-    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
-  }
-  for (var i = 1; i <= 101; i++) {
-    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
-  }
-  for (var i = 1; i <= 116; i++) {
-    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
-  }
-  for (var i = 1; i <= 125; i++) {
-    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
-  }
-  for (var i = 1; i <= 4; i++) {
-    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
-  }
-
-  function pjax_valine() {
-    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
+function pjax_minivaline() {
+  let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
       decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
-    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
-      "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
+  let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
+    "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
 
-    let ALLPATH = '';
-    if(ALLPATH != '') pageUrl = ALLPATH;
+  let ALLPATH = '';
+  if(ALLPATH != '') pageUrl = ALLPATH;
 
-    var valine = new Valine();
-    valine.init({
-      el: '#valine_container',
-      meta: meta,
-      placeholder: pagePlaceholder,
-      path: pageUrl,
-      appId: "jRi8wpIdG8v9VbC6wddXHTlL-gzGzoHsz",
-      appKey: "oVqMw78YKASJThLN03bSqgve",
-      pageSize: '10',
-      avatar: 'robohash',
-      lang: 'zh-cn',
-      visitor: 'true',
-      highlight: 'true',
-      mathJax: 'false',
-      enableQQ: 'true',
-      requiredFields: requiredFields,
-      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
-      emojiMaps: emojiMaps
-    })
+  new MiniValine({
+    el: '#minivaline_container',
+    appId: 'jRi8wpIdG8v9VbC6wddXHTlL-gzGzoHsz',
+    appKey: 'oVqMw78YKASJThLN03bSqgve',
+    mode: 'xCss',
+    placeholder: pagePlaceholder,
+    path: pageUrl,
+    lang: '',
+    adminEmailMd5: '6e52e95ab454c5a82b0eb13055d79bd5',
+    tagMeta: ["管理员", "小伙伴", "访客"],
+    master: ["6e52e95ab454c5a82b0eb13055d79bd5"],
+    friends: ["b5bd5d836c7a0091aa8473e79ed4c25e", "adb7d1cd192658a55c0ad22a3309cecf", "3ce1e6c77b4910f1871106cb30dc62b0", "cfce8dc43725cc14ffcd9fb4892d5bfc"],
+    math: false,  /*布尔值 字符串无效 下同*/
+    md: true,
+    enableQQ: false,
+    NoRecordIP: true,
+    visitor: false,
+    maxNest: 6,
+    pageSize: 6,
+    barrager: 0,
+    role: 'admin',
+    closeFlag: false,
+    cloudflag: false,
+    region: false,
+    closeUA: false,
+    emoticonUrl: ["https://cdn.jsdelivr.net/npm/alus@latest", "https://cdn.jsdelivr.net/gh/MiniValine/qq@latest", "https://cdn.jsdelivr.net/gh/MiniValine/Bilibilis@latest", "https://cdn.jsdelivr.net/gh/MiniValine/tieba@latest", "https://cdn.jsdelivr.net/gh/MiniValine/twemoji@latest", "https://cdn.jsdelivr.net/gh/MiniValine/weibo@latest"],
+    serverURLs: ''
+    });
   }
-
   $(function () {
-    pjax_valine();
+    pjax_minivaline();
   });
 </script>
 
@@ -2152,8 +2261,8 @@ AOP为什么叫做切面...</p>
           pjax_initCopyCode();
         
         
-          pjax_valine();
         
+          pjax_minivaline();
         
         
         

@@ -27,6 +27,8 @@
 
   <!-- feed -->
   
+    <link rel="alternate" href="/atom.xml" title="yanliang's blog" type="application/atom+xml">
+  
 
   <!-- import meta -->
   
@@ -288,7 +290,7 @@
                   
                   
                   >
-                  <i class='fa fa-ellipsis-v fa-spin fa-fw'></i>更多
+                  <i class='fa fa-ellipsis-v fa-fw'></i>更多
                 </a>
                 
                   <ul class="list-v">
@@ -356,13 +358,29 @@
                       
             
               <li>
-                <a class="menuitem flat-box faa-parent animated-hover" href=https://github.com/gyl-coder
+                <a class="menuitem flat-box faa-parent animated-hover" href=https://jri8wpidaura.leanapp.cn/comments
                   
                   
                   
-                    id="https:githubcomgyl-coder"
+                    id="https:jri8wpidauraleanappcncomments"
                   >
-                  <i class='fab fa-github fa-fw fa-fw'></i>我的Github
+                  <i class='fas fa-comments faa-tada fa-fw fa-fw'></i>评论管理
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/catchTheCat/
+                  
+                  
+                  
+                    id="catchTheCat"
+                  >
+                  <i class='fas fa-cat fa-fw'></i>围住小猫
                 </a>
                 
               </li>
@@ -565,7 +583,7 @@
                   
                   
                   >
-                  <i class='fa fa-ellipsis-v fa-spin fa-fw'></i>更多
+                  <i class='fa fa-ellipsis-v fa-fw'></i>更多
                 </a>
                 
                   <ul class="list-v">
@@ -633,13 +651,29 @@
                       
             
               <li>
-                <a class="menuitem flat-box faa-parent animated-hover" href=https://github.com/gyl-coder
+                <a class="menuitem flat-box faa-parent animated-hover" href=https://jri8wpidaura.leanapp.cn/comments
                   
                   
                   
-                    id="https:githubcomgyl-coder"
+                    id="https:jri8wpidauraleanappcncomments"
                   >
-                  <i class='fab fa-github fa-fw fa-fw'></i>我的Github
+                  <i class='fas fa-comments faa-tada fa-fw fa-fw'></i>评论管理
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/catchTheCat/
+                  
+                  
+                  
+                    id="catchTheCat"
+                  >
+                  <i class='fas fa-cat fa-fw'></i>围住小猫
                 </a>
                 
               </li>
@@ -819,70 +853,68 @@
           
           <p>限流（Rate Limiting，即速率限制）通过限制每个用户调用API的频率来防止API被过度使用，这可以防止他们因疏忽或恶意导致的API滥用。在没有速率限制的情况下，每个用户可以随心所欲地请求，这可能会导致“峰值”请求，从而导致其他用户得不到响应。在启用速率限制之后，它们的请求将被限制为每秒固定的数量。</p>
 <a id="more"></a>
-
 <img src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/20200305174712.png'>
-
 <p>在示例图表中，你可以看到速率限制如何在一段时间内阻塞请求。API最初每分钟接收4个请求，用绿色表示。当12:02启用速率限制时，以红色显示的其他请求将被拒绝。</p>
 <p>速率限制对于公共API是非常重要的，因为你想要为每个消费者（API调用者）维护良好的服务质量，即使有些用户获取了超出其公平配额的服务。计算密集型的端点特别需要速率限制——特别是通过自动伸缩或AWS Lambda和OpenWhisk等按计算付费服务来提供服务时。你还可能希望对提供敏感数据的API进行评级，因为如果攻击者在某些不可预见的事件中获得访问权限，这可能会限制暴露的数据。</p>
 <p>实际上有许多不同的方法来实现速率限制，我们将探讨不同速率限制算法的优缺点。我们还将探讨跨集群扩展时出现的问题。最后，我们将向你展示一个如何使用Kong快速设置速率限制的示例，Kong是最流行的开源API网关。</p>
-<h2 id="速度限制算法"><a href="#速度限制算法" class="headerlink" title="速度限制算法"></a>速度限制算法</h2><p>有各种各样的速率限制算法，每一种都有自己的优点和缺点。让我们回顾一下，这样你就可以根据自己的需要选择最好的限流算法。</p>
-<h3 id="漏桶算法"><a href="#漏桶算法" class="headerlink" title="漏桶算法"></a>漏桶算法</h3><p>漏桶算法（Leaky Bucket，与令牌桶密切相关）是这样一种算法，它提供了一种简单、直观的方法来通过队列限制速率，你可以将队列看作一个存储请求的桶。当一个请求被注册时，它被附加到队列的末尾。每隔一段时间处理队列上的第一项。这也称为先进先出（FIFO）队列。如果队列已满，则丢弃（或泄漏）其他请求。</p>
+<h2 id="速度限制算法"><a class="header-anchor" href="#速度限制算法">¶</a>速度限制算法</h2>
+<p>有各种各样的速率限制算法，每一种都有自己的优点和缺点。让我们回顾一下，这样你就可以根据自己的需要选择最好的限流算法。</p>
+<h3 id="漏桶算法"><a class="header-anchor" href="#漏桶算法">¶</a>漏桶算法</h3>
+<p>漏桶算法（Leaky Bucket，与令牌桶密切相关）是这样一种算法，它提供了一种简单、直观的方法来通过队列限制速率，你可以将队列看作一个存储请求的桶。当一个请求被注册时，它被附加到队列的末尾。每隔一段时间处理队列上的第一项。这也称为先进先出（FIFO）队列。如果队列已满，则丢弃（或泄漏）其他请求。</p>
 <img src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/20200305181120.png'>
-
 <p>这种算法的优点是它可以平滑请求的爆发，并以近似平均的速度处理它们。它也很容易在单个服务器或负载均衡器上实现，并且在有限的队列大小下对于每个用户都是内存有效的。</p>
 <p>然而，突发的访问量会用旧的请求填满队列，并使最近的请求无法被处理。它也不能保证在固定的时间内处理请求。此外，如果为了容错或增加吞吐量而负载平衡服务器，则必须使用策略来协调和强制它们之间的限制。稍后我们将讨论分布式环境的挑战。</p>
-<h3 id="固定窗口算法"><a href="#固定窗口算法" class="headerlink" title="固定窗口算法"></a>固定窗口算法</h3><p>在固定窗口（Fixed Window）算法中，使用n秒的窗口大小（通常使用对人类友好的值，如60秒或3600秒）来跟踪速率。每个传入的请求都会增加窗口的计数器。如果计数器超过阈值，则丢弃请求。窗口通常由当前时间戳的层定义，因此12:00:03的窗口长度为60秒，应该在12:00:00的窗口中。</p>
+<h3 id="固定窗口算法"><a class="header-anchor" href="#固定窗口算法">¶</a>固定窗口算法</h3>
+<p>在固定窗口（Fixed Window）算法中，使用n秒的窗口大小（通常使用对人类友好的值，如60秒或3600秒）来跟踪速率。每个传入的请求都会增加窗口的计数器。如果计数器超过阈值，则丢弃请求。窗口通常由当前时间戳的层定义，因此12:00:03的窗口长度为60秒，应该在12:00:00的窗口中。</p>
 <img src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/20200305181216.png'>
-
 <p>这种算法的优点是，它可以确保处理更多最近的请求，而不会被旧的请求饿死。然而，发生在窗口边界附近的单个流量突发会导致处理请求的速度增加一倍，因为它允许在短时间内同时处理当前窗口和下一个窗口的请求。另外，如果许多消费者等待一个重置窗口，例如在一个小时的顶部，那么他们可能同时扰乱你的API。</p>
-<h3 id="滑动日志算法"><a href="#滑动日志算法" class="headerlink" title="滑动日志算法"></a>滑动日志算法</h3><p>滑动日志（Sliding Log）速率限制涉及到跟踪每个使用者请求的时间戳日志。这些日志通常存储在按时间排序的散列集或表中。时间戳超过阈值的日志将被丢弃。当新请求出现时，我们计算日志的总和来确定请求率。如果请求将超过阈值速率，则保留该请求。</p>
+<h3 id="滑动日志算法"><a class="header-anchor" href="#滑动日志算法">¶</a>滑动日志算法</h3>
+<p>滑动日志（Sliding Log）速率限制涉及到跟踪每个使用者请求的时间戳日志。这些日志通常存储在按时间排序的散列集或表中。时间戳超过阈值的日志将被丢弃。当新请求出现时，我们计算日志的总和来确定请求率。如果请求将超过阈值速率，则保留该请求。</p>
 <img src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/20200305181258.png'>
-
 <p>该算法的优点是不受固定窗口边界条件的限制，速率限制将严格执行。此外，因为滑动日志是针对每个消费者进行跟踪的，所以不会出现对固定窗口造成挑战的踩踏效应。但是，为每个请求存储无限数量的日志可能非常昂贵。它的计算成本也很高，因为每个请求都需要计算使用者先前请求的总和，这些请求可能跨越一个服务器集群。因此，它不能很好地处理大规模的流量突发或拒绝服务攻击。</p>
-<h3 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h3><p>这是一种将固定窗口算法的低处理成本与改进的滑动日志边界条件相结合的混合方法。与固定窗口算法一样，我们跟踪每个固定窗口的计数器。接下来，我们根据当前的时间戳计算前一个窗口请求率的加权值，以平滑突发的流量。例如，如果当前窗口通过了25%，那么我们将前一个窗口的计数加权为75%。跟踪每个键所需的相对较少的数据点允许我们在大型集群中扩展和分布。</p>
+<h3 id="滑动窗口"><a class="header-anchor" href="#滑动窗口">¶</a>滑动窗口</h3>
+<p>这是一种将固定窗口算法的低处理成本与改进的滑动日志边界条件相结合的混合方法。与固定窗口算法一样，我们跟踪每个固定窗口的计数器。接下来，我们根据当前的时间戳计算前一个窗口请求率的加权值，以平滑突发的流量。例如，如果当前窗口通过了25%，那么我们将前一个窗口的计数加权为75%。跟踪每个键所需的相对较少的数据点允许我们在大型集群中扩展和分布。</p>
 <img src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/20200305181343.png'>
-
 <p>我们推荐使用滑动窗口方法，因为它可以灵活地调整速率限制，并且具有良好的性能。速率窗口是它向API消费者提供速率限制数据的一种直观方式。它还避免了漏桶的饥饿问题和固定窗口实现的突发问题。</p>
-<h2 id="分布式系统中的速率限制"><a href="#分布式系统中的速率限制" class="headerlink" title="分布式系统中的速率限制"></a>分布式系统中的速率限制</h2><h3 id="同步策略"><a href="#同步策略" class="headerlink" title="同步策略"></a>同步策略</h3><p>如果希望在使用多个节点的集群时实施全局速率限制，则必须设置策略来实施该限制。如果每个节点都要跟踪自己的速率限制，那么当请求被发送到不同节点时，使用者可能会超过全局速率限制。实际上，节点的数量越大，用户越有可能超过全局限制。</p>
+<h2 id="分布式系统中的速率限制"><a class="header-anchor" href="#分布式系统中的速率限制">¶</a>分布式系统中的速率限制</h2>
+<h3 id="同步策略"><a class="header-anchor" href="#同步策略">¶</a>同步策略</h3>
+<p>如果希望在使用多个节点的集群时实施全局速率限制，则必须设置策略来实施该限制。如果每个节点都要跟踪自己的速率限制，那么当请求被发送到不同节点时，使用者可能会超过全局速率限制。实际上，节点的数量越大，用户越有可能超过全局限制。</p>
 <p>执行此限制的最简单方法是在负载均衡器中设置粘性会话，以便每个使用者都被精确地发送到一个节点。缺点包括缺乏容错性和节点过载时的缩放问题。</p>
 <p>允许更灵活的负载平衡规则的更好解决方案是使用集中的数据存储，如Redis或Cassandra。这将存储每个窗口和消费者的计数。这种方法的两个主要问题是增加了向数据存储发出请求的延迟，以及竞争条件（我们将在下面讨论）。</p>
 <img src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/20200305181452.png'>
-
-<h3 id="竞态条件"><a href="#竞态条件" class="headerlink" title="竞态条件"></a>竞态条件</h3><p>集中式数据存储的最大问题之一是高并发请求模式中的竞争条件。当你使用一种简单的“get-then-set”方法时，就会发生这种情况，在这种方法中，你检索当前速率限制计数器，增加它的值，然后将其推回到数据存储中。这个模型的问题是，在执行一个完整的读递增存储周期时，可能会出现额外的请求，每个请求都试图用无效的（较低的）计数器值存储递增计数器。这允许使用者发送非常高的请求率来绕过速率限制控制。</p>
+<h3 id="竞态条件"><a class="header-anchor" href="#竞态条件">¶</a>竞态条件</h3>
+<p>集中式数据存储的最大问题之一是高并发请求模式中的竞争条件。当你使用一种简单的“get-then-set”方法时，就会发生这种情况，在这种方法中，你检索当前速率限制计数器，增加它的值，然后将其推回到数据存储中。这个模型的问题是，在执行一个完整的读递增存储周期时，可能会出现额外的请求，每个请求都试图用无效的（较低的）计数器值存储递增计数器。这允许使用者发送非常高的请求率来绕过速率限制控制。</p>
 <img src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/20200305181532.png'>
-
 <p>避免这个问题的一种方法是在有问题的密钥周围放置一个“锁”，防止任何其他进程访问或写入计数器。这将很快成为一个主要的性能瓶颈，而且伸缩性不好，特别是在使用诸如Redis之类的远程服务器作为备份数据存储时。</p>
 <p>更好的方法是使用“先设置后获取”的心态，依赖于原子操作符，它们以一种非常高性能的方式实现锁，允许你快速增加和检查计数器值，而不让原子操作成为障碍。</p>
-<h3 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h3><p>使用集中式数据存储的另一个缺点是，在检查速率限制计数器时增加了延迟。不幸的是，即使是检查像Redis这样的快速数据存储，也会导致每个请求增加毫秒的延迟。</p>
+<h3 id="性能优化"><a class="header-anchor" href="#性能优化">¶</a>性能优化</h3>
+<p>使用集中式数据存储的另一个缺点是，在检查速率限制计数器时增加了延迟。不幸的是，即使是检查像Redis这样的快速数据存储，也会导致每个请求增加毫秒的延迟。</p>
 <p>为了以最小的延迟确定这些速率限制，有必要在内存中进行本地检查。这可以通过放松速率检查条件和使用最终一致的模型来实现。例如，每个节点可以创建一个数据同步周期，该周期将与中央数据存储同步。每个节点定期将每个使用者的计数器增量和它看到的窗口推送到数据存储，数据存储将自动更新这些值。然后，节点可以检索更新后的值来更新其内存版本。集群内节点之间的这种收敛→发散→再收敛的循环最终是一致的。</p>
 <img src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/20200305181532.png'>
-
 <p>节点聚合的周期速率应该是可配置的。当流量分布在群集中的多个节点上时（例如，当坐在一个轮询调度平衡器后面时），较短的同步间隔将导致较少的数据点分散，而较长的同步间隔将对数据存储施加较小的读/写压力，更少的开销在每个节点上获取新的同步值。</p>
-<h2 id="使用Kong快速设置速率限制"><a href="#使用Kong快速设置速率限制" class="headerlink" title="使用Kong快速设置速率限制"></a>使用Kong快速设置速率限制</h2><p>Kong是一个开源的API网关，它使构建具有速率限制的可伸缩服务变得非常容易。它被全球超过300,000个活动实例使用。它可以完美地从单个的Kong节点扩展到大规模的、跨越全球的Kong集群。</p>
+<h2 id="使用Kong快速设置速率限制"><a class="header-anchor" href="#使用Kong快速设置速率限制">¶</a>使用Kong快速设置速率限制</h2>
+<p>Kong是一个开源的API网关，它使构建具有速率限制的可伸缩服务变得非常容易。它被全球超过300,000个活动实例使用。它可以完美地从单个的Kong节点扩展到大规模的、跨越全球的Kong集群。</p>
 <p>Kong位于API前面，是上游API的主要入口。在处理请求和响应时，Kong将执行你决定添加到API中的任何插件。</p>
 <img src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/20200305181731.png'>
-
 <p>Kong的速率限制插件是高度可配置的。它提供了为每个API和消费者定义多个速率限制窗口和速率的灵活性。它支持本地内存、Redis、Postgres和Cassandra备份数据存储。它还提供了各种数据同步选项，包括同步和最终一致的模型。</p>
 <p>你可以在其中一台开发机器上快速安装Kong来测试它。我最喜欢的入门方式是使用AWS云形成模板，因为只需几次单击就可以获得预先配置好的开发机器。只需选择一个HVM选项，并将实例大小设置为使用t2.micro，这些对于测试都是负担得起的。然后ssh到新实例上的命令行进行下一步。</p>
-<h3 id="在Kong上添加API"><a href="#在Kong上添加API" class="headerlink" title="在Kong上添加API"></a>在Kong上添加API</h3><p>下一步是使用Kong的admin API在Kong上添加一个API。我们将使用httpbin作为示例，它是一个针对API的免费测试服务。get URL将把我的请求数据镜像成JSON。我们还假设Kong在本地系统上的默认端口上运行。</p>
+<h3 id="在Kong上添加API"><a class="header-anchor" href="#在Kong上添加API">¶</a>在Kong上添加API</h3>
+<p>下一步是使用Kong的admin API在Kong上添加一个API。我们将使用httpbin作为示例，它是一个针对API的免费测试服务。get URL将把我的请求数据镜像成JSON。我们还假设Kong在本地系统上的默认端口上运行。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">curl -i -X POST \</span><br><span class="line">--url http:&#x2F;&#x2F;localhost:8001&#x2F;apis&#x2F; \</span><br><span class="line">--data &#39;name&#x3D;test&#39; \</span><br><span class="line">--data &#39;uris&#x3D;&#x2F;test&#39; \</span><br><span class="line">--data &#39;upstream_url&#x3D;http:&#x2F;&#x2F;httpbin.org&#x2F;get&#39;</span><br></pre></td></tr></table></figure>
-
 <p>现在 Kong 意识到每个发送到 “/test” 的请求都应该代理到 httpbin。我们可以向它的代理端口上的 Kong 发出以下请求来测试它：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">curl http:&#x2F;&#x2F;localhost:8000&#x2F;test</span><br><span class="line">&#123;</span><br><span class="line">    &quot;args&quot;: &#123;&#125;,</span><br><span class="line">    &quot;headers&quot;: &#123;</span><br><span class="line">    &quot;Accept&quot;: &quot;*&#x2F;*&quot;,</span><br><span class="line">    &quot;Connection&quot;: &quot;close&quot;,</span><br><span class="line">    &quot;Host&quot;: &quot;httpbin.org&quot;,</span><br><span class="line">    &quot;User-Agent&quot;: &quot;curl&#x2F;7.51.0&quot;,</span><br><span class="line">    &quot;X-Forwarded-Host&quot;: &quot;localhost&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;origin&quot;: &quot;localhost, 52.89.171.202&quot;,</span><br><span class="line">    &quot;url&quot;: &quot;http:&#x2F;&#x2F;localhost&#x2F;get&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>它还是好的！Kong 已经接收了请求并将其代理到 httpbin，httpbin 已将我的请求头和我的原始 IP 地址进行了镜像。</p>
-<h3 id="添加基本的速率限制"><a href="#添加基本的速率限制" class="headerlink" title="添加基本的速率限制"></a>添加基本的速率限制</h3><p>让我们继续，通过使用社区版的限速插件 [1] 添加限速功能来保护它不受过多请求的影响，每个消费者每分钟只能发出 5 个请求：</p>
+<h3 id="添加基本的速率限制"><a class="header-anchor" href="#添加基本的速率限制">¶</a>添加基本的速率限制</h3>
+<p>让我们继续，通过使用社区版的限速插件 [1] 添加限速功能来保护它不受过多请求的影响，每个消费者每分钟只能发出 5 个请求：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -i -X POST http:&#x2F;&#x2F;localhost:8001&#x2F;apis&#x2F;test&#x2F;plugins&#x2F; \</span><br><span class="line">-d &quot;name&#x3D;rate-limiting&quot; \</span><br><span class="line">-d &quot;config.minute&#x3D;5&quot;</span><br></pre></td></tr></table></figure>
-
 <p>如果我们现在发出超过 5 个请求，Kong 会回复以下错误信息：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">curl http:&#x2F;&#x2F;localhost:8000&#x2F;test</span><br><span class="line">&#123;</span><br><span class="line">    &quot;message&quot;:&quot;API rate limit exceeded&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>看上去不错！我们在 Kong 上添加了一个 API，并且仅在两个 HTTP 请求中向 Kong 的 admin API 添加了速率限制。</p>
 <p>它默认使用固定的窗口来限制 IP 地址的速率，并使用默认的数据存储在集群中的所有节点之间进行同步。有关其他选项，包括每个用户的速率限制或使用其他数据存储（如 Redis），请参阅文档 [1]。</p>
-<h3 id="企业版-Kong，更好的性能"><a href="#企业版-Kong，更好的性能" class="headerlink" title="企业版 Kong，更好的性能"></a>企业版 Kong，更好的性能</h3><p>企业版 [2] 的速率限制增加了对滑动窗口算法的支持，以更好地控制和性能。滑动窗口可以防止你的 API 在窗口边界附近重载，如上面的部分所述。对于低延迟，它使用计数器的内存表，可以使用异步或同步更新跨集群进行同步。这提供了本地阈值的延迟，并且可以跨整个集群扩展。</p>
+<h3 id="企业版-Kong，更好的性能"><a class="header-anchor" href="#企业版-Kong，更好的性能">¶</a>企业版 Kong，更好的性能</h3>
+<p>企业版 [2] 的速率限制增加了对滑动窗口算法的支持，以更好地控制和性能。滑动窗口可以防止你的 API 在窗口边界附近重载，如上面的部分所述。对于低延迟，它使用计数器的内存表，可以使用异步或同步更新跨集群进行同步。这提供了本地阈值的延迟，并且可以跨整个集群扩展。</p>
 <p>第一步是安装企业版的 Kong。然后，可以配置速率限制、以秒为单位的窗口大小和同步计数器值的频率。它真的很容易使用，你可以得到这个强大的控制与一个简单的 API 调用：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">curl -i -X POST http:&#x2F;&#x2F;localhost:8001&#x2F;apis&#x2F;test&#x2F;plugins \</span><br><span class="line">-d &quot;name&#x3D;rate-limiting&quot; \</span><br><span class="line">-d &quot;config.limit&#x3D;5&quot; \</span><br><span class="line">-d &quot;config.window_size&#x3D;60&quot; \</span><br><span class="line">-d &quot;config.sync_rate&#x3D;10&quot;</span><br></pre></td></tr></table></figure>
-
 <p>企业还增加了对 Redis Sentinel 的支持，这使得 Redis 高可用性和更强的容错能力。你可以阅读更多的企业速率限制插件文档。</p>
 <div><a class='link-card' title='https://mp.weixin.qq.com/s?__biz=MzA5OTAyNzQ2OA==&mid=2649704593&idx=1&sn=bccc83c5fc87bf4f032f91405be15cd4&scene=21#wechat_redirect'><i' href='https://mp.weixin.qq.com/s?__biz=MzA5OTAyNzQ2OA==&mid=2649704593&idx=1&sn=bccc83c5fc87bf4f032f91405be15cd4&scene=21#wechat_redirect'><i'><div class='left'><i class='fas fa-link'></i></div><div class='right'><p class='text'>阅读原文</p><p class='url'>https://mp.weixin.qq.com/s?__biz=MzA5OTAyNzQ2OA==&mid=2649704593&idx=1&sn=bccc83c5fc87bf4f032f91405be15cd4&scene=21#wechat_redirect'><i</p></div></a></div>
           
@@ -1034,8 +1066,8 @@
                 <p class='title'>kafka 主题管理<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
                 <p class='content'>对于 kafka 主题（topic）的管理（增删改查），使用最多的便是kafka自带的脚本。
 
-
-创建主题kafka提供了自带的 kafka-topics 脚本，用来帮助用户创建主题（topic...</p>
+¶创建主题
+kafka提供了自带的 kafka-topics 脚本，用来帮助用户创建主题（topi...</p>
               </a>
             
           </div>
@@ -1052,7 +1084,7 @@
       <p ct><i class='fas fa-comments'></i> 评论</p>
       
       <section id="comments">
-        <div id="valine_container" class="valine_thread">
+        <div id="minivaline_container">
   <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
@@ -1128,6 +1160,7 @@
 
 
         </div>
+        <!--
       
     
       
@@ -1185,11 +1218,86 @@
     
       
         <div class='copyright'>
-        <p><a href="https://gyl-coder.top/">Copyright © 2019-2020 Yanliang</a></p>
+        <p><a href="https://gyl-coder.top">Copyright © 2019-2020 Yanliang</a></p>
 
         </div>
       
     
+    -->
+
+      <!--自定义footer样式-->
+      <!--自定义footer样式-->
+<br>
+Copyright <i class="far fa-copyright"></i> 2019-2020
+<a href="/" target="_blank"> YANLIANG'S BLOG </a>丨
+<!-- 在网页底部添加网站运行时间 -->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+
+    function createtime() {
+        var grt = new Date("07/01/2019 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime() + 250);
+        days = (now - grt) / 1000 / 60 / 60 / 24;
+        dnum = Math.floor(days);
+        hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+        hnum = Math.floor(hours);
+        if (String(hnum).length == 1) {
+            hnum = "0" + hnum;
+        }
+        minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes);
+        if (String(mnum).length == 1) {
+            mnum = "0" + mnum;
+        }
+        seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds);
+        if (String(snum).length == 1) {
+            snum = "0" + snum;
+        }
+        document.getElementById("timeDate").innerHTML = "网站已运行 " + dnum + " 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+
+    setInterval("createtime()", 250);
+</script>
+<br/>
+<br/>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://hexo.io/" target="_blank" title="由 Hexo 强力驱动">
+        <span class="badge-subject">Powered</span><span class="badge-value bg-blue">Hexo</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://github.com/" target="_blank"
+       title="静态网页托管于 GitHub Pages 和 Coding Pages">
+        <span class="badge-subject">Hosted</span><span
+                class="badge-value bg-brightgreen">GitHub &amp; Coding</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://www.aliyun.com/" target="_blank" title="阿里云提供域名相关服务">
+        <span class="badge-subject">DNS</span><span class="badge-value bg-blueviolet">Aliyun</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://www.jsdelivr.com/" target="_blank"
+       title="jsDelivr 提供 CDN 加速服务">
+        <span class="badge-subject">CDN</span><span class="badge-value bg-orange">jsDelivr</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://github.com/volantis-x/hexo-theme-volantis/"
+       target="_blank" title="站点使用 Volantis 主题">
+        <span class="badge-subject">Theme</span><span class="badge-value bg-blue">Volantis</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
+       target="_blank" title="本站点采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议进行许可">
+        <span class="badge-subject"><i class="fa fa-copyright"></i></span><span
+                class="badge-value bg-gradient">BY-NC-SA 4.0</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://github.com/botui/botui" target="_blank" title="A JavaScript framework to create conversational UIs.">
+        <span class="badge-subject">AI机器人</span><span class="badge-value bg-blueviolet">botui</span></a>
+</div>
+
   </footer>
 
 
@@ -1256,14 +1364,14 @@
         
           
     <li>
-      <a class='vlts-menu fix-cursor-default' href=https://volantis.js.org/contributors/
+      <a class='vlts-menu fix-cursor-default' href=/friends/
         
         
         
         
-          id="https:volantisjsorgcontributors"
+          id="friends"
         >
-        <i class='fa fa-fan fa-spin fa-fw'></i> 加入社区
+        <i class='fa fa-fan fa-spin fa-fw'></i> 小伙伴们
       </a>
     </li>
   
@@ -1276,30 +1384,14 @@
         
           
     <li>
-      <a class='vlts-menu fix-cursor-default' href=https://github.com/volantis-x/volantis-docs/
+      <a class='vlts-menu fix-cursor-default' href=/catchTheCat/
         
         
         
         
-          id="https:githubcomvolantis-xvolantis-docs"
+          id="catchTheCat"
         >
-        <i class='fa fa-code-branch fa-fw'></i> 本站源码
-      </a>
-    </li>
-  
-        
-      
-        
-          
-    <li>
-      <a class='vlts-menu fix-cursor-default' href=https://github.com/volantis-x/hexo-theme-volantis/
-        
-        
-        
-        
-          id="https:githubcomvolantis-xhexo-theme-volantis"
-        >
-        <i class='fa fa-code-branch fa-fw'></i> 主题源码
+        <i class='fas fa-cat fa-fw'></i> 围住小猫
       </a>
     </li>
   
@@ -1566,72 +1658,54 @@
 
   
   
-<script src="/js/valine.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/minivaline@3/dist/MiniValine.min.js"></script>
+
+
+
+
 
 
 <script>
-  var GUEST_INFO = ['nick', 'mail', 'link'];
-  var meta = 'nick,mail,link'.split(',').filter(function (item) {
-    return GUEST_INFO.indexOf(item) > -1
-  });
-  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
-  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
-    return REQUIRED_FIELDS.indexOf(item) > -1
-  });
-
-  function emoji(path, idx, ext) {
-    return path + "/" + path + "-" + idx + "." + ext;
-  }
-
-  var emojiMaps = {};
-  for (var i = 1; i <= 54; i++) {
-    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
-  }
-  for (var i = 1; i <= 101; i++) {
-    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
-  }
-  for (var i = 1; i <= 116; i++) {
-    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
-  }
-  for (var i = 1; i <= 125; i++) {
-    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
-  }
-  for (var i = 1; i <= 4; i++) {
-    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
-  }
-
-  function pjax_valine() {
-    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
+function pjax_minivaline() {
+  let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
       decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
-    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
-      "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
+  let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
+    "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
 
-    let ALLPATH = '';
-    if(ALLPATH != '') pageUrl = ALLPATH;
+  let ALLPATH = '';
+  if(ALLPATH != '') pageUrl = ALLPATH;
 
-    var valine = new Valine();
-    valine.init({
-      el: '#valine_container',
-      meta: meta,
-      placeholder: pagePlaceholder,
-      path: pageUrl,
-      appId: "jRi8wpIdG8v9VbC6wddXHTlL-gzGzoHsz",
-      appKey: "oVqMw78YKASJThLN03bSqgve",
-      pageSize: '10',
-      avatar: 'robohash',
-      lang: 'zh-cn',
-      visitor: 'true',
-      highlight: 'true',
-      mathJax: 'false',
-      enableQQ: 'true',
-      requiredFields: requiredFields,
-      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
-      emojiMaps: emojiMaps
-    })
+  new MiniValine({
+    el: '#minivaline_container',
+    appId: 'jRi8wpIdG8v9VbC6wddXHTlL-gzGzoHsz',
+    appKey: 'oVqMw78YKASJThLN03bSqgve',
+    mode: 'xCss',
+    placeholder: pagePlaceholder,
+    path: pageUrl,
+    lang: '',
+    adminEmailMd5: '6e52e95ab454c5a82b0eb13055d79bd5',
+    tagMeta: ["管理员", "小伙伴", "访客"],
+    master: ["6e52e95ab454c5a82b0eb13055d79bd5"],
+    friends: ["b5bd5d836c7a0091aa8473e79ed4c25e", "adb7d1cd192658a55c0ad22a3309cecf", "3ce1e6c77b4910f1871106cb30dc62b0", "cfce8dc43725cc14ffcd9fb4892d5bfc"],
+    math: false,  /*布尔值 字符串无效 下同*/
+    md: true,
+    enableQQ: false,
+    NoRecordIP: true,
+    visitor: false,
+    maxNest: 6,
+    pageSize: 6,
+    barrager: 0,
+    role: 'admin',
+    closeFlag: false,
+    cloudflag: false,
+    region: false,
+    closeUA: false,
+    emoticonUrl: ["https://cdn.jsdelivr.net/npm/alus@latest", "https://cdn.jsdelivr.net/gh/MiniValine/qq@latest", "https://cdn.jsdelivr.net/gh/MiniValine/Bilibilis@latest", "https://cdn.jsdelivr.net/gh/MiniValine/tieba@latest", "https://cdn.jsdelivr.net/gh/MiniValine/twemoji@latest", "https://cdn.jsdelivr.net/gh/MiniValine/weibo@latest"],
+    serverURLs: ''
+    });
   }
-
   $(function () {
-    pjax_valine();
+    pjax_minivaline();
   });
 </script>
 
@@ -1969,8 +2043,8 @@
           pjax_initCopyCode();
         
         
-          pjax_valine();
         
+          pjax_minivaline();
         
         
         

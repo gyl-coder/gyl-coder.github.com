@@ -29,6 +29,8 @@
 
   <!-- feed -->
   
+    <link rel="alternate" href="/atom.xml" title="yanliang's blog" type="application/atom+xml">
+  
 
   <!-- import meta -->
   
@@ -290,7 +292,7 @@
                   
                   
                   >
-                  <i class='fa fa-ellipsis-v fa-spin fa-fw'></i>更多
+                  <i class='fa fa-ellipsis-v fa-fw'></i>更多
                 </a>
                 
                   <ul class="list-v">
@@ -358,13 +360,29 @@
                       
             
               <li>
-                <a class="menuitem flat-box faa-parent animated-hover" href=https://github.com/gyl-coder
+                <a class="menuitem flat-box faa-parent animated-hover" href=https://jri8wpidaura.leanapp.cn/comments
                   
                   
                   
-                    id="https:githubcomgyl-coder"
+                    id="https:jri8wpidauraleanappcncomments"
                   >
-                  <i class='fab fa-github fa-fw fa-fw'></i>我的Github
+                  <i class='fas fa-comments faa-tada fa-fw fa-fw'></i>评论管理
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/catchTheCat/
+                  
+                  
+                  
+                    id="catchTheCat"
+                  >
+                  <i class='fas fa-cat fa-fw'></i>围住小猫
                 </a>
                 
               </li>
@@ -567,7 +585,7 @@
                   
                   
                   >
-                  <i class='fa fa-ellipsis-v fa-spin fa-fw'></i>更多
+                  <i class='fa fa-ellipsis-v fa-fw'></i>更多
                 </a>
                 
                   <ul class="list-v">
@@ -635,13 +653,29 @@
                       
             
               <li>
-                <a class="menuitem flat-box faa-parent animated-hover" href=https://github.com/gyl-coder
+                <a class="menuitem flat-box faa-parent animated-hover" href=https://jri8wpidaura.leanapp.cn/comments
                   
                   
                   
-                    id="https:githubcomgyl-coder"
+                    id="https:jri8wpidauraleanappcncomments"
                   >
-                  <i class='fab fa-github fa-fw fa-fw'></i>我的Github
+                  <i class='fas fa-comments faa-tada fa-fw fa-fw'></i>评论管理
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/catchTheCat/
+                  
+                  
+                  
+                    id="catchTheCat"
+                  >
+                  <i class='fas fa-cat fa-fw'></i>围住小猫
                 </a>
                 
               </li>
@@ -803,14 +837,13 @@
           
           <p>多线程环境中，经常出现这样一种场景。一个线程修改了一个对象的值，而另一个线程感知到了变化，然后进行相应的操作，整个过程开始于一个线程，最终结束于另一个线程。这就是传说中的生产者/消费者模型（前者是生产者，后者是消费者）。</p>
 <p>而实现这种功能比较简单的方法就是让消费者线程不断的循环变量判断是否符合预期。如下所示</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (!isOK(...))&#123;</span><br><span class="line">    Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">&#125;</span><br><span class="line">doIt();</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (!isOK(...))&#123;</span><br><span class="line">	Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">&#125;</span><br><span class="line">doIt();</span><br></pre></td></tr></table></figure>
 <p>while 循环中设置不满足的条件，如果条件满足则退出循环（睡眠可以防止过快的“无效尝试”）</p>
 <p>如果isOK方法的判断逻辑比较简单，操作耗时较短，而且并发冲突量不大的情况下，使用这种方案也未尝不可。但是如果判断逻辑比较复杂，或者并发冲突较大时。这种方案就不行了，while循环会执行很多很多次，CPU消耗较大。</p>
 <p>针对这种问题，Java内置的<code>等待通知机制</code>能够较好的解决。当条件不满足时，线程阻塞自己，进入等待状态。当线程条件满足时，通知等待的线程重新执行。线程阻塞避免了循环等待带来的CPU消耗问题。</p>
 <a id="more"></a>
-
-<h2 id="就诊流程"><a href="#就诊流程" class="headerlink" title="就诊流程"></a>就诊流程</h2><p>这里借用极客时间中<a target="_blank" rel="noopener" href="https://time.geekbang.org/column/article/98923e784b3bd3957bae96f39c2ad28c/share?code=qM3/e3xQXVhoZX1Ey1Edz9S8e4pFJgBCiihOxtiS5S0=">大佬文章</a>（文末有链接，名额十个，先到先得）中的一个例子来更好的理解一下等待通知机制。 </p>
+<h2 id="就诊流程"><a class="header-anchor" href="#就诊流程">¶</a>就诊流程</h2>
+<p>这里借用极客时间中<a target="_blank" rel="noopener" href="https://time.geekbang.org/column/article/98923e784b3bd3957bae96f39c2ad28c/share?code=qM3%2Fe3xQXVhoZX1Ey1Edz9S8e4pFJgBCiihOxtiS5S0%3D">大佬文章</a>（文末有链接，名额十个，先到先得）中的一个例子来更好的理解一下等待通知机制。</p>
 <p>我们去医院看病，一般都会经历以下流程：</p>
 <ol>
 <li>患者先去挂号，然后到就诊门口分诊，等待叫号。</li>
@@ -824,12 +857,11 @@
 <p>患者去做检查类似于线程进入等待状态，然后大夫叫下一个患者，这个步骤我们在前面的<code>等待 - 通知机制</code>中忽略掉了，这个步骤对应到程序里，本质是线程释放持有的互斥锁。</p>
 <p>患者做完检查，类似于线程要求的条件已经满足；患者拿检测报告重新分诊，类似于线程需要重新获取互斥锁，这个步骤我们在前面的等待 - 通知机制中也忽视了。</p>
 <p>由此可以总结出：一个完整的等待 - 通知机制：线程首先获取互斥锁，当线程要求的条件不满足时，释放互斥锁，进入等待状态；当要求的条件满足时，通知等待的线程，重新获取互斥锁。</p>
-<h2 id="用Synchronized实现等待通知机制"><a href="#用Synchronized实现等待通知机制" class="headerlink" title="用Synchronized实现等待通知机制"></a>用Synchronized实现等待通知机制</h2><p>通过synchronized配合wait(), notifyAll(), notify()方法来实现等待通知机制。</p>
+<h2 id="用Synchronized实现等待通知机制"><a class="header-anchor" href="#用Synchronized实现等待通知机制">¶</a>用Synchronized实现等待通知机制</h2>
+<p>通过synchronized配合wait(), notifyAll(), notify()方法来实现等待通知机制。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 调用该方法的线程进入WAITING状态，只有等待另外线程的通知或被中断才返回，调用wait方法会释放锁</span></span><br><span class="line">wait();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 通知一个在对象上等待的线程从wait()方法返回，返回的前提是该线程获取到对象锁</span></span><br><span class="line">notify();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 通知所有等待在该对象上的线程</span></span><br><span class="line">notifyAll();</span><br></pre></td></tr></table></figure>
-
 <p>下面通过一个具体实例来具体实现以下</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WaitNotify</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">boolean</span> flag = <span class="keyword">true</span>;    </span><br><span class="line">    <span class="keyword">static</span> Object lock = <span class="keyword">new</span> Object();    </span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">new</span> Thread(<span class="keyword">new</span> Wait(), <span class="string">&quot;WaitThread&quot;</span>).start();</span><br><span class="line">        </span><br><span class="line">        Thread.sleep(<span class="number">1000</span>);   </span><br><span class="line">        </span><br><span class="line">        <span class="keyword">new</span> Thread(<span class="keyword">new</span> Notify(), <span class="string">&quot;NotifyThread&quot;</span>).start();    </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 等待</span></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Wait</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;        </span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;            </span><br><span class="line">            <span class="comment">// 加锁，拥有lock的Monitor            </span></span><br><span class="line">            <span class="keyword">synchronized</span> (lock) &#123;               </span><br><span class="line">                <span class="comment">// 当条件不满足时，继续wait，同时释放了lock的锁               </span></span><br><span class="line">                <span class="keyword">while</span> (flag) &#123;                   </span><br><span class="line">                    <span class="keyword">try</span> &#123;                        </span><br><span class="line">                        System.out.println(Thread.currentThread().getName() + <span class="string">&quot; flag is true. wait &quot;</span>);                       </span><br><span class="line">                        lock.wait();                    </span><br><span class="line">                    &#125; <span class="keyword">catch</span> (InterruptedException e) &#123; &#125;                </span><br><span class="line">                &#125;               </span><br><span class="line">                <span class="comment">// 条件满足时，完成工作</span></span><br><span class="line">                System.out.println(Thread.currentThread().getName() + <span class="string">&quot; flag is false. running &quot;</span>);            </span><br><span class="line">            &#125;        </span><br><span class="line">        &#125;    </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 通知</span></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Notify</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;        </span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;            </span><br><span class="line">            <span class="comment">// 加锁，拥有lock的Monitor            </span></span><br><span class="line">            <span class="keyword">synchronized</span> (lock) &#123;                </span><br><span class="line">                <span class="comment">// 获取lock的锁，然后进行通知，通知时不会释放lock的锁，               </span></span><br><span class="line">                <span class="comment">// 直到当前线程释放了lock后，WaitThread才能从wait方法中返回                </span></span><br><span class="line">                System.out.println(Thread.currentThread().getName() + <span class="string">&quot; hold lock. notify &quot;</span>);                </span><br><span class="line">                lock.notifyAll();                </span><br><span class="line">                flag = <span class="keyword">false</span>; </span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    Thread.sleep(<span class="number">2000</span>);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125; </span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 再次加锁            </span></span><br><span class="line">            <span class="keyword">synchronized</span> (lock) &#123;                </span><br><span class="line">                System.out.println(Thread.currentThread().getName() + <span class="string">&quot; hold lock again. sleep &quot;</span>);                </span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    Thread.sleep(<span class="number">2000</span>);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;           </span><br><span class="line">            &#125;        </span><br><span class="line">        &#125;    </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WaitNotify</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">boolean</span> flag = <span class="keyword">true</span>;    </span><br><span class="line">    <span class="keyword">static</span> Object lock = <span class="keyword">new</span> Object();    </span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    	<span class="keyword">new</span> Thread(<span class="keyword">new</span> Wait(), <span class="string">&quot;WaitThread&quot;</span>).start();</span><br><span class="line">    	</span><br><span class="line">    	Thread.sleep(<span class="number">1000</span>);   </span><br><span class="line">    	</span><br><span class="line">    	<span class="keyword">new</span> Thread(<span class="keyword">new</span> Notify(), <span class="string">&quot;NotifyThread&quot;</span>).start();    </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 等待</span></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Wait</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;        </span><br><span class="line">    	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;            </span><br><span class="line">    		<span class="comment">// 加锁，拥有lock的Monitor            </span></span><br><span class="line">    		<span class="keyword">synchronized</span> (lock) &#123;               </span><br><span class="line">    			<span class="comment">// 当条件不满足时，继续wait，同时释放了lock的锁               </span></span><br><span class="line">    			<span class="keyword">while</span> (flag) &#123;                   </span><br><span class="line">    				<span class="keyword">try</span> &#123;                        </span><br><span class="line">    					System.out.println(Thread.currentThread().getName() + <span class="string">&quot; flag is true. wait &quot;</span>);                       </span><br><span class="line">    					lock.wait();                    </span><br><span class="line">    				&#125; <span class="keyword">catch</span> (InterruptedException e) &#123; &#125;                </span><br><span class="line">    			&#125;               </span><br><span class="line">	    		<span class="comment">// 条件满足时，完成工作</span></span><br><span class="line">	    		System.out.println(Thread.currentThread().getName() + <span class="string">&quot; flag is false. running &quot;</span>);            </span><br><span class="line">    		&#125;        </span><br><span class="line">    	&#125;    </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 通知</span></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Notify</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;        </span><br><span class="line">    	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;            </span><br><span class="line">    		<span class="comment">// 加锁，拥有lock的Monitor            </span></span><br><span class="line">    		<span class="keyword">synchronized</span> (lock) &#123;                </span><br><span class="line">    			<span class="comment">// 获取lock的锁，然后进行通知，通知时不会释放lock的锁，               </span></span><br><span class="line">    			<span class="comment">// 直到当前线程释放了lock后，WaitThread才能从wait方法中返回                </span></span><br><span class="line">    			System.out.println(Thread.currentThread().getName() + <span class="string">&quot; hold lock. notify &quot;</span>);                </span><br><span class="line">    			lock.notifyAll();                </span><br><span class="line">    			flag = <span class="keyword">false</span>; </span><br><span class="line">    			<span class="keyword">try</span> &#123;</span><br><span class="line">					Thread.sleep(<span class="number">2000</span>);</span><br><span class="line">				&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">					e.printStackTrace();</span><br><span class="line">				&#125; </span><br><span class="line">    		&#125;</span><br><span class="line">    		</span><br><span class="line">    		<span class="comment">// 再次加锁            </span></span><br><span class="line">    		<span class="keyword">synchronized</span> (lock) &#123;                </span><br><span class="line">    			System.out.println(Thread.currentThread().getName() + <span class="string">&quot; hold lock again. sleep &quot;</span>);                </span><br><span class="line">    			<span class="keyword">try</span> &#123;</span><br><span class="line">					Thread.sleep(<span class="number">2000</span>);</span><br><span class="line">				&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">					e.printStackTrace();</span><br><span class="line">				&#125;           </span><br><span class="line">    		&#125;        </span><br><span class="line">    	&#125;    </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>在上面的实例中，等待线程(WaitThread)首先获得了对象锁，然后调用对象的wait()方法，从而放弃了锁，并进入对象的等待队列中，进入等待状态。由于等待线程释放了对象锁，通知线程(NotifyThread)随后获取了对象的锁，改变状态使满足条件，并调用对象的notify()方法，通知等待队列（互斥锁的等待队列）中的线程，告诉它条件曾经满足过。（这里notify()只能保证在通知时间点，条件是满足的。而被通知线程的执行时间点和通知时间点基本上不会重合，所以当线程执行的时候，很可能线程条件已经不满足了）等待线程从等待队列中移出，状态变为阻塞状态。通知线程释放锁之后，等待线程再次获取锁从wait()方法返回继续执行。</p>
 <p>这个过程需要注意以下几点：</p>
 <ol>
@@ -838,7 +870,10 @@
 <li>notify()或notifyAll()方法调用后，等待线程依旧不会从wait()返回，需要调用notify()或 notifAll()的线程释放锁之后，等待线程才有机会从wait()返回。</li>
 <li>从wait()方法返回的前提是获得了调用对象的锁。</li>
 </ol>
-<h2 id="等待超时模式"><a href="#等待超时模式" class="headerlink" title="等待超时模式"></a>等待超时模式</h2><p>在开发的过程中经常会遇到这样的情况，调用一个方法时等待一段时间（一般来说是给<br>定一个时间段），如果该方法能够在给定的时间段之内得到结果，那么将结果立刻返回，反之，<br>超时返回默认结果或自定义处理。</p>
+<h2 id="等待超时模式"><a class="header-anchor" href="#等待超时模式">¶</a>等待超时模式</h2>
+<p>在开发的过程中经常会遇到这样的情况，调用一个方法时等待一段时间（一般来说是给<br>
+定一个时间段），如果该方法能够在给定的时间段之内得到结果，那么将结果立刻返回，反之，<br>
+超时返回默认结果或自定义处理。</p>
 <p>而要在等待/通知模型中要加入超市等待逻辑，只需要做一些小小的改动。</p>
 <p>假设超时时间段是T，那么可以推断出在当前时间now+T之后就会超时。</p>
 <p>定义如下变量：</p>
@@ -848,18 +883,15 @@
 </ul>
 <p>这时仅需要wait(REMAINING)即可，在wait(REMAINING)返回之后会将执行： REMAINING=FUTURE–now。如果REMAINING小于等于0，表示已经超时，直接退出，否则将 继续执行wait(REMAINING)。</p>
 <p>相关实现如下</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 对当前对象加锁 </span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> Object <span class="title">get</span><span class="params">(<span class="keyword">long</span> mills)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;       </span><br><span class="line">    <span class="keyword">long</span> future = System.currentTimeMillis() + mills;       </span><br><span class="line">    <span class="keyword">long</span> remaining = mills;       </span><br><span class="line">    <span class="comment">// 当超时大于0并且result返回值不满足要求       </span></span><br><span class="line">    <span class="keyword">while</span> ((result == <span class="keyword">null</span>) &amp;&amp; remaining &gt; <span class="number">0</span>) &#123;              </span><br><span class="line">        wait(remaining);</span><br><span class="line">        remaining = future - System.currentTimeMillis();       </span><br><span class="line">    &#125;              </span><br><span class="line">    <span class="keyword">return</span> result; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="一个简单的数据库连接池示例"><a href="#一个简单的数据库连接池示例" class="headerlink" title="一个简单的数据库连接池示例"></a>一个简单的数据库连接池示例</h2><p>我们使用等待超时模式来构造一个简单的数据库连接池，在示例中模拟从连接池中获取、使用和释放连接的过程，而客户端获取连接的过程被设定为等待超时的模式，也就是在1000毫秒内如果无法获取到可用连接，将会返回给客户端一个null。设定连接池的大小为10个，然后通过调节客户端的线程数来模拟无法获取连接的场景。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 对当前对象加锁 </span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> Object <span class="title">get</span><span class="params">(<span class="keyword">long</span> mills)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;       </span><br><span class="line">	<span class="keyword">long</span> future = System.currentTimeMillis() + mills;       </span><br><span class="line">	<span class="keyword">long</span> remaining = mills;       </span><br><span class="line">	<span class="comment">// 当超时大于0并且result返回值不满足要求       </span></span><br><span class="line">	<span class="keyword">while</span> ((result == <span class="keyword">null</span>) &amp;&amp; remaining &gt; <span class="number">0</span>) &#123;              </span><br><span class="line">		wait(remaining);</span><br><span class="line">        remaining = future - System.currentTimeMillis();       </span><br><span class="line">    &#125;              </span><br><span class="line">    <span class="keyword">return</span> result; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="一个简单的数据库连接池示例"><a class="header-anchor" href="#一个简单的数据库连接池示例">¶</a>一个简单的数据库连接池示例</h2>
+<p>我们使用等待超时模式来构造一个简单的数据库连接池，在示例中模拟从连接池中获取、使用和释放连接的过程，而客户端获取连接的过程被设定为等待超时的模式，也就是在1000毫秒内如果无法获取到可用连接，将会返回给客户端一个null。设定连接池的大小为10个，然后通过调节客户端的线程数来模拟无法获取连接的场景。</p>
 <p>首先看一下连接池的定义。它通过构造函数初始化连接的最大上限，通过一个双向队列来维护连接，调用方需要先调用fetchConnection(long)方法来指定在多少毫秒内超时获取连接，当连接使用完成后，需要调用releaseConnection(Connection)方法将连接放回线程池。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.util.LinkedList;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConnectionPool</span> </span>&#123;    </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> LinkedList&lt;Connection&gt; pool = <span class="keyword">new</span> LinkedList&lt;Connection&gt;();    </span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ConnectionPool</span><span class="params">(<span class="keyword">int</span> initialSize)</span> </span>&#123;        </span><br><span class="line">        <span class="keyword">if</span> (initialSize &gt; <span class="number">0</span>) &#123;            </span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; initialSize; i++) &#123;                </span><br><span class="line">                pool.addLast(ConnectionDriver.createConnection()); </span><br><span class="line">            &#125;       </span><br><span class="line">        &#125;    </span><br><span class="line">    &#125;    </span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">releaseConnection</span><span class="params">(Connection connection)</span> </span>&#123;        </span><br><span class="line">        <span class="keyword">if</span> (connection != <span class="keyword">null</span>) &#123;            </span><br><span class="line">            <span class="keyword">synchronized</span> (pool) &#123;                </span><br><span class="line">                <span class="comment">// 连接释放后需要进行通知，这样其他消费者能够感知到连接池中已经归还了一个连接                </span></span><br><span class="line">                pool.addLast(connection);                </span><br><span class="line">                pool.notifyAll();            </span><br><span class="line">            &#125;        </span><br><span class="line">        &#125;    </span><br><span class="line">    &#125;    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 在mills内无法获取到连接，将会返回null    </span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Connection <span class="title">fetchConnection</span><span class="params">(<span class="keyword">long</span> mills)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;  </span><br><span class="line">        </span><br><span class="line">        <span class="keyword">synchronized</span> (pool) &#123;            </span><br><span class="line">            <span class="comment">// 完全超时            </span></span><br><span class="line">            <span class="keyword">if</span> (mills &lt;= <span class="number">0</span>) &#123;                </span><br><span class="line">                <span class="keyword">while</span> (pool.isEmpty()) &#123;                    </span><br><span class="line">                    pool.wait();                </span><br><span class="line">                &#125;                </span><br><span class="line">                <span class="keyword">return</span> pool.removeFirst();            </span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">// 超过设置的时间mills，将推出while循环</span></span><br><span class="line">                <span class="keyword">long</span> future = System.currentTimeMillis() + mills;                </span><br><span class="line">                <span class="keyword">long</span> remaining = mills;                </span><br><span class="line">                <span class="keyword">while</span> (pool.isEmpty() &amp;&amp; remaining &gt; <span class="number">0</span>) &#123;                    </span><br><span class="line">                    pool.wait(remaining);                    </span><br><span class="line">                    remaining = future - System.currentTimeMillis();                </span><br><span class="line">                &#125;  </span><br><span class="line">                </span><br><span class="line">                Connection result = <span class="keyword">null</span>;                </span><br><span class="line">                <span class="keyword">if</span> (!pool.isEmpty()) &#123;                    </span><br><span class="line">                    result = pool.removeFirst();                </span><br><span class="line">                &#125;                </span><br><span class="line">                <span class="keyword">return</span> result;            </span><br><span class="line">            &#125;        </span><br><span class="line">        &#125;    </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.util.LinkedList;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConnectionPool</span> </span>&#123;    </span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> LinkedList&lt;Connection&gt; pool = <span class="keyword">new</span> LinkedList&lt;Connection&gt;();    </span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">ConnectionPool</span><span class="params">(<span class="keyword">int</span> initialSize)</span> </span>&#123;        </span><br><span class="line">		<span class="keyword">if</span> (initialSize &gt; <span class="number">0</span>) &#123;            </span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; initialSize; i++) &#123;                </span><br><span class="line">				pool.addLast(ConnectionDriver.createConnection()); </span><br><span class="line">			&#125;       </span><br><span class="line">		&#125;    </span><br><span class="line">	&#125;    </span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">releaseConnection</span><span class="params">(Connection connection)</span> </span>&#123;        </span><br><span class="line">		<span class="keyword">if</span> (connection != <span class="keyword">null</span>) &#123;            </span><br><span class="line">			<span class="keyword">synchronized</span> (pool) &#123;                </span><br><span class="line">				<span class="comment">// 连接释放后需要进行通知，这样其他消费者能够感知到连接池中已经归还了一个连接                </span></span><br><span class="line">				pool.addLast(connection);                </span><br><span class="line">				pool.notifyAll();            </span><br><span class="line">			&#125;        </span><br><span class="line">		&#125;    </span><br><span class="line">	&#125;    </span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 在mills内无法获取到连接，将会返回null    </span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Connection <span class="title">fetchConnection</span><span class="params">(<span class="keyword">long</span> mills)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;  </span><br><span class="line">		</span><br><span class="line">		<span class="keyword">synchronized</span> (pool) &#123;            </span><br><span class="line">			<span class="comment">// 完全超时            </span></span><br><span class="line">			<span class="keyword">if</span> (mills &lt;= <span class="number">0</span>) &#123;                </span><br><span class="line">				<span class="keyword">while</span> (pool.isEmpty()) &#123;                    </span><br><span class="line">					pool.wait();                </span><br><span class="line">				&#125;                </span><br><span class="line">				<span class="keyword">return</span> pool.removeFirst();            </span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				<span class="comment">// 超过设置的时间mills，将推出while循环</span></span><br><span class="line">				<span class="keyword">long</span> future = System.currentTimeMillis() + mills;                </span><br><span class="line">				<span class="keyword">long</span> remaining = mills;                </span><br><span class="line">				<span class="keyword">while</span> (pool.isEmpty() &amp;&amp; remaining &gt; <span class="number">0</span>) &#123;                    </span><br><span class="line">					pool.wait(remaining);                    </span><br><span class="line">					remaining = future - System.currentTimeMillis();                </span><br><span class="line">				&#125;  </span><br><span class="line">				</span><br><span class="line">				Connection result = <span class="keyword">null</span>;                </span><br><span class="line">				<span class="keyword">if</span> (!pool.isEmpty()) &#123;                    </span><br><span class="line">					result = pool.removeFirst();                </span><br><span class="line">				&#125;                </span><br><span class="line">				<span class="keyword">return</span> result;            </span><br><span class="line">			&#125;        </span><br><span class="line">		&#125;    </span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>由于java.sql.Connection是一个接口，最终的实现是由数据库驱动提供方来实现的，考虑到只是个示例，我们通过动态代理构造了一个Connection，该Connection的代理实现仅仅是在commit()方法调用时休眠100毫秒.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.lang.reflect.InvocationHandler;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Proxy;</span><br><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.TimeUnit;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConnectionDriver</span> </span>&#123;   </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ConnectionHandler</span> <span class="keyword">implements</span> <span class="title">InvocationHandler</span> </span>&#123;     </span><br><span class="line">        <span class="comment">// commit时会回调</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable </span>&#123;       </span><br><span class="line">            <span class="keyword">if</span> (method.getName().equals(<span class="string">&quot;commit&quot;</span>)) &#123;                </span><br><span class="line">                TimeUnit.MILLISECONDS.sleep(<span class="number">100</span>);            </span><br><span class="line">            &#125;            </span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;        </span><br><span class="line">        &#125;    </span><br><span class="line">    &#125;    </span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建一个Connection的代理，在commit时休眠100毫秒    </span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Connection <span class="title">createConnection</span><span class="params">()</span> </span>&#123;        </span><br><span class="line">        <span class="keyword">return</span> (Connection) Proxy.newProxyInstance(ConnectionDriver.class.getClassLoader(),  </span><br><span class="line">                <span class="keyword">new</span> Class[] &#123; Connection.class &#125;, <span class="keyword">new</span> ConnectionHandler());    </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.lang.reflect.InvocationHandler;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Proxy;</span><br><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.TimeUnit;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConnectionDriver</span> </span>&#123;   </span><br><span class="line">	</span><br><span class="line">	<span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ConnectionHandler</span> <span class="keyword">implements</span> <span class="title">InvocationHandler</span> </span>&#123;     </span><br><span class="line">		<span class="comment">// commit时会回调</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable </span>&#123;       </span><br><span class="line">			<span class="keyword">if</span> (method.getName().equals(<span class="string">&quot;commit&quot;</span>)) &#123;                </span><br><span class="line">				TimeUnit.MILLISECONDS.sleep(<span class="number">100</span>);            </span><br><span class="line">			&#125;            </span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">null</span>;        </span><br><span class="line">		&#125;    </span><br><span class="line">	&#125;    </span><br><span class="line"></span><br><span class="line">	<span class="comment">// 创建一个Connection的代理，在commit时休眠100毫秒    </span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Connection <span class="title">createConnection</span><span class="params">()</span> </span>&#123;        </span><br><span class="line">		<span class="keyword">return</span> (Connection) Proxy.newProxyInstance(ConnectionDriver.class.getClassLoader(),  </span><br><span class="line">				<span class="keyword">new</span> Class[] &#123; Connection.class &#125;, <span class="keyword">new</span> ConnectionHandler());    </span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>下面通过一个示例来测试简易数据库连接池的工作情况，模拟客户端ConnectionRunner获取、使用、最后释放连接的过程，当它使用时连接将会增加获取到连接的数量，反之，将会增加未获取到连接的数量。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.CountDownLatch;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.atomic.AtomicInteger;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">static</span> ConnectionPool pool = <span class="keyword">new</span> ConnectionPool(<span class="number">10</span>);</span><br><span class="line">    <span class="comment">// 保证所有CountDownLatch能够同时开始</span></span><br><span class="line">    <span class="keyword">static</span> CountDownLatch start = <span class="keyword">new</span> CountDownLatch(<span class="number">1</span>);</span><br><span class="line">    <span class="comment">// 保证main线程等待所有ConnectionRunner结束之后才继续执行</span></span><br><span class="line">    <span class="keyword">static</span> CountDownLatch end;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        <span class="comment">// 线程数量，可以修改线程数量进行观察       </span></span><br><span class="line">        <span class="keyword">int</span> threadCount = <span class="number">10</span>;        </span><br><span class="line">        end = <span class="keyword">new</span> CountDownLatch(threadCount);        </span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">20</span>;    </span><br><span class="line">        <span class="comment">// 成功的个数</span></span><br><span class="line">        AtomicInteger got = <span class="keyword">new</span> AtomicInteger();   </span><br><span class="line">        <span class="comment">// 失败的个数</span></span><br><span class="line">        AtomicInteger notGot = <span class="keyword">new</span> AtomicInteger();        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; threadCount; i++) &#123;            </span><br><span class="line">            Thread thread = <span class="keyword">new</span> Thread(<span class="keyword">new</span> ConnetionRunner(count, got, notGot),</span><br><span class="line">                    <span class="string">&quot;ConnectionRunnerThread&quot;</span>);            </span><br><span class="line">            thread.start();        </span><br><span class="line">        &#125;      </span><br><span class="line">        </span><br><span class="line">        start.countDown();        </span><br><span class="line">        end.await();    </span><br><span class="line">        </span><br><span class="line">        System.out.println(<span class="string">&quot;total invoke: &quot;</span> + (threadCount * count));   </span><br><span class="line">        System.out.println(<span class="string">&quot;got connection:  &quot;</span> + got);    </span><br><span class="line">        System.out.println(<span class="string">&quot;not got connection &quot;</span> + notGot); </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ConnetionRunner</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;        </span><br><span class="line">        <span class="keyword">int</span> count;        </span><br><span class="line">        AtomicInteger got;        </span><br><span class="line">        AtomicInteger notGot;        </span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">ConnetionRunner</span><span class="params">(<span class="keyword">int</span> count, AtomicInteger got, AtomicInteger notGot)</span> </span>&#123;            </span><br><span class="line">            <span class="keyword">this</span>.count = count;            </span><br><span class="line">            <span class="keyword">this</span>.got = got;            </span><br><span class="line">            <span class="keyword">this</span>.notGot = notGot;        </span><br><span class="line">        &#125;        </span><br><span class="line">        </span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;            </span><br><span class="line">            <span class="keyword">try</span> &#123;                </span><br><span class="line">                start.await();            </span><br><span class="line">            &#125; <span class="keyword">catch</span> (Exception ex) &#123;</span><br><span class="line">            &#125;   </span><br><span class="line">            </span><br><span class="line">            <span class="keyword">while</span> (count &gt; <span class="number">0</span>) &#123;                </span><br><span class="line">                <span class="keyword">try</span> &#123;                    </span><br><span class="line">                    <span class="comment">// 从线程池中获取连接，如果1000ms内无法获取到，将会返回null                    </span></span><br><span class="line">                    <span class="comment">// 分别统计连接获取的数量got和未获取到的数量notGot                    </span></span><br><span class="line">                    Connection connection = pool.fetchConnection(<span class="number">1000</span>);                    </span><br><span class="line">                    <span class="keyword">if</span> (connection != <span class="keyword">null</span>) &#123;                        </span><br><span class="line">                        <span class="keyword">try</span> &#123;                            </span><br><span class="line">                            connection.createStatement();                            </span><br><span class="line">                            connection.commit();                        </span><br><span class="line">                        &#125; <span class="keyword">finally</span> &#123;                            </span><br><span class="line">                            pool.releaseConnection(connection);  </span><br><span class="line">                            <span class="comment">// 成功个数+1</span></span><br><span class="line">                            got.incrementAndGet();                        </span><br><span class="line">                        &#125;                    </span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;  </span><br><span class="line">                        <span class="comment">// 失败个数+1</span></span><br><span class="line">                        notGot.incrementAndGet();                    </span><br><span class="line">                    &#125;                </span><br><span class="line">                &#125; <span class="keyword">catch</span> (Exception ex) &#123;                </span><br><span class="line">                &#125; <span class="keyword">finally</span> &#123;                </span><br><span class="line">                    count--;                </span><br><span class="line">                &#125;</span><br><span class="line">            &#125;            </span><br><span class="line">            end.countDown();        </span><br><span class="line">        &#125;    </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.CountDownLatch;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.atomic.AtomicInteger;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">static</span> ConnectionPool pool = <span class="keyword">new</span> ConnectionPool(<span class="number">10</span>);</span><br><span class="line">	<span class="comment">// 保证所有CountDownLatch能够同时开始</span></span><br><span class="line">	<span class="keyword">static</span> CountDownLatch start = <span class="keyword">new</span> CountDownLatch(<span class="number">1</span>);</span><br><span class="line">	<span class="comment">// 保证main线程等待所有ConnectionRunner结束之后才继续执行</span></span><br><span class="line">	<span class="keyword">static</span> CountDownLatch end;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">		<span class="comment">// 线程数量，可以修改线程数量进行观察       </span></span><br><span class="line">		<span class="keyword">int</span> threadCount = <span class="number">10</span>;        </span><br><span class="line">		end = <span class="keyword">new</span> CountDownLatch(threadCount);        </span><br><span class="line">		<span class="keyword">int</span> count = <span class="number">20</span>;    </span><br><span class="line">		<span class="comment">// 成功的个数</span></span><br><span class="line">		AtomicInteger got = <span class="keyword">new</span> AtomicInteger();   </span><br><span class="line">		<span class="comment">// 失败的个数</span></span><br><span class="line">		AtomicInteger notGot = <span class="keyword">new</span> AtomicInteger();        </span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; threadCount; i++) &#123;            </span><br><span class="line">			Thread thread = <span class="keyword">new</span> Thread(<span class="keyword">new</span> ConnetionRunner(count, got, notGot),</span><br><span class="line">					<span class="string">&quot;ConnectionRunnerThread&quot;</span>);            </span><br><span class="line">			thread.start();        </span><br><span class="line">		&#125;      </span><br><span class="line">		</span><br><span class="line">		start.countDown();        </span><br><span class="line">		end.await();    </span><br><span class="line">		</span><br><span class="line">		System.out.println(<span class="string">&quot;total invoke: &quot;</span> + (threadCount * count));   </span><br><span class="line">		System.out.println(<span class="string">&quot;got connection:  &quot;</span> + got);    </span><br><span class="line">		System.out.println(<span class="string">&quot;not got connection &quot;</span> + notGot); </span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ConnetionRunner</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;        </span><br><span class="line">		<span class="keyword">int</span> count;        </span><br><span class="line">		AtomicInteger got;        </span><br><span class="line">		AtomicInteger notGot;        </span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="title">ConnetionRunner</span><span class="params">(<span class="keyword">int</span> count, AtomicInteger got, AtomicInteger notGot)</span> </span>&#123;            </span><br><span class="line">			<span class="keyword">this</span>.count = count;            </span><br><span class="line">			<span class="keyword">this</span>.got = got;            </span><br><span class="line">			<span class="keyword">this</span>.notGot = notGot;        </span><br><span class="line">		&#125;        </span><br><span class="line">		</span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;            </span><br><span class="line">			<span class="keyword">try</span> &#123;                </span><br><span class="line">				start.await();            </span><br><span class="line">			&#125; <span class="keyword">catch</span> (Exception ex) &#123;</span><br><span class="line">			&#125;   </span><br><span class="line">			</span><br><span class="line">			<span class="keyword">while</span> (count &gt; <span class="number">0</span>) &#123;                </span><br><span class="line">				<span class="keyword">try</span> &#123;                    </span><br><span class="line">					<span class="comment">// 从线程池中获取连接，如果1000ms内无法获取到，将会返回null                    </span></span><br><span class="line">					<span class="comment">// 分别统计连接获取的数量got和未获取到的数量notGot                    </span></span><br><span class="line">					Connection connection = pool.fetchConnection(<span class="number">1000</span>);                    </span><br><span class="line">					<span class="keyword">if</span> (connection != <span class="keyword">null</span>) &#123;                        </span><br><span class="line">						<span class="keyword">try</span> &#123;                            </span><br><span class="line">							connection.createStatement();                            </span><br><span class="line">							connection.commit();                        </span><br><span class="line">						&#125; <span class="keyword">finally</span> &#123;                            </span><br><span class="line">							pool.releaseConnection(connection);  </span><br><span class="line">							<span class="comment">// 成功个数+1</span></span><br><span class="line">							got.incrementAndGet();                        </span><br><span class="line">						&#125;                    </span><br><span class="line">					&#125; <span class="keyword">else</span> &#123;  </span><br><span class="line">						<span class="comment">// 失败个数+1</span></span><br><span class="line">						notGot.incrementAndGet();                    </span><br><span class="line">					&#125;                </span><br><span class="line">				&#125; <span class="keyword">catch</span> (Exception ex) &#123;                </span><br><span class="line">				&#125; <span class="keyword">finally</span> &#123;                </span><br><span class="line">					count--;                </span><br><span class="line">				&#125;</span><br><span class="line">			&#125;            </span><br><span class="line">			end.countDown();        </span><br><span class="line">		&#125;    </span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>上述示例中使用了CountDownLatch来确保ConnectionRunnerThread能够同时开始执行，并且在全部结束之后，才使main线程从等待状态中返回。</p>
 <p>当前设定的场景是10个线程同时运行获取连接池（10个连接）中的连接，可以通过调节线程数量来观察未获取到连接的情况。线程数、总获取次数、获取到的数量、未获取到的数量以及未获取到的比率。</p>
 
@@ -955,8 +987,7 @@
           
           target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gyl-coder.top/concurrency/waiting_for_notification/&title=等待通知机制 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/bingfa.svg&summary=多线程环境中，经常出现这样一种场景。一个线程修改了一个对象的值，而另一个线程感知到了变化，然后进行相应的操作，整个过程开始于一个线程，最终结束于另一个线程。这就是传说中的生产者/消费者模型（前者是生产者，后者是消费者）。
 而实现这种功能比较简单的方法就是让消费者线程不断的循环变量判断是否符合预期。如下所示
-1234while (!isOK(...))&#123;    Thread.sleep(1000);&#125;doIt();
-
+1234while (!isOK(...))&#123;	Thread.sleep(1000);&#125;doIt();
 while 循环中设置不满足的条件，如果条件满足则退出循环（睡眠可以防止过快的“无效尝试”）
 如果isOK方法的判断逻辑比较简单，操作耗时较短，而且并发冲突量不大的情况下，使用这种方案也未尝不可。但是如果判断逻辑比较复杂，或者并发冲突较大时。这种方案就不行了，while循环会执行很多很多次，CPU消耗较大。
 针对这种问题，Java内置的等待通知机制能够较好的解决。当条件不满足时，线程阻塞自己，进入等待状态。当线程条件满足时，通知等待的线程重新执行。线程阻塞避免了循环等待带来的CPU消耗问题。"
@@ -973,8 +1004,7 @@ while 循环中设置不满足的条件，如果条件满足则退出循环（�
           
           target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://gyl-coder.top/concurrency/waiting_for_notification/&title=等待通知机制 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/bingfa.svg&summary=多线程环境中，经常出现这样一种场景。一个线程修改了一个对象的值，而另一个线程感知到了变化，然后进行相应的操作，整个过程开始于一个线程，最终结束于另一个线程。这就是传说中的生产者/消费者模型（前者是生产者，后者是消费者）。
 而实现这种功能比较简单的方法就是让消费者线程不断的循环变量判断是否符合预期。如下所示
-1234while (!isOK(...))&#123;    Thread.sleep(1000);&#125;doIt();
-
+1234while (!isOK(...))&#123;	Thread.sleep(1000);&#125;doIt();
 while 循环中设置不满足的条件，如果条件满足则退出循环（睡眠可以防止过快的“无效尝试”）
 如果isOK方法的判断逻辑比较简单，操作耗时较短，而且并发冲突量不大的情况下，使用这种方案也未尝不可。但是如果判断逻辑比较复杂，或者并发冲突较大时。这种方案就不行了，while循环会执行很多很多次，CPU消耗较大。
 针对这种问题，Java内置的等待通知机制能够较好的解决。当条件不满足时，线程阻塞自己，进入等待状态。当线程条件满足时，通知等待的线程重新执行。线程阻塞避免了循环等待带来的CPU消耗问题。"
@@ -991,8 +1021,7 @@ while 循环中设置不满足的条件，如果条件满足则退出循环（�
           
           target="_blank" href="http://service.weibo.com/share/share.php?url=https://gyl-coder.top/concurrency/waiting_for_notification/&title=等待通知机制 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/bingfa.svg&summary=多线程环境中，经常出现这样一种场景。一个线程修改了一个对象的值，而另一个线程感知到了变化，然后进行相应的操作，整个过程开始于一个线程，最终结束于另一个线程。这就是传说中的生产者/消费者模型（前者是生产者，后者是消费者）。
 而实现这种功能比较简单的方法就是让消费者线程不断的循环变量判断是否符合预期。如下所示
-1234while (!isOK(...))&#123;    Thread.sleep(1000);&#125;doIt();
-
+1234while (!isOK(...))&#123;	Thread.sleep(1000);&#125;doIt();
 while 循环中设置不满足的条件，如果条件满足则退出循环（睡眠可以防止过快的“无效尝试”）
 如果isOK方法的判断逻辑比较简单，操作耗时较短，而且并发冲突量不大的情况下，使用这种方案也未尝不可。但是如果判断逻辑比较复杂，或者并发冲突较大时。这种方案就不行了，while循环会执行很多很多次，CPU消耗较大。
 针对这种问题，Java内置的等待通知机制能够较好的解决。当条件不满足时，线程阻塞自己，进入等待状态。当线程条件满足时，通知等待的线程重新执行。线程阻塞避免了循环等待带来的CPU消耗问题。"
@@ -1032,9 +1061,9 @@ while 循环中设置不满足的条件，如果条件满足则退出循环（�
                 <p class='content'>需求： 启动两个线程，交替打印奇偶数。 效果如下所示
 1234偶数线程：0奇数线程：1偶数线程：2...
 
-
-
-两个线程交替打印无锁实现不需要进行任何加锁，利用并发包中的AtomicIntege...</p>
+¶两个线程交替打印
+¶无锁实现
+不需要进行任何加锁，利用并发包中的AtomicInte...</p>
               </a>
             
           </div>
@@ -1051,7 +1080,7 @@ while 循环中设置不满足的条件，如果条件满足则退出循环（�
       <p ct><i class='fas fa-comments'></i> 评论</p>
       
       <section id="comments">
-        <div id="valine_container" class="valine_thread">
+        <div id="minivaline_container">
   <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
@@ -1127,6 +1156,7 @@ while 循环中设置不满足的条件，如果条件满足则退出循环（�
 
 
         </div>
+        <!--
       
     
       
@@ -1184,11 +1214,86 @@ while 循环中设置不满足的条件，如果条件满足则退出循环（�
     
       
         <div class='copyright'>
-        <p><a href="https://gyl-coder.top/">Copyright © 2019-2020 Yanliang</a></p>
+        <p><a href="https://gyl-coder.top">Copyright © 2019-2020 Yanliang</a></p>
 
         </div>
       
     
+    -->
+
+      <!--自定义footer样式-->
+      <!--自定义footer样式-->
+<br>
+Copyright <i class="far fa-copyright"></i> 2019-2020
+<a href="/" target="_blank"> YANLIANG'S BLOG </a>丨
+<!-- 在网页底部添加网站运行时间 -->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+
+    function createtime() {
+        var grt = new Date("07/01/2019 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime() + 250);
+        days = (now - grt) / 1000 / 60 / 60 / 24;
+        dnum = Math.floor(days);
+        hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+        hnum = Math.floor(hours);
+        if (String(hnum).length == 1) {
+            hnum = "0" + hnum;
+        }
+        minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes);
+        if (String(mnum).length == 1) {
+            mnum = "0" + mnum;
+        }
+        seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds);
+        if (String(snum).length == 1) {
+            snum = "0" + snum;
+        }
+        document.getElementById("timeDate").innerHTML = "网站已运行 " + dnum + " 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+
+    setInterval("createtime()", 250);
+</script>
+<br/>
+<br/>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://hexo.io/" target="_blank" title="由 Hexo 强力驱动">
+        <span class="badge-subject">Powered</span><span class="badge-value bg-blue">Hexo</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://github.com/" target="_blank"
+       title="静态网页托管于 GitHub Pages 和 Coding Pages">
+        <span class="badge-subject">Hosted</span><span
+                class="badge-value bg-brightgreen">GitHub &amp; Coding</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://www.aliyun.com/" target="_blank" title="阿里云提供域名相关服务">
+        <span class="badge-subject">DNS</span><span class="badge-value bg-blueviolet">Aliyun</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://www.jsdelivr.com/" target="_blank"
+       title="jsDelivr 提供 CDN 加速服务">
+        <span class="badge-subject">CDN</span><span class="badge-value bg-orange">jsDelivr</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://github.com/volantis-x/hexo-theme-volantis/"
+       target="_blank" title="站点使用 Volantis 主题">
+        <span class="badge-subject">Theme</span><span class="badge-value bg-blue">Volantis</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
+       target="_blank" title="本站点采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议进行许可">
+        <span class="badge-subject"><i class="fa fa-copyright"></i></span><span
+                class="badge-value bg-gradient">BY-NC-SA 4.0</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://github.com/botui/botui" target="_blank" title="A JavaScript framework to create conversational UIs.">
+        <span class="badge-subject">AI机器人</span><span class="badge-value bg-blueviolet">botui</span></a>
+</div>
+
   </footer>
 
 
@@ -1255,14 +1360,14 @@ while 循环中设置不满足的条件，如果条件满足则退出循环（�
         
           
     <li>
-      <a class='vlts-menu fix-cursor-default' href=https://volantis.js.org/contributors/
+      <a class='vlts-menu fix-cursor-default' href=/friends/
         
         
         
         
-          id="https:volantisjsorgcontributors"
+          id="friends"
         >
-        <i class='fa fa-fan fa-spin fa-fw'></i> 加入社区
+        <i class='fa fa-fan fa-spin fa-fw'></i> 小伙伴们
       </a>
     </li>
   
@@ -1275,30 +1380,14 @@ while 循环中设置不满足的条件，如果条件满足则退出循环（�
         
           
     <li>
-      <a class='vlts-menu fix-cursor-default' href=https://github.com/volantis-x/volantis-docs/
+      <a class='vlts-menu fix-cursor-default' href=/catchTheCat/
         
         
         
         
-          id="https:githubcomvolantis-xvolantis-docs"
+          id="catchTheCat"
         >
-        <i class='fa fa-code-branch fa-fw'></i> 本站源码
-      </a>
-    </li>
-  
-        
-      
-        
-          
-    <li>
-      <a class='vlts-menu fix-cursor-default' href=https://github.com/volantis-x/hexo-theme-volantis/
-        
-        
-        
-        
-          id="https:githubcomvolantis-xhexo-theme-volantis"
-        >
-        <i class='fa fa-code-branch fa-fw'></i> 主题源码
+        <i class='fas fa-cat fa-fw'></i> 围住小猫
       </a>
     </li>
   
@@ -1565,72 +1654,54 @@ while 循环中设置不满足的条件，如果条件满足则退出循环（�
 
   
   
-<script src="/js/valine.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/minivaline@3/dist/MiniValine.min.js"></script>
+
+
+
+
 
 
 <script>
-  var GUEST_INFO = ['nick', 'mail', 'link'];
-  var meta = 'nick,mail,link'.split(',').filter(function (item) {
-    return GUEST_INFO.indexOf(item) > -1
-  });
-  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
-  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
-    return REQUIRED_FIELDS.indexOf(item) > -1
-  });
-
-  function emoji(path, idx, ext) {
-    return path + "/" + path + "-" + idx + "." + ext;
-  }
-
-  var emojiMaps = {};
-  for (var i = 1; i <= 54; i++) {
-    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
-  }
-  for (var i = 1; i <= 101; i++) {
-    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
-  }
-  for (var i = 1; i <= 116; i++) {
-    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
-  }
-  for (var i = 1; i <= 125; i++) {
-    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
-  }
-  for (var i = 1; i <= 4; i++) {
-    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
-  }
-
-  function pjax_valine() {
-    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
+function pjax_minivaline() {
+  let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
       decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
-    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
-      "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
+  let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
+    "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
 
-    let ALLPATH = '';
-    if(ALLPATH != '') pageUrl = ALLPATH;
+  let ALLPATH = '';
+  if(ALLPATH != '') pageUrl = ALLPATH;
 
-    var valine = new Valine();
-    valine.init({
-      el: '#valine_container',
-      meta: meta,
-      placeholder: pagePlaceholder,
-      path: pageUrl,
-      appId: "jRi8wpIdG8v9VbC6wddXHTlL-gzGzoHsz",
-      appKey: "oVqMw78YKASJThLN03bSqgve",
-      pageSize: '10',
-      avatar: 'robohash',
-      lang: 'zh-cn',
-      visitor: 'true',
-      highlight: 'true',
-      mathJax: 'false',
-      enableQQ: 'true',
-      requiredFields: requiredFields,
-      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
-      emojiMaps: emojiMaps
-    })
+  new MiniValine({
+    el: '#minivaline_container',
+    appId: 'jRi8wpIdG8v9VbC6wddXHTlL-gzGzoHsz',
+    appKey: 'oVqMw78YKASJThLN03bSqgve',
+    mode: 'xCss',
+    placeholder: pagePlaceholder,
+    path: pageUrl,
+    lang: '',
+    adminEmailMd5: '6e52e95ab454c5a82b0eb13055d79bd5',
+    tagMeta: ["管理员", "小伙伴", "访客"],
+    master: ["6e52e95ab454c5a82b0eb13055d79bd5"],
+    friends: ["b5bd5d836c7a0091aa8473e79ed4c25e", "adb7d1cd192658a55c0ad22a3309cecf", "3ce1e6c77b4910f1871106cb30dc62b0", "cfce8dc43725cc14ffcd9fb4892d5bfc"],
+    math: false,  /*布尔值 字符串无效 下同*/
+    md: true,
+    enableQQ: false,
+    NoRecordIP: true,
+    visitor: false,
+    maxNest: 6,
+    pageSize: 6,
+    barrager: 0,
+    role: 'admin',
+    closeFlag: false,
+    cloudflag: false,
+    region: false,
+    closeUA: false,
+    emoticonUrl: ["https://cdn.jsdelivr.net/npm/alus@latest", "https://cdn.jsdelivr.net/gh/MiniValine/qq@latest", "https://cdn.jsdelivr.net/gh/MiniValine/Bilibilis@latest", "https://cdn.jsdelivr.net/gh/MiniValine/tieba@latest", "https://cdn.jsdelivr.net/gh/MiniValine/twemoji@latest", "https://cdn.jsdelivr.net/gh/MiniValine/weibo@latest"],
+    serverURLs: ''
+    });
   }
-
   $(function () {
-    pjax_valine();
+    pjax_minivaline();
   });
 </script>
 
@@ -1968,8 +2039,8 @@ while 循环中设置不满足的条件，如果条件满足则退出循环（�
           pjax_initCopyCode();
         
         
-          pjax_valine();
         
+          pjax_minivaline();
         
         
         

@@ -36,6 +36,8 @@ AOP为什么叫做切面变成？
 
   <!-- feed -->
   
+    <link rel="alternate" href="/atom.xml" title="yanliang's blog" type="application/atom+xml">
+  
 
   <!-- import meta -->
   
@@ -297,7 +299,7 @@ AOP为什么叫做切面变成？
                   
                   
                   >
-                  <i class='fa fa-ellipsis-v fa-spin fa-fw'></i>更多
+                  <i class='fa fa-ellipsis-v fa-fw'></i>更多
                 </a>
                 
                   <ul class="list-v">
@@ -365,13 +367,29 @@ AOP为什么叫做切面变成？
                       
             
               <li>
-                <a class="menuitem flat-box faa-parent animated-hover" href=https://github.com/gyl-coder
+                <a class="menuitem flat-box faa-parent animated-hover" href=https://jri8wpidaura.leanapp.cn/comments
                   
                   
                   
-                    id="https:githubcomgyl-coder"
+                    id="https:jri8wpidauraleanappcncomments"
                   >
-                  <i class='fab fa-github fa-fw fa-fw'></i>我的Github
+                  <i class='fas fa-comments faa-tada fa-fw fa-fw'></i>评论管理
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/catchTheCat/
+                  
+                  
+                  
+                    id="catchTheCat"
+                  >
+                  <i class='fas fa-cat fa-fw'></i>围住小猫
                 </a>
                 
               </li>
@@ -574,7 +592,7 @@ AOP为什么叫做切面变成？
                   
                   
                   >
-                  <i class='fa fa-ellipsis-v fa-spin fa-fw'></i>更多
+                  <i class='fa fa-ellipsis-v fa-fw'></i>更多
                 </a>
                 
                   <ul class="list-v">
@@ -642,13 +660,29 @@ AOP为什么叫做切面变成？
                       
             
               <li>
-                <a class="menuitem flat-box faa-parent animated-hover" href=https://github.com/gyl-coder
+                <a class="menuitem flat-box faa-parent animated-hover" href=https://jri8wpidaura.leanapp.cn/comments
                   
                   
                   
-                    id="https:githubcomgyl-coder"
+                    id="https:jri8wpidauraleanappcncomments"
                   >
-                  <i class='fab fa-github fa-fw fa-fw'></i>我的Github
+                  <i class='fas fa-comments faa-tada fa-fw fa-fw'></i>评论管理
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/catchTheCat/
+                  
+                  
+                  
+                    id="catchTheCat"
+                  >
+                  <i class='fas fa-cat fa-fw'></i>围住小猫
                 </a>
                 
               </li>
@@ -819,41 +853,38 @@ AOP为什么叫做切面变成？
 </ul>
 <p>首先声明： <red>IOC &amp; AOP </red>  不是Spring提出来的，它们在Spring之前其实已经存在了，只不过当时更加偏向于理论。 Spring 在技术层次将这两个思想进行了很好的实现。</p>
 <a id="more"></a>
-
-<h3 id="什么是-IOC"><a href="#什么是-IOC" class="headerlink" title="什么是 IOC"></a>什么是 IOC</h3><p><green> IOC （Inversion of control ）</green> 控制反转/反转控制。它是一种 <green>思想</green> 不是一个技术实现。描述的是：Java 开发领域对象的创建以及管理的问题。</p>
+<h3 id="什么是-IOC"><a class="header-anchor" href="#什么是-IOC">¶</a>什么是 IOC</h3>
+<p><green> IOC （Inversion of control ）</green> 控制反转/反转控制。它是一种 <green>思想</green> 不是一个技术实现。描述的是：Java 开发领域对象的创建以及管理的问题。</p>
 <p>例如：现有 类A依赖于类B</p>
-<p><strong>传统的开发方式：</strong>往往是在类A中手动通过 <green>new</green> 关键字来 new 一个B的对象出来</p>
+<p>**传统的开发方式：**往往是在类A中手动通过 <green>new</green> 关键字来 new 一个B的对象出来</p>
 <p><strong>使用IOC思想的开发方式：</strong> 不通过<green>new</green> 关键字来创建对象，而是通过 <green>IOC容器</green> (Spring 框架) 来帮助我们实例化对象。我们需要哪个对象，直接从IOC容器里面过去即可。</p>
 <p>从以上两种开发方式的对比来看：我们 “丧失了一个权力” (创建、管理对象的权力)，从而也得到了一个好处（不用再考虑对象的创建、管理等一系列的事情）</p>
-<h4 id="为什么叫控制反转"><a href="#为什么叫控制反转" class="headerlink" title="为什么叫控制反转"></a>为什么叫控制反转</h4><p><strong>控制：</strong> 指的是对象创建（实例化、管理）的权力</p>
+<h4 id="为什么叫控制反转"><a class="header-anchor" href="#为什么叫控制反转">¶</a>为什么叫控制反转</h4>
+<p><strong>控制：</strong> 指的是对象创建（实例化、管理）的权力</p>
 <p><strong>反转：</strong> 控制权交给外部环境（Spring框架、IOC容器）</p>
 <img src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/spring/ioc-aop/image-20200411114146872.png'>
-
-<h3 id="IOC-解决了什么问题"><a href="#IOC-解决了什么问题" class="headerlink" title="IOC 解决了什么问题"></a>IOC 解决了什么问题</h3><p>IOC 主要解决的是对象之间的耦合问题。</p>
+<h3 id="IOC-解决了什么问题"><a class="header-anchor" href="#IOC-解决了什么问题">¶</a>IOC 解决了什么问题</h3>
+<p>IOC 主要解决的是对象之间的耦合问题。</p>
 <p>例如：现有一个针对User的操作，利用 Service 和 Dao 两层结构进行开发</p>
 <p>在没有使用IOC思想的情况下，Service 层想要使用 Dao层的具体实现的话，需要通过 <yellow>new</yellow> 关键字在UserServiceImpl 中手动 new出 IUserDao 的具体实现类 UserDaoImpl（不能直接new接口类）。</p>
 <img src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/spring/ioc-aop/image-20200411115607696.png'>
-
 <p>很完美，这种方式也是可以实现的，但是我们想象一下如下场景：开发过程中突然接到一个新的需求，针对对IUserDao 接口开发出另一个具体实现类。因为Server层依赖了IUserDao的具体实现，所以我们需要修改UserServiceImpl中new的对象。如果只有一个类引用了IUserDao的具体实现，可能觉得还好，修改起来也不是很费力气，但是如果有许许多多的地方都引用了IUserDao的具体实现的话，一旦需要更换IUserDao的实现方式，那修改起来将会非常的头疼。</p>
 <img src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/spring/ioc-aop/image-20200411120144353.png'>
-
 <p>使用IOC的思想，我们将对象的控制权（创建、管理）交有IOC容器去管理，我们在使用的时候直接向IOC容器 “要” 就可以了</p>
 <img src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/spring/ioc-aop/image-20200411120751016.png'>
-
-<h3 id="IOC-和-DI-的区别"><a href="#IOC-和-DI-的区别" class="headerlink" title="IOC 和 DI 的区别"></a>IOC 和 DI 的区别</h3><p>IOC 和 DI 描述的是同一件事情（对象实例化以及依赖关系的维护），只不过角度不同。</p>
+<h3 id="IOC-和-DI-的区别"><a class="header-anchor" href="#IOC-和-DI-的区别">¶</a>IOC 和 DI 的区别</h3>
+<p>IOC 和 DI 描述的是同一件事情（对象实例化以及依赖关系的维护），只不过角度不同。</p>
 <p>IOC （Inversion of control ） 控制反转/反转控制。是站在对象的角度，对象实例化以及管理的权限（反转）交给了容器。</p>
 <p>DI （Dependancy Injection）依赖注入。是站在容器的角度，容器会把对象依赖的其他对象注入（送进去）。例如：对象A 实例化过程中因为声明了一个B类型的属性，那么就需要容器把B对象注入到A中。</p>
-<h3 id="什么是AOP"><a href="#什么是AOP" class="headerlink" title="什么是AOP"></a>什么是AOP</h3><p>AOP：Aspect oriented programming 面向切面编程，AOP是 OOP（面向对象编程）的一种延续，下面我们先看一个OOP的例子。</p>
+<h3 id="什么是AOP"><a class="header-anchor" href="#什么是AOP">¶</a>什么是AOP</h3>
+<p>AOP：Aspect oriented programming 面向切面编程，AOP是 OOP（面向对象编程）的一种延续，下面我们先看一个OOP的例子。</p>
 <p>例如：现有三个类，Horse、Pig、Dog，这三个类中都有 eat 和 run 两个方法。</p>
 <p>通过OOP思想中的继承，我们可以提取出一个 Animal 的父类，然后将 eat 和 run 方法放入父类中，Horse、Pig、Dog通过继承Animal类即可自动获得 eat 和 run 方法。这样将会少些很多重复的代码。</p>
 <img src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/spring/ioc-aop/image-20200411132252046.png'>
-
 <p>OOP编程思想可以解决大部分的代码重复问题。但是有一些问题是处理不了的。比如在父类Animal 中的多个方法的相同位置出现了重复的代码，OOP就解决不了。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 动物父类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** 身高 */</span></span><br><span class="line">    <span class="keyword">private</span> String height;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** 体重 */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">double</span> weight;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 性能监控代码</span></span><br><span class="line">        <span class="keyword">long</span> start = System.currentTimeMillis();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 业务逻辑代码</span></span><br><span class="line">        System.out.println(<span class="string">&quot;I can eat...&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 性能监控代码</span></span><br><span class="line">        System.out.println(<span class="string">&quot;执行时长：&quot;</span> + (System.currentTimeMillis() - start)/<span class="number">1000f</span> + <span class="string">&quot;s&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 性能监控代码</span></span><br><span class="line">        <span class="keyword">long</span> start = System.currentTimeMillis();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 业务逻辑代码</span></span><br><span class="line">        System.out.println(<span class="string">&quot;I can run...&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 性能监控代码</span></span><br><span class="line">        System.out.println(<span class="string">&quot;执行时长：&quot;</span> + (System.currentTimeMillis() - start)/<span class="number">1000f</span> + <span class="string">&quot;s&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>这部分重复的代码，一般统称为 <strong>横切逻辑代码</strong>。</p>
 <img src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/spring/ioc-aop/image-20200411133826720.png'>
-
 <p>横切逻辑代码存在的问题：</p>
 <ul>
 <li>代码重复问题</li>
@@ -862,11 +893,11 @@ AOP为什么叫做切面变成？
 <p><strong>AOP 就是用来解决这些问题的</strong></p>
 <p>AOP 另辟蹊径，提出横向抽取机制，将横切逻辑代码和业务逻辑代码分离</p>
 <img src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/spring/ioc-aop/image-20200411134119203.png'>
-
-
 <p>代码拆分比较容易，难的是如何在不改变原有业务逻辑的情况下，悄无声息的将横向逻辑代码应用到原有的业务逻辑中，达到和原来一样的效果。</p>
-<h3 id="AOP解决了什么问题"><a href="#AOP解决了什么问题" class="headerlink" title="AOP解决了什么问题"></a>AOP解决了什么问题</h3><p>通过上面的分析可以发现，AOP主要用来解决：在不改变原有业务逻辑的情况下，增强横切逻辑代码，根本上解耦合，避免横切逻辑代码重复。</p>
-<h3 id="AOP为什么叫面向切面编程"><a href="#AOP为什么叫面向切面编程" class="headerlink" title="AOP为什么叫面向切面编程"></a>AOP为什么叫面向切面编程</h3><p><red><strong>切：</strong></red> 指的是横切逻辑，原有业务逻辑代码不动，只能操作横切逻辑代码，所以面向横切逻辑</p>
+<h3 id="AOP解决了什么问题"><a class="header-anchor" href="#AOP解决了什么问题">¶</a>AOP解决了什么问题</h3>
+<p>通过上面的分析可以发现，AOP主要用来解决：在不改变原有业务逻辑的情况下，增强横切逻辑代码，根本上解耦合，避免横切逻辑代码重复。</p>
+<h3 id="AOP为什么叫面向切面编程"><a class="header-anchor" href="#AOP为什么叫面向切面编程">¶</a>AOP为什么叫面向切面编程</h3>
+<p><red><strong>切：</strong></red> 指的是横切逻辑，原有业务逻辑代码不动，只能操作横切逻辑代码，所以面向横切逻辑</p>
 <p><green><strong>面：</strong></green> 横切逻辑代码往往要影响的是很多个方法，每个方法如同一个点，多个点构成一个面。这里有一个面的概念</p>
 
           
@@ -1061,7 +1092,7 @@ settin...</p>
       <p ct><i class='fas fa-comments'></i> 评论</p>
       
       <section id="comments">
-        <div id="valine_container" class="valine_thread">
+        <div id="minivaline_container">
   <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
@@ -1137,6 +1168,7 @@ settin...</p>
 
 
         </div>
+        <!--
       
     
       
@@ -1194,11 +1226,86 @@ settin...</p>
     
       
         <div class='copyright'>
-        <p><a href="https://gyl-coder.top/">Copyright © 2019-2020 Yanliang</a></p>
+        <p><a href="https://gyl-coder.top">Copyright © 2019-2020 Yanliang</a></p>
 
         </div>
       
     
+    -->
+
+      <!--自定义footer样式-->
+      <!--自定义footer样式-->
+<br>
+Copyright <i class="far fa-copyright"></i> 2019-2020
+<a href="/" target="_blank"> YANLIANG'S BLOG </a>丨
+<!-- 在网页底部添加网站运行时间 -->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+
+    function createtime() {
+        var grt = new Date("07/01/2019 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime() + 250);
+        days = (now - grt) / 1000 / 60 / 60 / 24;
+        dnum = Math.floor(days);
+        hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+        hnum = Math.floor(hours);
+        if (String(hnum).length == 1) {
+            hnum = "0" + hnum;
+        }
+        minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes);
+        if (String(mnum).length == 1) {
+            mnum = "0" + mnum;
+        }
+        seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds);
+        if (String(snum).length == 1) {
+            snum = "0" + snum;
+        }
+        document.getElementById("timeDate").innerHTML = "网站已运行 " + dnum + " 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+
+    setInterval("createtime()", 250);
+</script>
+<br/>
+<br/>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://hexo.io/" target="_blank" title="由 Hexo 强力驱动">
+        <span class="badge-subject">Powered</span><span class="badge-value bg-blue">Hexo</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://github.com/" target="_blank"
+       title="静态网页托管于 GitHub Pages 和 Coding Pages">
+        <span class="badge-subject">Hosted</span><span
+                class="badge-value bg-brightgreen">GitHub &amp; Coding</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://www.aliyun.com/" target="_blank" title="阿里云提供域名相关服务">
+        <span class="badge-subject">DNS</span><span class="badge-value bg-blueviolet">Aliyun</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://www.jsdelivr.com/" target="_blank"
+       title="jsDelivr 提供 CDN 加速服务">
+        <span class="badge-subject">CDN</span><span class="badge-value bg-orange">jsDelivr</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://github.com/volantis-x/hexo-theme-volantis/"
+       target="_blank" title="站点使用 Volantis 主题">
+        <span class="badge-subject">Theme</span><span class="badge-value bg-blue">Volantis</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
+       target="_blank" title="本站点采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议进行许可">
+        <span class="badge-subject"><i class="fa fa-copyright"></i></span><span
+                class="badge-value bg-gradient">BY-NC-SA 4.0</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://github.com/botui/botui" target="_blank" title="A JavaScript framework to create conversational UIs.">
+        <span class="badge-subject">AI机器人</span><span class="badge-value bg-blueviolet">botui</span></a>
+</div>
+
   </footer>
 
 
@@ -1265,14 +1372,14 @@ settin...</p>
         
           
     <li>
-      <a class='vlts-menu fix-cursor-default' href=https://volantis.js.org/contributors/
+      <a class='vlts-menu fix-cursor-default' href=/friends/
         
         
         
         
-          id="https:volantisjsorgcontributors"
+          id="friends"
         >
-        <i class='fa fa-fan fa-spin fa-fw'></i> 加入社区
+        <i class='fa fa-fan fa-spin fa-fw'></i> 小伙伴们
       </a>
     </li>
   
@@ -1285,30 +1392,14 @@ settin...</p>
         
           
     <li>
-      <a class='vlts-menu fix-cursor-default' href=https://github.com/volantis-x/volantis-docs/
+      <a class='vlts-menu fix-cursor-default' href=/catchTheCat/
         
         
         
         
-          id="https:githubcomvolantis-xvolantis-docs"
+          id="catchTheCat"
         >
-        <i class='fa fa-code-branch fa-fw'></i> 本站源码
-      </a>
-    </li>
-  
-        
-      
-        
-          
-    <li>
-      <a class='vlts-menu fix-cursor-default' href=https://github.com/volantis-x/hexo-theme-volantis/
-        
-        
-        
-        
-          id="https:githubcomvolantis-xhexo-theme-volantis"
-        >
-        <i class='fa fa-code-branch fa-fw'></i> 主题源码
+        <i class='fas fa-cat fa-fw'></i> 围住小猫
       </a>
     </li>
   
@@ -1575,72 +1666,54 @@ settin...</p>
 
   
   
-<script src="/js/valine.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/minivaline@3/dist/MiniValine.min.js"></script>
+
+
+
+
 
 
 <script>
-  var GUEST_INFO = ['nick', 'mail', 'link'];
-  var meta = 'nick,mail,link'.split(',').filter(function (item) {
-    return GUEST_INFO.indexOf(item) > -1
-  });
-  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
-  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
-    return REQUIRED_FIELDS.indexOf(item) > -1
-  });
-
-  function emoji(path, idx, ext) {
-    return path + "/" + path + "-" + idx + "." + ext;
-  }
-
-  var emojiMaps = {};
-  for (var i = 1; i <= 54; i++) {
-    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
-  }
-  for (var i = 1; i <= 101; i++) {
-    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
-  }
-  for (var i = 1; i <= 116; i++) {
-    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
-  }
-  for (var i = 1; i <= 125; i++) {
-    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
-  }
-  for (var i = 1; i <= 4; i++) {
-    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
-  }
-
-  function pjax_valine() {
-    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
+function pjax_minivaline() {
+  let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
       decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
-    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
-      "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
+  let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
+    "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
 
-    let ALLPATH = '';
-    if(ALLPATH != '') pageUrl = ALLPATH;
+  let ALLPATH = '';
+  if(ALLPATH != '') pageUrl = ALLPATH;
 
-    var valine = new Valine();
-    valine.init({
-      el: '#valine_container',
-      meta: meta,
-      placeholder: pagePlaceholder,
-      path: pageUrl,
-      appId: "jRi8wpIdG8v9VbC6wddXHTlL-gzGzoHsz",
-      appKey: "oVqMw78YKASJThLN03bSqgve",
-      pageSize: '10',
-      avatar: 'robohash',
-      lang: 'zh-cn',
-      visitor: 'true',
-      highlight: 'true',
-      mathJax: 'false',
-      enableQQ: 'true',
-      requiredFields: requiredFields,
-      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
-      emojiMaps: emojiMaps
-    })
+  new MiniValine({
+    el: '#minivaline_container',
+    appId: 'jRi8wpIdG8v9VbC6wddXHTlL-gzGzoHsz',
+    appKey: 'oVqMw78YKASJThLN03bSqgve',
+    mode: 'xCss',
+    placeholder: pagePlaceholder,
+    path: pageUrl,
+    lang: '',
+    adminEmailMd5: '6e52e95ab454c5a82b0eb13055d79bd5',
+    tagMeta: ["管理员", "小伙伴", "访客"],
+    master: ["6e52e95ab454c5a82b0eb13055d79bd5"],
+    friends: ["b5bd5d836c7a0091aa8473e79ed4c25e", "adb7d1cd192658a55c0ad22a3309cecf", "3ce1e6c77b4910f1871106cb30dc62b0", "cfce8dc43725cc14ffcd9fb4892d5bfc"],
+    math: false,  /*布尔值 字符串无效 下同*/
+    md: true,
+    enableQQ: false,
+    NoRecordIP: true,
+    visitor: false,
+    maxNest: 6,
+    pageSize: 6,
+    barrager: 0,
+    role: 'admin',
+    closeFlag: false,
+    cloudflag: false,
+    region: false,
+    closeUA: false,
+    emoticonUrl: ["https://cdn.jsdelivr.net/npm/alus@latest", "https://cdn.jsdelivr.net/gh/MiniValine/qq@latest", "https://cdn.jsdelivr.net/gh/MiniValine/Bilibilis@latest", "https://cdn.jsdelivr.net/gh/MiniValine/tieba@latest", "https://cdn.jsdelivr.net/gh/MiniValine/twemoji@latest", "https://cdn.jsdelivr.net/gh/MiniValine/weibo@latest"],
+    serverURLs: ''
+    });
   }
-
   $(function () {
-    pjax_valine();
+    pjax_minivaline();
   });
 </script>
 
@@ -1978,8 +2051,8 @@ settin...</p>
           pjax_initCopyCode();
         
         
-          pjax_valine();
         
+          pjax_minivaline();
         
         
         

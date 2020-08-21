@@ -28,6 +28,8 @@
 
   <!-- feed -->
   
+    <link rel="alternate" href="/atom.xml" title="yanliang's blog" type="application/atom+xml">
+  
 
   <!-- import meta -->
   
@@ -289,7 +291,7 @@
                   
                   
                   >
-                  <i class='fa fa-ellipsis-v fa-spin fa-fw'></i>更多
+                  <i class='fa fa-ellipsis-v fa-fw'></i>更多
                 </a>
                 
                   <ul class="list-v">
@@ -357,13 +359,29 @@
                       
             
               <li>
-                <a class="menuitem flat-box faa-parent animated-hover" href=https://github.com/gyl-coder
+                <a class="menuitem flat-box faa-parent animated-hover" href=https://jri8wpidaura.leanapp.cn/comments
                   
                   
                   
-                    id="https:githubcomgyl-coder"
+                    id="https:jri8wpidauraleanappcncomments"
                   >
-                  <i class='fab fa-github fa-fw fa-fw'></i>我的Github
+                  <i class='fas fa-comments faa-tada fa-fw fa-fw'></i>评论管理
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/catchTheCat/
+                  
+                  
+                  
+                    id="catchTheCat"
+                  >
+                  <i class='fas fa-cat fa-fw'></i>围住小猫
                 </a>
                 
               </li>
@@ -566,7 +584,7 @@
                   
                   
                   >
-                  <i class='fa fa-ellipsis-v fa-spin fa-fw'></i>更多
+                  <i class='fa fa-ellipsis-v fa-fw'></i>更多
                 </a>
                 
                   <ul class="list-v">
@@ -634,13 +652,29 @@
                       
             
               <li>
-                <a class="menuitem flat-box faa-parent animated-hover" href=https://github.com/gyl-coder
+                <a class="menuitem flat-box faa-parent animated-hover" href=https://jri8wpidaura.leanapp.cn/comments
                   
                   
                   
-                    id="https:githubcomgyl-coder"
+                    id="https:jri8wpidauraleanappcncomments"
                   >
-                  <i class='fab fa-github fa-fw fa-fw'></i>我的Github
+                  <i class='fas fa-comments faa-tada fa-fw fa-fw'></i>评论管理
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/catchTheCat/
+                  
+                  
+                  
+                    id="catchTheCat"
+                  >
+                  <i class='fas fa-cat fa-fw'></i>围住小猫
                 </a>
                 
               </li>
@@ -802,43 +836,45 @@
           
           <p>动态代理的常用实现方式是反射。反射机制是 Java 语言提供的一种基础功能，赋予程序在运行时自省（introspect，官方用语）的能力。通过反射我们可以直接操作类或者对象，比如获取某个对象的类定义，获取类声明的属性和方法，调用方法或者构造对象，甚至可以运行时修改类定义。</p>
 <p>动态代理是一种方便运行时动态构建代理、动态处理代理方法调用的机制，很多场景都是利用类似机制做到的，比如用来包装 RPC 调用、面向切面的编程（AOP）。</p>
-<p>JDK 自身提供的动态代理，就是主要利用了上面提到的反射机制。但动态代理不止有反射一种实现方式，还有其他的实现方式，比如利用传说中更高性能的字节码操作机制，类似 ASM、cglib（基于 ASM，一个 Java 字节码操作框架）、Javassist 等。简单来说，动态代理是一种行为方式，而反射或 ASM 只是它的一种实现手段而已。 </p>
-<p>JDK Proxy 和 CGLib 的区别主要体现在以下几个方面： </p>
+<p>JDK 自身提供的动态代理，就是主要利用了上面提到的反射机制。但动态代理不止有反射一种实现方式，还有其他的实现方式，比如利用传说中更高性能的字节码操作机制，类似 ASM、cglib（基于 ASM，一个 Java 字节码操作框架）、Javassist 等。简单来说，动态代理是一种行为方式，而反射或 ASM 只是它的一种实现手段而已。</p>
+<p>JDK Proxy 和 CGLib 的区别主要体现在以下几个方面：</p>
 <ul>
-<li>JDK Proxy 是 Java 语言自带的功能，无需通过加载第三方类实现； </li>
-<li>Java 对 JDK Proxy 提供了稳定的支持，并且会持续的升级和更新 JDK Proxy，例如 Java 8 版本中的 JDK Proxy 性能相比于之前版本提升了很多； </li>
-<li>JDK Proxy 是通过拦截器加反射的方式实现的； </li>
-<li>JDK Proxy 只能代理继承接口的类； </li>
-<li>JDK Proxy 实现和调用起来比较简单； </li>
-<li>CGLib 是第三方提供的工具，基于 ASM 实现的，性能比较高； </li>
+<li>JDK Proxy 是 Java 语言自带的功能，无需通过加载第三方类实现；</li>
+<li>Java 对 JDK Proxy 提供了稳定的支持，并且会持续的升级和更新 JDK Proxy，例如 Java 8 版本中的 JDK Proxy 性能相比于之前版本提升了很多；</li>
+<li>JDK Proxy 是通过拦截器加反射的方式实现的；</li>
+<li>JDK Proxy 只能代理继承接口的类；</li>
+<li>JDK Proxy 实现和调用起来比较简单；</li>
+<li>CGLib 是第三方提供的工具，基于 ASM 实现的，性能比较高；</li>
 <li>CGLib 无需通过接口来实现，它是通过实现子类的方式来完成调用的。</li>
 </ul>
 <a id="more"></a>
-
-<h2 id="什么是静态代理"><a href="#什么是静态代理" class="headerlink" title="什么是静态代理"></a>什么是静态代理</h2><p>静态代理是代理类在编译期间就创建好了，不是编译器生成的代理类，而是手动创建的类。在编译时就已经将接口，被代理类，代理类等确定下来。，软件设计中所指的代理一般是指静态代理，也就是在代码中显式指定的代理。</p>
+<h2 id="什么是静态代理"><a class="header-anchor" href="#什么是静态代理">¶</a>什么是静态代理</h2>
+<p>静态代理是代理类在编译期间就创建好了，不是编译器生成的代理类，而是手动创建的类。在编译时就已经将接口，被代理类，代理类等确定下来。，软件设计中所指的代理一般是指静态代理，也就是在代码中显式指定的代理。</p>
 <p>下面我们通过一个简单的案例，来了解下静态代理。</p>
 <figure class="highlight java"><figcaption><span>Cat.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 静态代理类接口, 委托类和代理类都需要实现的接口规范。</span></span><br><span class="line"><span class="comment"> * 定义了一个猫科动物的两个行为接口，吃东西，奔跑。</span></span><br><span class="line"><span class="comment"> * 作为代理类 和委托类之间的约束接口</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Cat</span> </span>&#123;    </span><br><span class="line">     <span class="function"><span class="keyword">public</span> String <span class="title">eatFood</span><span class="params">(String foodName)</span></span>;    </span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">running</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight java"><figcaption><span>Lion.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 狮子 实现了猫科动物接口Cat， 并实现了具体的行为。作为委托类实现</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Lion</span> <span class="keyword">implements</span> <span class="title">Cat</span> </span>&#123;    </span><br><span class="line">    <span class="keyword">private</span> String name;    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> runningSpeed;    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;        </span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;        </span><br><span class="line">        <span class="keyword">this</span>.name = name; </span><br><span class="line">    &#125;    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getRunningSpeed</span><span class="params">()</span> </span>&#123;        </span><br><span class="line">        <span class="keyword">return</span> runningSpeed; </span><br><span class="line">    &#125;    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setRunningSpeed</span><span class="params">(<span class="keyword">int</span> runningSpeed)</span> </span>&#123;        </span><br><span class="line">        <span class="keyword">this</span>.runningSpeed = runningSpeed; </span><br><span class="line">    &#125;    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Lion</span><span class="params">()</span> </span>&#123; &#125;    </span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">eatFood</span><span class="params">(String foodName)</span> </span>&#123;</span><br><span class="line">        String eat = <span class="keyword">this</span>.name + <span class="string">&quot; Lion eat food. foodName = &quot;</span> + foodName;</span><br><span class="line">        System.out.println(eat);        <span class="keyword">return</span> eat;</span><br><span class="line">    &#125;    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">running</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="keyword">this</span>.name + <span class="string">&quot; Lion is running . Speed :&quot;</span> + <span class="keyword">this</span>.runningSpeed);        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>代理类角色(FeederProxy)</p>
 <figure class="highlight java"><figcaption><span>FeederProxy.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 饲养员 实现Cat接口，作为静态代理类实现。代理狮子的行为。</span></span><br><span class="line"><span class="comment"> * 代理类中可以新增一些其他行为，在实践中主要做的是参数校验的功能。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FeederProxy</span> <span class="keyword">implements</span> <span class="title">Cat</span> </span>&#123;    </span><br><span class="line">    <span class="keyword">private</span> Cat cat;    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">FeederProxy</span><span class="params">()</span></span>&#123;&#125;    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">FeederProxy</span><span class="params">(Cat cat)</span> </span>&#123;        </span><br><span class="line">         <span class="keyword">if</span> (cat <span class="keyword">instanceof</span> Cat) &#123;            </span><br><span class="line">             <span class="keyword">this</span>.cat = cat; </span><br><span class="line">         &#125; </span><br><span class="line">    &#125;    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCat</span><span class="params">(Cat cat)</span> </span>&#123;        </span><br><span class="line">         <span class="keyword">if</span> (cat <span class="keyword">instanceof</span> Cat) &#123;            </span><br><span class="line">             <span class="keyword">this</span>.cat = cat; </span><br><span class="line">         &#125; </span><br><span class="line">    &#125;    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">eatFood</span><span class="params">(String foodName)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;proxy Lion exec eatFood &quot;</span>);        </span><br><span class="line">        <span class="keyword">return</span> cat.eatFood(foodName);</span><br><span class="line">    &#125;    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">running</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;proxy Lion exec running.&quot;</span>);        </span><br><span class="line">        <span class="keyword">return</span> cat.running();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 <p>静态代理类测试</p>
 <figure class="highlight java"><figcaption><span>staticProxyTest.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 静态代理类测试</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">staticProxyTest</span> </span>&#123;    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Lion lion = <span class="keyword">new</span> Lion();</span><br><span class="line">        lion.setName(<span class="string">&quot;狮子 小王&quot;</span>);</span><br><span class="line">        lion.setRunningSpeed(<span class="number">100</span>);        </span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * new 静态代理类，静态代理类在编译前已经创建好了，和动态代理的最大区别点</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        Cat proxy = <span class="keyword">new</span> FeederProxy(lion);       </span><br><span class="line">        System.out.println(Thread.currentThread().getName()+<span class="string">&quot; -- &quot;</span> + proxy.eatFood(<span class="string">&quot;水牛&quot;</span>));</span><br><span class="line">        proxy.running(); </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>静态代理很好的诠释了代理设计模式，代理模式最主要的就是有一个公共接口（Cat），一个委托类（Lion），一个代理类（FeederProxy）,代理类持有委托类的实例，代为执行具体类实例方法。 </p>
-<p>代理模式就是在访问实际对象时引入一定程度的间接性，因为这种间接性，可以附加多种用途。这里的间接性就是指客户端不直接调用实际对象的方法，客户端依赖公共接口并使用代理类。 那么我们在代理过程中就可以加上一些其他用途。 </p>
-<p>就这个例子来说在 eatFood 方法调用中，代理类在调用具体实现类之前添加System.out.println(“proxy Lion exec eatFood “);语句 就是添加间接性带来的收益。代理类存在的意义是为了增加一些公共的逻辑代码。</p>
-<h3 id="静态代理的缺陷"><a href="#静态代理的缺陷" class="headerlink" title="静态代理的缺陷"></a>静态代理的缺陷</h3><ol>
-<li><p>代理类和委托类实现了相同的接口，代理类通过委托类实现了相同的方法。这样就出现了大量的代码重复。如果接口增加一个方法，除了所有实现类需要实现这个方法外，所有代理类也需要实现此方法。增加了代码维护的复杂度。</p>
+<p>静态代理很好的诠释了代理设计模式，代理模式最主要的就是有一个公共接口（Cat），一个委托类（Lion），一个代理类（FeederProxy）,代理类持有委托类的实例，代为执行具体类实例方法。</p>
+<p>代理模式就是在访问实际对象时引入一定程度的间接性，因为这种间接性，可以附加多种用途。这里的间接性就是指客户端不直接调用实际对象的方法，客户端依赖公共接口并使用代理类。 那么我们在代理过程中就可以加上一些其他用途。</p>
+<p>就这个例子来说在 eatFood 方法调用中，代理类在调用具体实现类之前添加System.out.println(&quot;proxy Lion exec eatFood &quot;);语句 就是添加间接性带来的收益。代理类存在的意义是为了增加一些公共的逻辑代码。</p>
+<h3 id="静态代理的缺陷"><a class="header-anchor" href="#静态代理的缺陷">¶</a>静态代理的缺陷</h3>
+<ol>
+<li>
+<p>代理类和委托类实现了相同的接口，代理类通过委托类实现了相同的方法。这样就出现了大量的代码重复。如果接口增加一个方法，除了所有实现类需要实现这个方法外，所有代理类也需要实现此方法。增加了代码维护的复杂度。</p>
 </li>
-<li><p>代理对象只服务于一种类型的对象，如果要服务多类型的对象。势必要为每一种对象都进行代理，静态代理在程序规模稍大时就无法胜任了。</p>
+<li>
+<p>代理对象只服务于一种类型的对象，如果要服务多类型的对象。势必要为每一种对象都进行代理，静态代理在程序规模稍大时就无法胜任了。</p>
 </li>
-<li><p>静态代理一个代理只能代理一种类型，而且是在编译器就已经确定被代理的对象。</p>
+<li>
+<p>静态代理一个代理只能代理一种类型，而且是在编译器就已经确定被代理的对象。</p>
 </li>
 </ol>
-<h2 id="JDK-Proxy-和-CGLib-的使用样例"><a href="#JDK-Proxy-和-CGLib-的使用样例" class="headerlink" title="JDK Proxy 和 CGLib 的使用样例"></a>JDK Proxy 和 CGLib 的使用样例</h2><h3 id="JDK-Proxy-动态代理实现"><a href="#JDK-Proxy-动态代理实现" class="headerlink" title="JDK Proxy 动态代理实现"></a>JDK Proxy 动态代理实现</h3>
+<h2 id="JDK-Proxy-和-CGLib-的使用样例"><a class="header-anchor" href="#JDK-Proxy-和-CGLib-的使用样例">¶</a>JDK Proxy 和 CGLib 的使用样例</h2>
+<h3 id="JDK-Proxy-动态代理实现"><a class="header-anchor" href="#JDK-Proxy-动态代理实现">¶</a>JDK Proxy 动态代理实现</h3>
+
           
             <div class='article_footer'>
               
@@ -931,15 +967,15 @@
           
           target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gyl-coder.top/java/dynamic-proxy/&title=动态代理原理剖析 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/proxy.svg&summary=动态代理的常用实现方式是反射。反射机制是 Java 语言提供的一种基础功能，赋予程序在运行时自省（introspect，官方用语）的能力。通过反射我们可以直接操作类或者对象，比如获取某个对象的类定义，获取类声明的属性和方法，调用方法或者构造对象，甚至可以运行时修改类定义。
 动态代理是一种方便运行时动态构建代理、动态处理代理方法调用的机制，很多场景都是利用类似机制做到的，比如用来包装 RPC 调用、面向切面的编程（AOP）。
-JDK 自身提供的动态代理，就是主要利用了上面提到的反射机制。但动态代理不止有反射一种实现方式，还有其他的实现方式，比如利用传说中更高性能的字节码操作机制，类似 ASM、cglib（基于 ASM，一个 Java 字节码操作框架）、Javassist 等。简单来说，动态代理是一种行为方式，而反射或 ASM 只是它的一种实现手段而已。 
-JDK Proxy 和 CGLib 的区别主要体现在以下几个方面： 
+JDK 自身提供的动态代理，就是主要利用了上面提到的反射机制。但动态代理不止有反射一种实现方式，还有其他的实现方式，比如利用传说中更高性能的字节码操作机制，类似 ASM、cglib（基于 ASM，一个 Java 字节码操作框架）、Javassist 等。简单来说，动态代理是一种行为方式，而反射或 ASM 只是它的一种实现手段而已。
+JDK Proxy 和 CGLib 的区别主要体现在以下几个方面：
 
-JDK Proxy 是 Java 语言自带的功能，无需通过加载第三方类实现； 
-Java 对 JDK Proxy 提供了稳定的支持，并且会持续的升级和更新 JDK Proxy，例如 Java 8 版本中的 JDK Proxy 性能相比于之前版本提升了很多； 
-JDK Proxy 是通过拦截器加反射的方式实现的； 
-JDK Proxy 只能代理继承接口的类； 
-JDK Proxy 实现和调用起来比较简单； 
-CGLib 是第三方提供的工具，基于 ASM 实现的，性能比较高； 
+JDK Proxy 是 Java 语言自带的功能，无需通过加载第三方类实现；
+Java 对 JDK Proxy 提供了稳定的支持，并且会持续的升级和更新 JDK Proxy，例如 Java 8 版本中的 JDK Proxy 性能相比于之前版本提升了很多；
+JDK Proxy 是通过拦截器加反射的方式实现的；
+JDK Proxy 只能代理继承接口的类；
+JDK Proxy 实现和调用起来比较简单；
+CGLib 是第三方提供的工具，基于 ASM 实现的，性能比较高；
 CGLib 无需通过接口来实现，它是通过实现子类的方式来完成调用的。
 "
           
@@ -955,15 +991,15 @@ CGLib 无需通过接口来实现，它是通过实现子类的方式来完成�
           
           target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://gyl-coder.top/java/dynamic-proxy/&title=动态代理原理剖析 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/proxy.svg&summary=动态代理的常用实现方式是反射。反射机制是 Java 语言提供的一种基础功能，赋予程序在运行时自省（introspect，官方用语）的能力。通过反射我们可以直接操作类或者对象，比如获取某个对象的类定义，获取类声明的属性和方法，调用方法或者构造对象，甚至可以运行时修改类定义。
 动态代理是一种方便运行时动态构建代理、动态处理代理方法调用的机制，很多场景都是利用类似机制做到的，比如用来包装 RPC 调用、面向切面的编程（AOP）。
-JDK 自身提供的动态代理，就是主要利用了上面提到的反射机制。但动态代理不止有反射一种实现方式，还有其他的实现方式，比如利用传说中更高性能的字节码操作机制，类似 ASM、cglib（基于 ASM，一个 Java 字节码操作框架）、Javassist 等。简单来说，动态代理是一种行为方式，而反射或 ASM 只是它的一种实现手段而已。 
-JDK Proxy 和 CGLib 的区别主要体现在以下几个方面： 
+JDK 自身提供的动态代理，就是主要利用了上面提到的反射机制。但动态代理不止有反射一种实现方式，还有其他的实现方式，比如利用传说中更高性能的字节码操作机制，类似 ASM、cglib（基于 ASM，一个 Java 字节码操作框架）、Javassist 等。简单来说，动态代理是一种行为方式，而反射或 ASM 只是它的一种实现手段而已。
+JDK Proxy 和 CGLib 的区别主要体现在以下几个方面：
 
-JDK Proxy 是 Java 语言自带的功能，无需通过加载第三方类实现； 
-Java 对 JDK Proxy 提供了稳定的支持，并且会持续的升级和更新 JDK Proxy，例如 Java 8 版本中的 JDK Proxy 性能相比于之前版本提升了很多； 
-JDK Proxy 是通过拦截器加反射的方式实现的； 
-JDK Proxy 只能代理继承接口的类； 
-JDK Proxy 实现和调用起来比较简单； 
-CGLib 是第三方提供的工具，基于 ASM 实现的，性能比较高； 
+JDK Proxy 是 Java 语言自带的功能，无需通过加载第三方类实现；
+Java 对 JDK Proxy 提供了稳定的支持，并且会持续的升级和更新 JDK Proxy，例如 Java 8 版本中的 JDK Proxy 性能相比于之前版本提升了很多；
+JDK Proxy 是通过拦截器加反射的方式实现的；
+JDK Proxy 只能代理继承接口的类；
+JDK Proxy 实现和调用起来比较简单；
+CGLib 是第三方提供的工具，基于 ASM 实现的，性能比较高；
 CGLib 无需通过接口来实现，它是通过实现子类的方式来完成调用的。
 "
           
@@ -979,15 +1015,15 @@ CGLib 无需通过接口来实现，它是通过实现子类的方式来完成�
           
           target="_blank" href="http://service.weibo.com/share/share.php?url=https://gyl-coder.top/java/dynamic-proxy/&title=动态代理原理剖析 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/proxy.svg&summary=动态代理的常用实现方式是反射。反射机制是 Java 语言提供的一种基础功能，赋予程序在运行时自省（introspect，官方用语）的能力。通过反射我们可以直接操作类或者对象，比如获取某个对象的类定义，获取类声明的属性和方法，调用方法或者构造对象，甚至可以运行时修改类定义。
 动态代理是一种方便运行时动态构建代理、动态处理代理方法调用的机制，很多场景都是利用类似机制做到的，比如用来包装 RPC 调用、面向切面的编程（AOP）。
-JDK 自身提供的动态代理，就是主要利用了上面提到的反射机制。但动态代理不止有反射一种实现方式，还有其他的实现方式，比如利用传说中更高性能的字节码操作机制，类似 ASM、cglib（基于 ASM，一个 Java 字节码操作框架）、Javassist 等。简单来说，动态代理是一种行为方式，而反射或 ASM 只是它的一种实现手段而已。 
-JDK Proxy 和 CGLib 的区别主要体现在以下几个方面： 
+JDK 自身提供的动态代理，就是主要利用了上面提到的反射机制。但动态代理不止有反射一种实现方式，还有其他的实现方式，比如利用传说中更高性能的字节码操作机制，类似 ASM、cglib（基于 ASM，一个 Java 字节码操作框架）、Javassist 等。简单来说，动态代理是一种行为方式，而反射或 ASM 只是它的一种实现手段而已。
+JDK Proxy 和 CGLib 的区别主要体现在以下几个方面：
 
-JDK Proxy 是 Java 语言自带的功能，无需通过加载第三方类实现； 
-Java 对 JDK Proxy 提供了稳定的支持，并且会持续的升级和更新 JDK Proxy，例如 Java 8 版本中的 JDK Proxy 性能相比于之前版本提升了很多； 
-JDK Proxy 是通过拦截器加反射的方式实现的； 
-JDK Proxy 只能代理继承接口的类； 
-JDK Proxy 实现和调用起来比较简单； 
-CGLib 是第三方提供的工具，基于 ASM 实现的，性能比较高； 
+JDK Proxy 是 Java 语言自带的功能，无需通过加载第三方类实现；
+Java 对 JDK Proxy 提供了稳定的支持，并且会持续的升级和更新 JDK Proxy，例如 Java 8 版本中的 JDK Proxy 性能相比于之前版本提升了很多；
+JDK Proxy 是通过拦截器加反射的方式实现的；
+JDK Proxy 只能代理继承接口的类；
+JDK Proxy 实现和调用起来比较简单；
+CGLib 是第三方提供的工具，基于 ASM 实现的，性能比较高；
 CGLib 无需通过接口来实现，它是通过实现子类的方式来完成调用的。
 "
           
@@ -1045,7 +1081,7 @@ AOP为什么叫做切面...</p>
       <p ct><i class='fas fa-comments'></i> 评论</p>
       
       <section id="comments">
-        <div id="valine_container" class="valine_thread">
+        <div id="minivaline_container">
   <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
@@ -1121,6 +1157,7 @@ AOP为什么叫做切面...</p>
 
 
         </div>
+        <!--
       
     
       
@@ -1178,11 +1215,86 @@ AOP为什么叫做切面...</p>
     
       
         <div class='copyright'>
-        <p><a href="https://gyl-coder.top/">Copyright © 2019-2020 Yanliang</a></p>
+        <p><a href="https://gyl-coder.top">Copyright © 2019-2020 Yanliang</a></p>
 
         </div>
       
     
+    -->
+
+      <!--自定义footer样式-->
+      <!--自定义footer样式-->
+<br>
+Copyright <i class="far fa-copyright"></i> 2019-2020
+<a href="/" target="_blank"> YANLIANG'S BLOG </a>丨
+<!-- 在网页底部添加网站运行时间 -->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+
+    function createtime() {
+        var grt = new Date("07/01/2019 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime() + 250);
+        days = (now - grt) / 1000 / 60 / 60 / 24;
+        dnum = Math.floor(days);
+        hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+        hnum = Math.floor(hours);
+        if (String(hnum).length == 1) {
+            hnum = "0" + hnum;
+        }
+        minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes);
+        if (String(mnum).length == 1) {
+            mnum = "0" + mnum;
+        }
+        seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds);
+        if (String(snum).length == 1) {
+            snum = "0" + snum;
+        }
+        document.getElementById("timeDate").innerHTML = "网站已运行 " + dnum + " 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+
+    setInterval("createtime()", 250);
+</script>
+<br/>
+<br/>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://hexo.io/" target="_blank" title="由 Hexo 强力驱动">
+        <span class="badge-subject">Powered</span><span class="badge-value bg-blue">Hexo</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://github.com/" target="_blank"
+       title="静态网页托管于 GitHub Pages 和 Coding Pages">
+        <span class="badge-subject">Hosted</span><span
+                class="badge-value bg-brightgreen">GitHub &amp; Coding</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://www.aliyun.com/" target="_blank" title="阿里云提供域名相关服务">
+        <span class="badge-subject">DNS</span><span class="badge-value bg-blueviolet">Aliyun</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://www.jsdelivr.com/" target="_blank"
+       title="jsDelivr 提供 CDN 加速服务">
+        <span class="badge-subject">CDN</span><span class="badge-value bg-orange">jsDelivr</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://github.com/volantis-x/hexo-theme-volantis/"
+       target="_blank" title="站点使用 Volantis 主题">
+        <span class="badge-subject">Theme</span><span class="badge-value bg-blue">Volantis</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
+       target="_blank" title="本站点采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议进行许可">
+        <span class="badge-subject"><i class="fa fa-copyright"></i></span><span
+                class="badge-value bg-gradient">BY-NC-SA 4.0</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://github.com/botui/botui" target="_blank" title="A JavaScript framework to create conversational UIs.">
+        <span class="badge-subject">AI机器人</span><span class="badge-value bg-blueviolet">botui</span></a>
+</div>
+
   </footer>
 
 
@@ -1249,14 +1361,14 @@ AOP为什么叫做切面...</p>
         
           
     <li>
-      <a class='vlts-menu fix-cursor-default' href=https://volantis.js.org/contributors/
+      <a class='vlts-menu fix-cursor-default' href=/friends/
         
         
         
         
-          id="https:volantisjsorgcontributors"
+          id="friends"
         >
-        <i class='fa fa-fan fa-spin fa-fw'></i> 加入社区
+        <i class='fa fa-fan fa-spin fa-fw'></i> 小伙伴们
       </a>
     </li>
   
@@ -1269,30 +1381,14 @@ AOP为什么叫做切面...</p>
         
           
     <li>
-      <a class='vlts-menu fix-cursor-default' href=https://github.com/volantis-x/volantis-docs/
+      <a class='vlts-menu fix-cursor-default' href=/catchTheCat/
         
         
         
         
-          id="https:githubcomvolantis-xvolantis-docs"
+          id="catchTheCat"
         >
-        <i class='fa fa-code-branch fa-fw'></i> 本站源码
-      </a>
-    </li>
-  
-        
-      
-        
-          
-    <li>
-      <a class='vlts-menu fix-cursor-default' href=https://github.com/volantis-x/hexo-theme-volantis/
-        
-        
-        
-        
-          id="https:githubcomvolantis-xhexo-theme-volantis"
-        >
-        <i class='fa fa-code-branch fa-fw'></i> 主题源码
+        <i class='fas fa-cat fa-fw'></i> 围住小猫
       </a>
     </li>
   
@@ -1559,72 +1655,54 @@ AOP为什么叫做切面...</p>
 
   
   
-<script src="/js/valine.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/minivaline@3/dist/MiniValine.min.js"></script>
+
+
+
+
 
 
 <script>
-  var GUEST_INFO = ['nick', 'mail', 'link'];
-  var meta = 'nick,mail,link'.split(',').filter(function (item) {
-    return GUEST_INFO.indexOf(item) > -1
-  });
-  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
-  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
-    return REQUIRED_FIELDS.indexOf(item) > -1
-  });
-
-  function emoji(path, idx, ext) {
-    return path + "/" + path + "-" + idx + "." + ext;
-  }
-
-  var emojiMaps = {};
-  for (var i = 1; i <= 54; i++) {
-    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
-  }
-  for (var i = 1; i <= 101; i++) {
-    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
-  }
-  for (var i = 1; i <= 116; i++) {
-    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
-  }
-  for (var i = 1; i <= 125; i++) {
-    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
-  }
-  for (var i = 1; i <= 4; i++) {
-    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
-  }
-
-  function pjax_valine() {
-    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
+function pjax_minivaline() {
+  let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
       decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
-    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
-      "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
+  let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
+    "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
 
-    let ALLPATH = '';
-    if(ALLPATH != '') pageUrl = ALLPATH;
+  let ALLPATH = '';
+  if(ALLPATH != '') pageUrl = ALLPATH;
 
-    var valine = new Valine();
-    valine.init({
-      el: '#valine_container',
-      meta: meta,
-      placeholder: pagePlaceholder,
-      path: pageUrl,
-      appId: "jRi8wpIdG8v9VbC6wddXHTlL-gzGzoHsz",
-      appKey: "oVqMw78YKASJThLN03bSqgve",
-      pageSize: '10',
-      avatar: 'robohash',
-      lang: 'zh-cn',
-      visitor: 'true',
-      highlight: 'true',
-      mathJax: 'false',
-      enableQQ: 'true',
-      requiredFields: requiredFields,
-      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
-      emojiMaps: emojiMaps
-    })
+  new MiniValine({
+    el: '#minivaline_container',
+    appId: 'jRi8wpIdG8v9VbC6wddXHTlL-gzGzoHsz',
+    appKey: 'oVqMw78YKASJThLN03bSqgve',
+    mode: 'xCss',
+    placeholder: pagePlaceholder,
+    path: pageUrl,
+    lang: '',
+    adminEmailMd5: '6e52e95ab454c5a82b0eb13055d79bd5',
+    tagMeta: ["管理员", "小伙伴", "访客"],
+    master: ["6e52e95ab454c5a82b0eb13055d79bd5"],
+    friends: ["b5bd5d836c7a0091aa8473e79ed4c25e", "adb7d1cd192658a55c0ad22a3309cecf", "3ce1e6c77b4910f1871106cb30dc62b0", "cfce8dc43725cc14ffcd9fb4892d5bfc"],
+    math: false,  /*布尔值 字符串无效 下同*/
+    md: true,
+    enableQQ: false,
+    NoRecordIP: true,
+    visitor: false,
+    maxNest: 6,
+    pageSize: 6,
+    barrager: 0,
+    role: 'admin',
+    closeFlag: false,
+    cloudflag: false,
+    region: false,
+    closeUA: false,
+    emoticonUrl: ["https://cdn.jsdelivr.net/npm/alus@latest", "https://cdn.jsdelivr.net/gh/MiniValine/qq@latest", "https://cdn.jsdelivr.net/gh/MiniValine/Bilibilis@latest", "https://cdn.jsdelivr.net/gh/MiniValine/tieba@latest", "https://cdn.jsdelivr.net/gh/MiniValine/twemoji@latest", "https://cdn.jsdelivr.net/gh/MiniValine/weibo@latest"],
+    serverURLs: ''
+    });
   }
-
   $(function () {
-    pjax_valine();
+    pjax_minivaline();
   });
 </script>
 
@@ -1962,8 +2040,8 @@ AOP为什么叫做切面...</p>
           pjax_initCopyCode();
         
         
-          pjax_valine();
         
+          pjax_minivaline();
         
         
         

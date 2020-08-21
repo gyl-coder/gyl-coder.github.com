@@ -27,6 +27,8 @@
 
   <!-- feed -->
   
+    <link rel="alternate" href="/atom.xml" title="yanliang's blog" type="application/atom+xml">
+  
 
   <!-- import meta -->
   
@@ -288,7 +290,7 @@
                   
                   
                   >
-                  <i class='fa fa-ellipsis-v fa-spin fa-fw'></i>更多
+                  <i class='fa fa-ellipsis-v fa-fw'></i>更多
                 </a>
                 
                   <ul class="list-v">
@@ -356,13 +358,29 @@
                       
             
               <li>
-                <a class="menuitem flat-box faa-parent animated-hover" href=https://github.com/gyl-coder
+                <a class="menuitem flat-box faa-parent animated-hover" href=https://jri8wpidaura.leanapp.cn/comments
                   
                   
                   
-                    id="https:githubcomgyl-coder"
+                    id="https:jri8wpidauraleanappcncomments"
                   >
-                  <i class='fab fa-github fa-fw fa-fw'></i>我的Github
+                  <i class='fas fa-comments faa-tada fa-fw fa-fw'></i>评论管理
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/catchTheCat/
+                  
+                  
+                  
+                    id="catchTheCat"
+                  >
+                  <i class='fas fa-cat fa-fw'></i>围住小猫
                 </a>
                 
               </li>
@@ -565,7 +583,7 @@
                   
                   
                   >
-                  <i class='fa fa-ellipsis-v fa-spin fa-fw'></i>更多
+                  <i class='fa fa-ellipsis-v fa-fw'></i>更多
                 </a>
                 
                   <ul class="list-v">
@@ -633,13 +651,29 @@
                       
             
               <li>
-                <a class="menuitem flat-box faa-parent animated-hover" href=https://github.com/gyl-coder
+                <a class="menuitem flat-box faa-parent animated-hover" href=https://jri8wpidaura.leanapp.cn/comments
                   
                   
                   
-                    id="https:githubcomgyl-coder"
+                    id="https:jri8wpidauraleanappcncomments"
                   >
-                  <i class='fab fa-github fa-fw fa-fw'></i>我的Github
+                  <i class='fas fa-comments faa-tada fa-fw fa-fw'></i>评论管理
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/catchTheCat/
+                  
+                  
+                  
+                    id="catchTheCat"
+                  >
+                  <i class='fas fa-cat fa-fw'></i>围住小猫
                 </a>
                 
               </li>
@@ -820,7 +854,6 @@
           <p>JSON(JavaScript Object Notation, JS 对象简谱) 是一种轻量级的数据交换格式。易于人阅读和编写。同时也易于机器解析和生成。采用完全独立于语言的文本格式，但是也使用了类似于 C 语言家族的习惯（包括 C, C++, C#, Java, JavaScript, Perl, Python 等）。这些特性使 JSON 成为理想的数据交换语言。</p>
 <p>JSON 与 JS 的区别以及和 XML 的区别具体请参考<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/JSON/2462549?fr=aladdin">百度百科</a></p>
 <a id="more"></a>
-
 <p><strong>JSON 有两种结构：</strong></p>
 <p>第一种：对象</p>
 <blockquote>
@@ -828,7 +861,6 @@
 <p>对象是一个无序的 “‘名称 / 值’对” 集合。一个对象以 “{”（左括号）开始，“}”（右括号）结束。每个“名称” 后跟一个 “:”（冒号）；“‘名称 / 值’ 对” 之间使用“,”（逗号）分隔。</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;姓名&quot;: &quot;张三&quot;, &quot;年龄&quot;: &quot;18&quot;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 <p>第二种：数组</p>
 <blockquote>
 <p>值的有序列表（An ordered list of values）。在大部分语言中，它被理解为数组（array）。</p>
@@ -836,147 +868,144 @@
 <p>值（value）可以是双引号括起来的字符串（string）、数值 (number)、true、false、 null、对象（object）或者数组（array）。这些结构可以嵌套。</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    &#123; </span><br><span class="line">    &quot;姓名&quot;: &quot;张三&quot;,             </span><br><span class="line">    &quot;年龄&quot;:&quot;18&quot;     </span><br><span class="line">    &#125;,</span><br><span class="line">             </span><br><span class="line">    &#123;         </span><br><span class="line">    &quot;姓名&quot;: &quot;里斯&quot;,             </span><br><span class="line">    &quot;年龄&quot;:&quot;19&quot;    </span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 <p>通过上面的了解可以看出，JSON 存在以下几种数据类型（以 Java 做类比）：</p>
 <table>
 <thead>
 <tr>
-<th align="center">json</th>
-<th align="center">java</th>
+<th style="text-align:center">json</th>
+<th style="text-align:center">java</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">string</td>
-<td align="center">Java 中的 String</td>
+<tbody>
+<tr>
+<td style="text-align:center">string</td>
+<td style="text-align:center">Java 中的 String</td>
 </tr>
 <tr>
-<td align="center">number</td>
-<td align="center">Java 中的 Long 或 Double</td>
+<td style="text-align:center">number</td>
+<td style="text-align:center">Java 中的 Long 或 Double</td>
 </tr>
 <tr>
-<td align="center">true/false</td>
-<td align="center">Java 中的 Boolean</td>
+<td style="text-align:center">true/false</td>
+<td style="text-align:center">Java 中的 Boolean</td>
 </tr>
 <tr>
-<td align="center">null</td>
-<td align="center">Java 中的 null</td>
+<td style="text-align:center">null</td>
+<td style="text-align:center">Java 中的 null</td>
 </tr>
 <tr>
-<td align="center">[array]</td>
-<td align="center">Java 中的 List<Object> 或 Object[]</td>
+<td style="text-align:center">[array]</td>
+<td style="text-align:center">Java 中的 List<Object> 或 Object[]</td>
 </tr>
 <tr>
-<td align="center">{“key”:”value”}</td>
-<td align="center">Java 中的 Map&lt;String, Object&gt;</td>
+<td style="text-align:center">{“key”:“value”}</td>
+<td style="text-align:center">Java 中的 Map&lt;String, Object&gt;</td>
 </tr>
-</tbody></table>
-<h2 id="解析-JSON"><a href="#解析-JSON" class="headerlink" title="解析 JSON"></a>解析 JSON</h2><h3 id="JSON-解析器的基本原理"><a href="#JSON-解析器的基本原理" class="headerlink" title="JSON 解析器的基本原理"></a>JSON 解析器的基本原理</h3><p>输入一串 JSON 字符串，输出一个 JSON 对象。</p>
-<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><p>JSON 解析的过程主要分以下两步：</p>
-<p><strong>第一步：</strong>对于输入的一串 JSON 字符串我们需要将其解析成一组 token 流。</p>
+</tbody>
+</table>
+<h2 id="解析-JSON"><a class="header-anchor" href="#解析-JSON">¶</a>解析 JSON</h2>
+<h3 id="JSON-解析器的基本原理"><a class="header-anchor" href="#JSON-解析器的基本原理">¶</a>JSON 解析器的基本原理</h3>
+<p>输入一串 JSON 字符串，输出一个 JSON 对象。</p>
+<h3 id="步骤"><a class="header-anchor" href="#步骤">¶</a>步骤</h3>
+<p>JSON 解析的过程主要分以下两步：</p>
+<p>**第一步：**对于输入的一串 JSON 字符串我们需要将其解析成一组 token 流。</p>
 <p>例如 JSON 字符串 {“姓名”: “张三”, “年龄”: “18”} 我们需要将它解析成</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;、 姓名、 :、 张三、 ,、 年龄、 :、 18、 &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 <p>这样一组 token 流</p>
-<p><strong>第二步：</strong>根据得到的 token 流将其解析成对应的 JSON 对象（JSONObject）或者 JSON 数组（JSONArray）</p>
+<p>**第二步：**根据得到的 token 流将其解析成对应的 JSON 对象（JSONObject）或者 JSON 数组（JSONArray）</p>
 <p>下面我们来详细分析下这两个步骤：</p>
-<h2 id="获取-token-流"><a href="#获取-token-流" class="headerlink" title="获取 token 流"></a>获取 token 流</h2><p>根据 JSON 格式的定义，token 可以分为以下几种类型</p>
+<h2 id="获取-token-流"><a class="header-anchor" href="#获取-token-流">¶</a>获取 token 流</h2>
+<p>根据 JSON 格式的定义，token 可以分为以下几种类型</p>
 <table>
 <thead>
 <tr>
-<th align="center">token</th>
-<th align="center">含义</th>
+<th style="text-align:center">token</th>
+<th style="text-align:center">含义</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">NULL</td>
-<td align="center">null</td>
+<tbody>
+<tr>
+<td style="text-align:center">NULL</td>
+<td style="text-align:center">null</td>
 </tr>
 <tr>
-<td align="center">NUMBER</td>
-<td align="center">数字</td>
+<td style="text-align:center">NUMBER</td>
+<td style="text-align:center">数字</td>
 </tr>
 <tr>
-<td align="center">STRING</td>
-<td align="center">字符串</td>
+<td style="text-align:center">STRING</td>
+<td style="text-align:center">字符串</td>
 </tr>
 <tr>
-<td align="center">BOOLEAN</td>
-<td align="center">true/false</td>
+<td style="text-align:center">BOOLEAN</td>
+<td style="text-align:center">true/false</td>
 </tr>
 <tr>
-<td align="center">SEP_COLON</td>
-<td align="center">:</td>
+<td style="text-align:center">SEP_COLON</td>
+<td style="text-align:center">:</td>
 </tr>
 <tr>
-<td align="center">SEP_COMMA</td>
-<td align="center">,</td>
+<td style="text-align:center">SEP_COMMA</td>
+<td style="text-align:center">,</td>
 </tr>
 <tr>
-<td align="center">BEGIN_OBJECT</td>
-<td align="center">{</td>
+<td style="text-align:center">BEGIN_OBJECT</td>
+<td style="text-align:center">{</td>
 </tr>
 <tr>
-<td align="center">END_OBJECT</td>
-<td align="center">}</td>
+<td style="text-align:center">END_OBJECT</td>
+<td style="text-align:center">}</td>
 </tr>
 <tr>
-<td align="center">BEGIN_ARRAY</td>
-<td align="center">[</td>
+<td style="text-align:center">BEGIN_ARRAY</td>
+<td style="text-align:center">[</td>
 </tr>
 <tr>
-<td align="center">END_ARRAY</td>
-<td align="center">]</td>
+<td style="text-align:center">END_ARRAY</td>
+<td style="text-align:center">]</td>
 </tr>
 <tr>
-<td align="center">END_DOCUMENT</td>
-<td align="center">表示 JSON 数据结束</td>
+<td style="text-align:center">END_DOCUMENT</td>
+<td style="text-align:center">表示 JSON 数据结束</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p>根据以上的 JSON 类型，我们可以将其封装成 enum 类型的 <a target="_blank" rel="noopener" href="https://github.com/gyl-coder/JSON-Parser/blob/master/src/main/java/com/json/demo/tokenizer/TokenType.java">TokenType</a></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">package com.json.demo.tokenizer;</span><br><span class="line">&#x2F;**</span><br><span class="line"> BEGIN_OBJECT（&#123;）</span><br><span class="line"> END_OBJECT（&#125;）</span><br><span class="line"> BEGIN_ARRAY（[）</span><br><span class="line"> END_ARRAY（]）</span><br><span class="line"> NULL（null）</span><br><span class="line"> NUMBER（数字）</span><br><span class="line"> STRING（字符串）</span><br><span class="line"> BOOLEAN（true&#x2F;false）</span><br><span class="line"> SEP_COLON（:）</span><br><span class="line"> SEP_COMMA（,）</span><br><span class="line"> END_DOCUMENT（表示JSON文档结束）</span><br><span class="line"> *&#x2F;</span><br><span class="line"></span><br><span class="line">public enum TokenType &#123;</span><br><span class="line">    BEGIN_OBJECT(1),</span><br><span class="line">    END_OBJECT(2),</span><br><span class="line">    BEGIN_ARRAY(4),</span><br><span class="line">    END_ARRAY(8),</span><br><span class="line">    NULL(16),</span><br><span class="line">    NUMBER(32),</span><br><span class="line">    STRING(64),</span><br><span class="line">    BOOLEAN(128),</span><br><span class="line">    SEP_COLON(256),</span><br><span class="line">    SEP_COMMA(512),</span><br><span class="line">    END_DOCUMENT(1024);</span><br><span class="line"></span><br><span class="line">    private int code;    &#x2F;&#x2F; 每个类型的编号</span><br><span class="line"></span><br><span class="line">    TokenType(int code) &#123;</span><br><span class="line">        this.code &#x3D; code;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int getTokenCode() &#123;</span><br><span class="line">        return code;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 <p>在 TokenType 中我们为每一种类型都赋一个数字，目的是在 Parser 做一些优化操作（通过位运算来判断是否是期望出现的类型）</p>
 <p>在进行第一步之前 JSON 串对计算机来说只是一串没有意义的字符而已。第一步的作用就是把这些无意义的字符串变成一个一个的 token，上面我们已经为每一种 token 定义了相应的类型和值。所以计算机能够区分不同的 token，并能以 token 为单位解读 JSON 数据。</p>
 <p>下面我们封装一个 <a target="_blank" rel="noopener" href="https://github.com/gyl-coder/JSON-Parser/blob/master/src/main/java/com/json/demo/tokenizer/Token.java">token</a> 类来存储每一个 <a target="_blank" rel="noopener" href="https://github.com/gyl-coder/JSON-Parser/blob/master/src/main/java/com/json/demo/tokenizer/Token.java">token</a> 对应的值</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">package com.json.demo.tokenizer;</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line"> * 存储对应类型的字面量</span><br><span class="line"> *&#x2F;</span><br><span class="line"></span><br><span class="line">public class Token &#123;</span><br><span class="line">    private TokenType tokenType;</span><br><span class="line">    private String value;</span><br><span class="line"></span><br><span class="line">    public Token(TokenType tokenType, String value) &#123;</span><br><span class="line">        this.tokenType &#x3D; tokenType;</span><br><span class="line">        this.value &#x3D; value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public TokenType getTokenType() &#123;</span><br><span class="line">        return tokenType;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setTokenType(TokenType tokenType) &#123;</span><br><span class="line">        this.tokenType &#x3D; tokenType;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getValue() &#123;</span><br><span class="line">        return value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setValue(String value) &#123;</span><br><span class="line">        this.value &#x3D; value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String toString() &#123;</span><br><span class="line">        return &quot;Token&#123;&quot; +</span><br><span class="line">                &quot;tokenType&#x3D;&quot; + tokenType +</span><br><span class="line">                &quot;, value&#x3D;&#39;&quot; + value + &#39;\&#39;&#39; +</span><br><span class="line">                &#39;&#125;&#39;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 <p>在解析的过程中我们通过字符流来不断的读取字符，并且需要经常根据相应的字符来判断状态的跳转。所以我们需要自己封装一个 <a target="_blank" rel="noopener" href="https://github.com/gyl-coder/JSON-Parser/blob/master/src/main/java/com/json/demo/tokenizer/ReaderChar.java">ReaderChar</a> 类，以便我们更好的操作字符流。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line">package com.json.demo.tokenizer;</span><br><span class="line"></span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.io.Reader;</span><br><span class="line"></span><br><span class="line">public class ReaderChar &#123;</span><br><span class="line">    private static final int BUFFER_SIZE &#x3D; 1024;</span><br><span class="line">    private Reader reader;</span><br><span class="line">    private char[] buffer;</span><br><span class="line">    private int index;      &#x2F;&#x2F; 下标</span><br><span class="line">    private int size;</span><br><span class="line"></span><br><span class="line">    public ReaderChar(Reader reader) &#123;</span><br><span class="line">        this.reader &#x3D; reader;</span><br><span class="line">        buffer &#x3D; new char[BUFFER_SIZE];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 返回 pos 下标处的字符，并返回</span><br><span class="line">     * @return</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public char peek() &#123;</span><br><span class="line">        if (index - 1 &gt;&#x3D; size) &#123;</span><br><span class="line">            return (char) -1;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return buffer[Math.max(0, index - 1)];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 返回 pos 下标处的字符，并将 pos + 1，最后返回字符</span><br><span class="line">     * @return</span><br><span class="line">     * @throws IOException</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public char next() throws IOException &#123;</span><br><span class="line">        if (!hasMore()) &#123;</span><br><span class="line">            return (char) -1;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return buffer[index++];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 下标回退</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public void back() &#123;</span><br><span class="line">        index &#x3D; Math.max(0, --index);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 判断流是否结束</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public boolean hasMore() throws IOException &#123;</span><br><span class="line">        if (index &lt; size) &#123;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        fillBuffer();</span><br><span class="line">        return index &lt; size;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 填充buffer数组</span><br><span class="line">     * @throws IOException</span><br><span class="line">     *&#x2F;</span><br><span class="line">    void fillBuffer() throws IOException &#123;</span><br><span class="line">        int n &#x3D; reader.read(buffer);</span><br><span class="line">        if (n &#x3D;&#x3D; -1) &#123;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        index &#x3D; 0;</span><br><span class="line">        size &#x3D; n;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 <p>另外我们还需要一个 <a target="_blank" rel="noopener" href="https://github.com/gyl-coder/JSON-Parser/blob/master/src/main/java/com/json/demo/tokenizer/TokenList.java">TokenList</a> 来存储解析出来的 token 流</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">package com.json.demo.tokenizer;</span><br><span class="line"></span><br><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line"> * 存储词法解析所得的token流</span><br><span class="line"> *&#x2F;</span><br><span class="line">public class TokenList &#123;</span><br><span class="line">    private List&lt;Token&gt; tokens &#x3D; new ArrayList&lt;Token&gt;();</span><br><span class="line">    private int index &#x3D; 0;</span><br><span class="line"></span><br><span class="line">    public void add(Token token) &#123;</span><br><span class="line">        tokens.add(token);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Token peek() &#123;</span><br><span class="line">        return index &lt; tokens.size() ? tokens.get(index) : null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Token peekPrevious() &#123;</span><br><span class="line">        return index - 1 &lt; 0 ? null : tokens.get(index - 2);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Token next() &#123;</span><br><span class="line">        return tokens.get(index++);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public boolean hasMore() &#123;</span><br><span class="line">        return index &lt; tokens.size();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String toString() &#123;</span><br><span class="line">        return &quot;TokenList&#123;&quot; +</span><br><span class="line">                &quot;tokens&#x3D;&quot; + tokens +</span><br><span class="line">                &#39;&#125;&#39;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 <p>JSON 解析比其他文本解析要简单的地方在于，我们只需要根据下一个字符就可知道接下来它所期望读取的到的内容是什么样的。如果满足期望了，则返回 Token，否则返回错误。</p>
 <p>为了方便程序出错时更好的 debug，程序中自定义了两个 exception 类来处理错误信息。（具体实现参考 <a target="_blank" rel="noopener" href="https://github.com/gyl-coder/JSON-Parser/tree/master/src/main/java/com/json/demo/exception">exception</a> 包）</p>
 <p>下面就是第一步中的重头戏（核心代码）：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">public TokenList getTokenStream(ReaderChar readerChar) throws IOException &#123;</span><br><span class="line">        this.readerChar &#x3D; readerChar;</span><br><span class="line">        tokenList &#x3D; new TokenList();</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 词法解析，获取token流</span><br><span class="line">        tokenizer();</span><br><span class="line"></span><br><span class="line">        return tokenList;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 将JSON文件解析成token流</span><br><span class="line">     * @throws IOException</span><br><span class="line">     *&#x2F;</span><br><span class="line">    private void tokenizer() throws IOException &#123;</span><br><span class="line">        Token token;</span><br><span class="line">        do &#123;</span><br><span class="line">            token &#x3D; start();</span><br><span class="line">            tokenList.add(token);</span><br><span class="line">        &#125; while (token.getTokenType() !&#x3D; TokenType.END_DOCUMENT);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 解析过程的具体实现方法</span><br><span class="line">     * @return</span><br><span class="line">     * @throws IOException</span><br><span class="line">     * @throws JsonParseException</span><br><span class="line">     *&#x2F;</span><br><span class="line">    private Token start() throws IOException, JsonParseException &#123;</span><br><span class="line">        char ch;</span><br><span class="line">        while (true)&#123;   &#x2F;&#x2F;先读一个字符，若为空白符（ASCII码在[0, 20H]上）则接着读，直到刚读的字符非空白符</span><br><span class="line">            if (!readerChar.hasMore()) &#123;</span><br><span class="line">                return new Token(TokenType.END_DOCUMENT, null);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            ch &#x3D; readerChar.next();</span><br><span class="line">            if (!isWhiteSpace(ch)) &#123;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        switch (ch) &#123;</span><br><span class="line">            case &#39;&#123;&#39;:</span><br><span class="line">                return new Token(TokenType.BEGIN_OBJECT, String.valueOf(ch));</span><br><span class="line">            case &#39;&#125;&#39;:</span><br><span class="line">                return new Token(TokenType.END_OBJECT, String.valueOf(ch));</span><br><span class="line">            case &#39;[&#39;:</span><br><span class="line">                return new Token(TokenType.BEGIN_ARRAY, String.valueOf(ch));</span><br><span class="line">            case &#39;]&#39;:</span><br><span class="line">                return new Token(TokenType.END_ARRAY, String.valueOf(ch));</span><br><span class="line">            case &#39;,&#39;:</span><br><span class="line">                return new Token(TokenType.SEP_COMMA, String.valueOf(ch));</span><br><span class="line">            case &#39;:&#39;:</span><br><span class="line">                return new Token(TokenType.SEP_COLON, String.valueOf(ch));</span><br><span class="line">            case &#39;n&#39;:</span><br><span class="line">                return readNull();</span><br><span class="line">            case &#39;t&#39;:</span><br><span class="line">            case &#39;f&#39;:</span><br><span class="line">                return readBoolean();</span><br><span class="line">            case &#39;&quot;&#39;:</span><br><span class="line">                return readString();</span><br><span class="line">            case &#39;-&#39;:</span><br><span class="line">                return readNumber();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if (isDigit(ch)) &#123;</span><br><span class="line">            return readNumber();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        throw new JsonParseException(&quot;Illegal character&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 <p>在 <a target="_blank" rel="noopener" href="https://github.com/gyl-coder/JSON-Parser/blob/master/src/main/java/com/json/demo/tokenizer/Tokenizer.java">start</a> 方法中，我们将每个处理方法都封装成了单独的函数。<strong>主要思想</strong>就是通过一个死循环不停的读取字符，然后再根据字符的期待值，执行不同的处理函数。</p>
 <p>下面我们详解分析几个处理函数：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">private Token readString() throws IOException &#123;</span><br><span class="line">        StringBuilder sb &#x3D; new StringBuilder();</span><br><span class="line">        while(true) &#123;</span><br><span class="line">            char ch &#x3D; readerChar.next();</span><br><span class="line">            if (ch &#x3D;&#x3D; &#39;\\&#39;) &#123;   &#x2F;&#x2F; 处理转义字符</span><br><span class="line">                if (!isEscape()) &#123;</span><br><span class="line">                    throw new JsonParseException(&quot;Invalid escape character&quot;);</span><br><span class="line">                &#125;</span><br><span class="line">                sb.append(&#39;\\&#39;);</span><br><span class="line">                ch &#x3D; readerChar.peek();</span><br><span class="line">                sb.append(ch);</span><br><span class="line">                if (ch &#x3D;&#x3D; &#39;u&#39;) &#123;   &#x2F;&#x2F; 处理 Unicode 编码，形如 \u4e2d。且只支持 \u0000 ~ \uFFFF 范围内的编码</span><br><span class="line">                    for (int i &#x3D; 0; i &lt; 4; i++) &#123;</span><br><span class="line">                        ch &#x3D; readerChar.next();</span><br><span class="line">                        if (isHex(ch)) &#123;</span><br><span class="line">                            sb.append(ch);</span><br><span class="line">                        &#125; else &#123;</span><br><span class="line">                            throw new JsonParseException(&quot;Invalid character&quot;);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; else if (ch &#x3D;&#x3D; &#39;&quot;&#39;) &#123;     &#x2F;&#x2F; 碰到另一个双引号，则认为字符串解析结束，返回 Token</span><br><span class="line">                return new Token(TokenType.STRING, sb.toString());</span><br><span class="line">            &#125; else if (ch &#x3D;&#x3D; &#39;\r&#39; || ch &#x3D;&#x3D; &#39;\n&#39;) &#123;     &#x2F;&#x2F; 传入的 JSON 字符串不允许换行</span><br><span class="line">                throw new JsonParseException(&quot;Invalid character&quot;);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                sb.append(ch);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 <p>该方法也是通过一个死循环来读取字符，首先判断的是 JSON 中的转义字符。</p>
 <p>JSON 中允许出现的有以下几种</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">\&quot;</span><br><span class="line">\\</span><br><span class="line">\b</span><br><span class="line">\f</span><br><span class="line">\n</span><br><span class="line">\r</span><br><span class="line">\t</span><br><span class="line">\u four-hex-digits</span><br><span class="line">\&#x2F;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>具体的处理方法封装在了 isEscape() 方法中，处理 Unicode 编码时要特别注意一下 u 的后面会出现四位十六进制数。当读取到一个双引号或者读取到了非法字符（’r’或’、’n’）循环退出。</p>
+<p>具体的处理方法封装在了 isEscape() 方法中，处理 Unicode 编码时要特别注意一下 u 的后面会出现四位十六进制数。当读取到一个双引号或者读取到了非法字符（'r’或’、‘n’）循环退出。</p>
 <p>判断数字的时候也要特别小心，注意负数，frac，exp 等等情况。</p>
 <p>通过上面的解析，我们可以得到一组 token，接下来我们需要以这组 token 作为输入，解析出相应的 JSON 对象</p>
-<h2 id="解析出-JSON-对象"><a href="#解析出-JSON-对象" class="headerlink" title="解析出 JSON 对象"></a>解析出 JSON 对象</h2><p>解析之前我们需要定义出 JSON 对象（JSONObject）和 JSON 数组 (JSONArray) 的实体类。</p>
+<h2 id="解析出-JSON-对象"><a class="header-anchor" href="#解析出-JSON-对象">¶</a>解析出 JSON 对象</h2>
+<p>解析之前我们需要定义出 JSON 对象（JSONObject）和 JSON 数组 (JSONArray) 的实体类。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">package com.json.demo.jsonstyle;</span><br><span class="line"></span><br><span class="line">import com.json.demo.exception.JsonTypeException;</span><br><span class="line">import com.json.demo.util.FormatUtil;</span><br><span class="line"></span><br><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.HashMap;</span><br><span class="line">import java.util.List;</span><br><span class="line">import java.util.Map;</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line"> * JSON的对象形式</span><br><span class="line"> * 对象是一个无序的“‘名称&#x2F;值’对”集合。一个对象以“&#123;”（左括号）开始，“&#125;”（右括号）结束。每个“名称”后跟一个“:”（冒号）；“‘名称&#x2F;值’ 对”之间使用“,”（逗号）分隔。</span><br><span class="line"> *&#x2F;</span><br><span class="line">public class JsonObject &#123;</span><br><span class="line">    private Map&lt;String, Object&gt; map &#x3D; new HashMap&lt;String, Object&gt;();</span><br><span class="line"></span><br><span class="line">    public void put(String key, Object value) &#123;</span><br><span class="line">        map.put(key, value);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Object get(String key) &#123;</span><br><span class="line">        return map.get(key);</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">package com.json.demo.jsonstyle;</span><br><span class="line"></span><br><span class="line">import com.json.demo.exception.JsonTypeException;</span><br><span class="line">import com.json.demo.util.FormatUtil;</span><br><span class="line"></span><br><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.Iterator;</span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line"> * JSON的数组形式</span><br><span class="line"> * 数组是值（value）的有序集合。一个数组以“[”（左中括号）开始，“]”（右中括号）结束。值之间使用“,”（逗号）分隔。</span><br><span class="line"> *&#x2F;</span><br><span class="line">public class JsonArray &#123;</span><br><span class="line">    private List list &#x3D; new ArrayList();</span><br><span class="line"></span><br><span class="line">    public void add(Object obj) &#123;</span><br><span class="line">        list.add(obj);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Object get(int index) &#123;</span><br><span class="line">        return list.get(index);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int size() &#123;</span><br><span class="line">        return list.size();</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 <p>之后我们就可以写解析类了，由于代码较长，这里就不展示了。有兴趣的可以去 GitHub 上下载。实现逻辑比较简单，也易于理解。</p>
 <p>解析类中的 parse 方法首先根据第一个 token 的类型选择调用 parseJsonObject（）或者 parseJsonArray（），进而返回 JSON 对象或者 JSON 数组。上面的解析方法中利用位运算来判断字符的期待值既提高了程序的执行效率也有助于提高代码的 ke’du’xi</p>
 <p>完成之后我们可以写一个测试类来验证下我们的解析器的运行情况。我们可以自己定义一组 JSON 串也可以通过 HttpUtil 工具类从网上获取。最后通过 FormatUtil 类来规范我们输出。</p>
 <p>具体效果如下图所示：</p>
 <img src='https://segmentfault.com/img/remote/1460000015430807?w=872&h=859'>
-
 <img src='https://segmentfault.com/img/remote/1460000015430808'>
-
-
-<h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><ul>
+<h2 id="参考文章"><a class="header-anchor" href="#参考文章">¶</a>参考文章</h2>
+<ul>
 <li><a target="_blank" rel="noopener" href="http://www.cnblogs.com/absfree/p/5502705.html">http://www.cnblogs.com/absfre…</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/article/0014211269349633dda29ee3f29413c91fa65c372585f23000?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io">https://www.liaoxuefeng.com/a…</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/article/0014211269349633dda29ee3f29413c91fa65c372585f23000?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io">https://www.liaoxuefeng.com/a…</a></li>
 <li><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000010998941#articleHeader6">https://segmentfault.com/a/11…</a></li>
 <li><a target="_blank" rel="noopener" href="http://json.org/json-zh.html">http://json.org/json-zh.html</a></li>
 </ul>
@@ -1124,19 +1153,23 @@ JSON 与 JS 的区别以及和 XML 的区别具体请参考百度百科"
             
               <a class='prev' href='/design-pattern/single-pattern/'>
                 <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>单例模式</p>
-                <p class='content'>在介绍单例模式之前，我们先了解一下，什么是设计模式？设计模式（Design Pattern）：是一套被反复使用，多数人知晓的，经过分类编目的，代码设计经验的总结。目的：使用设计模式是为了可重用性...</p>
+                <p class='content'>在介绍单例模式之前，我们先了解一下，什么是设计模式？
+**设计模式（Design Pattern）：**是一套被反复使用，多数人知晓的，经过分类编目的，代码设计经验的总结。
+**目的：**使用设...</p>
               </a>
             
             
               <a class='next' href='/hello-world/'>
-                <p class='title'>Volantis for Hexo 4.2+<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='title'>cover<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
                 <p class='content'>
-Yanliang
-Welcome to yanliang's blog
 
-
-
-</p>
+  .center {
+    display: block;
+    text-align: center;
+  }
+  
+  .cover {
+    pointer-events: n...</p>
               </a>
             
           </div>
@@ -1153,7 +1186,7 @@ Welcome to yanliang's blog
       <p ct><i class='fas fa-comments'></i> 评论</p>
       
       <section id="comments">
-        <div id="valine_container" class="valine_thread">
+        <div id="minivaline_container">
   <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
@@ -1229,6 +1262,7 @@ Welcome to yanliang's blog
 
 
         </div>
+        <!--
       
     
       
@@ -1286,11 +1320,86 @@ Welcome to yanliang's blog
     
       
         <div class='copyright'>
-        <p><a href="https://gyl-coder.top/">Copyright © 2019-2020 Yanliang</a></p>
+        <p><a href="https://gyl-coder.top">Copyright © 2019-2020 Yanliang</a></p>
 
         </div>
       
     
+    -->
+
+      <!--自定义footer样式-->
+      <!--自定义footer样式-->
+<br>
+Copyright <i class="far fa-copyright"></i> 2019-2020
+<a href="/" target="_blank"> YANLIANG'S BLOG </a>丨
+<!-- 在网页底部添加网站运行时间 -->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+
+    function createtime() {
+        var grt = new Date("07/01/2019 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime() + 250);
+        days = (now - grt) / 1000 / 60 / 60 / 24;
+        dnum = Math.floor(days);
+        hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+        hnum = Math.floor(hours);
+        if (String(hnum).length == 1) {
+            hnum = "0" + hnum;
+        }
+        minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes);
+        if (String(mnum).length == 1) {
+            mnum = "0" + mnum;
+        }
+        seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds);
+        if (String(snum).length == 1) {
+            snum = "0" + snum;
+        }
+        document.getElementById("timeDate").innerHTML = "网站已运行 " + dnum + " 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+
+    setInterval("createtime()", 250);
+</script>
+<br/>
+<br/>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://hexo.io/" target="_blank" title="由 Hexo 强力驱动">
+        <span class="badge-subject">Powered</span><span class="badge-value bg-blue">Hexo</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://github.com/" target="_blank"
+       title="静态网页托管于 GitHub Pages 和 Coding Pages">
+        <span class="badge-subject">Hosted</span><span
+                class="badge-value bg-brightgreen">GitHub &amp; Coding</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://www.aliyun.com/" target="_blank" title="阿里云提供域名相关服务">
+        <span class="badge-subject">DNS</span><span class="badge-value bg-blueviolet">Aliyun</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://www.jsdelivr.com/" target="_blank"
+       title="jsDelivr 提供 CDN 加速服务">
+        <span class="badge-subject">CDN</span><span class="badge-value bg-orange">jsDelivr</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://github.com/volantis-x/hexo-theme-volantis/"
+       target="_blank" title="站点使用 Volantis 主题">
+        <span class="badge-subject">Theme</span><span class="badge-value bg-blue">Volantis</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
+       target="_blank" title="本站点采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议进行许可">
+        <span class="badge-subject"><i class="fa fa-copyright"></i></span><span
+                class="badge-value bg-gradient">BY-NC-SA 4.0</span></a>
+</div>
+<div class="github-badge">
+    <a style="color: #fff" rel="license" href="https://github.com/botui/botui" target="_blank" title="A JavaScript framework to create conversational UIs.">
+        <span class="badge-subject">AI机器人</span><span class="badge-value bg-blueviolet">botui</span></a>
+</div>
+
   </footer>
 
 
@@ -1357,14 +1466,14 @@ Welcome to yanliang's blog
         
           
     <li>
-      <a class='vlts-menu fix-cursor-default' href=https://volantis.js.org/contributors/
+      <a class='vlts-menu fix-cursor-default' href=/friends/
         
         
         
         
-          id="https:volantisjsorgcontributors"
+          id="friends"
         >
-        <i class='fa fa-fan fa-spin fa-fw'></i> 加入社区
+        <i class='fa fa-fan fa-spin fa-fw'></i> 小伙伴们
       </a>
     </li>
   
@@ -1377,30 +1486,14 @@ Welcome to yanliang's blog
         
           
     <li>
-      <a class='vlts-menu fix-cursor-default' href=https://github.com/volantis-x/volantis-docs/
+      <a class='vlts-menu fix-cursor-default' href=/catchTheCat/
         
         
         
         
-          id="https:githubcomvolantis-xvolantis-docs"
+          id="catchTheCat"
         >
-        <i class='fa fa-code-branch fa-fw'></i> 本站源码
-      </a>
-    </li>
-  
-        
-      
-        
-          
-    <li>
-      <a class='vlts-menu fix-cursor-default' href=https://github.com/volantis-x/hexo-theme-volantis/
-        
-        
-        
-        
-          id="https:githubcomvolantis-xhexo-theme-volantis"
-        >
-        <i class='fa fa-code-branch fa-fw'></i> 主题源码
+        <i class='fas fa-cat fa-fw'></i> 围住小猫
       </a>
     </li>
   
@@ -1667,72 +1760,54 @@ Welcome to yanliang's blog
 
   
   
-<script src="/js/valine.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/minivaline@3/dist/MiniValine.min.js"></script>
+
+
+
+
 
 
 <script>
-  var GUEST_INFO = ['nick', 'mail', 'link'];
-  var meta = 'nick,mail,link'.split(',').filter(function (item) {
-    return GUEST_INFO.indexOf(item) > -1
-  });
-  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
-  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
-    return REQUIRED_FIELDS.indexOf(item) > -1
-  });
-
-  function emoji(path, idx, ext) {
-    return path + "/" + path + "-" + idx + "." + ext;
-  }
-
-  var emojiMaps = {};
-  for (var i = 1; i <= 54; i++) {
-    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
-  }
-  for (var i = 1; i <= 101; i++) {
-    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
-  }
-  for (var i = 1; i <= 116; i++) {
-    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
-  }
-  for (var i = 1; i <= 125; i++) {
-    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
-  }
-  for (var i = 1; i <= 4; i++) {
-    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
-  }
-
-  function pjax_valine() {
-    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
+function pjax_minivaline() {
+  let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
       decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
-    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
-      "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
+  let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
+    "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
 
-    let ALLPATH = '';
-    if(ALLPATH != '') pageUrl = ALLPATH;
+  let ALLPATH = '';
+  if(ALLPATH != '') pageUrl = ALLPATH;
 
-    var valine = new Valine();
-    valine.init({
-      el: '#valine_container',
-      meta: meta,
-      placeholder: pagePlaceholder,
-      path: pageUrl,
-      appId: "jRi8wpIdG8v9VbC6wddXHTlL-gzGzoHsz",
-      appKey: "oVqMw78YKASJThLN03bSqgve",
-      pageSize: '10',
-      avatar: 'robohash',
-      lang: 'zh-cn',
-      visitor: 'true',
-      highlight: 'true',
-      mathJax: 'false',
-      enableQQ: 'true',
-      requiredFields: requiredFields,
-      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
-      emojiMaps: emojiMaps
-    })
+  new MiniValine({
+    el: '#minivaline_container',
+    appId: 'jRi8wpIdG8v9VbC6wddXHTlL-gzGzoHsz',
+    appKey: 'oVqMw78YKASJThLN03bSqgve',
+    mode: 'xCss',
+    placeholder: pagePlaceholder,
+    path: pageUrl,
+    lang: '',
+    adminEmailMd5: '6e52e95ab454c5a82b0eb13055d79bd5',
+    tagMeta: ["管理员", "小伙伴", "访客"],
+    master: ["6e52e95ab454c5a82b0eb13055d79bd5"],
+    friends: ["b5bd5d836c7a0091aa8473e79ed4c25e", "adb7d1cd192658a55c0ad22a3309cecf", "3ce1e6c77b4910f1871106cb30dc62b0", "cfce8dc43725cc14ffcd9fb4892d5bfc"],
+    math: false,  /*布尔值 字符串无效 下同*/
+    md: true,
+    enableQQ: false,
+    NoRecordIP: true,
+    visitor: false,
+    maxNest: 6,
+    pageSize: 6,
+    barrager: 0,
+    role: 'admin',
+    closeFlag: false,
+    cloudflag: false,
+    region: false,
+    closeUA: false,
+    emoticonUrl: ["https://cdn.jsdelivr.net/npm/alus@latest", "https://cdn.jsdelivr.net/gh/MiniValine/qq@latest", "https://cdn.jsdelivr.net/gh/MiniValine/Bilibilis@latest", "https://cdn.jsdelivr.net/gh/MiniValine/tieba@latest", "https://cdn.jsdelivr.net/gh/MiniValine/twemoji@latest", "https://cdn.jsdelivr.net/gh/MiniValine/weibo@latest"],
+    serverURLs: ''
+    });
   }
-
   $(function () {
-    pjax_valine();
+    pjax_minivaline();
   });
 </script>
 
@@ -2070,8 +2145,8 @@ Welcome to yanliang's blog
           pjax_initCopyCode();
         
         
-          pjax_valine();
         
+          pjax_minivaline();
         
         
         
