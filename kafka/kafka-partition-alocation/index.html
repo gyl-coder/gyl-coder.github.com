@@ -1151,7 +1151,7 @@
       <p ct><i class='fas fa-comments'></i> 评论</p>
       
       <section id="comments">
-        <div id="minivaline_container">
+        <div id="valine_container" class="valine_thread">
   <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
@@ -1728,54 +1728,74 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
 
   
   
-<script src="https://cdn.jsdelivr.net/npm/minivaline@3/dist/MiniValine.min.js"></script>
-
-
-
-
+<script src="https://cdn.jsdelivr.net/gh/HCLonely/Valine@latest/dist/Valine.min.js"></script>
 
 
 <script>
-function pjax_minivaline() {
-  let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
-      decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
-  let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
-    "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link'.split(',').filter(function (item) {
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
 
-  let ALLPATH = '';
-  if(ALLPATH != '') pageUrl = ALLPATH;
-
-  new MiniValine({
-    el: '#minivaline_container',
-    appId: 'wvx2KxLUqgjcKv9QE62FmvUY-MdYXbMMI',
-    appKey: 'u1P8dl8u7IlizUpYbwXpc1VN',
-    mode: 'xCss',
-    placeholder: pagePlaceholder,
-    path: pageUrl,
-    lang: '',
-    adminEmailMd5: '6e52e95ab454c5a82b0eb13055d79bd5',
-    tagMeta: ["管理员", "小伙伴", "访客"],
-    master: ["6e52e95ab454c5a82b0eb13055d79bd5"],
-    friends: ["b5bd5d836c7a0091aa8473e79ed4c25e", "adb7d1cd192658a55c0ad22a3309cecf", "3ce1e6c77b4910f1871106cb30dc62b0", "cfce8dc43725cc14ffcd9fb4892d5bfc"],
-    math: false,  /*布尔值 字符串无效 下同*/
-    md: true,
-    enableQQ: false,
-    NoRecordIP: true,
-    visitor: false,
-    maxNest: 6,
-    pageSize: 6,
-    barrager: 0,
-    role: 'admin',
-    closeFlag: false,
-    cloudflag: false,
-    region: false,
-    closeUA: false,
-    emoticonUrl: ["https://cdn.jsdelivr.net/npm/alus@latest", "https://cdn.jsdelivr.net/gh/MiniValine/qq@latest", "https://cdn.jsdelivr.net/gh/MiniValine/Bilibilis@latest", "https://cdn.jsdelivr.net/gh/MiniValine/tieba@latest", "https://cdn.jsdelivr.net/gh/MiniValine/twemoji@latest", "https://cdn.jsdelivr.net/gh/MiniValine/weibo@latest"],
-    serverURLs: ''
-    });
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
   }
+
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+
+  function pjax_valine() {
+    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
+      decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
+    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
+      "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
+
+    let ALLPATH = '';
+    if(ALLPATH != '') pageUrl = ALLPATH;
+
+    var valine = new Valine();
+    valine.init({
+      el: '#valine_container',
+      meta: meta,
+      placeholder: pagePlaceholder,
+      path: pageUrl,
+      appId: "wvx2KxLUqgjcKv9QE62FmvUY-MdYXbMMI",
+      appKey: "u1P8dl8u7IlizUpYbwXpc1VN",
+      pageSize: '10',
+      avatar: 'robohash',
+      lang: 'zh-cn',
+      visitor: 'true',
+      highlight: 'true',
+      mathJax: 'false',
+      enableQQ: 'true',
+      requiredFields: requiredFields,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps,
+      master: '[6e52e95ab454c5a82b0eb13055d79bd5]',
+      friends: '[b5bd5d836c7a0091aa8473e79ed4c25e,adb7d1cd192658a55c0ad22a3309cecf,3ce1e6c77b4910f1871106cb30dc62b0,cfce8dc43725cc14ffcd9fb4892d5bfc]'
+    })
+  }
+
   $(function () {
-    pjax_minivaline();
+    pjax_valine();
   });
 </script>
 
@@ -2113,8 +2133,8 @@ function pjax_minivaline() {
           pjax_initCopyCode();
         
         
+          pjax_valine();
         
-          pjax_minivaline();
         
         
         
