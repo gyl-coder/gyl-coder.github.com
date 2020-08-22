@@ -312,13 +312,6 @@
   </url>
   
   <url>
-    <loc>https://gyl-coder.top/tags/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</loc>
-    <lastmod>2020-08-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://gyl-coder.top/tags/Immutability%E6%A8%A1%E5%BC%8F/</loc>
     <lastmod>2020-08-22</lastmod>
     <changefreq>daily</changefreq>
@@ -347,6 +340,20 @@
   </url>
   
   <url>
+    <loc>https://gyl-coder.top/tags/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</loc>
+    <lastmod>2020-08-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://gyl-coder.top/tags/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/</loc>
+    <lastmod>2020-08-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://gyl-coder.top/tags/Int/</loc>
     <lastmod>2020-08-22</lastmod>
     <changefreq>daily</changefreq>
@@ -355,13 +362,6 @@
   
   <url>
     <loc>https://gyl-coder.top/tags/Integer/</loc>
-    <lastmod>2020-08-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gyl-coder.top/tags/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/</loc>
     <lastmod>2020-08-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
