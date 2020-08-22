@@ -233,6 +233,13 @@
   </url>
   
   <url>
+    <loc>https://gyl-coder.top/java/difference_between_int_and_integer/</loc>
+    
+    <lastmod>2020-03-27</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://gyl-coder.top/kafka/kafka-isr-ar/</loc>
     
     <lastmod>2020-03-27</lastmod>
@@ -248,13 +255,6 @@
   
   <url>
     <loc>https://gyl-coder.top/kafka/kafka-topic-manage/</loc>
-    
-    <lastmod>2020-03-27</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://gyl-coder.top/java/difference_between_int_and_integer/</loc>
     
     <lastmod>2020-03-27</lastmod>
     
@@ -347,7 +347,42 @@
   </url>
   
   <url>
+    <loc>https://gyl-coder.top/tags/Int/</loc>
+    <lastmod>2020-08-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://gyl-coder.top/tags/Integer/</loc>
+    <lastmod>2020-08-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://gyl-coder.top/tags/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/</loc>
+    <lastmod>2020-08-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://gyl-coder.top/tags/kafka/</loc>
+    <lastmod>2020-08-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://gyl-coder.top/tags/try-catch/</loc>
+    <lastmod>2020-08-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://gyl-coder.top/tags/%E5%BC%82%E5%B8%B8%E6%8D%95%E8%8E%B7/</loc>
     <lastmod>2020-08-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -383,41 +418,6 @@
   
   <url>
     <loc>https://gyl-coder.top/tags/Mybatis/</loc>
-    <lastmod>2020-08-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gyl-coder.top/tags/Int/</loc>
-    <lastmod>2020-08-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gyl-coder.top/tags/Integer/</loc>
-    <lastmod>2020-08-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gyl-coder.top/tags/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/</loc>
-    <lastmod>2020-08-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gyl-coder.top/tags/try-catch/</loc>
-    <lastmod>2020-08-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gyl-coder.top/tags/%E5%BC%82%E5%B8%B8%E6%8D%95%E8%8E%B7/</loc>
     <lastmod>2020-08-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -487,14 +487,14 @@
   </url>
   
   <url>
-    <loc>https://gyl-coder.top/tags/LinkedHashMap/</loc>
+    <loc>https://gyl-coder.top/tags/HashMap/</loc>
     <lastmod>2020-08-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://gyl-coder.top/tags/HashMap/</loc>
+    <loc>https://gyl-coder.top/tags/LinkedHashMap/</loc>
     <lastmod>2020-08-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -531,6 +531,13 @@
   </url>
   
   <url>
+    <loc>https://gyl-coder.top/categories/Java/</loc>
+    <lastmod>2020-08-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://gyl-coder.top/categories/kafka/</loc>
     <lastmod>2020-08-22</lastmod>
     <changefreq>daily</changefreq>
@@ -539,13 +546,6 @@
   
   <url>
     <loc>https://gyl-coder.top/categories/Mybatis/</loc>
-    <lastmod>2020-08-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gyl-coder.top/categories/Java/</loc>
     <lastmod>2020-08-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
