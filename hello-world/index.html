@@ -793,7 +793,8 @@
         <div class="article-entry" itemprop="articleBody">
           
           
-          <style>
+          <!-- 使用文档：https://developer.hitokoto.cn/sentence/demo/#%E7%BD%91%E9%A1%B5 -->
+<style>
 
   .center {
     display: block;
@@ -810,7 +811,7 @@
   
   .hitokoto,
   #hitokoto {
-    font-size: 1.5em;
+    font-size: 1.3em;
     background: linear-gradient(to right, red, blue);
     -webkit-background-clip: text;
     color: transparent;
@@ -819,7 +820,9 @@
 </style>
 <div class="center">
   <div style="margin-bottom: .5em;">
-  <span class="hitokoto">一言: </span><span id="hitokoto">:D 获取中...</span>
+    <span class="hitokoto">
+    <!-- <p id="hitokoto"><a href="#" id="hitokoto_text">:D 获取中...</a></p> -->
+  <span class="hitokoto">一言: </span><span id="hitokoto"> <p id="hitokoto"><a href="#" id="hitokoto_text">:D 获取中...</a></p> </span>
   </div>
   <div>
   <span class="p fas fa-fan fa-lg fa-spin" style="color: #dd58fe"></span>
@@ -830,6 +833,7 @@
 <div class="cover center">
 <p><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/loading.svg" data-original="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/hello.jpg" alt=""></p>
 </div>
+<script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
 <script>
   (function(){
     if (!(window.hitokoto instanceof Object)) {
@@ -1459,8 +1463,8 @@ function pjax_minivaline() {
 
   new MiniValine({
     el: '#minivaline_container',
-    appId: 'jRi8wpIdG8v9VbC6wddXHTlL-gzGzoHsz',
-    appKey: 'oVqMw78YKASJThLN03bSqgve',
+    appId: 'wvx2KxLUqgjcKv9QE62FmvUY-MdYXbMMI',
+    appKey: 'u1P8dl8u7IlizUpYbwXpc1VN',
     mode: 'xCss',
     placeholder: pagePlaceholder,
     path: pageUrl,

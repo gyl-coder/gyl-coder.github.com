@@ -877,24 +877,19 @@
     <link href="https://gyl-coder.top/hello-world/"/>
     <id>https://gyl-coder.top/hello-world/</id>
     <published>2017-10-23T16:00:00.000Z</published>
-    <updated>2020-08-21T11:01:58.654Z</updated>
+    <updated>2020-08-22T01:38:00.482Z</updated>
     
-    <content type="html"><![CDATA[<style>  .center {    display: block;    text-align: center;  }    .cover {    pointer-events: none;    -webkit-user-select: none;    -moz-user-select: none;    -ms-user-select: none;    user-select: none;  }    .hitokoto,  #hitokoto {    font-size: 1.5em;    background: linear-gradient(to right, red, blue);    -webkit-background-clip: text;    color: transparent;  }</style><div class="center">  <div style="margin-bottom: .5em;">  <span class="hitokoto">一言: </span><span id="hitokoto">:D 获取中...</span>  </div>  <div>  <span class="p fas fa-fan fa-lg fa-spin" style="color: #dd58fe"></span>  <span class="p small green">Welcome to yanliang's blog</span>  <span class="p fas fa-fan fa-lg fa-spin" style="color: #dd58fe"></span>  </div></div><div class="cover center"><p><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/hello.jpg" alt=""></p></div><script>  (function(){    if (!(window.hitokoto instanceof Object)) {      document.getElementById('hitokoto').innerText = window.hitokoto;    }  })();</script>]]></content>
+    <content type="html"><![CDATA[<!-- 使用文档：https://developer.hitokoto.cn/sentence/demo/#%E7%BD%91%E9%A1%B5 --><style>  .center {    display: block;    text-align: center;  }    .cover {    pointer-events: none;    -webkit-user-select: none;    -moz-user-select: none;    -ms-user-select: none;    user-select: none;  }    .hitokoto,  #hitokoto {    font-size: 1.3em;    background: linear-gradient(to right, red, blue);    -webkit-background-clip: text;    color: transparent;  }</style><div class="center">  <div style="margin-bottom: .5em;">    <span class="hitokoto">    <!-- <p id="hitokoto"><a href="#" id="hitokoto_text">:D 获取中...</a></p> -->  <span class="hitokoto">一言: </span><span id="hitokoto"> <p id="hitokoto"><a href="#" id="hitokoto_text">:D 获取中...</a></p> </span>  </div>  <div>  <span class="p fas fa-fan fa-lg fa-spin" style="color: #dd58fe"></span>  <span class="p small green">Welcome to yanliang's blog</span>  <span class="p fas fa-fan fa-lg fa-spin" style="color: #dd58fe"></span>  </div></div><div class="cover center"><p><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/hello.jpg" alt=""></p></div><script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script><script>  (function(){    if (!(window.hitokoto instanceof Object)) {      document.getElementById('hitokoto').innerText = window.hitokoto;    }  })();</script>]]></content>
     
     
       
       
-    <summary type="html">&lt;style&gt;
+    <summary type="html">&lt;!-- 使用文档：https://developer.hitokoto.cn/sentence/demo/#%E7%BD%91%E9%A1%B5 --&gt;
+&lt;style&gt;
 
   .center {
     display: block;
-    text-align: center;
-  }
-  
-  .cover {
-    pointer-events: none;
-    -webkit-user-select: none;
-</summary>
+    text-align: cente</summary>
       
     
     
