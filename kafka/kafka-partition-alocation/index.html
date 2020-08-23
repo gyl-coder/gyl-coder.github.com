@@ -862,7 +862,7 @@
     
       
       
-        <a title='Kafka有哪几处地方有分区分配的概念？简述大致的过程及原理' href='/kafka/kafka-partition-alocation/'><img class='thumbnail' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/Kafka.svg'></a>
+        <a title='Kafka有哪几处地方有分区分配的概念？简述大致的过程及原理' href='/kafka/kafka-partition-alocation/'><img class='thumbnail' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/kafka.svg'></a>
       
       <div class="meta" id="header-meta">
         
@@ -944,7 +944,7 @@
 </blockquote>
 <h2 id="消费者的分区分配"><a class="header-anchor" href="#消费者的分区分配">¶</a>消费者的分区分配</h2>
 <p>在Kafka的默认规则中，每一个分区只能被同一个消费组中的一个消费者消费。消费者的分区分配是指为消费组中的消费者分配所订阅主题中的分区。</p>
-<img src='https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.2/img/kafka/1570611450769.png'>
+<img src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka8.png'>
 <p>如图所示，某个主题中共有4个分区（Partition）：P0、P1、P2、P3。有两个消费组A和B都订阅了这个主题，消费组A中有4个消费者（C0、C1、C2和C3），消费组B中有2个消费者（C4和C5）。按照Kafka默认的规则，最后的分配结果是消费组A中的每一个消费者分配到1个分区，消费组B中的每一个消费者分配到2个分区，两个消费组之间互不影响。每个消费者只能消费所分配到的分区中的消息。</p>
 <p>对于消费者的分区分配而言，Kafka自身提供了三种策略，分别为 <code>RangeAssignor</code>、<code> RoundRobinAssignor</code> 以及 <code>StickyAssignor</code> ，其中 <code>RangeAssignor</code> 为默认的分区分配策略。</p>
 <h3 id="RangeAssignor"><a class="header-anchor" href="#RangeAssignor">¶</a>RangeAssignor</h3>
@@ -995,7 +995,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Subscription <span class="title">subscription</span><span class="params">(Set&lt;String&gt; topics)</span></span>;</span><br><span class="line"><span class="function">String <span class="title">name</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function">Map&lt;String, Assignment&gt; <span class="title">assign</span><span class="params">(Cluster metadata, </span></span></span><br><span class="line"><span class="function"><span class="params">                               Map&lt;String, Subscription&gt; subscriptions)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">onAssignment</span><span class="params">(Assignment assignment)</span></span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Subscription</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> List&lt;String&gt; topics;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> ByteBuffer userData;</span><br><span class="line">（省略若干方法……）</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Assignment</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> List&lt;TopicPartition&gt; partitions;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> ByteBuffer userData;</span><br><span class="line">（省略若干方法……）</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>PartitionAssignor接口中定义了两个内部类：Subscription和Assignment。</p>
 <p>Subscription类用来表示消费者的订阅信息，类中有两个属性：topics和userData，分别表示消费者所订阅topic列表和用户自定义信息。PartitionAssignor接口通过subscription()方法来设置消费者自身相关的Subscription信息，注意到此方法中只有一个参数topics，与Subscription类中的topics的相互呼应，但是并没有有关userData的参数体现。为了增强用户对分配结果的控制，可以在subscription()方法内部添加一些影响分配的用户自定义信息赋予userData，比如：权重、ip地址、host或者机架（rack）等等。</p>
-<img src='https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.2/img/kafka/1570614069844.png'>
+<img src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka9.png'>
 <p>举例，在subscription()这个方法中提供机架信息，标识此消费者所部署的机架位置，在分区分配时可以根据分区的leader副本所在的机架位置来实施具体的分配，这样可以让消费者与所需拉取消息的broker节点处于同一机架。参考下图，消费者consumer1和broker1都部署在机架rack1上，消费者consumer2和broker2都部署在机架rack2上。如果分区的分配不是机架感知的，那么有可能与图（上部分）中的分配结果一样，consumer1消费broker2中的分区，而consumer2消费broker1中的分区；如果分区的分配是机架感知的，那么就会出现图（下部分）的分配结果，consumer1消费broker1中的分区，而consumer2消费broker2中的分区，这样相比于前一种情形而言，既可以减少消费延迟又可以减少跨机架带宽的占用。</p>
 <p>再来说一下Assignment类，它是用来表示分配结果信息的，类中也有两个属性：partitions和userData，分别表示所分配到的分区集合和用户自定义的数据。可以通过PartitionAssignor接口中的onAssignment()方法是在每个消费者收到消费组leader分配结果时的回调函数，例如在StickyAssignor策略中就是通过这个方法保存当前的分配方案，以备在下次消费组再平衡（rebalance）时可以提供分配参考依据。</p>
 <p>接口中的name()方法用来提供分配策略的名称，对于Kafka提供的3种分配策略而言，RangeAssignor对应的protocol_name为“range”，RoundRobinAssignor对应的protocol_name为“roundrobin”，StickyAssignor对应的protocol_name为“sticky”，所以自定义的分配策略中要注意命名的时候不要与已存在的分配策略发生冲突。这个命名用来标识分配策略的名称，在后面所描述的加入消费组以及选举消费组leader的时候会有涉及。</p>
@@ -1009,7 +1009,7 @@
 <p>我们了解了Kafka中消费者的分区分配策略之后是否会有这样的疑问：如果消费者客户端中配置了两个分配策略，那么以哪个为准？如果有多个消费者，彼此所配置的分配策略并不完全相同，那么以哪个为准？多个消费者之间的分区分配是需要协同的，那么这个协同的过程又是怎样？</p>
 <p>在kafka中有一个组协调器（GroupCoordinator）负责来协调消费组内各个消费者的分区分配，对于每一个消费组而言，在kafka服务端都会有其对应的一个组协调器。具体的协调分区分配的过程如下：<br>
 1.首先各个消费者向GroupCoordinator提案各自的分配策略。如下图所示，各个消费者提案的分配策略和订阅信息都包含在JoinGroupRequest请求中。</p>
-<img src='https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.2/img/kafka/1570618606027.png'>
+<img src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka10.png'>
 <p>2.GroupCoordinator收集各个消费者的提案，然后执行以下两个步骤：一、选举消费组的leader；二、选举消费组的分区分配策略。</p>
 <p>选举消费组的分区分配策略比较好理解，为什么这里还要选举消费组的leader，因为最终的分区分配策略的实施需要有一个成员来执行，而这个leader消费者正好扮演了这一个角色。在Kafka中把具体的分区分配策略的具体执行权交给了消费者客户端，这样可以提供更高的灵活性。比如需要变更分配策略，那么只需修改消费者客户端就醒来，而不必要修改并重启Kafka服务端。</p>
 <p>怎么选举消费组的leader? 这个分两种情况分析：如果消费组内还没有leader，那么第一个加入消费组的消费者即为消费组的leader；如果某一时刻leader消费者由于某些原因退出了消费组，那么就会重新选举一个新的leader，这个重新选举leader的过程又更为“随意”了，相关代码如下：</p>
@@ -1022,10 +1022,10 @@
 计算候选集中各个策略的选票数，选票数最多的策略即为当前消费组的分配策略。<br>
 如果某个消费者并不支持所选举出的分配策略，那么就会报错。<br>
 3.GroupCoordinator发送回执给各个消费者，并交由leader消费者执行具体的分区分配。</p>
-<img src='https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.2/img/kafka/1570618923749.png'>
+<img src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka11.png'>
 <p>如上图所示，JoinGroupResponse回执中包含有GroupCoordinator中投票选举出的分配策略的信息。并且，只有leader消费者的回执中包含各个消费者的订阅信息，因为只需要leader消费者根据订阅信息来执行具体的分配，其余的消费并不需要。</p>
 <p>4.leader消费者在整理出具体的分区分配方案后通过SyncGroupRequest请求提交给GroupCoordinator，然后GroupCoordinator为每个消费者挑选出各自的分配结果并通过SyncGroupResponse回执以告知它们。</p>
-<img src='https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.2/img/kafka/1570618945713.png'>
+<img src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka12.png'>
 <h2 id="broker端的分区分配"><a class="header-anchor" href="#broker端的分区分配">¶</a>broker端的分区分配</h2>
 <p>生产者的分区分配是指为每条消息指定其所要发往的分区，消费者中的分区分配是指为消费者指定其可以消费消息的分区，而这里的分区分配是指为集群制定创建主题时的分区副本分配方案，即在哪个broker中创建哪些分区的副本。分区分配是否均衡会影响到Kafka整体的负载均衡，具体还会牵涉到优先副本等概念。</p>
 <p>在创建主题时，如果使用了replica-assignment参数，那么就按照指定的方案来进行分区副本的创建；如果没有使用replica-assignment参数，那么就需要按照内部的逻辑来计算分配方案了。使用kafka-topics.sh脚本创建主题时的内部分配逻辑按照机架信息划分成两种策略：未指定机架信息和指定机架信息。如果集群中所有的broker节点都没有配置broker.rack参数，或者使用disable-rack-aware参数来创建主题，那么采用的就是未指定机架信息的分配策略，否则采用的就是指定机架信息的分配策略。</p>
@@ -1090,10 +1090,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-08-16T10:02:59+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-08-23T22:32:46+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Aug 16, 2020</p>
+    <p>更新于：Aug 23, 2020</p>
   </a>
 </div>
 
@@ -1120,7 +1120,7 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gyl-coder.top/kafka/kafka-partition-alocation/&title=Kafka有哪几处地方有分区分配的概念？简述大致的过程及原理 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/Kafka.svg&summary=在 kafka 中，分区分配是一个很重要的概念，它会影响Kafka整体的性能均衡。kafka 中一共有三处地方涉及此概念，分别是：生产者发送消息、消费者消费消息和创建主题。虽然这三处的对应操作都可以被称之为“分区分配”，但是其实质上所包含的内容却并不相同。"
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gyl-coder.top/kafka/kafka-partition-alocation/&title=Kafka有哪几处地方有分区分配的概念？简述大致的过程及原理 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/kafka.svg&summary=在 kafka 中，分区分配是一个很重要的概念，它会影响Kafka整体的性能均衡。kafka 中一共有三处地方涉及此概念，分别是：生产者发送消息、消费者消费消息和创建主题。虽然这三处的对应操作都可以被称之为“分区分配”，但是其实质上所包含的内容却并不相同。"
           
           >
           
@@ -1132,7 +1132,7 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://gyl-coder.top/kafka/kafka-partition-alocation/&title=Kafka有哪几处地方有分区分配的概念？简述大致的过程及原理 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/Kafka.svg&summary=在 kafka 中，分区分配是一个很重要的概念，它会影响Kafka整体的性能均衡。kafka 中一共有三处地方涉及此概念，分别是：生产者发送消息、消费者消费消息和创建主题。虽然这三处的对应操作都可以被称之为“分区分配”，但是其实质上所包含的内容却并不相同。"
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://gyl-coder.top/kafka/kafka-partition-alocation/&title=Kafka有哪几处地方有分区分配的概念？简述大致的过程及原理 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/kafka.svg&summary=在 kafka 中，分区分配是一个很重要的概念，它会影响Kafka整体的性能均衡。kafka 中一共有三处地方涉及此概念，分别是：生产者发送消息、消费者消费消息和创建主题。虽然这三处的对应操作都可以被称之为“分区分配”，但是其实质上所包含的内容却并不相同。"
           
           >
           
@@ -1144,7 +1144,7 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://gyl-coder.top/kafka/kafka-partition-alocation/&title=Kafka有哪几处地方有分区分配的概念？简述大致的过程及原理 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/Kafka.svg&summary=在 kafka 中，分区分配是一个很重要的概念，它会影响Kafka整体的性能均衡。kafka 中一共有三处地方涉及此概念，分别是：生产者发送消息、消费者消费消息和创建主题。虽然这三处的对应操作都可以被称之为“分区分配”，但是其实质上所包含的内容却并不相同。"
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://gyl-coder.top/kafka/kafka-partition-alocation/&title=Kafka有哪几处地方有分区分配的概念？简述大致的过程及原理 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/kafka.svg&summary=在 kafka 中，分区分配是一个很重要的概念，它会影响Kafka整体的性能均衡。kafka 中一共有三处地方涉及此概念，分别是：生产者发送消息、消费者消费消息和创建主题。虽然这三处的对应操作都可以被称之为“分区分配”，但是其实质上所包含的内容却并不相同。"
           
           >
           
