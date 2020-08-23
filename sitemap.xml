@@ -326,6 +326,20 @@
   </url>
   
   <url>
+    <loc>https://gyl-coder.top/tags/Int/</loc>
+    <lastmod>2020-08-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://gyl-coder.top/tags/Integer/</loc>
+    <lastmod>2020-08-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://gyl-coder.top/tags/%E9%99%90%E6%B5%81%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2020-08-23</lastmod>
     <changefreq>daily</changefreq>
@@ -341,20 +355,6 @@
   
   <url>
     <loc>https://gyl-coder.top/tags/%E5%8F%AF%E6%89%A9%E5%B1%95/</loc>
-    <lastmod>2020-08-23</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gyl-coder.top/tags/Int/</loc>
-    <lastmod>2020-08-23</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gyl-coder.top/tags/Integer/</loc>
     <lastmod>2020-08-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -494,14 +494,14 @@
   </url>
   
   <url>
-    <loc>https://gyl-coder.top/tags/LinkedHashMap/</loc>
+    <loc>https://gyl-coder.top/tags/LinkedList/</loc>
     <lastmod>2020-08-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://gyl-coder.top/tags/LinkedList/</loc>
+    <loc>https://gyl-coder.top/tags/LinkedHashMap/</loc>
     <lastmod>2020-08-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -524,14 +524,14 @@
   </url>
   
   <url>
-    <loc>https://gyl-coder.top/categories/%E8%AE%BE%E8%AE%A1/</loc>
+    <loc>https://gyl-coder.top/categories/Java/</loc>
     <lastmod>2020-08-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://gyl-coder.top/categories/Java/</loc>
+    <loc>https://gyl-coder.top/categories/%E8%AE%BE%E8%AE%A1/</loc>
     <lastmod>2020-08-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
