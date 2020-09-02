@@ -1637,17 +1637,7 @@ div.timenode .body p:last-child {
   margin-bottom: 0;
 }
 div.timenode .body .highlight {
-  background: #fff7ea;
-}
-div.timenode .body .highlight figcaption {
-  transition: all 0.28s ease;
-  -moz-transition: all 0.28s ease;
-  -webkit-transition: all 0.28s ease;
-  -o-transition: all 0.28s ease;
-  background: #ffeed2;
-}
-div.timenode .body .highlight .gutter {
-  background: #ffedd0;
+  border: 1px solid #e4e4e4;
 }
 div.timenode:hover .meta {
   color: #444;
