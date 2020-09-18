@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0'>
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/tree/4.0.0-rc.4'>
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
@@ -15,6 +15,7 @@
   <meta name="HandheldFriendly" content="True" >
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
 
   <!-- 页面元数据 -->
   
@@ -32,25 +33,13 @@
   
 
   <!-- link -->
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
   
     
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css">
 
   
   
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css">
-
-  
-  
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
-
-  
-
-  
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
 
   
 
@@ -58,8 +47,6 @@
     <link rel="shortcut icon" type='image/x-icon' href="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/favicon32.png">
   
 
-  
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
   
 
   
@@ -73,9 +60,22 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
-
   
   
+  <!-- 脚本懒加载函数 -->
+  <script>
+  function loadScript(src, cb) {
+    var HEAD = document.getElementsByTagName('head')[0] || document.documentElement;
+    var script = document.createElement('script');
+    script.setAttribute('type','text/javascript');
+    if (cb) script.onload = cb;
+    script.setAttribute('src', src);
+    HEAD.appendChild(script);
+  }
+  //https://github.com/filamentgroup/loadCSS
+  !function(c){"use strict";var e=function(e,t,n,r){var o,i=c.document,a=i.createElement("link");if(t)o=t;else{var d=(i.body||i.getElementsByTagName("head")[0]).childNodes;o=d[d.length-1]}var f=i.styleSheets;if(r)for(var l in r)r.hasOwnProperty(l)&&a.setAttribute(l,r[l]);a.rel="stylesheet",a.href=e,a.media="only x",function e(t){if(i.body)return t();setTimeout(function(){e(t)})}(function(){o.parentNode.insertBefore(a,t?o:o.nextSibling)});var s=function(e){for(var t=a.href,n=f.length;n--;)if(f[n].href===t)return e();setTimeout(function(){s(e)})};function u(){a.addEventListener&&a.removeEventListener("load",u),a.media=n||"all"}return a.addEventListener&&a.addEventListener("load",u),(a.onloadcssdefined=s)(u),a};"undefined"!=typeof exports?exports.loadCSS=e:c.loadCSS=e}("undefined"!=typeof global?global:this);
+  </script>
+  <script id="loadcss"></script>
 </head>
 
 <body>
@@ -83,70 +83,7 @@
   <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/js/love.js"></script>
   <!--浏览器搞笑标题-->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/js/ergao.js"></script>  
-  
-  
-  
-  <div class="cover-wrapper">
-    <cover class='cover ' style="display: none;">
-      <div class='cover-body'>
-  <div class='a'>
-    
-    
-      <p class="title">Yanliang</p>
-    
-    
-      <p class="subtitle">「Willing to exchange self-discipline for freedom」</p>
-    
-  </div>
-  <div class='b'>
-    <div class='menu navigation featured'>
-      <div class='list-h'>
-        
-          
-            <a href="/"
-              
-              
-              id="home">
-              <i class='fas fa-book fa-fw'></i><p>博文</p>
-            </a>
-          
-            <a href="/friends/"
-              
-              
-              id="friends">
-              <i class='fas fa-link fa-fw'></i><p>友人帐</p>
-            </a>
-          
-            <a href="/comment/"
-              
-              
-              id="comment">
-              <i class='fas fa-comment fa-fw'></i><p>留言板</p>
-            </a>
-          
-            <a href="/about/"
-              
-              
-              id="about">
-              <i class='fas fa-info-circle fa-fw'></i><p>关于</p>
-            </a>
-          
-            <a target="_blank" rel="noopener" href="https://travellings.now.sh/"
-              
-              
-              id="https:travellingsnowsh">
-              <i class='fas fa-fighter-jet fa-fw'></i><p>开往</p>
-            </a>
-          
-        
-      </div>
-    </div>
-  </div>
-</div>
-
-      <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
-    </cover>
-    <header class="l_header shadow blur">
+  <header class="l_header auto shadow blur " style='opacity: 0' >
   <div class='container'>
   <div class='wrapper'>
     <div class='nav-sub'>
@@ -444,22 +381,6 @@
                     <li>
                       <div class="aplayer-container">
                         
-
-  
-    <meting-js
-      theme='#1BCDFC'
-      autoplay='false'
-      volume='0.7'
-      loop='all'
-      order='list'
-      fixed='false'
-      list-max-height='320px'
-      server='netease'
-      type='song'
-      id='186453'
-      list-folded='true'>
-    </meting-js>
-  
 
 
                       </div>
@@ -802,14 +723,81 @@
   </div>
 </header>
 
+  <div class="l_body">
+    <div class="l_cover">
+  
+    
+    
+        <div class='cover-wrapper  dock' style="display: none;">
+          
+            <div class='cover-backstretch'></div>
+          
+          <div class='cover-body'>
+  <div class='top'>
+    
+    
+      <p class="title">Yanliang</p>
+    
+    
+      <p class="subtitle">「Willing to exchange self-discipline for freedom」</p>
+    
+  </div>
+  <div class='bottom'>
+    <div class='menu navigation'>
+      <div class='list-h'>
+        
+          
+            <a href="/"
+              
+              
+              id="home">
+              <i class='fas fa-book fa-fw'></i><p>博文</p>
+            </a>
+          
+            <a href="/friends/"
+              
+              
+              id="friends">
+              <i class='fas fa-link fa-fw'></i><p>友人帐</p>
+            </a>
+          
+            <a href="/comment/"
+              
+              
+              id="comment">
+              <i class='fas fa-comment fa-fw'></i><p>留言板</p>
+            </a>
+          
+            <a href="/about/"
+              
+              
+              id="about">
+              <i class='fas fa-info-circle fa-fw'></i><p>关于</p>
+            </a>
+          
+            <a target="_blank" rel="noopener" href="https://travellings.now.sh/"
+              
+              
+              id="https:travellingsnowsh">
+              <i class='fas fa-fighter-jet fa-fw'></i><p>开往</p>
+            </a>
+          
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+          <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+        </div>
+    
+  
   </div>
   
-
-
-  <div class="l_body">
-    <div class='body-wrapper' id="pjax-container">
-      
-        <!--此文件用来存放一些不方便取值的变量--> 
+    <div class='safearea'>
+      <div class='body-wrapper' id="pjax-container">
+        
+          <!--此文件用来存放一些不方便取值的变量--> 
 <!--思路大概是将值藏到重加载的区域内--> 
  
  
@@ -818,40 +806,37 @@
   <div id="pjax-ispage">false</div> 
   <div id="pjax-pageTitle"></div> 
   <div id="pjax-enable-cover">true</div> 
-  <div id="pjax-comment-path">none</div> 
-  <div id="pjax-comment-placeholder">none</div> 
+  <div id="pjax-comment-path"></div> 
+  <div id="pjax-comment-placeholder"></div> 
 </div> 
  
  
 <script> 
   // 处理封面 此时 jquery 还没加载 
-  if ("blog" == "none") { // 移除封面 
-    document.getElementsByClassName('cover')[0].style.display = "none"; 
-    document.getElementsByClassName('l_body')[0].classList.add("nocover"); 
+  if ("half" == "none") { // 移除封面 
+    document.getElementsByClassName('cover-wrapper')[0].style.display = "none"; 
     document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show"); 
   } else { 
-    if ("blog" == "blog") { // 半屏 
-      document.getElementsByClassName('cover')[0].classList.remove("full"); 
-      document.getElementsByClassName('cover')[0].classList.add("half"); 
+    if ("half" == "half") { // 半屏 
+      document.getElementsByClassName('cover-wrapper')[0].setAttribute('id', 'half'); 
       document.getElementsByClassName('scroll-down')[0].style.display = "none"; 
-    } else if ("blog" == "docs") { // 全屏 
-      document.getElementsByClassName('cover')[0].classList.remove("half"); 
-      document.getElementsByClassName('cover')[0].classList.add("full"); 
+    } else if ("half" == "full") { // 全屏 
+      document.getElementsByClassName('cover-wrapper')[0].setAttribute('id', 'full'); 
       document.getElementsByClassName('scroll-down')[0].style.display = ""; 
     } 
-    document.getElementsByClassName('cover')[0].style.display = ""; 
-    document.getElementsByClassName('l_body', 'show')[0].classList.remove("nocover"); 
+    document.getElementsByClassName('cover-wrapper')[0].style.display = ""; 
     document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show"); 
   } 
 </script> 
+ 
 
-      
-      
+        
+        
 
 <div class='l_main'>
 	
 		
-  <section class="post-list ">
+  <section class="post-list">
     
       
         
@@ -881,249 +866,65 @@
       
         
           <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
+            <div class="post post-v3 white-box reveal shadow">
   
-
-
-  <section class='meta'>
+  
+  
+  
     
-      
-      
-        <a title='kafka 主题管理' href='/kafka/kafka-topic-manage/'><img class='thumbnail' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/kafka.svg'></a>
-      
-      <div class="meta" id="header-meta">
-        
-          
-  <h2 class="title">
-    <a href="/kafka/kafka-topic-manage/">
-      kafka 主题管理
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
-              
-<div class='new-meta-item author'>
-  <a class='author' target="_blank" href="https://gyl-coder.github.io" rel="nofollow noopener">
-    <img no-lazy src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/touxiang.jpg">
-    <p>yanliang</p>
-  </a>
-</div>
-
-            
-          
-            
-              
+    <h2 class="article-title" >
+      <a href="/kafka/kafka-topic-manage/">
+        kafka 主题管理
+      </a>
+    </h2>
   
-  <div class='new-meta-item category'>
-    <a href='/categories/kafka/' rel="nofollow">
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>kafka</p>
-    </a>
+  <div class='md'>
+    
+      <p>对于 kafka 主题（topic）的管理（增删改查），使用最多的便是kafka自带的脚本。</p>
+    
   </div>
-
-
-            
-          
-            
-              <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Dec 8, 2019</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-
-            
-          
-            
-              
-  <div class="new-meta-item browse valine">
-    <a class='notlink'>
-      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
-      
-      <span id="/kafka/kafka-topic-manage/" class="leancloud_visitors" data-flag-title="kafka 主题管理">
-      <p>
-        <span class="leancloud-visitors-count"></span>
-      </p>
-      </span>
-    </a>
-  </div>
-
-
-            
-          
-            
-              
-<div class="new-meta-item comments-count">
   
-  <a href="/kafka/kafka-topic-manage/#comments">
-    <i class="fas fa-comment-dots fa-fw"></i>
-    <span class="valine-comment-count" data-xid="/kafka/kafka-topic-manage/">0</span>
-    <span class="leancloud-comments-count">&nbsp;</span>
-  </a>
-</div>
-
-
-            
-          
-            
-              
-
-            
-          
-        </div>
+    <div class='meta-v3' line_style='solid'>
+      <div>
         
-          <hr>
+        <time>2019-12-08</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/kafka/">kafka</a>
         
       </div>
-    
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
       
-        <p>对于 kafka 主题（topic）的管理（增删改查），使用最多的便是kafka自带的脚本。</p>
+        <div>
+          <a class='readmore' href='/kafka/kafka-topic-manage/'>
+            Read More
+          </a>
+        </div>
       
     </div>
-    
-      
-        <a class= "readmore" href="/kafka/kafka-topic-manage/">
-          阅读全文 <i class="fas fa-chevron-right"></i>
-        </a>
-      
-    
-  </section>
-</article>
+  
+
+</div>
 
           </div>
         
       
         
           <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
+            <div class="post post-v3 white-box reveal shadow">
   
-
-
-  <section class='meta'>
+  
+  
+  
     
-      
-      
-        <a title='kafka 问题总结' href='/kafka/kafka-todo-list/'><img class='thumbnail' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/kafka.svg'></a>
-      
-      <div class="meta" id="header-meta">
-        
-          
-  <h2 class="title">
-    <a href="/kafka/kafka-todo-list/">
-      kafka 问题总结
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
-              
-<div class='new-meta-item author'>
-  <a class='author' target="_blank" href="https://gyl-coder.github.io" rel="nofollow noopener">
-    <img no-lazy src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/touxiang.jpg">
-    <p>yanliang</p>
-  </a>
-</div>
-
-            
-          
-            
-              
+    <h2 class="article-title" >
+      <a href="/kafka/kafka-todo-list/">
+        kafka 问题总结
+      </a>
+    </h2>
   
-  <div class='new-meta-item category'>
-    <a href='/categories/kafka/' rel="nofollow">
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>kafka</p>
-    </a>
-  </div>
-
-
-            
-          
-            
-              <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Dec 7, 2019</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-
-            
-          
-            
-              
-  <div class="new-meta-item browse valine">
-    <a class='notlink'>
-      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
-      
-      <span id="/kafka/kafka-todo-list/" class="leancloud_visitors" data-flag-title="kafka 问题总结">
-      <p>
-        <span class="leancloud-visitors-count"></span>
-      </p>
-      </span>
-    </a>
-  </div>
-
-
-            
-          
-            
-              
-<div class="new-meta-item comments-count">
-  
-  <a href="/kafka/kafka-todo-list/#comments">
-    <i class="fas fa-comment-dots fa-fw"></i>
-    <span class="valine-comment-count" data-xid="/kafka/kafka-todo-list/">0</span>
-    <span class="leancloud-comments-count">&nbsp;</span>
-  </a>
-</div>
-
-
-            
-          
-            
-              
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
+  <div class='md'>
     
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol>
+      <ol>
 <li><a href="https://gyl-coder.top/2019/10/09/kafka-reliability/">kafka如何保证数据可靠性和数据一致性</a></li>
 <li><a href="https://gyl-coder.top/2019/10/10/kafka-rebalance/">Kafka Rebalance机制分析</a></li>
 <li>Kafka的用途有哪些？使用场景如何？</li>
@@ -1131,977 +932,368 @@
 <li><a href="https://gyl-coder.top/2019/10/04/Kafka%E4%B8%AD%E7%9A%84HW%E3%80%81LEO%E3%80%81LSO%E7%AD%89%E5%88%86%E5%88%AB%E4%BB%A3%E8%A1%A8%E4%BB%80%E4%B9%88%EF%BC%9F/">Kafka中的HW、LEO、LSO等分别代表什么？</a></li>
 <li>Kafka中是怎么体现消息顺序性的？</li>
 </ol>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2019-12-07</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/kafka/">kafka</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/kafka/kafka-todo-list/'>
+            Read More
+          </a>
+        </div>
       
     </div>
-    
-      
-        <a class= "readmore" href="/kafka/kafka-todo-list/">
-          阅读全文 <i class="fas fa-chevron-right"></i>
-        </a>
-      
-    
-  </section>
-</article>
+  
+
+</div>
 
           </div>
         
       
         
           <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
+            <div class="post post-v3 white-box reveal shadow">
   
-
-
-  <section class='meta'>
+  
+  
+  
     
-      
-      
-        <a title='kafka 如何保证数据的可靠性和一致性' href='/kafka/kafka-reliability/'><img class='thumbnail' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/kafka.svg'></a>
-      
-      <div class="meta" id="header-meta">
-        
-          
-  <h2 class="title">
-    <a href="/kafka/kafka-reliability/">
-      kafka 如何保证数据的可靠性和一致性
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
-              
-<div class='new-meta-item author'>
-  <a class='author' target="_blank" href="https://gyl-coder.github.io" rel="nofollow noopener">
-    <img no-lazy src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/touxiang.jpg">
-    <p>yanliang</p>
-  </a>
-</div>
-
-            
-          
-            
-              
+    <h2 class="article-title" >
+      <a href="/kafka/kafka-reliability/">
+        kafka 如何保证数据的可靠性和一致性
+      </a>
+    </h2>
   
-  <div class='new-meta-item category'>
-    <a href='/categories/kafka/' rel="nofollow">
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>kafka</p>
-    </a>
-  </div>
-
-
-            
-          
-            
-              <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Dec 6, 2019</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-
-            
-          
-            
-              
-  <div class="new-meta-item browse valine">
-    <a class='notlink'>
-      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
-      
-      <span id="/kafka/kafka-reliability/" class="leancloud_visitors" data-flag-title="kafka 如何保证数据的可靠性和一致性">
-      <p>
-        <span class="leancloud-visitors-count"></span>
-      </p>
-      </span>
-    </a>
-  </div>
-
-
-            
-          
-            
-              
-<div class="new-meta-item comments-count">
-  
-  <a href="/kafka/kafka-reliability/#comments">
-    <i class="fas fa-comment-dots fa-fw"></i>
-    <span class="valine-comment-count" data-xid="/kafka/kafka-reliability/">0</span>
-    <span class="leancloud-comments-count">&nbsp;</span>
-  </a>
-</div>
-
-
-            
-          
-            
-              
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
+  <div class='md'>
     
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="数据可靠性"><a class="header-anchor" href="#数据可靠性">¶</a>数据可靠性</h2>
+      <h2 id="数据可靠性"><a class="header-anchor" href="#数据可靠性">¶</a>数据可靠性</h2>
 <p>Kafka 作为一个商业级消息中间件，消息可靠性的重要性可想而知。本文从 Producter 往 Broker 发送消息、Topic 分区副本以及 Leader 选举几个角度介绍数据的可靠性。</p>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2019-12-06</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/kafka/">kafka</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/kafka/kafka-reliability/'>
+            Read More
+          </a>
+        </div>
       
     </div>
-    
-      
-        <a class= "readmore" href="/kafka/kafka-reliability/">
-          阅读全文 <i class="fas fa-chevron-right"></i>
-        </a>
-      
-    
-  </section>
-</article>
+  
+
+</div>
 
           </div>
         
       
         
           <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
+            <div class="post post-v3 white-box reveal shadow">
   
-
-
-  <section class='meta'>
+  
+  
+  
     
-      
-      
-        <a title='Kafka Rebalance机制分析' href='/kafka/kafka-rebalance/'><img class='thumbnail' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/kafka.svg'></a>
-      
-      <div class="meta" id="header-meta">
-        
-          
-  <h2 class="title">
-    <a href="/kafka/kafka-rebalance/">
-      Kafka Rebalance机制分析
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
-              
-<div class='new-meta-item author'>
-  <a class='author' target="_blank" href="https://gyl-coder.github.io" rel="nofollow noopener">
-    <img no-lazy src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/touxiang.jpg">
-    <p>yanliang</p>
-  </a>
-</div>
-
-            
-          
-            
-              
+    <h2 class="article-title" >
+      <a href="/kafka/kafka-rebalance/">
+        Kafka Rebalance机制分析
+      </a>
+    </h2>
   
-  <div class='new-meta-item category'>
-    <a href='/categories/kafka/' rel="nofollow">
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>kafka</p>
-    </a>
-  </div>
-
-
-            
-          
-            
-              <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Dec 5, 2019</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-
-            
-          
-            
-              
-  <div class="new-meta-item browse valine">
-    <a class='notlink'>
-      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
-      
-      <span id="/kafka/kafka-rebalance/" class="leancloud_visitors" data-flag-title="Kafka Rebalance机制分析">
-      <p>
-        <span class="leancloud-visitors-count"></span>
-      </p>
-      </span>
-    </a>
-  </div>
-
-
-            
-          
-            
-              
-<div class="new-meta-item comments-count">
-  
-  <a href="/kafka/kafka-rebalance/#comments">
-    <i class="fas fa-comment-dots fa-fw"></i>
-    <span class="valine-comment-count" data-xid="/kafka/kafka-rebalance/">0</span>
-    <span class="leancloud-comments-count">&nbsp;</span>
-  </a>
-</div>
-
-
-            
-          
-            
-              
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
+  <div class='md'>
     
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Rebalance 本质上是一种协议，规定了一个 Consumer Group 下的所有 consumer 如何达成一致，来分配订阅 Topic 的每个分区。</p>
+      <p>Rebalance 本质上是一种协议，规定了一个 Consumer Group 下的所有 consumer 如何达成一致，来分配订阅 Topic 的每个分区。</p>
 <p>例如：某 Group 下有 20 个 consumer 实例，它订阅了一个具有 100 个 partition 的 Topic 。正常情况下，kafka 会为每个 Consumer 平均的分配 5 个分区。这个分配的过程就是 Rebalance。</p>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2019-12-05</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/kafka/">kafka</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/kafka/kafka-rebalance/'>
+            Read More
+          </a>
+        </div>
       
     </div>
-    
-      
-        <a class= "readmore" href="/kafka/kafka-rebalance/">
-          阅读全文 <i class="fas fa-chevron-right"></i>
-        </a>
-      
-    
-  </section>
-</article>
+  
+
+</div>
 
           </div>
         
       
         
           <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
+            <div class="post post-v3 white-box reveal shadow">
   
-
-
-  <section class='meta'>
+  
+  
+  
     
-      
-      
-        <a title='Kafka有哪几处地方有分区分配的概念？简述大致的过程及原理' href='/kafka/kafka-partition-alocation/'><img class='thumbnail' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/kafka.svg'></a>
-      
-      <div class="meta" id="header-meta">
-        
-          
-  <h2 class="title">
-    <a href="/kafka/kafka-partition-alocation/">
-      Kafka有哪几处地方有分区分配的概念？简述大致的过程及原理
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
-              
-<div class='new-meta-item author'>
-  <a class='author' target="_blank" href="https://gyl-coder.github.io" rel="nofollow noopener">
-    <img no-lazy src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/touxiang.jpg">
-    <p>yanliang</p>
-  </a>
-</div>
-
-            
-          
-            
-              
+    <h2 class="article-title" >
+      <a href="/kafka/kafka-partition-alocation/">
+        Kafka有哪几处地方有分区分配的概念？简述大致的过程及原理
+      </a>
+    </h2>
   
-  <div class='new-meta-item category'>
-    <a href='/categories/kafka/' rel="nofollow">
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>kafka</p>
-    </a>
+  <div class='md'>
+    
+      <p>在 kafka 中，分区分配是一个很重要的概念，它会影响Kafka整体的性能均衡。kafka 中一共有三处地方涉及此概念，分别是：生产者发送消息、消费者消费消息和创建主题。虽然这三处的对应操作都可以被称之为“分区分配”，但是其实质上所包含的内容却并不相同。</p>
+    
   </div>
-
-
-            
-          
-            
-              <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Dec 4, 2019</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-
-            
-          
-            
-              
-  <div class="new-meta-item browse valine">
-    <a class='notlink'>
-      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
-      
-      <span id="/kafka/kafka-partition-alocation/" class="leancloud_visitors" data-flag-title="Kafka有哪几处地方有分区分配的概念？简述大致的过程及原理">
-      <p>
-        <span class="leancloud-visitors-count"></span>
-      </p>
-      </span>
-    </a>
-  </div>
-
-
-            
-          
-            
-              
-<div class="new-meta-item comments-count">
   
-  <a href="/kafka/kafka-partition-alocation/#comments">
-    <i class="fas fa-comment-dots fa-fw"></i>
-    <span class="valine-comment-count" data-xid="/kafka/kafka-partition-alocation/">0</span>
-    <span class="leancloud-comments-count">&nbsp;</span>
-  </a>
-</div>
-
-
-            
-          
-            
-              
-
-            
-          
-        </div>
+    <div class='meta-v3' line_style='solid'>
+      <div>
         
-          <hr>
+        <time>2019-12-04</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/kafka/">kafka</a>
         
       </div>
-    
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
       
-        <p>在 kafka 中，分区分配是一个很重要的概念，它会影响Kafka整体的性能均衡。kafka 中一共有三处地方涉及此概念，分别是：生产者发送消息、消费者消费消息和创建主题。虽然这三处的对应操作都可以被称之为“分区分配”，但是其实质上所包含的内容却并不相同。</p>
+        <div>
+          <a class='readmore' href='/kafka/kafka-partition-alocation/'>
+            Read More
+          </a>
+        </div>
       
     </div>
-    
-      
-        <a class= "readmore" href="/kafka/kafka-partition-alocation/">
-          阅读全文 <i class="fas fa-chevron-right"></i>
-        </a>
-      
-    
-  </section>
-</article>
+  
+
+</div>
 
           </div>
         
       
         
           <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
+            <div class="post post-v3 white-box reveal shadow">
   
-
-
-  <section class='meta'>
+  
+  
+  
     
-      
-      
-        <a title='kafka的listeners配置错误导致主线程阻塞' href='/kafka/kafka-listeners-config/'><img class='thumbnail' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/kafka.svg'></a>
-      
-      <div class="meta" id="header-meta">
-        
-          
-  <h2 class="title">
-    <a href="/kafka/kafka-listeners-config/">
-      kafka的listeners配置错误导致主线程阻塞
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
-              
-<div class='new-meta-item author'>
-  <a class='author' target="_blank" href="https://gyl-coder.github.io" rel="nofollow noopener">
-    <img no-lazy src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/touxiang.jpg">
-    <p>yanliang</p>
-  </a>
-</div>
-
-            
-          
-            
-              
+    <h2 class="article-title" >
+      <a href="/kafka/kafka-listeners-config/">
+        kafka的listeners配置错误导致主线程阻塞
+      </a>
+    </h2>
   
-  <div class='new-meta-item category'>
-    <a href='/categories/kafka/' rel="nofollow">
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>kafka</p>
-    </a>
-  </div>
-
-
-            
-          
-            
-              <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Dec 3, 2019</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-
-            
-          
-            
-              
-  <div class="new-meta-item browse valine">
-    <a class='notlink'>
-      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
-      
-      <span id="/kafka/kafka-listeners-config/" class="leancloud_visitors" data-flag-title="kafka的listeners配置错误导致主线程阻塞">
-      <p>
-        <span class="leancloud-visitors-count"></span>
-      </p>
-      </span>
-    </a>
-  </div>
-
-
-            
-          
-            
-              
-<div class="new-meta-item comments-count">
-  
-  <a href="/kafka/kafka-listeners-config/#comments">
-    <i class="fas fa-comment-dots fa-fw"></i>
-    <span class="valine-comment-count" data-xid="/kafka/kafka-listeners-config/">0</span>
-    <span class="leancloud-comments-count">&nbsp;</span>
-  </a>
-</div>
-
-
-            
-          
-            
-              
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
+  <div class='md'>
     
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="问题背景"><a class="header-anchor" href="#问题背景">¶</a>问题背景</h2>
+      <h2 id="问题背景"><a class="header-anchor" href="#问题背景">¶</a>问题背景</h2>
 <p>我们在用kafka的时候，偶尔会遇到这样这样一个问题。</p>
 <p>我们写的kafka的客户端程序，在启动的时候，会无缘无故的 <code>卡住（阻塞）</code> 如下图所示：</p>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2019-12-03</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/kafka/">kafka</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/kafka/kafka-listeners-config/'>
+            Read More
+          </a>
+        </div>
       
     </div>
-    
-      
-        <a class= "readmore" href="/kafka/kafka-listeners-config/">
-          阅读全文 <i class="fas fa-chevron-right"></i>
-        </a>
-      
-    
-  </section>
-</article>
+  
+
+</div>
 
           </div>
         
       
         
           <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
+            <div class="post post-v3 white-box reveal shadow">
   
-
-
-  <section class='meta'>
+  
+  
+  
     
-      
-      
-        <a title='kafka中的ISR、AR代表什么？ISR的伸缩性又指什么？' href='/kafka/kafka-isr-ar/'><img class='thumbnail' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/kafka.svg'></a>
-      
-      <div class="meta" id="header-meta">
-        
-          
-  <h2 class="title">
-    <a href="/kafka/kafka-isr-ar/">
-      kafka中的ISR、AR代表什么？ISR的伸缩性又指什么？
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
-              
-<div class='new-meta-item author'>
-  <a class='author' target="_blank" href="https://gyl-coder.github.io" rel="nofollow noopener">
-    <img no-lazy src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/touxiang.jpg">
-    <p>yanliang</p>
-  </a>
-</div>
-
-            
-          
-            
-              
+    <h2 class="article-title" >
+      <a href="/kafka/kafka-isr-ar/">
+        kafka中的ISR、AR代表什么？ISR的伸缩性又指什么？
+      </a>
+    </h2>
   
-  <div class='new-meta-item category'>
-    <a href='/categories/kafka/' rel="nofollow">
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>kafka</p>
-    </a>
+  <div class='md'>
+    
+      <p>相信大家已经对 <code>kafka</code> 的基本概念已经有一定的了解了，下面直接来分析一下 ISR 和 AR 的概念。</p>
+    
   </div>
-
-
-            
-          
-            
-              <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Dec 2, 2019</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-
-            
-          
-            
-              
-  <div class="new-meta-item browse valine">
-    <a class='notlink'>
-      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
-      
-      <span id="/kafka/kafka-isr-ar/" class="leancloud_visitors" data-flag-title="kafka中的ISR、AR代表什么？ISR的伸缩性又指什么？">
-      <p>
-        <span class="leancloud-visitors-count"></span>
-      </p>
-      </span>
-    </a>
-  </div>
-
-
-            
-          
-            
-              
-<div class="new-meta-item comments-count">
   
-  <a href="/kafka/kafka-isr-ar/#comments">
-    <i class="fas fa-comment-dots fa-fw"></i>
-    <span class="valine-comment-count" data-xid="/kafka/kafka-isr-ar/">0</span>
-    <span class="leancloud-comments-count">&nbsp;</span>
-  </a>
-</div>
-
-
-            
-          
-            
-              
-
-            
-          
-        </div>
+    <div class='meta-v3' line_style='solid'>
+      <div>
         
-          <hr>
+        <time>2019-12-02</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/kafka/">kafka</a>
         
       </div>
-    
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
       
-        <p>相信大家已经对 <code>kafka</code> 的基本概念已经有一定的了解了，下面直接来分析一下 ISR 和 AR 的概念。</p>
+        <div>
+          <a class='readmore' href='/kafka/kafka-isr-ar/'>
+            Read More
+          </a>
+        </div>
       
     </div>
-    
-      
-        <a class= "readmore" href="/kafka/kafka-isr-ar/">
-          阅读全文 <i class="fas fa-chevron-right"></i>
-        </a>
-      
-    
-  </section>
-</article>
+  
+
+</div>
 
           </div>
         
       
         
           <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
+            <div class="post post-v3 white-box reveal shadow">
   
-
-
-  <section class='meta'>
+  
+  
+  
     
-      
-      
-        <a title='Kafka中的HW、LEO、LSO等分别代表什么？' href='/kafka/kafka-hw-leo-lso/'><img class='thumbnail' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/kafka.svg'></a>
-      
-      <div class="meta" id="header-meta">
-        
-          
-  <h2 class="title">
-    <a href="/kafka/kafka-hw-leo-lso/">
-      Kafka中的HW、LEO、LSO等分别代表什么？
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
-              
-<div class='new-meta-item author'>
-  <a class='author' target="_blank" href="https://gyl-coder.github.io" rel="nofollow noopener">
-    <img no-lazy src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/touxiang.jpg">
-    <p>yanliang</p>
-  </a>
-</div>
-
-            
-          
-            
-              
+    <h2 class="article-title" >
+      <a href="/kafka/kafka-hw-leo-lso/">
+        Kafka中的HW、LEO、LSO等分别代表什么？
+      </a>
+    </h2>
   
-  <div class='new-meta-item category'>
-    <a href='/categories/kafka/' rel="nofollow">
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>kafka</p>
-    </a>
-  </div>
-
-
-            
-          
-            
-              <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Dec 1, 2019</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-
-            
-          
-            
-              
-  <div class="new-meta-item browse valine">
-    <a class='notlink'>
-      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
-      
-      <span id="/kafka/kafka-hw-leo-lso/" class="leancloud_visitors" data-flag-title="Kafka中的HW、LEO、LSO等分别代表什么？">
-      <p>
-        <span class="leancloud-visitors-count"></span>
-      </p>
-      </span>
-    </a>
-  </div>
-
-
-            
-          
-            
-              
-<div class="new-meta-item comments-count">
-  
-  <a href="/kafka/kafka-hw-leo-lso/#comments">
-    <i class="fas fa-comment-dots fa-fw"></i>
-    <span class="valine-comment-count" data-xid="/kafka/kafka-hw-leo-lso/">0</span>
-    <span class="leancloud-comments-count">&nbsp;</span>
-  </a>
-</div>
-
-
-            
-          
-            
-              
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
+  <div class='md'>
     
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><code>HW</code> 、 <code>LEO</code> 等概念和上一篇文章所说的 <code>ISR</code>有着紧密的关系，如果不了解 ISR 可以先看下ISR相关的介绍。</p>
+      <p><code>HW</code> 、 <code>LEO</code> 等概念和上一篇文章所说的 <code>ISR</code>有着紧密的关系，如果不了解 ISR 可以先看下ISR相关的介绍。</p>
 <p><code>HW</code> （High Watermark）俗称高水位，它标识了一个特定的消息偏移量（offset），消费者只能拉取到这个offset之前的消息。</p>
 <p>下图表示一个日志文件，这个日志文件中只有9条消息，第一条消息的offset（LogStartOffset）为0，最有一条消息的offset为8，offset为9的消息使用虚线表示的，代表下一条待写入的消息。日志文件的 HW 为6，表示消费者只能拉取offset在 0 到 5 之间的消息，offset为6的消息对消费者而言是不可见的。</p>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2019-12-01</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/kafka/">kafka</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/kafka/kafka-hw-leo-lso/'>
+            Read More
+          </a>
+        </div>
       
     </div>
-    
-      
-        <a class= "readmore" href="/kafka/kafka-hw-leo-lso/">
-          阅读全文 <i class="fas fa-chevron-right"></i>
-        </a>
-      
-    
-  </section>
-</article>
+  
+
+</div>
 
           </div>
         
       
         
           <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
+            <div class="post post-v3 white-box reveal shadow">
   
-
-
-  <section class='meta'>
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/iq/">
+        智力题
+      </a>
+    </h2>
+  
+  <div class='md'>
     
       
+        ¶No.1
+给一个瞎子52张扑克牌，并告诉他里面恰好有10张牌是正面朝上的。要求这个瞎子把牌分成两堆，使得每堆牌里正面朝上的牌的张数一样多。瞎子应该怎么做？
+**答案：**把扑克牌分成两堆，一堆10张，一堆42张。然后，把小的那一堆里的所有牌全部翻过来。
+¶No.2
+如何用一枚硬币等概率地产生一个1到3之间的随机整数？如果这枚硬币是不公正的呢？
+**答案：**如果是公正的硬币，则投掷两次，“...
       
-        <a title='智力题' href='/iq/'><img class='thumbnail' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/neves.svg'></a>
-      
-      <div class="meta" id="header-meta">
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
         
-          
-  <h2 class="title">
-    <a href="/iq/">
-      智力题
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
-              
-<div class='new-meta-item author'>
-  <a class='author' target="_blank" href="https://gyl-coder.github.io" rel="nofollow noopener">
-    <img no-lazy src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/touxiang.jpg">
-    <p>yanliang</p>
-  </a>
-</div>
-
-            
-          
-            
-              <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-08-23T22:36:56+08:00">
-  <a class='notlink'>
-    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Aug 23, 2020</p>
-  </a>
-</div>
-
-            
-          
-        </div>
-        
-          <hr>
+        <time>2019-11-14</time>
         
       </div>
-    
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="No-1"><a class="header-anchor" href="#No-1">¶</a>No.1</h4>
-<p>给一个瞎子52张扑克牌，并告诉他里面恰好有10张牌是正面朝上的。要求这个瞎子把牌分成两堆，使得每堆牌里正面朝上的牌的张数一样多。瞎子应该怎么做？</p>
-<p>**答案：**把扑克牌分成两堆，一堆10张，一堆42张。然后，把小的那一堆里的所有牌全部翻过来。</p>
-<h4 id="No-2"><a class="header-anchor" href="#No-2">¶</a>No.2</h4>
-<p>如何用一枚硬币等概率地产生一个1到3之间的随机整数？如果这枚硬币是不公正的呢？</p>
-<p>**答案：**如果是公正的硬币，则投掷两次，“正反”为1，“反正”为2，“正正”为3，“反反”重来。</p>
-<p>如果是不公正的硬币，注意到出现“正反”和“反正”的概率一样，因此令“正反反正”、“反正正反”、“正反正反”分别为1、2、3，其余情况重来。另一种更妙的办法是，投掷三次硬币，“正反反”为1，“反正反”为2，“反反正”为3，其余情况重来。</p>
-<h4 id="No-3"><a class="header-anchor" href="#No-3">¶</a>No.3</h4>
-<p>30枚面值不全相同的硬币摆成一排，甲、乙两个人轮流选择这排硬币的其中一端，并取走最外边的那枚硬币。如果你先取硬币，能保证得到的钱不会比对手少吗？</p>
-<p>**答案：**先取者可以让自己总是取奇数位置上的硬币或者总是取偶数位置上的硬币。数一数是奇数位置上的面值总和多还是偶数位置上的面值总和多，然后总是取这些位置上的硬币就可以了。</p>
-<h4 id="No-4"><a class="header-anchor" href="#No-4">¶</a>No.4</h4>
-<p>一个环形轨道上有n个加油站，所有加油站的油量总和正好够车跑一圈。证明，总能找到其中一个加油站，使得初始时油箱为空的汽车从这里出发，能够顺利环行一圈回到起点。</p>
-<p>**答案：**总存在一个加油站，仅用它的油就足够跑到下一个加油站（否则所有加油站的油量加起来将不够全程）。把下一个加油站的所有油都提前搬到这个加 油站来，并把油已被搬走的加油站无视掉。在剩下的加油站中继续寻找油量足以到达下个加油站的地方，不断合并加油站，直到只剩一个加油站为止。显然从这里出发就能顺利跑完全程。</p>
-<p>另一种证明方法：先让汽车油箱里装好足够多的油，随便从哪个加油站出发试跑一圈。车每到一个加油站时，记录此时油箱里剩下的油量，然后把那个加油站的油全部装上。试跑完一圈后，检查刚才路上到哪个加油站时剩的油量最少，那么空着油箱从那里出发显然一定能跑完全程。</p>
-<h4 id="No-5"><a class="header-anchor" href="#No-5">¶</a>No.5</h4>
-<p>初始时，两个口袋里各有一个球。把后面的n-2个球依次放入口袋，放进哪个口袋其概率与各口袋已有的球数成正比。这样下来，球数较少的那个口袋平均期望有多少个球？</p>
-<p>**答案：**先考虑一个看似无关的问题——怎样产生一个1到n的随机排列。首先，在纸上写下数字1；然后，把2写在1的左边或者右边；然后，把3写在最 左边，最右边，或者插进1和2之间……总之，把数字i等概率地放进由前面i-1个数产生的（包括最左端和最右端在内的）共i个空位中的一个。这样生成的显 然是一个完全随机的排列。</p>
-<p>我们换一个角度来看题目描述的过程：假想用一根绳子把两个球拴在一起，把这根绳子标号为1。接下来，把其中一个小球分裂成两个小球，这两个小球用 标号为2的绳子相连。总之，把“放进第i个球”的操作想象成把其中一个球分裂成两个用标有i-1的绳子相连的小球。联想我们前面的讨论，这些绳子的标号事 实上是一个随机的全排列，也就是说最开始绳子1的位置最后等可能地出现在每个地方。也就是说，它两边的小球个数(1,n-1)、(2,n-2)、 (3,n-3)、……、(n-1,1)这n-1种情况等可能地发生。因此，小袋子里的球数大约为n/4个。准确地说，当n为奇数时，小袋子里的球数为 (n+1)/4；当n为偶数时，小袋子里的球数为n^2/(4n-4)。</p>
-<h4 id="No-6"><a class="header-anchor" href="#No-6">¶</a>No.6</h4>
-<p>考虑一个n*n的棋盘，把有公共边的两个格子叫做相邻的格子。初始时，有些格子里有病毒。每一秒钟后，只要一个格子至少有两个相邻格子染上了病毒，那么他自己也会被感染。为了让所有的格子都被感染，初始时最少需要有几个带病毒的格子？给出一种方案并证明最优性。</p>
-<p>**答案：**至少要n个，比如一条对角线上的n个格子。n个格子也是必需的。当一个新的格子被感染后，全体被感染的格子所组成的图形的周长将减少0个、 2个或4个单位（具体减少了多少要看它周围被感染的格子有多少个）。又因为当所有格子都被感染后，图形的周长为4n，因此初始时至少要有n个被感染的格 子。</p>
-<h4 id="No-7"><a class="header-anchor" href="#No-7">¶</a>No.7</h4>
-<p>在一个m*n的棋盘上，有k个格子里放有棋子。是否总能对所有棋子进行红蓝二染色，使得每行每列的红色棋子和蓝色棋子最多差一个？</p>
-<p>**答案：**可以。建一个二分图G(X,Y)，其中X有m个顶点代表了棋盘的m个行，Y有n个顶点代表了棋盘的n个列。第i行第j列有棋子就在X(i) 和Y(j)之间连一条边。先找出图G里的所有环（由于是二分图，环的长度一定是偶数），把环里的边红蓝交替染色。剩下的没染色的图一定是一些树。对每棵树 递归地进行操作：去掉一个叶子节点和对应边，把剩下的树进行合法的红蓝二染色，再把刚才去掉的顶点和边加回去，给这个边适当的颜色以满足要求。</p>
-<h4 id="No-8"><a class="header-anchor" href="#No-8">¶</a>No.8</h4>
-<p>任意给一个8<em>8的01矩阵，你每次只能选一个3</em>3或者4*4的子矩阵并把里面的元素全部取反。是否总有办法把矩阵里的所有数全部变为1？</p>
-<p>**答案：**不能。大矩阵中有36个3<em>3的小矩阵和25个4</em>4的小矩阵，因此总共有61种可能的操作。显然，给定一个操作序列，这些操作的先后顺序 是无关紧要的；另外，在一个操作序列中使用两种或两种以上相同的操作也是无用的。因此，实质不同的操作序列只有2^61种。但8*8的01矩阵一共有 2^64种，因此不是每种情况都有办法达到目的。</p>
-<h4 id="No-9"><a class="header-anchor" href="#No-9">¶</a>No.9</h4>
-<p>五个洞排成一排，其中一个洞里藏有一只狐狸。每个夜晚，狐狸都会跳到一个相邻的洞里；每个白天，你都只允许检查其中一个洞。怎样才能保证狐狸最终会被抓住？</p>
-<p>**答案：**按照2, 3, 4, 2, 3, 4的顺序检查狐狸洞可以保证抓住狐狸。为了说明这个方案是可行的，用集合F表示狐狸可能出现的位置，初始时F = {1, 2, 3, 4, 5}。如果它不在2号洞，则第二天狐狸已经跑到了F = {2, 3, 4, 5}。如果此时它不在3号洞，则第三天狐狸一定跑到了F = {1, 3, 4, 5}。如果此时它不在4号洞，则再过一晚后F = {2, 4}。如果此时它不在2号洞，则再过一天F = {3, 5}。如果此时它不在3号洞，再过一天它就一定跑到4号洞了。</p>
-<p>方案不是唯一的，下面这些方案都是可行的：</p>
-<p>2, 3, 4, 4, 3, 2<br>
-4, 3, 2, 2, 3, 4<br>
-4, 3, 2, 4, 3, 2</p>
-<h4 id="No-10"><a class="header-anchor" href="#No-10">¶</a>No.10</h4>
-<p>一个经典老题是说，把一个3<em>3</em>3的立方体切成27个单位立方体，若每一刀切完后都允许重新摆放各个小块的位置，最少可以用几刀？答案仍然是6刀，因为 正中间那个单位立方体的6个面都是后来才切出来的，因此怎么也需要6刀。考虑这个问题：若把一个n<em>n</em>n的立方体切成一个个单位立方体，最少需要几刀？</p>
-<p>**答案：**事实上，从一个更强的命题出发反而能使问题变得更简单。对于一个a<em>b</em>c的长方体，我们需要f(a)+f(b)+f©刀，其中 f(x)=⌈log(x)/log(2)⌉。只需要注意到，在整个过程中的任何一步，切完当前最大的块所需要的刀数也就等于整个过程还需要的刀数，因为其 它小块需要的刀数都不会超过最大块所需刀数，它们都可以与最大块一道并行处理。这表明，我们的最优决策即是让当前的最大块尽可能的小，也就是说要把当前的 最大块尽可能相等地切成两半。利用数学归纳法，我们可以很快得到本段开头的结论。</p>
-
+        <div>
+          <a class='readmore' href='/iq/'>
+            Read More
+          </a>
+        </div>
       
     </div>
-    
-      
-    
-  </section>
-</article>
+  
+
+</div>
 
           </div>
         
       
         
           <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
+            <div class="post post-v3 white-box reveal shadow">
   
-
-
-  <section class='meta'>
+  
+  
+  
     
-      
-      
-        <a title='Lock & Synchronized' href='/concurrency/lock_and_synchronized/'><img class='thumbnail' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/bingfa.svg'></a>
-      
-      <div class="meta" id="header-meta">
-        
-          
-  <h2 class="title">
-    <a href="/concurrency/lock_and_synchronized/">
-      Lock & Synchronized
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
-              
-<div class='new-meta-item author'>
-  <a class='author' target="_blank" href="https://gyl-coder.github.io" rel="nofollow noopener">
-    <img no-lazy src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/touxiang.jpg">
-    <p>yanliang</p>
-  </a>
-</div>
-
-            
-          
-            
-              <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-08-23T21:58:37+08:00">
-  <a class='notlink'>
-    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Aug 23, 2020</p>
-  </a>
-</div>
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
+    <h2 class="article-title" >
+      <a href="/concurrency/lock_and_synchronized/">
+        Lock & Synchronized
+      </a>
+    </h2>
+  
+  <div class='md'>
     
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>首先我们来考虑一个问题？</p>
+      <p>首先我们来考虑一个问题？</p>
 <p>在Lock出现之前我们一直使用synchronized来实现同步访问。那为什么还要提供lock呢？</p>
 <p>我们知道如果一个代码块被synchronized修饰了，当有一个线程获取了对应的锁，并执行该代码快时，其他线程就只能在一旁等待。</p>
 <p>而获取锁的线程只有在<code>线程正常执行完该代码</code>或者<code>线程执行过程中发生异常</code>才会释放对锁的占有。</p>
@@ -2117,17 +1309,29 @@
 <li>**支持超时。**如果线程在一段时间之内没有获取到锁，不是进入阻塞状态，而是返回一个错误，那这个线程也有机会释放曾经持有的锁。</li>
 <li>**非阻塞地获取锁。**如果尝试获取锁失败，并不进入阻塞状态，而是直接返回，那这个线程也有机会释放曾经持有的锁。</li>
 </ol>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2019-11-07</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/%E5%B9%B6%E5%8F%91/">并发</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/concurrency/lock_and_synchronized/'>
+            Read More
+          </a>
+        </div>
       
     </div>
-    
-      
-        <a class= "readmore" href="/concurrency/lock_and_synchronized/">
-          阅读全文 <i class="fas fa-chevron-right"></i>
-        </a>
-      
-    
-  </section>
-</article>
+  
+
+</div>
 
           </div>
         
@@ -2151,10 +1355,6 @@
         
       </div>
     
-    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-    
-    
-
   
 
 
@@ -2170,7 +1370,7 @@
   <div class='content'>
     
       
-        <a class='avatar flat-box circle' href='/about/'>
+        <a class='avatar flat-box rectangle' href='/about/'>
           <img no-lazy src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/touxiang.jpg'/>
         </a>
       
@@ -2178,11 +1378,6 @@
     
       <div class='text'>
         
-          <h2>Yanliang</h2>
-        
-        
-          <p><i class="fas fa-map-marker-alt"></i> SZ, China</p>
-
         
         
           <p><span id="jinrishici-sentence">yanliang's blog</span></p>
@@ -2198,6 +1393,7 @@
               class="social fas fa-rss flat-btn"
               target="_blank"
               rel="external nofollow noopener noreferrer">
+              
             </a>
           
         
@@ -2206,6 +1402,7 @@
               class="social fas fa-envelope flat-btn"
               target="_blank"
               rel="external nofollow noopener noreferrer">
+              
             </a>
           
         
@@ -2214,6 +1411,7 @@
               class="social fab fa-github flat-btn"
               target="_blank"
               rel="external nofollow noopener noreferrer">
+              
             </a>
           
         
@@ -2222,33 +1420,11 @@
               class="social fas fa-headphones-alt flat-btn"
               target="_blank"
               rel="external nofollow noopener noreferrer">
+              
             </a>
           
         
       </div>
-    
-  </div>
-</section>
-
-  
-
-  
-    
-    
-
-<section class="widget text shadow desktop mobile">
-  
-  <header>
-    
-      <i class="fas fa-bullhorn faa-flash animated fa-fw fa-fw" aria-hidden="true"></i><span class='name'>公告</span>
-    
-  </header>
-
-
-  <div class='content'>
-    
-      <p>本站默认替换了右键菜单，唤醒原系统菜单： <kbd>Ctrl</kbd> + <kbd>右键</kbd> ~ </br>  本站文章准备开启重构计划，挽救质量啊喂！</p>
-
     
   </div>
 </section>
@@ -2366,7 +1542,7 @@
           <div id="webinfo-runtime-count" publish_date="03/24/2020 21:34:09"></div>
         </div>
         <script>
-          var BirthDay = new Date(new Date('2019/01/01'));
+          var BirthDay = new Date(new Date('2020/01/01'));
           var today = new Date();
           var timeold = (today.getTime() - BirthDay.getTime());
           var daysold = Math.floor(timeold / (24 * 60 * 60 * 1000));
@@ -2380,14 +1556,18 @@
       
         <div class="webinfo-item">
           <div>本站访客数：</div>
-          <div><span id="busuanzi_value_site_uv"><i class="fas fa-fan fa-spin fa-fw" aria-hidden="true"></i></span> 人</div>
+          
+          <div><span id="lc-uv"><span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span></span> 人</div>
+          
         </div>
       
 
       
         <div class="webinfo-item">
           <div>本站总访问量：</div>
-          <div><span id="busuanzi_value_site_pv"><i class="fas fa-fan fa-spin fa-fw" aria-hidden="true"></i></span> 次</div>
+          
+          <div><span id="lc-sv"><span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span></span> 次</div>
+          
         </div>
       
 
@@ -2395,60 +1575,60 @@
         <div class="webinfo-item">
           <div>最后活动时间：</div>
           
-            <div id="last-update" style="display: none;">Wed Sep 02 2020 20:58:17 GMT+0800 (GMT+08:00)</div>
-            <div id="last-update-show">2020-09-02 日</div>
+            <div id="last-update" style="display: none;">Fri Sep 18 2020 21:03:57 GMT+0800 (GMT+08:00)</div>
+            <div id="last-update-show">2020-09-18 日</div>
           
         </div>
         
-        <script> 
-          function timeago(dateTimeStamp) { 
-              var minute = 1000 * 60; //把分，时，天，周，半个月，一个月用毫秒表示 
-              var hour = minute * 60; 
-              var day = hour * 24; 
-              var week = day * 7; 
-              var month = day * 30; 
-              var now = new Date().getTime(); //获取当前时间毫秒 
-              var diffValue = now - dateTimeStamp; //时间差 
-              if (diffValue < 0) { 
-                  return; 
-              } 
-              var minC = diffValue / minute; //计算时间差的分，时，天，周，月 
-              var hourC = diffValue / hour; 
-              var dayC = diffValue / day; 
-              var weekC = diffValue / week; 
-              var monthC = diffValue / month; 
-              if (monthC >= 1 && monthC <= 3) { 
-                  result = " " + parseInt(monthC) + " 月前" 
-              } else if (weekC >= 1 && weekC <= 3) { 
-                  result = " " + parseInt(weekC) + " 周前" 
-              } else if (dayC >= 1 && dayC <= 6) { 
-                  result = " " + parseInt(dayC) + " 天前" 
-              } else if (hourC >= 1 && hourC <= 23) { 
-                  result = " " + parseInt(hourC) + " 小时前" 
-              } else if (minC >= 1 && minC <= 59) { 
-                  result = " " + parseInt(minC) + " 分钟前" 
-              } else if (diffValue >= 0 && diffValue <= minute) { 
-                  result = "刚刚" 
-              } else { 
-                  var datetime = new Date(); 
-                  datetime.setTime(dateTimeStamp); 
-                  var Nyear = datetime.getFullYear(); 
-                  var Nmonth = datetime.getMonth() + 1 < 10 ? "0" + (datetime.getMonth() + 1) : datetime.getMonth() + 1; 
-                  var Ndate = datetime.getDate() < 10 ? "0" + datetime.getDate() : datetime.getDate(); 
-                  var Nhour = datetime.getHours() < 10 ? "0" + datetime.getHours() : datetime.getHours(); 
-                  var Nminute = datetime.getMinutes() < 10 ? "0" + datetime.getMinutes() : datetime.getMinutes(); 
-                  var Nsecond = datetime.getSeconds() < 10 ? "0" + datetime.getSeconds() : datetime.getSeconds(); 
-                  result = Nyear + "-" + Nmonth + "-" + Ndate 
-              } 
-              return result; 
-          } 
-          var lastUpDate = document.getElementById('last-update').innerHTML; 
-          try { 
-            document.getElementById('last-update-show').innerHTML = timeago(new Date(lastUpDate)); 
-          } catch (error) { 
-            document.getElementById('last-update-show').innerHTML = '2020-09-02 日'; 
-          } 
-        </script> 
+        <script>
+          function timeago(dateTimeStamp) {
+              var minute = 1000 * 60; //把分，时，天，周，半个月，一个月用毫秒表示
+              var hour = minute * 60;
+              var day = hour * 24;
+              var week = day * 7;
+              var month = day * 30;
+              var now = new Date().getTime(); //获取当前时间毫秒
+              var diffValue = now - dateTimeStamp; //时间差
+              if (diffValue < 0) {
+                  return;
+              }
+              var minC = diffValue / minute; //计算时间差的分，时，天，周，月
+              var hourC = diffValue / hour;
+              var dayC = diffValue / day;
+              var weekC = diffValue / week;
+              var monthC = diffValue / month;
+              if (monthC >= 1 && monthC <= 3) {
+                  result = " " + parseInt(monthC) + " 月前"
+              } else if (weekC >= 1 && weekC <= 3) {
+                  result = " " + parseInt(weekC) + " 周前"
+              } else if (dayC >= 1 && dayC <= 6) {
+                  result = " " + parseInt(dayC) + " 天前"
+              } else if (hourC >= 1 && hourC <= 23) {
+                  result = " " + parseInt(hourC) + " 小时前"
+              } else if (minC >= 1 && minC <= 59) {
+                  result = " " + parseInt(minC) + " 分钟前"
+              } else if (diffValue >= 0 && diffValue <= minute) {
+                  result = "刚刚"
+              } else {
+                  var datetime = new Date();
+                  datetime.setTime(dateTimeStamp);
+                  var Nyear = datetime.getFullYear();
+                  var Nmonth = datetime.getMonth() + 1 < 10 ? "0" + (datetime.getMonth() + 1) : datetime.getMonth() + 1;
+                  var Ndate = datetime.getDate() < 10 ? "0" + datetime.getDate() : datetime.getDate();
+                  var Nhour = datetime.getHours() < 10 ? "0" + datetime.getHours() : datetime.getHours();
+                  var Nminute = datetime.getMinutes() < 10 ? "0" + datetime.getMinutes() : datetime.getMinutes();
+                  var Nsecond = datetime.getSeconds() < 10 ? "0" + datetime.getSeconds() : datetime.getSeconds();
+                  result = Nyear + "-" + Nmonth + "-" + Ndate
+              }
+              return result;
+          }
+          var lastUpDate = document.getElementById('last-update').innerHTML;
+          try {
+            document.getElementById('last-update-show').innerHTML = timeago(new Date(lastUpDate));
+          } catch (error) {
+            document.getElementById('last-update-show').innerHTML = '2020-09-18 日';
+          }
+        </script>
         
       
     </div>
@@ -2461,40 +1641,15 @@
 </aside>
 
 
-
-
-
-	<!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-	
-
-	
-
-
-    </div>
-    
+      </div>
+      
   
-  <footer class="clearfix">
+  <footer class="footer clearfix">
     <br><br>
     
       
         <div class="aplayer-container">
           
-
-  
-    <meting-js
-      theme='#1BCDFC'
-      autoplay='false'
-      volume='0.7'
-      loop='all'
-      order='list'
-      fixed='false'
-      list-max-height='320px'
-      server='netease'
-      type='song'
-      id='186453'
-      list-folded='true'>
-    </meting-js>
-  
 
 
         </div>
@@ -2507,33 +1662,67 @@
           
             
               <a href="/atom.xml"
-                class="social fas fa-rss flat-btn"
+                class="social  flat-btn"
                 target="_blank"
                 rel="external nofollow noopener noreferrer">
+                
+                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/020-rss.svg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/020-rss.svg" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/>
+                
               </a>
             
           
             
-              <a href="mailto:gyl_coder@163.com"
-                class="social fas fa-envelope flat-btn"
+              <a href="https://github.com/gyl-coder/"
+                class="social  flat-btn"
                 target="_blank"
                 rel="external nofollow noopener noreferrer">
+                
+                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/029-github.svg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/029-github.svg" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/>
+                
               </a>
             
           
             
-              <a href="https://github.com/gyl-coder"
-                class="social fab fa-github flat-btn"
+              <a href="/"
+                class="social  flat-btn"
                 target="_blank"
                 rel="external nofollow noopener noreferrer">
+                
+                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/010-facebook.svg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/010-facebook.svg" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/>
+                
               </a>
             
           
             
-              <a href="https://music.163.com/#/user/home?id=314622884"
-                class="social fas fa-headphones-alt flat-btn"
+              <a href="/"
+                class="social  flat-btn"
                 target="_blank"
                 rel="external nofollow noopener noreferrer">
+                
+                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/018-twitter.svg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/018-twitter.svg" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/>
+                
+              </a>
+            
+          
+            
+              <a href="/"
+                class="social  flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+                
+                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/045-telegram.svg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/045-telegram.svg" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/>
+                
+              </a>
+            
+          
+            
+              <a href="/"
+                class="social  flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+                
+                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/006-youtube.svg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/006-youtube.svg" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/>
+                
               </a>
             
           
@@ -2546,12 +1735,16 @@
       
     
       
-        Use
-        <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0" target="_blank" class="codename">Volantis</a>
-        as theme, total visits
-          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
-          times
         
+          <div><p><span id="lc-sv">本站总访问量为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 次</span> <span id="lc-uv">访客数为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 人</span></p>
+</div>
+        
+      
+    
+      
+        Use
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/4.0.0-rc.4" target="_blank" class="codename">Volantis</a>
+        as theme
       
     
       
@@ -2642,17 +1835,118 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
   </footer>
 
 
-    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+      <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+    </div>
   </div>
   <div>
+    <!-- required -->
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js"></script>
+
+<script>
+  function pjax_fancybox() {
+    $(".md .gallery").find("img").each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".md .gallery").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  function SCload_fancybox() {
+    if ($(".md .gallery").find("img").length == 0) return;
+    loadCSS("https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css", document.getElementById("loadcss"));
+    setTimeout(function() {
+      loadScript('https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js', pjax_fancybox)
+    }, 1);
+  };
+  $(function () {
+    SCload_fancybox();
+  });
+</script>
+
+
+<!-- internal -->
+
+  
+  
+  
     
-      
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.jpg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover-backstretch') {
+          $('.cover-backstretch').backstretch(
+            imgs,
+          {
+            duration: "2000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "2000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+  
   
 
   <div id="rightmenu-wrapper">
     <ul class="list-v rightmenu" id="rightmenu-content">
       <li class='option'>
-        <a class='vlts-menu opt fix-cursor-default' id='menu-copy-text' onclick='document.execCommand("copy")'><i class='fa fa-copy fa-fw'></i>Copy Text</a>
+        <a class='vlts-menu opt fix-cursor-default' id='menu-copy-text' onclick="document.execCommand('copy')"><i class='fa fa-copy fa-fw'></i>Copy Text</a>
         <hr id='hr-text'>
         <a class='vlts-menu opt fix-cursor-default' id='menu-copy-href'><i class='fa fa-link fa-fw'></i>Copy Link</a>
         <a class='vlts-menu opt fix-cursor-default' id='menu-open-href'><i class='fa fa-external-link-square-alt fa-fw'></i>Open Link in New Tab</a>
@@ -2660,12 +1954,14 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
         <a class='vlts-menu opt fix-cursor-default' id='menu-copy-src'><i class='fa fa-image fa-fw'></i>Copy Image Link</a>
         <hr id='hr-src'>
       </li>
-      <li class='navigation'>
-        <a class='nav icon-only fix-cursor-default' onclick='history.back()'><i class='fa fa-arrow-left fa-fw'></i></a>
-        <a class='nav icon-only fix-cursor-default' onclick='history.forward()'><i class='fa fa-arrow-right fa-fw'></i></a>
-        <a class='nav icon-only fix-cursor-default' onclick='window.location.reload()'><i class='fa fa-redo fa-fw'></i></a>
-        <a class='nav icon-only fix-cursor-default' href='/'><i class='fa fa-home fa-fw'></i></a>
-      </li>
+      
+        <li class='navigation'>
+          <a class='nav icon-only fix-cursor-default' onclick='history.back()'><i class='fa fa-arrow-left fa-fw'></i></a>
+          <a class='nav icon-only fix-cursor-default' onclick='history.forward()'><i class='fa fa-arrow-right fa-fw'></i></a>
+          <a class='nav icon-only fix-cursor-default' onclick='window.location.reload()'><i class='fa fa-redo fa-fw'></i></a>
+          <a class='nav icon-only fix-cursor-default' href='/'><i class='fa fa-home fa-fw'></i></a>
+        </li>
+      
       <hr>
       
         
@@ -2779,26 +2075,6 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
         
       
         
-          <li class='music name'>
-            <p class='nav music-title fix-cursor-default'></p>
-          </li>
-          <li class='music ctrl'>
-            <a class='nav icon-only backward fix-cursor-default' onclick='aplayerBackward()'><i class='fa fa-step-backward fa-fw'></i></a>
-            <a class='nav icon-only toggle fix-cursor-default' onclick='aplayerToggle()'><i class='fa fa-play fa-fw'></i></a>
-            <a class='nav icon-only forward fix-cursor-default' onclick='aplayerForward()'><i class='fa fa-step-forward fa-fw'></i></a>
-          </li>
-          <li class='music volume'>
-            <a class='nav volume'>
-              <div class="aplayer-volume-bar-wrap">
-                <div class="aplayer-volume-bar fix-cursor-pointer">
-                  <div class="aplayer-volume"></div>
-                  <i class='left fa fa-volume-off fa-fw'></i>
-                  <i class='right fa fa-volume-up fa-fw'></i>
-                </div>
-              </div>
-            </a>
-          </li>
-        
       
     </ul>
   </div>
@@ -2868,8 +2144,10 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       if (href.length == 0) {
         // 选中文本
         if (window.getSelection().toString()) {
-          copyText.style.display = 'block';
-          hrText.style.display = 'block';
+          if ('' == 'true') {
+            copyText.style.display = 'block';
+            hrText.style.display = 'block';
+          }
         }
       }
 
@@ -2901,7 +2179,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       }
 
       // 有音乐播放器
-      if (true == true) {
+      if ('' == true && ('home,me,album,resume,friends,hr,catchTheCat,hr,print,hr,music'||[]).includes('music')) {
         // 如果有aplayer，初始化一下
       	try {
       		checkAPlayer();
@@ -2929,93 +2207,65 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
   </script>
 
 
-    
-    
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js"></script>
 
 
 
-  <script>
-    
-    var SEARCH_SERVICE = "hexo" || "hexo";
-    var ROOT = "/" || "/";
-    if (!ROOT.endsWith('/')) ROOT += '/';
-  </script>
 
 
+  <script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
 
-  <script async src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
 
 
 
   
   
-  
-    
-<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
-
-    <script type="text/javascript">
-      $(function(){
-        var imgs=["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.jpg"];
-        if ('true' == 'true') {
-          function shuffle(arr){
-            /*From countercurrent-time*/
-            var n = arr.length;
-            while(n--) {
-              var index = Math.floor(Math.random() * n);
-              var temp = arr[index];
-              arr[index] = arr[n];
-              arr[n] = temp;
-            }
-          }
-          shuffle(imgs);
-        }
-        if ('.cover') {
-          $('.cover').backstretch(
-            imgs,
-          {
-            duration: "2000",
-            fade: "1500"
-          });
-        } else {
-          $.backstretch(
-            imgs,
-          {
-            duration: "2000",
-            fade: "1500"
-          });
-        }
-      });
+    <script>
+      window.FPConfig = {
+        delay: 0,
+        ignoreKeywords: [],
+        maxRPS: 5,
+        hoverDelay: 25
+      };
     </script>
+    <script defer src="https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"></script>
   
 
 
 
-  <script>
-    let APlayerController = new Object();
-    APlayerController.id = '186453';  // 设定全局音乐播放ID
-    APlayerController.volume = '0.7';
-  </script>
-  
-    
-<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script>
 
-  
-    
-<script src="https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js"></script>
 
-  
-    
-<script src="/js/aplayer.js"></script>
 
-  
 
 
 
 
   
   
-<script src="https://cdn.jsdelivr.net/gh/HCLonely/Valine@latest/dist/Valine.min.js"></script>
+<script src="/js/valine.js"></script>
 
 
 <script>
@@ -3050,20 +2300,22 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
   }
 
   function pjax_valine() {
-    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
-      decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
-    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
-      "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
+    if(!document.querySelectorAll("#valine_container")[0])return;
 
-    let ALLPATH = '';
-    if(ALLPATH != '') pageUrl = ALLPATH;
+    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) || "快来评论吧~";
+
+    let path = $.trim($('#pjax-comment-path').text());
+    if (path.length == 0) {
+      let defaultPath = '';
+      path = defaultPath || decodeURI(window.location.pathname);
+    }
 
     var valine = new Valine();
     valine.init({
       el: '#valine_container',
       meta: meta,
       placeholder: pagePlaceholder,
-      path: pageUrl,
+      path: path,
       appId: "wvx2KxLUqgjcKv9QE62FmvUY-MdYXbMMI",
       appKey: "u1P8dl8u7IlizUpYbwXpc1VN",
       pageSize: '10',
@@ -3075,9 +2327,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       enableQQ: 'true',
       requiredFields: requiredFields,
       emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
-      emojiMaps: emojiMaps,
-      master: '[6e52e95ab454c5a82b0eb13055d79bd5]',
-      friends: '[b5bd5d836c7a0091aa8473e79ed4c25e,adb7d1cd192658a55c0ad22a3309cecf,3ce1e6c77b4910f1871106cb30dc62b0,cfce8dc43725cc14ffcd9fb4892d5bfc]'
+      emojiMaps: emojiMaps
     })
   }
 
@@ -3089,189 +2339,90 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
 
 
 
-<!-- darkmodejs -->
-
   
 <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5/lib/darkmode-js.min.js" aysc></script>
 
-  <script type="text/javascript">
-	function getClientHeight(){
-	  var clientHeight=0;
-	  if(document.body.clientHeight&&document.documentElement.clientHeight){
-	  var clientHeight = (document.body.clientHeight<document.documentElement.clientHeight)?document.body.clientHeight:document.documentElement.clientHeight;
-	  }else{
-	  var clientHeight = (document.body.clientHeight>document.documentElement.clientHeight)?document.body.clientHeight:document.documentElement.clientHeight;
-	  }
-	  return clientHeight;
-	}
-	function supportCss3(style) {
-		var prefix = ['webkit', 'Moz', 'ms', 'o'],
-		i,
-		humpString = [],
-		htmlStyle = document.documentElement.style,
-		_toHumb = function (string) {
-		return string.replace(/-(\w)/g, function ($0, $1) {
-		return $1.toUpperCase();
-		});
-		};
-		for (i in prefix)
-		humpString.push(_toHumb(prefix[i] + '-' + style));
-		humpString.push(_toHumb(style));
-		for (i in humpString)
-		if (humpString[i] in htmlStyle) return true;
-		return false;
-	};
-	//配置信息
-	var options = {
-	  bottom: '32px',
-	  right: 'unset',
-	  left: '16px',
-	  time: '0s',
-	  mixColor: '#f4f4f4',
-	  backgroundColor: '#f4f4f4',
-	  buttonColorDark: '#100f2c',
-	  buttonColorLight: '#f4f4f4',
-	  saveInCookies: true,
-	  label: '🌓',
-	  autoMatchOsTheme: true
-	};
-	// 卡片兼容处理 mix-blend-mode 与 effect: [shadow, floatable, blur] 冲突???
-	function pjax_darkmodejs(){
-		
-	}
-	// mix-blend-mode support?
-	if(supportCss3('mix-blend-mode')){
-		const darkmode = new Darkmode(options);
-		darkmode.showWidget();
-		pjax_darkmodejs();
-	}
-  </script>
-
-
-<!-- 复制 -->
-
-  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
-<script>
-    var clipboard = new ClipboardJS('.btn-copy', {
-        target: function (trigger) {
-            return trigger.nextElementSibling
-        }
-    });
-    function wait(callback, seconds) {
-        var timelag = null;
-        timelag = window.setTimeout(callback, seconds)
-    }
-    function pjax_initCopyCode() {
-        var copyHtml = '';
-        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
-        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
-        copyHtml += '</button>';
-        $(".highlight .code pre").before(copyHtml);
-        $(".article pre code").before(copyHtml);
-        clipboard.off('success').on('success', function (e) {
-            let $btn = $(e.trigger);
-            $btn.addClass('copied');
-            let $icon = $($btn.find('i'));
-            $icon.removeClass('fa-copy');
-            $icon.addClass('fa-check-circle');
-            let $span = $($btn.find('span'));
-            $span[0].innerText = 'COPIED';
-            wait(function () {
-                $icon.removeClass('fa-check-circle');
-                $icon.addClass('fa-copy');
-                $span[0].innerText = 'COPY'
-            }, 2000)
-        });
-        clipboard.off('error').on('error', function (e) {
-            e.clearSelection();
-            let $btn = $(e.trigger);
-            $btn.addClass('copy-failed');
-            let $icon = $($btn.find('i'));
-            $icon.removeClass('fa-copy');
-            $icon.addClass('fa-times-circle');
-            let $span = $($btn.find('span'));
-            $span[0].innerText = 'COPY FAILED';
-            wait(function () {
-                $icon.removeClass('fa-times-circle');
-                $icon.addClass('fa-copy');
-                $span[0].innerText = 'COPY'
-            }, 2000)
-        })
-    }
-    $(function () {
-        pjax_initCopyCode()
-    });
-</script>
-
-
-<!-- scrollreveal -->
-
-  <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script>
-  <script type="text/javascript">
-    function pjax_scrollrebeal() {
-      ScrollReveal().reveal('.l_main .reveal', {
-        distance: '32px',
-        duration: '800',
-        interval: '20',
-        scale: '1',
-        easing: 'ease-out'
-      });
-    }
-
-    $(function () {
-      pjax_scrollrebeal();
-    });
-  </script>
-
-<!-- ******************************** -->
-
-<!-- fancybox -->
-<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
-<script>
-  function pjax_fancybox() {
-    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
-      var element = document.createElement("a"); // a 标签
-      $(element).attr("class", "fancybox");
-      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
-      $(element).attr("href", $(this).attr("src"));
-      if ($(this).attr("data-original")) {
-        $(element).attr("href", $(this).attr("data-original"));
-      }
-      $(element).attr("data-fancybox", "images");
-      var caption = "";   // 描述信息
-      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
-        $(element).attr('data-caption', $(this).attr('alt'));
-        caption = $(this).attr('alt');
-      }
-      var div = document.createElement("div");
-      $(div).addClass("fancybox");
-      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
-      var span = document.createElement("span");
-      $(span).addClass("image-caption");
-      $(span).text(caption); // 加描述
-      $(this).after(span);  // 再套一层描述
-      $(this).wrap(element);  // 最后套 a 标签
-    })
-    $(".article-entry").find("img").fancybox({
-      selector: '[data-fancybox="images"]',
-      hash: false,
-      loop: false,
-      closeClick: true,
-      helpers: {
-        overlay: {closeClick: true}
-      },
-      buttons: [
-        "zoom",
-        "close"
-      ]
-    });
-  };
-  $(function () {
-    pjax_fancybox();
+<script type="text/javascript">
+function getClientHeight(){
+  var clientHeight=0;
+  if(document.body.clientHeight&&document.documentElement.clientHeight){
+  var clientHeight = (document.body.clientHeight<document.documentElement.clientHeight)?document.body.clientHeight:document.documentElement.clientHeight;
+  }else{
+  var clientHeight = (document.body.clientHeight>document.documentElement.clientHeight)?document.body.clientHeight:document.documentElement.clientHeight;
+  }
+  return clientHeight;
+}
+function supportCss3(style) {
+  var prefix = ['webkit', 'Moz', 'ms', 'o'],
+  i,
+  humpString = [],
+  htmlStyle = document.documentElement.style,
+  _toHumb = function (string) {
+  return string.replace(/-(\w)/g, function ($0, $1) {
+  return $1.toUpperCase();
   });
+  };
+  for (i in prefix)
+  humpString.push(_toHumb(prefix[i] + '-' + style));
+  humpString.push(_toHumb(style));
+  for (i in humpString)
+  if (humpString[i] in htmlStyle) return true;
+  return false;
+};
+//配置信息
+var options = {
+  bottom: '32px',
+  right: 'unset',
+  left: '16px',
+  time: '0s',
+  mixColor: '#f4f4f4',
+  backgroundColor: '#f4f4f4',
+  buttonColorDark: '#333',
+  buttonColorLight: '#ddd',
+  saveInCookies: true,
+  label: '',
+  autoMatchOsTheme: true
+};
+// 卡片兼容处理 mix-blend-mode 与 effect: [blur] 冲突
+
+function pjax_darkmodejs(){
+  
+  if(!supportCss3('mix-blend-mode'))return;
+  var checkExist2 = setInterval(function() {
+     if (typeof jQuery == 'undefined'){return;}
+     clearInterval(checkExist2);
+     var TopFlag=getClientHeight();
+    $(window).scroll(function(){
+      var top = $(document).scrollTop();
+      if(top > TopFlag) {
+        $(".darkmode-layer").css("mix-blend-mode","normal");
+        $(".darkmode-layer").css("background-color","#222");
+      }else{
+        $(".darkmode-layer").css("mix-blend-mode","difference");
+        $(".darkmode-layer").css("background-color","");
+      }
+    })
+  }, 100);
+  
+}
+// mix-blend-mode support?
+if(supportCss3('mix-blend-mode')){
+  window.darkmode = new Darkmode(options);
+  
+  window.darkmode.showWidget();
+  
+  pjax_darkmodejs();
+}
+////////////////Development///////////////////////
+//////////////darkmode模式切换////////////////////
+//window.darkmode.toggle();                     //
+//////////////darkmode模式判断////////////////////
+//console.log(window.darkmode.isActivated())    //
+//////////////////////////////////////////////////
 </script>
 
-<!-- ******************************** -->
+
+
 
 
   
@@ -3287,31 +2438,242 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
   
 
 
+<!-- optional -->
 
-  <script defer src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js" data-pjax></script>
-
-
-
+  <script>
+const SearchServiceimagePath="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/img/";
+const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
+(function ($) {
   
-<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
-
-  <script type="text/javascript">
-    $(function () {
-      Waves.attach('.flat-btn', ['waves-button']);
-      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
-      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
-      Waves.attach('.flat-box', ['waves-block']);
-      Waves.attach('.float-box', ['waves-block', 'waves-float']);
-      Waves.attach('.waves-image');
-      Waves.init();
+    customSearch = new HexoSearch({
+      imagePath: SearchServiceimagePath
     });
-  </script>
+  
+})(jQuery);
+
+</script>
 
 
 
 
 
 
+
+
+
+
+
+  <script defer>
+
+  const LCCounter = {
+    app_id: 'GCYDRKI6XRkyC7EuEhJv90ia-MdYXbMMI',
+    app_key: '4xKBXGBj6BgecU62vff5rJHs',
+    custom_api_server: '',
+
+    // 查询存储的记录
+    getRecord(Counter, url, title) {
+      return new Promise(function (resolve, reject) {
+        Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({url})))
+          .then(resp => resp.json())
+          .then(({results, code, error}) => {
+            if (code === 401) {
+              throw error;
+            }
+            if (results && results.length > 0) {
+              var record = results[0];
+              resolve(record);
+            } else {
+              Counter('post', '/classes/Counter', {url, title: title, times: 0})
+                .then(resp => resp.json())
+                .then((record, error) => {
+                  if (error) {
+                    throw error;
+                  }
+                  resolve(record);
+                }).catch(error => {
+                console.error('Failed to create', error);
+                reject(error);
+              });
+            }
+          }).catch((error) => {
+          console.error('LeanCloud Counter Error:', error);
+          reject(error);
+        });
+      })
+    },
+
+    // 发起自增请求
+    increment(Counter, incrArr) {
+      return new Promise(function (resolve, reject) {
+        Counter('post', '/batch', {
+          "requests": incrArr
+        }).then((res) => {
+          res = res.json();
+          if (res.error) {
+            throw res.error;
+          }
+          resolve(res);
+        }).catch((error) => {
+          console.error('Failed to save visitor count', error);
+          reject(error);
+        });
+      });
+    },
+
+    // 构建自增请求体
+    buildIncrement(objectId) {
+      return {
+        "method": "PUT",
+        "path": `/1.1/classes/Counter/${ objectId }`,
+        "body": {
+          "times": {
+            '__op': 'Increment',
+            'amount': 1
+          }
+        }
+      }
+    },
+
+    // 校验是否为有效的 UV
+    validUV() {
+      var key = 'LeanCloudUVTimestamp';
+      var flag = localStorage.getItem(key);
+      if (flag) {
+        // 距离标记小于 24 小时则不计为 UV
+        if (new Date().getTime() - parseInt(flag) <= 86400000) {
+          return false;
+        }
+      }
+      localStorage.setItem(key, new Date().getTime().toString());
+      return true;
+    },
+
+    addCount(Counter) {
+      var enableIncr = '' === 'true' && window.location.hostname !== 'localhost';
+      enableIncr = true;
+      var getterArr = [];
+      var incrArr = [];
+      // 请求 PV 并自增
+      var pvCtn = document.querySelector('#lc-sv');
+      if (pvCtn || enableIncr) {
+        var pvGetter = this.getRecord(Counter, 'https://gyl-coder.top' + '/#lc-sv', 'Visits').then((record) => {
+          incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-sv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + 1;
+              if (pvCtn) {
+                pvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(pvGetter);
+      }
+
+      // 请求 UV 并自增
+      var uvCtn = document.querySelector('#lc-uv');
+      if (uvCtn || enableIncr) {
+        var uvGetter = this.getRecord(Counter, 'https://gyl-coder.top' + '/#lc-uv', 'Visitors').then((record) => {
+          var vuv = this.validUV();
+          vuv && incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-uv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + (vuv ? 1 : 0);
+              if (uvCtn) {
+                uvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(uvGetter);
+      }
+
+      // 请求文章的浏览数，如果是当前页面就自增
+      var allPV = document.querySelectorAll('#lc-pv');
+      if (allPV.length > 0 || enableIncr) {
+        for (i = 0; i < allPV.length; i++) {
+          let pv = allPV[i];
+          let title = pv.getAttribute('data-title');
+          var url = 'https://gyl-coder.top' + pv.getAttribute('data-path');
+          if (url) {
+            var viewGetter = this.getRecord(Counter, url, title).then((record) => {
+              // 是当前页面就自增
+              let curPath = window.location.pathname;
+              if (curPath.includes('index.html')) {
+                curPath = curPath.substring(0, curPath.lastIndexOf('index.html'));
+              }
+              if (pv.getAttribute('data-path') == curPath) {
+                incrArr.push(this.buildIncrement(record.objectId));
+              }
+              if (pv) {
+                var ele = pv.querySelector('#lc-pv #number');
+                if (ele) {
+                  if (pv.getAttribute('data-path') == curPath) {
+                    ele.innerText = (record.times || 0) + 1;
+                  } else {
+                    ele.innerText = record.times || 0;
+                  }
+                  pv.style.display = 'inline';
+                }
+              }
+            });
+            getterArr.push(viewGetter);
+          }
+        }
+      }
+
+      // 如果启动计数自增，批量发起自增请求
+      if (enableIncr) {
+        Promise.all(getterArr).then(() => {
+          incrArr.length > 0 && this.increment(Counter, incrArr);
+        })
+      }
+
+    },
+
+
+    fetchData(api_server) {
+      var Counter = (method, url, data) => {
+        return fetch(`${ api_server }/1.1${ url }`, {
+          method,
+          headers: {
+            'X-LC-Id': this.app_id,
+            'X-LC-Key': this.app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      this.addCount(Counter);
+    },
+
+    refreshCounter() {
+      var api_server = this.app_id.slice(-9) !== '-MdYXbMMI' ? this.custom_api_server : `https://${ this.app_id.slice(0, 8).toLowerCase() }.api.lncldglobal.com`;
+      if (api_server) {
+        this.fetchData(api_server);
+      } else {
+        fetch('https://app-router.leancloud.cn/2/route?appId=' + this.app_id)
+          .then(resp => resp.json())
+          .then(({api_server}) => {
+            this.fetchData('https://' + api_server);
+          });
+      }
+    }
+
+  };
+
+  LCCounter.refreshCounter();
+
+  document.addEventListener('pjax:complete', function () {
+    LCCounter.refreshCounter();
+  });
+</script>
+
+
+
+<!-- more -->
 
 
     
@@ -3369,7 +2731,9 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       } catch (error) {}
 
       window.subData = null; // 移除标题（用于一二级导航栏切换处）
-      $.fancybox.close();    // 关闭弹窗
+      if (typeof $.fancybox != "undefined") {
+        $.fancybox.close();    // 关闭弹窗
+      }
       $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
       $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
       $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
@@ -3401,23 +2765,33 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       $('script[data-pjax], .pjax-reload script').each(function () {
         $(this).parent().append($(this).remove());
       });
-
       try{
-        pjax_fancybox();
+          if (typeof $.fancybox == "undefined") {
+            SCload_fancybox();
+          } else {
+            pjax_fancybox();
+          }
         
           
-          if ('.cover') {
-            $('.cover').backstretch("resize");
+          if ('.cover-backstretch') {
+            $('.cover-backstretch').backstretch("resize");
+            if($('.cover-wrapper').is(':hidden')){
+              $('.cover-backstretch').backstretch("pause");
+            }else{
+              $('.cover-backstretch').backstretch("next");
+            }
           } else {
             $.backstretch("resize");
+            if($('.cover-wrapper').is(':hidden')){
+              $.backstretch("pause");
+            }else{
+              $.backstretch("next");
+            }
           }
         
         
         
-          pjax_scrollrebeal();
         
-        
-          pjax_initCopyCode();
         
         
           pjax_valine();
@@ -3442,10 +2816,5 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
 
     
   </div>
-<script>
-            window.imageLazyLoadSetting = {
-                isSPA: false,
-                processImages: null,
-            };
-        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var i=n.imageLazyLoadSetting.isSPA,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){i&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,e,a=0;a<r.length;a++)t=r[a],e=void 0,0<=(e=t.getBoundingClientRect()).bottom&&0<=e.left&&e.top<=(n.innerHeight||document.documentElement.clientHeight)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},n.src=i}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
+</body>
 </html>

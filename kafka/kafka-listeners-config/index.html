@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0'>
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/tree/4.0.0-rc.4'>
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
@@ -13,6 +13,7 @@
   <meta name="HandheldFriendly" content="True" >
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
 
   <!-- 页面元数据 -->
   
@@ -36,25 +37,13 @@
   
 
   <!-- link -->
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
   
     
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css">
 
   
   
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css">
-
-  
-  
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
-
-  
-
-  
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
 
   
 
@@ -62,8 +51,6 @@
     <link rel="shortcut icon" type='image/x-icon' href="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/favicon32.png">
   
 
-  
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
   
 
   
@@ -77,9 +64,22 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
-
   
   
+  <!-- 脚本懒加载函数 -->
+  <script>
+  function loadScript(src, cb) {
+    var HEAD = document.getElementsByTagName('head')[0] || document.documentElement;
+    var script = document.createElement('script');
+    script.setAttribute('type','text/javascript');
+    if (cb) script.onload = cb;
+    script.setAttribute('src', src);
+    HEAD.appendChild(script);
+  }
+  //https://github.com/filamentgroup/loadCSS
+  !function(c){"use strict";var e=function(e,t,n,r){var o,i=c.document,a=i.createElement("link");if(t)o=t;else{var d=(i.body||i.getElementsByTagName("head")[0]).childNodes;o=d[d.length-1]}var f=i.styleSheets;if(r)for(var l in r)r.hasOwnProperty(l)&&a.setAttribute(l,r[l]);a.rel="stylesheet",a.href=e,a.media="only x",function e(t){if(i.body)return t();setTimeout(function(){e(t)})}(function(){o.parentNode.insertBefore(a,t?o:o.nextSibling)});var s=function(e){for(var t=a.href,n=f.length;n--;)if(f[n].href===t)return e();setTimeout(function(){s(e)})};function u(){a.addEventListener&&a.removeEventListener("load",u),a.media=n||"all"}return a.addEventListener&&a.addEventListener("load",u),(a.onloadcssdefined=s)(u),a};"undefined"!=typeof exports?exports.loadCSS=e:c.loadCSS=e}("undefined"!=typeof global?global:this);
+  </script>
+  <script id="loadcss"></script>
 </head>
 
 <body>
@@ -87,70 +87,7 @@
   <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/js/love.js"></script>
   <!--浏览器搞笑标题-->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/js/ergao.js"></script>  
-  
-  
-  
-  <div class="cover-wrapper">
-    <cover class='cover post' style="display: none;">
-      <div class='cover-body'>
-  <div class='a'>
-    
-    
-      <p class="title">Yanliang</p>
-    
-    
-      <p class="subtitle">「Willing to exchange self-discipline for freedom」</p>
-    
-  </div>
-  <div class='b'>
-    <div class='menu navigation featured'>
-      <div class='list-h'>
-        
-          
-            <a href="/"
-              
-              
-              id="home">
-              <i class='fas fa-book fa-fw'></i><p>博文</p>
-            </a>
-          
-            <a href="/friends/"
-              
-              
-              id="friends">
-              <i class='fas fa-link fa-fw'></i><p>友人帐</p>
-            </a>
-          
-            <a href="/comment/"
-              
-              
-              id="comment">
-              <i class='fas fa-comment fa-fw'></i><p>留言板</p>
-            </a>
-          
-            <a href="/about/"
-              
-              
-              id="about">
-              <i class='fas fa-info-circle fa-fw'></i><p>关于</p>
-            </a>
-          
-            <a target="_blank" rel="noopener" href="https://travellings.now.sh/"
-              
-              
-              id="https:travellingsnowsh">
-              <i class='fas fa-fighter-jet fa-fw'></i><p>开往</p>
-            </a>
-          
-        
-      </div>
-    </div>
-  </div>
-</div>
-
-      <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
-    </cover>
-    <header class="l_header shadow blur">
+  <header class="l_header auto shadow blur " style='opacity: 0' >
   <div class='container'>
   <div class='wrapper'>
     <div class='nav-sub'>
@@ -448,22 +385,6 @@
                     <li>
                       <div class="aplayer-container">
                         
-
-  
-    <meting-js
-      theme='#1BCDFC'
-      autoplay='false'
-      volume='0.7'
-      loop='all'
-      order='list'
-      fixed='false'
-      list-max-height='320px'
-      server='netease'
-      type='song'
-      id='186453'
-      list-folded='true'>
-    </meting-js>
-  
 
 
                       </div>
@@ -806,14 +727,81 @@
   </div>
 </header>
 
+  <div class="l_body">
+    <div class="l_cover">
+  
+    
+    
+        <div class='cover-wrapper post dock' style="display: none;">
+          
+            <div class='cover-backstretch'></div>
+          
+          <div class='cover-body'>
+  <div class='top'>
+    
+    
+      <p class="title">Yanliang</p>
+    
+    
+      <p class="subtitle">「Willing to exchange self-discipline for freedom」</p>
+    
+  </div>
+  <div class='bottom'>
+    <div class='menu navigation'>
+      <div class='list-h'>
+        
+          
+            <a href="/"
+              
+              
+              id="home">
+              <i class='fas fa-book fa-fw'></i><p>博文</p>
+            </a>
+          
+            <a href="/friends/"
+              
+              
+              id="friends">
+              <i class='fas fa-link fa-fw'></i><p>友人帐</p>
+            </a>
+          
+            <a href="/comment/"
+              
+              
+              id="comment">
+              <i class='fas fa-comment fa-fw'></i><p>留言板</p>
+            </a>
+          
+            <a href="/about/"
+              
+              
+              id="about">
+              <i class='fas fa-info-circle fa-fw'></i><p>关于</p>
+            </a>
+          
+            <a target="_blank" rel="noopener" href="https://travellings.now.sh/"
+              
+              
+              id="https:travellingsnowsh">
+              <i class='fas fa-fighter-jet fa-fw'></i><p>开往</p>
+            </a>
+          
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+          <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+        </div>
+    
+  
   </div>
   
-
-
-  <div class="l_body">
-    <div class='body-wrapper' id="pjax-container">
-      
-        <!--此文件用来存放一些不方便取值的变量--> 
+    <div class='safearea'>
+      <div class='body-wrapper' id="pjax-container">
+        
+          <!--此文件用来存放一些不方便取值的变量--> 
 <!--思路大概是将值藏到重加载的区域内--> 
  
  
@@ -822,189 +810,152 @@
   <div id="pjax-ispage">true</div> 
   <div id="pjax-pageTitle">kafka的listeners配置错误导致主线程阻塞</div> 
   <div id="pjax-enable-cover">true</div> 
-  <div id="pjax-comment-path">none</div> 
-  <div id="pjax-comment-placeholder">none</div> 
+  <div id="pjax-comment-path"></div> 
+  <div id="pjax-comment-placeholder"></div> 
 </div> 
  
  
 <script> 
   // 处理封面 此时 jquery 还没加载 
-  if ("blog" == "none") { // 移除封面 
-    document.getElementsByClassName('cover')[0].style.display = "none"; 
-    document.getElementsByClassName('l_body')[0].classList.add("nocover"); 
+  if ("half" == "none") { // 移除封面 
+    document.getElementsByClassName('cover-wrapper')[0].style.display = "none"; 
     document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show"); 
   } else { 
-    if ("blog" == "blog") { // 半屏 
-      document.getElementsByClassName('cover')[0].classList.remove("full"); 
-      document.getElementsByClassName('cover')[0].classList.add("half"); 
+    if ("half" == "half") { // 半屏 
+      document.getElementsByClassName('cover-wrapper')[0].setAttribute('id', 'half'); 
       document.getElementsByClassName('scroll-down')[0].style.display = "none"; 
-    } else if ("blog" == "docs") { // 全屏 
-      document.getElementsByClassName('cover')[0].classList.remove("half"); 
-      document.getElementsByClassName('cover')[0].classList.add("full"); 
+    } else if ("half" == "full") { // 全屏 
+      document.getElementsByClassName('cover-wrapper')[0].setAttribute('id', 'full'); 
       document.getElementsByClassName('scroll-down')[0].style.display = ""; 
     } 
-    document.getElementsByClassName('cover')[0].style.display = ""; 
-    document.getElementsByClassName('l_body', 'show')[0].classList.remove("nocover"); 
+    document.getElementsByClassName('cover-wrapper')[0].style.display = ""; 
     document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show"); 
   } 
 </script> 
+ 
 
-      
-      
+        
+        
 
 <div class='l_main'>
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
   
 
+
   
-    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
-      
-
-
-  <section class='meta'>
+  <div class="article-meta" id="top">
     
-      
-      
-        <a title='kafka的listeners配置错误导致主线程阻塞' href='/kafka/kafka-listeners-config/'><img class='thumbnail' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/kafka.svg'></a>
-      
-      <div class="meta" id="header-meta">
+    
+      <a title='kafka的listeners配置错误导致主线程阻塞' href='/kafka/kafka-listeners-config/'>
+        <img class='thumbnail' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/kafka.svg'>
+      </a>
+    
+    
+      <h1 class="title">
+        kafka的listeners配置错误导致主线程阻塞
+      </h1>
+      <div class='new-meta-box'>
         
           
-  <h1 class="title">
-    <a href="/kafka/kafka-listeners-config/">
-      kafka的listeners配置错误导致主线程阻塞
-    </a>
-  </h1>
-
-
-        
-        <div class='new-meta-box'>
-          
             
-          
-            
-              
 <div class='new-meta-item author'>
-  <a class='author' target="_blank" href="https://gyl-coder.github.io" rel="nofollow noopener">
-    <img no-lazy src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/touxiang.jpg">
-    <p>yanliang</p>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="">
+    <p>Yanliang</p>
   </a>
 </div>
 
-            
+          
+        
           
             
-              
-  
   <div class='new-meta-item category'>
-    <a href='/categories/kafka/' rel="nofollow">
+    <a class='notlink'>
       <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>kafka</p>
+      <a class="category-link" href="/categories/kafka/">kafka</a>
     </a>
   </div>
 
 
-            
           
-            
-              <div class="new-meta-item date">
+        
+          
+            <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
     <p>发布于：Dec 3, 2019</p>
   </a>
 </div>
 
-            
           
-            
-              
-
-            
-          
-        </div>
         
-          <hr>
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
+      
+      <div id="lc-pv" data-title="kafka的listeners配置错误导致主线程阻塞" data-path="/kafka/kafka-listeners-config/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
+
+
+          
         
       </div>
     
-  </section>
+  </div>
 
 
-      <section class="article typo">
-        <div class="article-entry" itemprop="articleBody">
-          
-          
-          <h2 id="问题背景"><a class="header-anchor" href="#问题背景">¶</a>问题背景</h2>
+  
+  <h2 id="问题背景"><a class="header-anchor" href="#问题背景">¶</a>问题背景</h2>
 <p>我们在用kafka的时候，偶尔会遇到这样这样一个问题。</p>
 <p>我们写的kafka的客户端程序，在启动的时候，会无缘无故的 <code>卡住（阻塞）</code> 如下图所示：</p>
 <a id="more"></a>
-<img src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka6.png'>
+<div class="img-wrap"><div class="img-bg"><img class="img lazyload placeholder" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka6.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka6.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/></div></div>
 <p>这时程序会长时间阻塞在这里，无法继续进行后续操作。</p>
 <h2 id="问题排查"><a class="header-anchor" href="#问题排查">¶</a>问题排查</h2>
 <p>因为日志没有任何报错信息，但是又可以肯定当前项目并没有完全启动成功。感觉像是程序当中有个地方卡到了。通过 <code>VisualVM</code> 工具dump 线程相关的信息，很快发现了问题所在。原来卡在了consumer初始化的地方。</p>
-<img src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka7.png'>
+<div class="img-wrap"><div class="img-bg"><img class="img lazyload placeholder" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka7.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka7.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/></div></div>
 <p>一下是我这边的处理方式，大家可以参考下。如果有更好的方式欢迎大家相互交流。</p>
 <p>以下方法是在初始化Consumer的时候进行处理的：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> KafkaConsumerImpl <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (group == <span class="keyword">null</span> || group.isEmpty()) &#123;</span><br><span class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">&quot;phoenix.mq.group is empty&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	Properties props = <span class="keyword">new</span> Properties();</span><br><span class="line">	</span><br><span class="line">	props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, namesrvAddr);</span><br><span class="line">	props.put(ConsumerConfig.GROUP_ID_CONFIG, group);</span><br><span class="line">	<span class="comment">// 是否允许自动提交offset，这里设为false，下面手动提交</span></span><br><span class="line">	props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, <span class="string">&quot;false&quot;</span>);</span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">	consumer = <span class="keyword">new</span> KafkaConsumer&lt;&gt;(props);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// consumer 订阅的topic及partition</span></span><br><span class="line">	topicPartition = <span class="keyword">new</span> TopicPartition(<span class="keyword">this</span>.topic, <span class="keyword">this</span>.partitionId);</span><br><span class="line">	<span class="keyword">this</span>.partitions = Collections.singletonList(topicPartition);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 元数据初始化和连接测试，3次失败后抛出异常</span></span><br><span class="line">	Callable&lt;Boolean&gt; call = <span class="keyword">new</span> Callable&lt;Boolean&gt;() &#123;</span><br><span class="line">		<span class="keyword">boolean</span> res = <span class="keyword">false</span>;</span><br><span class="line">		<span class="keyword">int</span> tryTimes = <span class="number">3</span>;</span><br><span class="line">        </span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> Boolean <span class="title">call</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">			<span class="keyword">while</span> (tryTimes-- &gt; <span class="number">0</span>) &#123;</span><br><span class="line">				<span class="keyword">try</span> &#123;</span><br><span class="line">					consumer.assign(partitions);</span><br><span class="line">					<span class="comment">// 默认初始化offset当前最大值</span></span><br><span class="line">					nextBeginOffset = consumer.position(topicPartition);</span><br><span class="line">					res = <span class="keyword">true</span>;</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">					<span class="keyword">if</span> (e <span class="keyword">instanceof</span> InterruptedException) &#123;</span><br><span class="line">						<span class="keyword">break</span>; <span class="comment">// 如果position在阻塞状态时，调用了 task.cancel 会抛出此异常。直接退出即可</span></span><br><span class="line">					&#125;</span><br><span class="line">					LOG.error(e.getMessage(), e);</span><br><span class="line">					LOG.error(<span class="string">&quot; ==&gt; error when trying to fetch metadata for kafka. topic&lt;&#123;&#125;&gt;, partition&lt;&#123;&#125;&gt;&quot;</span>, topic,</span><br><span class="line">							partitionId);</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="comment">// sleep</span></span><br><span class="line">				<span class="keyword">try</span> &#123;</span><br><span class="line">					Thread.sleep(<span class="number">2000</span>);</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">					e.printStackTrace();</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">return</span> res;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line">	FutureTask&lt;Boolean&gt; task = <span class="keyword">new</span> FutureTask&lt;&gt;(call);</span><br><span class="line">	<span class="keyword">new</span> Thread(task).start();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">boolean</span> isOk = <span class="keyword">false</span>;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		isOk = task.get(<span class="number">10000</span>, TimeUnit.MILLISECONDS);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">		LOG.error(<span class="string">&quot;Get task result timeout&quot;</span>, e);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	task.cancel(<span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (isOk) &#123;</span><br><span class="line">		LOG.info(<span class="string">&quot; ==&gt; init kafka consumer succeed: servers&lt;&#123;&#125;&gt;, topic&lt;&#123;&#125;&gt;, partition&lt;&#123;&#125;&gt;, nextBeginOffset&lt;&#123;&#125;&gt;&quot;</span>,</span><br><span class="line">				namesrvAddr, topic, partitionId, nextBeginOffset);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(String.format(</span><br><span class="line">				<span class="string">&quot; ==&gt; init kafka consumer failed. please check the conf (listeners or advertised.listeners or ...) and try to ping the host name in the conf value&quot;</span>));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>利用 FutureTask 的特性，定义一个定时任务， 在初始化Consumer的时候，尝试去连接kafka，如果配置的kafka的地址有误，或者配置出错在这里可以通过抛出错误体现出来。</p>
 <p>最后通过<code>task.get()</code> 方法返回的结果来判断 Consumer 是否成功初始化。</p>
 
-          
-            <div class='article_footer'>
+  
+  
+    
+    <div class='footer'>
+      
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
               
-                
-  
-    
-    
-
-
-
-  
-
-  
-    
-    
-
-
-
-  
-
-  
-    
-    
-
-<section class="widget copyright  desktop mobile">
-  <div class='content'>
-    
-      <blockquote>
-        
-          
-            <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
-
-          
-        
-          
-            <p>本文永久链接是：<a href=https://gyl-coder.top/kafka/kafka-listeners-config/>https://gyl-coder.top/kafka/kafka-listeners-config/</a></p>
-          
-        
-      </blockquote>
-    
-  </div>
-</section>
-
-  
-
-  
-
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
 
               
-            </div>
-          
+            
+              
+                <p>本文永久链接是：<a href=https://gyl-coder.top/kafka/kafka-listeners-config/>https://gyl-coder.top/kafka/kafka-listeners-config/</a></p>
+              
+            
+          </blockquote>
         </div>
-        
-          
+      
+      
+    </div>
+  
+  
+    
 
 
-  <section class='meta' id="footer-meta">
+  <div class='article-meta' id="bottom">
     <div class='new-meta-box'>
       
         
@@ -1027,11 +978,6 @@
       
         
           
-
-        
-      
-        
-          
   <div class="new-meta-item share -mob-share-list">
   <div class="-mob-share-list share-body">
     
@@ -1044,7 +990,7 @@
           
           >
           
-            <img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/loading.svg" data-original="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png">
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg">
           
         </a>
       
@@ -1058,7 +1004,7 @@
           
           >
           
-            <img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/loading.svg" data-original="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png">
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg">
           
         </a>
       
@@ -1072,9 +1018,13 @@
           
           >
           
-            <img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/loading.svg" data-original="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png">
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg">
           
         </a>
+      
+    
+      
+    
       
     
   </div>
@@ -1085,56 +1035,48 @@
         
       
     </div>
-  </section>
+  </div>
 
 
-        
-        
-          <div class="prev-next">
-            
-              <a class='prev' href='/kafka/kafka-partition-alocation/'>
-                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Kafka有哪几处地方有分区分配的概念？简述大致的过程及原理</p>
-                <p class='content'>在 kafka 中，分区分配是一个很重要的概念，它会影响Kafka整体的性能均衡。kafka 中一共有三处地方涉及此概念，分别是：生产者发送消息、消费者消费消息和创建主题。虽然这三处的对应操作都...</p>
-              </a>
-            
-            
-              <a class='next' href='/kafka/kafka-isr-ar/'>
-                <p class='title'>kafka中的ISR、AR代表什么？ISR的伸缩性又指什么？<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-                <p class='content'>相信大家已经对 kafka 的基本概念已经有一定的了解了，下面直接来分析一下 ISR 和 AR 的概念。
+  
+  
+
+  
+    <div class="prev-next">
+      
+        <a class='prev' href='/kafka/kafka-partition-alocation/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Kafka有哪几处地方有分区分配的概念？简述大致的过程及原理</p>
+          <p class='content'>在 kafka 中，分区分配是一个很重要的概念，它会影响Kafka整体的性能均衡。kafka 中一共有三处地方涉及此概念，分别是：生产者发送消息、消费者消费消息和创建主题。虽然这三处的对应操作都...</p>
+        </a>
+      
+      
+        <a class='next' href='/kafka/kafka-isr-ar/'>
+          <p class='title'>kafka中的ISR、AR代表什么？ISR的伸缩性又指什么？<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>相信大家已经对 kafka 的基本概念已经有一定的了解了，下面直接来分析一下 ISR 和 AR 的概念。
 
 ¶ISR and AR
 简单来说，分区中的所有副本统称为 AR (Assigned R...</p>
-              </a>
-            
-          </div>
-        
-      </section>
-    </article>
-  
-
-  
-    
-
-  <article class="post white-box reveal comments shadow">
-    <section class="article typo">
-      <p ct><i class='fas fa-comments'></i> 评论</p>
+        </a>
       
-      <section id="comments">
-        <div id="valine_container" class="valine_thread">
+    </div>
+  
+</article>
+
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
   <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
-      </section>
-    </section>
   </article>
 
 
-  
 
 
-
-
-<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
 
 
 </div>
@@ -1168,31 +1110,15 @@
 
 
 
-    </div>
-    
+      </div>
+      
   
-  <footer class="clearfix">
+  <footer class="footer clearfix">
     <br><br>
     
       
         <div class="aplayer-container">
           
-
-  
-    <meting-js
-      theme='#1BCDFC'
-      autoplay='false'
-      volume='0.7'
-      loop='all'
-      order='list'
-      fixed='false'
-      list-max-height='320px'
-      server='netease'
-      type='song'
-      id='186453'
-      list-folded='true'>
-    </meting-js>
-  
 
 
         </div>
@@ -1205,33 +1131,67 @@
           
             
               <a href="/atom.xml"
-                class="social fas fa-rss flat-btn"
+                class="social  flat-btn"
                 target="_blank"
                 rel="external nofollow noopener noreferrer">
+                
+                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/020-rss.svg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/020-rss.svg" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/>
+                
               </a>
             
           
             
-              <a href="mailto:gyl_coder@163.com"
-                class="social fas fa-envelope flat-btn"
+              <a href="https://github.com/gyl-coder/"
+                class="social  flat-btn"
                 target="_blank"
                 rel="external nofollow noopener noreferrer">
+                
+                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/029-github.svg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/029-github.svg" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/>
+                
               </a>
             
           
             
-              <a href="https://github.com/gyl-coder"
-                class="social fab fa-github flat-btn"
+              <a href="/"
+                class="social  flat-btn"
                 target="_blank"
                 rel="external nofollow noopener noreferrer">
+                
+                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/010-facebook.svg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/010-facebook.svg" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/>
+                
               </a>
             
           
             
-              <a href="https://music.163.com/#/user/home?id=314622884"
-                class="social fas fa-headphones-alt flat-btn"
+              <a href="/"
+                class="social  flat-btn"
                 target="_blank"
                 rel="external nofollow noopener noreferrer">
+                
+                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/018-twitter.svg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/018-twitter.svg" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/>
+                
+              </a>
+            
+          
+            
+              <a href="/"
+                class="social  flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+                
+                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/045-telegram.svg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/045-telegram.svg" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/>
+                
+              </a>
+            
+          
+            
+              <a href="/"
+                class="social  flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+                
+                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/006-youtube.svg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/006-youtube.svg" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/>
+                
               </a>
             
           
@@ -1244,12 +1204,16 @@
       
     
       
-        Use
-        <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0" target="_blank" class="codename">Volantis</a>
-        as theme, total visits
-          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
-          times
         
+          <div><p><span id="lc-sv">本站总访问量为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 次</span> <span id="lc-uv">访客数为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 人</span></p>
+</div>
+        
+      
+    
+      
+        Use
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/4.0.0-rc.4" target="_blank" class="codename">Volantis</a>
+        as theme
       
     
       
@@ -1340,17 +1304,118 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
   </footer>
 
 
-    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+      <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+    </div>
   </div>
   <div>
+    <!-- required -->
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js"></script>
+
+<script>
+  function pjax_fancybox() {
+    $(".md .gallery").find("img").each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".md .gallery").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  function SCload_fancybox() {
+    if ($(".md .gallery").find("img").length == 0) return;
+    loadCSS("https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css", document.getElementById("loadcss"));
+    setTimeout(function() {
+      loadScript('https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js', pjax_fancybox)
+    }, 1);
+  };
+  $(function () {
+    SCload_fancybox();
+  });
+</script>
+
+
+<!-- internal -->
+
+  
+  
+  
     
-      
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.jpg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover-backstretch') {
+          $('.cover-backstretch').backstretch(
+            imgs,
+          {
+            duration: "2000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "2000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+  
   
 
   <div id="rightmenu-wrapper">
     <ul class="list-v rightmenu" id="rightmenu-content">
       <li class='option'>
-        <a class='vlts-menu opt fix-cursor-default' id='menu-copy-text' onclick='document.execCommand("copy")'><i class='fa fa-copy fa-fw'></i>Copy Text</a>
+        <a class='vlts-menu opt fix-cursor-default' id='menu-copy-text' onclick="document.execCommand('copy')"><i class='fa fa-copy fa-fw'></i>Copy Text</a>
         <hr id='hr-text'>
         <a class='vlts-menu opt fix-cursor-default' id='menu-copy-href'><i class='fa fa-link fa-fw'></i>Copy Link</a>
         <a class='vlts-menu opt fix-cursor-default' id='menu-open-href'><i class='fa fa-external-link-square-alt fa-fw'></i>Open Link in New Tab</a>
@@ -1358,12 +1423,14 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
         <a class='vlts-menu opt fix-cursor-default' id='menu-copy-src'><i class='fa fa-image fa-fw'></i>Copy Image Link</a>
         <hr id='hr-src'>
       </li>
-      <li class='navigation'>
-        <a class='nav icon-only fix-cursor-default' onclick='history.back()'><i class='fa fa-arrow-left fa-fw'></i></a>
-        <a class='nav icon-only fix-cursor-default' onclick='history.forward()'><i class='fa fa-arrow-right fa-fw'></i></a>
-        <a class='nav icon-only fix-cursor-default' onclick='window.location.reload()'><i class='fa fa-redo fa-fw'></i></a>
-        <a class='nav icon-only fix-cursor-default' href='/'><i class='fa fa-home fa-fw'></i></a>
-      </li>
+      
+        <li class='navigation'>
+          <a class='nav icon-only fix-cursor-default' onclick='history.back()'><i class='fa fa-arrow-left fa-fw'></i></a>
+          <a class='nav icon-only fix-cursor-default' onclick='history.forward()'><i class='fa fa-arrow-right fa-fw'></i></a>
+          <a class='nav icon-only fix-cursor-default' onclick='window.location.reload()'><i class='fa fa-redo fa-fw'></i></a>
+          <a class='nav icon-only fix-cursor-default' href='/'><i class='fa fa-home fa-fw'></i></a>
+        </li>
+      
       <hr>
       
         
@@ -1477,26 +1544,6 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
         
       
         
-          <li class='music name'>
-            <p class='nav music-title fix-cursor-default'></p>
-          </li>
-          <li class='music ctrl'>
-            <a class='nav icon-only backward fix-cursor-default' onclick='aplayerBackward()'><i class='fa fa-step-backward fa-fw'></i></a>
-            <a class='nav icon-only toggle fix-cursor-default' onclick='aplayerToggle()'><i class='fa fa-play fa-fw'></i></a>
-            <a class='nav icon-only forward fix-cursor-default' onclick='aplayerForward()'><i class='fa fa-step-forward fa-fw'></i></a>
-          </li>
-          <li class='music volume'>
-            <a class='nav volume'>
-              <div class="aplayer-volume-bar-wrap">
-                <div class="aplayer-volume-bar fix-cursor-pointer">
-                  <div class="aplayer-volume"></div>
-                  <i class='left fa fa-volume-off fa-fw'></i>
-                  <i class='right fa fa-volume-up fa-fw'></i>
-                </div>
-              </div>
-            </a>
-          </li>
-        
       
     </ul>
   </div>
@@ -1566,8 +1613,10 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       if (href.length == 0) {
         // 选中文本
         if (window.getSelection().toString()) {
-          copyText.style.display = 'block';
-          hrText.style.display = 'block';
+          if ('' == 'true') {
+            copyText.style.display = 'block';
+            hrText.style.display = 'block';
+          }
         }
       }
 
@@ -1599,7 +1648,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       }
 
       // 有音乐播放器
-      if (true == true) {
+      if ('' == true && ('home,me,album,resume,friends,hr,catchTheCat,hr,print,hr,music'||[]).includes('music')) {
         // 如果有aplayer，初始化一下
       	try {
       		checkAPlayer();
@@ -1627,93 +1676,65 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
   </script>
 
 
-    
-    
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js"></script>
 
 
 
-  <script>
-    
-    var SEARCH_SERVICE = "hexo" || "hexo";
-    var ROOT = "/" || "/";
-    if (!ROOT.endsWith('/')) ROOT += '/';
-  </script>
 
 
+  <script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
 
-  <script async src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
 
 
 
   
   
-  
-    
-<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
-
-    <script type="text/javascript">
-      $(function(){
-        var imgs=["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.jpg"];
-        if ('true' == 'true') {
-          function shuffle(arr){
-            /*From countercurrent-time*/
-            var n = arr.length;
-            while(n--) {
-              var index = Math.floor(Math.random() * n);
-              var temp = arr[index];
-              arr[index] = arr[n];
-              arr[n] = temp;
-            }
-          }
-          shuffle(imgs);
-        }
-        if ('.cover') {
-          $('.cover').backstretch(
-            imgs,
-          {
-            duration: "2000",
-            fade: "1500"
-          });
-        } else {
-          $.backstretch(
-            imgs,
-          {
-            duration: "2000",
-            fade: "1500"
-          });
-        }
-      });
+    <script>
+      window.FPConfig = {
+        delay: 0,
+        ignoreKeywords: [],
+        maxRPS: 5,
+        hoverDelay: 25
+      };
     </script>
+    <script defer src="https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"></script>
   
 
 
 
-  <script>
-    let APlayerController = new Object();
-    APlayerController.id = '186453';  // 设定全局音乐播放ID
-    APlayerController.volume = '0.7';
-  </script>
-  
-    
-<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script>
 
-  
-    
-<script src="https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js"></script>
 
-  
-    
-<script src="/js/aplayer.js"></script>
 
-  
 
 
 
 
   
   
-<script src="https://cdn.jsdelivr.net/gh/HCLonely/Valine@latest/dist/Valine.min.js"></script>
+<script src="/js/valine.js"></script>
 
 
 <script>
@@ -1748,20 +1769,22 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
   }
 
   function pjax_valine() {
-    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
-      decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
-    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
-      "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
+    if(!document.querySelectorAll("#valine_container")[0])return;
 
-    let ALLPATH = '';
-    if(ALLPATH != '') pageUrl = ALLPATH;
+    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) || "快来评论吧~";
+
+    let path = $.trim($('#pjax-comment-path').text());
+    if (path.length == 0) {
+      let defaultPath = '';
+      path = defaultPath || decodeURI(window.location.pathname);
+    }
 
     var valine = new Valine();
     valine.init({
       el: '#valine_container',
       meta: meta,
       placeholder: pagePlaceholder,
-      path: pageUrl,
+      path: path,
       appId: "wvx2KxLUqgjcKv9QE62FmvUY-MdYXbMMI",
       appKey: "u1P8dl8u7IlizUpYbwXpc1VN",
       pageSize: '10',
@@ -1773,9 +1796,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       enableQQ: 'true',
       requiredFields: requiredFields,
       emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
-      emojiMaps: emojiMaps,
-      master: '[6e52e95ab454c5a82b0eb13055d79bd5]',
-      friends: '[b5bd5d836c7a0091aa8473e79ed4c25e,adb7d1cd192658a55c0ad22a3309cecf,3ce1e6c77b4910f1871106cb30dc62b0,cfce8dc43725cc14ffcd9fb4892d5bfc]'
+      emojiMaps: emojiMaps
     })
   }
 
@@ -1787,189 +1808,90 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
 
 
 
-<!-- darkmodejs -->
-
   
 <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5/lib/darkmode-js.min.js" aysc></script>
 
-  <script type="text/javascript">
-	function getClientHeight(){
-	  var clientHeight=0;
-	  if(document.body.clientHeight&&document.documentElement.clientHeight){
-	  var clientHeight = (document.body.clientHeight<document.documentElement.clientHeight)?document.body.clientHeight:document.documentElement.clientHeight;
-	  }else{
-	  var clientHeight = (document.body.clientHeight>document.documentElement.clientHeight)?document.body.clientHeight:document.documentElement.clientHeight;
-	  }
-	  return clientHeight;
-	}
-	function supportCss3(style) {
-		var prefix = ['webkit', 'Moz', 'ms', 'o'],
-		i,
-		humpString = [],
-		htmlStyle = document.documentElement.style,
-		_toHumb = function (string) {
-		return string.replace(/-(\w)/g, function ($0, $1) {
-		return $1.toUpperCase();
-		});
-		};
-		for (i in prefix)
-		humpString.push(_toHumb(prefix[i] + '-' + style));
-		humpString.push(_toHumb(style));
-		for (i in humpString)
-		if (humpString[i] in htmlStyle) return true;
-		return false;
-	};
-	//配置信息
-	var options = {
-	  bottom: '32px',
-	  right: 'unset',
-	  left: '16px',
-	  time: '0s',
-	  mixColor: '#f4f4f4',
-	  backgroundColor: '#f4f4f4',
-	  buttonColorDark: '#100f2c',
-	  buttonColorLight: '#f4f4f4',
-	  saveInCookies: true,
-	  label: '🌓',
-	  autoMatchOsTheme: true
-	};
-	// 卡片兼容处理 mix-blend-mode 与 effect: [shadow, floatable, blur] 冲突???
-	function pjax_darkmodejs(){
-		
-	}
-	// mix-blend-mode support?
-	if(supportCss3('mix-blend-mode')){
-		const darkmode = new Darkmode(options);
-		darkmode.showWidget();
-		pjax_darkmodejs();
-	}
-  </script>
-
-
-<!-- 复制 -->
-
-  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
-<script>
-    var clipboard = new ClipboardJS('.btn-copy', {
-        target: function (trigger) {
-            return trigger.nextElementSibling
-        }
-    });
-    function wait(callback, seconds) {
-        var timelag = null;
-        timelag = window.setTimeout(callback, seconds)
-    }
-    function pjax_initCopyCode() {
-        var copyHtml = '';
-        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
-        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
-        copyHtml += '</button>';
-        $(".highlight .code pre").before(copyHtml);
-        $(".article pre code").before(copyHtml);
-        clipboard.off('success').on('success', function (e) {
-            let $btn = $(e.trigger);
-            $btn.addClass('copied');
-            let $icon = $($btn.find('i'));
-            $icon.removeClass('fa-copy');
-            $icon.addClass('fa-check-circle');
-            let $span = $($btn.find('span'));
-            $span[0].innerText = 'COPIED';
-            wait(function () {
-                $icon.removeClass('fa-check-circle');
-                $icon.addClass('fa-copy');
-                $span[0].innerText = 'COPY'
-            }, 2000)
-        });
-        clipboard.off('error').on('error', function (e) {
-            e.clearSelection();
-            let $btn = $(e.trigger);
-            $btn.addClass('copy-failed');
-            let $icon = $($btn.find('i'));
-            $icon.removeClass('fa-copy');
-            $icon.addClass('fa-times-circle');
-            let $span = $($btn.find('span'));
-            $span[0].innerText = 'COPY FAILED';
-            wait(function () {
-                $icon.removeClass('fa-times-circle');
-                $icon.addClass('fa-copy');
-                $span[0].innerText = 'COPY'
-            }, 2000)
-        })
-    }
-    $(function () {
-        pjax_initCopyCode()
-    });
-</script>
-
-
-<!-- scrollreveal -->
-
-  <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script>
-  <script type="text/javascript">
-    function pjax_scrollrebeal() {
-      ScrollReveal().reveal('.l_main .reveal', {
-        distance: '32px',
-        duration: '800',
-        interval: '20',
-        scale: '1',
-        easing: 'ease-out'
-      });
-    }
-
-    $(function () {
-      pjax_scrollrebeal();
-    });
-  </script>
-
-<!-- ******************************** -->
-
-<!-- fancybox -->
-<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
-<script>
-  function pjax_fancybox() {
-    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
-      var element = document.createElement("a"); // a 标签
-      $(element).attr("class", "fancybox");
-      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
-      $(element).attr("href", $(this).attr("src"));
-      if ($(this).attr("data-original")) {
-        $(element).attr("href", $(this).attr("data-original"));
-      }
-      $(element).attr("data-fancybox", "images");
-      var caption = "";   // 描述信息
-      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
-        $(element).attr('data-caption', $(this).attr('alt'));
-        caption = $(this).attr('alt');
-      }
-      var div = document.createElement("div");
-      $(div).addClass("fancybox");
-      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
-      var span = document.createElement("span");
-      $(span).addClass("image-caption");
-      $(span).text(caption); // 加描述
-      $(this).after(span);  // 再套一层描述
-      $(this).wrap(element);  // 最后套 a 标签
-    })
-    $(".article-entry").find("img").fancybox({
-      selector: '[data-fancybox="images"]',
-      hash: false,
-      loop: false,
-      closeClick: true,
-      helpers: {
-        overlay: {closeClick: true}
-      },
-      buttons: [
-        "zoom",
-        "close"
-      ]
-    });
-  };
-  $(function () {
-    pjax_fancybox();
+<script type="text/javascript">
+function getClientHeight(){
+  var clientHeight=0;
+  if(document.body.clientHeight&&document.documentElement.clientHeight){
+  var clientHeight = (document.body.clientHeight<document.documentElement.clientHeight)?document.body.clientHeight:document.documentElement.clientHeight;
+  }else{
+  var clientHeight = (document.body.clientHeight>document.documentElement.clientHeight)?document.body.clientHeight:document.documentElement.clientHeight;
+  }
+  return clientHeight;
+}
+function supportCss3(style) {
+  var prefix = ['webkit', 'Moz', 'ms', 'o'],
+  i,
+  humpString = [],
+  htmlStyle = document.documentElement.style,
+  _toHumb = function (string) {
+  return string.replace(/-(\w)/g, function ($0, $1) {
+  return $1.toUpperCase();
   });
+  };
+  for (i in prefix)
+  humpString.push(_toHumb(prefix[i] + '-' + style));
+  humpString.push(_toHumb(style));
+  for (i in humpString)
+  if (humpString[i] in htmlStyle) return true;
+  return false;
+};
+//配置信息
+var options = {
+  bottom: '32px',
+  right: 'unset',
+  left: '16px',
+  time: '0s',
+  mixColor: '#f4f4f4',
+  backgroundColor: '#f4f4f4',
+  buttonColorDark: '#333',
+  buttonColorLight: '#ddd',
+  saveInCookies: true,
+  label: '',
+  autoMatchOsTheme: true
+};
+// 卡片兼容处理 mix-blend-mode 与 effect: [blur] 冲突
+
+function pjax_darkmodejs(){
+  
+  if(!supportCss3('mix-blend-mode'))return;
+  var checkExist2 = setInterval(function() {
+     if (typeof jQuery == 'undefined'){return;}
+     clearInterval(checkExist2);
+     var TopFlag=getClientHeight();
+    $(window).scroll(function(){
+      var top = $(document).scrollTop();
+      if(top > TopFlag) {
+        $(".darkmode-layer").css("mix-blend-mode","normal");
+        $(".darkmode-layer").css("background-color","#222");
+      }else{
+        $(".darkmode-layer").css("mix-blend-mode","difference");
+        $(".darkmode-layer").css("background-color","");
+      }
+    })
+  }, 100);
+  
+}
+// mix-blend-mode support?
+if(supportCss3('mix-blend-mode')){
+  window.darkmode = new Darkmode(options);
+  
+  window.darkmode.showWidget();
+  
+  pjax_darkmodejs();
+}
+////////////////Development///////////////////////
+//////////////darkmode模式切换////////////////////
+//window.darkmode.toggle();                     //
+//////////////darkmode模式判断////////////////////
+//console.log(window.darkmode.isActivated())    //
+//////////////////////////////////////////////////
 </script>
 
-<!-- ******************************** -->
+
+
 
 
   
@@ -1985,31 +1907,242 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
   
 
 
+<!-- optional -->
 
-  <script defer src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js" data-pjax></script>
-
-
-
+  <script>
+const SearchServiceimagePath="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/img/";
+const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
+(function ($) {
   
-<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
-
-  <script type="text/javascript">
-    $(function () {
-      Waves.attach('.flat-btn', ['waves-button']);
-      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
-      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
-      Waves.attach('.flat-box', ['waves-block']);
-      Waves.attach('.float-box', ['waves-block', 'waves-float']);
-      Waves.attach('.waves-image');
-      Waves.init();
+    customSearch = new HexoSearch({
+      imagePath: SearchServiceimagePath
     });
-  </script>
+  
+})(jQuery);
+
+</script>
 
 
 
 
 
 
+
+
+
+
+
+  <script defer>
+
+  const LCCounter = {
+    app_id: 'GCYDRKI6XRkyC7EuEhJv90ia-MdYXbMMI',
+    app_key: '4xKBXGBj6BgecU62vff5rJHs',
+    custom_api_server: '',
+
+    // 查询存储的记录
+    getRecord(Counter, url, title) {
+      return new Promise(function (resolve, reject) {
+        Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({url})))
+          .then(resp => resp.json())
+          .then(({results, code, error}) => {
+            if (code === 401) {
+              throw error;
+            }
+            if (results && results.length > 0) {
+              var record = results[0];
+              resolve(record);
+            } else {
+              Counter('post', '/classes/Counter', {url, title: title, times: 0})
+                .then(resp => resp.json())
+                .then((record, error) => {
+                  if (error) {
+                    throw error;
+                  }
+                  resolve(record);
+                }).catch(error => {
+                console.error('Failed to create', error);
+                reject(error);
+              });
+            }
+          }).catch((error) => {
+          console.error('LeanCloud Counter Error:', error);
+          reject(error);
+        });
+      })
+    },
+
+    // 发起自增请求
+    increment(Counter, incrArr) {
+      return new Promise(function (resolve, reject) {
+        Counter('post', '/batch', {
+          "requests": incrArr
+        }).then((res) => {
+          res = res.json();
+          if (res.error) {
+            throw res.error;
+          }
+          resolve(res);
+        }).catch((error) => {
+          console.error('Failed to save visitor count', error);
+          reject(error);
+        });
+      });
+    },
+
+    // 构建自增请求体
+    buildIncrement(objectId) {
+      return {
+        "method": "PUT",
+        "path": `/1.1/classes/Counter/${ objectId }`,
+        "body": {
+          "times": {
+            '__op': 'Increment',
+            'amount': 1
+          }
+        }
+      }
+    },
+
+    // 校验是否为有效的 UV
+    validUV() {
+      var key = 'LeanCloudUVTimestamp';
+      var flag = localStorage.getItem(key);
+      if (flag) {
+        // 距离标记小于 24 小时则不计为 UV
+        if (new Date().getTime() - parseInt(flag) <= 86400000) {
+          return false;
+        }
+      }
+      localStorage.setItem(key, new Date().getTime().toString());
+      return true;
+    },
+
+    addCount(Counter) {
+      var enableIncr = '' === 'true' && window.location.hostname !== 'localhost';
+      enableIncr = true;
+      var getterArr = [];
+      var incrArr = [];
+      // 请求 PV 并自增
+      var pvCtn = document.querySelector('#lc-sv');
+      if (pvCtn || enableIncr) {
+        var pvGetter = this.getRecord(Counter, 'https://gyl-coder.top' + '/#lc-sv', 'Visits').then((record) => {
+          incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-sv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + 1;
+              if (pvCtn) {
+                pvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(pvGetter);
+      }
+
+      // 请求 UV 并自增
+      var uvCtn = document.querySelector('#lc-uv');
+      if (uvCtn || enableIncr) {
+        var uvGetter = this.getRecord(Counter, 'https://gyl-coder.top' + '/#lc-uv', 'Visitors').then((record) => {
+          var vuv = this.validUV();
+          vuv && incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-uv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + (vuv ? 1 : 0);
+              if (uvCtn) {
+                uvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(uvGetter);
+      }
+
+      // 请求文章的浏览数，如果是当前页面就自增
+      var allPV = document.querySelectorAll('#lc-pv');
+      if (allPV.length > 0 || enableIncr) {
+        for (i = 0; i < allPV.length; i++) {
+          let pv = allPV[i];
+          let title = pv.getAttribute('data-title');
+          var url = 'https://gyl-coder.top' + pv.getAttribute('data-path');
+          if (url) {
+            var viewGetter = this.getRecord(Counter, url, title).then((record) => {
+              // 是当前页面就自增
+              let curPath = window.location.pathname;
+              if (curPath.includes('index.html')) {
+                curPath = curPath.substring(0, curPath.lastIndexOf('index.html'));
+              }
+              if (pv.getAttribute('data-path') == curPath) {
+                incrArr.push(this.buildIncrement(record.objectId));
+              }
+              if (pv) {
+                var ele = pv.querySelector('#lc-pv #number');
+                if (ele) {
+                  if (pv.getAttribute('data-path') == curPath) {
+                    ele.innerText = (record.times || 0) + 1;
+                  } else {
+                    ele.innerText = record.times || 0;
+                  }
+                  pv.style.display = 'inline';
+                }
+              }
+            });
+            getterArr.push(viewGetter);
+          }
+        }
+      }
+
+      // 如果启动计数自增，批量发起自增请求
+      if (enableIncr) {
+        Promise.all(getterArr).then(() => {
+          incrArr.length > 0 && this.increment(Counter, incrArr);
+        })
+      }
+
+    },
+
+
+    fetchData(api_server) {
+      var Counter = (method, url, data) => {
+        return fetch(`${ api_server }/1.1${ url }`, {
+          method,
+          headers: {
+            'X-LC-Id': this.app_id,
+            'X-LC-Key': this.app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      this.addCount(Counter);
+    },
+
+    refreshCounter() {
+      var api_server = this.app_id.slice(-9) !== '-MdYXbMMI' ? this.custom_api_server : `https://${ this.app_id.slice(0, 8).toLowerCase() }.api.lncldglobal.com`;
+      if (api_server) {
+        this.fetchData(api_server);
+      } else {
+        fetch('https://app-router.leancloud.cn/2/route?appId=' + this.app_id)
+          .then(resp => resp.json())
+          .then(({api_server}) => {
+            this.fetchData('https://' + api_server);
+          });
+      }
+    }
+
+  };
+
+  LCCounter.refreshCounter();
+
+  document.addEventListener('pjax:complete', function () {
+    LCCounter.refreshCounter();
+  });
+</script>
+
+
+
+<!-- more -->
 
 
     
@@ -2067,7 +2200,9 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       } catch (error) {}
 
       window.subData = null; // 移除标题（用于一二级导航栏切换处）
-      $.fancybox.close();    // 关闭弹窗
+      if (typeof $.fancybox != "undefined") {
+        $.fancybox.close();    // 关闭弹窗
+      }
       $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
       $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
       $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
@@ -2099,23 +2234,33 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       $('script[data-pjax], .pjax-reload script').each(function () {
         $(this).parent().append($(this).remove());
       });
-
       try{
-        pjax_fancybox();
+          if (typeof $.fancybox == "undefined") {
+            SCload_fancybox();
+          } else {
+            pjax_fancybox();
+          }
         
           
-          if ('.cover') {
-            $('.cover').backstretch("resize");
+          if ('.cover-backstretch') {
+            $('.cover-backstretch').backstretch("resize");
+            if($('.cover-wrapper').is(':hidden')){
+              $('.cover-backstretch').backstretch("pause");
+            }else{
+              $('.cover-backstretch').backstretch("next");
+            }
           } else {
             $.backstretch("resize");
+            if($('.cover-wrapper').is(':hidden')){
+              $.backstretch("pause");
+            }else{
+              $.backstretch("next");
+            }
           }
         
         
         
-          pjax_scrollrebeal();
         
-        
-          pjax_initCopyCode();
         
         
           pjax_valine();
@@ -2140,10 +2285,5 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
 
     
   </div>
-<script>
-            window.imageLazyLoadSetting = {
-                isSPA: false,
-                processImages: null,
-            };
-        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var i=n.imageLazyLoadSetting.isSPA,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){i&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,e,a=0;a<r.length;a++)t=r[a],e=void 0,0<=(e=t.getBoundingClientRect()).bottom&&0<=e.left&&e.top<=(n.innerHeight||document.documentElement.clientHeight)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},n.src=i}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
+</body>
 </html>

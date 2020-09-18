@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0'>
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/tree/4.0.0-rc.4'>
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
@@ -15,6 +15,7 @@
   <meta name="HandheldFriendly" content="True" >
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
 
   <!-- 页面元数据 -->
   
@@ -32,25 +33,13 @@
   
 
   <!-- link -->
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
   
     
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css">
 
   
   
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css">
-
-  
-  
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
-
-  
-
-  
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
 
   
 
@@ -58,8 +47,6 @@
     <link rel="shortcut icon" type='image/x-icon' href="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/favicon32.png">
   
 
-  
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
   
 
   
@@ -73,9 +60,22 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
-
   
   
+  <!-- 脚本懒加载函数 -->
+  <script>
+  function loadScript(src, cb) {
+    var HEAD = document.getElementsByTagName('head')[0] || document.documentElement;
+    var script = document.createElement('script');
+    script.setAttribute('type','text/javascript');
+    if (cb) script.onload = cb;
+    script.setAttribute('src', src);
+    HEAD.appendChild(script);
+  }
+  //https://github.com/filamentgroup/loadCSS
+  !function(c){"use strict";var e=function(e,t,n,r){var o,i=c.document,a=i.createElement("link");if(t)o=t;else{var d=(i.body||i.getElementsByTagName("head")[0]).childNodes;o=d[d.length-1]}var f=i.styleSheets;if(r)for(var l in r)r.hasOwnProperty(l)&&a.setAttribute(l,r[l]);a.rel="stylesheet",a.href=e,a.media="only x",function e(t){if(i.body)return t();setTimeout(function(){e(t)})}(function(){o.parentNode.insertBefore(a,t?o:o.nextSibling)});var s=function(e){for(var t=a.href,n=f.length;n--;)if(f[n].href===t)return e();setTimeout(function(){s(e)})};function u(){a.addEventListener&&a.removeEventListener("load",u),a.media=n||"all"}return a.addEventListener&&a.addEventListener("load",u),(a.onloadcssdefined=s)(u),a};"undefined"!=typeof exports?exports.loadCSS=e:c.loadCSS=e}("undefined"!=typeof global?global:this);
+  </script>
+  <script id="loadcss"></script>
 </head>
 
 <body>
@@ -83,70 +83,7 @@
   <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/js/love.js"></script>
   <!--浏览器搞笑标题-->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/js/ergao.js"></script>  
-  
-  
-  
-  <div class="cover-wrapper">
-    <cover class='cover ' style="display: none;">
-      <div class='cover-body'>
-  <div class='a'>
-    
-    
-      <p class="title">Yanliang</p>
-    
-    
-      <p class="subtitle">「Willing to exchange self-discipline for freedom」</p>
-    
-  </div>
-  <div class='b'>
-    <div class='menu navigation featured'>
-      <div class='list-h'>
-        
-          
-            <a href="/"
-              
-              
-              id="home">
-              <i class='fas fa-book fa-fw'></i><p>博文</p>
-            </a>
-          
-            <a href="/friends/"
-              
-              
-              id="friends">
-              <i class='fas fa-link fa-fw'></i><p>友人帐</p>
-            </a>
-          
-            <a href="/comment/"
-              
-              
-              id="comment">
-              <i class='fas fa-comment fa-fw'></i><p>留言板</p>
-            </a>
-          
-            <a href="/about/"
-              
-              
-              id="about">
-              <i class='fas fa-info-circle fa-fw'></i><p>关于</p>
-            </a>
-          
-            <a target="_blank" rel="noopener" href="https://travellings.now.sh/"
-              
-              
-              id="https:travellingsnowsh">
-              <i class='fas fa-fighter-jet fa-fw'></i><p>开往</p>
-            </a>
-          
-        
-      </div>
-    </div>
-  </div>
-</div>
-
-      <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
-    </cover>
-    <header class="l_header shadow blur">
+  <header class="l_header auto shadow blur " style='opacity: 0' >
   <div class='container'>
   <div class='wrapper'>
     <div class='nav-sub'>
@@ -444,22 +381,6 @@
                     <li>
                       <div class="aplayer-container">
                         
-
-  
-    <meting-js
-      theme='#1BCDFC'
-      autoplay='false'
-      volume='0.7'
-      loop='all'
-      order='list'
-      fixed='false'
-      list-max-height='320px'
-      server='netease'
-      type='song'
-      id='186453'
-      list-folded='true'>
-    </meting-js>
-  
 
 
                       </div>
@@ -802,14 +723,81 @@
   </div>
 </header>
 
+  <div class="l_body">
+    <div class="l_cover">
+  
+    
+    
+        <div class='cover-wrapper  dock' style="display: none;">
+          
+            <div class='cover-backstretch'></div>
+          
+          <div class='cover-body'>
+  <div class='top'>
+    
+    
+      <p class="title">Yanliang</p>
+    
+    
+      <p class="subtitle">「Willing to exchange self-discipline for freedom」</p>
+    
+  </div>
+  <div class='bottom'>
+    <div class='menu navigation'>
+      <div class='list-h'>
+        
+          
+            <a href="/"
+              
+              
+              id="home">
+              <i class='fas fa-book fa-fw'></i><p>博文</p>
+            </a>
+          
+            <a href="/friends/"
+              
+              
+              id="friends">
+              <i class='fas fa-link fa-fw'></i><p>友人帐</p>
+            </a>
+          
+            <a href="/comment/"
+              
+              
+              id="comment">
+              <i class='fas fa-comment fa-fw'></i><p>留言板</p>
+            </a>
+          
+            <a href="/about/"
+              
+              
+              id="about">
+              <i class='fas fa-info-circle fa-fw'></i><p>关于</p>
+            </a>
+          
+            <a target="_blank" rel="noopener" href="https://travellings.now.sh/"
+              
+              
+              id="https:travellingsnowsh">
+              <i class='fas fa-fighter-jet fa-fw'></i><p>开往</p>
+            </a>
+          
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+          <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+        </div>
+    
+  
   </div>
   
-
-
-  <div class="l_body nocover">
-    <div class='body-wrapper' id="pjax-container">
-      
-        <!--此文件用来存放一些不方便取值的变量--> 
+    <div class='safearea'>
+      <div class='body-wrapper' id="pjax-container">
+        
+          <!--此文件用来存放一些不方便取值的变量--> 
 <!--思路大概是将值藏到重加载的区域内--> 
  
  
@@ -818,42 +806,39 @@
   <div id="pjax-ispage">false</div> 
   <div id="pjax-pageTitle"></div> 
   <div id="pjax-enable-cover">true</div> 
-  <div id="pjax-comment-path">none</div> 
-  <div id="pjax-comment-placeholder">none</div> 
+  <div id="pjax-comment-path"></div> 
+  <div id="pjax-comment-placeholder"></div> 
 </div> 
  
  
 <script> 
   // 处理封面 此时 jquery 还没加载 
   if ("none" == "none") { // 移除封面 
-    document.getElementsByClassName('cover')[0].style.display = "none"; 
-    document.getElementsByClassName('l_body')[0].classList.add("nocover"); 
+    document.getElementsByClassName('cover-wrapper')[0].style.display = "none"; 
     document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show"); 
   } else { 
-    if ("none" == "blog") { // 半屏 
-      document.getElementsByClassName('cover')[0].classList.remove("full"); 
-      document.getElementsByClassName('cover')[0].classList.add("half"); 
+    if ("none" == "half") { // 半屏 
+      document.getElementsByClassName('cover-wrapper')[0].setAttribute('id', 'half'); 
       document.getElementsByClassName('scroll-down')[0].style.display = "none"; 
-    } else if ("none" == "docs") { // 全屏 
-      document.getElementsByClassName('cover')[0].classList.remove("half"); 
-      document.getElementsByClassName('cover')[0].classList.add("full"); 
+    } else if ("none" == "full") { // 全屏 
+      document.getElementsByClassName('cover-wrapper')[0].setAttribute('id', 'full'); 
       document.getElementsByClassName('scroll-down')[0].style.display = ""; 
     } 
-    document.getElementsByClassName('cover')[0].style.display = ""; 
-    document.getElementsByClassName('l_body', 'show')[0].classList.remove("nocover"); 
+    document.getElementsByClassName('cover-wrapper')[0].style.display = ""; 
     document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show"); 
   } 
 </script> 
+ 
 
-      
-      
+        
+        
 
 
 <div class='l_main'>
   
     
       
-  <section class="post-list ">
+  <section class="post-list">
     
       
         
@@ -883,65 +868,21 @@
       
         
           <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
+            <div class="post post-v3 white-box reveal shadow">
   
-
-
-  <section class='meta'>
+  
+  
+  
     
-      
-      
-        <a title='Java 集合总结' href='/java/collection/all/'><img class='thumbnail' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/collection.svg'></a>
-      
-      <div class="meta" id="header-meta">
-        
-          
-  <h2 class="title">
-    <a href="/java/collection/all/">
-      Java 集合总结
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
-              
-<div class='new-meta-item author'>
-  <a class='author' target="_blank" href="https://gyl-coder.github.io" rel="nofollow noopener">
-    <img no-lazy src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/touxiang.jpg">
-    <p>yanliang</p>
-  </a>
-</div>
-
-            
-          
-            
-              <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-08-23T22:21:41+08:00">
-  <a class='notlink'>
-    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Aug 23, 2020</p>
-  </a>
-</div>
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
+    <h2 class="article-title" >
+      <a href="/java/collection/all/">
+        Java 集合总结
+      </a>
+    </h2>
+  
+  <div class='md'>
     
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>集合中用到的数据结构有以下几种：</p>
+      <p>集合中用到的数据结构有以下几种：</p>
 <ul>
 <li>**数组：**最常用的数据结构之一。数组的特点是长度固定，可以用下标索引，并且所有的元素的类型都是一致的。使用时尽量把数组封装在一个类里，防止数据被错误的操作弄乱。</li>
 <li>**链表：**是一种由多个节点组成的数据结构，并且每个节点包含有数据以及指向下一个节点的引用，在双向链表里，还会有一个指向前一个节点的引用。例如，可以用单向链表和双向链表来实现堆栈和队列，因为链表的两端都是可以进行插入和删除的动作的。当然，也会有在链表的中间频繁插入和删除节点的场景。</li>
@@ -949,162 +890,98 @@
 <li>**堆栈：**只允许对最后插入的元素进行操作（也就是后进先出，Last In First Out – LIFO）。如果你移除了栈顶的元素，那么你可以操作倒数第二个元素，依次类推。这种后进先出的方式是通过仅有的peek(),push()和pop()这几个方法的强制性限制达到的。这种结构在很多场景下都非常实用，例如解析像(4+2)*3这样的数学表达式，把源码中的方法和异常按照他们出现的顺序放到堆栈中，检查你的代码看看小括号和花括号是不是匹配的，等等。</li>
 <li>**队列：**和堆栈有些相似，不同之处在于在队列里第一个插入的元素也是第一个被删除的元素（即是先进先出）。这种先进先出的结构是通过只提供peek()，offer()和poll()这几个方法来访问数据进行限制来达到的。例如，排队等待公交车，银行或者超市里的等待列队等等，都是可以用队列来表示。</li>
 </ul>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2020-07-06</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Java/">Java</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/java/collection/all/'>
+            Read More
+          </a>
+        </div>
       
     </div>
-    
-      
-        <a class= "readmore" href="/java/collection/all/">
-          阅读全文 <i class="fas fa-chevron-right"></i>
-        </a>
-      
-    
-  </section>
-</article>
+  
+
+</div>
 
           </div>
         
       
         
           <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
+            <div class="post post-v3 white-box reveal shadow">
   
-
-
-  <section class='meta'>
+  
+  
+  
     
-      
-      
-        <a title='LinkedHashMap 底层实现原理分析' href='/java/collection/LinkedHashMap/'><img class='thumbnail' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/collection.svg'></a>
-      
-      <div class="meta" id="header-meta">
-        
-          
-  <h2 class="title">
-    <a href="/java/collection/LinkedHashMap/">
-      LinkedHashMap 底层实现原理分析
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
-              
-<div class='new-meta-item author'>
-  <a class='author' target="_blank" href="https://gyl-coder.github.io" rel="nofollow noopener">
-    <img no-lazy src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/touxiang.jpg">
-    <p>yanliang</p>
-  </a>
-</div>
-
-            
-          
-            
-              <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-08-23T22:14:08+08:00">
-  <a class='notlink'>
-    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Aug 23, 2020</p>
-  </a>
-</div>
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
+    <h2 class="article-title" >
+      <a href="/java/collection/LinkedHashMap/">
+        LinkedHashMap 底层实现原理分析
+      </a>
+    </h2>
+  
+  <div class='md'>
     
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>LinkedHashMap继承自HashMap实现了Map接口。基本实现同HashMap一样，不同之处在于LinkedHashMap保证了迭代的有序性。其内部维护了一个双向链表，解决了 HashMap不能随时保持遍历顺序和插入顺序一致的问题。除此之外，LinkedHashMap对访问顺序也提供了相关支持。在一些场景下，该特性很有用，比如缓存。</p>
+      <p>LinkedHashMap继承自HashMap实现了Map接口。基本实现同HashMap一样，不同之处在于LinkedHashMap保证了迭代的有序性。其内部维护了一个双向链表，解决了 HashMap不能随时保持遍历顺序和插入顺序一致的问题。除此之外，LinkedHashMap对访问顺序也提供了相关支持。在一些场景下，该特性很有用，比如缓存。</p>
 <p>在实现上，LinkedHashMap很多方法直接继承自<a href="../HashMapAnalysis">HashMap</a>，仅为维护双向链表覆写了部分方法。所以，要看懂 LinkedHashMap 的源码，需要先看懂 <a href="../HashMapAnalysis">HashMap</a> 的源码。</p>
 <p>默认情况下，LinkedHashMap的迭代顺序是按照插入节点的顺序。也可以通过改变accessOrder参数的值，使得其遍历顺序按照访问顺序输出。</p>
 <p>这里我们只讨论LinkedHashMap和HashMap的不同之处，LinkedHashMap的其他操作和特性具体请参考<a href="../HashMapAnalysis">HashMap</a></p>
 <p>我们先来看下两者的区别：</p>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2020-07-05</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Java/">Java</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/java/collection/LinkedHashMap/'>
+            Read More
+          </a>
+        </div>
       
     </div>
-    
-      
-        <a class= "readmore" href="/java/collection/LinkedHashMap/">
-          阅读全文 <i class="fas fa-chevron-right"></i>
-        </a>
-      
-    
-  </section>
-</article>
+  
+
+</div>
 
           </div>
         
       
         
           <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
+            <div class="post post-v3 white-box reveal shadow">
   
-
-
-  <section class='meta'>
+  
+  
+  
     
-      
-      
-        <a title='LinkedList 底层实现原理分析' href='/java/collection/LinkedList/'><img class='thumbnail' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/collection.svg'></a>
-      
-      <div class="meta" id="header-meta">
-        
-          
-  <h2 class="title">
-    <a href="/java/collection/LinkedList/">
-      LinkedList 底层实现原理分析
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
-              
-<div class='new-meta-item author'>
-  <a class='author' target="_blank" href="https://gyl-coder.github.io" rel="nofollow noopener">
-    <img no-lazy src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/touxiang.jpg">
-    <p>yanliang</p>
-  </a>
-</div>
-
-            
-          
-            
-              <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-08-23T22:16:06+08:00">
-  <a class='notlink'>
-    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Aug 23, 2020</p>
-  </a>
-</div>
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
+    <h2 class="article-title" >
+      <a href="/java/collection/LinkedList/">
+        LinkedList 底层实现原理分析
+      </a>
+    </h2>
+  
+  <div class='md'>
     
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
+      <ul>
 <li>在Java.util包下</li>
 <li>继承自AbstractSequentialList</li>
 <li>实现 List 接口，能对它进行队列操作。</li>
@@ -1116,397 +993,237 @@
 <li>非线程安全的，如果在多线程中使用（修改），需要在外部作同步处理。</li>
 </ul>
 <p>LinkedList是一种可以在任何位置进行高效地插入和移除操作的有序序列，它是基于双向链表实现的。内部有三个变量，size表示链表中元素的个数， first指向链表头部，last指向链表尾部。 结构图如下图所示</p>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2020-07-04</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Java/">Java</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/java/collection/LinkedList/'>
+            Read More
+          </a>
+        </div>
       
     </div>
-    
-      
-        <a class= "readmore" href="/java/collection/LinkedList/">
-          阅读全文 <i class="fas fa-chevron-right"></i>
-        </a>
-      
-    
-  </section>
-</article>
+  
+
+</div>
 
           </div>
         
       
         
           <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
+            <div class="post post-v3 white-box reveal shadow">
   
-
-
-  <section class='meta'>
+  
+  
+  
     
-      
-      
-        <a title='Vector 底层实现原理分析' href='/java/collection/Vector/'><img class='thumbnail' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/collection.svg'></a>
-      
-      <div class="meta" id="header-meta">
-        
-          
-  <h2 class="title">
-    <a href="/java/collection/Vector/">
-      Vector 底层实现原理分析
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
-              
-<div class='new-meta-item author'>
-  <a class='author' target="_blank" href="https://gyl-coder.github.io" rel="nofollow noopener">
-    <img no-lazy src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/touxiang.jpg">
-    <p>yanliang</p>
-  </a>
-</div>
-
-            
-          
-            
-              <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-08-23T22:16:29+08:00">
-  <a class='notlink'>
-    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Aug 23, 2020</p>
-  </a>
-</div>
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
+    <h2 class="article-title" >
+      <a href="/java/collection/Vector/">
+        Vector 底层实现原理分析
+      </a>
+    </h2>
+  
+  <div class='md'>
     
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><code>Vector</code>，一个可变长的数组，底层实现与 <a href="../ArrayList">ArrayList</a> 大同小异，但<code>Vector</code>是同步的（线程安全），<code>Vector</code>的很多方法之前都加了关键字<code>synchronized</code>，所以是线程安全的。</p>
+      <p><code>Vector</code>，一个可变长的数组，底层实现与 <a href="../ArrayList">ArrayList</a> 大同小异，但<code>Vector</code>是同步的（线程安全），<code>Vector</code>的很多方法之前都加了关键字<code>synchronized</code>，所以是线程安全的。</p>
 <p>由于Vector的实现和ArrayList的实现大同小异，这里就不再逐一分析Vector中的方法，主要分析一下和ArrayList不同的方法。</p>
 <p>首先我们还是来看以下Vector中定义的变量</p>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2020-07-03</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Java/">Java</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/java/collection/Vector/'>
+            Read More
+          </a>
+        </div>
       
     </div>
-    
-      
-        <a class= "readmore" href="/java/collection/Vector/">
-          阅读全文 <i class="fas fa-chevron-right"></i>
-        </a>
-      
-    
-  </section>
-</article>
+  
+
+</div>
 
           </div>
         
       
         
           <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
+            <div class="post post-v3 white-box reveal shadow">
   
-
-
-  <section class='meta'>
+  
+  
+  
     
-      
-      
-        <a title='ArrayList动态扩容机制' href='/java/collection/ArrayList_grow/'><img class='thumbnail' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/collection.svg'></a>
-      
-      <div class="meta" id="header-meta">
-        
-          
-  <h2 class="title">
-    <a href="/java/collection/ArrayList_grow/">
-      ArrayList动态扩容机制
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
-              
-<div class='new-meta-item author'>
-  <a class='author' target="_blank" href="https://gyl-coder.github.io" rel="nofollow noopener">
-    <img no-lazy src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/touxiang.jpg">
-    <p>yanliang</p>
-  </a>
-</div>
-
-            
-          
-            
-              <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-08-23T22:08:44+08:00">
-  <a class='notlink'>
-    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Aug 23, 2020</p>
-  </a>
-</div>
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
+    <h2 class="article-title" >
+      <a href="/java/collection/ArrayList_grow/">
+        ArrayList动态扩容机制
+      </a>
+    </h2>
+  
+  <div class='md'>
     
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>我们通过一个具体的例子看一下ArrayList的扩容效果<br>
+      <p>我们通过一个具体的例子看一下ArrayList的扩容效果<br>
 先看一下ArrayList的初始容量</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;Integer&gt; array = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">Integer capacity = getCapacity(array);</span><br><span class="line"><span class="keyword">int</span> size = array.size();</span><br><span class="line">System.out.println(<span class="string">&quot;容量：&quot;</span>+capacity);</span><br><span class="line">System.out.println(<span class="string">&quot;大小：&quot;</span>+size);</span><br><span class="line">容量：<span class="number">0</span></span><br><span class="line">大小：<span class="number">0</span></span><br></pre></td></tr></table></figure>
 <p>getCapacity（）方法是用来获取集合容量的，ArrayList通过一个elementData对象数组储存数据，也就是说ArrayList的容量就是该数组的长度。所以我们只要得到了elementData数组就可以知道ArrayList的实际容量。</p>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2020-07-02</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Java/">Java</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/java/collection/ArrayList_grow/'>
+            Read More
+          </a>
+        </div>
       
     </div>
-    
-      
-        <a class= "readmore" href="/java/collection/ArrayList_grow/">
-          阅读全文 <i class="fas fa-chevron-right"></i>
-        </a>
-      
-    
-  </section>
-</article>
+  
+
+</div>
 
           </div>
         
       
         
           <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
+            <div class="post post-v3 white-box reveal shadow">
   
-
-
-  <section class='meta'>
+  
+  
+  
     
-      
-      
-        <a title='ArrayList 底层实现原理分析' href='/java/collection/ArrayList/'><img class='thumbnail' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/collection.svg'></a>
-      
-      <div class="meta" id="header-meta">
-        
-          
-  <h2 class="title">
-    <a href="/java/collection/ArrayList/">
-      ArrayList 底层实现原理分析
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
-              
-<div class='new-meta-item author'>
-  <a class='author' target="_blank" href="https://gyl-coder.github.io" rel="nofollow noopener">
-    <img no-lazy src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/touxiang.jpg">
-    <p>yanliang</p>
-  </a>
-</div>
-
-            
-          
-            
-              <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-08-23T22:08:21+08:00">
-  <a class='notlink'>
-    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Aug 23, 2020</p>
-  </a>
-</div>
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
+    <h2 class="article-title" >
+      <a href="/java/collection/ArrayList/">
+        ArrayList 底层实现原理分析
+      </a>
+    </h2>
+  
+  <div class='md'>
     
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>ArrayList是List接口的 可变数组的实现。实现了所有可选列表操作，并允许包括 null 在内的所有元素。除了实现 List接口外，此类还提供一些方法来操作内部用来存储列表的数组的大小。ArrayList继承自 AbstractList，这是一个抽象类对一些基础的list操作做了一些封装.实现了RandomAccess 标记接口，表明可以实现快速随机访问.实现了Cloneable接口的实现表示该容器具有Clone函数操作，Serializable是序列化。</p>
+      <p>ArrayList是List接口的 可变数组的实现。实现了所有可选列表操作，并允许包括 null 在内的所有元素。除了实现 List接口外，此类还提供一些方法来操作内部用来存储列表的数组的大小。ArrayList继承自 AbstractList，这是一个抽象类对一些基础的list操作做了一些封装.实现了RandomAccess 标记接口，表明可以实现快速随机访问.实现了Cloneable接口的实现表示该容器具有Clone函数操作，Serializable是序列化。</p>
 <p>每个ArrayList实例都有一个容量，该容量是指用来存储列表元素的数组的大小。它总是至少等于列表的大小。随着向ArrayList中不断添加元素，其容量也自动增长。自动增长会带来数据向新数组的重新拷贝，因此，如果可预知数据量的大小，就可在构造ArrayList实例时指定其容量。</p>
 <p>在添加大量元素前，应用程序也可以使用ensureCapacity操作来增加ArrayList实例的容量，这可以减少递增式再分配的数量。</p>
 <p>注意，此实现不是同步的。如果多个线程同时访问一个ArrayList实例，而其中至少一个线程从结构上修改了列表，那么它必须保持外部同步。</p>
 <blockquote><p>ArrayList这个数据结构比较简单，总体来说，ArrayList底层结构是数组，他的很多方法都是从数组上面演变而来的。</p>
 </blockquote>
 <p>下面我们先来看一下ArrayList中的一些初始值</p>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2020-07-01</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Java/">Java</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/java/collection/ArrayList/'>
+            Read More
+          </a>
+        </div>
       
     </div>
-    
-      
-        <a class= "readmore" href="/java/collection/ArrayList/">
-          阅读全文 <i class="fas fa-chevron-right"></i>
-        </a>
-      
-    
-  </section>
-</article>
+  
+
+</div>
 
           </div>
         
       
         
           <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
+            <div class="post post-v3 white-box reveal shadow">
   
-
-
-  <section class='meta'>
+  
+  
+  
     
-      
-      
-        <a title='try catch finally执行顺序' href='/java/try_catch_finally/'><img class='thumbnail' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/java.svg'></a>
-      
-      <div class="meta" id="header-meta">
+    <h2 class="article-title" >
+      <a href="/java/try_catch_finally/">
+        try catch finally执行顺序
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      <p>首先在finally和try中对数据的操作时数据分为 基本数据类型和引用数据类型，他们存放的地方也不一样，一个是栈区另一个是在堆区。</p>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
         
-          
-  <h2 class="title">
-    <a href="/java/try_catch_finally/">
-      try catch finally执行顺序
-    </a>
-  </h2>
-
-
+        <time>2020-04-03</time>
         
-        <div class='new-meta-box'>
-          
-            
-          
-            
-              
-<div class='new-meta-item author'>
-  <a class='author' target="_blank" href="https://gyl-coder.github.io" rel="nofollow noopener">
-    <img no-lazy src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/touxiang.jpg">
-    <p>yanliang</p>
-  </a>
-</div>
-
-            
-          
-            
-              <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-02T20:15:24+08:00">
-  <a class='notlink'>
-    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Sep 2, 2020</p>
-  </a>
-</div>
-
-            
-          
-        </div>
-        
-          <hr>
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Java/">Java</a>
         
       </div>
-    
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
       
-        <p>首先在finally和try中对数据的操作时数据分为 基本数据类型和引用数据类型，他们存放的地方也不一样，一个是栈区另一个是在堆区。</p>
+        <div>
+          <a class='readmore' href='/java/try_catch_finally/'>
+            Read More
+          </a>
+        </div>
       
     </div>
-    
-      
-        <a class= "readmore" href="/java/try_catch_finally/">
-          阅读全文 <i class="fas fa-chevron-right"></i>
-        </a>
-      
-    
-  </section>
-</article>
+  
+
+</div>
 
           </div>
         
       
         
           <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
+            <div class="post post-v3 white-box reveal shadow">
   
-
-
-  <section class='meta'>
+  
+  
+  
     
-      
-      
-        <a title='动态代理原理剖析' href='/java/dynamic-proxy/'><img class='thumbnail' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/proxy.svg'></a>
-      
-      <div class="meta" id="header-meta">
-        
-          
-  <h2 class="title">
-    <a href="/java/dynamic-proxy/">
-      动态代理原理剖析
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
-              
-<div class='new-meta-item author'>
-  <a class='author' target="_blank" href="https://gyl-coder.github.io" rel="nofollow noopener">
-    <img no-lazy src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/touxiang.jpg">
-    <p>yanliang</p>
-  </a>
-</div>
-
-            
-          
-            
-              <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-08-16T10:10:06+08:00">
-  <a class='notlink'>
-    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Aug 16, 2020</p>
-  </a>
-</div>
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
+    <h2 class="article-title" >
+      <a href="/java/dynamic-proxy/">
+        动态代理原理剖析
+      </a>
+    </h2>
+  
+  <div class='md'>
     
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>动态代理的常用实现方式是反射。反射机制是 Java 语言提供的一种基础功能，赋予程序在运行时自省（introspect，官方用语）的能力。通过反射我们可以直接操作类或者对象，比如获取某个对象的类定义，获取类声明的属性和方法，调用方法或者构造对象，甚至可以运行时修改类定义。</p>
+      <p>动态代理的常用实现方式是反射。反射机制是 Java 语言提供的一种基础功能，赋予程序在运行时自省（introspect，官方用语）的能力。通过反射我们可以直接操作类或者对象，比如获取某个对象的类定义，获取类声明的属性和方法，调用方法或者构造对象，甚至可以运行时修改类定义。</p>
 <p>动态代理是一种方便运行时动态构建代理、动态处理代理方法调用的机制，很多场景都是利用类似机制做到的，比如用来包装 RPC 调用、面向切面的编程（AOP）。</p>
 <p>JDK 自身提供的动态代理，就是主要利用了上面提到的反射机制。但动态代理不止有反射一种实现方式，还有其他的实现方式，比如利用传说中更高性能的字节码操作机制，类似 ASM、cglib（基于 ASM，一个 Java 字节码操作框架）、Javassist 等。简单来说，动态代理是一种行为方式，而反射或 ASM 只是它的一种实现手段而已。</p>
 <p>JDK Proxy 和 CGLib 的区别主要体现在以下几个方面：</p>
@@ -1519,179 +1236,127 @@
 <li>CGLib 是第三方提供的工具，基于 ASM 实现的，性能比较高；</li>
 <li>CGLib 无需通过接口来实现，它是通过实现子类的方式来完成调用的。</li>
 </ul>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2020-04-02</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Java/">Java</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/java/dynamic-proxy/'>
+            Read More
+          </a>
+        </div>
       
     </div>
-    
-      
-        <a class= "readmore" href="/java/dynamic-proxy/">
-          阅读全文 <i class="fas fa-chevron-right"></i>
-        </a>
-      
-    
-  </section>
-</article>
+  
+
+</div>
 
           </div>
         
       
         
           <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
+            <div class="post post-v3 white-box reveal shadow">
   
-
-
-  <section class='meta'>
+  
+  
+  
     
-      
-      
-        <a title='Settings.xml 详解' href='/java/settings/'><img class='thumbnail' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/settings.svg'></a>
-      
-      <div class="meta" id="header-meta">
-        
-          
-  <h2 class="title">
-    <a href="/java/settings/">
-      Settings.xml 详解
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
-              
-<div class='new-meta-item author'>
-  <a class='author' target="_blank" href="https://gyl-coder.github.io" rel="nofollow noopener">
-    <img no-lazy src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/touxiang.jpg">
-    <p>yanliang</p>
-  </a>
-</div>
-
-            
-          
-            
-              <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-02T20:18:36+08:00">
-  <a class='notlink'>
-    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Sep 2, 2020</p>
-  </a>
-</div>
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
+    <h2 class="article-title" >
+      <a href="/java/settings/">
+        Settings.xml 详解
+      </a>
+    </h2>
+  
+  <div class='md'>
     
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>从 <code>settings.xml</code> 的文件名就可以看出，它是用来设置 maven 参数的配置文件。settings.xml 中包含类似本地仓储位置、修改远程仓储服务器、认证信息等配置。</p>
+      <p>从 <code>settings.xml</code> 的文件名就可以看出，它是用来设置 maven 参数的配置文件。settings.xml 中包含类似本地仓储位置、修改远程仓储服务器、认证信息等配置。</p>
 <ul>
 <li>settings.xml 是maven的<strong>全局配置文件</strong>。</li>
 <li>pom.xml 文件是本地<strong>项目配置文件</strong>。</li>
 </ul>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2020-04-02</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Java/">Java</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/java/settings/'>
+            Read More
+          </a>
+        </div>
       
     </div>
-    
-      
-        <a class= "readmore" href="/java/settings/">
-          阅读全文 <i class="fas fa-chevron-right"></i>
-        </a>
-      
-    
-  </section>
-</article>
+  
+
+</div>
 
           </div>
         
       
         
           <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
+            <div class="post post-v3 white-box reveal shadow">
   
-
-
-  <section class='meta'>
+  
+  
+  
     
-      
-      
-        <a title='HashMap 底层实现原理分析' href='/java/collection/HashMapAnalysis/'><img class='thumbnail' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/collection.svg'></a>
-      
-      <div class="meta" id="header-meta">
-        
-          
-  <h2 class="title">
-    <a href="/java/collection/HashMapAnalysis/">
-      HashMap 底层实现原理分析
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
-              
-<div class='new-meta-item author'>
-  <a class='author' target="_blank" href="https://gyl-coder.github.io" rel="nofollow noopener">
-    <img no-lazy src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/touxiang.jpg">
-    <p>yanliang</p>
-  </a>
-</div>
-
-            
-          
-            
-              <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-08-23T22:12:38+08:00">
-  <a class='notlink'>
-    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Aug 23, 2020</p>
-  </a>
-</div>
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
+    <h2 class="article-title" >
+      <a href="/java/collection/HashMapAnalysis/">
+        HashMap 底层实现原理分析
+      </a>
+    </h2>
+  
+  <div class='md'>
     
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><code>HashMap</code> 是 <code>Map</code> 的一个实现类，它代表的是一种键值对的数据存储形式。</p>
+      <p><code>HashMap</code> 是 <code>Map</code> 的一个实现类，它代表的是一种键值对的数据存储形式。</p>
 <p>大多数情况下可以直接定位到它的值，因而具有很快的访问速度，但遍历顺序却是不确定的。</p>
 <p><code>HashMap</code>最多只允许一条记录的键为<code>null</code>，允许多条记录的值为<code>null</code>。不保证有序 (比如插入的顺序)、也不保证序不随时间变化。</p>
 <p><code>jdk 8</code> 之前，其内部是由 <red>数组 + 链表</red> 来实现的，而 <code>jdk 8</code> 对于链表长度超过 <green>8</green> 的链表将转储为 <yellow>红黑树</yellow>。</p>
 <p><code>HashMap</code>非线程安全，即任一时刻可以有多个线程同时写<code>HashMap</code>，可能会导致数据的不一致。如果需要满足线程安全，可以用 <code>Collections</code>的<code>synchronizedMap</code>方法使<code>HashMap</code>具有线程安全的能力，或者使用<code>ConcurrentHashMap</code>。</p>
 <p><code>HashMap</code>是 <blue>数组 + 链表 + 红黑树</blue>（JDK1.8 增加了红黑树部分）实现的。JDK 1.8 之所以添加红黑树是因为一旦链表过长，会严重影响 HashMap 的性能，而红黑树具有快速增删改查的特点，这样就可以有效的解决链表过长时操作比较慢的问题。</p>
-<img src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/20200323120021.png'>
+<div class="img-wrap"><div class="img-bg"><img class="img lazyload placeholder" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/20200323120021.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/20200323120021.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/></div></div>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2020-03-23</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Java/">Java</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/java/collection/HashMapAnalysis/'>
+            Read More
+          </a>
+        </div>
       
     </div>
-    
-      
-        <a class= "readmore" href="/java/collection/HashMapAnalysis/">
-          阅读全文 <i class="fas fa-chevron-right"></i>
-        </a>
-      
-    
-  </section>
-</article>
+  
+
+</div>
 
           </div>
         
@@ -1715,16 +1380,11 @@
         
       </div>
     
-    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-    
-    
-
   
 
 
     
   
-
 </div>
 <aside class='l_side'>
   
@@ -1736,7 +1396,7 @@
   <div class='content'>
     
       
-        <a class='avatar flat-box circle' href='/about/'>
+        <a class='avatar flat-box rectangle' href='/about/'>
           <img no-lazy src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/touxiang.jpg'/>
         </a>
       
@@ -1744,11 +1404,6 @@
     
       <div class='text'>
         
-          <h2>Yanliang</h2>
-        
-        
-          <p><i class="fas fa-map-marker-alt"></i> SZ, China</p>
-
         
         
           <p><span id="jinrishici-sentence">yanliang's blog</span></p>
@@ -1764,6 +1419,7 @@
               class="social fas fa-rss flat-btn"
               target="_blank"
               rel="external nofollow noopener noreferrer">
+              
             </a>
           
         
@@ -1772,6 +1428,7 @@
               class="social fas fa-envelope flat-btn"
               target="_blank"
               rel="external nofollow noopener noreferrer">
+              
             </a>
           
         
@@ -1780,6 +1437,7 @@
               class="social fab fa-github flat-btn"
               target="_blank"
               rel="external nofollow noopener noreferrer">
+              
             </a>
           
         
@@ -1788,33 +1446,11 @@
               class="social fas fa-headphones-alt flat-btn"
               target="_blank"
               rel="external nofollow noopener noreferrer">
+              
             </a>
           
         
       </div>
-    
-  </div>
-</section>
-
-  
-
-  
-    
-    
-
-<section class="widget text shadow desktop mobile">
-  
-  <header>
-    
-      <i class="fas fa-bullhorn faa-flash animated fa-fw fa-fw" aria-hidden="true"></i><span class='name'>公告</span>
-    
-  </header>
-
-
-  <div class='content'>
-    
-      <p>本站默认替换了右键菜单，唤醒原系统菜单： <kbd>Ctrl</kbd> + <kbd>右键</kbd> ~ </br>  本站文章准备开启重构计划，挽救质量啊喂！</p>
-
     
   </div>
 </section>
@@ -1932,7 +1568,7 @@
           <div id="webinfo-runtime-count" publish_date="03/24/2020 21:34:09"></div>
         </div>
         <script>
-          var BirthDay = new Date(new Date('2019/01/01'));
+          var BirthDay = new Date(new Date('2020/01/01'));
           var today = new Date();
           var timeold = (today.getTime() - BirthDay.getTime());
           var daysold = Math.floor(timeold / (24 * 60 * 60 * 1000));
@@ -1946,14 +1582,18 @@
       
         <div class="webinfo-item">
           <div>本站访客数：</div>
-          <div><span id="busuanzi_value_site_uv"><i class="fas fa-fan fa-spin fa-fw" aria-hidden="true"></i></span> 人</div>
+          
+          <div><span id="lc-uv"><span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span></span> 人</div>
+          
         </div>
       
 
       
         <div class="webinfo-item">
           <div>本站总访问量：</div>
-          <div><span id="busuanzi_value_site_pv"><i class="fas fa-fan fa-spin fa-fw" aria-hidden="true"></i></span> 次</div>
+          
+          <div><span id="lc-sv"><span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span></span> 次</div>
+          
         </div>
       
 
@@ -1961,60 +1601,60 @@
         <div class="webinfo-item">
           <div>最后活动时间：</div>
           
-            <div id="last-update" style="display: none;">Wed Sep 02 2020 20:58:17 GMT+0800 (GMT+08:00)</div>
-            <div id="last-update-show">2020-09-02 日</div>
+            <div id="last-update" style="display: none;">Fri Sep 18 2020 21:03:57 GMT+0800 (GMT+08:00)</div>
+            <div id="last-update-show">2020-09-18 日</div>
           
         </div>
         
-        <script> 
-          function timeago(dateTimeStamp) { 
-              var minute = 1000 * 60; //把分，时，天，周，半个月，一个月用毫秒表示 
-              var hour = minute * 60; 
-              var day = hour * 24; 
-              var week = day * 7; 
-              var month = day * 30; 
-              var now = new Date().getTime(); //获取当前时间毫秒 
-              var diffValue = now - dateTimeStamp; //时间差 
-              if (diffValue < 0) { 
-                  return; 
-              } 
-              var minC = diffValue / minute; //计算时间差的分，时，天，周，月 
-              var hourC = diffValue / hour; 
-              var dayC = diffValue / day; 
-              var weekC = diffValue / week; 
-              var monthC = diffValue / month; 
-              if (monthC >= 1 && monthC <= 3) { 
-                  result = " " + parseInt(monthC) + " 月前" 
-              } else if (weekC >= 1 && weekC <= 3) { 
-                  result = " " + parseInt(weekC) + " 周前" 
-              } else if (dayC >= 1 && dayC <= 6) { 
-                  result = " " + parseInt(dayC) + " 天前" 
-              } else if (hourC >= 1 && hourC <= 23) { 
-                  result = " " + parseInt(hourC) + " 小时前" 
-              } else if (minC >= 1 && minC <= 59) { 
-                  result = " " + parseInt(minC) + " 分钟前" 
-              } else if (diffValue >= 0 && diffValue <= minute) { 
-                  result = "刚刚" 
-              } else { 
-                  var datetime = new Date(); 
-                  datetime.setTime(dateTimeStamp); 
-                  var Nyear = datetime.getFullYear(); 
-                  var Nmonth = datetime.getMonth() + 1 < 10 ? "0" + (datetime.getMonth() + 1) : datetime.getMonth() + 1; 
-                  var Ndate = datetime.getDate() < 10 ? "0" + datetime.getDate() : datetime.getDate(); 
-                  var Nhour = datetime.getHours() < 10 ? "0" + datetime.getHours() : datetime.getHours(); 
-                  var Nminute = datetime.getMinutes() < 10 ? "0" + datetime.getMinutes() : datetime.getMinutes(); 
-                  var Nsecond = datetime.getSeconds() < 10 ? "0" + datetime.getSeconds() : datetime.getSeconds(); 
-                  result = Nyear + "-" + Nmonth + "-" + Ndate 
-              } 
-              return result; 
-          } 
-          var lastUpDate = document.getElementById('last-update').innerHTML; 
-          try { 
-            document.getElementById('last-update-show').innerHTML = timeago(new Date(lastUpDate)); 
-          } catch (error) { 
-            document.getElementById('last-update-show').innerHTML = '2020-09-02 日'; 
-          } 
-        </script> 
+        <script>
+          function timeago(dateTimeStamp) {
+              var minute = 1000 * 60; //把分，时，天，周，半个月，一个月用毫秒表示
+              var hour = minute * 60;
+              var day = hour * 24;
+              var week = day * 7;
+              var month = day * 30;
+              var now = new Date().getTime(); //获取当前时间毫秒
+              var diffValue = now - dateTimeStamp; //时间差
+              if (diffValue < 0) {
+                  return;
+              }
+              var minC = diffValue / minute; //计算时间差的分，时，天，周，月
+              var hourC = diffValue / hour;
+              var dayC = diffValue / day;
+              var weekC = diffValue / week;
+              var monthC = diffValue / month;
+              if (monthC >= 1 && monthC <= 3) {
+                  result = " " + parseInt(monthC) + " 月前"
+              } else if (weekC >= 1 && weekC <= 3) {
+                  result = " " + parseInt(weekC) + " 周前"
+              } else if (dayC >= 1 && dayC <= 6) {
+                  result = " " + parseInt(dayC) + " 天前"
+              } else if (hourC >= 1 && hourC <= 23) {
+                  result = " " + parseInt(hourC) + " 小时前"
+              } else if (minC >= 1 && minC <= 59) {
+                  result = " " + parseInt(minC) + " 分钟前"
+              } else if (diffValue >= 0 && diffValue <= minute) {
+                  result = "刚刚"
+              } else {
+                  var datetime = new Date();
+                  datetime.setTime(dateTimeStamp);
+                  var Nyear = datetime.getFullYear();
+                  var Nmonth = datetime.getMonth() + 1 < 10 ? "0" + (datetime.getMonth() + 1) : datetime.getMonth() + 1;
+                  var Ndate = datetime.getDate() < 10 ? "0" + datetime.getDate() : datetime.getDate();
+                  var Nhour = datetime.getHours() < 10 ? "0" + datetime.getHours() : datetime.getHours();
+                  var Nminute = datetime.getMinutes() < 10 ? "0" + datetime.getMinutes() : datetime.getMinutes();
+                  var Nsecond = datetime.getSeconds() < 10 ? "0" + datetime.getSeconds() : datetime.getSeconds();
+                  result = Nyear + "-" + Nmonth + "-" + Ndate
+              }
+              return result;
+          }
+          var lastUpDate = document.getElementById('last-update').innerHTML;
+          try {
+            document.getElementById('last-update-show').innerHTML = timeago(new Date(lastUpDate));
+          } catch (error) {
+            document.getElementById('last-update-show').innerHTML = '2020-09-18 日';
+          }
+        </script>
         
       
     </div>
@@ -2027,32 +1667,15 @@
 </aside>
 
 
-
-    </div>
-    
+      </div>
+      
   
-  <footer class="clearfix">
+  <footer class="footer clearfix">
     <br><br>
     
       
         <div class="aplayer-container">
           
-
-  
-    <meting-js
-      theme='#1BCDFC'
-      autoplay='false'
-      volume='0.7'
-      loop='all'
-      order='list'
-      fixed='false'
-      list-max-height='320px'
-      server='netease'
-      type='song'
-      id='186453'
-      list-folded='true'>
-    </meting-js>
-  
 
 
         </div>
@@ -2065,33 +1688,67 @@
           
             
               <a href="/atom.xml"
-                class="social fas fa-rss flat-btn"
+                class="social  flat-btn"
                 target="_blank"
                 rel="external nofollow noopener noreferrer">
+                
+                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/020-rss.svg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/020-rss.svg" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/>
+                
               </a>
             
           
             
-              <a href="mailto:gyl_coder@163.com"
-                class="social fas fa-envelope flat-btn"
+              <a href="https://github.com/gyl-coder/"
+                class="social  flat-btn"
                 target="_blank"
                 rel="external nofollow noopener noreferrer">
+                
+                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/029-github.svg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/029-github.svg" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/>
+                
               </a>
             
           
             
-              <a href="https://github.com/gyl-coder"
-                class="social fab fa-github flat-btn"
+              <a href="/"
+                class="social  flat-btn"
                 target="_blank"
                 rel="external nofollow noopener noreferrer">
+                
+                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/010-facebook.svg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/010-facebook.svg" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/>
+                
               </a>
             
           
             
-              <a href="https://music.163.com/#/user/home?id=314622884"
-                class="social fas fa-headphones-alt flat-btn"
+              <a href="/"
+                class="social  flat-btn"
                 target="_blank"
                 rel="external nofollow noopener noreferrer">
+                
+                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/018-twitter.svg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/018-twitter.svg" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/>
+                
+              </a>
+            
+          
+            
+              <a href="/"
+                class="social  flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+                
+                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/045-telegram.svg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/045-telegram.svg" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/>
+                
+              </a>
+            
+          
+            
+              <a href="/"
+                class="social  flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+                
+                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/006-youtube.svg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/006-youtube.svg" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/>
+                
               </a>
             
           
@@ -2104,12 +1761,16 @@
       
     
       
-        Use
-        <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0" target="_blank" class="codename">Volantis</a>
-        as theme, total visits
-          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
-          times
         
+          <div><p><span id="lc-sv">本站总访问量为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 次</span> <span id="lc-uv">访客数为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 人</span></p>
+</div>
+        
+      
+    
+      
+        Use
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/4.0.0-rc.4" target="_blank" class="codename">Volantis</a>
+        as theme
       
     
       
@@ -2200,17 +1861,118 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
   </footer>
 
 
-    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+      <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+    </div>
   </div>
   <div>
+    <!-- required -->
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js"></script>
+
+<script>
+  function pjax_fancybox() {
+    $(".md .gallery").find("img").each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".md .gallery").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  function SCload_fancybox() {
+    if ($(".md .gallery").find("img").length == 0) return;
+    loadCSS("https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css", document.getElementById("loadcss"));
+    setTimeout(function() {
+      loadScript('https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js', pjax_fancybox)
+    }, 1);
+  };
+  $(function () {
+    SCload_fancybox();
+  });
+</script>
+
+
+<!-- internal -->
+
+  
+  
+  
     
-      
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.jpg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover-backstretch') {
+          $('.cover-backstretch').backstretch(
+            imgs,
+          {
+            duration: "2000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "2000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+  
   
 
   <div id="rightmenu-wrapper">
     <ul class="list-v rightmenu" id="rightmenu-content">
       <li class='option'>
-        <a class='vlts-menu opt fix-cursor-default' id='menu-copy-text' onclick='document.execCommand("copy")'><i class='fa fa-copy fa-fw'></i>Copy Text</a>
+        <a class='vlts-menu opt fix-cursor-default' id='menu-copy-text' onclick="document.execCommand('copy')"><i class='fa fa-copy fa-fw'></i>Copy Text</a>
         <hr id='hr-text'>
         <a class='vlts-menu opt fix-cursor-default' id='menu-copy-href'><i class='fa fa-link fa-fw'></i>Copy Link</a>
         <a class='vlts-menu opt fix-cursor-default' id='menu-open-href'><i class='fa fa-external-link-square-alt fa-fw'></i>Open Link in New Tab</a>
@@ -2218,12 +1980,14 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
         <a class='vlts-menu opt fix-cursor-default' id='menu-copy-src'><i class='fa fa-image fa-fw'></i>Copy Image Link</a>
         <hr id='hr-src'>
       </li>
-      <li class='navigation'>
-        <a class='nav icon-only fix-cursor-default' onclick='history.back()'><i class='fa fa-arrow-left fa-fw'></i></a>
-        <a class='nav icon-only fix-cursor-default' onclick='history.forward()'><i class='fa fa-arrow-right fa-fw'></i></a>
-        <a class='nav icon-only fix-cursor-default' onclick='window.location.reload()'><i class='fa fa-redo fa-fw'></i></a>
-        <a class='nav icon-only fix-cursor-default' href='/'><i class='fa fa-home fa-fw'></i></a>
-      </li>
+      
+        <li class='navigation'>
+          <a class='nav icon-only fix-cursor-default' onclick='history.back()'><i class='fa fa-arrow-left fa-fw'></i></a>
+          <a class='nav icon-only fix-cursor-default' onclick='history.forward()'><i class='fa fa-arrow-right fa-fw'></i></a>
+          <a class='nav icon-only fix-cursor-default' onclick='window.location.reload()'><i class='fa fa-redo fa-fw'></i></a>
+          <a class='nav icon-only fix-cursor-default' href='/'><i class='fa fa-home fa-fw'></i></a>
+        </li>
+      
       <hr>
       
         
@@ -2337,26 +2101,6 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
         
       
         
-          <li class='music name'>
-            <p class='nav music-title fix-cursor-default'></p>
-          </li>
-          <li class='music ctrl'>
-            <a class='nav icon-only backward fix-cursor-default' onclick='aplayerBackward()'><i class='fa fa-step-backward fa-fw'></i></a>
-            <a class='nav icon-only toggle fix-cursor-default' onclick='aplayerToggle()'><i class='fa fa-play fa-fw'></i></a>
-            <a class='nav icon-only forward fix-cursor-default' onclick='aplayerForward()'><i class='fa fa-step-forward fa-fw'></i></a>
-          </li>
-          <li class='music volume'>
-            <a class='nav volume'>
-              <div class="aplayer-volume-bar-wrap">
-                <div class="aplayer-volume-bar fix-cursor-pointer">
-                  <div class="aplayer-volume"></div>
-                  <i class='left fa fa-volume-off fa-fw'></i>
-                  <i class='right fa fa-volume-up fa-fw'></i>
-                </div>
-              </div>
-            </a>
-          </li>
-        
       
     </ul>
   </div>
@@ -2426,8 +2170,10 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       if (href.length == 0) {
         // 选中文本
         if (window.getSelection().toString()) {
-          copyText.style.display = 'block';
-          hrText.style.display = 'block';
+          if ('' == 'true') {
+            copyText.style.display = 'block';
+            hrText.style.display = 'block';
+          }
         }
       }
 
@@ -2459,7 +2205,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       }
 
       // 有音乐播放器
-      if (true == true) {
+      if ('' == true && ('home,me,album,resume,friends,hr,catchTheCat,hr,print,hr,music'||[]).includes('music')) {
         // 如果有aplayer，初始化一下
       	try {
       		checkAPlayer();
@@ -2487,93 +2233,65 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
   </script>
 
 
-    
-    
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js"></script>
 
 
 
-  <script>
-    
-    var SEARCH_SERVICE = "hexo" || "hexo";
-    var ROOT = "/" || "/";
-    if (!ROOT.endsWith('/')) ROOT += '/';
-  </script>
 
 
+  <script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
 
-  <script async src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
 
 
 
   
   
-  
-    
-<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
-
-    <script type="text/javascript">
-      $(function(){
-        var imgs=["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.jpg"];
-        if ('true' == 'true') {
-          function shuffle(arr){
-            /*From countercurrent-time*/
-            var n = arr.length;
-            while(n--) {
-              var index = Math.floor(Math.random() * n);
-              var temp = arr[index];
-              arr[index] = arr[n];
-              arr[n] = temp;
-            }
-          }
-          shuffle(imgs);
-        }
-        if ('.cover') {
-          $('.cover').backstretch(
-            imgs,
-          {
-            duration: "2000",
-            fade: "1500"
-          });
-        } else {
-          $.backstretch(
-            imgs,
-          {
-            duration: "2000",
-            fade: "1500"
-          });
-        }
-      });
+    <script>
+      window.FPConfig = {
+        delay: 0,
+        ignoreKeywords: [],
+        maxRPS: 5,
+        hoverDelay: 25
+      };
     </script>
+    <script defer src="https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"></script>
   
 
 
 
-  <script>
-    let APlayerController = new Object();
-    APlayerController.id = '186453';  // 设定全局音乐播放ID
-    APlayerController.volume = '0.7';
-  </script>
-  
-    
-<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script>
 
-  
-    
-<script src="https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js"></script>
 
-  
-    
-<script src="/js/aplayer.js"></script>
 
-  
 
 
 
 
   
   
-<script src="https://cdn.jsdelivr.net/gh/HCLonely/Valine@latest/dist/Valine.min.js"></script>
+<script src="/js/valine.js"></script>
 
 
 <script>
@@ -2608,20 +2326,22 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
   }
 
   function pjax_valine() {
-    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
-      decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
-    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
-      "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
+    if(!document.querySelectorAll("#valine_container")[0])return;
 
-    let ALLPATH = '';
-    if(ALLPATH != '') pageUrl = ALLPATH;
+    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) || "快来评论吧~";
+
+    let path = $.trim($('#pjax-comment-path').text());
+    if (path.length == 0) {
+      let defaultPath = '';
+      path = defaultPath || decodeURI(window.location.pathname);
+    }
 
     var valine = new Valine();
     valine.init({
       el: '#valine_container',
       meta: meta,
       placeholder: pagePlaceholder,
-      path: pageUrl,
+      path: path,
       appId: "wvx2KxLUqgjcKv9QE62FmvUY-MdYXbMMI",
       appKey: "u1P8dl8u7IlizUpYbwXpc1VN",
       pageSize: '10',
@@ -2633,9 +2353,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       enableQQ: 'true',
       requiredFields: requiredFields,
       emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
-      emojiMaps: emojiMaps,
-      master: '[6e52e95ab454c5a82b0eb13055d79bd5]',
-      friends: '[b5bd5d836c7a0091aa8473e79ed4c25e,adb7d1cd192658a55c0ad22a3309cecf,3ce1e6c77b4910f1871106cb30dc62b0,cfce8dc43725cc14ffcd9fb4892d5bfc]'
+      emojiMaps: emojiMaps
     })
   }
 
@@ -2647,189 +2365,90 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
 
 
 
-<!-- darkmodejs -->
-
   
 <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5/lib/darkmode-js.min.js" aysc></script>
 
-  <script type="text/javascript">
-	function getClientHeight(){
-	  var clientHeight=0;
-	  if(document.body.clientHeight&&document.documentElement.clientHeight){
-	  var clientHeight = (document.body.clientHeight<document.documentElement.clientHeight)?document.body.clientHeight:document.documentElement.clientHeight;
-	  }else{
-	  var clientHeight = (document.body.clientHeight>document.documentElement.clientHeight)?document.body.clientHeight:document.documentElement.clientHeight;
-	  }
-	  return clientHeight;
-	}
-	function supportCss3(style) {
-		var prefix = ['webkit', 'Moz', 'ms', 'o'],
-		i,
-		humpString = [],
-		htmlStyle = document.documentElement.style,
-		_toHumb = function (string) {
-		return string.replace(/-(\w)/g, function ($0, $1) {
-		return $1.toUpperCase();
-		});
-		};
-		for (i in prefix)
-		humpString.push(_toHumb(prefix[i] + '-' + style));
-		humpString.push(_toHumb(style));
-		for (i in humpString)
-		if (humpString[i] in htmlStyle) return true;
-		return false;
-	};
-	//配置信息
-	var options = {
-	  bottom: '32px',
-	  right: 'unset',
-	  left: '16px',
-	  time: '0s',
-	  mixColor: '#f4f4f4',
-	  backgroundColor: '#f4f4f4',
-	  buttonColorDark: '#100f2c',
-	  buttonColorLight: '#f4f4f4',
-	  saveInCookies: true,
-	  label: '🌓',
-	  autoMatchOsTheme: true
-	};
-	// 卡片兼容处理 mix-blend-mode 与 effect: [shadow, floatable, blur] 冲突???
-	function pjax_darkmodejs(){
-		
-	}
-	// mix-blend-mode support?
-	if(supportCss3('mix-blend-mode')){
-		const darkmode = new Darkmode(options);
-		darkmode.showWidget();
-		pjax_darkmodejs();
-	}
-  </script>
-
-
-<!-- 复制 -->
-
-  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
-<script>
-    var clipboard = new ClipboardJS('.btn-copy', {
-        target: function (trigger) {
-            return trigger.nextElementSibling
-        }
-    });
-    function wait(callback, seconds) {
-        var timelag = null;
-        timelag = window.setTimeout(callback, seconds)
-    }
-    function pjax_initCopyCode() {
-        var copyHtml = '';
-        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
-        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
-        copyHtml += '</button>';
-        $(".highlight .code pre").before(copyHtml);
-        $(".article pre code").before(copyHtml);
-        clipboard.off('success').on('success', function (e) {
-            let $btn = $(e.trigger);
-            $btn.addClass('copied');
-            let $icon = $($btn.find('i'));
-            $icon.removeClass('fa-copy');
-            $icon.addClass('fa-check-circle');
-            let $span = $($btn.find('span'));
-            $span[0].innerText = 'COPIED';
-            wait(function () {
-                $icon.removeClass('fa-check-circle');
-                $icon.addClass('fa-copy');
-                $span[0].innerText = 'COPY'
-            }, 2000)
-        });
-        clipboard.off('error').on('error', function (e) {
-            e.clearSelection();
-            let $btn = $(e.trigger);
-            $btn.addClass('copy-failed');
-            let $icon = $($btn.find('i'));
-            $icon.removeClass('fa-copy');
-            $icon.addClass('fa-times-circle');
-            let $span = $($btn.find('span'));
-            $span[0].innerText = 'COPY FAILED';
-            wait(function () {
-                $icon.removeClass('fa-times-circle');
-                $icon.addClass('fa-copy');
-                $span[0].innerText = 'COPY'
-            }, 2000)
-        })
-    }
-    $(function () {
-        pjax_initCopyCode()
-    });
-</script>
-
-
-<!-- scrollreveal -->
-
-  <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script>
-  <script type="text/javascript">
-    function pjax_scrollrebeal() {
-      ScrollReveal().reveal('.l_main .reveal', {
-        distance: '32px',
-        duration: '800',
-        interval: '20',
-        scale: '1',
-        easing: 'ease-out'
-      });
-    }
-
-    $(function () {
-      pjax_scrollrebeal();
-    });
-  </script>
-
-<!-- ******************************** -->
-
-<!-- fancybox -->
-<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
-<script>
-  function pjax_fancybox() {
-    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
-      var element = document.createElement("a"); // a 标签
-      $(element).attr("class", "fancybox");
-      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
-      $(element).attr("href", $(this).attr("src"));
-      if ($(this).attr("data-original")) {
-        $(element).attr("href", $(this).attr("data-original"));
-      }
-      $(element).attr("data-fancybox", "images");
-      var caption = "";   // 描述信息
-      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
-        $(element).attr('data-caption', $(this).attr('alt'));
-        caption = $(this).attr('alt');
-      }
-      var div = document.createElement("div");
-      $(div).addClass("fancybox");
-      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
-      var span = document.createElement("span");
-      $(span).addClass("image-caption");
-      $(span).text(caption); // 加描述
-      $(this).after(span);  // 再套一层描述
-      $(this).wrap(element);  // 最后套 a 标签
-    })
-    $(".article-entry").find("img").fancybox({
-      selector: '[data-fancybox="images"]',
-      hash: false,
-      loop: false,
-      closeClick: true,
-      helpers: {
-        overlay: {closeClick: true}
-      },
-      buttons: [
-        "zoom",
-        "close"
-      ]
-    });
-  };
-  $(function () {
-    pjax_fancybox();
+<script type="text/javascript">
+function getClientHeight(){
+  var clientHeight=0;
+  if(document.body.clientHeight&&document.documentElement.clientHeight){
+  var clientHeight = (document.body.clientHeight<document.documentElement.clientHeight)?document.body.clientHeight:document.documentElement.clientHeight;
+  }else{
+  var clientHeight = (document.body.clientHeight>document.documentElement.clientHeight)?document.body.clientHeight:document.documentElement.clientHeight;
+  }
+  return clientHeight;
+}
+function supportCss3(style) {
+  var prefix = ['webkit', 'Moz', 'ms', 'o'],
+  i,
+  humpString = [],
+  htmlStyle = document.documentElement.style,
+  _toHumb = function (string) {
+  return string.replace(/-(\w)/g, function ($0, $1) {
+  return $1.toUpperCase();
   });
+  };
+  for (i in prefix)
+  humpString.push(_toHumb(prefix[i] + '-' + style));
+  humpString.push(_toHumb(style));
+  for (i in humpString)
+  if (humpString[i] in htmlStyle) return true;
+  return false;
+};
+//配置信息
+var options = {
+  bottom: '32px',
+  right: 'unset',
+  left: '16px',
+  time: '0s',
+  mixColor: '#f4f4f4',
+  backgroundColor: '#f4f4f4',
+  buttonColorDark: '#333',
+  buttonColorLight: '#ddd',
+  saveInCookies: true,
+  label: '',
+  autoMatchOsTheme: true
+};
+// 卡片兼容处理 mix-blend-mode 与 effect: [blur] 冲突
+
+function pjax_darkmodejs(){
+  
+  if(!supportCss3('mix-blend-mode'))return;
+  var checkExist2 = setInterval(function() {
+     if (typeof jQuery == 'undefined'){return;}
+     clearInterval(checkExist2);
+     var TopFlag=getClientHeight();
+    $(window).scroll(function(){
+      var top = $(document).scrollTop();
+      if(top > TopFlag) {
+        $(".darkmode-layer").css("mix-blend-mode","normal");
+        $(".darkmode-layer").css("background-color","#222");
+      }else{
+        $(".darkmode-layer").css("mix-blend-mode","difference");
+        $(".darkmode-layer").css("background-color","");
+      }
+    })
+  }, 100);
+  
+}
+// mix-blend-mode support?
+if(supportCss3('mix-blend-mode')){
+  window.darkmode = new Darkmode(options);
+  
+  window.darkmode.showWidget();
+  
+  pjax_darkmodejs();
+}
+////////////////Development///////////////////////
+//////////////darkmode模式切换////////////////////
+//window.darkmode.toggle();                     //
+//////////////darkmode模式判断////////////////////
+//console.log(window.darkmode.isActivated())    //
+//////////////////////////////////////////////////
 </script>
 
-<!-- ******************************** -->
+
+
 
 
   
@@ -2845,31 +2464,242 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
   
 
 
+<!-- optional -->
 
-  <script defer src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js" data-pjax></script>
-
-
-
+  <script>
+const SearchServiceimagePath="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/img/";
+const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
+(function ($) {
   
-<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
-
-  <script type="text/javascript">
-    $(function () {
-      Waves.attach('.flat-btn', ['waves-button']);
-      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
-      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
-      Waves.attach('.flat-box', ['waves-block']);
-      Waves.attach('.float-box', ['waves-block', 'waves-float']);
-      Waves.attach('.waves-image');
-      Waves.init();
+    customSearch = new HexoSearch({
+      imagePath: SearchServiceimagePath
     });
-  </script>
+  
+})(jQuery);
+
+</script>
 
 
 
 
 
 
+
+
+
+
+
+  <script defer>
+
+  const LCCounter = {
+    app_id: 'GCYDRKI6XRkyC7EuEhJv90ia-MdYXbMMI',
+    app_key: '4xKBXGBj6BgecU62vff5rJHs',
+    custom_api_server: '',
+
+    // 查询存储的记录
+    getRecord(Counter, url, title) {
+      return new Promise(function (resolve, reject) {
+        Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({url})))
+          .then(resp => resp.json())
+          .then(({results, code, error}) => {
+            if (code === 401) {
+              throw error;
+            }
+            if (results && results.length > 0) {
+              var record = results[0];
+              resolve(record);
+            } else {
+              Counter('post', '/classes/Counter', {url, title: title, times: 0})
+                .then(resp => resp.json())
+                .then((record, error) => {
+                  if (error) {
+                    throw error;
+                  }
+                  resolve(record);
+                }).catch(error => {
+                console.error('Failed to create', error);
+                reject(error);
+              });
+            }
+          }).catch((error) => {
+          console.error('LeanCloud Counter Error:', error);
+          reject(error);
+        });
+      })
+    },
+
+    // 发起自增请求
+    increment(Counter, incrArr) {
+      return new Promise(function (resolve, reject) {
+        Counter('post', '/batch', {
+          "requests": incrArr
+        }).then((res) => {
+          res = res.json();
+          if (res.error) {
+            throw res.error;
+          }
+          resolve(res);
+        }).catch((error) => {
+          console.error('Failed to save visitor count', error);
+          reject(error);
+        });
+      });
+    },
+
+    // 构建自增请求体
+    buildIncrement(objectId) {
+      return {
+        "method": "PUT",
+        "path": `/1.1/classes/Counter/${ objectId }`,
+        "body": {
+          "times": {
+            '__op': 'Increment',
+            'amount': 1
+          }
+        }
+      }
+    },
+
+    // 校验是否为有效的 UV
+    validUV() {
+      var key = 'LeanCloudUVTimestamp';
+      var flag = localStorage.getItem(key);
+      if (flag) {
+        // 距离标记小于 24 小时则不计为 UV
+        if (new Date().getTime() - parseInt(flag) <= 86400000) {
+          return false;
+        }
+      }
+      localStorage.setItem(key, new Date().getTime().toString());
+      return true;
+    },
+
+    addCount(Counter) {
+      var enableIncr = '' === 'true' && window.location.hostname !== 'localhost';
+      enableIncr = true;
+      var getterArr = [];
+      var incrArr = [];
+      // 请求 PV 并自增
+      var pvCtn = document.querySelector('#lc-sv');
+      if (pvCtn || enableIncr) {
+        var pvGetter = this.getRecord(Counter, 'https://gyl-coder.top' + '/#lc-sv', 'Visits').then((record) => {
+          incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-sv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + 1;
+              if (pvCtn) {
+                pvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(pvGetter);
+      }
+
+      // 请求 UV 并自增
+      var uvCtn = document.querySelector('#lc-uv');
+      if (uvCtn || enableIncr) {
+        var uvGetter = this.getRecord(Counter, 'https://gyl-coder.top' + '/#lc-uv', 'Visitors').then((record) => {
+          var vuv = this.validUV();
+          vuv && incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-uv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + (vuv ? 1 : 0);
+              if (uvCtn) {
+                uvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(uvGetter);
+      }
+
+      // 请求文章的浏览数，如果是当前页面就自增
+      var allPV = document.querySelectorAll('#lc-pv');
+      if (allPV.length > 0 || enableIncr) {
+        for (i = 0; i < allPV.length; i++) {
+          let pv = allPV[i];
+          let title = pv.getAttribute('data-title');
+          var url = 'https://gyl-coder.top' + pv.getAttribute('data-path');
+          if (url) {
+            var viewGetter = this.getRecord(Counter, url, title).then((record) => {
+              // 是当前页面就自增
+              let curPath = window.location.pathname;
+              if (curPath.includes('index.html')) {
+                curPath = curPath.substring(0, curPath.lastIndexOf('index.html'));
+              }
+              if (pv.getAttribute('data-path') == curPath) {
+                incrArr.push(this.buildIncrement(record.objectId));
+              }
+              if (pv) {
+                var ele = pv.querySelector('#lc-pv #number');
+                if (ele) {
+                  if (pv.getAttribute('data-path') == curPath) {
+                    ele.innerText = (record.times || 0) + 1;
+                  } else {
+                    ele.innerText = record.times || 0;
+                  }
+                  pv.style.display = 'inline';
+                }
+              }
+            });
+            getterArr.push(viewGetter);
+          }
+        }
+      }
+
+      // 如果启动计数自增，批量发起自增请求
+      if (enableIncr) {
+        Promise.all(getterArr).then(() => {
+          incrArr.length > 0 && this.increment(Counter, incrArr);
+        })
+      }
+
+    },
+
+
+    fetchData(api_server) {
+      var Counter = (method, url, data) => {
+        return fetch(`${ api_server }/1.1${ url }`, {
+          method,
+          headers: {
+            'X-LC-Id': this.app_id,
+            'X-LC-Key': this.app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      this.addCount(Counter);
+    },
+
+    refreshCounter() {
+      var api_server = this.app_id.slice(-9) !== '-MdYXbMMI' ? this.custom_api_server : `https://${ this.app_id.slice(0, 8).toLowerCase() }.api.lncldglobal.com`;
+      if (api_server) {
+        this.fetchData(api_server);
+      } else {
+        fetch('https://app-router.leancloud.cn/2/route?appId=' + this.app_id)
+          .then(resp => resp.json())
+          .then(({api_server}) => {
+            this.fetchData('https://' + api_server);
+          });
+      }
+    }
+
+  };
+
+  LCCounter.refreshCounter();
+
+  document.addEventListener('pjax:complete', function () {
+    LCCounter.refreshCounter();
+  });
+</script>
+
+
+
+<!-- more -->
 
 
     
@@ -2927,7 +2757,9 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       } catch (error) {}
 
       window.subData = null; // 移除标题（用于一二级导航栏切换处）
-      $.fancybox.close();    // 关闭弹窗
+      if (typeof $.fancybox != "undefined") {
+        $.fancybox.close();    // 关闭弹窗
+      }
       $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
       $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
       $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
@@ -2959,23 +2791,33 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       $('script[data-pjax], .pjax-reload script').each(function () {
         $(this).parent().append($(this).remove());
       });
-
       try{
-        pjax_fancybox();
+          if (typeof $.fancybox == "undefined") {
+            SCload_fancybox();
+          } else {
+            pjax_fancybox();
+          }
         
           
-          if ('.cover') {
-            $('.cover').backstretch("resize");
+          if ('.cover-backstretch') {
+            $('.cover-backstretch').backstretch("resize");
+            if($('.cover-wrapper').is(':hidden')){
+              $('.cover-backstretch').backstretch("pause");
+            }else{
+              $('.cover-backstretch').backstretch("next");
+            }
           } else {
             $.backstretch("resize");
+            if($('.cover-wrapper').is(':hidden')){
+              $.backstretch("pause");
+            }else{
+              $.backstretch("next");
+            }
           }
         
         
         
-          pjax_scrollrebeal();
         
-        
-          pjax_initCopyCode();
         
         
           pjax_valine();
@@ -3000,10 +2842,5 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
 
     
   </div>
-<script>
-            window.imageLazyLoadSetting = {
-                isSPA: false,
-                processImages: null,
-            };
-        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var i=n.imageLazyLoadSetting.isSPA,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){i&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,e,a=0;a<r.length;a++)t=r[a],e=void 0,0<=(e=t.getBoundingClientRect()).bottom&&0<=e.left&&e.top<=(n.innerHeight||document.documentElement.clientHeight)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},n.src=i}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
+</body>
 </html>

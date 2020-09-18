@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0'>
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/tree/4.0.0-rc.4'>
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
@@ -13,6 +13,7 @@
   <meta name="HandheldFriendly" content="True" >
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
 
   <!-- 页面元数据 -->
   
@@ -35,25 +36,13 @@ Kafka 作为一个商业级消息中间件，消息可靠性的重要性可想�
   
 
   <!-- link -->
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
   
     
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css">
 
   
   
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css">
-
-  
-  
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
-
-  
-
-  
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
 
   
 
@@ -61,8 +50,6 @@ Kafka 作为一个商业级消息中间件，消息可靠性的重要性可想�
     <link rel="shortcut icon" type='image/x-icon' href="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/favicon32.png">
   
 
-  
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
   
 
   
@@ -76,9 +63,22 @@ Kafka 作为一个商业级消息中间件，消息可靠性的重要性可想�
 <link rel="stylesheet" href="/css/style.css">
 
   
-
   
   
+  <!-- 脚本懒加载函数 -->
+  <script>
+  function loadScript(src, cb) {
+    var HEAD = document.getElementsByTagName('head')[0] || document.documentElement;
+    var script = document.createElement('script');
+    script.setAttribute('type','text/javascript');
+    if (cb) script.onload = cb;
+    script.setAttribute('src', src);
+    HEAD.appendChild(script);
+  }
+  //https://github.com/filamentgroup/loadCSS
+  !function(c){"use strict";var e=function(e,t,n,r){var o,i=c.document,a=i.createElement("link");if(t)o=t;else{var d=(i.body||i.getElementsByTagName("head")[0]).childNodes;o=d[d.length-1]}var f=i.styleSheets;if(r)for(var l in r)r.hasOwnProperty(l)&&a.setAttribute(l,r[l]);a.rel="stylesheet",a.href=e,a.media="only x",function e(t){if(i.body)return t();setTimeout(function(){e(t)})}(function(){o.parentNode.insertBefore(a,t?o:o.nextSibling)});var s=function(e){for(var t=a.href,n=f.length;n--;)if(f[n].href===t)return e();setTimeout(function(){s(e)})};function u(){a.addEventListener&&a.removeEventListener("load",u),a.media=n||"all"}return a.addEventListener&&a.addEventListener("load",u),(a.onloadcssdefined=s)(u),a};"undefined"!=typeof exports?exports.loadCSS=e:c.loadCSS=e}("undefined"!=typeof global?global:this);
+  </script>
+  <script id="loadcss"></script>
 </head>
 
 <body>
@@ -86,70 +86,7 @@ Kafka 作为一个商业级消息中间件，消息可靠性的重要性可想�
   <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/js/love.js"></script>
   <!--浏览器搞笑标题-->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/js/ergao.js"></script>  
-  
-  
-  
-  <div class="cover-wrapper">
-    <cover class='cover post' style="display: none;">
-      <div class='cover-body'>
-  <div class='a'>
-    
-    
-      <p class="title">Yanliang</p>
-    
-    
-      <p class="subtitle">「Willing to exchange self-discipline for freedom」</p>
-    
-  </div>
-  <div class='b'>
-    <div class='menu navigation featured'>
-      <div class='list-h'>
-        
-          
-            <a href="/"
-              
-              
-              id="home">
-              <i class='fas fa-book fa-fw'></i><p>博文</p>
-            </a>
-          
-            <a href="/friends/"
-              
-              
-              id="friends">
-              <i class='fas fa-link fa-fw'></i><p>友人帐</p>
-            </a>
-          
-            <a href="/comment/"
-              
-              
-              id="comment">
-              <i class='fas fa-comment fa-fw'></i><p>留言板</p>
-            </a>
-          
-            <a href="/about/"
-              
-              
-              id="about">
-              <i class='fas fa-info-circle fa-fw'></i><p>关于</p>
-            </a>
-          
-            <a target="_blank" rel="noopener" href="https://travellings.now.sh/"
-              
-              
-              id="https:travellingsnowsh">
-              <i class='fas fa-fighter-jet fa-fw'></i><p>开往</p>
-            </a>
-          
-        
-      </div>
-    </div>
-  </div>
-</div>
-
-      <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
-    </cover>
-    <header class="l_header shadow blur">
+  <header class="l_header auto shadow blur " style='opacity: 0' >
   <div class='container'>
   <div class='wrapper'>
     <div class='nav-sub'>
@@ -447,22 +384,6 @@ Kafka 作为一个商业级消息中间件，消息可靠性的重要性可想�
                     <li>
                       <div class="aplayer-container">
                         
-
-  
-    <meting-js
-      theme='#1BCDFC'
-      autoplay='false'
-      volume='0.7'
-      loop='all'
-      order='list'
-      fixed='false'
-      list-max-height='320px'
-      server='netease'
-      type='song'
-      id='186453'
-      list-folded='true'>
-    </meting-js>
-  
 
 
                       </div>
@@ -805,14 +726,81 @@ Kafka 作为一个商业级消息中间件，消息可靠性的重要性可想�
   </div>
 </header>
 
+  <div class="l_body">
+    <div class="l_cover">
+  
+    
+    
+        <div class='cover-wrapper post dock' style="display: none;">
+          
+            <div class='cover-backstretch'></div>
+          
+          <div class='cover-body'>
+  <div class='top'>
+    
+    
+      <p class="title">Yanliang</p>
+    
+    
+      <p class="subtitle">「Willing to exchange self-discipline for freedom」</p>
+    
+  </div>
+  <div class='bottom'>
+    <div class='menu navigation'>
+      <div class='list-h'>
+        
+          
+            <a href="/"
+              
+              
+              id="home">
+              <i class='fas fa-book fa-fw'></i><p>博文</p>
+            </a>
+          
+            <a href="/friends/"
+              
+              
+              id="friends">
+              <i class='fas fa-link fa-fw'></i><p>友人帐</p>
+            </a>
+          
+            <a href="/comment/"
+              
+              
+              id="comment">
+              <i class='fas fa-comment fa-fw'></i><p>留言板</p>
+            </a>
+          
+            <a href="/about/"
+              
+              
+              id="about">
+              <i class='fas fa-info-circle fa-fw'></i><p>关于</p>
+            </a>
+          
+            <a target="_blank" rel="noopener" href="https://travellings.now.sh/"
+              
+              
+              id="https:travellingsnowsh">
+              <i class='fas fa-fighter-jet fa-fw'></i><p>开往</p>
+            </a>
+          
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+          <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+        </div>
+    
+  
   </div>
   
-
-
-  <div class="l_body">
-    <div class='body-wrapper' id="pjax-container">
-      
-        <!--此文件用来存放一些不方便取值的变量--> 
+    <div class='safearea'>
+      <div class='body-wrapper' id="pjax-container">
+        
+          <!--此文件用来存放一些不方便取值的变量--> 
 <!--思路大概是将值藏到重加载的区域内--> 
  
  
@@ -821,118 +809,108 @@ Kafka 作为一个商业级消息中间件，消息可靠性的重要性可想�
   <div id="pjax-ispage">true</div> 
   <div id="pjax-pageTitle">kafka 如何保证数据的可靠性和一致性</div> 
   <div id="pjax-enable-cover">true</div> 
-  <div id="pjax-comment-path">none</div> 
-  <div id="pjax-comment-placeholder">none</div> 
+  <div id="pjax-comment-path"></div> 
+  <div id="pjax-comment-placeholder"></div> 
 </div> 
  
  
 <script> 
   // 处理封面 此时 jquery 还没加载 
-  if ("blog" == "none") { // 移除封面 
-    document.getElementsByClassName('cover')[0].style.display = "none"; 
-    document.getElementsByClassName('l_body')[0].classList.add("nocover"); 
+  if ("half" == "none") { // 移除封面 
+    document.getElementsByClassName('cover-wrapper')[0].style.display = "none"; 
     document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show"); 
   } else { 
-    if ("blog" == "blog") { // 半屏 
-      document.getElementsByClassName('cover')[0].classList.remove("full"); 
-      document.getElementsByClassName('cover')[0].classList.add("half"); 
+    if ("half" == "half") { // 半屏 
+      document.getElementsByClassName('cover-wrapper')[0].setAttribute('id', 'half'); 
       document.getElementsByClassName('scroll-down')[0].style.display = "none"; 
-    } else if ("blog" == "docs") { // 全屏 
-      document.getElementsByClassName('cover')[0].classList.remove("half"); 
-      document.getElementsByClassName('cover')[0].classList.add("full"); 
+    } else if ("half" == "full") { // 全屏 
+      document.getElementsByClassName('cover-wrapper')[0].setAttribute('id', 'full'); 
       document.getElementsByClassName('scroll-down')[0].style.display = ""; 
     } 
-    document.getElementsByClassName('cover')[0].style.display = ""; 
-    document.getElementsByClassName('l_body', 'show')[0].classList.remove("nocover"); 
+    document.getElementsByClassName('cover-wrapper')[0].style.display = ""; 
     document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show"); 
   } 
 </script> 
+ 
 
-      
-      
+        
+        
 
 <div class='l_main'>
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
   
 
+
   
-    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
-      
-
-
-  <section class='meta'>
+  <div class="article-meta" id="top">
     
-      
-      
-        <a title='kafka 如何保证数据的可靠性和一致性' href='/kafka/kafka-reliability/'><img class='thumbnail' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/kafka.svg'></a>
-      
-      <div class="meta" id="header-meta">
+    
+      <a title='kafka 如何保证数据的可靠性和一致性' href='/kafka/kafka-reliability/'>
+        <img class='thumbnail' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/kafka.svg'>
+      </a>
+    
+    
+      <h1 class="title">
+        kafka 如何保证数据的可靠性和一致性
+      </h1>
+      <div class='new-meta-box'>
         
           
-  <h1 class="title">
-    <a href="/kafka/kafka-reliability/">
-      kafka 如何保证数据的可靠性和一致性
-    </a>
-  </h1>
-
-
-        
-        <div class='new-meta-box'>
-          
             
-          
-            
-              
 <div class='new-meta-item author'>
-  <a class='author' target="_blank" href="https://gyl-coder.github.io" rel="nofollow noopener">
-    <img no-lazy src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/touxiang.jpg">
-    <p>yanliang</p>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="">
+    <p>Yanliang</p>
   </a>
 </div>
 
-            
+          
+        
           
             
-              
-  
   <div class='new-meta-item category'>
-    <a href='/categories/kafka/' rel="nofollow">
+    <a class='notlink'>
       <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>kafka</p>
+      <a class="category-link" href="/categories/kafka/">kafka</a>
     </a>
   </div>
 
 
-            
           
-            
-              <div class="new-meta-item date">
+        
+          
+            <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
     <p>发布于：Dec 6, 2019</p>
   </a>
 </div>
 
-            
           
-            
-              
-
-            
-          
-        </div>
         
-          <hr>
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
+      
+      <div id="lc-pv" data-title="kafka 如何保证数据的可靠性和一致性" data-path="/kafka/kafka-reliability/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
+
+
+          
         
       </div>
     
-  </section>
+  </div>
 
 
-      <section class="article typo">
-        <div class="article-entry" itemprop="articleBody">
-          
-          
-          <h2 id="数据可靠性"><a class="header-anchor" href="#数据可靠性">¶</a>数据可靠性</h2>
+  
+  <h2 id="数据可靠性"><a class="header-anchor" href="#数据可靠性">¶</a>数据可靠性</h2>
 <p>Kafka 作为一个商业级消息中间件，消息可靠性的重要性可想而知。本文从 Producter 往 Broker 发送消息、Topic 分区副本以及 Leader 选举几个角度介绍数据的可靠性。</p>
 <a id="more"></a>
 <h3 id="Producer-往-Broker-发送消息"><a class="header-anchor" href="#Producer-往-Broker-发送消息">¶</a>Producer 往 Broker 发送消息</h3>
@@ -972,69 +950,42 @@ Kafka 作为一个商业级消息中间件，消息可靠性的重要性可想�
 </ul>
 <h2 id="数据一致性"><a class="header-anchor" href="#数据一致性">¶</a>数据一致性</h2>
 <p>这里介绍的数据一致性主要是说不论是老的 Leader 还是新选举的 Leader，Consumer 都能读到一样的数据。那么 Kafka 是如何实现的呢？</p>
-<img src='https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.2/img/kafka/1567762579648.png'>
+<div class="img-wrap"><div class="img-bg"><img class="img lazyload placeholder" src="https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.2/img/kafka/1567762579648.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.2/img/kafka/1567762579648.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/></div></div>
 <p>假设分区的副本为3，其中副本0是 Leader，副本1和副本2是 follower，并且在 ISR 列表里面。虽然副本0已经写入了 Message3，但是 Consumer 只能读取到 Message1。因为所有的 ISR 都同步了 Message1，只有 High Water Mark 以上的消息才支持 Consumer 读取，而 High Water Mark 取决于 ISR 列表里面偏移量最小的分区，对应于上图的副本2，这个很类似于木桶原理。</p>
 <p>这样做的原因是还没有被足够多副本复制的消息被认为是“不安全”的，如果 Leader 发生崩溃，另一个副本成为新 Leader，那么这些消息很可能丢失了。如果我们允许消费者读取这些消息，可能就会破坏一致性。试想，一个消费者从当前 Leader（副本0） 读取并处理了 Message4，这个时候 Leader 挂掉了，选举了副本1为新的 Leader，这时候另一个消费者再去从新的 Leader 读取消息，发现这个消息其实并不存在，这就导致了数据不一致性问题。</p>
 <p>当然，引入了 High Water Mark 机制，会导致 Broker 间的消息复制因为某些原因变慢，那么消息到达消费者的时间也会随之变长（因为我们会先等待消息复制完毕）。延迟时间可以通过参数 <code>replica.lag.time.max.ms</code> 参数配置，它指定了副本在复制消息时可被允许的最大延迟时间。</p>
 <p>输入中。。。</p>
 
-          
-            <div class='article_footer'>
+  
+  
+    
+    <div class='footer'>
+      
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
               
-                
-  
-    
-    
-
-
-
-  
-
-  
-    
-    
-
-
-
-  
-
-  
-    
-    
-
-<section class="widget copyright  desktop mobile">
-  <div class='content'>
-    
-      <blockquote>
-        
-          
-            <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
-
-          
-        
-          
-            <p>本文永久链接是：<a href=https://gyl-coder.top/kafka/kafka-reliability/>https://gyl-coder.top/kafka/kafka-reliability/</a></p>
-          
-        
-      </blockquote>
-    
-  </div>
-</section>
-
-  
-
-  
-
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
 
               
-            </div>
-          
+            
+              
+                <p>本文永久链接是：<a href=https://gyl-coder.top/kafka/kafka-reliability/>https://gyl-coder.top/kafka/kafka-reliability/</a></p>
+              
+            
+          </blockquote>
         </div>
-        
-          
+      
+      
+    </div>
+  
+  
+    
 
 
-  <section class='meta' id="footer-meta">
+  <div class='article-meta' id="bottom">
     <div class='new-meta-box'>
       
         
@@ -1057,11 +1008,6 @@ Kafka 作为一个商业级消息中间件，消息可靠性的重要性可想�
       
         
           
-
-        
-      
-        
-          
   <div class="new-meta-item share -mob-share-list">
   <div class="-mob-share-list share-body">
     
@@ -1073,7 +1019,7 @@ Kafka 作为一个商业级消息中间件，消息可靠性的重要性可想�
           
           >
           
-            <img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/loading.svg" data-original="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png">
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg">
           
         </a>
       
@@ -1086,7 +1032,7 @@ Kafka 作为一个商业级消息中间件，消息可靠性的重要性可想�
           
           >
           
-            <img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/loading.svg" data-original="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png">
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg">
           
         </a>
       
@@ -1099,9 +1045,13 @@ Kafka 作为一个商业级消息中间件，消息可靠性的重要性可想�
           
           >
           
-            <img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/loading.svg" data-original="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png">
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg">
           
         </a>
+      
+    
+      
+    
       
     
   </div>
@@ -1112,59 +1062,51 @@ Kafka 作为一个商业级消息中间件，消息可靠性的重要性可想�
         
       
     </div>
-  </section>
+  </div>
 
 
-        
-        
-          <div class="prev-next">
-            
-              <a class='prev' href='/kafka/kafka-todo-list/'>
-                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>kafka 问题总结</p>
-                <p class='content'>
+  
+  
+
+  
+    <div class="prev-next">
+      
+        <a class='prev' href='/kafka/kafka-todo-list/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>kafka 问题总结</p>
+          <p class='content'>
 kafka如何保证数据可靠性和数据一致性
 Kafka Rebalance机制分析
 Kafka的用途有哪些？使用场景如何？
 Kafka中的ISR、AR又代表什么？ISR的伸缩又指什么？
 Kafk...</p>
-              </a>
-            
-            
-              <a class='next' href='/kafka/kafka-rebalance/'>
-                <p class='title'>Kafka Rebalance机制分析<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-                <p class='content'>Rebalance 本质上是一种协议，规定了一个 Consumer Group 下的所有 consumer 如何达成一致，来分配订阅 Topic 的每个分区。
-例如：某 Group 下有 20 ...</p>
-              </a>
-            
-          </div>
-        
-      </section>
-    </article>
-  
-
-  
-    
-
-  <article class="post white-box reveal comments shadow">
-    <section class="article typo">
-      <p ct><i class='fas fa-comments'></i> 评论</p>
+        </a>
       
-      <section id="comments">
-        <div id="valine_container" class="valine_thread">
+      
+        <a class='next' href='/kafka/kafka-rebalance/'>
+          <p class='title'>Kafka Rebalance机制分析<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>Rebalance 本质上是一种协议，规定了一个 Consumer Group 下的所有 consumer 如何达成一致，来分配订阅 Topic 的每个分区。
+例如：某 Group 下有 20 ...</p>
+        </a>
+      
+    </div>
+  
+</article>
+
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
   <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
-      </section>
-    </section>
   </article>
 
 
-  
 
 
-
-
-<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
 
 
 </div>
@@ -1198,31 +1140,15 @@ Kafk...</p>
 
 
 
-    </div>
-    
+      </div>
+      
   
-  <footer class="clearfix">
+  <footer class="footer clearfix">
     <br><br>
     
       
         <div class="aplayer-container">
           
-
-  
-    <meting-js
-      theme='#1BCDFC'
-      autoplay='false'
-      volume='0.7'
-      loop='all'
-      order='list'
-      fixed='false'
-      list-max-height='320px'
-      server='netease'
-      type='song'
-      id='186453'
-      list-folded='true'>
-    </meting-js>
-  
 
 
         </div>
@@ -1235,33 +1161,67 @@ Kafk...</p>
           
             
               <a href="/atom.xml"
-                class="social fas fa-rss flat-btn"
+                class="social  flat-btn"
                 target="_blank"
                 rel="external nofollow noopener noreferrer">
+                
+                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/020-rss.svg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/020-rss.svg" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/>
+                
               </a>
             
           
             
-              <a href="mailto:gyl_coder@163.com"
-                class="social fas fa-envelope flat-btn"
+              <a href="https://github.com/gyl-coder/"
+                class="social  flat-btn"
                 target="_blank"
                 rel="external nofollow noopener noreferrer">
+                
+                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/029-github.svg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/029-github.svg" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/>
+                
               </a>
             
           
             
-              <a href="https://github.com/gyl-coder"
-                class="social fab fa-github flat-btn"
+              <a href="/"
+                class="social  flat-btn"
                 target="_blank"
                 rel="external nofollow noopener noreferrer">
+                
+                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/010-facebook.svg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/010-facebook.svg" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/>
+                
               </a>
             
           
             
-              <a href="https://music.163.com/#/user/home?id=314622884"
-                class="social fas fa-headphones-alt flat-btn"
+              <a href="/"
+                class="social  flat-btn"
                 target="_blank"
                 rel="external nofollow noopener noreferrer">
+                
+                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/018-twitter.svg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/018-twitter.svg" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/>
+                
+              </a>
+            
+          
+            
+              <a href="/"
+                class="social  flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+                
+                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/045-telegram.svg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/045-telegram.svg" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/>
+                
+              </a>
+            
+          
+            
+              <a href="/"
+                class="social  flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+                
+                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/006-youtube.svg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/006-youtube.svg" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/>
+                
               </a>
             
           
@@ -1274,12 +1234,16 @@ Kafk...</p>
       
     
       
-        Use
-        <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0" target="_blank" class="codename">Volantis</a>
-        as theme, total visits
-          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
-          times
         
+          <div><p><span id="lc-sv">本站总访问量为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 次</span> <span id="lc-uv">访客数为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 人</span></p>
+</div>
+        
+      
+    
+      
+        Use
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/4.0.0-rc.4" target="_blank" class="codename">Volantis</a>
+        as theme
       
     
       
@@ -1370,17 +1334,118 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
   </footer>
 
 
-    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+      <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+    </div>
   </div>
   <div>
+    <!-- required -->
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js"></script>
+
+<script>
+  function pjax_fancybox() {
+    $(".md .gallery").find("img").each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".md .gallery").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  function SCload_fancybox() {
+    if ($(".md .gallery").find("img").length == 0) return;
+    loadCSS("https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css", document.getElementById("loadcss"));
+    setTimeout(function() {
+      loadScript('https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js', pjax_fancybox)
+    }, 1);
+  };
+  $(function () {
+    SCload_fancybox();
+  });
+</script>
+
+
+<!-- internal -->
+
+  
+  
+  
     
-      
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.jpg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover-backstretch') {
+          $('.cover-backstretch').backstretch(
+            imgs,
+          {
+            duration: "2000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "2000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+  
   
 
   <div id="rightmenu-wrapper">
     <ul class="list-v rightmenu" id="rightmenu-content">
       <li class='option'>
-        <a class='vlts-menu opt fix-cursor-default' id='menu-copy-text' onclick='document.execCommand("copy")'><i class='fa fa-copy fa-fw'></i>Copy Text</a>
+        <a class='vlts-menu opt fix-cursor-default' id='menu-copy-text' onclick="document.execCommand('copy')"><i class='fa fa-copy fa-fw'></i>Copy Text</a>
         <hr id='hr-text'>
         <a class='vlts-menu opt fix-cursor-default' id='menu-copy-href'><i class='fa fa-link fa-fw'></i>Copy Link</a>
         <a class='vlts-menu opt fix-cursor-default' id='menu-open-href'><i class='fa fa-external-link-square-alt fa-fw'></i>Open Link in New Tab</a>
@@ -1388,12 +1453,14 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
         <a class='vlts-menu opt fix-cursor-default' id='menu-copy-src'><i class='fa fa-image fa-fw'></i>Copy Image Link</a>
         <hr id='hr-src'>
       </li>
-      <li class='navigation'>
-        <a class='nav icon-only fix-cursor-default' onclick='history.back()'><i class='fa fa-arrow-left fa-fw'></i></a>
-        <a class='nav icon-only fix-cursor-default' onclick='history.forward()'><i class='fa fa-arrow-right fa-fw'></i></a>
-        <a class='nav icon-only fix-cursor-default' onclick='window.location.reload()'><i class='fa fa-redo fa-fw'></i></a>
-        <a class='nav icon-only fix-cursor-default' href='/'><i class='fa fa-home fa-fw'></i></a>
-      </li>
+      
+        <li class='navigation'>
+          <a class='nav icon-only fix-cursor-default' onclick='history.back()'><i class='fa fa-arrow-left fa-fw'></i></a>
+          <a class='nav icon-only fix-cursor-default' onclick='history.forward()'><i class='fa fa-arrow-right fa-fw'></i></a>
+          <a class='nav icon-only fix-cursor-default' onclick='window.location.reload()'><i class='fa fa-redo fa-fw'></i></a>
+          <a class='nav icon-only fix-cursor-default' href='/'><i class='fa fa-home fa-fw'></i></a>
+        </li>
+      
       <hr>
       
         
@@ -1507,26 +1574,6 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
         
       
         
-          <li class='music name'>
-            <p class='nav music-title fix-cursor-default'></p>
-          </li>
-          <li class='music ctrl'>
-            <a class='nav icon-only backward fix-cursor-default' onclick='aplayerBackward()'><i class='fa fa-step-backward fa-fw'></i></a>
-            <a class='nav icon-only toggle fix-cursor-default' onclick='aplayerToggle()'><i class='fa fa-play fa-fw'></i></a>
-            <a class='nav icon-only forward fix-cursor-default' onclick='aplayerForward()'><i class='fa fa-step-forward fa-fw'></i></a>
-          </li>
-          <li class='music volume'>
-            <a class='nav volume'>
-              <div class="aplayer-volume-bar-wrap">
-                <div class="aplayer-volume-bar fix-cursor-pointer">
-                  <div class="aplayer-volume"></div>
-                  <i class='left fa fa-volume-off fa-fw'></i>
-                  <i class='right fa fa-volume-up fa-fw'></i>
-                </div>
-              </div>
-            </a>
-          </li>
-        
       
     </ul>
   </div>
@@ -1596,8 +1643,10 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       if (href.length == 0) {
         // 选中文本
         if (window.getSelection().toString()) {
-          copyText.style.display = 'block';
-          hrText.style.display = 'block';
+          if ('' == 'true') {
+            copyText.style.display = 'block';
+            hrText.style.display = 'block';
+          }
         }
       }
 
@@ -1629,7 +1678,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       }
 
       // 有音乐播放器
-      if (true == true) {
+      if ('' == true && ('home,me,album,resume,friends,hr,catchTheCat,hr,print,hr,music'||[]).includes('music')) {
         // 如果有aplayer，初始化一下
       	try {
       		checkAPlayer();
@@ -1657,93 +1706,65 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
   </script>
 
 
-    
-    
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js"></script>
 
 
 
-  <script>
-    
-    var SEARCH_SERVICE = "hexo" || "hexo";
-    var ROOT = "/" || "/";
-    if (!ROOT.endsWith('/')) ROOT += '/';
-  </script>
 
 
+  <script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
 
-  <script async src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
 
 
 
   
   
-  
-    
-<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
-
-    <script type="text/javascript">
-      $(function(){
-        var imgs=["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.jpg"];
-        if ('true' == 'true') {
-          function shuffle(arr){
-            /*From countercurrent-time*/
-            var n = arr.length;
-            while(n--) {
-              var index = Math.floor(Math.random() * n);
-              var temp = arr[index];
-              arr[index] = arr[n];
-              arr[n] = temp;
-            }
-          }
-          shuffle(imgs);
-        }
-        if ('.cover') {
-          $('.cover').backstretch(
-            imgs,
-          {
-            duration: "2000",
-            fade: "1500"
-          });
-        } else {
-          $.backstretch(
-            imgs,
-          {
-            duration: "2000",
-            fade: "1500"
-          });
-        }
-      });
+    <script>
+      window.FPConfig = {
+        delay: 0,
+        ignoreKeywords: [],
+        maxRPS: 5,
+        hoverDelay: 25
+      };
     </script>
+    <script defer src="https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"></script>
   
 
 
 
-  <script>
-    let APlayerController = new Object();
-    APlayerController.id = '186453';  // 设定全局音乐播放ID
-    APlayerController.volume = '0.7';
-  </script>
-  
-    
-<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script>
 
-  
-    
-<script src="https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js"></script>
 
-  
-    
-<script src="/js/aplayer.js"></script>
 
-  
 
 
 
 
   
   
-<script src="https://cdn.jsdelivr.net/gh/HCLonely/Valine@latest/dist/Valine.min.js"></script>
+<script src="/js/valine.js"></script>
 
 
 <script>
@@ -1778,20 +1799,22 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
   }
 
   function pjax_valine() {
-    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
-      decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
-    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
-      "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
+    if(!document.querySelectorAll("#valine_container")[0])return;
 
-    let ALLPATH = '';
-    if(ALLPATH != '') pageUrl = ALLPATH;
+    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) || "快来评论吧~";
+
+    let path = $.trim($('#pjax-comment-path').text());
+    if (path.length == 0) {
+      let defaultPath = '';
+      path = defaultPath || decodeURI(window.location.pathname);
+    }
 
     var valine = new Valine();
     valine.init({
       el: '#valine_container',
       meta: meta,
       placeholder: pagePlaceholder,
-      path: pageUrl,
+      path: path,
       appId: "wvx2KxLUqgjcKv9QE62FmvUY-MdYXbMMI",
       appKey: "u1P8dl8u7IlizUpYbwXpc1VN",
       pageSize: '10',
@@ -1803,9 +1826,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       enableQQ: 'true',
       requiredFields: requiredFields,
       emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
-      emojiMaps: emojiMaps,
-      master: '[6e52e95ab454c5a82b0eb13055d79bd5]',
-      friends: '[b5bd5d836c7a0091aa8473e79ed4c25e,adb7d1cd192658a55c0ad22a3309cecf,3ce1e6c77b4910f1871106cb30dc62b0,cfce8dc43725cc14ffcd9fb4892d5bfc]'
+      emojiMaps: emojiMaps
     })
   }
 
@@ -1817,189 +1838,90 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
 
 
 
-<!-- darkmodejs -->
-
   
 <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5/lib/darkmode-js.min.js" aysc></script>
 
-  <script type="text/javascript">
-	function getClientHeight(){
-	  var clientHeight=0;
-	  if(document.body.clientHeight&&document.documentElement.clientHeight){
-	  var clientHeight = (document.body.clientHeight<document.documentElement.clientHeight)?document.body.clientHeight:document.documentElement.clientHeight;
-	  }else{
-	  var clientHeight = (document.body.clientHeight>document.documentElement.clientHeight)?document.body.clientHeight:document.documentElement.clientHeight;
-	  }
-	  return clientHeight;
-	}
-	function supportCss3(style) {
-		var prefix = ['webkit', 'Moz', 'ms', 'o'],
-		i,
-		humpString = [],
-		htmlStyle = document.documentElement.style,
-		_toHumb = function (string) {
-		return string.replace(/-(\w)/g, function ($0, $1) {
-		return $1.toUpperCase();
-		});
-		};
-		for (i in prefix)
-		humpString.push(_toHumb(prefix[i] + '-' + style));
-		humpString.push(_toHumb(style));
-		for (i in humpString)
-		if (humpString[i] in htmlStyle) return true;
-		return false;
-	};
-	//配置信息
-	var options = {
-	  bottom: '32px',
-	  right: 'unset',
-	  left: '16px',
-	  time: '0s',
-	  mixColor: '#f4f4f4',
-	  backgroundColor: '#f4f4f4',
-	  buttonColorDark: '#100f2c',
-	  buttonColorLight: '#f4f4f4',
-	  saveInCookies: true,
-	  label: '🌓',
-	  autoMatchOsTheme: true
-	};
-	// 卡片兼容处理 mix-blend-mode 与 effect: [shadow, floatable, blur] 冲突???
-	function pjax_darkmodejs(){
-		
-	}
-	// mix-blend-mode support?
-	if(supportCss3('mix-blend-mode')){
-		const darkmode = new Darkmode(options);
-		darkmode.showWidget();
-		pjax_darkmodejs();
-	}
-  </script>
-
-
-<!-- 复制 -->
-
-  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
-<script>
-    var clipboard = new ClipboardJS('.btn-copy', {
-        target: function (trigger) {
-            return trigger.nextElementSibling
-        }
-    });
-    function wait(callback, seconds) {
-        var timelag = null;
-        timelag = window.setTimeout(callback, seconds)
-    }
-    function pjax_initCopyCode() {
-        var copyHtml = '';
-        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
-        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
-        copyHtml += '</button>';
-        $(".highlight .code pre").before(copyHtml);
-        $(".article pre code").before(copyHtml);
-        clipboard.off('success').on('success', function (e) {
-            let $btn = $(e.trigger);
-            $btn.addClass('copied');
-            let $icon = $($btn.find('i'));
-            $icon.removeClass('fa-copy');
-            $icon.addClass('fa-check-circle');
-            let $span = $($btn.find('span'));
-            $span[0].innerText = 'COPIED';
-            wait(function () {
-                $icon.removeClass('fa-check-circle');
-                $icon.addClass('fa-copy');
-                $span[0].innerText = 'COPY'
-            }, 2000)
-        });
-        clipboard.off('error').on('error', function (e) {
-            e.clearSelection();
-            let $btn = $(e.trigger);
-            $btn.addClass('copy-failed');
-            let $icon = $($btn.find('i'));
-            $icon.removeClass('fa-copy');
-            $icon.addClass('fa-times-circle');
-            let $span = $($btn.find('span'));
-            $span[0].innerText = 'COPY FAILED';
-            wait(function () {
-                $icon.removeClass('fa-times-circle');
-                $icon.addClass('fa-copy');
-                $span[0].innerText = 'COPY'
-            }, 2000)
-        })
-    }
-    $(function () {
-        pjax_initCopyCode()
-    });
-</script>
-
-
-<!-- scrollreveal -->
-
-  <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script>
-  <script type="text/javascript">
-    function pjax_scrollrebeal() {
-      ScrollReveal().reveal('.l_main .reveal', {
-        distance: '32px',
-        duration: '800',
-        interval: '20',
-        scale: '1',
-        easing: 'ease-out'
-      });
-    }
-
-    $(function () {
-      pjax_scrollrebeal();
-    });
-  </script>
-
-<!-- ******************************** -->
-
-<!-- fancybox -->
-<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
-<script>
-  function pjax_fancybox() {
-    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
-      var element = document.createElement("a"); // a 标签
-      $(element).attr("class", "fancybox");
-      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
-      $(element).attr("href", $(this).attr("src"));
-      if ($(this).attr("data-original")) {
-        $(element).attr("href", $(this).attr("data-original"));
-      }
-      $(element).attr("data-fancybox", "images");
-      var caption = "";   // 描述信息
-      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
-        $(element).attr('data-caption', $(this).attr('alt'));
-        caption = $(this).attr('alt');
-      }
-      var div = document.createElement("div");
-      $(div).addClass("fancybox");
-      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
-      var span = document.createElement("span");
-      $(span).addClass("image-caption");
-      $(span).text(caption); // 加描述
-      $(this).after(span);  // 再套一层描述
-      $(this).wrap(element);  // 最后套 a 标签
-    })
-    $(".article-entry").find("img").fancybox({
-      selector: '[data-fancybox="images"]',
-      hash: false,
-      loop: false,
-      closeClick: true,
-      helpers: {
-        overlay: {closeClick: true}
-      },
-      buttons: [
-        "zoom",
-        "close"
-      ]
-    });
-  };
-  $(function () {
-    pjax_fancybox();
+<script type="text/javascript">
+function getClientHeight(){
+  var clientHeight=0;
+  if(document.body.clientHeight&&document.documentElement.clientHeight){
+  var clientHeight = (document.body.clientHeight<document.documentElement.clientHeight)?document.body.clientHeight:document.documentElement.clientHeight;
+  }else{
+  var clientHeight = (document.body.clientHeight>document.documentElement.clientHeight)?document.body.clientHeight:document.documentElement.clientHeight;
+  }
+  return clientHeight;
+}
+function supportCss3(style) {
+  var prefix = ['webkit', 'Moz', 'ms', 'o'],
+  i,
+  humpString = [],
+  htmlStyle = document.documentElement.style,
+  _toHumb = function (string) {
+  return string.replace(/-(\w)/g, function ($0, $1) {
+  return $1.toUpperCase();
   });
+  };
+  for (i in prefix)
+  humpString.push(_toHumb(prefix[i] + '-' + style));
+  humpString.push(_toHumb(style));
+  for (i in humpString)
+  if (humpString[i] in htmlStyle) return true;
+  return false;
+};
+//配置信息
+var options = {
+  bottom: '32px',
+  right: 'unset',
+  left: '16px',
+  time: '0s',
+  mixColor: '#f4f4f4',
+  backgroundColor: '#f4f4f4',
+  buttonColorDark: '#333',
+  buttonColorLight: '#ddd',
+  saveInCookies: true,
+  label: '',
+  autoMatchOsTheme: true
+};
+// 卡片兼容处理 mix-blend-mode 与 effect: [blur] 冲突
+
+function pjax_darkmodejs(){
+  
+  if(!supportCss3('mix-blend-mode'))return;
+  var checkExist2 = setInterval(function() {
+     if (typeof jQuery == 'undefined'){return;}
+     clearInterval(checkExist2);
+     var TopFlag=getClientHeight();
+    $(window).scroll(function(){
+      var top = $(document).scrollTop();
+      if(top > TopFlag) {
+        $(".darkmode-layer").css("mix-blend-mode","normal");
+        $(".darkmode-layer").css("background-color","#222");
+      }else{
+        $(".darkmode-layer").css("mix-blend-mode","difference");
+        $(".darkmode-layer").css("background-color","");
+      }
+    })
+  }, 100);
+  
+}
+// mix-blend-mode support?
+if(supportCss3('mix-blend-mode')){
+  window.darkmode = new Darkmode(options);
+  
+  window.darkmode.showWidget();
+  
+  pjax_darkmodejs();
+}
+////////////////Development///////////////////////
+//////////////darkmode模式切换////////////////////
+//window.darkmode.toggle();                     //
+//////////////darkmode模式判断////////////////////
+//console.log(window.darkmode.isActivated())    //
+//////////////////////////////////////////////////
 </script>
 
-<!-- ******************************** -->
+
+
 
 
   
@@ -2015,31 +1937,242 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
   
 
 
+<!-- optional -->
 
-  <script defer src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js" data-pjax></script>
-
-
-
+  <script>
+const SearchServiceimagePath="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/img/";
+const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
+(function ($) {
   
-<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
-
-  <script type="text/javascript">
-    $(function () {
-      Waves.attach('.flat-btn', ['waves-button']);
-      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
-      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
-      Waves.attach('.flat-box', ['waves-block']);
-      Waves.attach('.float-box', ['waves-block', 'waves-float']);
-      Waves.attach('.waves-image');
-      Waves.init();
+    customSearch = new HexoSearch({
+      imagePath: SearchServiceimagePath
     });
-  </script>
+  
+})(jQuery);
+
+</script>
 
 
 
 
 
 
+
+
+
+
+
+  <script defer>
+
+  const LCCounter = {
+    app_id: 'GCYDRKI6XRkyC7EuEhJv90ia-MdYXbMMI',
+    app_key: '4xKBXGBj6BgecU62vff5rJHs',
+    custom_api_server: '',
+
+    // 查询存储的记录
+    getRecord(Counter, url, title) {
+      return new Promise(function (resolve, reject) {
+        Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({url})))
+          .then(resp => resp.json())
+          .then(({results, code, error}) => {
+            if (code === 401) {
+              throw error;
+            }
+            if (results && results.length > 0) {
+              var record = results[0];
+              resolve(record);
+            } else {
+              Counter('post', '/classes/Counter', {url, title: title, times: 0})
+                .then(resp => resp.json())
+                .then((record, error) => {
+                  if (error) {
+                    throw error;
+                  }
+                  resolve(record);
+                }).catch(error => {
+                console.error('Failed to create', error);
+                reject(error);
+              });
+            }
+          }).catch((error) => {
+          console.error('LeanCloud Counter Error:', error);
+          reject(error);
+        });
+      })
+    },
+
+    // 发起自增请求
+    increment(Counter, incrArr) {
+      return new Promise(function (resolve, reject) {
+        Counter('post', '/batch', {
+          "requests": incrArr
+        }).then((res) => {
+          res = res.json();
+          if (res.error) {
+            throw res.error;
+          }
+          resolve(res);
+        }).catch((error) => {
+          console.error('Failed to save visitor count', error);
+          reject(error);
+        });
+      });
+    },
+
+    // 构建自增请求体
+    buildIncrement(objectId) {
+      return {
+        "method": "PUT",
+        "path": `/1.1/classes/Counter/${ objectId }`,
+        "body": {
+          "times": {
+            '__op': 'Increment',
+            'amount': 1
+          }
+        }
+      }
+    },
+
+    // 校验是否为有效的 UV
+    validUV() {
+      var key = 'LeanCloudUVTimestamp';
+      var flag = localStorage.getItem(key);
+      if (flag) {
+        // 距离标记小于 24 小时则不计为 UV
+        if (new Date().getTime() - parseInt(flag) <= 86400000) {
+          return false;
+        }
+      }
+      localStorage.setItem(key, new Date().getTime().toString());
+      return true;
+    },
+
+    addCount(Counter) {
+      var enableIncr = '' === 'true' && window.location.hostname !== 'localhost';
+      enableIncr = true;
+      var getterArr = [];
+      var incrArr = [];
+      // 请求 PV 并自增
+      var pvCtn = document.querySelector('#lc-sv');
+      if (pvCtn || enableIncr) {
+        var pvGetter = this.getRecord(Counter, 'https://gyl-coder.top' + '/#lc-sv', 'Visits').then((record) => {
+          incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-sv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + 1;
+              if (pvCtn) {
+                pvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(pvGetter);
+      }
+
+      // 请求 UV 并自增
+      var uvCtn = document.querySelector('#lc-uv');
+      if (uvCtn || enableIncr) {
+        var uvGetter = this.getRecord(Counter, 'https://gyl-coder.top' + '/#lc-uv', 'Visitors').then((record) => {
+          var vuv = this.validUV();
+          vuv && incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-uv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + (vuv ? 1 : 0);
+              if (uvCtn) {
+                uvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(uvGetter);
+      }
+
+      // 请求文章的浏览数，如果是当前页面就自增
+      var allPV = document.querySelectorAll('#lc-pv');
+      if (allPV.length > 0 || enableIncr) {
+        for (i = 0; i < allPV.length; i++) {
+          let pv = allPV[i];
+          let title = pv.getAttribute('data-title');
+          var url = 'https://gyl-coder.top' + pv.getAttribute('data-path');
+          if (url) {
+            var viewGetter = this.getRecord(Counter, url, title).then((record) => {
+              // 是当前页面就自增
+              let curPath = window.location.pathname;
+              if (curPath.includes('index.html')) {
+                curPath = curPath.substring(0, curPath.lastIndexOf('index.html'));
+              }
+              if (pv.getAttribute('data-path') == curPath) {
+                incrArr.push(this.buildIncrement(record.objectId));
+              }
+              if (pv) {
+                var ele = pv.querySelector('#lc-pv #number');
+                if (ele) {
+                  if (pv.getAttribute('data-path') == curPath) {
+                    ele.innerText = (record.times || 0) + 1;
+                  } else {
+                    ele.innerText = record.times || 0;
+                  }
+                  pv.style.display = 'inline';
+                }
+              }
+            });
+            getterArr.push(viewGetter);
+          }
+        }
+      }
+
+      // 如果启动计数自增，批量发起自增请求
+      if (enableIncr) {
+        Promise.all(getterArr).then(() => {
+          incrArr.length > 0 && this.increment(Counter, incrArr);
+        })
+      }
+
+    },
+
+
+    fetchData(api_server) {
+      var Counter = (method, url, data) => {
+        return fetch(`${ api_server }/1.1${ url }`, {
+          method,
+          headers: {
+            'X-LC-Id': this.app_id,
+            'X-LC-Key': this.app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      this.addCount(Counter);
+    },
+
+    refreshCounter() {
+      var api_server = this.app_id.slice(-9) !== '-MdYXbMMI' ? this.custom_api_server : `https://${ this.app_id.slice(0, 8).toLowerCase() }.api.lncldglobal.com`;
+      if (api_server) {
+        this.fetchData(api_server);
+      } else {
+        fetch('https://app-router.leancloud.cn/2/route?appId=' + this.app_id)
+          .then(resp => resp.json())
+          .then(({api_server}) => {
+            this.fetchData('https://' + api_server);
+          });
+      }
+    }
+
+  };
+
+  LCCounter.refreshCounter();
+
+  document.addEventListener('pjax:complete', function () {
+    LCCounter.refreshCounter();
+  });
+</script>
+
+
+
+<!-- more -->
 
 
     
@@ -2097,7 +2230,9 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       } catch (error) {}
 
       window.subData = null; // 移除标题（用于一二级导航栏切换处）
-      $.fancybox.close();    // 关闭弹窗
+      if (typeof $.fancybox != "undefined") {
+        $.fancybox.close();    // 关闭弹窗
+      }
       $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
       $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
       $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
@@ -2129,23 +2264,33 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       $('script[data-pjax], .pjax-reload script').each(function () {
         $(this).parent().append($(this).remove());
       });
-
       try{
-        pjax_fancybox();
+          if (typeof $.fancybox == "undefined") {
+            SCload_fancybox();
+          } else {
+            pjax_fancybox();
+          }
         
           
-          if ('.cover') {
-            $('.cover').backstretch("resize");
+          if ('.cover-backstretch') {
+            $('.cover-backstretch').backstretch("resize");
+            if($('.cover-wrapper').is(':hidden')){
+              $('.cover-backstretch').backstretch("pause");
+            }else{
+              $('.cover-backstretch').backstretch("next");
+            }
           } else {
             $.backstretch("resize");
+            if($('.cover-wrapper').is(':hidden')){
+              $.backstretch("pause");
+            }else{
+              $.backstretch("next");
+            }
           }
         
         
         
-          pjax_scrollrebeal();
         
-        
-          pjax_initCopyCode();
         
         
           pjax_valine();
@@ -2170,10 +2315,5 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
 
     
   </div>
-<script>
-            window.imageLazyLoadSetting = {
-                isSPA: false,
-                processImages: null,
-            };
-        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var i=n.imageLazyLoadSetting.isSPA,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){i&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,e,a=0;a<r.length;a++)t=r[a],e=void 0,0<=(e=t.getBoundingClientRect()).bottom&&0<=e.left&&e.top<=(n.innerHeight||document.documentElement.clientHeight)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},n.src=i}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
+</body>
 </html>

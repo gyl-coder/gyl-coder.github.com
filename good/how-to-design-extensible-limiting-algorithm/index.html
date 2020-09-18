@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0'>
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/tree/4.0.0-rc.4'>
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
@@ -13,6 +13,7 @@
   <meta name="HandheldFriendly" content="True" >
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
 
   <!-- 页面元数据 -->
   
@@ -34,25 +35,13 @@
   
 
   <!-- link -->
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
   
     
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css">
 
   
   
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css">
-
-  
-  
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
-
-  
-
-  
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
 
   
 
@@ -60,8 +49,6 @@
     <link rel="shortcut icon" type='image/x-icon' href="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/favicon32.png">
   
 
-  
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
   
 
   
@@ -75,9 +62,22 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
-
   
   
+  <!-- 脚本懒加载函数 -->
+  <script>
+  function loadScript(src, cb) {
+    var HEAD = document.getElementsByTagName('head')[0] || document.documentElement;
+    var script = document.createElement('script');
+    script.setAttribute('type','text/javascript');
+    if (cb) script.onload = cb;
+    script.setAttribute('src', src);
+    HEAD.appendChild(script);
+  }
+  //https://github.com/filamentgroup/loadCSS
+  !function(c){"use strict";var e=function(e,t,n,r){var o,i=c.document,a=i.createElement("link");if(t)o=t;else{var d=(i.body||i.getElementsByTagName("head")[0]).childNodes;o=d[d.length-1]}var f=i.styleSheets;if(r)for(var l in r)r.hasOwnProperty(l)&&a.setAttribute(l,r[l]);a.rel="stylesheet",a.href=e,a.media="only x",function e(t){if(i.body)return t();setTimeout(function(){e(t)})}(function(){o.parentNode.insertBefore(a,t?o:o.nextSibling)});var s=function(e){for(var t=a.href,n=f.length;n--;)if(f[n].href===t)return e();setTimeout(function(){s(e)})};function u(){a.addEventListener&&a.removeEventListener("load",u),a.media=n||"all"}return a.addEventListener&&a.addEventListener("load",u),(a.onloadcssdefined=s)(u),a};"undefined"!=typeof exports?exports.loadCSS=e:c.loadCSS=e}("undefined"!=typeof global?global:this);
+  </script>
+  <script id="loadcss"></script>
 </head>
 
 <body>
@@ -85,70 +85,7 @@
   <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/js/love.js"></script>
   <!--浏览器搞笑标题-->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/js/ergao.js"></script>  
-  
-  
-  
-  <div class="cover-wrapper">
-    <cover class='cover post' style="display: none;">
-      <div class='cover-body'>
-  <div class='a'>
-    
-    
-      <p class="title">Yanliang</p>
-    
-    
-      <p class="subtitle">「Willing to exchange self-discipline for freedom」</p>
-    
-  </div>
-  <div class='b'>
-    <div class='menu navigation featured'>
-      <div class='list-h'>
-        
-          
-            <a href="/"
-              
-              
-              id="home">
-              <i class='fas fa-book fa-fw'></i><p>博文</p>
-            </a>
-          
-            <a href="/friends/"
-              
-              
-              id="friends">
-              <i class='fas fa-link fa-fw'></i><p>友人帐</p>
-            </a>
-          
-            <a href="/comment/"
-              
-              
-              id="comment">
-              <i class='fas fa-comment fa-fw'></i><p>留言板</p>
-            </a>
-          
-            <a href="/about/"
-              
-              
-              id="about">
-              <i class='fas fa-info-circle fa-fw'></i><p>关于</p>
-            </a>
-          
-            <a target="_blank" rel="noopener" href="https://travellings.now.sh/"
-              
-              
-              id="https:travellingsnowsh">
-              <i class='fas fa-fighter-jet fa-fw'></i><p>开往</p>
-            </a>
-          
-        
-      </div>
-    </div>
-  </div>
-</div>
-
-      <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
-    </cover>
-    <header class="l_header shadow blur">
+  <header class="l_header auto shadow blur " style='opacity: 0' >
   <div class='container'>
   <div class='wrapper'>
     <div class='nav-sub'>
@@ -446,22 +383,6 @@
                     <li>
                       <div class="aplayer-container">
                         
-
-  
-    <meting-js
-      theme='#1BCDFC'
-      autoplay='false'
-      volume='0.7'
-      loop='all'
-      order='list'
-      fixed='false'
-      list-max-height='320px'
-      server='netease'
-      type='song'
-      id='186453'
-      list-folded='true'>
-    </meting-js>
-  
 
 
                       </div>
@@ -804,14 +725,81 @@
   </div>
 </header>
 
+  <div class="l_body">
+    <div class="l_cover">
+  
+    
+    
+        <div class='cover-wrapper post dock' style="display: none;">
+          
+            <div class='cover-backstretch'></div>
+          
+          <div class='cover-body'>
+  <div class='top'>
+    
+    
+      <p class="title">Yanliang</p>
+    
+    
+      <p class="subtitle">「Willing to exchange self-discipline for freedom」</p>
+    
+  </div>
+  <div class='bottom'>
+    <div class='menu navigation'>
+      <div class='list-h'>
+        
+          
+            <a href="/"
+              
+              
+              id="home">
+              <i class='fas fa-book fa-fw'></i><p>博文</p>
+            </a>
+          
+            <a href="/friends/"
+              
+              
+              id="friends">
+              <i class='fas fa-link fa-fw'></i><p>友人帐</p>
+            </a>
+          
+            <a href="/comment/"
+              
+              
+              id="comment">
+              <i class='fas fa-comment fa-fw'></i><p>留言板</p>
+            </a>
+          
+            <a href="/about/"
+              
+              
+              id="about">
+              <i class='fas fa-info-circle fa-fw'></i><p>关于</p>
+            </a>
+          
+            <a target="_blank" rel="noopener" href="https://travellings.now.sh/"
+              
+              
+              id="https:travellingsnowsh">
+              <i class='fas fa-fighter-jet fa-fw'></i><p>开往</p>
+            </a>
+          
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+          <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+        </div>
+    
+  
   </div>
   
-
-
-  <div class="l_body nocover">
-    <div class='body-wrapper' id="pjax-container">
-      
-        <!--此文件用来存放一些不方便取值的变量--> 
+    <div class='safearea'>
+      <div class='body-wrapper' id="pjax-container">
+        
+          <!--此文件用来存放一些不方便取值的变量--> 
 <!--思路大概是将值藏到重加载的区域内--> 
  
  
@@ -820,120 +808,110 @@
   <div id="pjax-ispage">true</div> 
   <div id="pjax-pageTitle">如何设计一个可扩展的限流算法 [转]</div> 
   <div id="pjax-enable-cover">true</div> 
-  <div id="pjax-comment-path">none</div> 
-  <div id="pjax-comment-placeholder">none</div> 
+  <div id="pjax-comment-path"></div> 
+  <div id="pjax-comment-placeholder"></div> 
 </div> 
  
  
 <script> 
   // 处理封面 此时 jquery 还没加载 
   if ("none" == "none") { // 移除封面 
-    document.getElementsByClassName('cover')[0].style.display = "none"; 
-    document.getElementsByClassName('l_body')[0].classList.add("nocover"); 
+    document.getElementsByClassName('cover-wrapper')[0].style.display = "none"; 
     document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show"); 
   } else { 
-    if ("none" == "blog") { // 半屏 
-      document.getElementsByClassName('cover')[0].classList.remove("full"); 
-      document.getElementsByClassName('cover')[0].classList.add("half"); 
+    if ("none" == "half") { // 半屏 
+      document.getElementsByClassName('cover-wrapper')[0].setAttribute('id', 'half'); 
       document.getElementsByClassName('scroll-down')[0].style.display = "none"; 
-    } else if ("none" == "docs") { // 全屏 
-      document.getElementsByClassName('cover')[0].classList.remove("half"); 
-      document.getElementsByClassName('cover')[0].classList.add("full"); 
+    } else if ("none" == "full") { // 全屏 
+      document.getElementsByClassName('cover-wrapper')[0].setAttribute('id', 'full'); 
       document.getElementsByClassName('scroll-down')[0].style.display = ""; 
     } 
-    document.getElementsByClassName('cover')[0].style.display = ""; 
-    document.getElementsByClassName('l_body', 'show')[0].classList.remove("nocover"); 
+    document.getElementsByClassName('cover-wrapper')[0].style.display = ""; 
     document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show"); 
   } 
 </script> 
+ 
 
-      
-      
+        
+        
 
 <div class='l_main'>
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
   
 
+
   
-    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
-      
-
-
-  <section class='meta'>
+  <div class="article-meta" id="top">
     
-      
-      
-        <a title='如何设计一个可扩展的限流算法 [转]' href='/good/how-to-design-extensible-limiting-algorithm/'><img class='thumbnail' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/20200305174712.png'></a>
-      
-      <div class="meta" id="header-meta">
+    
+      <a title='如何设计一个可扩展的限流算法 [转]' href='/good/how-to-design-extensible-limiting-algorithm/'>
+        <img class='thumbnail' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/20200305174712.png'>
+      </a>
+    
+    
+      <h1 class="title">
+        如何设计一个可扩展的限流算法 [转]
+      </h1>
+      <div class='new-meta-box'>
         
           
-  <h1 class="title">
-    <a href="/good/how-to-design-extensible-limiting-algorithm/">
-      如何设计一个可扩展的限流算法 [转]
-    </a>
-  </h1>
-
-
-        
-        <div class='new-meta-box'>
-          
             
-          
-            
-              
 <div class='new-meta-item author'>
-  <a class='author' target="_blank" href="https://mp.weixin.qq.com/s?__biz=MzA5OTAyNzQ2OA==&mid=2649704593&idx=1&sn=bccc83c5fc87bf4f032f91405be15cd4&scene=21#wechat_redirect" rel="nofollow noopener">
-    <img no-lazy src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/loading.svg">
-    <p>刘志超 [译]</p>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="">
+    <p>Yanliang</p>
   </a>
 </div>
 
-            
+          
+        
           
             
-              
-  
   <div class='new-meta-item category'>
-    <a href='/categories/%E8%AE%BE%E8%AE%A1/' rel="nofollow">
+    <a class='notlink'>
       <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>设计</p>
+      <a class="category-link" href="/categories/%E8%AE%BE%E8%AE%A1/">设计</a>
     </a>
   </div>
 
 
-            
           
-            
-              <div class="new-meta-item date">
+        
+          
+            <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
     <p>发布于：Mar 5, 2020</p>
   </a>
 </div>
 
-            
           
-            
-              
-
-            
-          
-        </div>
         
-          <hr>
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
+      
+      <div id="lc-pv" data-title="如何设计一个可扩展的限流算法 [转]" data-path="/good/how-to-design-extensible-limiting-algorithm/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
+
+
+          
         
       </div>
     
-  </section>
+  </div>
 
 
-      <section class="article typo">
-        <div class="article-entry" itemprop="articleBody">
-          
-          
-          <p>限流（Rate Limiting，即速率限制）通过限制每个用户调用API的频率来防止API被过度使用，这可以防止他们因疏忽或恶意导致的API滥用。在没有速率限制的情况下，每个用户可以随心所欲地请求，这可能会导致“峰值”请求，从而导致其他用户得不到响应。在启用速率限制之后，它们的请求将被限制为每秒固定的数量。</p>
+  
+  <p>限流（Rate Limiting，即速率限制）通过限制每个用户调用API的频率来防止API被过度使用，这可以防止他们因疏忽或恶意导致的API滥用。在没有速率限制的情况下，每个用户可以随心所欲地请求，这可能会导致“峰值”请求，从而导致其他用户得不到响应。在启用速率限制之后，它们的请求将被限制为每秒固定的数量。</p>
 <a id="more"></a>
-<img src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/good/sheji/20200305174712.png'>
+<div class="img-wrap"><div class="img-bg"><img class="img lazyload placeholder" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/good/sheji/20200305174712.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/good/sheji/20200305174712.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/></div></div>
 <p>在示例图表中，你可以看到速率限制如何在一段时间内阻塞请求。API最初每分钟接收4个请求，用绿色表示。当12:02启用速率限制时，以红色显示的其他请求将被拒绝。</p>
 <p>速率限制对于公共API是非常重要的，因为你想要为每个消费者（API调用者）维护良好的服务质量，即使有些用户获取了超出其公平配额的服务。计算密集型的端点特别需要速率限制——特别是通过自动伸缩或AWS Lambda和OpenWhisk等按计算付费服务来提供服务时。你还可能希望对提供敏感数据的API进行评级，因为如果攻击者在某些不可预见的事件中获得访问权限，这可能会限制暴露的数据。</p>
 <p>实际上有许多不同的方法来实现速率限制，我们将探讨不同速率限制算法的优缺点。我们还将探讨跨集群扩展时出现的问题。最后，我们将向你展示一个如何使用Kong快速设置速率限制的示例，Kong是最流行的开源API网关。</p>
@@ -941,41 +919,41 @@
 <p>有各种各样的速率限制算法，每一种都有自己的优点和缺点。让我们回顾一下，这样你就可以根据自己的需要选择最好的限流算法。</p>
 <h3 id="漏桶算法"><a class="header-anchor" href="#漏桶算法">¶</a>漏桶算法</h3>
 <p>漏桶算法（Leaky Bucket，与令牌桶密切相关）是这样一种算法，它提供了一种简单、直观的方法来通过队列限制速率，你可以将队列看作一个存储请求的桶。当一个请求被注册时，它被附加到队列的末尾。每隔一段时间处理队列上的第一项。这也称为先进先出（FIFO）队列。如果队列已满，则丢弃（或泄漏）其他请求。</p>
-<img src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/good/sheji/20200305181120.png'>
+<div class="img-wrap"><div class="img-bg"><img class="img lazyload placeholder" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/good/sheji/20200305181120.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/good/sheji/20200305181120.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/></div></div>
 <p>这种算法的优点是它可以平滑请求的爆发，并以近似平均的速度处理它们。它也很容易在单个服务器或负载均衡器上实现，并且在有限的队列大小下对于每个用户都是内存有效的。</p>
 <p>然而，突发的访问量会用旧的请求填满队列，并使最近的请求无法被处理。它也不能保证在固定的时间内处理请求。此外，如果为了容错或增加吞吐量而负载平衡服务器，则必须使用策略来协调和强制它们之间的限制。稍后我们将讨论分布式环境的挑战。</p>
 <h3 id="固定窗口算法"><a class="header-anchor" href="#固定窗口算法">¶</a>固定窗口算法</h3>
 <p>在固定窗口（Fixed Window）算法中，使用n秒的窗口大小（通常使用对人类友好的值，如60秒或3600秒）来跟踪速率。每个传入的请求都会增加窗口的计数器。如果计数器超过阈值，则丢弃请求。窗口通常由当前时间戳的层定义，因此12:00:03的窗口长度为60秒，应该在12:00:00的窗口中。</p>
-<img src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/good/sheji/20200305181216.png'>
+<div class="img-wrap"><div class="img-bg"><img class="img lazyload placeholder" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/good/sheji/20200305181216.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/good/sheji/20200305181216.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/></div></div>
 <p>这种算法的优点是，它可以确保处理更多最近的请求，而不会被旧的请求饿死。然而，发生在窗口边界附近的单个流量突发会导致处理请求的速度增加一倍，因为它允许在短时间内同时处理当前窗口和下一个窗口的请求。另外，如果许多消费者等待一个重置窗口，例如在一个小时的顶部，那么他们可能同时扰乱你的API。</p>
 <h3 id="滑动日志算法"><a class="header-anchor" href="#滑动日志算法">¶</a>滑动日志算法</h3>
 <p>滑动日志（Sliding Log）速率限制涉及到跟踪每个使用者请求的时间戳日志。这些日志通常存储在按时间排序的散列集或表中。时间戳超过阈值的日志将被丢弃。当新请求出现时，我们计算日志的总和来确定请求率。如果请求将超过阈值速率，则保留该请求。</p>
-<img src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/good/sheji/20200305181258.png'>
+<div class="img-wrap"><div class="img-bg"><img class="img lazyload placeholder" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/good/sheji/20200305181258.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/good/sheji/20200305181258.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/></div></div>
 <p>该算法的优点是不受固定窗口边界条件的限制，速率限制将严格执行。此外，因为滑动日志是针对每个消费者进行跟踪的，所以不会出现对固定窗口造成挑战的踩踏效应。但是，为每个请求存储无限数量的日志可能非常昂贵。它的计算成本也很高，因为每个请求都需要计算使用者先前请求的总和，这些请求可能跨越一个服务器集群。因此，它不能很好地处理大规模的流量突发或拒绝服务攻击。</p>
 <h3 id="滑动窗口"><a class="header-anchor" href="#滑动窗口">¶</a>滑动窗口</h3>
 <p>这是一种将固定窗口算法的低处理成本与改进的滑动日志边界条件相结合的混合方法。与固定窗口算法一样，我们跟踪每个固定窗口的计数器。接下来，我们根据当前的时间戳计算前一个窗口请求率的加权值，以平滑突发的流量。例如，如果当前窗口通过了25%，那么我们将前一个窗口的计数加权为75%。跟踪每个键所需的相对较少的数据点允许我们在大型集群中扩展和分布。</p>
-<img src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/good/sheji/20200305181343.png'>
+<div class="img-wrap"><div class="img-bg"><img class="img lazyload placeholder" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/good/sheji/20200305181343.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/good/sheji/20200305181343.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/></div></div>
 <p>我们推荐使用滑动窗口方法，因为它可以灵活地调整速率限制，并且具有良好的性能。速率窗口是它向API消费者提供速率限制数据的一种直观方式。它还避免了漏桶的饥饿问题和固定窗口实现的突发问题。</p>
 <h2 id="分布式系统中的速率限制"><a class="header-anchor" href="#分布式系统中的速率限制">¶</a>分布式系统中的速率限制</h2>
 <h3 id="同步策略"><a class="header-anchor" href="#同步策略">¶</a>同步策略</h3>
 <p>如果希望在使用多个节点的集群时实施全局速率限制，则必须设置策略来实施该限制。如果每个节点都要跟踪自己的速率限制，那么当请求被发送到不同节点时，使用者可能会超过全局速率限制。实际上，节点的数量越大，用户越有可能超过全局限制。</p>
 <p>执行此限制的最简单方法是在负载均衡器中设置粘性会话，以便每个使用者都被精确地发送到一个节点。缺点包括缺乏容错性和节点过载时的缩放问题。</p>
 <p>允许更灵活的负载平衡规则的更好解决方案是使用集中的数据存储，如Redis或Cassandra。这将存储每个窗口和消费者的计数。这种方法的两个主要问题是增加了向数据存储发出请求的延迟，以及竞争条件（我们将在下面讨论）。</p>
-<img src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/good/sheji/20200305181452.png'>
+<div class="img-wrap"><div class="img-bg"><img class="img lazyload placeholder" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/good/sheji/20200305181452.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/good/sheji/20200305181452.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/></div></div>
 <h3 id="竞态条件"><a class="header-anchor" href="#竞态条件">¶</a>竞态条件</h3>
 <p>集中式数据存储的最大问题之一是高并发请求模式中的竞争条件。当你使用一种简单的“get-then-set”方法时，就会发生这种情况，在这种方法中，你检索当前速率限制计数器，增加它的值，然后将其推回到数据存储中。这个模型的问题是，在执行一个完整的读递增存储周期时，可能会出现额外的请求，每个请求都试图用无效的（较低的）计数器值存储递增计数器。这允许使用者发送非常高的请求率来绕过速率限制控制。</p>
-<img src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/good/sheji/20200305181532.png'>
+<div class="img-wrap"><div class="img-bg"><img class="img lazyload placeholder" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/good/sheji/20200305181532.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/good/sheji/20200305181532.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/></div></div>
 <p>避免这个问题的一种方法是在有问题的密钥周围放置一个“锁”，防止任何其他进程访问或写入计数器。这将很快成为一个主要的性能瓶颈，而且伸缩性不好，特别是在使用诸如Redis之类的远程服务器作为备份数据存储时。</p>
 <p>更好的方法是使用“先设置后获取”的心态，依赖于原子操作符，它们以一种非常高性能的方式实现锁，允许你快速增加和检查计数器值，而不让原子操作成为障碍。</p>
 <h3 id="性能优化"><a class="header-anchor" href="#性能优化">¶</a>性能优化</h3>
 <p>使用集中式数据存储的另一个缺点是，在检查速率限制计数器时增加了延迟。不幸的是，即使是检查像Redis这样的快速数据存储，也会导致每个请求增加毫秒的延迟。</p>
 <p>为了以最小的延迟确定这些速率限制，有必要在内存中进行本地检查。这可以通过放松速率检查条件和使用最终一致的模型来实现。例如，每个节点可以创建一个数据同步周期，该周期将与中央数据存储同步。每个节点定期将每个使用者的计数器增量和它看到的窗口推送到数据存储，数据存储将自动更新这些值。然后，节点可以检索更新后的值来更新其内存版本。集群内节点之间的这种收敛→发散→再收敛的循环最终是一致的。</p>
-<img src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/good/sheji/20200305181532.png'>
+<div class="img-wrap"><div class="img-bg"><img class="img lazyload placeholder" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/good/sheji/20200305181532.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/good/sheji/20200305181532.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/></div></div>
 <p>节点聚合的周期速率应该是可配置的。当流量分布在群集中的多个节点上时（例如，当坐在一个轮询调度平衡器后面时），较短的同步间隔将导致较少的数据点分散，而较长的同步间隔将对数据存储施加较小的读/写压力，更少的开销在每个节点上获取新的同步值。</p>
 <h2 id="使用Kong快速设置速率限制"><a class="header-anchor" href="#使用Kong快速设置速率限制">¶</a>使用Kong快速设置速率限制</h2>
 <p>Kong是一个开源的API网关，它使构建具有速率限制的可伸缩服务变得非常容易。它被全球超过300,000个活动实例使用。它可以完美地从单个的Kong节点扩展到大规模的、跨越全球的Kong集群。</p>
 <p>Kong位于API前面，是上游API的主要入口。在处理请求和响应时，Kong将执行你决定添加到API中的任何插件。</p>
-<img src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/good/sheji/20200305181731.png'>
+<div class="img-wrap"><div class="img-bg"><img class="img lazyload placeholder" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/good/sheji/20200305181731.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/good/sheji/20200305181731.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/></div></div>
 <p>Kong的速率限制插件是高度可配置的。它提供了为每个API和消费者定义多个速率限制窗口和速率的灵活性。它支持本地内存、Redis、Postgres和Cassandra备份数据存储。它还提供了各种数据同步选项，包括同步和最终一致的模型。</p>
 <p>你可以在其中一台开发机器上快速安装Kong来测试它。我最喜欢的入门方式是使用AWS云形成模板，因为只需几次单击就可以获得预先配置好的开发机器。只需选择一个HVM选项，并将实例大小设置为使用t2.micro，这些对于测试都是负担得起的。然后ssh到新实例上的命令行进行下一步。</p>
 <h3 id="在Kong上添加API"><a class="header-anchor" href="#在Kong上添加API">¶</a>在Kong上添加API</h3>
@@ -996,64 +974,37 @@
 <p>第一步是安装企业版的 Kong。然后，可以配置速率限制、以秒为单位的窗口大小和同步计数器值的频率。它真的很容易使用，你可以得到这个强大的控制与一个简单的 API 调用：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">curl -i -X POST http:&#x2F;&#x2F;localhost:8001&#x2F;apis&#x2F;test&#x2F;plugins \</span><br><span class="line">-d &quot;name&#x3D;rate-limiting&quot; \</span><br><span class="line">-d &quot;config.limit&#x3D;5&quot; \</span><br><span class="line">-d &quot;config.window_size&#x3D;60&quot; \</span><br><span class="line">-d &quot;config.sync_rate&#x3D;10&quot;</span><br></pre></td></tr></table></figure>
 <p>企业还增加了对 Redis Sentinel 的支持，这使得 Redis 高可用性和更强的容错能力。你可以阅读更多的企业速率限制插件文档。</p>
-<div><a class='link-card' title='https://mp.weixin.qq.com/s?__biz=MzA5OTAyNzQ2OA==&mid=2649704593&idx=1&sn=bccc83c5fc87bf4f032f91405be15cd4&scene=21#wechat_redirect'><i' href='https://mp.weixin.qq.com/s?__biz=MzA5OTAyNzQ2OA==&mid=2649704593&idx=1&sn=bccc83c5fc87bf4f032f91405be15cd4&scene=21#wechat_redirect'><i'><div class='left'><i class='fas fa-link'></i></div><div class='right'><p class='text'>阅读原文</p><p class='url'>https://mp.weixin.qq.com/s?__biz=MzA5OTAyNzQ2OA==&mid=2649704593&idx=1&sn=bccc83c5fc87bf4f032f91405be15cd4&scene=21#wechat_redirect'><i</p></div></a></div>
-          
-            <div class='article_footer'>
+<div class="tag link"><a class="link-card" title="阅读原文" target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzA5OTAyNzQ2OA==&mid=2649704593&idx=1&sn=bccc83c5fc87bf4f032f91405be15cd4&scene=21#wechat_redirect'><i"><div class="left"><img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/256/safari.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/256/safari.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/></div><div class="right"><p class="text">阅读原文</p><p class="url">https://mp.weixin.qq.com/s?__biz=MzA5OTAyNzQ2OA==&mid=2649704593&idx=1&sn=bccc83c5fc87bf4f032f91405be15cd4&scene=21#wechat_redirect'><i</p></div></a></div>
+  
+  
+    
+    <div class='footer'>
+      
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
               
-                
-  
-    
-    
-
-
-
-  
-
-  
-    
-    
-
-
-
-  
-
-  
-    
-    
-
-<section class="widget copyright  desktop mobile">
-  <div class='content'>
-    
-      <blockquote>
-        
-          
-            <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
-
-          
-        
-          
-            <p>本文永久链接是：<a href=https://gyl-coder.top/good/how-to-design-extensible-limiting-algorithm/>https://gyl-coder.top/good/how-to-design-extensible-limiting-algorithm/</a></p>
-          
-        
-      </blockquote>
-    
-  </div>
-</section>
-
-  
-
-  
-
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
 
               
-            </div>
-          
+            
+              
+                <p>本文永久链接是：<a href=https://gyl-coder.top/good/how-to-design-extensible-limiting-algorithm/>https://gyl-coder.top/good/how-to-design-extensible-limiting-algorithm/</a></p>
+              
+            
+          </blockquote>
         </div>
-        
-          
+      
+      
+    </div>
+  
+  
+    
 
 
-  <section class='meta' id="footer-meta">
+  <div class='article-meta' id="bottom">
     <div class='new-meta-box'>
       
         
@@ -1076,11 +1027,6 @@
       
         
           
-
-        
-      
-        
-          
   <div class="new-meta-item share -mob-share-list">
   <div class="-mob-share-list share-body">
     
@@ -1091,7 +1037,7 @@
           
           >
           
-            <img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/loading.svg" data-original="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png">
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg">
           
         </a>
       
@@ -1103,7 +1049,7 @@
           
           >
           
-            <img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/loading.svg" data-original="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png">
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg">
           
         </a>
       
@@ -1115,9 +1061,13 @@
           
           >
           
-            <img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/loading.svg" data-original="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png">
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg">
           
         </a>
+      
+    
+      
+    
       
     
   </div>
@@ -1128,57 +1078,49 @@
         
       
     </div>
-  </section>
+  </div>
 
 
-        
-        
-          <div class="prev-next">
-            
-              <a class='prev' href='/java/difference_between_int_and_integer/'>
-                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>int 和 Integer 有什么区别？谈谈Integer的值缓存范围</p>
-                <p class='content'>Java 虽然是面向对象的编程语言，但是依旧保留了一些原始数据类型，同时为了兼容java面向对象的特性，每种原始数据类型，都有对应的包装类型。
+  
+  
+
+  
+    <div class="prev-next">
+      
+        <a class='prev' href='/java/difference_between_int_and_integer/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>int 和 Integer 有什么区别？谈谈Integer的值缓存范围</p>
+          <p class='content'>Java 虽然是面向对象的编程语言，但是依旧保留了一些原始数据类型，同时为了兼容java面向对象的特性，每种原始数据类型，都有对应的包装类型。
 原始数据类型：boolean、char、byte、...</p>
-              </a>
-            
-            
-              <a class='next' href='/kafka/kafka-topic-manage/'>
-                <p class='title'>kafka 主题管理<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-                <p class='content'>对于 kafka 主题（topic）的管理（增删改查），使用最多的便是kafka自带的脚本。
+        </a>
+      
+      
+        <a class='next' href='/kafka/kafka-topic-manage/'>
+          <p class='title'>kafka 主题管理<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>对于 kafka 主题（topic）的管理（增删改查），使用最多的便是kafka自带的脚本。
 
 ¶创建主题
 kafka提供了自带的 kafka-topics 脚本，用来帮助用户创建主题（topi...</p>
-              </a>
-            
-          </div>
-        
-      </section>
-    </article>
-  
-
-  
-    
-
-  <article class="post white-box reveal comments shadow">
-    <section class="article typo">
-      <p ct><i class='fas fa-comments'></i> 评论</p>
+        </a>
       
-      <section id="comments">
-        <div id="valine_container" class="valine_thread">
+    </div>
+  
+</article>
+
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
   <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
-      </section>
-    </section>
   </article>
 
 
-  
 
 
-
-
-<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
 
 
 </div>
@@ -1212,31 +1154,15 @@ kafka提供了自带的 kafka-topics 脚本，用来帮助用户创建主题（t
 
 
 
-    </div>
-    
+      </div>
+      
   
-  <footer class="clearfix">
+  <footer class="footer clearfix">
     <br><br>
     
       
         <div class="aplayer-container">
           
-
-  
-    <meting-js
-      theme='#1BCDFC'
-      autoplay='false'
-      volume='0.7'
-      loop='all'
-      order='list'
-      fixed='false'
-      list-max-height='320px'
-      server='netease'
-      type='song'
-      id='186453'
-      list-folded='true'>
-    </meting-js>
-  
 
 
         </div>
@@ -1249,33 +1175,67 @@ kafka提供了自带的 kafka-topics 脚本，用来帮助用户创建主题（t
           
             
               <a href="/atom.xml"
-                class="social fas fa-rss flat-btn"
+                class="social  flat-btn"
                 target="_blank"
                 rel="external nofollow noopener noreferrer">
+                
+                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/020-rss.svg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/020-rss.svg" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/>
+                
               </a>
             
           
             
-              <a href="mailto:gyl_coder@163.com"
-                class="social fas fa-envelope flat-btn"
+              <a href="https://github.com/gyl-coder/"
+                class="social  flat-btn"
                 target="_blank"
                 rel="external nofollow noopener noreferrer">
+                
+                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/029-github.svg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/029-github.svg" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/>
+                
               </a>
             
           
             
-              <a href="https://github.com/gyl-coder"
-                class="social fab fa-github flat-btn"
+              <a href="/"
+                class="social  flat-btn"
                 target="_blank"
                 rel="external nofollow noopener noreferrer">
+                
+                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/010-facebook.svg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/010-facebook.svg" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/>
+                
               </a>
             
           
             
-              <a href="https://music.163.com/#/user/home?id=314622884"
-                class="social fas fa-headphones-alt flat-btn"
+              <a href="/"
+                class="social  flat-btn"
                 target="_blank"
                 rel="external nofollow noopener noreferrer">
+                
+                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/018-twitter.svg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/018-twitter.svg" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/>
+                
+              </a>
+            
+          
+            
+              <a href="/"
+                class="social  flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+                
+                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/045-telegram.svg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/045-telegram.svg" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/>
+                
+              </a>
+            
+          
+            
+              <a href="/"
+                class="social  flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+                
+                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/006-youtube.svg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/006-youtube.svg" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/>
+                
               </a>
             
           
@@ -1288,12 +1248,16 @@ kafka提供了自带的 kafka-topics 脚本，用来帮助用户创建主题（t
       
     
       
-        Use
-        <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0" target="_blank" class="codename">Volantis</a>
-        as theme, total visits
-          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
-          times
         
+          <div><p><span id="lc-sv">本站总访问量为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 次</span> <span id="lc-uv">访客数为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 人</span></p>
+</div>
+        
+      
+    
+      
+        Use
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/4.0.0-rc.4" target="_blank" class="codename">Volantis</a>
+        as theme
       
     
       
@@ -1384,17 +1348,118 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
   </footer>
 
 
-    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+      <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+    </div>
   </div>
   <div>
+    <!-- required -->
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js"></script>
+
+<script>
+  function pjax_fancybox() {
+    $(".md .gallery").find("img").each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".md .gallery").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  function SCload_fancybox() {
+    if ($(".md .gallery").find("img").length == 0) return;
+    loadCSS("https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css", document.getElementById("loadcss"));
+    setTimeout(function() {
+      loadScript('https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js', pjax_fancybox)
+    }, 1);
+  };
+  $(function () {
+    SCload_fancybox();
+  });
+</script>
+
+
+<!-- internal -->
+
+  
+  
+  
     
-      
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.jpg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover-backstretch') {
+          $('.cover-backstretch').backstretch(
+            imgs,
+          {
+            duration: "2000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "2000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+  
   
 
   <div id="rightmenu-wrapper">
     <ul class="list-v rightmenu" id="rightmenu-content">
       <li class='option'>
-        <a class='vlts-menu opt fix-cursor-default' id='menu-copy-text' onclick='document.execCommand("copy")'><i class='fa fa-copy fa-fw'></i>Copy Text</a>
+        <a class='vlts-menu opt fix-cursor-default' id='menu-copy-text' onclick="document.execCommand('copy')"><i class='fa fa-copy fa-fw'></i>Copy Text</a>
         <hr id='hr-text'>
         <a class='vlts-menu opt fix-cursor-default' id='menu-copy-href'><i class='fa fa-link fa-fw'></i>Copy Link</a>
         <a class='vlts-menu opt fix-cursor-default' id='menu-open-href'><i class='fa fa-external-link-square-alt fa-fw'></i>Open Link in New Tab</a>
@@ -1402,12 +1467,14 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
         <a class='vlts-menu opt fix-cursor-default' id='menu-copy-src'><i class='fa fa-image fa-fw'></i>Copy Image Link</a>
         <hr id='hr-src'>
       </li>
-      <li class='navigation'>
-        <a class='nav icon-only fix-cursor-default' onclick='history.back()'><i class='fa fa-arrow-left fa-fw'></i></a>
-        <a class='nav icon-only fix-cursor-default' onclick='history.forward()'><i class='fa fa-arrow-right fa-fw'></i></a>
-        <a class='nav icon-only fix-cursor-default' onclick='window.location.reload()'><i class='fa fa-redo fa-fw'></i></a>
-        <a class='nav icon-only fix-cursor-default' href='/'><i class='fa fa-home fa-fw'></i></a>
-      </li>
+      
+        <li class='navigation'>
+          <a class='nav icon-only fix-cursor-default' onclick='history.back()'><i class='fa fa-arrow-left fa-fw'></i></a>
+          <a class='nav icon-only fix-cursor-default' onclick='history.forward()'><i class='fa fa-arrow-right fa-fw'></i></a>
+          <a class='nav icon-only fix-cursor-default' onclick='window.location.reload()'><i class='fa fa-redo fa-fw'></i></a>
+          <a class='nav icon-only fix-cursor-default' href='/'><i class='fa fa-home fa-fw'></i></a>
+        </li>
+      
       <hr>
       
         
@@ -1521,26 +1588,6 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
         
       
         
-          <li class='music name'>
-            <p class='nav music-title fix-cursor-default'></p>
-          </li>
-          <li class='music ctrl'>
-            <a class='nav icon-only backward fix-cursor-default' onclick='aplayerBackward()'><i class='fa fa-step-backward fa-fw'></i></a>
-            <a class='nav icon-only toggle fix-cursor-default' onclick='aplayerToggle()'><i class='fa fa-play fa-fw'></i></a>
-            <a class='nav icon-only forward fix-cursor-default' onclick='aplayerForward()'><i class='fa fa-step-forward fa-fw'></i></a>
-          </li>
-          <li class='music volume'>
-            <a class='nav volume'>
-              <div class="aplayer-volume-bar-wrap">
-                <div class="aplayer-volume-bar fix-cursor-pointer">
-                  <div class="aplayer-volume"></div>
-                  <i class='left fa fa-volume-off fa-fw'></i>
-                  <i class='right fa fa-volume-up fa-fw'></i>
-                </div>
-              </div>
-            </a>
-          </li>
-        
       
     </ul>
   </div>
@@ -1610,8 +1657,10 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       if (href.length == 0) {
         // 选中文本
         if (window.getSelection().toString()) {
-          copyText.style.display = 'block';
-          hrText.style.display = 'block';
+          if ('' == 'true') {
+            copyText.style.display = 'block';
+            hrText.style.display = 'block';
+          }
         }
       }
 
@@ -1643,7 +1692,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       }
 
       // 有音乐播放器
-      if (true == true) {
+      if ('' == true && ('home,me,album,resume,friends,hr,catchTheCat,hr,print,hr,music'||[]).includes('music')) {
         // 如果有aplayer，初始化一下
       	try {
       		checkAPlayer();
@@ -1671,93 +1720,65 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
   </script>
 
 
-    
-    
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js"></script>
 
 
 
-  <script>
-    
-    var SEARCH_SERVICE = "hexo" || "hexo";
-    var ROOT = "/" || "/";
-    if (!ROOT.endsWith('/')) ROOT += '/';
-  </script>
 
 
+  <script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
 
-  <script async src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
 
 
 
   
   
-  
-    
-<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
-
-    <script type="text/javascript">
-      $(function(){
-        var imgs=["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.jpg"];
-        if ('true' == 'true') {
-          function shuffle(arr){
-            /*From countercurrent-time*/
-            var n = arr.length;
-            while(n--) {
-              var index = Math.floor(Math.random() * n);
-              var temp = arr[index];
-              arr[index] = arr[n];
-              arr[n] = temp;
-            }
-          }
-          shuffle(imgs);
-        }
-        if ('.cover') {
-          $('.cover').backstretch(
-            imgs,
-          {
-            duration: "2000",
-            fade: "1500"
-          });
-        } else {
-          $.backstretch(
-            imgs,
-          {
-            duration: "2000",
-            fade: "1500"
-          });
-        }
-      });
+    <script>
+      window.FPConfig = {
+        delay: 0,
+        ignoreKeywords: [],
+        maxRPS: 5,
+        hoverDelay: 25
+      };
     </script>
+    <script defer src="https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"></script>
   
 
 
 
-  <script>
-    let APlayerController = new Object();
-    APlayerController.id = '186453';  // 设定全局音乐播放ID
-    APlayerController.volume = '0.7';
-  </script>
-  
-    
-<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script>
 
-  
-    
-<script src="https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js"></script>
 
-  
-    
-<script src="/js/aplayer.js"></script>
 
-  
 
 
 
 
   
   
-<script src="https://cdn.jsdelivr.net/gh/HCLonely/Valine@latest/dist/Valine.min.js"></script>
+<script src="/js/valine.js"></script>
 
 
 <script>
@@ -1792,20 +1813,22 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
   }
 
   function pjax_valine() {
-    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
-      decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
-    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
-      "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
+    if(!document.querySelectorAll("#valine_container")[0])return;
 
-    let ALLPATH = '';
-    if(ALLPATH != '') pageUrl = ALLPATH;
+    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) || "快来评论吧~";
+
+    let path = $.trim($('#pjax-comment-path').text());
+    if (path.length == 0) {
+      let defaultPath = '';
+      path = defaultPath || decodeURI(window.location.pathname);
+    }
 
     var valine = new Valine();
     valine.init({
       el: '#valine_container',
       meta: meta,
       placeholder: pagePlaceholder,
-      path: pageUrl,
+      path: path,
       appId: "wvx2KxLUqgjcKv9QE62FmvUY-MdYXbMMI",
       appKey: "u1P8dl8u7IlizUpYbwXpc1VN",
       pageSize: '10',
@@ -1817,9 +1840,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       enableQQ: 'true',
       requiredFields: requiredFields,
       emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
-      emojiMaps: emojiMaps,
-      master: '[6e52e95ab454c5a82b0eb13055d79bd5]',
-      friends: '[b5bd5d836c7a0091aa8473e79ed4c25e,adb7d1cd192658a55c0ad22a3309cecf,3ce1e6c77b4910f1871106cb30dc62b0,cfce8dc43725cc14ffcd9fb4892d5bfc]'
+      emojiMaps: emojiMaps
     })
   }
 
@@ -1831,189 +1852,90 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
 
 
 
-<!-- darkmodejs -->
-
   
 <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5/lib/darkmode-js.min.js" aysc></script>
 
-  <script type="text/javascript">
-	function getClientHeight(){
-	  var clientHeight=0;
-	  if(document.body.clientHeight&&document.documentElement.clientHeight){
-	  var clientHeight = (document.body.clientHeight<document.documentElement.clientHeight)?document.body.clientHeight:document.documentElement.clientHeight;
-	  }else{
-	  var clientHeight = (document.body.clientHeight>document.documentElement.clientHeight)?document.body.clientHeight:document.documentElement.clientHeight;
-	  }
-	  return clientHeight;
-	}
-	function supportCss3(style) {
-		var prefix = ['webkit', 'Moz', 'ms', 'o'],
-		i,
-		humpString = [],
-		htmlStyle = document.documentElement.style,
-		_toHumb = function (string) {
-		return string.replace(/-(\w)/g, function ($0, $1) {
-		return $1.toUpperCase();
-		});
-		};
-		for (i in prefix)
-		humpString.push(_toHumb(prefix[i] + '-' + style));
-		humpString.push(_toHumb(style));
-		for (i in humpString)
-		if (humpString[i] in htmlStyle) return true;
-		return false;
-	};
-	//配置信息
-	var options = {
-	  bottom: '32px',
-	  right: 'unset',
-	  left: '16px',
-	  time: '0s',
-	  mixColor: '#f4f4f4',
-	  backgroundColor: '#f4f4f4',
-	  buttonColorDark: '#100f2c',
-	  buttonColorLight: '#f4f4f4',
-	  saveInCookies: true,
-	  label: '🌓',
-	  autoMatchOsTheme: true
-	};
-	// 卡片兼容处理 mix-blend-mode 与 effect: [shadow, floatable, blur] 冲突???
-	function pjax_darkmodejs(){
-		
-	}
-	// mix-blend-mode support?
-	if(supportCss3('mix-blend-mode')){
-		const darkmode = new Darkmode(options);
-		darkmode.showWidget();
-		pjax_darkmodejs();
-	}
-  </script>
-
-
-<!-- 复制 -->
-
-  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
-<script>
-    var clipboard = new ClipboardJS('.btn-copy', {
-        target: function (trigger) {
-            return trigger.nextElementSibling
-        }
-    });
-    function wait(callback, seconds) {
-        var timelag = null;
-        timelag = window.setTimeout(callback, seconds)
-    }
-    function pjax_initCopyCode() {
-        var copyHtml = '';
-        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
-        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
-        copyHtml += '</button>';
-        $(".highlight .code pre").before(copyHtml);
-        $(".article pre code").before(copyHtml);
-        clipboard.off('success').on('success', function (e) {
-            let $btn = $(e.trigger);
-            $btn.addClass('copied');
-            let $icon = $($btn.find('i'));
-            $icon.removeClass('fa-copy');
-            $icon.addClass('fa-check-circle');
-            let $span = $($btn.find('span'));
-            $span[0].innerText = 'COPIED';
-            wait(function () {
-                $icon.removeClass('fa-check-circle');
-                $icon.addClass('fa-copy');
-                $span[0].innerText = 'COPY'
-            }, 2000)
-        });
-        clipboard.off('error').on('error', function (e) {
-            e.clearSelection();
-            let $btn = $(e.trigger);
-            $btn.addClass('copy-failed');
-            let $icon = $($btn.find('i'));
-            $icon.removeClass('fa-copy');
-            $icon.addClass('fa-times-circle');
-            let $span = $($btn.find('span'));
-            $span[0].innerText = 'COPY FAILED';
-            wait(function () {
-                $icon.removeClass('fa-times-circle');
-                $icon.addClass('fa-copy');
-                $span[0].innerText = 'COPY'
-            }, 2000)
-        })
-    }
-    $(function () {
-        pjax_initCopyCode()
-    });
-</script>
-
-
-<!-- scrollreveal -->
-
-  <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script>
-  <script type="text/javascript">
-    function pjax_scrollrebeal() {
-      ScrollReveal().reveal('.l_main .reveal', {
-        distance: '32px',
-        duration: '800',
-        interval: '20',
-        scale: '1',
-        easing: 'ease-out'
-      });
-    }
-
-    $(function () {
-      pjax_scrollrebeal();
-    });
-  </script>
-
-<!-- ******************************** -->
-
-<!-- fancybox -->
-<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
-<script>
-  function pjax_fancybox() {
-    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
-      var element = document.createElement("a"); // a 标签
-      $(element).attr("class", "fancybox");
-      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
-      $(element).attr("href", $(this).attr("src"));
-      if ($(this).attr("data-original")) {
-        $(element).attr("href", $(this).attr("data-original"));
-      }
-      $(element).attr("data-fancybox", "images");
-      var caption = "";   // 描述信息
-      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
-        $(element).attr('data-caption', $(this).attr('alt'));
-        caption = $(this).attr('alt');
-      }
-      var div = document.createElement("div");
-      $(div).addClass("fancybox");
-      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
-      var span = document.createElement("span");
-      $(span).addClass("image-caption");
-      $(span).text(caption); // 加描述
-      $(this).after(span);  // 再套一层描述
-      $(this).wrap(element);  // 最后套 a 标签
-    })
-    $(".article-entry").find("img").fancybox({
-      selector: '[data-fancybox="images"]',
-      hash: false,
-      loop: false,
-      closeClick: true,
-      helpers: {
-        overlay: {closeClick: true}
-      },
-      buttons: [
-        "zoom",
-        "close"
-      ]
-    });
-  };
-  $(function () {
-    pjax_fancybox();
+<script type="text/javascript">
+function getClientHeight(){
+  var clientHeight=0;
+  if(document.body.clientHeight&&document.documentElement.clientHeight){
+  var clientHeight = (document.body.clientHeight<document.documentElement.clientHeight)?document.body.clientHeight:document.documentElement.clientHeight;
+  }else{
+  var clientHeight = (document.body.clientHeight>document.documentElement.clientHeight)?document.body.clientHeight:document.documentElement.clientHeight;
+  }
+  return clientHeight;
+}
+function supportCss3(style) {
+  var prefix = ['webkit', 'Moz', 'ms', 'o'],
+  i,
+  humpString = [],
+  htmlStyle = document.documentElement.style,
+  _toHumb = function (string) {
+  return string.replace(/-(\w)/g, function ($0, $1) {
+  return $1.toUpperCase();
   });
+  };
+  for (i in prefix)
+  humpString.push(_toHumb(prefix[i] + '-' + style));
+  humpString.push(_toHumb(style));
+  for (i in humpString)
+  if (humpString[i] in htmlStyle) return true;
+  return false;
+};
+//配置信息
+var options = {
+  bottom: '32px',
+  right: 'unset',
+  left: '16px',
+  time: '0s',
+  mixColor: '#f4f4f4',
+  backgroundColor: '#f4f4f4',
+  buttonColorDark: '#333',
+  buttonColorLight: '#ddd',
+  saveInCookies: true,
+  label: '',
+  autoMatchOsTheme: true
+};
+// 卡片兼容处理 mix-blend-mode 与 effect: [blur] 冲突
+
+function pjax_darkmodejs(){
+  
+  if(!supportCss3('mix-blend-mode'))return;
+  var checkExist2 = setInterval(function() {
+     if (typeof jQuery == 'undefined'){return;}
+     clearInterval(checkExist2);
+     var TopFlag=getClientHeight();
+    $(window).scroll(function(){
+      var top = $(document).scrollTop();
+      if(top > TopFlag) {
+        $(".darkmode-layer").css("mix-blend-mode","normal");
+        $(".darkmode-layer").css("background-color","#222");
+      }else{
+        $(".darkmode-layer").css("mix-blend-mode","difference");
+        $(".darkmode-layer").css("background-color","");
+      }
+    })
+  }, 100);
+  
+}
+// mix-blend-mode support?
+if(supportCss3('mix-blend-mode')){
+  window.darkmode = new Darkmode(options);
+  
+  window.darkmode.showWidget();
+  
+  pjax_darkmodejs();
+}
+////////////////Development///////////////////////
+//////////////darkmode模式切换////////////////////
+//window.darkmode.toggle();                     //
+//////////////darkmode模式判断////////////////////
+//console.log(window.darkmode.isActivated())    //
+//////////////////////////////////////////////////
 </script>
 
-<!-- ******************************** -->
+
+
 
 
   
@@ -2029,31 +1951,242 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
   
 
 
+<!-- optional -->
 
-  <script defer src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js" data-pjax></script>
-
-
-
+  <script>
+const SearchServiceimagePath="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/img/";
+const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
+(function ($) {
   
-<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
-
-  <script type="text/javascript">
-    $(function () {
-      Waves.attach('.flat-btn', ['waves-button']);
-      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
-      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
-      Waves.attach('.flat-box', ['waves-block']);
-      Waves.attach('.float-box', ['waves-block', 'waves-float']);
-      Waves.attach('.waves-image');
-      Waves.init();
+    customSearch = new HexoSearch({
+      imagePath: SearchServiceimagePath
     });
-  </script>
+  
+})(jQuery);
+
+</script>
 
 
 
 
 
 
+
+
+
+
+
+  <script defer>
+
+  const LCCounter = {
+    app_id: 'GCYDRKI6XRkyC7EuEhJv90ia-MdYXbMMI',
+    app_key: '4xKBXGBj6BgecU62vff5rJHs',
+    custom_api_server: '',
+
+    // 查询存储的记录
+    getRecord(Counter, url, title) {
+      return new Promise(function (resolve, reject) {
+        Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({url})))
+          .then(resp => resp.json())
+          .then(({results, code, error}) => {
+            if (code === 401) {
+              throw error;
+            }
+            if (results && results.length > 0) {
+              var record = results[0];
+              resolve(record);
+            } else {
+              Counter('post', '/classes/Counter', {url, title: title, times: 0})
+                .then(resp => resp.json())
+                .then((record, error) => {
+                  if (error) {
+                    throw error;
+                  }
+                  resolve(record);
+                }).catch(error => {
+                console.error('Failed to create', error);
+                reject(error);
+              });
+            }
+          }).catch((error) => {
+          console.error('LeanCloud Counter Error:', error);
+          reject(error);
+        });
+      })
+    },
+
+    // 发起自增请求
+    increment(Counter, incrArr) {
+      return new Promise(function (resolve, reject) {
+        Counter('post', '/batch', {
+          "requests": incrArr
+        }).then((res) => {
+          res = res.json();
+          if (res.error) {
+            throw res.error;
+          }
+          resolve(res);
+        }).catch((error) => {
+          console.error('Failed to save visitor count', error);
+          reject(error);
+        });
+      });
+    },
+
+    // 构建自增请求体
+    buildIncrement(objectId) {
+      return {
+        "method": "PUT",
+        "path": `/1.1/classes/Counter/${ objectId }`,
+        "body": {
+          "times": {
+            '__op': 'Increment',
+            'amount': 1
+          }
+        }
+      }
+    },
+
+    // 校验是否为有效的 UV
+    validUV() {
+      var key = 'LeanCloudUVTimestamp';
+      var flag = localStorage.getItem(key);
+      if (flag) {
+        // 距离标记小于 24 小时则不计为 UV
+        if (new Date().getTime() - parseInt(flag) <= 86400000) {
+          return false;
+        }
+      }
+      localStorage.setItem(key, new Date().getTime().toString());
+      return true;
+    },
+
+    addCount(Counter) {
+      var enableIncr = '' === 'true' && window.location.hostname !== 'localhost';
+      enableIncr = true;
+      var getterArr = [];
+      var incrArr = [];
+      // 请求 PV 并自增
+      var pvCtn = document.querySelector('#lc-sv');
+      if (pvCtn || enableIncr) {
+        var pvGetter = this.getRecord(Counter, 'https://gyl-coder.top' + '/#lc-sv', 'Visits').then((record) => {
+          incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-sv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + 1;
+              if (pvCtn) {
+                pvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(pvGetter);
+      }
+
+      // 请求 UV 并自增
+      var uvCtn = document.querySelector('#lc-uv');
+      if (uvCtn || enableIncr) {
+        var uvGetter = this.getRecord(Counter, 'https://gyl-coder.top' + '/#lc-uv', 'Visitors').then((record) => {
+          var vuv = this.validUV();
+          vuv && incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-uv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + (vuv ? 1 : 0);
+              if (uvCtn) {
+                uvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(uvGetter);
+      }
+
+      // 请求文章的浏览数，如果是当前页面就自增
+      var allPV = document.querySelectorAll('#lc-pv');
+      if (allPV.length > 0 || enableIncr) {
+        for (i = 0; i < allPV.length; i++) {
+          let pv = allPV[i];
+          let title = pv.getAttribute('data-title');
+          var url = 'https://gyl-coder.top' + pv.getAttribute('data-path');
+          if (url) {
+            var viewGetter = this.getRecord(Counter, url, title).then((record) => {
+              // 是当前页面就自增
+              let curPath = window.location.pathname;
+              if (curPath.includes('index.html')) {
+                curPath = curPath.substring(0, curPath.lastIndexOf('index.html'));
+              }
+              if (pv.getAttribute('data-path') == curPath) {
+                incrArr.push(this.buildIncrement(record.objectId));
+              }
+              if (pv) {
+                var ele = pv.querySelector('#lc-pv #number');
+                if (ele) {
+                  if (pv.getAttribute('data-path') == curPath) {
+                    ele.innerText = (record.times || 0) + 1;
+                  } else {
+                    ele.innerText = record.times || 0;
+                  }
+                  pv.style.display = 'inline';
+                }
+              }
+            });
+            getterArr.push(viewGetter);
+          }
+        }
+      }
+
+      // 如果启动计数自增，批量发起自增请求
+      if (enableIncr) {
+        Promise.all(getterArr).then(() => {
+          incrArr.length > 0 && this.increment(Counter, incrArr);
+        })
+      }
+
+    },
+
+
+    fetchData(api_server) {
+      var Counter = (method, url, data) => {
+        return fetch(`${ api_server }/1.1${ url }`, {
+          method,
+          headers: {
+            'X-LC-Id': this.app_id,
+            'X-LC-Key': this.app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      this.addCount(Counter);
+    },
+
+    refreshCounter() {
+      var api_server = this.app_id.slice(-9) !== '-MdYXbMMI' ? this.custom_api_server : `https://${ this.app_id.slice(0, 8).toLowerCase() }.api.lncldglobal.com`;
+      if (api_server) {
+        this.fetchData(api_server);
+      } else {
+        fetch('https://app-router.leancloud.cn/2/route?appId=' + this.app_id)
+          .then(resp => resp.json())
+          .then(({api_server}) => {
+            this.fetchData('https://' + api_server);
+          });
+      }
+    }
+
+  };
+
+  LCCounter.refreshCounter();
+
+  document.addEventListener('pjax:complete', function () {
+    LCCounter.refreshCounter();
+  });
+</script>
+
+
+
+<!-- more -->
 
 
     
@@ -2111,7 +2244,9 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       } catch (error) {}
 
       window.subData = null; // 移除标题（用于一二级导航栏切换处）
-      $.fancybox.close();    // 关闭弹窗
+      if (typeof $.fancybox != "undefined") {
+        $.fancybox.close();    // 关闭弹窗
+      }
       $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
       $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
       $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
@@ -2143,23 +2278,33 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       $('script[data-pjax], .pjax-reload script').each(function () {
         $(this).parent().append($(this).remove());
       });
-
       try{
-        pjax_fancybox();
+          if (typeof $.fancybox == "undefined") {
+            SCload_fancybox();
+          } else {
+            pjax_fancybox();
+          }
         
           
-          if ('.cover') {
-            $('.cover').backstretch("resize");
+          if ('.cover-backstretch') {
+            $('.cover-backstretch').backstretch("resize");
+            if($('.cover-wrapper').is(':hidden')){
+              $('.cover-backstretch').backstretch("pause");
+            }else{
+              $('.cover-backstretch').backstretch("next");
+            }
           } else {
             $.backstretch("resize");
+            if($('.cover-wrapper').is(':hidden')){
+              $.backstretch("pause");
+            }else{
+              $.backstretch("next");
+            }
           }
         
         
         
-          pjax_scrollrebeal();
         
-        
-          pjax_initCopyCode();
         
         
           pjax_valine();
@@ -2184,10 +2329,5 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
 
     
   </div>
-<script>
-            window.imageLazyLoadSetting = {
-                isSPA: false,
-                processImages: null,
-            };
-        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var i=n.imageLazyLoadSetting.isSPA,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){i&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,e,a=0;a<r.length;a++)t=r[a],e=void 0,0<=(e=t.getBoundingClientRect()).bottom&&0<=e.left&&e.top<=(n.innerHeight||document.documentElement.clientHeight)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},n.src=i}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
+</body>
 </html>
