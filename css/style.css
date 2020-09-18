@@ -5105,6 +5105,30 @@ img.lazyload:not(.placeholder):not(.loaded) {
 img.lazyload:not(.placeholder).loaded {
   filter: none;
 }
+.tagred {
+  background: #feecf0 !important;
+  color: #cc0f35 !important;
+}
+.tagyellow {
+  background: #f4e9ff !important;
+  color: #8a51c0 !important;
+}
+.tagblue {
+  background: #eef3fc !important;
+  color: #2160c4 !important;
+}
+.taggreen {
+  background: #ebfffc !important;
+  color: #00947e !important;
+}
+.tagpurple {
+  background: #f4e9ff !important;
+  color: #8a51c0 !important;
+}
+.taggrown {
+  background: #fffbeb !important;
+  color: #947600 !important;
+}
 .md >p {
   padding-top: 4px;
 }
