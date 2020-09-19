@@ -3,11 +3,11 @@
   <title>yanliang&#39;s blog</title>
   
   
-  <link href="https://gyl-coder.top/atom.xml" rel="self"/>
+  <link href="https://blog.gyl-coder.top/atom.xml" rel="self"/>
   
-  <link href="https://gyl-coder.top/"/>
+  <link href="https://blog.gyl-coder.top/"/>
   <updated>2020-08-23T14:21:41.759Z</updated>
-  <id>https://gyl-coder.top/</id>
+  <id>https://blog.gyl-coder.top/</id>
   
   <author>
     <name>yanliang</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Java 集合总结</title>
-    <link href="https://gyl-coder.top/java/collection/all/"/>
-    <id>https://gyl-coder.top/java/collection/all/</id>
+    <link href="https://blog.gyl-coder.top/java/collection/all/"/>
+    <id>https://blog.gyl-coder.top/java/collection/all/</id>
     <published>2020-07-05T16:00:00.000Z</published>
     <updated>2020-08-23T14:21:41.759Z</updated>
     
@@ -37,19 +37,19 @@
     
     
     
-    <category term="Java" scheme="https://gyl-coder.top/categories/Java/"/>
+    <category term="Java" scheme="https://blog.gyl-coder.top/categories/Java/"/>
     
     
-    <category term="Java" scheme="https://gyl-coder.top/tags/Java/"/>
+    <category term="Java" scheme="https://blog.gyl-coder.top/tags/Java/"/>
     
-    <category term="集合" scheme="https://gyl-coder.top/tags/%E9%9B%86%E5%90%88/"/>
+    <category term="集合" scheme="https://blog.gyl-coder.top/tags/%E9%9B%86%E5%90%88/"/>
     
   </entry>
   
   <entry>
     <title>LinkedHashMap 底层实现原理分析</title>
-    <link href="https://gyl-coder.top/java/collection/LinkedHashMap/"/>
-    <id>https://gyl-coder.top/java/collection/LinkedHashMap/</id>
+    <link href="https://blog.gyl-coder.top/java/collection/LinkedHashMap/"/>
+    <id>https://blog.gyl-coder.top/java/collection/LinkedHashMap/</id>
     <published>2020-07-04T16:00:00.000Z</published>
     <updated>2020-08-23T14:14:08.222Z</updated>
     
@@ -64,21 +64,21 @@
     
     
     
-    <category term="Java" scheme="https://gyl-coder.top/categories/Java/"/>
+    <category term="Java" scheme="https://blog.gyl-coder.top/categories/Java/"/>
     
     
-    <category term="Java" scheme="https://gyl-coder.top/tags/Java/"/>
+    <category term="Java" scheme="https://blog.gyl-coder.top/tags/Java/"/>
     
-    <category term="集合" scheme="https://gyl-coder.top/tags/%E9%9B%86%E5%90%88/"/>
+    <category term="集合" scheme="https://blog.gyl-coder.top/tags/%E9%9B%86%E5%90%88/"/>
     
-    <category term="LinkedHashMap" scheme="https://gyl-coder.top/tags/LinkedHashMap/"/>
+    <category term="LinkedHashMap" scheme="https://blog.gyl-coder.top/tags/LinkedHashMap/"/>
     
   </entry>
   
   <entry>
     <title>LinkedList 底层实现原理分析</title>
-    <link href="https://gyl-coder.top/java/collection/LinkedList/"/>
-    <id>https://gyl-coder.top/java/collection/LinkedList/</id>
+    <link href="https://blog.gyl-coder.top/java/collection/LinkedList/"/>
+    <id>https://blog.gyl-coder.top/java/collection/LinkedList/</id>
     <published>2020-07-03T16:00:00.000Z</published>
     <updated>2020-08-23T14:16:06.271Z</updated>
     
@@ -100,21 +100,21 @@
     
     
     
-    <category term="Java" scheme="https://gyl-coder.top/categories/Java/"/>
+    <category term="Java" scheme="https://blog.gyl-coder.top/categories/Java/"/>
     
     
-    <category term="Java" scheme="https://gyl-coder.top/tags/Java/"/>
+    <category term="Java" scheme="https://blog.gyl-coder.top/tags/Java/"/>
     
-    <category term="集合" scheme="https://gyl-coder.top/tags/%E9%9B%86%E5%90%88/"/>
+    <category term="集合" scheme="https://blog.gyl-coder.top/tags/%E9%9B%86%E5%90%88/"/>
     
-    <category term="LinkedList" scheme="https://gyl-coder.top/tags/LinkedList/"/>
+    <category term="LinkedList" scheme="https://blog.gyl-coder.top/tags/LinkedList/"/>
     
   </entry>
   
   <entry>
     <title>Vector 底层实现原理分析</title>
-    <link href="https://gyl-coder.top/java/collection/Vector/"/>
-    <id>https://gyl-coder.top/java/collection/Vector/</id>
+    <link href="https://blog.gyl-coder.top/java/collection/Vector/"/>
+    <id>https://blog.gyl-coder.top/java/collection/Vector/</id>
     <published>2020-07-02T16:00:00.000Z</published>
     <updated>2020-08-23T14:16:29.591Z</updated>
     
@@ -127,21 +127,21 @@
     
     
     
-    <category term="Java" scheme="https://gyl-coder.top/categories/Java/"/>
+    <category term="Java" scheme="https://blog.gyl-coder.top/categories/Java/"/>
     
     
-    <category term="Java" scheme="https://gyl-coder.top/tags/Java/"/>
+    <category term="Java" scheme="https://blog.gyl-coder.top/tags/Java/"/>
     
-    <category term="集合" scheme="https://gyl-coder.top/tags/%E9%9B%86%E5%90%88/"/>
+    <category term="集合" scheme="https://blog.gyl-coder.top/tags/%E9%9B%86%E5%90%88/"/>
     
-    <category term="Vector" scheme="https://gyl-coder.top/tags/Vector/"/>
+    <category term="Vector" scheme="https://blog.gyl-coder.top/tags/Vector/"/>
     
   </entry>
   
   <entry>
     <title>ArrayList动态扩容机制</title>
-    <link href="https://gyl-coder.top/java/collection/ArrayList_grow/"/>
-    <id>https://gyl-coder.top/java/collection/ArrayList_grow/</id>
+    <link href="https://blog.gyl-coder.top/java/collection/ArrayList_grow/"/>
+    <id>https://blog.gyl-coder.top/java/collection/ArrayList_grow/</id>
     <published>2020-07-01T16:00:00.000Z</published>
     <updated>2020-08-23T14:08:44.311Z</updated>
     
@@ -155,21 +155,21 @@
     
     
     
-    <category term="Java" scheme="https://gyl-coder.top/categories/Java/"/>
+    <category term="Java" scheme="https://blog.gyl-coder.top/categories/Java/"/>
     
     
-    <category term="Java" scheme="https://gyl-coder.top/tags/Java/"/>
+    <category term="Java" scheme="https://blog.gyl-coder.top/tags/Java/"/>
     
-    <category term="集合" scheme="https://gyl-coder.top/tags/%E9%9B%86%E5%90%88/"/>
+    <category term="集合" scheme="https://blog.gyl-coder.top/tags/%E9%9B%86%E5%90%88/"/>
     
-    <category term="ArrayList" scheme="https://gyl-coder.top/tags/ArrayList/"/>
+    <category term="ArrayList" scheme="https://blog.gyl-coder.top/tags/ArrayList/"/>
     
   </entry>
   
   <entry>
     <title>ArrayList 底层实现原理分析</title>
-    <link href="https://gyl-coder.top/java/collection/ArrayList/"/>
-    <id>https://gyl-coder.top/java/collection/ArrayList/</id>
+    <link href="https://blog.gyl-coder.top/java/collection/ArrayList/"/>
+    <id>https://blog.gyl-coder.top/java/collection/ArrayList/</id>
     <published>2020-06-30T16:00:00.000Z</published>
     <updated>2020-08-23T14:08:21.851Z</updated>
     
@@ -186,21 +186,21 @@
     
     
     
-    <category term="Java" scheme="https://gyl-coder.top/categories/Java/"/>
+    <category term="Java" scheme="https://blog.gyl-coder.top/categories/Java/"/>
     
     
-    <category term="Java" scheme="https://gyl-coder.top/tags/Java/"/>
+    <category term="Java" scheme="https://blog.gyl-coder.top/tags/Java/"/>
     
-    <category term="集合" scheme="https://gyl-coder.top/tags/%E9%9B%86%E5%90%88/"/>
+    <category term="集合" scheme="https://blog.gyl-coder.top/tags/%E9%9B%86%E5%90%88/"/>
     
-    <category term="ArrayList" scheme="https://gyl-coder.top/tags/ArrayList/"/>
+    <category term="ArrayList" scheme="https://blog.gyl-coder.top/tags/ArrayList/"/>
     
   </entry>
   
   <entry>
     <title>try catch finally执行顺序</title>
-    <link href="https://gyl-coder.top/java/try_catch_finally/"/>
-    <id>https://gyl-coder.top/java/try_catch_finally/</id>
+    <link href="https://blog.gyl-coder.top/java/try_catch_finally/"/>
+    <id>https://blog.gyl-coder.top/java/try_catch_finally/</id>
     <published>2020-04-02T16:00:00.000Z</published>
     <updated>2020-09-02T12:15:24.058Z</updated>
     
@@ -211,21 +211,21 @@
     
     
     
-    <category term="Java" scheme="https://gyl-coder.top/categories/Java/"/>
+    <category term="Java" scheme="https://blog.gyl-coder.top/categories/Java/"/>
     
     
-    <category term="Java" scheme="https://gyl-coder.top/tags/Java/"/>
+    <category term="Java" scheme="https://blog.gyl-coder.top/tags/Java/"/>
     
-    <category term="try-catch" scheme="https://gyl-coder.top/tags/try-catch/"/>
+    <category term="try-catch" scheme="https://blog.gyl-coder.top/tags/try-catch/"/>
     
-    <category term="异常捕获" scheme="https://gyl-coder.top/tags/%E5%BC%82%E5%B8%B8%E6%8D%95%E8%8E%B7/"/>
+    <category term="异常捕获" scheme="https://blog.gyl-coder.top/tags/%E5%BC%82%E5%B8%B8%E6%8D%95%E8%8E%B7/"/>
     
   </entry>
   
   <entry>
     <title>手写实现IOC 和 AOP</title>
-    <link href="https://gyl-coder.top/spring/custom-ioc-aop/"/>
-    <id>https://gyl-coder.top/spring/custom-ioc-aop/</id>
+    <link href="https://blog.gyl-coder.top/spring/custom-ioc-aop/"/>
+    <id>https://blog.gyl-coder.top/spring/custom-ioc-aop/</id>
     <published>2020-04-02T16:00:00.000Z</published>
     <updated>2020-08-23T14:35:45.669Z</updated>
     
@@ -237,23 +237,23 @@
     
     
     
-    <category term="Spring" scheme="https://gyl-coder.top/categories/Spring/"/>
+    <category term="Spring" scheme="https://blog.gyl-coder.top/categories/Spring/"/>
     
     
-    <category term="动态代理" scheme="https://gyl-coder.top/tags/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/"/>
+    <category term="动态代理" scheme="https://blog.gyl-coder.top/tags/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/"/>
     
-    <category term="Spring" scheme="https://gyl-coder.top/tags/Spring/"/>
+    <category term="Spring" scheme="https://blog.gyl-coder.top/tags/Spring/"/>
     
-    <category term="IOC" scheme="https://gyl-coder.top/tags/IOC/"/>
+    <category term="IOC" scheme="https://blog.gyl-coder.top/tags/IOC/"/>
     
-    <category term="AOP" scheme="https://gyl-coder.top/tags/AOP/"/>
+    <category term="AOP" scheme="https://blog.gyl-coder.top/tags/AOP/"/>
     
   </entry>
   
   <entry>
     <title>动态代理原理剖析</title>
-    <link href="https://gyl-coder.top/java/dynamic-proxy/"/>
-    <id>https://gyl-coder.top/java/dynamic-proxy/</id>
+    <link href="https://blog.gyl-coder.top/java/dynamic-proxy/"/>
+    <id>https://blog.gyl-coder.top/java/dynamic-proxy/</id>
     <published>2020-04-01T16:00:00.000Z</published>
     <updated>2020-08-16T02:10:06.063Z</updated>
     
@@ -276,19 +276,19 @@
     
     
     
-    <category term="Java" scheme="https://gyl-coder.top/categories/Java/"/>
+    <category term="Java" scheme="https://blog.gyl-coder.top/categories/Java/"/>
     
     
-    <category term="Java" scheme="https://gyl-coder.top/tags/Java/"/>
+    <category term="Java" scheme="https://blog.gyl-coder.top/tags/Java/"/>
     
-    <category term="动态代理" scheme="https://gyl-coder.top/tags/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/"/>
+    <category term="动态代理" scheme="https://blog.gyl-coder.top/tags/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/"/>
     
   </entry>
   
   <entry>
     <title>IOC &amp; AOP 详解</title>
-    <link href="https://gyl-coder.top/spring/spring-ioc-aop/"/>
-    <id>https://gyl-coder.top/spring/spring-ioc-aop/</id>
+    <link href="https://blog.gyl-coder.top/spring/spring-ioc-aop/"/>
+    <id>https://blog.gyl-coder.top/spring/spring-ioc-aop/</id>
     <published>2020-04-01T16:00:00.000Z</published>
     <updated>2020-09-02T12:16:07.489Z</updated>
     
@@ -308,21 +308,21 @@
     
     
     
-    <category term="Spring" scheme="https://gyl-coder.top/categories/Spring/"/>
+    <category term="Spring" scheme="https://blog.gyl-coder.top/categories/Spring/"/>
     
     
-    <category term="Spring" scheme="https://gyl-coder.top/tags/Spring/"/>
+    <category term="Spring" scheme="https://blog.gyl-coder.top/tags/Spring/"/>
     
-    <category term="IOC" scheme="https://gyl-coder.top/tags/IOC/"/>
+    <category term="IOC" scheme="https://blog.gyl-coder.top/tags/IOC/"/>
     
-    <category term="AOP" scheme="https://gyl-coder.top/tags/AOP/"/>
+    <category term="AOP" scheme="https://blog.gyl-coder.top/tags/AOP/"/>
     
   </entry>
   
   <entry>
     <title>Settings.xml 详解</title>
-    <link href="https://gyl-coder.top/java/settings/"/>
-    <id>https://gyl-coder.top/java/settings/</id>
+    <link href="https://blog.gyl-coder.top/java/settings/"/>
+    <id>https://blog.gyl-coder.top/java/settings/</id>
     <published>2020-04-01T16:00:00.000Z</published>
     <updated>2020-09-02T12:18:36.055Z</updated>
     
@@ -337,19 +337,19 @@
     
     
     
-    <category term="Java" scheme="https://gyl-coder.top/categories/Java/"/>
+    <category term="Java" scheme="https://blog.gyl-coder.top/categories/Java/"/>
     
     
-    <category term="Java" scheme="https://gyl-coder.top/tags/Java/"/>
+    <category term="Java" scheme="https://blog.gyl-coder.top/tags/Java/"/>
     
-    <category term="settings" scheme="https://gyl-coder.top/tags/settings/"/>
+    <category term="settings" scheme="https://blog.gyl-coder.top/tags/settings/"/>
     
   </entry>
   
   <entry>
     <title>MyBatis 入门</title>
-    <link href="https://gyl-coder.top/mybatis/mybatis-beginner/"/>
-    <id>https://gyl-coder.top/mybatis/mybatis-beginner/</id>
+    <link href="https://blog.gyl-coder.top/mybatis/mybatis-beginner/"/>
+    <id>https://blog.gyl-coder.top/mybatis/mybatis-beginner/</id>
     <published>2020-03-29T16:00:00.000Z</published>
     <updated>2020-08-23T14:35:11.911Z</updated>
     
@@ -363,17 +363,17 @@
     
     
     
-    <category term="Mybatis" scheme="https://gyl-coder.top/categories/Mybatis/"/>
+    <category term="Mybatis" scheme="https://blog.gyl-coder.top/categories/Mybatis/"/>
     
     
-    <category term="Mybatis" scheme="https://gyl-coder.top/tags/Mybatis/"/>
+    <category term="Mybatis" scheme="https://blog.gyl-coder.top/tags/Mybatis/"/>
     
   </entry>
   
   <entry>
     <title>HashMap 底层实现原理分析</title>
-    <link href="https://gyl-coder.top/java/collection/HashMapAnalysis/"/>
-    <id>https://gyl-coder.top/java/collection/HashMapAnalysis/</id>
+    <link href="https://blog.gyl-coder.top/java/collection/HashMapAnalysis/"/>
+    <id>https://blog.gyl-coder.top/java/collection/HashMapAnalysis/</id>
     <published>2020-03-22T16:00:00.000Z</published>
     <updated>2020-08-23T14:12:38.903Z</updated>
     
@@ -390,21 +390,21 @@
     
     
     
-    <category term="Java" scheme="https://gyl-coder.top/categories/Java/"/>
+    <category term="Java" scheme="https://blog.gyl-coder.top/categories/Java/"/>
     
     
-    <category term="Java" scheme="https://gyl-coder.top/tags/Java/"/>
+    <category term="Java" scheme="https://blog.gyl-coder.top/tags/Java/"/>
     
-    <category term="集合" scheme="https://gyl-coder.top/tags/%E9%9B%86%E5%90%88/"/>
+    <category term="集合" scheme="https://blog.gyl-coder.top/tags/%E9%9B%86%E5%90%88/"/>
     
-    <category term="HashMap" scheme="https://gyl-coder.top/tags/HashMap/"/>
+    <category term="HashMap" scheme="https://blog.gyl-coder.top/tags/HashMap/"/>
     
   </entry>
   
   <entry>
     <title>int 和 Integer 有什么区别？谈谈Integer的值缓存范围</title>
-    <link href="https://gyl-coder.top/java/difference_between_int_and_integer/"/>
-    <id>https://gyl-coder.top/java/difference_between_int_and_integer/</id>
+    <link href="https://blog.gyl-coder.top/java/difference_between_int_and_integer/"/>
+    <id>https://blog.gyl-coder.top/java/difference_between_int_and_integer/</id>
     <published>2020-03-09T16:00:00.000Z</published>
     <updated>2020-09-02T12:19:18.163Z</updated>
     
@@ -420,21 +420,21 @@
     
     
     
-    <category term="Java" scheme="https://gyl-coder.top/categories/Java/"/>
+    <category term="Java" scheme="https://blog.gyl-coder.top/categories/Java/"/>
     
     
-    <category term="Java" scheme="https://gyl-coder.top/tags/Java/"/>
+    <category term="Java" scheme="https://blog.gyl-coder.top/tags/Java/"/>
     
-    <category term="Int" scheme="https://gyl-coder.top/tags/Int/"/>
+    <category term="Int" scheme="https://blog.gyl-coder.top/tags/Int/"/>
     
-    <category term="Integer" scheme="https://gyl-coder.top/tags/Integer/"/>
+    <category term="Integer" scheme="https://blog.gyl-coder.top/tags/Integer/"/>
     
   </entry>
   
   <entry>
     <title>如何设计一个可扩展的限流算法 [转]</title>
-    <link href="https://gyl-coder.top/good/how-to-design-extensible-limiting-algorithm/"/>
-    <id>https://gyl-coder.top/good/how-to-design-extensible-limiting-algorithm/</id>
+    <link href="https://blog.gyl-coder.top/good/how-to-design-extensible-limiting-algorithm/"/>
+    <id>https://blog.gyl-coder.top/good/how-to-design-extensible-limiting-algorithm/</id>
     <published>2020-03-04T16:00:00.000Z</published>
     <updated>2020-09-02T12:20:59.779Z</updated>
     
@@ -445,21 +445,21 @@
     
     
     
-    <category term="设计" scheme="https://gyl-coder.top/categories/%E8%AE%BE%E8%AE%A1/"/>
+    <category term="设计" scheme="https://blog.gyl-coder.top/categories/%E8%AE%BE%E8%AE%A1/"/>
     
     
-    <category term="限流算法" scheme="https://gyl-coder.top/tags/%E9%99%90%E6%B5%81%E7%AE%97%E6%B3%95/"/>
+    <category term="限流算法" scheme="https://blog.gyl-coder.top/tags/%E9%99%90%E6%B5%81%E7%AE%97%E6%B3%95/"/>
     
-    <category term="设计" scheme="https://gyl-coder.top/tags/%E8%AE%BE%E8%AE%A1/"/>
+    <category term="设计" scheme="https://blog.gyl-coder.top/tags/%E8%AE%BE%E8%AE%A1/"/>
     
-    <category term="可扩展" scheme="https://gyl-coder.top/tags/%E5%8F%AF%E6%89%A9%E5%B1%95/"/>
+    <category term="可扩展" scheme="https://blog.gyl-coder.top/tags/%E5%8F%AF%E6%89%A9%E5%B1%95/"/>
     
   </entry>
   
   <entry>
     <title>kafka 主题管理</title>
-    <link href="https://gyl-coder.top/kafka/kafka-topic-manage/"/>
-    <id>https://gyl-coder.top/kafka/kafka-topic-manage/</id>
+    <link href="https://blog.gyl-coder.top/kafka/kafka-topic-manage/"/>
+    <id>https://blog.gyl-coder.top/kafka/kafka-topic-manage/</id>
     <published>2019-12-07T16:00:00.000Z</published>
     <updated>2020-08-23T14:23:38.963Z</updated>
     
@@ -470,19 +470,19 @@
     
     
     
-    <category term="kafka" scheme="https://gyl-coder.top/categories/kafka/"/>
+    <category term="kafka" scheme="https://blog.gyl-coder.top/categories/kafka/"/>
     
     
-    <category term="kafka" scheme="https://gyl-coder.top/tags/kafka/"/>
+    <category term="kafka" scheme="https://blog.gyl-coder.top/tags/kafka/"/>
     
-    <category term="topic" scheme="https://gyl-coder.top/tags/topic/"/>
+    <category term="topic" scheme="https://blog.gyl-coder.top/tags/topic/"/>
     
   </entry>
   
   <entry>
     <title>kafka 问题总结</title>
-    <link href="https://gyl-coder.top/kafka/kafka-todo-list/"/>
-    <id>https://gyl-coder.top/kafka/kafka-todo-list/</id>
+    <link href="https://blog.gyl-coder.top/kafka/kafka-todo-list/"/>
+    <id>https://blog.gyl-coder.top/kafka/kafka-todo-list/</id>
     <published>2019-12-06T16:00:00.000Z</published>
     <updated>2020-08-23T14:23:31.654Z</updated>
     
@@ -500,17 +500,17 @@
     
     
     
-    <category term="kafka" scheme="https://gyl-coder.top/categories/kafka/"/>
+    <category term="kafka" scheme="https://blog.gyl-coder.top/categories/kafka/"/>
     
     
-    <category term="kafka" scheme="https://gyl-coder.top/tags/kafka/"/>
+    <category term="kafka" scheme="https://blog.gyl-coder.top/tags/kafka/"/>
     
   </entry>
   
   <entry>
     <title>kafka 如何保证数据的可靠性和一致性</title>
-    <link href="https://gyl-coder.top/kafka/kafka-reliability/"/>
-    <id>https://gyl-coder.top/kafka/kafka-reliability/</id>
+    <link href="https://blog.gyl-coder.top/kafka/kafka-reliability/"/>
+    <id>https://blog.gyl-coder.top/kafka/kafka-reliability/</id>
     <published>2019-12-05T16:00:00.000Z</published>
     <updated>2020-08-23T14:23:27.089Z</updated>
     
@@ -522,21 +522,21 @@
     
     
     
-    <category term="kafka" scheme="https://gyl-coder.top/categories/kafka/"/>
+    <category term="kafka" scheme="https://blog.gyl-coder.top/categories/kafka/"/>
     
     
-    <category term="kafka" scheme="https://gyl-coder.top/tags/kafka/"/>
+    <category term="kafka" scheme="https://blog.gyl-coder.top/tags/kafka/"/>
     
-    <category term="数据可靠性" scheme="https://gyl-coder.top/tags/%E6%95%B0%E6%8D%AE%E5%8F%AF%E9%9D%A0%E6%80%A7/"/>
+    <category term="数据可靠性" scheme="https://blog.gyl-coder.top/tags/%E6%95%B0%E6%8D%AE%E5%8F%AF%E9%9D%A0%E6%80%A7/"/>
     
-    <category term="数据一致性" scheme="https://gyl-coder.top/tags/%E6%95%B0%E6%8D%AE%E4%B8%80%E8%87%B4%E6%80%A7/"/>
+    <category term="数据一致性" scheme="https://blog.gyl-coder.top/tags/%E6%95%B0%E6%8D%AE%E4%B8%80%E8%87%B4%E6%80%A7/"/>
     
   </entry>
   
   <entry>
     <title>Kafka Rebalance机制分析</title>
-    <link href="https://gyl-coder.top/kafka/kafka-rebalance/"/>
-    <id>https://gyl-coder.top/kafka/kafka-rebalance/</id>
+    <link href="https://blog.gyl-coder.top/kafka/kafka-rebalance/"/>
+    <id>https://blog.gyl-coder.top/kafka/kafka-rebalance/</id>
     <published>2019-12-04T16:00:00.000Z</published>
     <updated>2020-08-23T14:23:21.826Z</updated>
     
@@ -548,17 +548,17 @@
     
     
     
-    <category term="kafka" scheme="https://gyl-coder.top/categories/kafka/"/>
+    <category term="kafka" scheme="https://blog.gyl-coder.top/categories/kafka/"/>
     
     
-    <category term="kafka" scheme="https://gyl-coder.top/tags/kafka/"/>
+    <category term="kafka" scheme="https://blog.gyl-coder.top/tags/kafka/"/>
     
   </entry>
   
   <entry>
     <title>Kafka有哪几处地方有分区分配的概念？简述大致的过程及原理</title>
-    <link href="https://gyl-coder.top/kafka/kafka-partition-alocation/"/>
-    <id>https://gyl-coder.top/kafka/kafka-partition-alocation/</id>
+    <link href="https://blog.gyl-coder.top/kafka/kafka-partition-alocation/"/>
+    <id>https://blog.gyl-coder.top/kafka/kafka-partition-alocation/</id>
     <published>2019-12-03T16:00:00.000Z</published>
     <updated>2020-08-23T14:32:46.558Z</updated>
     
@@ -569,17 +569,17 @@
     
     
     
-    <category term="kafka" scheme="https://gyl-coder.top/categories/kafka/"/>
+    <category term="kafka" scheme="https://blog.gyl-coder.top/categories/kafka/"/>
     
     
-    <category term="kafka" scheme="https://gyl-coder.top/tags/kafka/"/>
+    <category term="kafka" scheme="https://blog.gyl-coder.top/tags/kafka/"/>
     
   </entry>
   
   <entry>
     <title>kafka的listeners配置错误导致主线程阻塞</title>
-    <link href="https://gyl-coder.top/kafka/kafka-listeners-config/"/>
-    <id>https://gyl-coder.top/kafka/kafka-listeners-config/</id>
+    <link href="https://blog.gyl-coder.top/kafka/kafka-listeners-config/"/>
+    <id>https://blog.gyl-coder.top/kafka/kafka-listeners-config/</id>
     <published>2019-12-02T16:00:00.000Z</published>
     <updated>2020-08-23T14:29:51.149Z</updated>
     
@@ -592,19 +592,19 @@
     
     
     
-    <category term="kafka" scheme="https://gyl-coder.top/categories/kafka/"/>
+    <category term="kafka" scheme="https://blog.gyl-coder.top/categories/kafka/"/>
     
     
-    <category term="kafka" scheme="https://gyl-coder.top/tags/kafka/"/>
+    <category term="kafka" scheme="https://blog.gyl-coder.top/tags/kafka/"/>
     
-    <category term="线程阻塞" scheme="https://gyl-coder.top/tags/%E7%BA%BF%E7%A8%8B%E9%98%BB%E5%A1%9E/"/>
+    <category term="线程阻塞" scheme="https://blog.gyl-coder.top/tags/%E7%BA%BF%E7%A8%8B%E9%98%BB%E5%A1%9E/"/>
     
   </entry>
   
   <entry>
     <title>kafka中的ISR、AR代表什么？ISR的伸缩性又指什么？</title>
-    <link href="https://gyl-coder.top/kafka/kafka-isr-ar/"/>
-    <id>https://gyl-coder.top/kafka/kafka-isr-ar/</id>
+    <link href="https://blog.gyl-coder.top/kafka/kafka-isr-ar/"/>
+    <id>https://blog.gyl-coder.top/kafka/kafka-isr-ar/</id>
     <published>2019-12-01T16:00:00.000Z</published>
     <updated>2020-08-23T14:23:04.562Z</updated>
     
@@ -615,17 +615,17 @@
     
     
     
-    <category term="kafka" scheme="https://gyl-coder.top/categories/kafka/"/>
+    <category term="kafka" scheme="https://blog.gyl-coder.top/categories/kafka/"/>
     
     
-    <category term="kafka" scheme="https://gyl-coder.top/tags/kafka/"/>
+    <category term="kafka" scheme="https://blog.gyl-coder.top/tags/kafka/"/>
     
   </entry>
   
   <entry>
     <title>Kafka中的HW、LEO、LSO等分别代表什么？</title>
-    <link href="https://gyl-coder.top/kafka/kafka-hw-leo-lso/"/>
-    <id>https://gyl-coder.top/kafka/kafka-hw-leo-lso/</id>
+    <link href="https://blog.gyl-coder.top/kafka/kafka-hw-leo-lso/"/>
+    <id>https://blog.gyl-coder.top/kafka/kafka-hw-leo-lso/</id>
     <published>2019-11-30T16:00:00.000Z</published>
     <updated>2020-08-23T14:26:19.688Z</updated>
     
@@ -638,17 +638,17 @@
     
     
     
-    <category term="kafka" scheme="https://gyl-coder.top/categories/kafka/"/>
+    <category term="kafka" scheme="https://blog.gyl-coder.top/categories/kafka/"/>
     
     
-    <category term="kafka" scheme="https://gyl-coder.top/tags/kafka/"/>
+    <category term="kafka" scheme="https://blog.gyl-coder.top/tags/kafka/"/>
     
   </entry>
   
   <entry>
     <title>智力题</title>
-    <link href="https://gyl-coder.top/iq/"/>
-    <id>https://gyl-coder.top/iq/</id>
+    <link href="https://blog.gyl-coder.top/iq/"/>
+    <id>https://blog.gyl-coder.top/iq/</id>
     <published>2019-11-13T16:00:00.000Z</published>
     <updated>2020-08-23T14:36:56.678Z</updated>
     
@@ -668,8 +668,8 @@
   
   <entry>
     <title>Lock &amp; Synchronized</title>
-    <link href="https://gyl-coder.top/concurrency/lock_and_synchronized/"/>
-    <id>https://gyl-coder.top/concurrency/lock_and_synchronized/</id>
+    <link href="https://blog.gyl-coder.top/concurrency/lock_and_synchronized/"/>
+    <id>https://blog.gyl-coder.top/concurrency/lock_and_synchronized/</id>
     <published>2019-11-06T16:00:00.000Z</published>
     <updated>2020-08-23T13:58:37.079Z</updated>
     
@@ -695,19 +695,19 @@
     
     
     
-    <category term="并发" scheme="https://gyl-coder.top/categories/%E5%B9%B6%E5%8F%91/"/>
+    <category term="并发" scheme="https://blog.gyl-coder.top/categories/%E5%B9%B6%E5%8F%91/"/>
     
     
-    <category term="Java" scheme="https://gyl-coder.top/tags/Java/"/>
+    <category term="Java" scheme="https://blog.gyl-coder.top/tags/Java/"/>
     
-    <category term="并发" scheme="https://gyl-coder.top/tags/%E5%B9%B6%E5%8F%91/"/>
+    <category term="并发" scheme="https://blog.gyl-coder.top/tags/%E5%B9%B6%E5%8F%91/"/>
     
   </entry>
   
   <entry>
     <title>等待通知机制</title>
-    <link href="https://gyl-coder.top/concurrency/waiting_for_notification/"/>
-    <id>https://gyl-coder.top/concurrency/waiting_for_notification/</id>
+    <link href="https://blog.gyl-coder.top/concurrency/waiting_for_notification/"/>
+    <id>https://blog.gyl-coder.top/concurrency/waiting_for_notification/</id>
     <published>2019-11-05T16:00:00.000Z</published>
     <updated>2020-08-23T13:58:43.975Z</updated>
     
@@ -723,21 +723,21 @@
     
     
     
-    <category term="并发" scheme="https://gyl-coder.top/categories/%E5%B9%B6%E5%8F%91/"/>
+    <category term="并发" scheme="https://blog.gyl-coder.top/categories/%E5%B9%B6%E5%8F%91/"/>
     
     
-    <category term="Java" scheme="https://gyl-coder.top/tags/Java/"/>
+    <category term="Java" scheme="https://blog.gyl-coder.top/tags/Java/"/>
     
-    <category term="并发" scheme="https://gyl-coder.top/tags/%E5%B9%B6%E5%8F%91/"/>
+    <category term="并发" scheme="https://blog.gyl-coder.top/tags/%E5%B9%B6%E5%8F%91/"/>
     
-    <category term="等待通知机制" scheme="https://gyl-coder.top/tags/%E7%AD%89%E5%BE%85%E9%80%9A%E7%9F%A5%E6%9C%BA%E5%88%B6/"/>
+    <category term="等待通知机制" scheme="https://blog.gyl-coder.top/tags/%E7%AD%89%E5%BE%85%E9%80%9A%E7%9F%A5%E6%9C%BA%E5%88%B6/"/>
     
   </entry>
   
   <entry>
     <title>多个线程交替打印内容</title>
-    <link href="https://gyl-coder.top/concurrency/alternate_printing/"/>
-    <id>https://gyl-coder.top/concurrency/alternate_printing/</id>
+    <link href="https://blog.gyl-coder.top/concurrency/alternate_printing/"/>
+    <id>https://blog.gyl-coder.top/concurrency/alternate_printing/</id>
     <published>2019-11-04T16:00:00.000Z</published>
     <updated>2020-08-23T13:58:17.917Z</updated>
     
@@ -749,19 +749,19 @@
     
     
     
-    <category term="并发" scheme="https://gyl-coder.top/categories/%E5%B9%B6%E5%8F%91/"/>
+    <category term="并发" scheme="https://blog.gyl-coder.top/categories/%E5%B9%B6%E5%8F%91/"/>
     
     
-    <category term="Java" scheme="https://gyl-coder.top/tags/Java/"/>
+    <category term="Java" scheme="https://blog.gyl-coder.top/tags/Java/"/>
     
-    <category term="并发" scheme="https://gyl-coder.top/tags/%E5%B9%B6%E5%8F%91/"/>
+    <category term="并发" scheme="https://blog.gyl-coder.top/tags/%E5%B9%B6%E5%8F%91/"/>
     
   </entry>
   
   <entry>
     <title>Why Concurrency ?</title>
-    <link href="https://gyl-coder.top/concurrency/why_concurrency/"/>
-    <id>https://gyl-coder.top/concurrency/why_concurrency/</id>
+    <link href="https://blog.gyl-coder.top/concurrency/why_concurrency/"/>
+    <id>https://blog.gyl-coder.top/concurrency/why_concurrency/</id>
     <published>2019-11-04T16:00:00.000Z</published>
     <updated>2020-08-23T13:58:49.024Z</updated>
     
@@ -773,19 +773,19 @@
     
     
     
-    <category term="并发" scheme="https://gyl-coder.top/categories/%E5%B9%B6%E5%8F%91/"/>
+    <category term="并发" scheme="https://blog.gyl-coder.top/categories/%E5%B9%B6%E5%8F%91/"/>
     
     
-    <category term="Java" scheme="https://gyl-coder.top/tags/Java/"/>
+    <category term="Java" scheme="https://blog.gyl-coder.top/tags/Java/"/>
     
-    <category term="并发" scheme="https://gyl-coder.top/tags/%E5%B9%B6%E5%8F%91/"/>
+    <category term="并发" scheme="https://blog.gyl-coder.top/tags/%E5%B9%B6%E5%8F%91/"/>
     
   </entry>
   
   <entry>
     <title>并发设计模式：Immutability 模式</title>
-    <link href="https://gyl-coder.top/design-pattern/immutability/"/>
-    <id>https://gyl-coder.top/design-pattern/immutability/</id>
+    <link href="https://blog.gyl-coder.top/design-pattern/immutability/"/>
+    <id>https://blog.gyl-coder.top/design-pattern/immutability/</id>
     <published>2019-10-24T16:00:00.000Z</published>
     <updated>2020-08-23T13:59:23.125Z</updated>
     
@@ -797,21 +797,21 @@
     
     
     
-    <category term="设计模式" scheme="https://gyl-coder.top/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    <category term="设计模式" scheme="https://blog.gyl-coder.top/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
     
-    <category term="并发" scheme="https://gyl-coder.top/tags/%E5%B9%B6%E5%8F%91/"/>
+    <category term="并发" scheme="https://blog.gyl-coder.top/tags/%E5%B9%B6%E5%8F%91/"/>
     
-    <category term="设计模式" scheme="https://gyl-coder.top/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    <category term="设计模式" scheme="https://blog.gyl-coder.top/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
-    <category term="Immutability模式" scheme="https://gyl-coder.top/tags/Immutability%E6%A8%A1%E5%BC%8F/"/>
+    <category term="Immutability模式" scheme="https://blog.gyl-coder.top/tags/Immutability%E6%A8%A1%E5%BC%8F/"/>
     
   </entry>
   
   <entry>
     <title>单例模式</title>
-    <link href="https://gyl-coder.top/design-pattern/single-pattern/"/>
-    <id>https://gyl-coder.top/design-pattern/single-pattern/</id>
+    <link href="https://blog.gyl-coder.top/design-pattern/single-pattern/"/>
+    <id>https://blog.gyl-coder.top/design-pattern/single-pattern/</id>
     <published>2019-10-23T16:00:00.000Z</published>
     <updated>2020-08-23T13:59:27.850Z</updated>
     
@@ -839,19 +839,19 @@
     
     
     
-    <category term="设计模式" scheme="https://gyl-coder.top/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    <category term="设计模式" scheme="https://blog.gyl-coder.top/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
     
-    <category term="设计模式" scheme="https://gyl-coder.top/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    <category term="设计模式" scheme="https://blog.gyl-coder.top/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
-    <category term="单例模式" scheme="https://gyl-coder.top/tags/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/"/>
+    <category term="单例模式" scheme="https://blog.gyl-coder.top/tags/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/"/>
     
   </entry>
   
   <entry>
     <title>撸一个JSON解析器</title>
-    <link href="https://gyl-coder.top/JSONParser/"/>
-    <id>https://gyl-coder.top/JSONParser/</id>
+    <link href="https://blog.gyl-coder.top/JSONParser/"/>
+    <id>https://blog.gyl-coder.top/JSONParser/</id>
     <published>2019-10-23T16:00:00.000Z</published>
     <updated>2020-08-23T14:40:14.143Z</updated>
     
@@ -863,12 +863,12 @@
     
     
     
-    <category term="Java" scheme="https://gyl-coder.top/categories/Java/"/>
+    <category term="Java" scheme="https://blog.gyl-coder.top/categories/Java/"/>
     
     
-    <category term="json" scheme="https://gyl-coder.top/tags/json/"/>
+    <category term="json" scheme="https://blog.gyl-coder.top/tags/json/"/>
     
-    <category term="json 解析器" scheme="https://gyl-coder.top/tags/json-%E8%A7%A3%E6%9E%90%E5%99%A8/"/>
+    <category term="json 解析器" scheme="https://blog.gyl-coder.top/tags/json-%E8%A7%A3%E6%9E%90%E5%99%A8/"/>
     
   </entry>
   
