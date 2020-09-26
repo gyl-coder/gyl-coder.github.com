@@ -1105,6 +1105,10 @@ details[open] >div.content > details:last-child {
   flex-direction: column;
   align-items: center;
 }
+.md .frame-wrap img,
+.md .frame-wrap video {
+  border-radius: 0;
+}
 .md .frame-wrap .frame {
   z-index: 1;
   display: block;
@@ -1114,14 +1118,11 @@ details[open] >div.content > details:last-child {
   overflow: hidden;
 }
 .md .img-wrap .frame-wrap[part] {
-  height: 280px;
-}
-.md .frame-wrap[part] {
-  max-height: 280px;
+  height: auto;
 }
 .md .frame-wrap#iphone11 img,
 .md .frame-wrap#iphone11 video {
-  width: 286px;
+  width: 287px;
   margin-top: 19px;
   margin-bottom: 20px;
 }
@@ -1142,19 +1143,10 @@ details[open] >div.content > details:last-child {
   bottom: 0;
   margin-top: 0 !important;
 }
-.md .frame-wrap[part='bottom'] img {
-  position: absolute;
-}
 .md .frame-wrap[part='bottom'] .frame {
   bottom: 0;
 }
 @media screen and (max-width: 500px) {
-  .md .img-wrap .frame-wrap[part] {
-    height: 200px;
-  }
-  .md .frame-wrap[part] {
-    max-height: 200px;
-  }
   .md .frame-wrap#iphone11 img,
   .md .frame-wrap#iphone11 video {
     width: 208px;
@@ -1164,13 +1156,6 @@ details[open] >div.content > details:last-child {
   .md .frame-wrap#iphone11 .frame {
     width: 238px;
     height: 476px;
-  }
-  .md .frame-wrap[part='bottom'] img,
-  .md .frame-wrap[part='bottom'] video {
-    bottom: 0;
-  }
-  .md .frame-wrap[part='bottom'] .frame {
-    bottom: 0;
   }
 }
 a.ghcard {
@@ -1636,11 +1621,11 @@ div.note.blue::before {
 p.p.subtitle {
   font-weight: bold;
   color: #44b299;
-  font-size: 1rem !important;
-  padding-top: 2em;
+  font-size: 1.25rem !important;
+  padding-top: 1.5rem;
 }
 p.p.subtitle:first-child {
-  padding-top: 1em;
+  padding-top: 1rem;
 }
 span.p.logo,
 p.p.logo {
@@ -3667,8 +3652,8 @@ article#tag .all-tags ul li span:before {
   padding-right: 4px;
 }
 .article p {
-  margin-top: 1em;
-  margin-bottom: 1em;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   text-align: justify;
   max-width: 100%;
   line-height: inherit;
@@ -6795,6 +6780,64 @@ ul.list-v >li>a:hover {
 .webinfo .webinfo-item div:last-child {
   display: inline-block;
   float: right;
+}
+.snackbar-wrap {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  background: #44d7b6;
+  padding: 16px;
+  z-index: 2;
+}
+.snackbar-content {
+  max-width: 1080px;
+  margin: 16px auto;
+}
+@media screen and (max-width: 1080px) {
+  .snackbar-content {
+    max-width: 100%;
+  }
+}
+.snackbar-content p {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+.snackbar-content .title {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.snackbar-content .action {
+  display: block;
+  margin: 1.5rem -4px;
+}
+.snackbar-content .action a {
+  margin: 4px;
+  color: #fff;
+  display: inline-block;
+  padding: 0.8em 2em;
+  font-weight: 600;
+  border-radius: 2px;
+  border: 1px solid #fff;
+}
+.snackbar-content .action a:hover {
+  color: #44d7b6;
+  background: #fff;
+}
+.snackbar-wrap[theme='warning'] {
+  background: #f7e751;
+}
+.snackbar-wrap[theme='warning'] .snackbar-content p {
+  color: #000;
+}
+.snackbar-wrap[theme='warning'] .snackbar-content a {
+  color: #000;
+  border-color: #000;
+}
+.snackbar-wrap[theme='warning'] .snackbar-content a:hover {
+  color: #f7e751;
+  background: #000;
 }
 .l_side .toc-wrapper {
   z-index: 1;
