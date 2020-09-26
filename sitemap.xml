@@ -382,6 +382,13 @@
   </url>
   
   <url>
+    <loc>https://gyl-coder.top/tags/Mybatis/</loc>
+    <lastmod>2020-09-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://gyl-coder.top/tags/kafka/</loc>
     <lastmod>2020-09-26</lastmod>
     <changefreq>daily</changefreq>
@@ -411,13 +418,6 @@
   
   <url>
     <loc>https://gyl-coder.top/tags/topic/</loc>
-    <lastmod>2020-09-26</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gyl-coder.top/tags/Mybatis/</loc>
     <lastmod>2020-09-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -487,14 +487,14 @@
   </url>
   
   <url>
-    <loc>https://gyl-coder.top/tags/HashMap/</loc>
+    <loc>https://gyl-coder.top/tags/LinkedHashMap/</loc>
     <lastmod>2020-09-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://gyl-coder.top/tags/LinkedHashMap/</loc>
+    <loc>https://gyl-coder.top/tags/HashMap/</loc>
     <lastmod>2020-09-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -538,14 +538,14 @@
   </url>
   
   <url>
-    <loc>https://gyl-coder.top/categories/kafka/</loc>
+    <loc>https://gyl-coder.top/categories/Mybatis/</loc>
     <lastmod>2020-09-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://gyl-coder.top/categories/Mybatis/</loc>
+    <loc>https://gyl-coder.top/categories/kafka/</loc>
     <lastmod>2020-09-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
