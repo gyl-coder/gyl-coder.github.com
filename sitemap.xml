@@ -347,6 +347,13 @@
   </url>
   
   <url>
+    <loc>https://gyl-coder.top/tags/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/</loc>
+    <lastmod>2020-09-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://gyl-coder.top/tags/Int/</loc>
     <lastmod>2020-09-26</lastmod>
     <changefreq>daily</changefreq>
@@ -355,13 +362,6 @@
   
   <url>
     <loc>https://gyl-coder.top/tags/Integer/</loc>
-    <lastmod>2020-09-26</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gyl-coder.top/tags/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/</loc>
     <lastmod>2020-09-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -410,14 +410,14 @@
   </url>
   
   <url>
-    <loc>https://gyl-coder.top/tags/Mybatis/</loc>
+    <loc>https://gyl-coder.top/tags/topic/</loc>
     <lastmod>2020-09-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://gyl-coder.top/tags/topic/</loc>
+    <loc>https://gyl-coder.top/tags/Mybatis/</loc>
     <lastmod>2020-09-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -487,14 +487,14 @@
   </url>
   
   <url>
-    <loc>https://gyl-coder.top/tags/LinkedHashMap/</loc>
+    <loc>https://gyl-coder.top/tags/HashMap/</loc>
     <lastmod>2020-09-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://gyl-coder.top/tags/HashMap/</loc>
+    <loc>https://gyl-coder.top/tags/LinkedHashMap/</loc>
     <lastmod>2020-09-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
