@@ -19,7 +19,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>Tag: try-catch - yanliang&#39;s blog</title>
+  <title>Archive: 2020/9 - yanliang&#39;s blog</title>
   
 
   
@@ -861,14 +861,14 @@
  
 <script> 
   // 处理封面 此时 jquery 还没加载 
-  if ("none" == "none") { // 移除封面 
+  if ("half" == "none") { // 移除封面 
     document.getElementsByClassName('cover-wrapper')[0].style.display = "none"; 
     document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show"); 
   } else { 
-    if ("none" == "half") { // 半屏 
+    if ("half" == "half") { // 半屏 
       document.getElementsByClassName('cover-wrapper')[0].setAttribute('id', 'half'); 
       document.getElementsByClassName('scroll-down')[0].style.display = "none"; 
-    } else if ("none" == "full") { // 全屏 
+    } else if ("half" == "full") { // 全屏 
       document.getElementsByClassName('cover-wrapper')[0].setAttribute('id', 'full'); 
       document.getElementsByClassName('scroll-down')[0].style.display = ""; 
     } 
@@ -881,45 +881,48 @@
         
         
 
-
 <div class='l_main'>
-  
-    
-      
+	
+		
   <section class="post-list">
     
       
         
           
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
+            <div class='post-wrapper'>
+              <div class="post post-v3 white-box reveal shadow">
   
   
+    <div class='pin'>
+      <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f4cc.svg'/>
+    </div>
+  
+  
+    <div class='headimg-div'>
+      <a class='headimg-a' href="/java/abstract_interface/">
+        <img class='headimg' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp'/>
+      </a>
+    </div>
   
   
     
     <h2 class="article-title" >
-      <a href="/java/try_catch_finally/">
-        try catch finally执行顺序
+      <a href="/java/abstract_interface/">
+        接口 vs 抽象类的区别？
       </a>
     </h2>
   
   <div class='md'>
     
-      <p>首先在finally和try中对数据的操作时数据分为 基本数据类型和引用数据类型，他们存放的地方也不一样，一个是栈区另一个是在堆区。</p>
+      <p>在面向对象编程中，抽象类和接口是两个经常被用到的语法概念，是面向对象四大特性，以及很多设计模式、设计思想、设计原则编程实现的基础。</p>
+<p>比如：我们可以使用接口来实现面向对象的抽象特性、多态特性和基于接口而非实现的设计原则，使用抽象类来实现面向对象的继承特性和模板设计模式等。</p>
     
   </div>
   
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time>2020-04-03</time>
+        <time>2020-09-27</time>
         
           <span class="dot"></span>
           <a class="category-link" href="/categories/Java/">Java</a>
@@ -927,7 +930,7 @@
       </div>
       
         <div>
-          <a class='readmore' href='/java/try_catch_finally/'>
+          <a class='readmore' href='/java/abstract_interface/'>
             Read More
           </a>
         </div>
@@ -937,7 +940,13 @@
 
 </div>
 
-          </div>
+            </div>
+          
+        
+      
+    
+    
+      
         
       
     
@@ -947,8 +956,7 @@
   
 
 
-    
-  
+	
 </div>
 <aside class='l_side'>
   
@@ -1165,7 +1173,7 @@
         <div class="webinfo-item">
           <div>最后活动时间：</div>
           
-            <div id="last-update" style="display: none;">Mon Sep 28 2020 23:01:24 GMT+0800 (GMT+08:00)</div>
+            <div id="last-update" style="display: none;">Mon Sep 28 2020 23:01:23 GMT+0800 (GMT+08:00)</div>
             <div id="last-update-show">2020-09-28 日</div>
           
         </div>

@@ -2802,7 +2802,7 @@ div.fancybox .image-caption:empty {
   color: #847a7d !important;
 }
 .darkmode--activated .list-h i {
-  color: #b04213 !important;
+  color: var(--color-h3) !important;
 }
 .darkmode--activated #comments p {
   color: var(--color-p);
@@ -4410,6 +4410,10 @@ article .readmore {
   margin: -2px;
 }
 .cover-wrapper.featured .menu .list-h a {
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
   margin: 2px;
   background: rgba(255,255,255,0.5);
 }

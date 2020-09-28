@@ -17,9 +17,9 @@
 
   <!-- 页面元数据 -->
   
-  <title>如何设计一个可扩展的限流算法 [转] - yanliang&#39;s blog</title>
+  <title>限流算法 - yanliang&#39;s blog</title>
   
-    <meta name="keywords" content="限流算法,设计,可扩展">
+    <meta name="keywords" content="限流算法,设计">
   
 
   
@@ -38,7 +38,7 @@
   <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
   
     
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/heson525/fontawesome-pro@5.13.1/css/all.min.css">
 
   
   
@@ -787,11 +787,9 @@
           <div class='cover-body'>
   <div class='top'>
     
+      <img no-lazy class='logo' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/logo.png'/>
     
-      <p class="title">Yanliang</p>
     
-    
-      <p class="subtitle">「Willing to exchange self-discipline for freedom」</p>
     
   </div>
   <div class='bottom'>
@@ -803,35 +801,35 @@
               
               
               id="home">
-              <i class='fas fa-book fa-fw'></i><p>博文</p>
+              <img src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/menu/bowen.webp'><p>博文</p>
             </a>
           
             <a href="/friends/"
               
               
               id="friends">
-              <i class='fas fa-link fa-fw'></i><p>友人帐</p>
+              <img src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/menu/friends.webp'><p>友人帐</p>
             </a>
           
             <a href="/comment/"
               
               
               id="comment">
-              <i class='fas fa-comment fa-fw'></i><p>留言板</p>
+              <img src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/menu/comment.webp'><p>留言板</p>
             </a>
           
             <a target="_blank" rel="noopener" href="https://about.gyl-coder.top"
               
               
               id="https:aboutgyl-codertop">
-              <i class='fas fa-info-circle fa-fw'></i><p>主页</p>
+              <img src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/menu/homepage.webp'><p>主页</p>
             </a>
           
             <a target="_blank" rel="noopener" href="https://travellings.now.sh/"
               
               
               id="https:travellingsnowsh">
-              <i class='fas fa-fighter-jet fa-fw'></i><p>开往</p>
+              <img src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/menu/kaiwang.webp'><p>开往</p>
             </a>
           
         
@@ -865,14 +863,14 @@
  
 <script> 
   // 处理封面 此时 jquery 还没加载 
-  if ("none" == "none") { // 移除封面 
+  if ("half" == "none") { // 移除封面 
     document.getElementsByClassName('cover-wrapper')[0].style.display = "none"; 
     document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show"); 
   } else { 
-    if ("none" == "half") { // 半屏 
+    if ("half" == "half") { // 半屏 
       document.getElementsByClassName('cover-wrapper')[0].setAttribute('id', 'half'); 
       document.getElementsByClassName('scroll-down')[0].style.display = "none"; 
-    } else if ("none" == "full") { // 全屏 
+    } else if ("half" == "full") { // 全屏 
       document.getElementsByClassName('cover-wrapper')[0].setAttribute('id', 'full'); 
       document.getElementsByClassName('scroll-down')[0].style.display = ""; 
     } 
@@ -891,11 +889,17 @@
 
 
   
+    <div class='headimg-div'>
+      <a class='headimg-a'>
+        <img class='headimg' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life7.webp'/>
+      </a>
+    </div>
+  
   <div class="article-meta" id="top">
     
     
       <a title='如何设计一个可扩展的限流算法 [转]' href='/good/how-to-design-extensible-limiting-algorithm/'>
-        <img class='thumbnail' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/20200305174712.png'>
+        <img class='thumbnail' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life7.webp'>
       </a>
     
     
@@ -908,7 +912,7 @@
             
 <div class='new-meta-item author'>
   <a class='author' href="/" rel="nofollow">
-    <img no-lazy src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/touxiang.jpg">
+    <img no-lazy src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/touxiang.webp">
     <p>Yanliang</p>
   </a>
 </div>
@@ -938,10 +942,10 @@
           
         
           
-            <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-02T20:20:59+08:00">
+            <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-28T22:54:21+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Sep 2, 2020</p>
+    <p>更新于：Sep 28, 2020</p>
   </a>
 </div>
 
@@ -1054,10 +1058,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-02T20:20:59+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-28T22:54:21+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Sep 2, 2020</p>
+    <p>更新于：Sep 28, 2020</p>
   </a>
 </div>
 
@@ -1066,7 +1070,7 @@
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E9%99%90%E6%B5%81%E7%AE%97%E6%B3%95/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>限流算法</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E8%AE%BE%E8%AE%A1/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>设计</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%8F%AF%E6%89%A9%E5%B1%95/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>可扩展</p></a></div>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E9%99%90%E6%B5%81%E7%AE%97%E6%B3%95/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>限流算法</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E8%AE%BE%E8%AE%A1/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>设计</p></a></div>
 
 
         
@@ -1079,7 +1083,7 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gyl-coder.top/good/how-to-design-extensible-limiting-algorithm/&title=如何设计一个可扩展的限流算法 [转] - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/20200305174712.png&summary=限流（Rate Limiting，即速率限制）通过限制每个用户调用API的频率来防止API被过度使用，这可以防止他们因疏忽或恶意导致的API滥用。在没有速率限制的情况下，每个用户可以随心所欲地请求，这可能会导致“峰值”请求，从而导致其他用户得不到响应。在启用速率限制之后，它们的请求将被限制为每秒固定的数量。"
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gyl-coder.top/good/how-to-design-extensible-limiting-algorithm/&title=限流算法 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life7.webp&summary=限流（Rate Limiting，即速率限制）通过限制每个用户调用API的频率来防止API被过度使用，这可以防止他们因疏忽或恶意导致的API滥用。在没有速率限制的情况下，每个用户可以随心所欲地请求，这可能会导致“峰值”请求，从而导致其他用户得不到响应。在启用速率限制之后，它们的请求将被限制为每秒固定的数量。"
           
           >
           
@@ -1091,7 +1095,7 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://gyl-coder.top/good/how-to-design-extensible-limiting-algorithm/&title=如何设计一个可扩展的限流算法 [转] - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/20200305174712.png&summary=限流（Rate Limiting，即速率限制）通过限制每个用户调用API的频率来防止API被过度使用，这可以防止他们因疏忽或恶意导致的API滥用。在没有速率限制的情况下，每个用户可以随心所欲地请求，这可能会导致“峰值”请求，从而导致其他用户得不到响应。在启用速率限制之后，它们的请求将被限制为每秒固定的数量。"
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://gyl-coder.top/good/how-to-design-extensible-limiting-algorithm/&title=限流算法 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life7.webp&summary=限流（Rate Limiting，即速率限制）通过限制每个用户调用API的频率来防止API被过度使用，这可以防止他们因疏忽或恶意导致的API滥用。在没有速率限制的情况下，每个用户可以随心所欲地请求，这可能会导致“峰值”请求，从而导致其他用户得不到响应。在启用速率限制之后，它们的请求将被限制为每秒固定的数量。"
           
           >
           
@@ -1103,7 +1107,7 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://gyl-coder.top/good/how-to-design-extensible-limiting-algorithm/&title=如何设计一个可扩展的限流算法 [转] - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/20200305174712.png&summary=限流（Rate Limiting，即速率限制）通过限制每个用户调用API的频率来防止API被过度使用，这可以防止他们因疏忽或恶意导致的API滥用。在没有速率限制的情况下，每个用户可以随心所欲地请求，这可能会导致“峰值”请求，从而导致其他用户得不到响应。在启用速率限制之后，它们的请求将被限制为每秒固定的数量。"
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://gyl-coder.top/good/how-to-design-extensible-limiting-algorithm/&title=限流算法 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life7.webp&summary=限流（Rate Limiting，即速率限制）通过限制每个用户调用API的频率来防止API被过度使用，这可以防止他们因疏忽或恶意导致的API滥用。在没有速率限制的情况下，每个用户可以随心所欲地请求，这可能会导致“峰值”请求，从而导致其他用户得不到响应。在启用速率限制之后，它们的请求将被限制为每秒固定的数量。"
           
           >
           
