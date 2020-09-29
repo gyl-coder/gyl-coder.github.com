@@ -373,6 +373,29 @@ var Debounce = (fn, t) => {
 		scrollListener();
 	}
 
+	// 彩虹标签
+	function colortag(){
+		$("ul.tag-list li").each(function(){
+			let random = Math.floor(Math.random()*5+1);
+			if(random == 2){
+				$(this).find('a').addClass('tagred');
+			} else if ( random == 3 ){
+				$(this).find('a').addClass('tagyellow');
+			} else if ( random == 4 ){
+				$(this).find('a').addClass('tagblue');
+			} else if ( random == 5 ){
+				$(this).find('a').addClass('taggreen');
+			} else if ( random == 2 ){
+				$(this).find('a').addClass('tagpurple');
+			} else if ( random == 1 ){
+				$(this).find('a').addClass('taggrown');
+			}
+				
+		});
+	}
+
+	colortag();
+
 	// 设置 tabs 标签
 	function setTabs() {
 		const $tabs = $('.tabs');
@@ -526,25 +549,3 @@ if(window.location.hash){
 })();
 
 
-// 彩虹标签
-function colortag(){
-	$("ul.tag-list li").each(function(){
-		let random = Math.floor(Math.random()*5+1);
-		if(random == 2){
-			$(this).find('a').addClass('tagred');
-		} else if ( random == 3 ){
-			$(this).find('a').addClass('tagyellow');
-		} else if ( random == 4 ){
-			$(this).find('a').addClass('tagblue');
-		} else if ( random == 5 ){
-			$(this).find('a').addClass('taggreen');
-		} else if ( random == 2 ){
-			$(this).find('a').addClass('tagpurple');
-		} else if ( random == 1 ){
-			$(this).find('a').addClass('taggrown');
-		}
-			
-	});
-}
-
-colortag();

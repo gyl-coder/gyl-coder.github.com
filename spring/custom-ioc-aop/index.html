@@ -106,7 +106,7 @@
         <a class="title flat-box" target="_self" href='/'>
           
           
-            <i class='fas fa-fan fa-spin fa-fw'></i>
+            <i class='fa-fw fab fa-modx fa-spin'></i>
           
           
             Yanliang
@@ -128,7 +128,7 @@
                   
                     id="archives"
                   >
-                  <i class='fas fa-list-alt fa-fw fa-fw'></i>索引
+                  <i class='fas fa-search fa-fw fa-fw'></i>找文章
                 </a>
                 
                   <ul class="list-v">
@@ -218,6 +218,38 @@
           
                     
                   </ul>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/shuoshuo/
+                  
+                  
+                  
+                    id="shuoshuo"
+                  >
+                  <i class='fas fa-comment-dots fa-fw fa-fw fa-fw'></i>树洞
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=https://about.gyl-coder.top
+                  
+                  
+                  
+                    id="https:aboutgyl-codertop"
+                  >
+                  <i class='fas fa-user-circle fa-fw fa-fw'></i>Homepage
+                </a>
                 
               </li>
             
@@ -418,38 +450,6 @@
             
           
           
-            
-            
-              <li>
-                <a class="menuitem flat-box faa-parent animated-hover" href=/shuoshuo/
-                  
-                  
-                  
-                    id="shuoshuo"
-                  >
-                  <i class='fas fa-comment-dots fa-fw fa-fw fa-fw'></i>树洞
-                </a>
-                
-              </li>
-            
-          
-          
-            
-            
-              <li>
-                <a class="menuitem flat-box faa-parent animated-hover" href=https://about.gyl-coder.top
-                  
-                  
-                  
-                    id="https:aboutgyl-codertop"
-                  >
-                  <i class='fas fa-user-circle fa-fw fa-spin fa-fw'></i>Homepage
-                </a>
-                
-              </li>
-            
-          
-          
 				</ul>
 			</div>
 
@@ -477,7 +477,7 @@
                   
                     id="archives"
                   >
-                  <i class='fas fa-list-alt fa-fw fa-fw'></i>索引
+                  <i class='fas fa-search fa-fw fa-fw'></i>找文章
                 </a>
                 
                   <ul class="list-v">
@@ -567,6 +567,38 @@
           
                     
                   </ul>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/shuoshuo/
+                  
+                  
+                  
+                    id="shuoshuo"
+                  >
+                  <i class='fas fa-comment-dots fa-fw fa-fw fa-fw'></i>树洞
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=https://about.gyl-coder.top
+                  
+                  
+                  
+                    id="https:aboutgyl-codertop"
+                  >
+                  <i class='fas fa-user-circle fa-fw fa-fw'></i>Homepage
+                </a>
                 
               </li>
             
@@ -731,38 +763,6 @@
           
                     
                   </ul>
-                
-              </li>
-            
-          
-            
-              
-            
-              <li>
-                <a class="menuitem flat-box faa-parent animated-hover" href=/shuoshuo/
-                  
-                  
-                  
-                    id="shuoshuo"
-                  >
-                  <i class='fas fa-comment-dots fa-fw fa-fw fa-fw'></i>树洞
-                </a>
-                
-              </li>
-            
-          
-            
-              
-            
-              <li>
-                <a class="menuitem flat-box faa-parent animated-hover" href=https://about.gyl-coder.top
-                  
-                  
-                  
-                    id="https:aboutgyl-codertop"
-                  >
-                  <i class='fas fa-user-circle fa-fw fa-spin fa-fw'></i>Homepage
-                </a>
                 
               </li>
             
@@ -1203,7 +1203,7 @@ IOC 和 DI...</span></a><a class="item" href="\java\dynamic-proxy\" title="动�
     
   <header>
     
-      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>目录</span>
     
   </header>
 
@@ -1341,7 +1341,10 @@ IOC 和 DI...</span></a><a class="item" href="\java\dynamic-proxy\" title="动�
       
         Use
         <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/4.0.0" target="_blank" class="codename">Volantis</a>
-        as theme
+        as theme, total visits
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          times
+        
       
     
       
@@ -2044,6 +2047,8 @@ if(supportCss3('mix-blend-mode')){
 
 
 
+  <script defer src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js" data-pjax></script>
+
 
   
 <script src="/js/app.js"></script>
@@ -2436,5 +2441,26 @@ const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
 
     
   </div>
+
+  <!-- 一言API -->
+  <!-- 现代写法，推荐 -->
+  <!-- 兼容低版本浏览器 (包括 IE)，可移除 -->
+  <script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+  <!--End-->
+  <script>
+    fetch('https://v1.hitokoto.cn')
+      .then(function (res){
+        return res.json();
+      })
+      .then(function (data) {
+        var hitokoto = document.getElementById('hitokoto');
+        hitokoto.innerText = data.hitokoto + '——【' + data.from + '】';
+      })
+      .catch(function (err) {
+        console.error(err);
+      })
+  </script>
+
 </body>
 </html>

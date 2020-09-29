@@ -103,7 +103,7 @@
         <a class="title flat-box" target="_self" href='/'>
           
           
-            <i class='fas fa-fan fa-spin fa-fw'></i>
+            <i class='fa-fw fab fa-modx fa-spin'></i>
           
           
             Yanliang
@@ -125,7 +125,7 @@
                   
                     id="archives"
                   >
-                  <i class='fas fa-list-alt fa-fw fa-fw'></i>索引
+                  <i class='fas fa-search fa-fw fa-fw'></i>找文章
                 </a>
                 
                   <ul class="list-v">
@@ -215,6 +215,38 @@
           
                     
                   </ul>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/shuoshuo/
+                  
+                  
+                  
+                    id="shuoshuo"
+                  >
+                  <i class='fas fa-comment-dots fa-fw fa-fw fa-fw'></i>树洞
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=https://about.gyl-coder.top
+                  
+                  
+                  
+                    id="https:aboutgyl-codertop"
+                  >
+                  <i class='fas fa-user-circle fa-fw fa-fw'></i>Homepage
+                </a>
                 
               </li>
             
@@ -415,38 +447,6 @@
             
           
           
-            
-            
-              <li>
-                <a class="menuitem flat-box faa-parent animated-hover" href=/shuoshuo/
-                  
-                  
-                  
-                    id="shuoshuo"
-                  >
-                  <i class='fas fa-comment-dots fa-fw fa-fw fa-fw'></i>树洞
-                </a>
-                
-              </li>
-            
-          
-          
-            
-            
-              <li>
-                <a class="menuitem flat-box faa-parent animated-hover" href=https://about.gyl-coder.top
-                  
-                  
-                  
-                    id="https:aboutgyl-codertop"
-                  >
-                  <i class='fas fa-user-circle fa-fw fa-spin fa-fw'></i>Homepage
-                </a>
-                
-              </li>
-            
-          
-          
 				</ul>
 			</div>
 
@@ -474,7 +474,7 @@
                   
                     id="archives"
                   >
-                  <i class='fas fa-list-alt fa-fw fa-fw'></i>索引
+                  <i class='fas fa-search fa-fw fa-fw'></i>找文章
                 </a>
                 
                   <ul class="list-v">
@@ -564,6 +564,38 @@
           
                     
                   </ul>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/shuoshuo/
+                  
+                  
+                  
+                    id="shuoshuo"
+                  >
+                  <i class='fas fa-comment-dots fa-fw fa-fw fa-fw'></i>树洞
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=https://about.gyl-coder.top
+                  
+                  
+                  
+                    id="https:aboutgyl-codertop"
+                  >
+                  <i class='fas fa-user-circle fa-fw fa-fw'></i>Homepage
+                </a>
                 
               </li>
             
@@ -733,38 +765,6 @@
             
           
             
-              
-            
-              <li>
-                <a class="menuitem flat-box faa-parent animated-hover" href=/shuoshuo/
-                  
-                  
-                  
-                    id="shuoshuo"
-                  >
-                  <i class='fas fa-comment-dots fa-fw fa-fw fa-fw'></i>树洞
-                </a>
-                
-              </li>
-            
-          
-            
-              
-            
-              <li>
-                <a class="menuitem flat-box faa-parent animated-hover" href=https://about.gyl-coder.top
-                  
-                  
-                  
-                    id="https:aboutgyl-codertop"
-                  >
-                  <i class='fas fa-user-circle fa-fw fa-spin fa-fw'></i>Homepage
-                </a>
-                
-              </li>
-            
-          
-            
           </ul>
         </li>
 			</ul>
@@ -897,6 +897,201 @@
   
     
     <h2 class="article-title" >
+      <a href="/java/collection/ArrayList/">
+        ArrayList 底层实现原理分析
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      <p>ArrayList是List接口的 可变数组的实现。实现了所有可选列表操作，并允许包括 null 在内的所有元素。除了实现 List接口外，此类还提供一些方法来操作内部用来存储列表的数组的大小。ArrayList继承自 AbstractList，这是一个抽象类对一些基础的list操作做了一些封装.实现了RandomAccess 标记接口，表明可以实现快速随机访问.实现了Cloneable接口的实现表示该容器具有Clone函数操作，Serializable是序列化。</p>
+<p>每个ArrayList实例都有一个容量，该容量是指用来存储列表元素的数组的大小。它总是至少等于列表的大小。随着向ArrayList中不断添加元素，其容量也自动增长。自动增长会带来数据向新数组的重新拷贝，因此，如果可预知数据量的大小，就可在构造ArrayList实例时指定其容量。</p>
+<p>在添加大量元素前，应用程序也可以使用ensureCapacity操作来增加ArrayList实例的容量，这可以减少递增式再分配的数量。</p>
+<p>注意，此实现不是同步的。如果多个线程同时访问一个ArrayList实例，而其中至少一个线程从结构上修改了列表，那么它必须保持外部同步。</p>
+<blockquote><p>ArrayList这个数据结构比较简单，总体来说，ArrayList底层结构是数组，他的很多方法都是从数组上面演变而来的。</p>
+</blockquote>
+<p>下面我们先来看一下ArrayList中的一些初始值</p>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2020-07-01</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Java/">Java</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/java/collection/ArrayList/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/java/try_catch_finally/">
+        try catch finally执行顺序
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      <p>首先在finally和try中对数据的操作时数据分为 基本数据类型和引用数据类型，他们存放的地方也不一样，一个是栈区另一个是在堆区。</p>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2020-04-03</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Java/">Java</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/java/try_catch_finally/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/spring/custom-ioc-aop/">
+        手写实现IOC 和 AOP
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      <p>通过上一篇 <a href="https://gyl-coder.top/spring/spring-ioc-aop">IOC &amp; AOP 详解</a> 我们了解了 IOC 和 AOP 这两个思想，下面我们先不去考虑Spring是如何实现这两个思想的，先通过一个 <red>银行转账</red> 的案例，分析一下该案例在代码层面存在什么问题？分析之后使用我们已有的知识来解决这些问题（痛点）。</p>
+<p>其实这个过程就是在一步步分析并手动实现 IOC 和 AOP 。</p>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2020-04-03</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Spring/">Spring</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/spring/custom-ioc-aop/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/java/dynamic-proxy/">
+        动态代理原理剖析
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      <p>动态代理的常用实现方式是反射。反射机制是 Java 语言提供的一种基础功能，赋予程序在运行时自省（introspect，官方用语）的能力。通过反射我们可以直接操作类或者对象，比如获取某个对象的类定义，获取类声明的属性和方法，调用方法或者构造对象，甚至可以运行时修改类定义。</p>
+<p>动态代理是一种方便运行时动态构建代理、动态处理代理方法调用的机制，很多场景都是利用类似机制做到的，比如用来包装 RPC 调用、面向切面的编程（AOP）。</p>
+<p>JDK 自身提供的动态代理，就是主要利用了上面提到的反射机制。但动态代理不止有反射一种实现方式，还有其他的实现方式，比如利用传说中更高性能的字节码操作机制，类似 ASM、cglib（基于 ASM，一个 Java 字节码操作框架）、Javassist 等。简单来说，动态代理是一种行为方式，而反射或 ASM 只是它的一种实现手段而已。</p>
+<p>JDK Proxy 和 CGLib 的区别主要体现在以下几个方面：</p>
+<ul>
+<li>JDK Proxy 是 Java 语言自带的功能，无需通过加载第三方类实现；</li>
+<li>Java 对 JDK Proxy 提供了稳定的支持，并且会持续的升级和更新 JDK Proxy，例如 Java 8 版本中的 JDK Proxy 性能相比于之前版本提升了很多；</li>
+<li>JDK Proxy 是通过拦截器加反射的方式实现的；</li>
+<li>JDK Proxy 只能代理继承接口的类；</li>
+<li>JDK Proxy 实现和调用起来比较简单；</li>
+<li>CGLib 是第三方提供的工具，基于 ASM 实现的，性能比较高；</li>
+<li>CGLib 无需通过接口来实现，它是通过实现子类的方式来完成调用的。</li>
+</ul>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2020-04-02</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Java/">Java</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/java/dynamic-proxy/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
       <a href="/spring/spring-ioc-aop/">
         IOC & AOP 详解
       </a>
@@ -989,202 +1184,6 @@
           </div>
         
       
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/mybatis/mybatis-beginner/">
-        MyBatis 入门
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>MyBatis 是一款优秀的基于 ORM 的半自动轻量级持久层框架。它支持定制化SQL、存储过程以及高级映射。MyBatis 避免了几乎所有的 JDBC 代码和手动设置参数以及获取结果集。MyBatis 可以使用简单的 XML 或注解来配置和映射原生类型、接口和 Java 的POJO（Plain Old Java Objects，普通老式Java 对象）为数据库的记录。</p>
-<p>MyBatis 原本是Apache 的一个开源项目IBatis，2010年6月这个项目由 Apache Software Foundation 迁移到了 Google Code，随后更名为 <red>MyBatis</red> 。</p>
-<p>iBatis 一词来源于 “internet” 和 “abatis” 的组合，是一个基于Java的持久层框架。</p>
-<div class="tag link"><a class="link-card" title="官网地址" target="_blank" rel="noopener" href="https://mybatis.org/mybatis-3/"><div class="left"><img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/></div><div class="right"><p class="text">官网地址</p><p class="url">https://mybatis.org/mybatis-3/</p></div></a></div>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-03-30</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Mybatis/">Mybatis</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/mybatis/mybatis-beginner/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/java/collection/HashMapAnalysis/">
-        HashMap 底层实现原理分析
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p><code>HashMap</code> 是 <code>Map</code> 的一个实现类，它代表的是一种键值对的数据存储形式。</p>
-<p>大多数情况下可以直接定位到它的值，因而具有很快的访问速度，但遍历顺序却是不确定的。</p>
-<p><code>HashMap</code>最多只允许一条记录的键为<code>null</code>，允许多条记录的值为<code>null</code>。不保证有序 (比如插入的顺序)、也不保证序不随时间变化。</p>
-<p><code>jdk 8</code> 之前，其内部是由 <red>数组 + 链表</red> 来实现的，而 <code>jdk 8</code> 对于链表长度超过 <green>8</green> 的链表将转储为 <yellow>红黑树</yellow>。</p>
-<p><code>HashMap</code>非线程安全，即任一时刻可以有多个线程同时写<code>HashMap</code>，可能会导致数据的不一致。如果需要满足线程安全，可以用 <code>Collections</code>的<code>synchronizedMap</code>方法使<code>HashMap</code>具有线程安全的能力，或者使用<code>ConcurrentHashMap</code>。</p>
-<p><code>HashMap</code>是 <blue>数组 + 链表 + 红黑树</blue>（JDK1.8 增加了红黑树部分）实现的。JDK 1.8 之所以添加红黑树是因为一旦链表过长，会严重影响 HashMap 的性能，而红黑树具有快速增删改查的特点，这样就可以有效的解决链表过长时操作比较慢的问题。</p>
-<div class="img-wrap"><div class="img-bg"><img class="img lazyload placeholder" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/20200323120021.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/20200323120021.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/></div></div>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-03-23</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Java/">Java</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/java/collection/HashMapAnalysis/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/java/difference_between_int_and_integer/">
-        int 和 Integer 有什么区别？谈谈Integer的值缓存范围
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>Java 虽然是面向对象的编程语言，但是依旧保留了一些原始数据类型，同时为了兼容java面向对象的特性，每种原始数据类型，都有对应的包装类型。</p>
-<p>原始数据类型：boolean、char、byte、short、int、long、float、double<br>
-包装类型：Boolean、Character、Byte、Short、Integer、Long、Float、Double</p>
-<p>包装类型是对原始数据类型的一种封装，包含对原始类型数据的存储、基本操作以及两种类型直接的转换。Java5中，引入了 <red>自动装箱和自动拆箱</red> 功能（boxing/unboxing），Java可以根据上下文，自动进行转换，极大的简化了相关的编程。</p>
-<p>Integer就是int对应的包装类，它有一个int类型的字段存储数据，并且提供了基本操作，比如数学运算、类型转换等。</p>
-<p>关于Integer的值缓存，是Java5中的一个改进。构造一个Integer对象的正常操作应该是直接使用Integer的构造器，new一个对象出来。但是根据具体实践，大部分的操作都较为集中在有限且较小的数值范围。因此，Java5中新增了静态工厂方法 <green>valueOf</green>，在调用它的时候会利用一个缓存机制。缓存的数值范围为<yellow>[-128, 127]</yellow>。</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-03-10</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Java/">Java</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/java/difference_between_int_and_integer/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-    <div class='headimg-div'>
-      <a class='headimg-a' href="/good/how-to-design-extensible-limiting-algorithm/">
-        <img class='headimg' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life7.webp'/>
-      </a>
-    </div>
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/good/how-to-design-extensible-limiting-algorithm/">
-        如何设计一个可扩展的限流算法 [转]
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>限流（Rate Limiting，即速率限制）通过限制每个用户调用API的频率来防止API被过度使用，这可以防止他们因疏忽或恶意导致的API滥用。在没有速率限制的情况下，每个用户可以随心所欲地请求，这可能会导致“峰值”请求，从而导致其他用户得不到响应。在启用速率限制之后，它们的请求将被限制为每秒固定的数量。</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-03-05</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E8%AE%BE%E8%AE%A1/">设计</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/good/how-to-design-extensible-limiting-algorithm/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
     
   </section>
   
@@ -1199,8 +1198,14 @@
           </a>
         
         <p class="current">
-          2 / 2
+          2 / 3
         </p>
+        
+          <a class="next" rel="next" href="/archives/2020/page/3/">
+            <section class="post next white-box shadow">
+              &nbsp;Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </section>
+          </a>
         
       </div>
     
@@ -1227,6 +1232,9 @@
     
       <div class='text'>
         
+        
+          <p><i class="fas fa-map-marker-alt faa-bounce animated"></i> SZ, China</p>
+
         
         
           <p><span id="jinrishici-sentence">yanliang's blog</span></p>
@@ -1283,13 +1291,85 @@
   
     
     
+
+<section class="widget text shadow desktop mobile">
+  
+  <header>
+    
+      <i class="fa fa-quote-left fa-fw fa-fw" aria-hidden="true"></i><span class='name'>一言（ヒトコト）</span>
+    
+  </header>
+
+
+  <div class='content'>
+    
+      <p id="hitokoto">:D 获取中...</a></p>
+    
+  </div>
+</section>
+
+  
+
+  
+    
+    
+
+<section class="widget list shadow desktop mobile">
+  
+  <header>
+    
+      <a href='friends/'><i class="fa fa-mars fa-fw" aria-hidden="true"></i><span class='name'>都是大佬呀~</span></a>
+    
+  </header>
+
+
+  <div class='content'>
+    <ul class="list entry navigation">
+      
+        <li><a class="flat-box" title="https://xaoxuu.com" target="_blank" rel="noopener" href="https://xaoxuu.com"
+          
+          
+          id="https:xaoxuucom"
+          >
+          <div class='name'>
+            
+              <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" id="round">
+            
+            xaoxuu
+          </div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="https://sublimerui.top/" target="_blank" rel="noopener" href="https://sublimerui.top/"
+          
+          
+          id="https:sublimeruitop"
+          >
+          <div class='name'>
+            
+              <img src="https://cdn.jsdelivr.net/gh/cwxyr/mycdn@master/favicon_new.ico" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/cwxyr/mycdn@master/favicon_new.ico" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" id="round">
+            
+            果子小酱
+          </div>
+          
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+  
+
+  
+    
+    
   
 
   <section class="widget category shadow desktop">
     
   <header>
     
-      <a href='/blog/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+      <a href='/blog/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>分类如下</span></a>
     
   </header>
 
@@ -1348,7 +1428,7 @@
     
   <header>
     
-      <a href='/blog/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
+      <a href='/blog/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>打上标签</span></a>
     
   </header>
 
@@ -1424,8 +1504,8 @@
         <div class="webinfo-item">
           <div>最后活动时间：</div>
           
-            <div id="last-update" style="display: none;">Mon Sep 28 2020 23:01:23 GMT+0800 (GMT+08:00)</div>
-            <div id="last-update-show">2020-09-28 日</div>
+            <div id="last-update" style="display: none;">Tue Sep 29 2020 22:40:31 GMT+0800 (GMT+08:00)</div>
+            <div id="last-update-show">2020-09-29 日</div>
           
         </div>
         
@@ -1475,7 +1555,7 @@
           try {
             document.getElementById('last-update-show').innerHTML = timeago(new Date(lastUpDate));
           } catch (error) {
-            document.getElementById('last-update-show').innerHTML = '2020-09-28 日';
+            document.getElementById('last-update-show').innerHTML = '2020-09-29 日';
           }
         </script>
         
@@ -1610,7 +1690,10 @@
       
         Use
         <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/4.0.0" target="_blank" class="codename">Volantis</a>
-        as theme
+        as theme, total visits
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          times
+        
       
     
       
@@ -2313,6 +2396,8 @@ if(supportCss3('mix-blend-mode')){
 
 
 
+  <script defer src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js" data-pjax></script>
+
 
   
 <script src="/js/app.js"></script>
@@ -2705,5 +2790,26 @@ const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
 
     
   </div>
+
+  <!-- 一言API -->
+  <!-- 现代写法，推荐 -->
+  <!-- 兼容低版本浏览器 (包括 IE)，可移除 -->
+  <script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+  <!--End-->
+  <script>
+    fetch('https://v1.hitokoto.cn')
+      .then(function (res){
+        return res.json();
+      })
+      .then(function (data) {
+        var hitokoto = document.getElementById('hitokoto');
+        hitokoto.innerText = data.hitokoto + '——【' + data.from + '】';
+      })
+      .catch(function (err) {
+        console.error(err);
+      })
+  </script>
+
 </body>
 </html>

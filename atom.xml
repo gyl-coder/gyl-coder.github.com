@@ -745,32 +745,6 @@
   </entry>
   
   <entry>
-    <title>Why Concurrency ?</title>
-    <link href="https://gyl-coder.top/concurrency/why_concurrency/"/>
-    <id>https://gyl-coder.top/concurrency/why_concurrency/</id>
-    <published>2019-11-04T16:00:00.000Z</published>
-    <updated>2020-09-28T14:52:42.562Z</updated>
-    
-    <content type="html"><![CDATA[<p>一门技术的出现必然有其出现的道理，后来需要了解它出现的时代环境和因素，扩充自己的视野，发掘技术发展的经过。分析其优缺点，以便更好的运用。</p><p>一直以来，硬件的发展极其迅速，也有一个很著名的 <code>摩尔定律</code> ,然而事实证明摩尔定律的有效性超过半个世纪就失效了。为了进一步提升计算速度，放弃了一味追求单独的计算单元，将多个计算单元整合到一起，也就是形成了多核CPU。在多核CPU的环境下，并发编程的形式可以将多核CPU的计算能力发挥到极致，性能得到提升。</p><a id="more"></a><h2 id="并发带来的好处"><a class="header-anchor" href="#并发带来的好处">¶</a>并发带来的好处</h2><h3 id="性能上的提升"><a class="header-anchor" href="#性能上的提升">¶</a>性能上的提升</h3><p>提升多核CPU的利用率：一般来说一台主机上的会有多个CPU核心，我们可以创建多个线程，操作系统可以将多个线程分配给不同的CPU去执行，每个CPU执行一个线程，这样就提高了CPU的使用效率，如果使用单线程就只能有一个CPU核心被使用。</p><p>提升访问I/O时CPU的利用率：当一个线程要在网上下载一些东西的时候，这个线程将处于阻塞状态，这时CPU就不会再为这个线程分配CPU时间了，而其他进程可以不受任何影响地获得CPU时间。反过来如果没有使用并发，当前面的指令申请I/O资源的时候，整个进程就被挂起了，即使CPU处于空闲状态后面的指令也不能被执行。</p><p>降低系统的响应时间：当有多个请求需要被处理时。在单线程的环境中，所有请求需要排队进行处理。这样处在后面的请求将会等待较长的时间。多线程处理的话可以回避响应时间长的问题，所有请求轮流使用CPU资源，所有请求都可以较快的得到响应。</p><h3 id="提升系统容错能力"><a class="header-anchor" href="#提升系统容错能力">¶</a>提升系统容错能力</h3><p>一个线程可以不受其他线程的干扰独立运行，如果某个线程的代码里出现了Bug，这个线程可能抛出异常退出了，这时候其他线程可以不受任何影响继续执行，不至于导致整个系统都崩溃。</p><h2 id="并发的弊端"><a class="header-anchor" href="#并发的弊端">¶</a>并发的弊端</h2><h3 id="频繁的上下文切换"><a class="header-anchor" href="#频繁的上下文切换">¶</a>频繁的上下文切换</h3><p>时间片是CPU分配给各个线程的时间，因为时间非常短，所以CPU不断通过切换线程，让我们觉得多个线程是同时执行的，时间片一般是几十毫秒。而每次切换时，需要保存当前的状态起来，以便能够进行恢复先前状态，而这个切换时非常损耗性能，过于频繁反而无法发挥出多线程编程的优势。</p><p>通常减少上下文切换可以采用无锁并发编程，CAS算法，使用最少的线程和使用协程。</p><ul><li>无锁并发编程：可以参照concurrentHashMap锁分段的思想，不同的线程处理不同段的数据，这样在多线程竞争的条件下，可以减少上下文切换的时间。</li><li>CAS算法，利用Atomic下使用CAS算法来更新数据，使用了乐观锁，可以有效的减少一部分不必要的锁竞争带来的上下文切换</li><li>使用最少线程：避免创建不需要的线程，比如任务很少，但是创建了很多的线程，这样会造成大量的线程都处于等待状态</li><li>协程：在单线程里实现多任务的调度，并在单线程里维持多个任务间的切换</li></ul><h3 id="并发问题多易出错"><a class="header-anchor" href="#并发问题多易出错">¶</a>并发问题多易出错</h3><p>编写并发代码容易出错，多线程并发运行给执行过程带来了很多不确定性，因为只有同一个线程内部代码的执行顺序是固定的，而不同线程之间的代码执行顺序无法确定。当多个线程之间互相干扰时，问题就会接踵而至。编写多线程代码时，如果没有考虑全面很容易产生概率性的、难以复现的Bug</p><p>是否采用并发编程的模式，最终还是要结合自己的场景权衡利弊。</p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;一门技术的出现必然有其出现的道理，后来需要了解它出现的时代环境和因素，扩充自己的视野，发掘技术发展的经过。分析其优缺点，以便更好的运用。&lt;/p&gt;
-&lt;p&gt;一直以来，硬件的发展极其迅速，也有一个很著名的 &lt;code&gt;摩尔定律&lt;/code&gt; ,然而事实证明摩尔定律的有效性超过半个世纪就失效了。为了进一步提升计算速度，放弃了一味追求单独的计算单元，将多个计算单元整合到一起，也就是形成了多核CPU。在多核CPU的环境下，并发编程的形式可以将多核CPU的计算能力发挥到极致，性能得到提升。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="并发" scheme="https://gyl-coder.top/categories/%E5%B9%B6%E5%8F%91/"/>
-    
-    
-    <category term="Java" scheme="https://gyl-coder.top/tags/Java/"/>
-    
-    <category term="并发" scheme="https://gyl-coder.top/tags/%E5%B9%B6%E5%8F%91/"/>
-    
-    <category term="Concurrency" scheme="https://gyl-coder.top/tags/Concurrency/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Lock &amp; Synchronized</title>
     <link href="https://gyl-coder.top/concurrency/lock_and_synchronized/"/>
     <id>https://gyl-coder.top/concurrency/lock_and_synchronized/</id>
@@ -805,6 +779,32 @@
     <category term="Java" scheme="https://gyl-coder.top/tags/Java/"/>
     
     <category term="并发" scheme="https://gyl-coder.top/tags/%E5%B9%B6%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Why Concurrency ?</title>
+    <link href="https://gyl-coder.top/concurrency/why_concurrency/"/>
+    <id>https://gyl-coder.top/concurrency/why_concurrency/</id>
+    <published>2019-11-04T16:00:00.000Z</published>
+    <updated>2020-09-28T14:52:42.562Z</updated>
+    
+    <content type="html"><![CDATA[<p>一门技术的出现必然有其出现的道理，后来需要了解它出现的时代环境和因素，扩充自己的视野，发掘技术发展的经过。分析其优缺点，以便更好的运用。</p><p>一直以来，硬件的发展极其迅速，也有一个很著名的 <code>摩尔定律</code> ,然而事实证明摩尔定律的有效性超过半个世纪就失效了。为了进一步提升计算速度，放弃了一味追求单独的计算单元，将多个计算单元整合到一起，也就是形成了多核CPU。在多核CPU的环境下，并发编程的形式可以将多核CPU的计算能力发挥到极致，性能得到提升。</p><a id="more"></a><h2 id="并发带来的好处"><a class="header-anchor" href="#并发带来的好处">¶</a>并发带来的好处</h2><h3 id="性能上的提升"><a class="header-anchor" href="#性能上的提升">¶</a>性能上的提升</h3><p>提升多核CPU的利用率：一般来说一台主机上的会有多个CPU核心，我们可以创建多个线程，操作系统可以将多个线程分配给不同的CPU去执行，每个CPU执行一个线程，这样就提高了CPU的使用效率，如果使用单线程就只能有一个CPU核心被使用。</p><p>提升访问I/O时CPU的利用率：当一个线程要在网上下载一些东西的时候，这个线程将处于阻塞状态，这时CPU就不会再为这个线程分配CPU时间了，而其他进程可以不受任何影响地获得CPU时间。反过来如果没有使用并发，当前面的指令申请I/O资源的时候，整个进程就被挂起了，即使CPU处于空闲状态后面的指令也不能被执行。</p><p>降低系统的响应时间：当有多个请求需要被处理时。在单线程的环境中，所有请求需要排队进行处理。这样处在后面的请求将会等待较长的时间。多线程处理的话可以回避响应时间长的问题，所有请求轮流使用CPU资源，所有请求都可以较快的得到响应。</p><h3 id="提升系统容错能力"><a class="header-anchor" href="#提升系统容错能力">¶</a>提升系统容错能力</h3><p>一个线程可以不受其他线程的干扰独立运行，如果某个线程的代码里出现了Bug，这个线程可能抛出异常退出了，这时候其他线程可以不受任何影响继续执行，不至于导致整个系统都崩溃。</p><h2 id="并发的弊端"><a class="header-anchor" href="#并发的弊端">¶</a>并发的弊端</h2><h3 id="频繁的上下文切换"><a class="header-anchor" href="#频繁的上下文切换">¶</a>频繁的上下文切换</h3><p>时间片是CPU分配给各个线程的时间，因为时间非常短，所以CPU不断通过切换线程，让我们觉得多个线程是同时执行的，时间片一般是几十毫秒。而每次切换时，需要保存当前的状态起来，以便能够进行恢复先前状态，而这个切换时非常损耗性能，过于频繁反而无法发挥出多线程编程的优势。</p><p>通常减少上下文切换可以采用无锁并发编程，CAS算法，使用最少的线程和使用协程。</p><ul><li>无锁并发编程：可以参照concurrentHashMap锁分段的思想，不同的线程处理不同段的数据，这样在多线程竞争的条件下，可以减少上下文切换的时间。</li><li>CAS算法，利用Atomic下使用CAS算法来更新数据，使用了乐观锁，可以有效的减少一部分不必要的锁竞争带来的上下文切换</li><li>使用最少线程：避免创建不需要的线程，比如任务很少，但是创建了很多的线程，这样会造成大量的线程都处于等待状态</li><li>协程：在单线程里实现多任务的调度，并在单线程里维持多个任务间的切换</li></ul><h3 id="并发问题多易出错"><a class="header-anchor" href="#并发问题多易出错">¶</a>并发问题多易出错</h3><p>编写并发代码容易出错，多线程并发运行给执行过程带来了很多不确定性，因为只有同一个线程内部代码的执行顺序是固定的，而不同线程之间的代码执行顺序无法确定。当多个线程之间互相干扰时，问题就会接踵而至。编写多线程代码时，如果没有考虑全面很容易产生概率性的、难以复现的Bug</p><p>是否采用并发编程的模式，最终还是要结合自己的场景权衡利弊。</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;一门技术的出现必然有其出现的道理，后来需要了解它出现的时代环境和因素，扩充自己的视野，发掘技术发展的经过。分析其优缺点，以便更好的运用。&lt;/p&gt;
+&lt;p&gt;一直以来，硬件的发展极其迅速，也有一个很著名的 &lt;code&gt;摩尔定律&lt;/code&gt; ,然而事实证明摩尔定律的有效性超过半个世纪就失效了。为了进一步提升计算速度，放弃了一味追求单独的计算单元，将多个计算单元整合到一起，也就是形成了多核CPU。在多核CPU的环境下，并发编程的形式可以将多核CPU的计算能力发挥到极致，性能得到提升。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="并发" scheme="https://gyl-coder.top/categories/%E5%B9%B6%E5%8F%91/"/>
+    
+    
+    <category term="Java" scheme="https://gyl-coder.top/tags/Java/"/>
+    
+    <category term="并发" scheme="https://gyl-coder.top/tags/%E5%B9%B6%E5%8F%91/"/>
+    
+    <category term="Concurrency" scheme="https://gyl-coder.top/tags/Concurrency/"/>
     
   </entry>
   

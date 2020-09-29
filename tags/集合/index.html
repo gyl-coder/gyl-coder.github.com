@@ -103,7 +103,7 @@
         <a class="title flat-box" target="_self" href='/'>
           
           
-            <i class='fas fa-fan fa-spin fa-fw'></i>
+            <i class='fa-fw fab fa-modx fa-spin'></i>
           
           
             Yanliang
@@ -125,7 +125,7 @@
                   
                     id="archives"
                   >
-                  <i class='fas fa-list-alt fa-fw fa-fw'></i>索引
+                  <i class='fas fa-search fa-fw fa-fw'></i>找文章
                 </a>
                 
                   <ul class="list-v">
@@ -215,6 +215,38 @@
           
                     
                   </ul>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/shuoshuo/
+                  
+                  
+                  
+                    id="shuoshuo"
+                  >
+                  <i class='fas fa-comment-dots fa-fw fa-fw fa-fw'></i>树洞
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=https://about.gyl-coder.top
+                  
+                  
+                  
+                    id="https:aboutgyl-codertop"
+                  >
+                  <i class='fas fa-user-circle fa-fw fa-fw'></i>Homepage
+                </a>
                 
               </li>
             
@@ -415,38 +447,6 @@
             
           
           
-            
-            
-              <li>
-                <a class="menuitem flat-box faa-parent animated-hover" href=/shuoshuo/
-                  
-                  
-                  
-                    id="shuoshuo"
-                  >
-                  <i class='fas fa-comment-dots fa-fw fa-fw fa-fw'></i>树洞
-                </a>
-                
-              </li>
-            
-          
-          
-            
-            
-              <li>
-                <a class="menuitem flat-box faa-parent animated-hover" href=https://about.gyl-coder.top
-                  
-                  
-                  
-                    id="https:aboutgyl-codertop"
-                  >
-                  <i class='fas fa-user-circle fa-fw fa-spin fa-fw'></i>Homepage
-                </a>
-                
-              </li>
-            
-          
-          
 				</ul>
 			</div>
 
@@ -474,7 +474,7 @@
                   
                     id="archives"
                   >
-                  <i class='fas fa-list-alt fa-fw fa-fw'></i>索引
+                  <i class='fas fa-search fa-fw fa-fw'></i>找文章
                 </a>
                 
                   <ul class="list-v">
@@ -564,6 +564,38 @@
           
                     
                   </ul>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/shuoshuo/
+                  
+                  
+                  
+                    id="shuoshuo"
+                  >
+                  <i class='fas fa-comment-dots fa-fw fa-fw fa-fw'></i>树洞
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=https://about.gyl-coder.top
+                  
+                  
+                  
+                    id="https:aboutgyl-codertop"
+                  >
+                  <i class='fas fa-user-circle fa-fw fa-fw'></i>Homepage
+                </a>
                 
               </li>
             
@@ -733,38 +765,6 @@
             
           
             
-              
-            
-              <li>
-                <a class="menuitem flat-box faa-parent animated-hover" href=/shuoshuo/
-                  
-                  
-                  
-                    id="shuoshuo"
-                  >
-                  <i class='fas fa-comment-dots fa-fw fa-fw fa-fw'></i>树洞
-                </a>
-                
-              </li>
-            
-          
-            
-              
-            
-              <li>
-                <a class="menuitem flat-box faa-parent animated-hover" href=https://about.gyl-coder.top
-                  
-                  
-                  
-                    id="https:aboutgyl-codertop"
-                  >
-                  <i class='fas fa-user-circle fa-fw fa-spin fa-fw'></i>Homepage
-                </a>
-                
-              </li>
-            
-          
-            
           </ul>
         </li>
 			</ul>
@@ -889,8 +889,6 @@
   <section class="post-list">
     
       
-        
-          
         
           
         
@@ -1217,59 +1215,24 @@
           </div>
         
       
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/java/collection/HashMapAnalysis/">
-        HashMap 底层实现原理分析
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p><code>HashMap</code> 是 <code>Map</code> 的一个实现类，它代表的是一种键值对的数据存储形式。</p>
-<p>大多数情况下可以直接定位到它的值，因而具有很快的访问速度，但遍历顺序却是不确定的。</p>
-<p><code>HashMap</code>最多只允许一条记录的键为<code>null</code>，允许多条记录的值为<code>null</code>。不保证有序 (比如插入的顺序)、也不保证序不随时间变化。</p>
-<p><code>jdk 8</code> 之前，其内部是由 <red>数组 + 链表</red> 来实现的，而 <code>jdk 8</code> 对于链表长度超过 <green>8</green> 的链表将转储为 <yellow>红黑树</yellow>。</p>
-<p><code>HashMap</code>非线程安全，即任一时刻可以有多个线程同时写<code>HashMap</code>，可能会导致数据的不一致。如果需要满足线程安全，可以用 <code>Collections</code>的<code>synchronizedMap</code>方法使<code>HashMap</code>具有线程安全的能力，或者使用<code>ConcurrentHashMap</code>。</p>
-<p><code>HashMap</code>是 <blue>数组 + 链表 + 红黑树</blue>（JDK1.8 增加了红黑树部分）实现的。JDK 1.8 之所以添加红黑树是因为一旦链表过长，会严重影响 HashMap 的性能，而红黑树具有快速增删改查的特点，这样就可以有效的解决链表过长时操作比较慢的问题。</p>
-<div class="img-wrap"><div class="img-bg"><img class="img lazyload placeholder" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/20200323120021.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/20200323120021.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/></div></div>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-03-23</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Java/">Java</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/java/collection/HashMapAnalysis/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
     
   </section>
   
+    
+      <br>
+      <div class="prev-next">
+        
+        <p class="current">
+          1 / 2
+        </p>
+        
+          <a class="next" rel="next" href="/tags/%E9%9B%86%E5%90%88/page/2/">
+            <section class="post next white-box shadow">
+              &nbsp;Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </section>
+          </a>
+        
+      </div>
     
   
 
@@ -1295,6 +1258,9 @@
     
       <div class='text'>
         
+        
+          <p><i class="fas fa-map-marker-alt faa-bounce animated"></i> SZ, China</p>
+
         
         
           <p><span id="jinrishici-sentence">yanliang's blog</span></p>
@@ -1351,13 +1317,85 @@
   
     
     
+
+<section class="widget text shadow desktop mobile">
+  
+  <header>
+    
+      <i class="fa fa-quote-left fa-fw fa-fw" aria-hidden="true"></i><span class='name'>一言（ヒトコト）</span>
+    
+  </header>
+
+
+  <div class='content'>
+    
+      <p id="hitokoto">:D 获取中...</a></p>
+    
+  </div>
+</section>
+
+  
+
+  
+    
+    
+
+<section class="widget list shadow desktop mobile">
+  
+  <header>
+    
+      <a href='friends/'><i class="fa fa-mars fa-fw" aria-hidden="true"></i><span class='name'>都是大佬呀~</span></a>
+    
+  </header>
+
+
+  <div class='content'>
+    <ul class="list entry navigation">
+      
+        <li><a class="flat-box" title="https://xaoxuu.com" target="_blank" rel="noopener" href="https://xaoxuu.com"
+          
+          
+          id="https:xaoxuucom"
+          >
+          <div class='name'>
+            
+              <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" id="round">
+            
+            xaoxuu
+          </div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="https://sublimerui.top/" target="_blank" rel="noopener" href="https://sublimerui.top/"
+          
+          
+          id="https:sublimeruitop"
+          >
+          <div class='name'>
+            
+              <img src="https://cdn.jsdelivr.net/gh/cwxyr/mycdn@master/favicon_new.ico" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/cwxyr/mycdn@master/favicon_new.ico" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" id="round">
+            
+            果子小酱
+          </div>
+          
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+  
+
+  
+    
+    
   
 
   <section class="widget category shadow desktop">
     
   <header>
     
-      <a href='/blog/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+      <a href='/blog/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>分类如下</span></a>
     
   </header>
 
@@ -1416,7 +1454,7 @@
     
   <header>
     
-      <a href='/blog/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
+      <a href='/blog/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>打上标签</span></a>
     
   </header>
 
@@ -1492,8 +1530,8 @@
         <div class="webinfo-item">
           <div>最后活动时间：</div>
           
-            <div id="last-update" style="display: none;">Mon Sep 28 2020 23:01:24 GMT+0800 (GMT+08:00)</div>
-            <div id="last-update-show">2020-09-28 日</div>
+            <div id="last-update" style="display: none;">Tue Sep 29 2020 22:40:32 GMT+0800 (GMT+08:00)</div>
+            <div id="last-update-show">2020-09-29 日</div>
           
         </div>
         
@@ -1543,7 +1581,7 @@
           try {
             document.getElementById('last-update-show').innerHTML = timeago(new Date(lastUpDate));
           } catch (error) {
-            document.getElementById('last-update-show').innerHTML = '2020-09-28 日';
+            document.getElementById('last-update-show').innerHTML = '2020-09-29 日';
           }
         </script>
         
@@ -1678,7 +1716,10 @@
       
         Use
         <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/4.0.0" target="_blank" class="codename">Volantis</a>
-        as theme
+        as theme, total visits
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          times
+        
       
     
       
@@ -2381,6 +2422,8 @@ if(supportCss3('mix-blend-mode')){
 
 
 
+  <script defer src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js" data-pjax></script>
+
 
   
 <script src="/js/app.js"></script>
@@ -2773,5 +2816,26 @@ const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
 
     
   </div>
+
+  <!-- 一言API -->
+  <!-- 现代写法，推荐 -->
+  <!-- 兼容低版本浏览器 (包括 IE)，可移除 -->
+  <script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+  <!--End-->
+  <script>
+    fetch('https://v1.hitokoto.cn')
+      .then(function (res){
+        return res.json();
+      })
+      .then(function (data) {
+        var hitokoto = document.getElementById('hitokoto');
+        hitokoto.innerText = data.hitokoto + '——【' + data.from + '】';
+      })
+      .catch(function (err) {
+        console.error(err);
+      })
+  </script>
+
 </body>
 </html>

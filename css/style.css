@@ -2599,7 +2599,7 @@ div.fancybox .image-caption:empty {
 .darkmode-toggle:before {
   font-family: 'Font Awesome 5 Free';
   font-weight: bold;
-  content: '\f186';
+  content: '\f005';
   color: #fff;
 }
 .darkmode-background {
@@ -4658,6 +4658,7 @@ footer.footer .copyright p {
   margin: 16px 16px 0;
 }
 .l_body {
+  background-image: url("https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/bg.webp");
   position: relative;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

@@ -103,7 +103,7 @@
         <a class="title flat-box" target="_self" href='/'>
           
           
-            <i class='fas fa-fan fa-spin fa-fw'></i>
+            <i class='fa-fw fab fa-modx fa-spin'></i>
           
           
             Yanliang
@@ -125,7 +125,7 @@
                   
                     id="archives"
                   >
-                  <i class='fas fa-list-alt fa-fw fa-fw'></i>索引
+                  <i class='fas fa-search fa-fw fa-fw'></i>找文章
                 </a>
                 
                   <ul class="list-v">
@@ -215,6 +215,38 @@
           
                     
                   </ul>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/shuoshuo/
+                  
+                  
+                  
+                    id="shuoshuo"
+                  >
+                  <i class='fas fa-comment-dots fa-fw fa-fw fa-fw'></i>树洞
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=https://about.gyl-coder.top
+                  
+                  
+                  
+                    id="https:aboutgyl-codertop"
+                  >
+                  <i class='fas fa-user-circle fa-fw fa-fw'></i>Homepage
+                </a>
                 
               </li>
             
@@ -415,38 +447,6 @@
             
           
           
-            
-            
-              <li>
-                <a class="menuitem flat-box faa-parent animated-hover" href=/shuoshuo/
-                  
-                  
-                  
-                    id="shuoshuo"
-                  >
-                  <i class='fas fa-comment-dots fa-fw fa-fw fa-fw'></i>树洞
-                </a>
-                
-              </li>
-            
-          
-          
-            
-            
-              <li>
-                <a class="menuitem flat-box faa-parent animated-hover" href=https://about.gyl-coder.top
-                  
-                  
-                  
-                    id="https:aboutgyl-codertop"
-                  >
-                  <i class='fas fa-user-circle fa-fw fa-spin fa-fw'></i>Homepage
-                </a>
-                
-              </li>
-            
-          
-          
 				</ul>
 			</div>
 
@@ -474,7 +474,7 @@
                   
                     id="archives"
                   >
-                  <i class='fas fa-list-alt fa-fw fa-fw'></i>索引
+                  <i class='fas fa-search fa-fw fa-fw'></i>找文章
                 </a>
                 
                   <ul class="list-v">
@@ -564,6 +564,38 @@
           
                     
                   </ul>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/shuoshuo/
+                  
+                  
+                  
+                    id="shuoshuo"
+                  >
+                  <i class='fas fa-comment-dots fa-fw fa-fw fa-fw'></i>树洞
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=https://about.gyl-coder.top
+                  
+                  
+                  
+                    id="https:aboutgyl-codertop"
+                  >
+                  <i class='fas fa-user-circle fa-fw fa-fw'></i>Homepage
+                </a>
                 
               </li>
             
@@ -733,38 +765,6 @@
             
           
             
-              
-            
-              <li>
-                <a class="menuitem flat-box faa-parent animated-hover" href=/shuoshuo/
-                  
-                  
-                  
-                    id="shuoshuo"
-                  >
-                  <i class='fas fa-comment-dots fa-fw fa-fw fa-fw'></i>树洞
-                </a>
-                
-              </li>
-            
-          
-            
-              
-            
-              <li>
-                <a class="menuitem flat-box faa-parent animated-hover" href=https://about.gyl-coder.top
-                  
-                  
-                  
-                    id="https:aboutgyl-codertop"
-                  >
-                  <i class='fas fa-user-circle fa-fw fa-spin fa-fw'></i>Homepage
-                </a>
-                
-              </li>
-            
-          
-            
           </ul>
         </li>
 			</ul>
@@ -899,6 +899,204 @@
   
     
     <h2 class="article-title" >
+      <a href="/java/collection/ArrayList/">
+        ArrayList 底层实现原理分析
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      <p>ArrayList是List接口的 可变数组的实现。实现了所有可选列表操作，并允许包括 null 在内的所有元素。除了实现 List接口外，此类还提供一些方法来操作内部用来存储列表的数组的大小。ArrayList继承自 AbstractList，这是一个抽象类对一些基础的list操作做了一些封装.实现了RandomAccess 标记接口，表明可以实现快速随机访问.实现了Cloneable接口的实现表示该容器具有Clone函数操作，Serializable是序列化。</p>
+<p>每个ArrayList实例都有一个容量，该容量是指用来存储列表元素的数组的大小。它总是至少等于列表的大小。随着向ArrayList中不断添加元素，其容量也自动增长。自动增长会带来数据向新数组的重新拷贝，因此，如果可预知数据量的大小，就可在构造ArrayList实例时指定其容量。</p>
+<p>在添加大量元素前，应用程序也可以使用ensureCapacity操作来增加ArrayList实例的容量，这可以减少递增式再分配的数量。</p>
+<p>注意，此实现不是同步的。如果多个线程同时访问一个ArrayList实例，而其中至少一个线程从结构上修改了列表，那么它必须保持外部同步。</p>
+<blockquote><p>ArrayList这个数据结构比较简单，总体来说，ArrayList底层结构是数组，他的很多方法都是从数组上面演变而来的。</p>
+</blockquote>
+<p>下面我们先来看一下ArrayList中的一些初始值</p>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2020-07-01</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Java/">Java</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/java/collection/ArrayList/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/java/try_catch_finally/">
+        try catch finally执行顺序
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      <p>首先在finally和try中对数据的操作时数据分为 基本数据类型和引用数据类型，他们存放的地方也不一样，一个是栈区另一个是在堆区。</p>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2020-04-03</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Java/">Java</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/java/try_catch_finally/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/java/dynamic-proxy/">
+        动态代理原理剖析
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      <p>动态代理的常用实现方式是反射。反射机制是 Java 语言提供的一种基础功能，赋予程序在运行时自省（introspect，官方用语）的能力。通过反射我们可以直接操作类或者对象，比如获取某个对象的类定义，获取类声明的属性和方法，调用方法或者构造对象，甚至可以运行时修改类定义。</p>
+<p>动态代理是一种方便运行时动态构建代理、动态处理代理方法调用的机制，很多场景都是利用类似机制做到的，比如用来包装 RPC 调用、面向切面的编程（AOP）。</p>
+<p>JDK 自身提供的动态代理，就是主要利用了上面提到的反射机制。但动态代理不止有反射一种实现方式，还有其他的实现方式，比如利用传说中更高性能的字节码操作机制，类似 ASM、cglib（基于 ASM，一个 Java 字节码操作框架）、Javassist 等。简单来说，动态代理是一种行为方式，而反射或 ASM 只是它的一种实现手段而已。</p>
+<p>JDK Proxy 和 CGLib 的区别主要体现在以下几个方面：</p>
+<ul>
+<li>JDK Proxy 是 Java 语言自带的功能，无需通过加载第三方类实现；</li>
+<li>Java 对 JDK Proxy 提供了稳定的支持，并且会持续的升级和更新 JDK Proxy，例如 Java 8 版本中的 JDK Proxy 性能相比于之前版本提升了很多；</li>
+<li>JDK Proxy 是通过拦截器加反射的方式实现的；</li>
+<li>JDK Proxy 只能代理继承接口的类；</li>
+<li>JDK Proxy 实现和调用起来比较简单；</li>
+<li>CGLib 是第三方提供的工具，基于 ASM 实现的，性能比较高；</li>
+<li>CGLib 无需通过接口来实现，它是通过实现子类的方式来完成调用的。</li>
+</ul>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2020-04-02</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Java/">Java</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/java/dynamic-proxy/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/java/settings/">
+        Settings.xml 详解
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      <p>从 <code>settings.xml</code> 的文件名就可以看出，它是用来设置 maven 参数的配置文件。settings.xml 中包含类似本地仓储位置、修改远程仓储服务器、认证信息等配置。</p>
+<ul>
+<li>settings.xml 是maven的<strong>全局配置文件</strong>。</li>
+<li>pom.xml 文件是本地<strong>项目配置文件</strong>。</li>
+</ul>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2020-04-02</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Java/">Java</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/java/settings/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
       <a href="/java/collection/HashMapAnalysis/">
         HashMap 底层实现原理分析
       </a>
@@ -989,228 +1187,6 @@
           </div>
         
       
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-    <div class='headimg-div'>
-      <a class='headimg-a' href="/concurrency/waiting_for_notification/">
-        <img class='headimg' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life3.webp'/>
-      </a>
-    </div>
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/concurrency/waiting_for_notification/">
-        等待通知机制
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>多线程环境中，经常出现这样一种场景。一个线程修改了一个对象的值，而另一个线程感知到了变化，然后进行相应的操作，整个过程开始于一个线程，最终结束于另一个线程。这就是传说中的生产者/消费者模型（前者是生产者，后者是消费者）。</p>
-<p>而实现这种功能比较简单的方法就是让消费者线程不断的循环变量判断是否符合预期。如下所示</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (!isOK(...))&#123;</span><br><span class="line">	Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">&#125;</span><br><span class="line">doIt();</span><br></pre></td></tr></table></figure>
-<p>while 循环中设置不满足的条件，如果条件满足则退出循环（睡眠可以防止过快的“无效尝试”）</p>
-<p>如果isOK方法的判断逻辑比较简单，操作耗时较短，而且并发冲突量不大的情况下，使用这种方案也未尝不可。但是如果判断逻辑比较复杂，或者并发冲突较大时。这种方案就不行了，while循环会执行很多很多次，CPU消耗较大。</p>
-<p>针对这种问题，Java内置的<code>等待通知机制</code>能够较好的解决。当条件不满足时，线程阻塞自己，进入等待状态。当线程条件满足时，通知等待的线程重新执行。线程阻塞避免了循环等待带来的CPU消耗问题。</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2019-11-06</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E5%B9%B6%E5%8F%91/">并发</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/concurrency/waiting_for_notification/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-    <div class='headimg-div'>
-      <a class='headimg-a' href="/concurrency/alternate_printing/">
-        <img class='headimg' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life1.webp'/>
-      </a>
-    </div>
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/concurrency/alternate_printing/">
-        多个线程交替打印内容
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p><strong>需求：</strong> 启动两个线程，交替打印奇偶数。 效果如下所示</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">偶数线程：<span class="number">0</span></span><br><span class="line">奇数线程：<span class="number">1</span></span><br><span class="line">偶数线程：<span class="number">2</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2019-11-05</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E5%B9%B6%E5%8F%91/">并发</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/concurrency/alternate_printing/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-    <div class='headimg-div'>
-      <a class='headimg-a' href="/concurrency/why_concurrency/">
-        <img class='headimg' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life4.webp'/>
-      </a>
-    </div>
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/concurrency/why_concurrency/">
-        Why Concurrency ?
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>一门技术的出现必然有其出现的道理，后来需要了解它出现的时代环境和因素，扩充自己的视野，发掘技术发展的经过。分析其优缺点，以便更好的运用。</p>
-<p>一直以来，硬件的发展极其迅速，也有一个很著名的 <code>摩尔定律</code> ,然而事实证明摩尔定律的有效性超过半个世纪就失效了。为了进一步提升计算速度，放弃了一味追求单独的计算单元，将多个计算单元整合到一起，也就是形成了多核CPU。在多核CPU的环境下，并发编程的形式可以将多核CPU的计算能力发挥到极致，性能得到提升。</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2019-11-05</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E5%B9%B6%E5%8F%91/">并发</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/concurrency/why_concurrency/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-    <div class='headimg-div'>
-      <a class='headimg-a' href="/concurrency/lock_and_synchronized/">
-        <img class='headimg' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life2.webp'/>
-      </a>
-    </div>
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/concurrency/lock_and_synchronized/">
-        Lock & Synchronized
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>首先我们来考虑一个问题？</p>
-<p>在Lock出现之前我们一直使用synchronized来实现同步访问。那为什么还要提供lock呢？</p>
-<p>我们知道如果一个代码块被synchronized修饰了，当有一个线程获取了对应的锁，并执行该代码快时，其他线程就只能在一旁等待。</p>
-<p>而获取锁的线程只有在<code>线程正常执行完该代码</code>或者<code>线程执行过程中发生异常</code>才会释放对锁的占有。</p>
-<p>在synchronized这种机制下，程序就有可能出现如下问题：</p>
-<ol>
-<li>获取锁的线程由于要等待IO或其他原因被阻塞住了，但是又没有释放锁，其他线程只能等待。影响效率</li>
-<li>相互没有冲突的多个线程不能并发执行</li>
-<li>解决死锁的一个方案是<code>破坏不可抢占条件</code>synchronized 没有办法解决。原因是 synchronized 申请资源的时候，如果申请不到，线程直接进入阻塞状态了，而线程进入阻塞状态，啥都干不了，也释放不了线程已经占有的资源。</li>
-</ol>
-<p>正是由于这些因素的限制，需要开发出一种满足如下条件的同步机制。</p>
-<ol>
-<li>**能够响应中断。**synchronized 的问题是，持有锁 A 后，如果尝试获取锁 B 失败，那么线程就进入阻塞状态，一旦发生死锁，就没有任何机会来唤醒阻塞的线程。但如果阻塞状态的线程能够响应中断信号，也就是说当我们给阻塞的线程发送中断信号的时候，能够唤醒它，那它就有机会释放曾经持有的锁 A。</li>
-<li>**支持超时。**如果线程在一段时间之内没有获取到锁，不是进入阻塞状态，而是返回一个错误，那这个线程也有机会释放曾经持有的锁。</li>
-<li>**非阻塞地获取锁。**如果尝试获取锁失败，并不进入阻塞状态，而是直接返回，那这个线程也有机会释放曾经持有的锁。</li>
-</ol>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2019-11-05</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E5%B9%B6%E5%8F%91/">并发</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/concurrency/lock_and_synchronized/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
     
   </section>
   
@@ -1225,8 +1201,14 @@
           </a>
         
         <p class="current">
-          2 / 2
+          2 / 3
         </p>
+        
+          <a class="next" rel="next" href="/tags/Java/page/3/">
+            <section class="post next white-box shadow">
+              &nbsp;Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </section>
+          </a>
         
       </div>
     
@@ -1254,6 +1236,9 @@
     
       <div class='text'>
         
+        
+          <p><i class="fas fa-map-marker-alt faa-bounce animated"></i> SZ, China</p>
+
         
         
           <p><span id="jinrishici-sentence">yanliang's blog</span></p>
@@ -1310,13 +1295,85 @@
   
     
     
+
+<section class="widget text shadow desktop mobile">
+  
+  <header>
+    
+      <i class="fa fa-quote-left fa-fw fa-fw" aria-hidden="true"></i><span class='name'>一言（ヒトコト）</span>
+    
+  </header>
+
+
+  <div class='content'>
+    
+      <p id="hitokoto">:D 获取中...</a></p>
+    
+  </div>
+</section>
+
+  
+
+  
+    
+    
+
+<section class="widget list shadow desktop mobile">
+  
+  <header>
+    
+      <a href='friends/'><i class="fa fa-mars fa-fw" aria-hidden="true"></i><span class='name'>都是大佬呀~</span></a>
+    
+  </header>
+
+
+  <div class='content'>
+    <ul class="list entry navigation">
+      
+        <li><a class="flat-box" title="https://xaoxuu.com" target="_blank" rel="noopener" href="https://xaoxuu.com"
+          
+          
+          id="https:xaoxuucom"
+          >
+          <div class='name'>
+            
+              <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" id="round">
+            
+            xaoxuu
+          </div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="https://sublimerui.top/" target="_blank" rel="noopener" href="https://sublimerui.top/"
+          
+          
+          id="https:sublimeruitop"
+          >
+          <div class='name'>
+            
+              <img src="https://cdn.jsdelivr.net/gh/cwxyr/mycdn@master/favicon_new.ico" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/cwxyr/mycdn@master/favicon_new.ico" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" id="round">
+            
+            果子小酱
+          </div>
+          
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+  
+
+  
+    
+    
   
 
   <section class="widget category shadow desktop">
     
   <header>
     
-      <a href='/blog/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+      <a href='/blog/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>分类如下</span></a>
     
   </header>
 
@@ -1375,7 +1432,7 @@
     
   <header>
     
-      <a href='/blog/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
+      <a href='/blog/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>打上标签</span></a>
     
   </header>
 
@@ -1451,8 +1508,8 @@
         <div class="webinfo-item">
           <div>最后活动时间：</div>
           
-            <div id="last-update" style="display: none;">Mon Sep 28 2020 23:01:24 GMT+0800 (GMT+08:00)</div>
-            <div id="last-update-show">2020-09-28 日</div>
+            <div id="last-update" style="display: none;">Tue Sep 29 2020 22:40:32 GMT+0800 (GMT+08:00)</div>
+            <div id="last-update-show">2020-09-29 日</div>
           
         </div>
         
@@ -1502,7 +1559,7 @@
           try {
             document.getElementById('last-update-show').innerHTML = timeago(new Date(lastUpDate));
           } catch (error) {
-            document.getElementById('last-update-show').innerHTML = '2020-09-28 日';
+            document.getElementById('last-update-show').innerHTML = '2020-09-29 日';
           }
         </script>
         
@@ -1637,7 +1694,10 @@
       
         Use
         <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/4.0.0" target="_blank" class="codename">Volantis</a>
-        as theme
+        as theme, total visits
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          times
+        
       
     
       
@@ -2340,6 +2400,8 @@ if(supportCss3('mix-blend-mode')){
 
 
 
+  <script defer src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js" data-pjax></script>
+
 
   
 <script src="/js/app.js"></script>
@@ -2732,5 +2794,26 @@ const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
 
     
   </div>
+
+  <!-- 一言API -->
+  <!-- 现代写法，推荐 -->
+  <!-- 兼容低版本浏览器 (包括 IE)，可移除 -->
+  <script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+  <!--End-->
+  <script>
+    fetch('https://v1.hitokoto.cn')
+      .then(function (res){
+        return res.json();
+      })
+      .then(function (data) {
+        var hitokoto = document.getElementById('hitokoto');
+        hitokoto.innerText = data.hitokoto + '——【' + data.from + '】';
+      })
+      .catch(function (err) {
+        console.error(err);
+      })
+  </script>
+
 </body>
 </html>

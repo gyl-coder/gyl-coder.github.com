@@ -105,7 +105,7 @@
         <a class="title flat-box" target="_self" href='/'>
           
           
-            <i class='fas fa-fan fa-spin fa-fw'></i>
+            <i class='fa-fw fab fa-modx fa-spin'></i>
           
           
             Yanliang
@@ -127,7 +127,7 @@
                   
                     id="archives"
                   >
-                  <i class='fas fa-list-alt fa-fw fa-fw'></i>索引
+                  <i class='fas fa-search fa-fw fa-fw'></i>找文章
                 </a>
                 
                   <ul class="list-v">
@@ -217,6 +217,38 @@
           
                     
                   </ul>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/shuoshuo/
+                  
+                  
+                  
+                    id="shuoshuo"
+                  >
+                  <i class='fas fa-comment-dots fa-fw fa-fw fa-fw'></i>树洞
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=https://about.gyl-coder.top
+                  
+                  
+                  
+                    id="https:aboutgyl-codertop"
+                  >
+                  <i class='fas fa-user-circle fa-fw fa-fw'></i>Homepage
+                </a>
                 
               </li>
             
@@ -417,38 +449,6 @@
             
           
           
-            
-            
-              <li>
-                <a class="menuitem flat-box faa-parent animated-hover" href=/shuoshuo/
-                  
-                  
-                  
-                    id="shuoshuo"
-                  >
-                  <i class='fas fa-comment-dots fa-fw fa-fw fa-fw'></i>树洞
-                </a>
-                
-              </li>
-            
-          
-          
-            
-            
-              <li>
-                <a class="menuitem flat-box faa-parent animated-hover" href=https://about.gyl-coder.top
-                  
-                  
-                  
-                    id="https:aboutgyl-codertop"
-                  >
-                  <i class='fas fa-user-circle fa-fw fa-spin fa-fw'></i>Homepage
-                </a>
-                
-              </li>
-            
-          
-          
 				</ul>
 			</div>
 
@@ -476,7 +476,7 @@
                   
                     id="archives"
                   >
-                  <i class='fas fa-list-alt fa-fw fa-fw'></i>索引
+                  <i class='fas fa-search fa-fw fa-fw'></i>找文章
                 </a>
                 
                   <ul class="list-v">
@@ -566,6 +566,38 @@
           
                     
                   </ul>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/shuoshuo/
+                  
+                  
+                  
+                    id="shuoshuo"
+                  >
+                  <i class='fas fa-comment-dots fa-fw fa-fw fa-fw'></i>树洞
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=https://about.gyl-coder.top
+                  
+                  
+                  
+                    id="https:aboutgyl-codertop"
+                  >
+                  <i class='fas fa-user-circle fa-fw fa-fw'></i>Homepage
+                </a>
                 
               </li>
             
@@ -735,38 +767,6 @@
             
           
             
-              
-            
-              <li>
-                <a class="menuitem flat-box faa-parent animated-hover" href=/shuoshuo/
-                  
-                  
-                  
-                    id="shuoshuo"
-                  >
-                  <i class='fas fa-comment-dots fa-fw fa-fw fa-fw'></i>树洞
-                </a>
-                
-              </li>
-            
-          
-            
-              
-            
-              <li>
-                <a class="menuitem flat-box faa-parent animated-hover" href=https://about.gyl-coder.top
-                  
-                  
-                  
-                    id="https:aboutgyl-codertop"
-                  >
-                  <i class='fas fa-user-circle fa-fw fa-spin fa-fw'></i>Homepage
-                </a>
-                
-              </li>
-            
-          
-            
           </ul>
         </li>
 			</ul>
@@ -895,55 +895,33 @@
   
   
   
-    <div class='headimg-div'>
-      <a class='headimg-a' href="/design-pattern/single-pattern/">
-        <img class='headimg' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life6.webp'/>
-      </a>
-    </div>
-  
   
     
     <h2 class="article-title" >
-      <a href="/design-pattern/single-pattern/">
-        单例模式
+      <a href="/kafka/kafka-reliability/">
+        kafka 如何保证数据的可靠性和一致性
       </a>
     </h2>
   
   <div class='md'>
     
-      <p>在介绍单例模式之前，我们先了解一下，什么是设计模式？<br>
-**设计模式（Design Pattern）：**是一套被反复使用，多数人知晓的，经过分类编目的，代码设计经验的总结。<br>
-**目的：**使用设计模式是为了可重用性代码，让代码更容易被他人理解，保证代码可靠性。</p>
-<p>本文将会用到的关键词：</p>
-<ul>
-<li>单例：Singleton</li>
-<li>实例：instance</li>
-<li>同步：synchronized</li>
-<li>类装载器：ClassLoader</li>
-</ul>
-<p><strong>单例模式：</strong><br>
-单例，顾名思义就是只能有一个、不能再出现第二个。就如同地球上没有两片一模一样的树叶一样。</p>
-<p>在这里就是说：一个类只能有一个实例，并且整个项目系统都能访问该实例。</p>
-<p>单例模式共分为两大类：</p>
-<ul>
-<li>懒汉模式：实例在第一次使用时创建</li>
-<li>饿汉模式：实例在类装载时创建</li>
-</ul>
+      <h2 id="数据可靠性"><a class="header-anchor" href="#数据可靠性">¶</a>数据可靠性</h2>
+<p>Kafka 作为一个商业级消息中间件，消息可靠性的重要性可想而知。本文从 Producter 往 Broker 发送消息、Topic 分区副本以及 Leader 选举几个角度介绍数据的可靠性。</p>
     
   </div>
   
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time>2019-10-24</time>
+        <time>2019-12-06</time>
         
           <span class="dot"></span>
-          <a class="category-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+          <a class="category-link" href="/categories/kafka/">kafka</a>
         
       </div>
       
         <div>
-          <a class='readmore' href='/design-pattern/single-pattern/'>
+          <a class='readmore' href='/kafka/kafka-reliability/'>
             Read More
           </a>
         </div>
@@ -965,30 +943,210 @@
   
     
     <h2 class="article-title" >
-      <a href="/JSONParser/">
-        撸一个JSON解析器
+      <a href="/kafka/kafka-rebalance/">
+        Kafka Rebalance机制分析
       </a>
     </h2>
   
   <div class='md'>
     
-      <p>JSON(JavaScript Object Notation, JS 对象简谱) 是一种轻量级的数据交换格式。易于人阅读和编写。同时也易于机器解析和生成。采用完全独立于语言的文本格式，但是也使用了类似于 C 语言家族的习惯（包括 C, C++, C#, Java, JavaScript, Perl, Python 等）。这些特性使 JSON 成为理想的数据交换语言。</p>
-<p>JSON 与 JS 的区别以及和 XML 的区别具体请参考<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/JSON/2462549?fr=aladdin">百度百科</a></p>
+      <p>Rebalance 本质上是一种协议，规定了一个 Consumer Group 下的所有 consumer 如何达成一致，来分配订阅 Topic 的每个分区。</p>
+<p>例如：某 Group 下有 20 个 consumer 实例，它订阅了一个具有 100 个 partition 的 Topic 。正常情况下，kafka 会为每个 Consumer 平均的分配 5 个分区。这个分配的过程就是 Rebalance。</p>
     
   </div>
   
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time>2019-10-24</time>
+        <time>2019-12-05</time>
         
           <span class="dot"></span>
-          <a class="category-link" href="/categories/Java/">Java</a>
+          <a class="category-link" href="/categories/kafka/">kafka</a>
         
       </div>
       
         <div>
-          <a class='readmore' href='/JSONParser/'>
+          <a class='readmore' href='/kafka/kafka-rebalance/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/kafka/kafka-partition-alocation/">
+        Kafka有哪几处地方有分区分配的概念？简述大致的过程及原理
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      <p>在 kafka 中，分区分配是一个很重要的概念，它会影响Kafka整体的性能均衡。kafka 中一共有三处地方涉及此概念，分别是：生产者发送消息、消费者消费消息和创建主题。虽然这三处的对应操作都可以被称之为“分区分配”，但是其实质上所包含的内容却并不相同。</p>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2019-12-04</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/kafka/">kafka</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/kafka/kafka-partition-alocation/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/kafka/kafka-listeners-config/">
+        kafka的listeners配置错误导致主线程阻塞
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      <h2 id="问题背景"><a class="header-anchor" href="#问题背景">¶</a>问题背景</h2>
+<p>我们在用kafka的时候，偶尔会遇到这样这样一个问题。</p>
+<p>我们写的kafka的客户端程序，在启动的时候，会无缘无故的 <code>卡住（阻塞）</code> 如下图所示：</p>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2019-12-03</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/kafka/">kafka</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/kafka/kafka-listeners-config/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/kafka/kafka-isr-ar/">
+        kafka中的ISR、AR代表什么？ISR的伸缩性又指什么？
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      <p>相信大家已经对 <code>kafka</code> 的基本概念已经有一定的了解了，下面直接来分析一下 ISR 和 AR 的概念。</p>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2019-12-02</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/kafka/">kafka</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/kafka/kafka-isr-ar/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/kafka/kafka-hw-leo-lso/">
+        Kafka中的HW、LEO、LSO等分别代表什么？
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      <p><code>HW</code> 、 <code>LEO</code> 等概念和上一篇文章所说的 <code>ISR</code>有着紧密的关系，如果不了解 ISR 可以先看下ISR相关的介绍。</p>
+<p><code>HW</code> （High Watermark）俗称高水位，它标识了一个特定的消息偏移量（offset），消费者只能拉取到这个offset之前的消息。</p>
+<p>下图表示一个日志文件，这个日志文件中只有9条消息，第一条消息的offset（LogStartOffset）为0，最有一条消息的offset为8，offset为9的消息使用虚线表示的，代表下一条待写入的消息。日志文件的 HW 为6，表示消费者只能拉取offset在 0 到 5 之间的消息，offset为6的消息对消费者而言是不可见的。</p>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2019-12-01</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/kafka/">kafka</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/kafka/kafka-hw-leo-lso/'>
             Read More
           </a>
         </div>
@@ -1015,8 +1173,14 @@
           </a>
         
         <p class="current">
-          4 / 4
+          4 / 6
         </p>
+        
+          <a class="next" rel="next" href="/page/5/">
+            <section class="post next white-box shadow">
+              &nbsp;Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </section>
+          </a>
         
       </div>
     
@@ -1042,6 +1206,9 @@
     
       <div class='text'>
         
+        
+          <p><i class="fas fa-map-marker-alt faa-bounce animated"></i> SZ, China</p>
+
         
         
           <p><span id="jinrishici-sentence">yanliang's blog</span></p>
@@ -1098,13 +1265,85 @@
   
     
     
+
+<section class="widget text shadow desktop mobile">
+  
+  <header>
+    
+      <i class="fa fa-quote-left fa-fw fa-fw" aria-hidden="true"></i><span class='name'>一言（ヒトコト）</span>
+    
+  </header>
+
+
+  <div class='content'>
+    
+      <p id="hitokoto">:D 获取中...</a></p>
+    
+  </div>
+</section>
+
+  
+
+  
+    
+    
+
+<section class="widget list shadow desktop mobile">
+  
+  <header>
+    
+      <a href='friends/'><i class="fa fa-mars fa-fw" aria-hidden="true"></i><span class='name'>都是大佬呀~</span></a>
+    
+  </header>
+
+
+  <div class='content'>
+    <ul class="list entry navigation">
+      
+        <li><a class="flat-box" title="https://xaoxuu.com" target="_blank" rel="noopener" href="https://xaoxuu.com"
+          
+          
+          id="https:xaoxuucom"
+          >
+          <div class='name'>
+            
+              <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" id="round">
+            
+            xaoxuu
+          </div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="https://sublimerui.top/" target="_blank" rel="noopener" href="https://sublimerui.top/"
+          
+          
+          id="https:sublimeruitop"
+          >
+          <div class='name'>
+            
+              <img src="https://cdn.jsdelivr.net/gh/cwxyr/mycdn@master/favicon_new.ico" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/cwxyr/mycdn@master/favicon_new.ico" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" id="round">
+            
+            果子小酱
+          </div>
+          
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+  
+
+  
+    
+    
   
 
   <section class="widget category shadow desktop">
     
   <header>
     
-      <a href='/blog/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+      <a href='/blog/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>分类如下</span></a>
     
   </header>
 
@@ -1163,7 +1402,7 @@
     
   <header>
     
-      <a href='/blog/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
+      <a href='/blog/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>打上标签</span></a>
     
   </header>
 
@@ -1239,8 +1478,8 @@
         <div class="webinfo-item">
           <div>最后活动时间：</div>
           
-            <div id="last-update" style="display: none;">Mon Sep 28 2020 23:01:24 GMT+0800 (GMT+08:00)</div>
-            <div id="last-update-show">2020-09-28 日</div>
+            <div id="last-update" style="display: none;">Tue Sep 29 2020 22:40:32 GMT+0800 (GMT+08:00)</div>
+            <div id="last-update-show">2020-09-29 日</div>
           
         </div>
         
@@ -1290,7 +1529,7 @@
           try {
             document.getElementById('last-update-show').innerHTML = timeago(new Date(lastUpDate));
           } catch (error) {
-            document.getElementById('last-update-show').innerHTML = '2020-09-28 日';
+            document.getElementById('last-update-show').innerHTML = '2020-09-29 日';
           }
         </script>
         
@@ -1426,7 +1665,10 @@
       
         Use
         <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/4.0.0" target="_blank" class="codename">Volantis</a>
-        as theme
+        as theme, total visits
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          times
+        
       
     
       
@@ -2129,6 +2371,8 @@ if(supportCss3('mix-blend-mode')){
 
 
 
+  <script defer src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js" data-pjax></script>
+
 
   
 <script src="/js/app.js"></script>
@@ -2521,5 +2765,26 @@ const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
 
     
   </div>
+
+  <!-- 一言API -->
+  <!-- 现代写法，推荐 -->
+  <!-- 兼容低版本浏览器 (包括 IE)，可移除 -->
+  <script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+  <!--End-->
+  <script>
+    fetch('https://v1.hitokoto.cn')
+      .then(function (res){
+        return res.json();
+      })
+      .then(function (data) {
+        var hitokoto = document.getElementById('hitokoto');
+        hitokoto.innerText = data.hitokoto + '——【' + data.from + '】';
+      })
+      .catch(function (err) {
+        console.error(err);
+      })
+  </script>
+
 </body>
 </html>
