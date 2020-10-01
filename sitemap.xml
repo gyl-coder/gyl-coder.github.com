@@ -107,14 +107,14 @@
   </url>
   
   <url>
-    <loc>https://gyl-coder.top/kafka/kafka-listeners-config/</loc>
+    <loc>https://gyl-coder.top/kafka/kafka-isr-ar/</loc>
     
     <lastmod>2020-09-28</lastmod>
     
   </url>
   
   <url>
-    <loc>https://gyl-coder.top/kafka/kafka-isr-ar/</loc>
+    <loc>https://gyl-coder.top/kafka/kafka-listeners-config/</loc>
     
     <lastmod>2020-09-28</lastmod>
     
@@ -291,27 +291,6 @@
 
   
   <url>
-    <loc>https://gyl-coder.top/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
-    <lastmod>2020-10-01</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gyl-coder.top/tags/%E5%B9%B6%E5%8F%91/</loc>
-    <lastmod>2020-10-01</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gyl-coder.top/tags/Immutability%E6%A8%A1%E5%BC%8F/</loc>
-    <lastmod>2020-10-01</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://gyl-coder.top/tags/Java/</loc>
     <lastmod>2020-10-01</lastmod>
     <changefreq>daily</changefreq>
@@ -319,7 +298,7 @@
   </url>
   
   <url>
-    <loc>https://gyl-coder.top/tags/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</loc>
+    <loc>https://gyl-coder.top/tags/%E5%B9%B6%E5%8F%91/</loc>
     <lastmod>2020-10-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -340,14 +319,21 @@
   </url>
   
   <url>
-    <loc>https://gyl-coder.top/tags/%E9%99%90%E6%B5%81%E7%AE%97%E6%B3%95/</loc>
+    <loc>https://gyl-coder.top/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
     <lastmod>2020-10-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://gyl-coder.top/tags/%E8%AE%BE%E8%AE%A1/</loc>
+    <loc>https://gyl-coder.top/tags/Immutability%E6%A8%A1%E5%BC%8F/</loc>
+    <lastmod>2020-10-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://gyl-coder.top/tags/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</loc>
     <lastmod>2020-10-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -362,6 +348,20 @@
   
   <url>
     <loc>https://gyl-coder.top/tags/%E6%8A%BD%E8%B1%A1/</loc>
+    <lastmod>2020-10-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://gyl-coder.top/tags/%E9%99%90%E6%B5%81%E7%AE%97%E6%B3%95/</loc>
+    <lastmod>2020-10-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://gyl-coder.top/tags/%E8%AE%BE%E8%AE%A1/</loc>
     <lastmod>2020-10-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -531,13 +531,6 @@
 
   
   <url>
-    <loc>https://gyl-coder.top/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
-    <lastmod>2020-10-01</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://gyl-coder.top/categories/%E5%B9%B6%E5%8F%91/</loc>
     <lastmod>2020-10-01</lastmod>
     <changefreq>daily</changefreq>
@@ -545,7 +538,7 @@
   </url>
   
   <url>
-    <loc>https://gyl-coder.top/categories/%E8%AE%BE%E8%AE%A1/</loc>
+    <loc>https://gyl-coder.top/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
     <lastmod>2020-10-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -553,6 +546,13 @@
   
   <url>
     <loc>https://gyl-coder.top/categories/Java/</loc>
+    <lastmod>2020-10-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://gyl-coder.top/categories/%E8%AE%BE%E8%AE%A1/</loc>
     <lastmod>2020-10-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

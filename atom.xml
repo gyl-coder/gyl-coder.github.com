@@ -723,9 +723,9 @@ doIt();
     <category term="并发" scheme="https://gyl-coder.top/categories/%E5%B9%B6%E5%8F%91/"/>
     
     
-    <category term="并发" scheme="https://gyl-coder.top/tags/%E5%B9%B6%E5%8F%91/"/>
-    
     <category term="Java" scheme="https://gyl-coder.top/tags/Java/"/>
+    
+    <category term="并发" scheme="https://gyl-coder.top/tags/%E5%B9%B6%E5%8F%91/"/>
     
     <category term="等待通知机制" scheme="https://gyl-coder.top/tags/%E7%AD%89%E5%BE%85%E9%80%9A%E7%9F%A5%E6%9C%BA%E5%88%B6/"/>
     
@@ -753,9 +753,9 @@ doIt();
     <category term="并发" scheme="https://gyl-coder.top/categories/%E5%B9%B6%E5%8F%91/"/>
     
     
-    <category term="并发" scheme="https://gyl-coder.top/tags/%E5%B9%B6%E5%8F%91/"/>
-    
     <category term="Java" scheme="https://gyl-coder.top/tags/Java/"/>
+    
+    <category term="并发" scheme="https://gyl-coder.top/tags/%E5%B9%B6%E5%8F%91/"/>
     
   </entry>
   
@@ -791,9 +791,9 @@ doIt();
     <category term="并发" scheme="https://gyl-coder.top/categories/%E5%B9%B6%E5%8F%91/"/>
     
     
-    <category term="并发" scheme="https://gyl-coder.top/tags/%E5%B9%B6%E5%8F%91/"/>
-    
     <category term="Java" scheme="https://gyl-coder.top/tags/Java/"/>
+    
+    <category term="并发" scheme="https://gyl-coder.top/tags/%E5%B9%B6%E5%8F%91/"/>
     
   </entry>
   
@@ -815,9 +815,9 @@ doIt();
     <category term="并发" scheme="https://gyl-coder.top/categories/%E5%B9%B6%E5%8F%91/"/>
     
     
-    <category term="并发" scheme="https://gyl-coder.top/tags/%E5%B9%B6%E5%8F%91/"/>
-    
     <category term="Java" scheme="https://gyl-coder.top/tags/Java/"/>
+    
+    <category term="并发" scheme="https://gyl-coder.top/tags/%E5%B9%B6%E5%8F%91/"/>
     
     <category term="Concurrency" scheme="https://gyl-coder.top/tags/Concurrency/"/>
     
@@ -841,9 +841,9 @@ doIt();
     <category term="设计模式" scheme="https://gyl-coder.top/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
     
-    <category term="设计模式" scheme="https://gyl-coder.top/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
     <category term="并发" scheme="https://gyl-coder.top/tags/%E5%B9%B6%E5%8F%91/"/>
+    
+    <category term="设计模式" scheme="https://gyl-coder.top/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
     <category term="Immutability模式" scheme="https://gyl-coder.top/tags/Immutability%E6%A8%A1%E5%BC%8F/"/>
     
