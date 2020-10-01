@@ -44,10 +44,18 @@
   <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
   
     
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/heson525/fontawesome-pro@5.13.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css">
 
   
   
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
 
   
 
@@ -64,6 +72,12 @@
   <!-- import link -->
   
 
+  
+    
+      
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.18.1/styles/solarized-light.css">
+
+    
   
   
     
@@ -974,13 +988,127 @@
               <p><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/collection2.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/collection2.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" alt=""></p>
             </div>
 <p>下面是LinkedList中Node节点的定义，Node类是LinkedList的静态内部类。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line">    E item;          <span class="comment">// 当前节点所存数据</span></span><br><span class="line">    Node&lt;E&gt; next;    <span class="comment">// 当前节点的下一个节点</span></span><br><span class="line">    Node&lt;E&gt; prev;    <span class="comment">// 当前节点的前一个节点</span></span><br><span class="line">    Node(Node&lt;E&gt; prev, E element, Node&lt;E&gt; next) &#123;</span><br><span class="line">        <span class="keyword">this</span>.item = element;</span><br><span class="line">        <span class="keyword">this</span>.next = next;</span><br><span class="line">        <span class="keyword">this</span>.prev = prev;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="language-java">private static class Node&lt;E&gt; &amp;#123;
+    E item;          // 当前节点所存数据
+    Node&lt;E&gt; next;    // 当前节点的下一个节点
+    Node&lt;E&gt; prev;    // 当前节点的前一个节点
+    Node(Node&lt;E&gt; prev, E element, Node&lt;E&gt; next) &amp;#123;
+        this.item = element;
+        this.next = next;
+        this.prev = prev;
+    &amp;#125;
+&amp;#125;
+</code></pre>
 <h2 id="构造方法（Construction-method）"><a class="header-anchor" href="#构造方法（Construction-method）">¶</a>构造方法（Construction method）</h2>
 <p>LinkedList提供了两种种方式的构造器，构造一个空列表、以及构造一个包含指定collection的元素的列表，这些元素按照该collection的迭代器返回的顺序排列的。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">LinkedList</span><span class="params">()</span> </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">LinkedList</span><span class="params">(Collection&lt;? extends E&gt; c)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>();</span><br><span class="line">    addAll(c);   <span class="comment">// 调用addAll方法，构建一个包含指定集合c的列表</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="language-java">public LinkedList() &amp;#123;
+&amp;#125;
+
+public LinkedList(Collection&lt;? extends E&gt; c) &amp;#123;
+    this();
+    addAll(c);   // 调用addAll方法，构建一个包含指定集合c的列表
+&amp;#125;
+</code></pre>
 <h2 id="添加元素"><a class="header-anchor" href="#添加元素">¶</a>添加元素</h2>
 <p>因为LinkedList即实现了List接口，又实现了Deque接口，所以LinkedList既可以添加将元素添加到尾部，也可以将元素添加到指定索引位置，还可以添加添加整个集合；另外既可以在头部添加，又可以在尾部添加。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//添加元素作为第一个元素</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addFirst</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">    linkFirst(e);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//店家元素作为最后一个元素</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addLast</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">    linkLast(e);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//使用对应参数作为第一个节点，内部使用</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">linkFirst</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; f = first;<span class="comment">//得到首节点</span></span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; newNode = <span class="keyword">new</span> Node&lt;&gt;(<span class="keyword">null</span>, e, f);<span class="comment">//创建一个节点</span></span><br><span class="line">    first = newNode;        <span class="comment">//更新首节点</span></span><br><span class="line">    <span class="keyword">if</span> (f == <span class="keyword">null</span>)</span><br><span class="line">        last = newNode;     <span class="comment">//如果之前首节点为空(size==0)，那么尾节点就是首节点</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        f.prev = newNode;   <span class="comment">//如果之前首节点不为空，之前的首节点的前一个节点为当前首节点</span></span><br><span class="line">    size++;                 <span class="comment">//长度+1</span></span><br><span class="line">    modCount++;             <span class="comment">//修改次数+1</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//使用对应参数作为尾节点</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">linkLast</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; l = last; <span class="comment">//得到尾节点</span></span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; newNode = <span class="keyword">new</span> Node&lt;&gt;(l, e, <span class="keyword">null</span>);<span class="comment">//使用参数创建一个节点</span></span><br><span class="line">    last = newNode;         <span class="comment">//设置尾节点</span></span><br><span class="line">    <span class="keyword">if</span> (l == <span class="keyword">null</span>)</span><br><span class="line">        first = newNode;    <span class="comment">//如果之前尾节点为空(size==0)，首节点即尾节点</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        l.next = newNode;   <span class="comment">//如果之前尾节点不为空，之前的尾节点的后一个就是当前的尾节点</span></span><br><span class="line">    size++;</span><br><span class="line">    modCount++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//在非空节点succ之前插入元素E。</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">linkBefore</span><span class="params">(E e, Node&lt;E&gt; succ)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; pred = succ.prev;<span class="comment">//获取前一个节点</span></span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; newNode = <span class="keyword">new</span> Node&lt;&gt;(pred, e, succ);<span class="comment">//使用参数创建新的节点</span></span><br><span class="line">    succ.prev = newNode;<span class="comment">//当前节点指向新的节点</span></span><br><span class="line">    <span class="keyword">if</span> (pred == <span class="keyword">null</span>)</span><br><span class="line">        first = newNode;<span class="comment">//如果前一个节点为null，新的节点就是首节点</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        pred.next = newNode;<span class="comment">//如果存在前节点，那么前节点的向后指向新节点</span></span><br><span class="line">    size++;</span><br><span class="line">    modCount++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//添加指定集合的元素到列表，默认从最后开始添加</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">addAll</span><span class="params">(Collection&lt;? extends E&gt; c)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> addAll(size, c);<span class="comment">//size表示最后一个位置</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">从指定位置（而不是下标！下标即索引从0开始，位置可以看做从1开始，其实也是0）后面添加指定集合的元素到列表中，只要有至少一次添加就会返回true</span></span><br><span class="line"><span class="comment">index换成position应该会更好理解，所以也就是从索引为index(position)的元素的前面索引为index-1的后面添加！</span></span><br><span class="line"><span class="comment">当然位置可以为0啊，为0的时候就是从位置0(虽然它不存在)后面开始添加嘛，所以理所当然就是添加到第一个位置（位置1的前面）的前面</span></span><br><span class="line"><span class="comment">比如列表：0 1 2 3，如果此处index=4(实际索引为3)，就是在元素3后面添加；如果index=3(实际索引为2)，就在元素2后面添加。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">addAll</span><span class="params">(<span class="keyword">int</span> index, Collection&lt;? extends E&gt; c)</span> </span>&#123;</span><br><span class="line">    checkPositionIndex(index);  <span class="comment">//检查索引是否正确（0&lt;=index&lt;=size）</span></span><br><span class="line">    Object[] a = c.toArray();   <span class="comment">//得到元素数组</span></span><br><span class="line">    <span class="keyword">int</span> numNew = a.length;      <span class="comment">//得到元素个数</span></span><br><span class="line">    <span class="keyword">if</span> (numNew == <span class="number">0</span>)            <span class="comment">//若没有元素要添加，直接返回false</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    Node&lt;E&gt; pred, succ;</span><br><span class="line">    <span class="keyword">if</span> (index == size) &#123;    <span class="comment">//如果是在末尾开始添加，当前节点后一个节点初始化为null，前一个节点为尾节点</span></span><br><span class="line">        succ = <span class="keyword">null</span>;        <span class="comment">//这里可以看做node(index)，不过index=size了（index最大只能是size-1），所以这里的succ只能=null，也方便后面判断</span></span><br><span class="line">        pred = last;        </span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;                <span class="comment">//如果不是从末尾开始添加，当前位置的节点为指定位置的节点，前一个节点为要添加的节点的前一个节点</span></span><br><span class="line">        succ = node(index); <span class="comment">//添加好元素后(整个新加的)的后一个节点</span></span><br><span class="line">        pred = succ.prev;   </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//遍历数组并添加到列表中</span></span><br><span class="line">    <span class="keyword">for</span> (Object o : a) &#123;</span><br><span class="line">        <span class="meta">@SuppressWarnings(&quot;unchecked&quot;)</span> E e = (E) o;</span><br><span class="line">        Node&lt;E&gt; newNode = <span class="keyword">new</span> Node&lt;&gt;(pred, e, <span class="keyword">null</span>);<span class="comment">//创建一个节点，向前指向上面得到的前节点</span></span><br><span class="line">        <span class="keyword">if</span> (pred == <span class="keyword">null</span>)</span><br><span class="line">            first = newNode;    <span class="comment">//若当前节点为null，则新加的节点为首节点</span></span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            pred.next = newNode;<span class="comment">//如果存在前节点，前节点会向后指向新加的节点</span></span><br><span class="line">        pred = newNode;         <span class="comment">//新加的节点成为前一个节点</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (succ == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="comment">//pred.next = null  //加上这句也可以更好的理解</span></span><br><span class="line">        last = pred;        <span class="comment">//如果是从最后开始添加的，则最后添加的节点成为尾节点</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        pred.next = succ;   <span class="comment">//如果不是从最后开始添加的，则最后添加的节点向后指向之前得到的后续第一个节点</span></span><br><span class="line">        succ.prev = pred;   <span class="comment">//当前，后续的第一个节点也应改为向前指向最后一个添加的节点</span></span><br><span class="line">    &#125;</span><br><span class="line">    size += numNew;</span><br><span class="line">    modCount++;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//将指定的元素(E element)插入到列表的指定位置(index)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> index, E element)</span> </span>&#123;</span><br><span class="line">    checkPositionIndex(index); <span class="comment">//index &gt;= 0 &amp;&amp; index &lt;= size</span></span><br><span class="line">    <span class="keyword">if</span> (index == size) </span><br><span class="line">        linkLast(element); <span class="comment">//尾插入</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        linkBefore(element, node(index));  <span class="comment">//中间插入</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="language-java">//添加元素作为第一个元素
+public void addFirst(E e) &amp;#123;
+    linkFirst(e);
+&amp;#125;
+//店家元素作为最后一个元素
+public void addLast(E e) &amp;#123;
+    linkLast(e);
+&amp;#125;
+//使用对应参数作为第一个节点，内部使用
+private void linkFirst(E e) &amp;#123;
+    final Node&lt;E&gt; f = first;//得到首节点
+    final Node&lt;E&gt; newNode = new Node&lt;&gt;(null, e, f);//创建一个节点
+    first = newNode;        //更新首节点
+    if (f == null)
+        last = newNode;     //如果之前首节点为空(size==0)，那么尾节点就是首节点
+    else
+        f.prev = newNode;   //如果之前首节点不为空，之前的首节点的前一个节点为当前首节点
+    size++;                 //长度+1
+    modCount++;             //修改次数+1
+&amp;#125;
+//使用对应参数作为尾节点
+void linkLast(E e) &amp;#123;
+    final Node&lt;E&gt; l = last; //得到尾节点
+    final Node&lt;E&gt; newNode = new Node&lt;&gt;(l, e, null);//使用参数创建一个节点
+    last = newNode;         //设置尾节点
+    if (l == null)
+        first = newNode;    //如果之前尾节点为空(size==0)，首节点即尾节点
+    else
+        l.next = newNode;   //如果之前尾节点不为空，之前的尾节点的后一个就是当前的尾节点
+    size++;
+    modCount++;
+&amp;#125;
+//在非空节点succ之前插入元素E。
+void linkBefore(E e, Node&lt;E&gt; succ) &amp;#123;
+    final Node&lt;E&gt; pred = succ.prev;//获取前一个节点
+    final Node&lt;E&gt; newNode = new Node&lt;&gt;(pred, e, succ);//使用参数创建新的节点
+    succ.prev = newNode;//当前节点指向新的节点
+    if (pred == null)
+        first = newNode;//如果前一个节点为null，新的节点就是首节点
+    else
+        pred.next = newNode;//如果存在前节点，那么前节点的向后指向新节点
+    size++;
+    modCount++;
+&amp;#125;
+//添加指定集合的元素到列表，默认从最后开始添加
+public boolean addAll(Collection&lt;? extends E&gt; c) &amp;#123;
+    return addAll(size, c);//size表示最后一个位置
+&amp;#125;
+/*
+从指定位置（而不是下标！下标即索引从0开始，位置可以看做从1开始，其实也是0）后面添加指定集合的元素到列表中，只要有至少一次添加就会返回true
+index换成position应该会更好理解，所以也就是从索引为index(position)的元素的前面索引为index-1的后面添加！
+当然位置可以为0啊，为0的时候就是从位置0(虽然它不存在)后面开始添加嘛，所以理所当然就是添加到第一个位置（位置1的前面）的前面
+比如列表：0 1 2 3，如果此处index=4(实际索引为3)，就是在元素3后面添加；如果index=3(实际索引为2)，就在元素2后面添加。
+*/
+public boolean addAll(int index, Collection&lt;? extends E&gt; c) &amp;#123;
+    checkPositionIndex(index);  //检查索引是否正确（0&lt;=index&lt;=size）
+    Object[] a = c.toArray();   //得到元素数组
+    int numNew = a.length;      //得到元素个数
+    if (numNew == 0)            //若没有元素要添加，直接返回false
+        return false;
+    Node&lt;E&gt; pred, succ;
+    if (index == size) &amp;#123;    //如果是在末尾开始添加，当前节点后一个节点初始化为null，前一个节点为尾节点
+        succ = null;        //这里可以看做node(index)，不过index=size了（index最大只能是size-1），所以这里的succ只能=null，也方便后面判断
+        pred = last;        
+    &amp;#125; else &amp;#123;                //如果不是从末尾开始添加，当前位置的节点为指定位置的节点，前一个节点为要添加的节点的前一个节点
+        succ = node(index); //添加好元素后(整个新加的)的后一个节点
+        pred = succ.prev;   
+    &amp;#125;
+    //遍历数组并添加到列表中
+    for (Object o : a) &amp;#123;
+        @SuppressWarnings(&quot;unchecked&quot;) E e = (E) o;
+        Node&lt;E&gt; newNode = new Node&lt;&gt;(pred, e, null);//创建一个节点，向前指向上面得到的前节点
+        if (pred == null)
+            first = newNode;    //若当前节点为null，则新加的节点为首节点
+        else
+            pred.next = newNode;//如果存在前节点，前节点会向后指向新加的节点
+        pred = newNode;         //新加的节点成为前一个节点
+    &amp;#125;
+    if (succ == null) &amp;#123;
+        //pred.next = null  //加上这句也可以更好的理解
+        last = pred;        //如果是从最后开始添加的，则最后添加的节点成为尾节点
+    &amp;#125; else &amp;#123;
+        pred.next = succ;   //如果不是从最后开始添加的，则最后添加的节点向后指向之前得到的后续第一个节点
+        succ.prev = pred;   //当前，后续的第一个节点也应改为向前指向最后一个添加的节点
+    &amp;#125;
+    size += numNew;
+    modCount++;
+    return true;
+&amp;#125;
+//将指定的元素(E element)插入到列表的指定位置(index)
+public void add(int index, E element) &amp;#123;
+    checkPositionIndex(index); //index &gt;= 0 &amp;&amp; index &lt;= size
+    if (index == size) 
+        linkLast(element); //尾插入
+    else
+        linkBefore(element, node(index));  //中间插入
+&amp;#125;
+</code></pre>
 <p><strong>linkBefore的添加步骤：</strong></p>
 <ol>
 <li>创建newNode节点，将newNode的后继指针指向succ，前驱指针指向pred</li>
@@ -1000,17 +1128,401 @@
 </ol>
 <h2 id="删除元素"><a class="header-anchor" href="#删除元素">¶</a>删除元素</h2>
 <p>同样的LinkedList也提供了很多方法来删除元素</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 删除首节点并返回删除前首节点的值，内部使用 (f == first &amp;&amp; f != null)</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> E <span class="title">unlinkFirst</span><span class="params">(Node&lt;E&gt; f)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> E element = f.item;      <span class="comment">// 获取首节点的值 </span></span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; next = f.next;   <span class="comment">// 获取首节点的后一个节点</span></span><br><span class="line">    f.item = <span class="keyword">null</span>;</span><br><span class="line">    f.next = <span class="keyword">null</span>; <span class="comment">// help GC</span></span><br><span class="line">    first = next;                 <span class="comment">// 更新首节点</span></span><br><span class="line">    <span class="keyword">if</span> (next == <span class="keyword">null</span>)             <span class="comment">//如果不存在下一个节点，则首尾都为null</span></span><br><span class="line">        last = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        next.prev = <span class="keyword">null</span>;        <span class="comment">//如果存在下一个节点，那它的前指针为null</span></span><br><span class="line">    size--;</span><br><span class="line">    modCount++;</span><br><span class="line">    <span class="keyword">return</span> element;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 删除尾节点，并返回尾节点的元素 （assert l == last &amp;&amp; l != null）</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> E <span class="title">unlinkLast</span><span class="params">(Node&lt;E&gt; l)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> E element = l.item;<span class="comment">//获取尾节点的值</span></span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; prev = l.prev;<span class="comment">//获取尾节点前一个节点</span></span><br><span class="line">    l.item = <span class="keyword">null</span>;</span><br><span class="line">    l.prev = <span class="keyword">null</span>;   <span class="comment">// help GC</span></span><br><span class="line">    last = prev;        <span class="comment">//前一个节点成为新的尾节点</span></span><br><span class="line">    <span class="keyword">if</span> (prev == <span class="keyword">null</span>)</span><br><span class="line">        first = <span class="keyword">null</span>;   <span class="comment">//如果前一个节点不存在，则首尾都为null</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        prev.next = <span class="keyword">null</span>;<span class="comment">//如果前一个节点存在，先后指向null</span></span><br><span class="line">    size--;</span><br><span class="line">    modCount++;</span><br><span class="line">    <span class="keyword">return</span> element;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 删除指定节点x并返回节点的值（x != null）</span></span><br><span class="line"><span class="function">E <span class="title">unlink</span><span class="params">(Node&lt;E&gt; x)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//获取当前值和前后节点</span></span><br><span class="line">    <span class="keyword">final</span> E element = x.item;</span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; next = x.next;</span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; prev = x.prev;</span><br><span class="line">    <span class="keyword">if</span> (prev == <span class="keyword">null</span>) &#123;</span><br><span class="line">        first = next;   <span class="comment">//如果前一个节点为空(如当前节点为首节点)，后一个节点成为新的首节点</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        prev.next = next;<span class="comment">//如果前一个节点不为空，那么他先后指向当前的下一个节点</span></span><br><span class="line">        x.prev = <span class="keyword">null</span>;  <span class="comment">//help  GC</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (next == <span class="keyword">null</span>) &#123;</span><br><span class="line">        last = prev;    <span class="comment">//如果后一个节点为空(如当前节点为尾节点)，当前节点前一个成为新的尾节点</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        next.prev = prev;<span class="comment">//如果后一个节点不为空，后一个节点向前指向当前的前一个节点</span></span><br><span class="line">        x.next = <span class="keyword">null</span>;  <span class="comment">//help  GC</span></span><br><span class="line">    &#125;</span><br><span class="line">    x.item = <span class="keyword">null</span>;   <span class="comment">//help  GC</span></span><br><span class="line">    size--;</span><br><span class="line">    modCount++;</span><br><span class="line">    <span class="keyword">return</span> element;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//删除第一个元素并返回删除的元素</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> E <span class="title">removeFirst</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; f = first;<span class="comment">//得到第一个节点</span></span><br><span class="line">    <span class="keyword">if</span> (f == <span class="keyword">null</span>)          <span class="comment">//如果为空，抛出异常</span></span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> NoSuchElementException();</span><br><span class="line">    <span class="keyword">return</span> unlinkFirst(f);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//删除最后一个元素并返回删除的值</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> E <span class="title">removeLast</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; l = last;<span class="comment">//得到最后一个节点</span></span><br><span class="line">    <span class="keyword">if</span> (l == <span class="keyword">null</span>)          <span class="comment">//如果为空，抛出异常</span></span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> NoSuchElementException();</span><br><span class="line">    <span class="keyword">return</span> unlinkLast(l);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="language-java">// 删除首节点并返回删除前首节点的值，内部使用 (f == first &amp;&amp; f != null)
+private E unlinkFirst(Node&lt;E&gt; f) &amp;#123;
+    final E element = f.item;      // 获取首节点的值 
+    final Node&lt;E&gt; next = f.next;   // 获取首节点的后一个节点
+    f.item = null;
+    f.next = null; // help GC
+    first = next;                 // 更新首节点
+    if (next == null)             //如果不存在下一个节点，则首尾都为null
+        last = null;
+    else
+        next.prev = null;        //如果存在下一个节点，那它的前指针为null
+    size--;
+    modCount++;
+    return element;
+&amp;#125;
+// 删除尾节点，并返回尾节点的元素 （assert l == last &amp;&amp; l != null）
+private E unlinkLast(Node&lt;E&gt; l) &amp;#123;
+    final E element = l.item;//获取尾节点的值
+    final Node&lt;E&gt; prev = l.prev;//获取尾节点前一个节点
+    l.item = null;
+    l.prev = null;   // help GC
+    last = prev;        //前一个节点成为新的尾节点
+    if (prev == null)
+        first = null;   //如果前一个节点不存在，则首尾都为null
+    else
+        prev.next = null;//如果前一个节点存在，先后指向null
+    size--;
+    modCount++;
+    return element;
+&amp;#125;
+// 删除指定节点x并返回节点的值（x != null）
+E unlink(Node&lt;E&gt; x) &amp;#123;
+    //获取当前值和前后节点
+    final E element = x.item;
+    final Node&lt;E&gt; next = x.next;
+    final Node&lt;E&gt; prev = x.prev;
+    if (prev == null) &amp;#123;
+        first = next;   //如果前一个节点为空(如当前节点为首节点)，后一个节点成为新的首节点
+    &amp;#125; else &amp;#123;
+        prev.next = next;//如果前一个节点不为空，那么他先后指向当前的下一个节点
+        x.prev = null;  //help  GC
+    &amp;#125;
+    if (next == null) &amp;#123;
+        last = prev;    //如果后一个节点为空(如当前节点为尾节点)，当前节点前一个成为新的尾节点
+    &amp;#125; else &amp;#123;
+        next.prev = prev;//如果后一个节点不为空，后一个节点向前指向当前的前一个节点
+        x.next = null;  //help  GC
+    &amp;#125;
+    x.item = null;   //help  GC
+    size--;
+    modCount++;
+    return element;
+&amp;#125;
+//删除第一个元素并返回删除的元素
+public E removeFirst() &amp;#123;
+    final Node&lt;E&gt; f = first;//得到第一个节点
+    if (f == null)          //如果为空，抛出异常
+        throw new NoSuchElementException();
+    return unlinkFirst(f);
+&amp;#125;
+//删除最后一个元素并返回删除的值
+public E removeLast() &amp;#123;
+    final Node&lt;E&gt; l = last;//得到最后一个节点
+    if (l == null)          //如果为空，抛出异常
+        throw new NoSuchElementException();
+    return unlinkLast(l);
+&amp;#125;
+</code></pre>
 <h2 id="序列化方法"><a class="header-anchor" href="#序列化方法">¶</a>序列化方法</h2>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">876323262645176354L</span>;</span><br><span class="line"><span class="comment">//序列化：将linkedList的“大小，所有的元素值”都写入到输出流中</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">writeObject</span><span class="params">(java.io.ObjectOutputStream s)</span></span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> java.io.IOException </span>&#123;</span><br><span class="line">    s.defaultWriteObject();</span><br><span class="line">    s.writeInt(size);</span><br><span class="line">    <span class="keyword">for</span> (Node&lt;E&gt; x = first; x != <span class="keyword">null</span>; x = x.next)</span><br><span class="line">        s.writeObject(x.item);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//反序列化：先将LinkedList的“大小”读出，然后将“所有的元素值”读出</span></span><br><span class="line"><span class="meta">@SuppressWarnings(&quot;unchecked&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">readObject</span><span class="params">(java.io.ObjectInputStream s)</span></span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> java.io.IOException, ClassNotFoundException </span>&#123;</span><br><span class="line">    s.defaultReadObject();</span><br><span class="line">    <span class="keyword">int</span> size = s.readInt();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++)</span><br><span class="line">        linkLast((E)s.readObject());  <span class="comment">//以尾插入的方式</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="language-java">private static final long serialVersionUID = 876323262645176354L;
+//序列化：将linkedList的“大小，所有的元素值”都写入到输出流中
+private void writeObject(java.io.ObjectOutputStream s)
+    throws java.io.IOException &amp;#123;
+    s.defaultWriteObject();
+    s.writeInt(size);
+    for (Node&lt;E&gt; x = first; x != null; x = x.next)
+        s.writeObject(x.item);
+&amp;#125;
+//反序列化：先将LinkedList的“大小”读出，然后将“所有的元素值”读出
+@SuppressWarnings(&quot;unchecked&quot;)
+private void readObject(java.io.ObjectInputStream s)
+    throws java.io.IOException, ClassNotFoundException &amp;#123;
+    s.defaultReadObject();
+    int size = s.readInt();
+    for (int i = 0; i &lt; size; i++)
+        linkLast((E)s.readObject());  //以尾插入的方式
+&amp;#125;
+</code></pre>
 <h2 id="队列操作"><a class="header-anchor" href="#队列操作">¶</a>队列操作</h2>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//提供普通队列和双向队列的功能，当然，也可以实现栈，FIFO，FILO</span></span><br><span class="line"><span class="comment">//出队（从前端），获得第一个元素，不存在会返回null，不会删除元素（节点）</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> E <span class="title">peek</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; f = first;</span><br><span class="line">    <span class="keyword">return</span> (f == <span class="keyword">null</span>) ? <span class="keyword">null</span> : f.item;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//出队（从前端），不删除元素，若为null会抛出异常而不是返回null</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> E <span class="title">element</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> getFirst();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//出队（从前端），如果不存在会返回null，存在的话会返回值并移除这个元素（节点）</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> E <span class="title">poll</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; f = first;</span><br><span class="line">    <span class="keyword">return</span> (f == <span class="keyword">null</span>) ? <span class="keyword">null</span> : unlinkFirst(f);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//出队（从前端），如果不存在会抛出异常而不是返回null，存在的话会返回值并移除这个元素（节点）</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> E <span class="title">remove</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> removeFirst();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//入队（从后端），始终返回true</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">offer</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> add(e);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//入队（从前端），始终返回true</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">offerFirst</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">    addFirst(e);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//入队（从后端），始终返回true</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">offerLast</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">    addLast(e);<span class="comment">//linkLast(e)</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//出队（从前端），获得第一个元素，不存在会返回null，不会删除元素（节点）</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> E <span class="title">peekFirst</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; f = first;</span><br><span class="line">    <span class="keyword">return</span> (f == <span class="keyword">null</span>) ? <span class="keyword">null</span> : f.item;</span><br><span class="line"> &#125;</span><br><span class="line"><span class="comment">//出队（从后端），获得最后一个元素，不存在会返回null，不会删除元素（节点）</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> E <span class="title">peekLast</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; l = last;</span><br><span class="line">    <span class="keyword">return</span> (l == <span class="keyword">null</span>) ? <span class="keyword">null</span> : l.item;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//出队（从前端），获得第一个元素，不存在会返回null，会删除元素（节点）</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> E <span class="title">pollFirst</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; f = first;</span><br><span class="line">    <span class="keyword">return</span> (f == <span class="keyword">null</span>) ? <span class="keyword">null</span> : unlinkFirst(f);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//出队（从后端），获得最后一个元素，不存在会返回null，会删除元素（节点）</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> E <span class="title">pollLast</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; l = last;</span><br><span class="line">    <span class="keyword">return</span> (l == <span class="keyword">null</span>) ? <span class="keyword">null</span> : unlinkLast(l);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//入栈，从前面添加</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">    addFirst(e);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//出栈，返回栈顶元素，从前面移除（会删除）</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> E <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> removeFirst();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="language-java">//提供普通队列和双向队列的功能，当然，也可以实现栈，FIFO，FILO
+//出队（从前端），获得第一个元素，不存在会返回null，不会删除元素（节点）
+public E peek() &amp;#123;
+    final Node&lt;E&gt; f = first;
+    return (f == null) ? null : f.item;
+&amp;#125;
+//出队（从前端），不删除元素，若为null会抛出异常而不是返回null
+public E element() &amp;#123;
+    return getFirst();
+&amp;#125;
+//出队（从前端），如果不存在会返回null，存在的话会返回值并移除这个元素（节点）
+public E poll() &amp;#123;
+    final Node&lt;E&gt; f = first;
+    return (f == null) ? null : unlinkFirst(f);
+&amp;#125;
+//出队（从前端），如果不存在会抛出异常而不是返回null，存在的话会返回值并移除这个元素（节点）
+public E remove() &amp;#123;
+    return removeFirst();
+&amp;#125;
+//入队（从后端），始终返回true
+public boolean offer(E e) &amp;#123;
+    return add(e);
+&amp;#125;
+//入队（从前端），始终返回true
+public boolean offerFirst(E e) &amp;#123;
+    addFirst(e);
+    return true;
+&amp;#125;
+//入队（从后端），始终返回true
+public boolean offerLast(E e) &amp;#123;
+    addLast(e);//linkLast(e)
+    return true;
+&amp;#125;
+//出队（从前端），获得第一个元素，不存在会返回null，不会删除元素（节点）
+public E peekFirst() &amp;#123;
+    final Node&lt;E&gt; f = first;
+    return (f == null) ? null : f.item;
+ &amp;#125;
+//出队（从后端），获得最后一个元素，不存在会返回null，不会删除元素（节点）
+public E peekLast() &amp;#123;
+    final Node&lt;E&gt; l = last;
+    return (l == null) ? null : l.item;
+&amp;#125;
+//出队（从前端），获得第一个元素，不存在会返回null，会删除元素（节点）
+public E pollFirst() &amp;#123;
+    final Node&lt;E&gt; f = first;
+    return (f == null) ? null : unlinkFirst(f);
+&amp;#125;
+//出队（从后端），获得最后一个元素，不存在会返回null，会删除元素（节点）
+public E pollLast() &amp;#123;
+    final Node&lt;E&gt; l = last;
+    return (l == null) ? null : unlinkLast(l);
+&amp;#125;
+//入栈，从前面添加
+public void push(E e) &amp;#123;
+    addFirst(e);
+&amp;#125;
+//出栈，返回栈顶元素，从前面移除（会删除）
+public E pop() &amp;#123;
+    return removeFirst();
+&amp;#125;
+</code></pre>
 <h2 id="迭代器"><a class="header-anchor" href="#迭代器">¶</a>迭代器</h2>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//返回迭代器</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Iterator&lt;E&gt; <span class="title">descendingIterator</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> DescendingIterator();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//迭代器</span></span><br><span class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">DescendingIterator</span> <span class="keyword">implements</span> <span class="title">Iterator</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> ListItr itr = <span class="keyword">new</span> ListItr(size());</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> itr.hasPrevious();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> E <span class="title">next</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> itr.previous();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        itr.remove();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> ListIterator&lt;E&gt; <span class="title">listIterator</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">        checkPositionIndex(index);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ListItr(index);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">ListItr</span> <span class="keyword">implements</span> <span class="title">ListIterator</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Node&lt;E&gt; lastReturned;</span><br><span class="line">    <span class="keyword">private</span> Node&lt;E&gt; next;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> nextIndex;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> expectedModCount = modCount;<span class="comment">//保存当前modCount，确保fail-fast机制</span></span><br><span class="line">    ListItr(<span class="keyword">int</span> index) &#123;</span><br><span class="line">        next = (index == size) ? <span class="keyword">null</span> : node(index);<span class="comment">//得到当前索引指向的next节点</span></span><br><span class="line">        nextIndex = index;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span> </span>&#123;   <span class="comment">// 判断后面是否还有元素</span></span><br><span class="line">        <span class="keyword">return</span> nextIndex &lt; size;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> E <span class="title">next</span><span class="params">()</span> </span>&#123;     <span class="comment">//获取下一个节点</span></span><br><span class="line">        checkForComodification();</span><br><span class="line">        <span class="keyword">if</span> (!hasNext())</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> NoSuchElementException();</span><br><span class="line">        lastReturned = next;</span><br><span class="line">        next = next.next;</span><br><span class="line">        nextIndex++;</span><br><span class="line">        <span class="keyword">return</span> lastReturned.item;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasPrevious</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> nextIndex &gt; <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//获取前一个节点，将next节点向前移</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> E <span class="title">previous</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        checkForComodification();</span><br><span class="line">        <span class="keyword">if</span> (!hasPrevious())</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> NoSuchElementException();</span><br><span class="line">        lastReturned = next = (next == <span class="keyword">null</span>) ? last : next.prev;</span><br><span class="line">        nextIndex--;</span><br><span class="line">        <span class="keyword">return</span> lastReturned.item;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">nextIndex</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> nextIndex;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">previousIndex</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> nextIndex - <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        checkForComodification();</span><br><span class="line">        <span class="keyword">if</span> (lastReturned == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException();</span><br><span class="line">        Node&lt;E&gt; lastNext = lastReturned.next;</span><br><span class="line">        unlink(lastReturned);</span><br><span class="line">        <span class="keyword">if</span> (next == lastReturned)</span><br><span class="line">            next = lastNext;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            nextIndex--;</span><br><span class="line">        lastReturned = <span class="keyword">null</span>;</span><br><span class="line">        expectedModCount++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">set</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (lastReturned == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException();</span><br><span class="line">        checkForComodification();</span><br><span class="line">        lastReturned.item = e;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">        checkForComodification();</span><br><span class="line">        lastReturned = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">if</span> (next == <span class="keyword">null</span>)</span><br><span class="line">            linkLast(e);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            linkBefore(e, next);</span><br><span class="line">        nextIndex++;</span><br><span class="line">        expectedModCount++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">forEachRemaining</span><span class="params">(Consumer&lt;? <span class="keyword">super</span> E&gt; action)</span> </span>&#123;</span><br><span class="line">        Objects.requireNonNull(action);</span><br><span class="line">        <span class="keyword">while</span> (modCount == expectedModCount &amp;&amp; nextIndex &lt; size) &#123;</span><br><span class="line">            action.accept(next.item);</span><br><span class="line">            lastReturned = next;</span><br><span class="line">            next = next.next;</span><br><span class="line">            nextIndex++;</span><br><span class="line">        &#125;</span><br><span class="line">        checkForComodification();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">final</span> <span class="keyword">void</span> <span class="title">checkForComodification</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (modCount != expectedModCount)</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> ConcurrentModificationException();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="language-java">//返回迭代器
+public Iterator&lt;E&gt; descendingIterator() &amp;#123;
+    return new DescendingIterator();
+&amp;#125;
+//迭代器
+private class DescendingIterator implements Iterator&lt;E&gt; &amp;#123;
+    private final ListItr itr = new ListItr(size());
+    public boolean hasNext() &amp;#123;
+        return itr.hasPrevious();
+    &amp;#125;
+    public E next() &amp;#123;
+        return itr.previous();
+    &amp;#125;
+    public void remove() &amp;#123;
+        itr.remove();
+    &amp;#125;
+&amp;#125;
+public ListIterator&lt;E&gt; listIterator(int index) &amp;#123;
+        checkPositionIndex(index);
+        return new ListItr(index);
+&amp;#125;
+private class ListItr implements ListIterator&lt;E&gt; &amp;#123;
+    private Node&lt;E&gt; lastReturned;
+    private Node&lt;E&gt; next;
+    private int nextIndex;
+    private int expectedModCount = modCount;//保存当前modCount，确保fail-fast机制
+    ListItr(int index) &amp;#123;
+        next = (index == size) ? null : node(index);//得到当前索引指向的next节点
+        nextIndex = index;
+    &amp;#125;
+    public boolean hasNext() &amp;#123;   // 判断后面是否还有元素
+        return nextIndex &lt; size;
+    &amp;#125;
+    
+    public E next() &amp;#123;     //获取下一个节点
+        checkForComodification();
+        if (!hasNext())
+            throw new NoSuchElementException();
+        lastReturned = next;
+        next = next.next;
+        nextIndex++;
+        return lastReturned.item;
+    &amp;#125;
+    public boolean hasPrevious() &amp;#123;
+        return nextIndex &gt; 0;
+    &amp;#125;
+    //获取前一个节点，将next节点向前移
+    public E previous() &amp;#123;
+        checkForComodification();
+        if (!hasPrevious())
+            throw new NoSuchElementException();
+        lastReturned = next = (next == null) ? last : next.prev;
+        nextIndex--;
+        return lastReturned.item;
+    &amp;#125;
+    public int nextIndex() &amp;#123;
+        return nextIndex;
+    &amp;#125;
+    public int previousIndex() &amp;#123;
+        return nextIndex - 1;
+    &amp;#125;
+    public void remove() &amp;#123;
+        checkForComodification();
+        if (lastReturned == null)
+            throw new IllegalStateException();
+        Node&lt;E&gt; lastNext = lastReturned.next;
+        unlink(lastReturned);
+        if (next == lastReturned)
+            next = lastNext;
+        else
+            nextIndex--;
+        lastReturned = null;
+        expectedModCount++;
+    &amp;#125;
+    public void set(E e) &amp;#123;
+        if (lastReturned == null)
+            throw new IllegalStateException();
+        checkForComodification();
+        lastReturned.item = e;
+    &amp;#125;
+    public void add(E e) &amp;#123;
+        checkForComodification();
+        lastReturned = null;
+        if (next == null)
+            linkLast(e);
+        else
+            linkBefore(e, next);
+        nextIndex++;
+        expectedModCount++;
+    &amp;#125;
+    public void forEachRemaining(Consumer&lt;? super E&gt; action) &amp;#123;
+        Objects.requireNonNull(action);
+        while (modCount == expectedModCount &amp;&amp; nextIndex &lt; size) &amp;#123;
+            action.accept(next.item);
+            lastReturned = next;
+            next = next.next;
+            nextIndex++;
+        &amp;#125;
+        checkForComodification();
+    &amp;#125;
+    final void checkForComodification() &amp;#123;
+        if (modCount != expectedModCount)
+            throw new ConcurrentModificationException();
+    &amp;#125;
+&amp;#125;
+</code></pre>
 <p>在ListIterator的构造器中，得到了当前位置的节点，就是变量next。next()方法返回当前节点的值并将next指向其后继节点，previous()方法返回当前节点的前一个节点的值并将next节点指向其前驱节点。</p>
 <p>由于Node是一个双向节点，所以这用了一个节点就可以实现从前向后迭代和从后向前迭代。另外在ListIterator初始时，exceptedModCount保存了当前的modCount，如果在迭代期间，有操作改变了链表的底层结构，那么再操作迭代器的方法时将会抛出ConcurrentModificationException。</p>
 <h2 id="其他方法"><a class="header-anchor" href="#其他方法">¶</a>其他方法</h2>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取第一个元素</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> E <span class="title">getFirst</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; f = first;<span class="comment">//得到首节点</span></span><br><span class="line">    <span class="keyword">if</span> (f == <span class="keyword">null</span>)          <span class="comment">//如果为空，抛出异常</span></span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> NoSuchElementException();</span><br><span class="line">    <span class="keyword">return</span> f.item;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//获取最后一个元素</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> E <span class="title">getLast</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; l = last;<span class="comment">//得到尾节点</span></span><br><span class="line">    <span class="keyword">if</span> (l == <span class="keyword">null</span>)          <span class="comment">//如果为空，抛出异常</span></span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> NoSuchElementException();</span><br><span class="line">    <span class="keyword">return</span> l.item;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//检查是否包含某个元素，返回bool</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">contains</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> indexOf(o) != -<span class="number">1</span>;<span class="comment">//返回指定元素的索引位置，不存在就返回-1，然后比较返回bool值</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//返回列表长度</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> size;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//清空表</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span> </span>&#123;     <span class="comment">// help GC</span></span><br><span class="line">    <span class="keyword">for</span> (Node&lt;E&gt; x = first; x != <span class="keyword">null</span>; ) &#123;</span><br><span class="line">        Node&lt;E&gt; next = x.next;</span><br><span class="line">        x.item = <span class="keyword">null</span>;</span><br><span class="line">        x.next = <span class="keyword">null</span>;</span><br><span class="line">        x.prev = <span class="keyword">null</span>;</span><br><span class="line">        x = next;</span><br><span class="line">    &#125;</span><br><span class="line">    first = last = <span class="keyword">null</span>;</span><br><span class="line">    size = <span class="number">0</span>;</span><br><span class="line">    modCount++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//获取指定索引的节点的值</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> E <span class="title">get</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">    checkElementIndex(index);</span><br><span class="line">    <span class="keyword">return</span> node(index).item;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//修改指定索引的值并返回之前的值</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> E <span class="title">set</span><span class="params">(<span class="keyword">int</span> index, E element)</span> </span>&#123;</span><br><span class="line">    checkElementIndex(index);    <span class="comment">// 检查下标是否合法</span></span><br><span class="line">    Node&lt;E&gt; x = node(index);</span><br><span class="line">    E oldVal = x.item;</span><br><span class="line">    x.item = element;</span><br><span class="line">    <span class="keyword">return</span> oldVal;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//获取指定位置的节点</span></span><br><span class="line"><span class="function">Node&lt;E&gt; <span class="title">node</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (index &lt; (size &gt;&gt; <span class="number">1</span>)) &#123;<span class="comment">//如果位置索引小于列表长度的一半(或一半减一)，从前面开始遍历；</span></span><br><span class="line">        Node&lt;E&gt; x = first;<span class="comment">//index==0时不会循环，直接返回first</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; index; i++)</span><br><span class="line">            x = x.next;</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;                 <span class="comment">// 否则，从后面开始遍历</span></span><br><span class="line">        Node&lt;E&gt; x = last;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = size - <span class="number">1</span>; i &gt; index; i--)</span><br><span class="line">            x = x.prev;</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//获取指定元素从first开始的索引位置，不存在就返回-1</span></span><br><span class="line"><span class="comment">//这里不能按条件双向找了，所以通常根据索引获得元素的速度比通过元素获得索引的速度快</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">indexOf</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (o == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span> (Node&lt;E&gt; x = first; x != <span class="keyword">null</span>; x = x.next) &#123;</span><br><span class="line">            <span class="keyword">if</span> (x.item == <span class="keyword">null</span>)</span><br><span class="line">                <span class="keyword">return</span> index;</span><br><span class="line">            index++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (Node&lt;E&gt; x = first; x != <span class="keyword">null</span>; x = x.next) &#123;</span><br><span class="line">            <span class="keyword">if</span> (o.equals(x.item))</span><br><span class="line">                <span class="keyword">return</span> index;</span><br><span class="line">            index++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//获取指定元素从first开始最后出现的索引，不存在就返回-1</span></span><br><span class="line"><span class="comment">//但实际查找是从last开始的</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lastIndexOf</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> index = size;</span><br><span class="line">    <span class="keyword">if</span> (o == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span> (Node&lt;E&gt; x = last; x != <span class="keyword">null</span>; x = x.prev) &#123;</span><br><span class="line">            index--;</span><br><span class="line">            <span class="keyword">if</span> (x.item == <span class="keyword">null</span>)</span><br><span class="line">                <span class="keyword">return</span> index;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (Node&lt;E&gt; x = last; x != <span class="keyword">null</span>; x = x.prev) &#123;</span><br><span class="line">            index--;</span><br><span class="line">            <span class="keyword">if</span> (o.equals(x.item))</span><br><span class="line">                <span class="keyword">return</span> index;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//返回此 LinkedList实例的浅拷贝</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">clone</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    LinkedList&lt;E&gt; clone = superClone();</span><br><span class="line">    clone.first = clone.last = <span class="keyword">null</span>;</span><br><span class="line">    clone.size = <span class="number">0</span>;</span><br><span class="line">    clone.modCount = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (Node&lt;E&gt; x = first; x != <span class="keyword">null</span>; x = x.next)</span><br><span class="line">        clone.add(x.item);</span><br><span class="line">    <span class="keyword">return</span> clone;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//返回一个包含LinkedList中所有元素值的数组</span></span><br><span class="line"><span class="keyword">public</span> Object[] toArray() &#123;</span><br><span class="line">    Object[] result = <span class="keyword">new</span> Object[size];</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (Node&lt;E&gt; x = first; x != <span class="keyword">null</span>; x = x.next)</span><br><span class="line">        result[i++] = x.item;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//如果给定的参数数组长度足够，则将ArrayList中所有元素按序存放于参数数组中，并返回</span></span><br><span class="line"><span class="comment">//如果给定的参数数组长度小于LinkedList的长度，则返回一个新分配的、长度等于LinkedList长度的、包含LinkedList中所有元素的新数组</span></span><br><span class="line"><span class="meta">@SuppressWarnings(&quot;unchecked&quot;)</span></span><br><span class="line"><span class="keyword">public</span> &lt;T&gt; T[] toArray(T[] a) &#123;</span><br><span class="line">    <span class="keyword">if</span> (a.length &lt; size)</span><br><span class="line">        a = (T[])java.lang.reflect.Array.newInstance(</span><br><span class="line">                            a.getClass().getComponentType(), size);</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">    Object[] result = a;</span><br><span class="line">    <span class="keyword">for</span> (Node&lt;E&gt; x = first; x != <span class="keyword">null</span>; x = x.next)</span><br><span class="line">        result[i++] = x.item;</span><br><span class="line">    <span class="keyword">if</span> (a.length &gt; size)</span><br><span class="line">        a[size] = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="language-java">//获取第一个元素
+public E getFirst() &amp;#123;
+    final Node&lt;E&gt; f = first;//得到首节点
+    if (f == null)          //如果为空，抛出异常
+        throw new NoSuchElementException();
+    return f.item;
+&amp;#125;
+//获取最后一个元素
+public E getLast() &amp;#123;
+    final Node&lt;E&gt; l = last;//得到尾节点
+    if (l == null)          //如果为空，抛出异常
+        throw new NoSuchElementException();
+    return l.item;
+&amp;#125;
+//检查是否包含某个元素，返回bool
+public boolean contains(Object o) &amp;#123;
+    return indexOf(o) != -1;//返回指定元素的索引位置，不存在就返回-1，然后比较返回bool值
+&amp;#125;
+//返回列表长度
+public int size() &amp;#123;
+    return size;
+&amp;#125;
+//清空表
+public void clear() &amp;#123;     // help GC
+    for (Node&lt;E&gt; x = first; x != null; ) &amp;#123;
+        Node&lt;E&gt; next = x.next;
+        x.item = null;
+        x.next = null;
+        x.prev = null;
+        x = next;
+    &amp;#125;
+    first = last = null;
+    size = 0;
+    modCount++;
+&amp;#125;
+//获取指定索引的节点的值
+public E get(int index) &amp;#123;
+    checkElementIndex(index);
+    return node(index).item;
+&amp;#125;
+//修改指定索引的值并返回之前的值
+public E set(int index, E element) &amp;#123;
+    checkElementIndex(index);    // 检查下标是否合法
+    Node&lt;E&gt; x = node(index);
+    E oldVal = x.item;
+    x.item = element;
+    return oldVal;
+&amp;#125;
+//获取指定位置的节点
+Node&lt;E&gt; node(int index) &amp;#123;
+    if (index &lt; (size &gt;&gt; 1)) &amp;#123;//如果位置索引小于列表长度的一半(或一半减一)，从前面开始遍历；
+        Node&lt;E&gt; x = first;//index==0时不会循环，直接返回first
+        for (int i = 0; i &lt; index; i++)
+            x = x.next;
+        return x;
+    &amp;#125; else &amp;#123;                 // 否则，从后面开始遍历
+        Node&lt;E&gt; x = last;
+        for (int i = size - 1; i &gt; index; i--)
+            x = x.prev;
+        return x;
+    &amp;#125;
+&amp;#125;
+//获取指定元素从first开始的索引位置，不存在就返回-1
+//这里不能按条件双向找了，所以通常根据索引获得元素的速度比通过元素获得索引的速度快
+public int indexOf(Object o) &amp;#123;
+    int index = 0;
+    if (o == null) &amp;#123;
+        for (Node&lt;E&gt; x = first; x != null; x = x.next) &amp;#123;
+            if (x.item == null)
+                return index;
+            index++;
+        &amp;#125;
+    &amp;#125; else &amp;#123;
+        for (Node&lt;E&gt; x = first; x != null; x = x.next) &amp;#123;
+            if (o.equals(x.item))
+                return index;
+            index++;
+        &amp;#125;
+    &amp;#125;
+    return -1;
+&amp;#125;
+//获取指定元素从first开始最后出现的索引，不存在就返回-1
+//但实际查找是从last开始的
+public int lastIndexOf(Object o) &amp;#123;
+    int index = size;
+    if (o == null) &amp;#123;
+        for (Node&lt;E&gt; x = last; x != null; x = x.prev) &amp;#123;
+            index--;
+            if (x.item == null)
+                return index;
+        &amp;#125;
+    &amp;#125; else &amp;#123;
+        for (Node&lt;E&gt; x = last; x != null; x = x.prev) &amp;#123;
+            index--;
+            if (o.equals(x.item))
+                return index;
+        &amp;#125;
+    &amp;#125;
+    return -1;
+&amp;#125;
+//返回此 LinkedList实例的浅拷贝
+public Object clone() &amp;#123;
+    LinkedList&lt;E&gt; clone = superClone();
+    clone.first = clone.last = null;
+    clone.size = 0;
+    clone.modCount = 0;
+    for (Node&lt;E&gt; x = first; x != null; x = x.next)
+        clone.add(x.item);
+    return clone;
+&amp;#125;
+//返回一个包含LinkedList中所有元素值的数组
+public Object[] toArray() &amp;#123;
+    Object[] result = new Object[size];
+    int i = 0;
+    for (Node&lt;E&gt; x = first; x != null; x = x.next)
+        result[i++] = x.item;
+    return result;
+&amp;#125;
+//如果给定的参数数组长度足够，则将ArrayList中所有元素按序存放于参数数组中，并返回
+//如果给定的参数数组长度小于LinkedList的长度，则返回一个新分配的、长度等于LinkedList长度的、包含LinkedList中所有元素的新数组
+@SuppressWarnings(&quot;unchecked&quot;)
+public &lt;T&gt; T[] toArray(T[] a) &amp;#123;
+    if (a.length &lt; size)
+        a = (T[])java.lang.reflect.Array.newInstance(
+                            a.getClass().getComponentType(), size);
+    int i = 0;
+    Object[] result = a;
+    for (Node&lt;E&gt; x = first; x != null; x = x.next)
+        result[i++] = x.item;
+    if (a.length &gt; size)
+        a[size] = null;
+    return a;
+&amp;#125;
+</code></pre>
 
   
   
@@ -1026,7 +1538,7 @@
     <section class='body'>
       <div class="vlts-rps"><a class="item" href="\java\collection\ArrayList_grow\" title="ArrayList动态扩容机制" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life9.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life9.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">ArrayList动态扩容机制</span><span class="excerpt">我们通过一个具体的例子看一下ArrayList的扩容效果
 先看一下ArrayList的初始容量
-1234567ArrayL...</span></a><a class="item" href="\java\collection\Vector\" title="Vector 底层实现原理分析" rel="bookmark "><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">Vector 底层实现原理分析</span><span class="excerpt">Vector，一个可变长的数组，底层实现与 ArrayList 大同小异，但Vector是同步的（线程安全），Vector...</span></a><a class="item" href="\java\collection\HashMapAnalysis\" title="HashMap 底层实现原理分析" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/20200323120021.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/20200323120021.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">HashMap 底层实现原理分析</span><span class="excerpt">HashMap 是 Map 的一个实现类，它代表的是一种键值对的数据存储形式。
+ArrayList&lt;...</span></a><a class="item" href="\java\collection\Vector\" title="Vector 底层实现原理分析" rel="bookmark "><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">Vector 底层实现原理分析</span><span class="excerpt">Vector，一个可变长的数组，底层实现与 ArrayList 大同小异，但Vector是同步的（线程安全），Vector...</span></a><a class="item" href="\java\collection\HashMapAnalysis\" title="HashMap 底层实现原理分析" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/20200323120021.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/20200323120021.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">HashMap 底层实现原理分析</span><span class="excerpt">HashMap 是 Map 的一个实现类，它代表的是一种键值对的数据存储形式。
 大多数情况下可以直接定位到它的值，因而具有...</span></a><a class="item" href="\java\collection\LinkedHashMap\" title="LinkedHashMap 底层实现原理分析" rel="bookmark "><img src="https://cdn.nlark.com/yuque/0/2020/png/420470/1594858298550-74cd2f4d-fbd7-4fb1-9137-66e8cabfa0c9.png#align=left&display=inline&height=481&margin=%5Bobject%20Object%5D&name=image.png&originHeight=481&originWidth=496&size=130674&status=done&style=none&width=496" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/420470/1594858298550-74cd2f4d-fbd7-4fb1-9137-66e8cabfa0c9.png#align=left&display=inline&height=481&margin=%5Bobject%20Object%5D&name=image.png&originHeight=481&originWidth=496&size=130674&status=done&style=none&width=496" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">LinkedHashMap 底层实现原理分析</span><span class="excerpt">LinkedHashMap继承自HashMap实现了Map接口。基本实现同HashMap一样，不同之处在于LinkedHa...</span></a><a class="item" href="\java\abstract_interface\" title="接口 vs 抽象类的区别？" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">接口 vs 抽象类的区别？</span><span class="excerpt">在面向对象编程中，抽象类和接口是两个经常被用到的语法概念，是面向对象四大特性，以及很多设计模式、设计思想、设计原则编程实现...</span></a></div></section></div>
       
       
@@ -1755,7 +2267,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       if (href.length == 0) {
         // 选中文本
         if (window.getSelection().toString()) {
-          if ('' == 'true') {
+          if ('true' == 'true') {
             copyText.style.display = 'block';
             hrText.style.display = 'block';
           }
@@ -1868,6 +2380,78 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
 
 
 
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+		if($(".highlight .code pre").length+$(".article pre code").length==0)return;
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
+</script>
+
+
+
+
+   <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script>
+<script type="text/javascript">
+  function pjax_scrollrebeal() {
+    ScrollReveal().reveal('.l_main .reveal', {
+      distance: '32px',
+      duration: '800',
+      interval: '20',
+      scale: '1',
+      easing: 'ease-out'
+    });
+  }
+  $(function () {
+    pjax_scrollrebeal();
+  });
+</script>
 
 
 
@@ -1899,7 +2483,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
   <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@3/dist/av-min.js"></script>
 
   
-<script src="https://cdn.jsdelivr.net/npm/valine@1.4/dist/Valine.min.js"></script>
+<script src="/js/valine.js"></script>
 
 
 <script>
@@ -1968,9 +2552,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
     })
   }
 
-  
   function newcomment() {
-
     function queryLeanCloud(k) {
       let root = this;
       let len = arguments.length;
@@ -1992,11 +2574,11 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       }
     }
     var valine = new Valine({
-      el: '#valine_container',
+      el: 'valine_container',
       app_id: 'wvx2KxLUqgjcKv9QE62FmvUY-MdYXbMMI',
       app_key: 'u1P8dl8u7IlizUpYbwXpc1VN',
       placeholder: '快来评论吧~',
-      serverURLs: 'https://gyl-coder.top'
+      serverURLs: 'https://wvx2kxlu.api.lncldglobal.com'
     });
 
     //判断博主，heson改为自己的昵称
@@ -2024,7 +2606,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
     }
 
     //查询评论
-    valine.Q('*').limit(7).find().then(function (comments) {
+    valine.Q('*').limit(5).find().then(function (comments) {
       var hotComments = $("#hot-comments");
       for (var i = 0; i < comments.length; i++) {
         if (i === 0) {
@@ -2171,9 +2753,35 @@ const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
 
 
 
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
 
 
 
+  
+<script src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+  
 
 
 
@@ -2504,8 +3112,16 @@ const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
           }
         
         
+        document.querySelectorAll('pre code').forEach((block) => {
+          hljs.highlightBlock(block);
+        });
         
         
+          pjax_scrollrebeal();
+        
+        
+        
+          pjax_initCopyCode();
         
         
           pjax_valine();

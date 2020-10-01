@@ -39,10 +39,18 @@
   <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
   
     
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/heson525/fontawesome-pro@5.13.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css">
 
   
   
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
 
   
 
@@ -59,6 +67,12 @@
   <!-- import link -->
   
 
+  
+    
+      
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.18.1/styles/solarized-light.css">
+
+    
   
   
     
@@ -956,18 +970,131 @@
 <p>由于Vector的实现和ArrayList的实现大同小异，这里就不再逐一分析Vector中的方法，主要分析一下和ArrayList不同的方法。</p>
 <p>首先我们还是来看以下Vector中定义的变量</p>
 <a id="more"></a>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Vector</span>&lt;<span class="title">E</span>&gt;</span></span><br><span class="line"><span class="class">    <span class="keyword">extends</span> <span class="title">AbstractList</span>&lt;<span class="title">E</span>&gt;</span></span><br><span class="line"><span class="class">    <span class="keyword">implements</span> <span class="title">List</span>&lt;<span class="title">E</span>&gt;, <span class="title">RandomAccess</span>, <span class="title">Cloneable</span>, <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> Object[] elementData;      <span class="comment">// 存储Vector中元素</span></span><br><span class="line"> </span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">int</span> elementCount;          <span class="comment">// Vector中的元素个数</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">int</span> capacityIncrement;     <span class="comment">// Vector的增长系数</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = -<span class="number">2767605614048989439L</span>;     <span class="comment">// Vector的序列版本号  </span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAX_ARRAY_SIZE = Integer.MAX_VALUE - <span class="number">8</span>;       <span class="comment">// 能够分配元素数量的最大值</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="language-java">public class Vector&lt;E&gt;
+    extends AbstractList&lt;E&gt;
+    implements List&lt;E&gt;, RandomAccess, Cloneable, java.io.Serializable
+&amp;#123;
+    protected Object[] elementData;      // 存储Vector中元素
+ 
+    protected int elementCount;          // Vector中的元素个数
+    protected int capacityIncrement;     // Vector的增长系数
+    private static final long serialVersionUID = -2767605614048989439L;     // Vector的序列版本号  
+    private static final int MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;       // 能够分配元素数量的最大值
+&amp;#125;
+</code></pre>
 <h2 id="构造方法"><a class="header-anchor" href="#构造方法">¶</a>构造方法</h2>
 <p><code>Vector</code>有四个构造方法，其内部有两个重要的参数，一个是<code>elementCount</code>代表当前元素个数，一个是<code>capacityIncrement</code>代表当列表元素满了之后增加的容量。如果不设置<code>capacityIncrement</code>，那么<code>Vector</code>容量扩展时默认将扩展两倍，在<a href="../ArrayList">ArrayList源码分析</a>中，我们可以知道<code>ArrayList</code>在扩容时默认将扩展1.5倍。<br>
 <code>ector</code>初始时容量为<strong>10</strong>，而<code>ArrayList</code>初始容量为<strong>0</strong>。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Vector构造函数。默认容量是10。    </span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Vector</span><span class="params">()</span> </span>&#123;    </span><br><span class="line">    <span class="keyword">this</span>(<span class="number">10</span>);    </span><br><span class="line">&#125;    </span><br><span class="line"><span class="comment">// 指定Vector容量大小的构造函数    </span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Vector</span><span class="params">(<span class="keyword">int</span> initialCapacity)</span> </span>&#123;    </span><br><span class="line">    <span class="keyword">this</span>(initialCapacity, <span class="number">0</span>);    </span><br><span class="line">&#125;    </span><br><span class="line"><span class="comment">// 指定Vector&quot;容量大小&quot;和&quot;增长系数&quot;的构造函数    </span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Vector</span><span class="params">(<span class="keyword">int</span> initialCapacity, <span class="keyword">int</span> capacityIncrement)</span> </span>&#123;    </span><br><span class="line">    <span class="keyword">super</span>();    </span><br><span class="line">    <span class="keyword">if</span> (initialCapacity &lt; <span class="number">0</span>)    </span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">&quot;Illegal Capacity: &quot;</span>+    </span><br><span class="line">                                           initialCapacity);    </span><br><span class="line">    <span class="comment">// 新建一个数组，数组容量是initialCapacity    </span></span><br><span class="line">    <span class="keyword">this</span>.elementData = <span class="keyword">new</span> Object[initialCapacity];    </span><br><span class="line">    <span class="comment">// 设置容量增长系数    </span></span><br><span class="line">    <span class="keyword">this</span>.capacityIncrement = capacityIncrement;    </span><br><span class="line">&#125;    </span><br><span class="line"><span class="comment">// 指定集合的Vector构造函数。    </span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Vector</span><span class="params">(Collection&lt;? extends E&gt; c)</span> </span>&#123;    </span><br><span class="line">    <span class="comment">// 获取“集合(c)”的数组，并将其赋值给elementData    </span></span><br><span class="line">    elementData = c.toArray();    </span><br><span class="line">    <span class="comment">// 设置数组长度    </span></span><br><span class="line">    elementCount = elementData.length;    </span><br><span class="line">    <span class="comment">// c.toArray might (incorrectly) not return Object[] (see 6260652)    </span></span><br><span class="line">    <span class="keyword">if</span> (elementData.getClass() != Object[].class)    </span><br><span class="line">        elementData = Arrays.copyOf(elementData, elementCount, Object[].class);    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="language-java">// Vector构造函数。默认容量是10。    
+public Vector() &amp;#123;    
+    this(10);    
+&amp;#125;    
+// 指定Vector容量大小的构造函数    
+public Vector(int initialCapacity) &amp;#123;    
+    this(initialCapacity, 0);    
+&amp;#125;    
+// 指定Vector&quot;容量大小&quot;和&quot;增长系数&quot;的构造函数    
+public Vector(int initialCapacity, int capacityIncrement) &amp;#123;    
+    super();    
+    if (initialCapacity &lt; 0)    
+        throw new IllegalArgumentException(&quot;Illegal Capacity: &quot;+    
+                                           initialCapacity);    
+    // 新建一个数组，数组容量是initialCapacity    
+    this.elementData = new Object[initialCapacity];    
+    // 设置容量增长系数    
+    this.capacityIncrement = capacityIncrement;    
+&amp;#125;    
+// 指定集合的Vector构造函数。    
+public Vector(Collection&lt;? extends E&gt; c) &amp;#123;    
+    // 获取“集合(c)”的数组，并将其赋值给elementData    
+    elementData = c.toArray();    
+    // 设置数组长度    
+    elementCount = elementData.length;    
+    // c.toArray might (incorrectly) not return Object[] (see 6260652)    
+    if (elementData.getClass() != Object[].class)    
+        elementData = Arrays.copyOf(elementData, elementCount, Object[].class);    
+&amp;#125;
+</code></pre>
 <p><code>Vector</code>中的构造器和<code>ArrayList</code>中的基本相同，只不过<code>Vector</code>中多了一个可以自定义增长系数的构造器<strong>public Vector(int initialCapacity, int capacityIncrement)</strong></p>
 <h2 id="扩容机制"><a class="header-anchor" href="#扩容机制">¶</a>扩容机制</h2>
 <p><code>Vector</code>中的添加元素和<code>ArrayList</code>中的大同小异，这里不再具体分析，这里只分析下Vector的扩容机制</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 增加vector容量</span></span><br><span class="line"><span class="comment"> * 如果vector当前容量小于至少需要的容量，它的容量将增加。</span></span><br><span class="line"><span class="comment"> * 新的容量将在旧的容量的基础上加上capacityIncrement，除非capacityIncrement小于等于0，在这种情况下，容量将会增加一倍。</span></span><br><span class="line"><span class="comment"> * 增加后，如果新的容量还是小于至少需要的容量，那就将容量扩容至至少需要的容量。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">ensureCapacity</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (minCapacity &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        modCount++;</span><br><span class="line">        ensureCapacityHelper(minCapacity);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * ensureCapacity()方法的unsynchronized实现。</span></span><br><span class="line"><span class="comment"> * ensureCapacity()是同步的，它可以调用本方法来扩容，而不用承受同步带来的消耗</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">ensureCapacityHelper</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 如果至少需要的容量 &gt; 数组缓冲区当前的长度，就进行扩容</span></span><br><span class="line">    <span class="keyword">if</span> (minCapacity - elementData.length &gt; <span class="number">0</span>)</span><br><span class="line">        grow(minCapacity);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 分派给arrays的最大容量</span></span><br><span class="line"><span class="comment"> * 为什么要减去8呢？</span></span><br><span class="line"><span class="comment"> * 因为某些VM会在数组中保留一些头字，尝试分配这个最大存储容量，可能会导致array容量大于VM的limit，最终导致OutOfMemoryError。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAX_ARRAY_SIZE = Integer.MAX_VALUE - <span class="number">8</span>;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 扩容，保证vector至少能存储minCapacity个元素。</span></span><br><span class="line"><span class="comment">* 首次扩容时，newCapacity = oldCapacity + ((capacityIncrement &gt; 0) ?capacityIncrement : oldCapacity);即如果capacityIncrement&gt;0，就加capacityIncrement，如果不是就增加一倍。</span></span><br><span class="line"><span class="comment">* 如果第一次扩容后，容量还是小于minCapacity，就直接将容量增为minCapacity。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">grow</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 获取当前数组的容量</span></span><br><span class="line">    <span class="keyword">int</span> oldCapacity = elementData.length;</span><br><span class="line">    <span class="comment">//计算目标容量，如果指定了每次扩展的量，直接增加，如果没有就直接翻倍</span></span><br><span class="line">    <span class="keyword">int</span> newCapacity = oldCapacity + ((capacityIncrement &gt; <span class="number">0</span>) ?</span><br><span class="line">                                     capacityIncrement : oldCapacity);</span><br><span class="line">    <span class="comment">//如果自动扩容的容量无法满足用户指定的容量，则直接扩容到用户指定的容量</span></span><br><span class="line">    <span class="keyword">if</span> (newCapacity - minCapacity &lt; <span class="number">0</span>)</span><br><span class="line">        newCapacity = minCapacity;</span><br><span class="line">    <span class="comment">///如果扩容后的容量大于临界值，则进行大容量分配</span></span><br><span class="line">    <span class="keyword">if</span> (newCapacity - MAX_ARRAY_SIZE &gt; <span class="number">0</span>)</span><br><span class="line">        newCapacity = hugeCapacity(minCapacity);</span><br><span class="line">    elementData = Arrays.copyOf(elementData, newCapacity);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 进行大容量分配</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">hugeCapacity</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//数据溢出，抛出异常</span></span><br><span class="line">    <span class="keyword">if</span> (minCapacity &lt; <span class="number">0</span>) <span class="comment">// overflow</span></span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> OutOfMemoryError();</span><br><span class="line">    <span class="comment">//如果想要的容量大于MAX_ARRAY_SIZE，则分配Integer.MAX_VALUE，否则分配MAX_ARRAY_SIZE</span></span><br><span class="line">    <span class="keyword">return</span> (minCapacity &gt; MAX_ARRAY_SIZE) ?</span><br><span class="line">        Integer.MAX_VALUE :</span><br><span class="line">        MAX_ARRAY_SIZE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="language-java">/**
+ * 增加vector容量
+ * 如果vector当前容量小于至少需要的容量，它的容量将增加。
+ * 新的容量将在旧的容量的基础上加上capacityIncrement，除非capacityIncrement小于等于0，在这种情况下，容量将会增加一倍。
+ * 增加后，如果新的容量还是小于至少需要的容量，那就将容量扩容至至少需要的容量。
+ */
+public synchronized void ensureCapacity(int minCapacity) &amp;#123;
+    if (minCapacity &gt; 0) &amp;#123;
+        modCount++;
+        ensureCapacityHelper(minCapacity);
+    &amp;#125;
+&amp;#125;
+/**
+ * ensureCapacity()方法的unsynchronized实现。
+ * ensureCapacity()是同步的，它可以调用本方法来扩容，而不用承受同步带来的消耗
+ */
+private void ensureCapacityHelper(int minCapacity) &amp;#123;
+    // 如果至少需要的容量 &gt; 数组缓冲区当前的长度，就进行扩容
+    if (minCapacity - elementData.length &gt; 0)
+        grow(minCapacity);
+&amp;#125;
+/**
+ * 分派给arrays的最大容量
+ * 为什么要减去8呢？
+ * 因为某些VM会在数组中保留一些头字，尝试分配这个最大存储容量，可能会导致array容量大于VM的limit，最终导致OutOfMemoryError。
+ */
+private static final int MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;
+/**
+* 扩容，保证vector至少能存储minCapacity个元素。
+* 首次扩容时，newCapacity = oldCapacity + ((capacityIncrement &gt; 0) ?capacityIncrement : oldCapacity);即如果capacityIncrement&gt;0，就加capacityIncrement，如果不是就增加一倍。
+* 如果第一次扩容后，容量还是小于minCapacity，就直接将容量增为minCapacity。
+*/
+private void grow(int minCapacity) &amp;#123;
+    // 获取当前数组的容量
+    int oldCapacity = elementData.length;
+    //计算目标容量，如果指定了每次扩展的量，直接增加，如果没有就直接翻倍
+    int newCapacity = oldCapacity + ((capacityIncrement &gt; 0) ?
+                                     capacityIncrement : oldCapacity);
+    //如果自动扩容的容量无法满足用户指定的容量，则直接扩容到用户指定的容量
+    if (newCapacity - minCapacity &lt; 0)
+        newCapacity = minCapacity;
+    ///如果扩容后的容量大于临界值，则进行大容量分配
+    if (newCapacity - MAX_ARRAY_SIZE &gt; 0)
+        newCapacity = hugeCapacity(minCapacity);
+    elementData = Arrays.copyOf(elementData, newCapacity);
+&amp;#125;
+// 进行大容量分配
+private static int hugeCapacity(int minCapacity) &amp;#123;
+    //数据溢出，抛出异常
+    if (minCapacity &lt; 0) // overflow
+        throw new OutOfMemoryError();
+    //如果想要的容量大于MAX_ARRAY_SIZE，则分配Integer.MAX_VALUE，否则分配MAX_ARRAY_SIZE
+    return (minCapacity &gt; MAX_ARRAY_SIZE) ?
+        Integer.MAX_VALUE :
+        MAX_ARRAY_SIZE;
+&amp;#125;
+</code></pre>
 <h2 id="其他方法"><a class="header-anchor" href="#其他方法">¶</a>其他方法</h2>
 <p><code>Vector</code>中添加一个枚举方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 返回一个枚举类型的对象</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Enumeration&lt;E&gt; <span class="title">elements</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Enumeration&lt;E&gt;() &#123;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasMoreElements</span><span class="params">()</span> </span>&#123;    <span class="comment">// 判断后面是否还有数据</span></span><br><span class="line">            <span class="keyword">return</span> count &lt; elementCount;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> E <span class="title">nextElement</span><span class="params">()</span> </span>&#123;       <span class="comment">// 返回一个数据</span></span><br><span class="line">            <span class="keyword">synchronized</span> (Vector.<span class="keyword">this</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (count &lt; elementCount) &#123;</span><br><span class="line">                    <span class="keyword">return</span> elementData(count++);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> NoSuchElementException(<span class="string">&quot;Vector Enumeration&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="language-java">// 返回一个枚举类型的对象
+public Enumeration&lt;E&gt; elements() &amp;#123;
+    return new Enumeration&lt;E&gt;() &amp;#123;
+        int count = 0;
+        public boolean hasMoreElements() &amp;#123;    // 判断后面是否还有数据
+            return count &lt; elementCount;
+        &amp;#125;
+        public E nextElement() &amp;#123;       // 返回一个数据
+            synchronized (Vector.this) &amp;#123;
+                if (count &lt; elementCount) &amp;#123;
+                    return elementData(count++);
+                &amp;#125;
+            &amp;#125;
+            throw new NoSuchElementException(&quot;Vector Enumeration&quot;);
+        &amp;#125;
+    &amp;#125;;
+&amp;#125;
+</code></pre>
 <p>其他类同方法请参考<a href="../ArrayList">ArrayList源码分析</a><br>
 <code>Vector</code>与<code>ArrayList</code>的最大区别就是<code>Vector</code>是线程安全的，而<code>ArrayList</code>不是线程安全的。另外区别还有：</p>
 <ul>
@@ -997,7 +1124,49 @@
 <div class='checkbox'><input type="radio" />
             <p>search() 返回元素所在位置</p>
             </div>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> java.util;</span><br><span class="line"><span class="keyword">public</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stack</span>&lt;<span class="title">E</span>&gt; <span class="keyword">extends</span> <span class="title">Vector</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Creates an empty Stack.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Stack</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> E <span class="title">push</span><span class="params">(E item)</span> </span>&#123;</span><br><span class="line">        addElement(item);</span><br><span class="line">        <span class="comment">// 调用vector中的方法在栈顶添加一个元素</span></span><br><span class="line">        <span class="keyword">return</span> item;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> E <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        E       obj;</span><br><span class="line">        <span class="keyword">int</span>     len = size();</span><br><span class="line">        obj = peek();</span><br><span class="line">        removeElementAt(len - <span class="number">1</span>);</span><br><span class="line">        <span class="comment">// 调用vector中的方法删除栈顶的元素</span></span><br><span class="line">        <span class="keyword">return</span> obj;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> E <span class="title">peek</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>     len = size();</span><br><span class="line">        <span class="comment">// 返回栈顶元素</span></span><br><span class="line">        <span class="keyword">if</span> (len == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> EmptyStackException();</span><br><span class="line">        <span class="keyword">return</span> elementAt(len - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">empty</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> size() == <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">int</span> <span class="title">search</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i = lastIndexOf(o);</span><br><span class="line">        <span class="comment">// 因为LIFO  所以选择从后往前遍历</span></span><br><span class="line">        <span class="keyword">if</span> (i &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> size() - i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/** use serialVersionUID from JDK 1.0.2 for interoperability */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1224463164541339165L</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="language-java">package java.util;
+public
+class Stack&lt;E&gt; extends Vector&lt;E&gt; &amp;#123;
+    /**
+     * Creates an empty Stack.
+     */
+    public Stack() &amp;#123;
+    &amp;#125;
+    public E push(E item) &amp;#123;
+        addElement(item);
+        // 调用vector中的方法在栈顶添加一个元素
+        return item;
+    &amp;#125;
+    public synchronized E pop() &amp;#123;
+        E       obj;
+        int     len = size();
+        obj = peek();
+        removeElementAt(len - 1);
+        // 调用vector中的方法删除栈顶的元素
+        return obj;
+    &amp;#125;
+    public synchronized E peek() &amp;#123;
+        int     len = size();
+        // 返回栈顶元素
+        if (len == 0)
+            throw new EmptyStackException();
+        return elementAt(len - 1);
+    &amp;#125;
+    public boolean empty() &amp;#123;
+        return size() == 0;
+    &amp;#125;
+    public synchronized int search(Object o) &amp;#123;
+        int i = lastIndexOf(o);
+        // 因为LIFO  所以选择从后往前遍历
+        if (i &gt;= 0) &amp;#123;
+            return size() - i;
+        &amp;#125;
+        return -1;
+    &amp;#125;
+    /** use serialVersionUID from JDK 1.0.2 for interoperability */
+    private static final long serialVersionUID = 1224463164541339165L;
+&amp;#125;
+</code></pre>
 
   
   
@@ -1013,11 +1182,11 @@
     <section class='body'>
       <div class="vlts-rps"><a class="item" href="\java\collection\ArrayList_grow\" title="ArrayList动态扩容机制" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life9.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life9.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">ArrayList动态扩容机制</span><span class="excerpt">我们通过一个具体的例子看一下ArrayList的扩容效果
 先看一下ArrayList的初始容量
-1234567ArrayL...</span></a><a class="item" href="\java\collection\HashMapAnalysis\" title="HashMap 底层实现原理分析" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/20200323120021.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/20200323120021.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">HashMap 底层实现原理分析</span><span class="excerpt">HashMap 是 Map 的一个实现类，它代表的是一种键值对的数据存储形式。
-大多数情况下可以直接定位到它的值，因而具有...</span></a><a class="item" href="\java\collection\LinkedList\" title="LinkedList 底层实现原理分析" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/collection2.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/collection2.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">LinkedList 底层实现原理分析</span><span class="excerpt">
+ArrayList&lt;...</span></a><a class="item" href="\java\collection\HashMapAnalysis\" title="HashMap 底层实现原理分析" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/20200323120021.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/20200323120021.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">HashMap 底层实现原理分析</span><span class="excerpt">HashMap 是 Map 的一个实现类，它代表的是一种键值对的数据存储形式。
+大多数情况下可以直接定位到它的值，因而具有...</span></a><a class="item" href="\java\collection\LinkedHashMap\" title="LinkedHashMap 底层实现原理分析" rel="bookmark "><img src="https://cdn.nlark.com/yuque/0/2020/png/420470/1594858298550-74cd2f4d-fbd7-4fb1-9137-66e8cabfa0c9.png#align=left&display=inline&height=481&margin=%5Bobject%20Object%5D&name=image.png&originHeight=481&originWidth=496&size=130674&status=done&style=none&width=496" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/420470/1594858298550-74cd2f4d-fbd7-4fb1-9137-66e8cabfa0c9.png#align=left&display=inline&height=481&margin=%5Bobject%20Object%5D&name=image.png&originHeight=481&originWidth=496&size=130674&status=done&style=none&width=496" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">LinkedHashMap 底层实现原理分析</span><span class="excerpt">LinkedHashMap继承自HashMap实现了Map接口。基本实现同HashMap一样，不同之处在于LinkedHa...</span></a><a class="item" href="\java\collection\LinkedList\" title="LinkedList 底层实现原理分析" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/collection2.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/collection2.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">LinkedList 底层实现原理分析</span><span class="excerpt">
 在Java.util包下
 继承自AbstractSequentialList
-实现 List 接口，能对它进行队列操作。...</span></a><a class="item" href="\java\collection\LinkedHashMap\" title="LinkedHashMap 底层实现原理分析" rel="bookmark "><img src="https://cdn.nlark.com/yuque/0/2020/png/420470/1594858298550-74cd2f4d-fbd7-4fb1-9137-66e8cabfa0c9.png#align=left&display=inline&height=481&margin=%5Bobject%20Object%5D&name=image.png&originHeight=481&originWidth=496&size=130674&status=done&style=none&width=496" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/420470/1594858298550-74cd2f4d-fbd7-4fb1-9137-66e8cabfa0c9.png#align=left&display=inline&height=481&margin=%5Bobject%20Object%5D&name=image.png&originHeight=481&originWidth=496&size=130674&status=done&style=none&width=496" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">LinkedHashMap 底层实现原理分析</span><span class="excerpt">LinkedHashMap继承自HashMap实现了Map接口。基本实现同HashMap一样，不同之处在于LinkedHa...</span></a><a class="item" href="\java\abstract_interface\" title="接口 vs 抽象类的区别？" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">接口 vs 抽象类的区别？</span><span class="excerpt">在面向对象编程中，抽象类和接口是两个经常被用到的语法概念，是面向对象四大特性，以及很多设计模式、设计思想、设计原则编程实现...</span></a></div></section></div>
+实现 List 接口，能对它进行队列操作。...</span></a><a class="item" href="\java\abstract_interface\" title="接口 vs 抽象类的区别？" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">接口 vs 抽象类的区别？</span><span class="excerpt">在面向对象编程中，抽象类和接口是两个经常被用到的语法概念，是面向对象四大特性，以及很多设计模式、设计思想、设计原则编程实现...</span></a></div></section></div>
       
       
         <div class='copyright'>
@@ -1146,7 +1315,7 @@
           <p class='title'>ArrayList动态扩容机制<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
           <p class='content'>我们通过一个具体的例子看一下ArrayList的扩容效果
 先看一下ArrayList的初始容量
-1234567ArrayList&lt;Integer&gt; array = new Array...</p>
+ArrayList&lt;Integer&gt; array = new ArrayList&lt...</p>
         </a>
       
     </div>
@@ -1724,7 +1893,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       if (href.length == 0) {
         // 选中文本
         if (window.getSelection().toString()) {
-          if ('' == 'true') {
+          if ('true' == 'true') {
             copyText.style.display = 'block';
             hrText.style.display = 'block';
           }
@@ -1837,6 +2006,78 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
 
 
 
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+		if($(".highlight .code pre").length+$(".article pre code").length==0)return;
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
+</script>
+
+
+
+
+   <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script>
+<script type="text/javascript">
+  function pjax_scrollrebeal() {
+    ScrollReveal().reveal('.l_main .reveal', {
+      distance: '32px',
+      duration: '800',
+      interval: '20',
+      scale: '1',
+      easing: 'ease-out'
+    });
+  }
+  $(function () {
+    pjax_scrollrebeal();
+  });
+</script>
 
 
 
@@ -1868,7 +2109,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
   <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@3/dist/av-min.js"></script>
 
   
-<script src="https://cdn.jsdelivr.net/npm/valine@1.4/dist/Valine.min.js"></script>
+<script src="/js/valine.js"></script>
 
 
 <script>
@@ -1937,9 +2178,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
     })
   }
 
-  
   function newcomment() {
-
     function queryLeanCloud(k) {
       let root = this;
       let len = arguments.length;
@@ -1961,11 +2200,11 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       }
     }
     var valine = new Valine({
-      el: '#valine_container',
+      el: 'valine_container',
       app_id: 'wvx2KxLUqgjcKv9QE62FmvUY-MdYXbMMI',
       app_key: 'u1P8dl8u7IlizUpYbwXpc1VN',
       placeholder: '快来评论吧~',
-      serverURLs: 'https://gyl-coder.top'
+      serverURLs: 'https://wvx2kxlu.api.lncldglobal.com'
     });
 
     //判断博主，heson改为自己的昵称
@@ -1993,7 +2232,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
     }
 
     //查询评论
-    valine.Q('*').limit(7).find().then(function (comments) {
+    valine.Q('*').limit(5).find().then(function (comments) {
       var hotComments = $("#hot-comments");
       for (var i = 0; i < comments.length; i++) {
         if (i === 0) {
@@ -2140,9 +2379,35 @@ const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
 
 
 
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
 
 
 
+  
+<script src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+  
 
 
 
@@ -2473,8 +2738,16 @@ const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
           }
         
         
+        document.querySelectorAll('pre code').forEach((block) => {
+          hljs.highlightBlock(block);
+        });
         
         
+          pjax_scrollrebeal();
+        
+        
+        
+          pjax_initCopyCode();
         
         
           pjax_valine();

@@ -19,7 +19,7 @@
   
   <title>Lock, Synchronized - yanliang&#39;s blog</title>
   
-    <meta name="keywords" content="Java,并发">
+    <meta name="keywords" content="并发,Java">
   
 
   
@@ -41,10 +41,18 @@
   <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
   
     
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/heson525/fontawesome-pro@5.13.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css">
 
   
   
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
 
   
 
@@ -61,6 +69,12 @@
   <!-- import link -->
   
 
+  
+    
+      
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.18.1/styles/solarized-light.css">
+
+    
   
   
     
@@ -979,25 +993,83 @@
 <a id="more"></a>
 <h2 id="Lock"><a class="header-anchor" href="#Lock">¶</a>Lock</h2>
 <p>下面我们看下lock接口的API</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 支持中断的 API</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">lockInterruptibly</span><span class="params">()</span> </span></span><br><span class="line"><span class="function">  <span class="keyword">throws</span> InterruptedException</span>;</span><br><span class="line"><span class="comment">// 支持超时的 API</span></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">tryLock</span><span class="params">(<span class="keyword">long</span> time, TimeUnit unit)</span> </span></span><br><span class="line"><span class="function">  <span class="keyword">throws</span> InterruptedException</span>;</span><br><span class="line"><span class="comment">// 支持非阻塞获取锁的 API</span></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">tryLock</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">lock</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">unlock</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function">Condition <span class="title">newCondition</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+<pre><code class="language-java">// 支持中断的 API
+void lockInterruptibly() 
+  throws InterruptedException;
+// 支持超时的 API
+boolean tryLock(long time, TimeUnit unit) 
+  throws InterruptedException;
+// 支持非阻塞获取锁的 API
+boolean tryLock();
+
+void lock();
+void unlock();
+Condition newCondition();
+</code></pre>
 <p>Java SDK 里面 Lock 的使用，有一个经典的范例，就是try{}finally{}，需要重点关注的是在 finally 里面释放锁。下面我们具体看下上面那几个方法的使用。</p>
 <p>**lcok()**方法是平时比较常用的一个方法，用来获取锁。如果锁被其他线程获取，则进行等待。</p>
 <p>由于在前面讲到如果采用Lock，必须主动去释放锁，并且在发生异常时，不会自动释放锁。因此一般来说，使用Lock必须在try{}catch{}块中进行，并且将释放锁的操作放在finally块中进行，以保证锁一定被被释放，防止死锁的发生。通常使用Lock来进行同步的话，是以下面这种形式去使用的：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Lock lock = ...;</span><br><span class="line">lock.lock();</span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">    <span class="comment">//处理任务</span></span><br><span class="line">&#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">     </span><br><span class="line">&#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">    lock.unlock();   <span class="comment">//释放锁</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="language-java">Lock lock = ...;
+lock.lock();
+try&amp;#123;
+    //处理任务
+&amp;#125;catch(Exception e)&amp;#123;
+     
+&amp;#125;finally&amp;#123;
+    lock.unlock();   //释放锁
+&amp;#125;
+</code></pre>
 <p>tryLock()方法是有返回值的，它表示用来尝试获取锁，如果获取成功，则返回true，如果获取失败（即锁已被其他线程获取），则返回false，也就说这个方法无论如何都会立即返回。在拿不到锁时不会一直在那等待。</p>
 <p>tryLock(long time, TimeUnit unit)方法和tryLock()方法是类似的，只不过区别在于这个方法在拿不到锁时会等待一定的时间，在时间期限之内如果还拿不到锁，就返回false。如果如果一开始拿到锁或者在等待期间内拿到了锁，则返回true。</p>
 <p>所以，一般情况下通过tryLock来获取锁时是这样使用的：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Lock lock = ...;</span><br><span class="line"><span class="keyword">if</span>(lock.tryLock()) &#123;</span><br><span class="line">     <span class="keyword">try</span>&#123;</span><br><span class="line">         <span class="comment">//处理任务</span></span><br><span class="line">     &#125;<span class="keyword">catch</span>(Exception ex)&#123;</span><br><span class="line">         </span><br><span class="line">     &#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">         lock.unlock();   <span class="comment">//释放锁</span></span><br><span class="line">     &#125; </span><br><span class="line">&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">//如果不能获取锁，则直接做其他事情</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="language-java">Lock lock = ...;
+if(lock.tryLock()) &amp;#123;
+     try&amp;#123;
+         //处理任务
+     &amp;#125;catch(Exception ex)&amp;#123;
+         
+     &amp;#125;finally&amp;#123;
+         lock.unlock();   //释放锁
+     &amp;#125; 
+&amp;#125;else &amp;#123;
+    //如果不能获取锁，则直接做其他事情
+&amp;#125;
+</code></pre>
 <p>lockInterruptibly()方法比较特殊，当通过这个方法去获取锁时，如果线程正在等待获取锁，则这个线程能够响应中断，即中断线程的等待状态。也就使说，当两个线程同时通过lock.lockInterruptibly()想获取某个锁时，假若此时线程A获取到了锁，而线程B只有在等待，那么对线程B调用threadB.interrupt()方法能够中断线程B的等待过程。</p>
 <p>由于lockInterruptibly()的声明中抛出了异常，所以lock.lockInterruptibly()必须放在try块中或者在调用lockInterruptibly()的方法外声明抛出InterruptedException。</p>
 <p>因此lockInterruptibly()一般的使用形式如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">    lock.lockInterruptibly();</span><br><span class="line">    <span class="keyword">try</span> &#123;  </span><br><span class="line">     <span class="comment">//.....</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">finally</span> &#123;</span><br><span class="line">        lock.unlock();</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="language-java">public void method() throws InterruptedException &amp;#123;
+    lock.lockInterruptibly();
+    try &amp;#123;  
+     //.....
+    &amp;#125;
+    finally &amp;#123;
+        lock.unlock();
+    &amp;#125;  
+&amp;#125;
+</code></pre>
 <p>注意，当一个线程获取了锁之后，是不会被interrupt()方法中断的。因为本身在前面的文章中讲过单独调用interrupt()方法不能中断正在运行过程中的线程，只能中断阻塞过程中的线程。</p>
 <p>因此当通过lockInterruptibly()方法获取某个锁时，如果不能获取到，只有进行等待的情况下，是可以响应中断的。</p>
 <p>而用synchronized修饰的话，当一个线程处于等待某个锁的状态，是无法被中断的，只有一直等待下去。</p>
 <h2 id="Lock如果保证可见性"><a class="header-anchor" href="#Lock如果保证可见性">¶</a>Lock如果保证可见性</h2>
 <p>synchronized 之所以能够保证可见性，也是因为有一条synchronized 相关的规则：synchronized 的解锁 Happens-Before 于后续对这个锁的加锁。那 Lock 靠什么保证可见性呢？例如在下面的代码中，线程 T1 对 value 进行了 +=1 操作，那后续的线程 T2 能够看到 value 的正确结果吗？</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">X</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> Lock rtl =</span><br><span class="line">  <span class="keyword">new</span> ReentrantLock();</span><br><span class="line">  <span class="keyword">int</span> value;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addOne</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 获取锁</span></span><br><span class="line">    rtl.lock();  </span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      value+=<span class="number">1</span>;</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">      <span class="comment">// 保证锁能释放</span></span><br><span class="line">      rtl.unlock();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code class="language-java">class X &amp;#123;
+  private final Lock rtl =
+  new ReentrantLock();
+  int value;
+  public void addOne() &amp;#123;
+    // 获取锁
+    rtl.lock();  
+    try &amp;#123;
+      value+=1;
+    &amp;#125; finally &amp;#123;
+      // 保证锁能释放
+      rtl.unlock();
+    &amp;#125;
+  &amp;#125;
+&amp;#125;
+
+</code></pre>
 <p>Lock利用volatile相关的Happens-Before规则来保证可见性。</p>
 <p>Java SDK 里面的 ReentrantLock，内部持有一个volatile的成员变量state，获取锁的时候，会读写state的值；解锁的时候也会读写state的值。也就是说，在执行 value+=1 之前，程序先读写了一次 volatile变量state，在执行value+=1之后，又读写一次olatile变量state。相关的Happens-Before规则如下：</p>
 <ul>
@@ -1005,7 +1077,21 @@
 <li>volatile 变量规则：由于 state = 1 会先读取 state，所以线程 T1 的 unlock() 操作 Happens-Before 线程 T2 的 lock() 操作；</li>
 <li>传递性规则：线程 T1 的 value+=1 Happen-Before线程T2的lock（）操作。</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SampleLock</span> </span>&#123;</span><br><span class="line">  <span class="keyword">volatile</span> <span class="keyword">int</span> state;</span><br><span class="line">  <span class="comment">// 加锁</span></span><br><span class="line">  lock() &#123;</span><br><span class="line">    <span class="comment">// 省略代码无数</span></span><br><span class="line">    state = <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 解锁</span></span><br><span class="line">  unlock() &#123;</span><br><span class="line">    <span class="comment">// 省略代码无数</span></span><br><span class="line">    state = <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code class="language-java">class SampleLock &amp;#123;
+  volatile int state;
+  // 加锁
+  lock() &amp;#123;
+    // 省略代码无数
+    state = 1;
+  &amp;#125;
+  // 解锁
+  unlock() &amp;#123;
+    // 省略代码无数
+    state = 0;
+  &amp;#125;
+&amp;#125;
+
+</code></pre>
 <p>总结来说，Lock和synchronized有以下几点不同：</p>
 <p>1）Lock是一个接口，而synchronized是Java中的关键字，synchronized是内置的语言实现；</p>
 <p>2）synchronized在发生异常时，会自动释放线程占有的锁，因此不会导致死锁现象发生；而Lock在发生异常时，如果没有主动通过unLock()去释放锁，则很可能造成死锁现象，因此使用Lock时需要在finally块中释放锁；</p>
@@ -1028,7 +1114,11 @@
     </section>
     <section class='body'>
       <div class="vlts-rps"><a class="item" href="\concurrency\alternate_printing\" title="多个线程交替打印内容" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life1.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life1.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">多个线程交替打印内容</span><span class="excerpt">需求： 启动两个线程，交替打印奇偶数。 效果如下所示
-1234偶数线程：0奇数线程：1偶数线程：2...</span></a><a class="item" href="\concurrency\why_concurrency\" title="Why Concurrency ?" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life4.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life4.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">Why Concurrency ?</span><span class="excerpt">一门技术的出现必然有其出现的道理，后来需要了解它出现的时代环境和因素，扩充自己的视野，发掘技术发展的经过。分析其优缺点，以...</span></a><a class="item" href="\concurrency\waiting_for_notification\" title="等待通知机制" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life3.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life3.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">等待通知机制</span><span class="excerpt">多线程环境中，经常出现这样一种场景。一个线程修改了一个对象的值，而另一个线程感知到了变化，然后进行相应的操作，整个过程开始...</span></a><a class="item" href="\java\abstract_interface\" title="接口 vs 抽象类的区别？" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">接口 vs 抽象类的区别？</span><span class="excerpt">在面向对象编程中，抽象类和接口是两个经常被用到的语法概念，是面向对象四大特性，以及很多设计模式、设计思想、设计原则编程实现...</span></a></div></section></div>
+偶数线程：0
+奇数线程：1
+偶数线程：2
+...
+</span></a><a class="item" href="\concurrency\waiting_for_notification\" title="等待通知机制" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life3.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life3.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">等待通知机制</span><span class="excerpt">多线程环境中，经常出现这样一种场景。一个线程修改了一个对象的值，而另一个线程感知到了变化，然后进行相应的操作，整个过程开始...</span></a><a class="item" href="\concurrency\why_concurrency\" title="Why Concurrency ?" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life4.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life4.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">Why Concurrency ?</span><span class="excerpt">一门技术的出现必然有其出现的道理，后来需要了解它出现的时代环境和因素，扩充自己的视野，发掘技术发展的经过。分析其优缺点，以...</span></a><a class="item" href="\design-pattern\immutability\" title="并发设计模式：Immutability 模式" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life5.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life5.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">并发设计模式：Immutability 模式</span><span class="excerpt">多个线程同时读写同一共享变量存在并发问题**，其中的必要条件之一就是 读写 ，如果没有写，只存在读，是不会存在并发问题的。...</span></a></div></section></div>
       
       
         <div class='copyright'>
@@ -1069,7 +1159,7 @@
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Java/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Java</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%B9%B6%E5%8F%91/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>并发</p></a></div>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%B9%B6%E5%8F%91/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>并发</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Java/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Java</p></a></div>
 
 
         
@@ -1181,20 +1271,25 @@
   
     <div class="prev-next">
       
-        <a class='prev' href='/concurrency/waiting_for_notification/'>
-          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>等待通知机制</p>
-          <p class='content'>多线程环境中，经常出现这样一种场景。一个线程修改了一个对象的值，而另一个线程感知到了变化，然后进行相应的操作，整个过程开始于一个线程，最终结束于另一个线程。这就是传说中的生产者/消费者模型（前者...</p>
-        </a>
-      
-      
-        <a class='next' href='/concurrency/alternate_printing/'>
-          <p class='title'>多个线程交替打印内容<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+        <a class='prev' href='/concurrency/alternate_printing/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>多个线程交替打印内容</p>
           <p class='content'>需求： 启动两个线程，交替打印奇偶数。 效果如下所示
-1234偶数线程：0奇数线程：1偶数线程：2...
+偶数线程：0
+奇数线程：1
+偶数线程：2
+...
+
 
 ¶两个线程交替打印
 ¶无锁实现
 不需要进行任何加锁，利用并发包中的AtomicInte...</p>
+        </a>
+      
+      
+        <a class='next' href='/concurrency/why_concurrency/'>
+          <p class='title'>Why Concurrency ?<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>一门技术的出现必然有其出现的道理，后来需要了解它出现的时代环境和因素，扩充自己的视野，发掘技术发展的经过。分析其优缺点，以便更好的运用。
+一直以来，硬件的发展极其迅速，也有一个很著名的 摩尔定律...</p>
         </a>
       
     </div>
@@ -1772,7 +1867,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       if (href.length == 0) {
         // 选中文本
         if (window.getSelection().toString()) {
-          if ('' == 'true') {
+          if ('true' == 'true') {
             copyText.style.display = 'block';
             hrText.style.display = 'block';
           }
@@ -1885,6 +1980,78 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
 
 
 
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+		if($(".highlight .code pre").length+$(".article pre code").length==0)return;
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
+</script>
+
+
+
+
+   <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script>
+<script type="text/javascript">
+  function pjax_scrollrebeal() {
+    ScrollReveal().reveal('.l_main .reveal', {
+      distance: '32px',
+      duration: '800',
+      interval: '20',
+      scale: '1',
+      easing: 'ease-out'
+    });
+  }
+  $(function () {
+    pjax_scrollrebeal();
+  });
+</script>
 
 
 
@@ -1916,7 +2083,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
   <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@3/dist/av-min.js"></script>
 
   
-<script src="https://cdn.jsdelivr.net/npm/valine@1.4/dist/Valine.min.js"></script>
+<script src="/js/valine.js"></script>
 
 
 <script>
@@ -1985,9 +2152,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
     })
   }
 
-  
   function newcomment() {
-
     function queryLeanCloud(k) {
       let root = this;
       let len = arguments.length;
@@ -2009,11 +2174,11 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       }
     }
     var valine = new Valine({
-      el: '#valine_container',
+      el: 'valine_container',
       app_id: 'wvx2KxLUqgjcKv9QE62FmvUY-MdYXbMMI',
       app_key: 'u1P8dl8u7IlizUpYbwXpc1VN',
       placeholder: '快来评论吧~',
-      serverURLs: 'https://gyl-coder.top'
+      serverURLs: 'https://wvx2kxlu.api.lncldglobal.com'
     });
 
     //判断博主，heson改为自己的昵称
@@ -2041,7 +2206,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
     }
 
     //查询评论
-    valine.Q('*').limit(7).find().then(function (comments) {
+    valine.Q('*').limit(5).find().then(function (comments) {
       var hotComments = $("#hot-comments");
       for (var i = 0; i < comments.length; i++) {
         if (i === 0) {
@@ -2188,9 +2353,35 @@ const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
 
 
 
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
 
 
 
+  
+<script src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+  
 
 
 
@@ -2521,8 +2712,16 @@ const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
           }
         
         
+        document.querySelectorAll('pre code').forEach((block) => {
+          hljs.highlightBlock(block);
+        });
         
         
+          pjax_scrollrebeal();
+        
+        
+        
+          pjax_initCopyCode();
         
         
           pjax_valine();

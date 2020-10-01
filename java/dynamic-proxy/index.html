@@ -39,10 +39,18 @@
   <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
   
     
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/heson525/fontawesome-pro@5.13.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css">
 
   
   
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
 
   
 
@@ -59,6 +67,12 @@
   <!-- import link -->
   
 
+  
+    
+      
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.18.1/styles/solarized-light.css">
+
+    
   
   
     
@@ -969,12 +983,96 @@
 <h2 id="什么是静态代理"><a class="header-anchor" href="#什么是静态代理">¶</a>什么是静态代理</h2>
 <p>静态代理是代理类在编译期间就创建好了，不是编译器生成的代理类，而是手动创建的类。在编译时就已经将接口，被代理类，代理类等确定下来。，软件设计中所指的代理一般是指静态代理，也就是在代码中显式指定的代理。</p>
 <p>下面我们通过一个简单的案例，来了解下静态代理。</p>
-<figure class="highlight java"><figcaption><span>Cat.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 静态代理类接口, 委托类和代理类都需要实现的接口规范。</span></span><br><span class="line"><span class="comment"> * 定义了一个猫科动物的两个行为接口，吃东西，奔跑。</span></span><br><span class="line"><span class="comment"> * 作为代理类 和委托类之间的约束接口</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Cat</span> </span>&#123;    </span><br><span class="line">     <span class="function"><span class="keyword">public</span> String <span class="title">eatFood</span><span class="params">(String foodName)</span></span>;    </span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">running</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><figcaption><span>Lion.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 狮子 实现了猫科动物接口Cat， 并实现了具体的行为。作为委托类实现</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Lion</span> <span class="keyword">implements</span> <span class="title">Cat</span> </span>&#123;    </span><br><span class="line">    <span class="keyword">private</span> String name;    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> runningSpeed;    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;        </span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;        </span><br><span class="line">        <span class="keyword">this</span>.name = name; </span><br><span class="line">    &#125;    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getRunningSpeed</span><span class="params">()</span> </span>&#123;        </span><br><span class="line">        <span class="keyword">return</span> runningSpeed; </span><br><span class="line">    &#125;    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setRunningSpeed</span><span class="params">(<span class="keyword">int</span> runningSpeed)</span> </span>&#123;        </span><br><span class="line">        <span class="keyword">this</span>.runningSpeed = runningSpeed; </span><br><span class="line">    &#125;    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Lion</span><span class="params">()</span> </span>&#123; &#125;    </span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">eatFood</span><span class="params">(String foodName)</span> </span>&#123;</span><br><span class="line">        String eat = <span class="keyword">this</span>.name + <span class="string">&quot; Lion eat food. foodName = &quot;</span> + foodName;</span><br><span class="line">        System.out.println(eat);        <span class="keyword">return</span> eat;</span><br><span class="line">    &#125;    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">running</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="keyword">this</span>.name + <span class="string">&quot; Lion is running . Speed :&quot;</span> + <span class="keyword">this</span>.runningSpeed);        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="language-java">/**
+ * 静态代理类接口, 委托类和代理类都需要实现的接口规范。
+ * 定义了一个猫科动物的两个行为接口，吃东西，奔跑。
+ * 作为代理类 和委托类之间的约束接口
+ */
+public interface Cat &amp;#123;    
+     public String eatFood(String foodName);    
+     public boolean running();
+&amp;#125;
+</code></pre>
+<pre><code class="language-java">    /**
+     * 狮子 实现了猫科动物接口Cat， 并实现了具体的行为。作为委托类实现
+     */
+    public class Lion implements Cat &amp;#123;    
+        private String name;    
+        private int runningSpeed;    
+        public String getName() &amp;#123;        
+            return name;
+        &amp;#125;    
+        public void setName(String name) &amp;#123;        
+            this.name = name; 
+        &amp;#125;    
+        public int getRunningSpeed() &amp;#123;        
+            return runningSpeed; 
+        &amp;#125;    
+        public void setRunningSpeed(int runningSpeed) &amp;#123;        
+            this.runningSpeed = runningSpeed; 
+        &amp;#125;    
+        public Lion() &amp;#123; &amp;#125;    
+        
+        @Override
+        public String eatFood(String foodName) &amp;#123;
+            String eat = this.name + &quot; Lion eat food. foodName = &quot; + foodName;
+            System.out.println(eat);        return eat;
+        &amp;#125;    
+        @Override
+        public boolean running() &amp;#123;
+            System.out.println(this.name + &quot; Lion is running . Speed :&quot; + this.runningSpeed);        return false;
+        &amp;#125;
+    &amp;#125;
+</code></pre>
 <p>代理类角色(FeederProxy)</p>
-<figure class="highlight java"><figcaption><span>FeederProxy.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 饲养员 实现Cat接口，作为静态代理类实现。代理狮子的行为。</span></span><br><span class="line"><span class="comment"> * 代理类中可以新增一些其他行为，在实践中主要做的是参数校验的功能。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FeederProxy</span> <span class="keyword">implements</span> <span class="title">Cat</span> </span>&#123;    </span><br><span class="line">    <span class="keyword">private</span> Cat cat;    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">FeederProxy</span><span class="params">()</span></span>&#123;&#125;    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">FeederProxy</span><span class="params">(Cat cat)</span> </span>&#123;        </span><br><span class="line">         <span class="keyword">if</span> (cat <span class="keyword">instanceof</span> Cat) &#123;            </span><br><span class="line">             <span class="keyword">this</span>.cat = cat; </span><br><span class="line">         &#125; </span><br><span class="line">    &#125;    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCat</span><span class="params">(Cat cat)</span> </span>&#123;        </span><br><span class="line">         <span class="keyword">if</span> (cat <span class="keyword">instanceof</span> Cat) &#123;            </span><br><span class="line">             <span class="keyword">this</span>.cat = cat; </span><br><span class="line">         &#125; </span><br><span class="line">    &#125;    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">eatFood</span><span class="params">(String foodName)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;proxy Lion exec eatFood &quot;</span>);        </span><br><span class="line">        <span class="keyword">return</span> cat.eatFood(foodName);</span><br><span class="line">    &#125;    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">running</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;proxy Lion exec running.&quot;</span>);        </span><br><span class="line">        <span class="keyword">return</span> cat.running();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code class="language-java">/**
+ * 饲养员 实现Cat接口，作为静态代理类实现。代理狮子的行为。
+ * 代理类中可以新增一些其他行为，在实践中主要做的是参数校验的功能。
+ */
+public class FeederProxy implements Cat &amp;#123;    
+    private Cat cat;    
+    public FeederProxy()&amp;#123;&amp;#125;    
+    public FeederProxy(Cat cat) &amp;#123;        
+         if (cat instanceof Cat) &amp;#123;            
+             this.cat = cat; 
+         &amp;#125; 
+    &amp;#125;    
+    public void setCat(Cat cat) &amp;#123;        
+         if (cat instanceof Cat) &amp;#123;            
+             this.cat = cat; 
+         &amp;#125; 
+    &amp;#125;    
+    @Override
+    public String eatFood(String foodName) &amp;#123;
+        System.out.println(&quot;proxy Lion exec eatFood &quot;);        
+        return cat.eatFood(foodName);
+    &amp;#125;    
+    @Override
+    public boolean running() &amp;#123;
+        System.out.println(&quot;proxy Lion exec running.&quot;);        
+        return cat.running();
+    &amp;#125;
+&amp;#125;
+
+</code></pre>
 <p>静态代理类测试</p>
-<figure class="highlight java"><figcaption><span>staticProxyTest.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 静态代理类测试</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">staticProxyTest</span> </span>&#123;    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Lion lion = <span class="keyword">new</span> Lion();</span><br><span class="line">        lion.setName(<span class="string">&quot;狮子 小王&quot;</span>);</span><br><span class="line">        lion.setRunningSpeed(<span class="number">100</span>);        </span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * new 静态代理类，静态代理类在编译前已经创建好了，和动态代理的最大区别点</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        Cat proxy = <span class="keyword">new</span> FeederProxy(lion);       </span><br><span class="line">        System.out.println(Thread.currentThread().getName()+<span class="string">&quot; -- &quot;</span> + proxy.eatFood(<span class="string">&quot;水牛&quot;</span>));</span><br><span class="line">        proxy.running(); </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="language-java">    /**
+     * 静态代理类测试
+     */
+    public class staticProxyTest &amp;#123;    
+        public static void main(String[] args) &amp;#123;
+            Lion lion = new Lion();
+            lion.setName(&quot;狮子 小王&quot;);
+            lion.setRunningSpeed(100);        
+            /**
+             * new 静态代理类，静态代理类在编译前已经创建好了，和动态代理的最大区别点
+             */
+            Cat proxy = new FeederProxy(lion);       
+            System.out.println(Thread.currentThread().getName()+&quot; -- &quot; + proxy.eatFood(&quot;水牛&quot;));
+            proxy.running(); 
+        &amp;#125;
+    &amp;#125;
+</code></pre>
 <p>静态代理很好的诠释了代理设计模式，代理模式最主要的就是有一个公共接口（Cat），一个委托类（Lion），一个代理类（FeederProxy）,代理类持有委托类的实例，代为执行具体类实例方法。</p>
 <p>代理模式就是在访问实际对象时引入一定程度的间接性，因为这种间接性，可以附加多种用途。这里的间接性就是指客户端不直接调用实际对象的方法，客户端依赖公共接口并使用代理类。 那么我们在代理过程中就可以加上一些其他用途。</p>
 <p>就这个例子来说在 eatFood 方法调用中，代理类在调用具体实现类之前添加System.out.println(&quot;proxy Lion exec eatFood &quot;);语句 就是添加间接性带来的收益。代理类存在的意义是为了增加一些公共的逻辑代码。</p>
@@ -1005,9 +1103,13 @@
       <i class="fas fa-bookmark fa-fw" aria-hidden="true"></i><span>相关文章</span>
     </section>
     <section class='body'>
-      <div class="vlts-rps"><a class="item" href="\concurrency\lock_and_synchronized\" title="Lock & Synchronized" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life2.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life2.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">Lock & Synchronized</span><span class="excerpt">首先我们来考虑一个问题？
-在Lock出现之前我们一直使用synchronized来实现同步访问。那为什么还要提供lock呢...</span></a><a class="item" href="\concurrency\alternate_printing\" title="多个线程交替打印内容" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life1.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life1.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">多个线程交替打印内容</span><span class="excerpt">需求： 启动两个线程，交替打印奇偶数。 效果如下所示
-1234偶数线程：0奇数线程：1偶数线程：2...</span></a><a class="item" href="\concurrency\why_concurrency\" title="Why Concurrency ?" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life4.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life4.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">Why Concurrency ?</span><span class="excerpt">一门技术的出现必然有其出现的道理，后来需要了解它出现的时代环境和因素，扩充自己的视野，发掘技术发展的经过。分析其优缺点，以...</span></a><a class="item" href="\concurrency\waiting_for_notification\" title="等待通知机制" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life3.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life3.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">等待通知机制</span><span class="excerpt">多线程环境中，经常出现这样一种场景。一个线程修改了一个对象的值，而另一个线程感知到了变化，然后进行相应的操作，整个过程开始...</span></a><a class="item" href="\java\abstract_interface\" title="接口 vs 抽象类的区别？" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">接口 vs 抽象类的区别？</span><span class="excerpt">在面向对象编程中，抽象类和接口是两个经常被用到的语法概念，是面向对象四大特性，以及很多设计模式、设计思想、设计原则编程实现...</span></a></div></section></div>
+      <div class="vlts-rps"><a class="item" href="\concurrency\alternate_printing\" title="多个线程交替打印内容" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life1.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life1.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">多个线程交替打印内容</span><span class="excerpt">需求： 启动两个线程，交替打印奇偶数。 效果如下所示
+偶数线程：0
+奇数线程：1
+偶数线程：2
+...
+</span></a><a class="item" href="\concurrency\waiting_for_notification\" title="等待通知机制" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life3.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life3.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">等待通知机制</span><span class="excerpt">多线程环境中，经常出现这样一种场景。一个线程修改了一个对象的值，而另一个线程感知到了变化，然后进行相应的操作，整个过程开始...</span></a><a class="item" href="\concurrency\lock_and_synchronized\" title="Lock & Synchronized" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life2.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life2.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">Lock & Synchronized</span><span class="excerpt">首先我们来考虑一个问题？
+在Lock出现之前我们一直使用synchronized来实现同步访问。那为什么还要提供lock呢...</span></a><a class="item" href="\concurrency\why_concurrency\" title="Why Concurrency ?" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life4.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life4.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">Why Concurrency ?</span><span class="excerpt">一门技术的出现必然有其出现的道理，后来需要了解它出现的时代环境和因素，扩充自己的视野，发掘技术发展的经过。分析其优缺点，以...</span></a><a class="item" href="\java\abstract_interface\" title="接口 vs 抽象类的区别？" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">接口 vs 抽象类的区别？</span><span class="excerpt">在面向对象编程中，抽象类和接口是两个经常被用到的语法概念，是面向对象四大特性，以及很多设计模式、设计思想、设计原则编程实现...</span></a></div></section></div>
       
       
         <div class='copyright'>
@@ -1744,7 +1846,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       if (href.length == 0) {
         // 选中文本
         if (window.getSelection().toString()) {
-          if ('' == 'true') {
+          if ('true' == 'true') {
             copyText.style.display = 'block';
             hrText.style.display = 'block';
           }
@@ -1857,6 +1959,78 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
 
 
 
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+		if($(".highlight .code pre").length+$(".article pre code").length==0)return;
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
+</script>
+
+
+
+
+   <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script>
+<script type="text/javascript">
+  function pjax_scrollrebeal() {
+    ScrollReveal().reveal('.l_main .reveal', {
+      distance: '32px',
+      duration: '800',
+      interval: '20',
+      scale: '1',
+      easing: 'ease-out'
+    });
+  }
+  $(function () {
+    pjax_scrollrebeal();
+  });
+</script>
 
 
 
@@ -1888,7 +2062,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
   <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@3/dist/av-min.js"></script>
 
   
-<script src="https://cdn.jsdelivr.net/npm/valine@1.4/dist/Valine.min.js"></script>
+<script src="/js/valine.js"></script>
 
 
 <script>
@@ -1957,9 +2131,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
     })
   }
 
-  
   function newcomment() {
-
     function queryLeanCloud(k) {
       let root = this;
       let len = arguments.length;
@@ -1981,11 +2153,11 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       }
     }
     var valine = new Valine({
-      el: '#valine_container',
+      el: 'valine_container',
       app_id: 'wvx2KxLUqgjcKv9QE62FmvUY-MdYXbMMI',
       app_key: 'u1P8dl8u7IlizUpYbwXpc1VN',
       placeholder: '快来评论吧~',
-      serverURLs: 'https://gyl-coder.top'
+      serverURLs: 'https://wvx2kxlu.api.lncldglobal.com'
     });
 
     //判断博主，heson改为自己的昵称
@@ -2013,7 +2185,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
     }
 
     //查询评论
-    valine.Q('*').limit(7).find().then(function (comments) {
+    valine.Q('*').limit(5).find().then(function (comments) {
       var hotComments = $("#hot-comments");
       for (var i = 0; i < comments.length; i++) {
         if (i === 0) {
@@ -2160,9 +2332,35 @@ const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
 
 
 
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
 
 
 
+  
+<script src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+  
 
 
 
@@ -2493,8 +2691,16 @@ const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
           }
         
         
+        document.querySelectorAll('pre code').forEach((block) => {
+          hljs.highlightBlock(block);
+        });
         
         
+          pjax_scrollrebeal();
+        
+        
+        
+          pjax_initCopyCode();
         
         
           pjax_valine();

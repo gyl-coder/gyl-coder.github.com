@@ -38,10 +38,18 @@
   <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
   
     
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/heson525/fontawesome-pro@5.13.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css">
 
   
   
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
 
   
 
@@ -58,6 +66,12 @@
   <!-- import link -->
   
 
+  
+    
+      
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.18.1/styles/solarized-light.css">
+
+    
   
   
     
@@ -985,7 +999,40 @@
 <p>下面我们通过使用MyBatis 对一个User 实体进行CRUD 操作。</p>
 <h4 id="引入相关依赖"><a class="header-anchor" href="#引入相关依赖">¶</a>引入相关依赖</h4>
 <p>在工程所在的 pom 文件中加入以下依赖</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&lt;properties&gt;</span><br><span class="line">    &lt;project.build.sourceEncoding&gt;UTF-8&lt;&#x2F;project.build.sourceEncoding&gt;</span><br><span class="line">    &lt;maven.compiler.encoding&gt;UTF-8&lt;&#x2F;maven.compiler.encoding&gt;</span><br><span class="line">    &lt;java.version&gt;1.8&lt;&#x2F;java.version&gt;</span><br><span class="line">    &lt;maven.compiler.source&gt;1.8&lt;&#x2F;maven.compiler.source&gt;</span><br><span class="line">    &lt;maven.compiler.target&gt;1.8&lt;&#x2F;maven.compiler.target&gt;</span><br><span class="line">&lt;&#x2F;properties&gt;</span><br><span class="line">&lt;dependencies&gt;</span><br><span class="line">    &lt;!--mybatis 依赖--&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.mybatis&lt;&#x2F;groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;mybatis&lt;&#x2F;artifactId&gt;</span><br><span class="line">        &lt;version&gt;3.4.5&lt;&#x2F;version&gt;</span><br><span class="line">    &lt;&#x2F;dependency&gt;</span><br><span class="line">    &lt;!--mysql 依赖--&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;mysql&lt;&#x2F;groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;mysql-connector-java&lt;&#x2F;artifactId&gt;</span><br><span class="line">        &lt;version&gt;5.1.6&lt;&#x2F;version&gt;</span><br><span class="line">        &lt;scope&gt;runtime&lt;&#x2F;scope&gt;</span><br><span class="line">    &lt;&#x2F;dependency&gt;</span><br><span class="line">    &lt;!-- 单元测试依赖 --&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;junit&lt;&#x2F;groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;junit&lt;&#x2F;artifactId&gt;</span><br><span class="line">        &lt;version&gt;4.12&lt;&#x2F;version&gt;</span><br><span class="line">    &lt;&#x2F;dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.projectlombok&lt;&#x2F;groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;lombok&lt;&#x2F;artifactId&gt;</span><br><span class="line">        &lt;optional&gt;true&lt;&#x2F;optional&gt;</span><br><span class="line">    &lt;&#x2F;dependency&gt;</span><br><span class="line">&lt;&#x2F;dependencies&gt;</span><br></pre></td></tr></table></figure>
+<pre><code>    &lt;properties&gt;
+        &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+        &lt;maven.compiler.encoding&gt;UTF-8&lt;/maven.compiler.encoding&gt;
+        &lt;java.version&gt;1.8&lt;/java.version&gt;
+        &lt;maven.compiler.source&gt;1.8&lt;/maven.compiler.source&gt;
+        &lt;maven.compiler.target&gt;1.8&lt;/maven.compiler.target&gt;
+    &lt;/properties&gt;
+    &lt;dependencies&gt;
+        &lt;!--mybatis 依赖--&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.mybatis&lt;/groupId&gt;
+            &lt;artifactId&gt;mybatis&lt;/artifactId&gt;
+            &lt;version&gt;3.4.5&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;!--mysql 依赖--&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;mysql&lt;/groupId&gt;
+            &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+            &lt;version&gt;5.1.6&lt;/version&gt;
+            &lt;scope&gt;runtime&lt;/scope&gt;
+        &lt;/dependency&gt;
+        &lt;!-- 单元测试依赖 --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;junit&lt;/groupId&gt;
+            &lt;artifactId&gt;junit&lt;/artifactId&gt;
+            &lt;version&gt;4.12&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;
+            &lt;artifactId&gt;lombok&lt;/artifactId&gt;
+            &lt;optional&gt;true&lt;/optional&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+</code></pre>
 <h4 id="创建User-表结构"><a class="header-anchor" href="#创建User-表结构">¶</a>创建User 表结构</h4>
 <p>在数据库中建立一个简单的User 表结构</p>
 <table>
@@ -1016,9 +1063,59 @@
 </table>
 <h4 id="编写User-实体"><a class="header-anchor" href="#编写User-实体">¶</a>编写User 实体</h4>
 <p>这里为了减少代码量，引入了 lombok</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">@Getter</span><br><span class="line">@Setter</span><br><span class="line">@ToString</span><br><span class="line">public class User &#123;</span><br><span class="line"></span><br><span class="line">    &#x2F;** 用户Id *&#x2F;</span><br><span class="line">    private int id;</span><br><span class="line"></span><br><span class="line">    &#x2F;** 用户名 *&#x2F;</span><br><span class="line">    private String username;</span><br><span class="line"></span><br><span class="line">    &#x2F;** 用户密码 *&#x2F;</span><br><span class="line">    private String password;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>@Getter
+@Setter
+@ToString
+public class User &amp;#123;
+
+    /** 用户Id */
+    private int id;
+
+    /** 用户名 */
+    private String username;
+
+    /** 用户密码 */
+    private String password;
+
+&amp;#125;
+</code></pre>
 <h4 id="编写UserMapper-映射文件"><a class="header-anchor" href="#编写UserMapper-映射文件">¶</a>编写UserMapper 映射文件</h4>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot; ?&gt;</span><br><span class="line">&lt;!DOCTYPE mapper </span><br><span class="line"> PUBLIC &quot;-&#x2F;&#x2F;mybatis.org&#x2F;&#x2F;DTD Mapper 3.0&#x2F;&#x2F;EN&quot; </span><br><span class="line"> &quot;http:&#x2F;&#x2F;mybatis.org&#x2F;dtd&#x2F;mybatis-3-mapper.dtd&quot;&gt;</span><br><span class="line"> </span><br><span class="line">&lt;mapper namespace&#x3D;&quot;com.yanliang.mockTest.dao.IUserDao&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 查询所有 --&gt;</span><br><span class="line">    &lt;select id&#x3D;&quot;selectList&quot; resultType&#x3D;&quot;com.yanliang.mockTest.User&quot;&gt;</span><br><span class="line">        select * from user</span><br><span class="line">    &lt;&#x2F;select&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 查询单个对象 --&gt;</span><br><span class="line">    &lt;select id&#x3D;&quot;selectOne&quot; resultType&#x3D;&quot;com.yanliang.mockTest.User&quot; paramterType&#x3D;&quot;com.yanliang.mockTest.User&quot;&gt;</span><br><span class="line">        select * from user where id &#x3D; #&#123;id&#125; and username &#x3D; #&#123;username&#125;</span><br><span class="line">    &lt;&#x2F;select&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!--    插入--&gt;</span><br><span class="line">    &lt;insert id&#x3D;&quot;insert&quot; parameterType&#x3D;&quot;com.yanliang.mockTest.User&quot;&gt;</span><br><span class="line">        insert into user</span><br><span class="line">        values ( #&#123;id&#125;, #&#123;username&#125; )</span><br><span class="line">    &lt;&#x2F;insert&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!--    删除--&gt;</span><br><span class="line">    &lt;delete id&#x3D;&quot;delete&quot; parameterType&#x3D;&quot;java.lang.Integer&quot;&gt;</span><br><span class="line">        delete from user where id &#x3D; #&#123;id&#125;</span><br><span class="line">    &lt;&#x2F;delete&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!--    更新--&gt;</span><br><span class="line">    &lt;update id&#x3D;&quot;update&quot; parameterType&#x3D;&quot;com.yanliang.mockTest.User&quot;&gt;</span><br><span class="line">        update user set username &#x3D; #&#123;username&#125;</span><br><span class="line">        where id &#x3D; #&#123;id&#125;</span><br><span class="line">    &lt;&#x2F;update&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;mapper&gt;</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;!DOCTYPE mapper 
+ PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot; 
+ &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
+ 
+&lt;mapper namespace=&quot;com.yanliang.mockTest.dao.IUserDao&quot;&gt;
+
+    &lt;!-- 查询所有 --&gt;
+    &lt;select id=&quot;selectList&quot; resultType=&quot;com.yanliang.mockTest.User&quot;&gt;
+        select * from user
+    &lt;/select&gt;
+
+    &lt;!-- 查询单个对象 --&gt;
+    &lt;select id=&quot;selectOne&quot; resultType=&quot;com.yanliang.mockTest.User&quot; paramterType=&quot;com.yanliang.mockTest.User&quot;&gt;
+        select * from user where id = #&amp;#123;id&amp;#125; and username = #&amp;#123;username&amp;#125;
+    &lt;/select&gt;
+
+    &lt;!--    插入--&gt;
+    &lt;insert id=&quot;insert&quot; parameterType=&quot;com.yanliang.mockTest.User&quot;&gt;
+        insert into user
+        values ( #&amp;#123;id&amp;#125;, #&amp;#123;username&amp;#125; )
+    &lt;/insert&gt;
+
+    &lt;!--    删除--&gt;
+    &lt;delete id=&quot;delete&quot; parameterType=&quot;java.lang.Integer&quot;&gt;
+        delete from user where id = #&amp;#123;id&amp;#125;
+    &lt;/delete&gt;
+
+    &lt;!--    更新--&gt;
+    &lt;update id=&quot;update&quot; parameterType=&quot;com.yanliang.mockTest.User&quot;&gt;
+        update user set username = #&amp;#123;username&amp;#125;
+        where id = #&amp;#123;id&amp;#125;
+    &lt;/update&gt;
+
+&lt;/mapper&gt;
+</code></pre>
 
   
   
@@ -1733,7 +1830,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       if (href.length == 0) {
         // 选中文本
         if (window.getSelection().toString()) {
-          if ('' == 'true') {
+          if ('true' == 'true') {
             copyText.style.display = 'block';
             hrText.style.display = 'block';
           }
@@ -1846,6 +1943,78 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
 
 
 
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+		if($(".highlight .code pre").length+$(".article pre code").length==0)return;
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
+</script>
+
+
+
+
+   <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script>
+<script type="text/javascript">
+  function pjax_scrollrebeal() {
+    ScrollReveal().reveal('.l_main .reveal', {
+      distance: '32px',
+      duration: '800',
+      interval: '20',
+      scale: '1',
+      easing: 'ease-out'
+    });
+  }
+  $(function () {
+    pjax_scrollrebeal();
+  });
+</script>
 
 
 
@@ -1877,7 +2046,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
   <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@3/dist/av-min.js"></script>
 
   
-<script src="https://cdn.jsdelivr.net/npm/valine@1.4/dist/Valine.min.js"></script>
+<script src="/js/valine.js"></script>
 
 
 <script>
@@ -1946,9 +2115,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
     })
   }
 
-  
   function newcomment() {
-
     function queryLeanCloud(k) {
       let root = this;
       let len = arguments.length;
@@ -1970,11 +2137,11 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       }
     }
     var valine = new Valine({
-      el: '#valine_container',
+      el: 'valine_container',
       app_id: 'wvx2KxLUqgjcKv9QE62FmvUY-MdYXbMMI',
       app_key: 'u1P8dl8u7IlizUpYbwXpc1VN',
       placeholder: '快来评论吧~',
-      serverURLs: 'https://gyl-coder.top'
+      serverURLs: 'https://wvx2kxlu.api.lncldglobal.com'
     });
 
     //判断博主，heson改为自己的昵称
@@ -2002,7 +2169,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
     }
 
     //查询评论
-    valine.Q('*').limit(7).find().then(function (comments) {
+    valine.Q('*').limit(5).find().then(function (comments) {
       var hotComments = $("#hot-comments");
       for (var i = 0; i < comments.length; i++) {
         if (i === 0) {
@@ -2149,9 +2316,35 @@ const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
 
 
 
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
 
 
 
+  
+<script src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+  
 
 
 
@@ -2482,8 +2675,16 @@ const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
           }
         
         
+        document.querySelectorAll('pre code').forEach((block) => {
+          hljs.highlightBlock(block);
+        });
         
         
+          pjax_scrollrebeal();
+        
+        
+        
+          pjax_initCopyCode();
         
         
           pjax_valine();

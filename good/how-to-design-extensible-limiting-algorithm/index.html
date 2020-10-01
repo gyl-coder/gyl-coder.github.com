@@ -38,10 +38,18 @@
   <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
   
     
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/heson525/fontawesome-pro@5.13.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css">
 
   
   
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
 
   
 
@@ -58,6 +66,12 @@
   <!-- import link -->
   
 
+  
+    
+      
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.18.1/styles/solarized-light.css">
+
+    
   
   
     
@@ -1006,21 +1020,51 @@
 <p>你可以在其中一台开发机器上快速安装Kong来测试它。我最喜欢的入门方式是使用AWS云形成模板，因为只需几次单击就可以获得预先配置好的开发机器。只需选择一个HVM选项，并将实例大小设置为使用t2.micro，这些对于测试都是负担得起的。然后ssh到新实例上的命令行进行下一步。</p>
 <h3 id="在Kong上添加API"><a class="header-anchor" href="#在Kong上添加API">¶</a>在Kong上添加API</h3>
 <p>下一步是使用Kong的admin API在Kong上添加一个API。我们将使用httpbin作为示例，它是一个针对API的免费测试服务。get URL将把我的请求数据镜像成JSON。我们还假设Kong在本地系统上的默认端口上运行。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">curl -i -X POST \</span><br><span class="line">--url http:&#x2F;&#x2F;localhost:8001&#x2F;apis&#x2F; \</span><br><span class="line">--data &#39;name&#x3D;test&#39; \</span><br><span class="line">--data &#39;uris&#x3D;&#x2F;test&#39; \</span><br><span class="line">--data &#39;upstream_url&#x3D;http:&#x2F;&#x2F;httpbin.org&#x2F;get&#39;</span><br></pre></td></tr></table></figure>
+<pre><code>curl -i -X POST \
+--url http://localhost:8001/apis/ \
+--data 'name=test' \
+--data 'uris=/test' \
+--data 'upstream_url=http://httpbin.org/get'
+</code></pre>
 <p>现在 Kong 意识到每个发送到 “/test” 的请求都应该代理到 httpbin。我们可以向它的代理端口上的 Kong 发出以下请求来测试它：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">curl http:&#x2F;&#x2F;localhost:8000&#x2F;test</span><br><span class="line">&#123;</span><br><span class="line">    &quot;args&quot;: &#123;&#125;,</span><br><span class="line">    &quot;headers&quot;: &#123;</span><br><span class="line">    &quot;Accept&quot;: &quot;*&#x2F;*&quot;,</span><br><span class="line">    &quot;Connection&quot;: &quot;close&quot;,</span><br><span class="line">    &quot;Host&quot;: &quot;httpbin.org&quot;,</span><br><span class="line">    &quot;User-Agent&quot;: &quot;curl&#x2F;7.51.0&quot;,</span><br><span class="line">    &quot;X-Forwarded-Host&quot;: &quot;localhost&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;origin&quot;: &quot;localhost, 52.89.171.202&quot;,</span><br><span class="line">    &quot;url&quot;: &quot;http:&#x2F;&#x2F;localhost&#x2F;get&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>curl http://localhost:8000/test
+&amp;#123;
+    &quot;args&quot;: &amp;#123;&amp;#125;,
+    &quot;headers&quot;: &amp;#123;
+    &quot;Accept&quot;: &quot;*/*&quot;,
+    &quot;Connection&quot;: &quot;close&quot;,
+    &quot;Host&quot;: &quot;httpbin.org&quot;,
+    &quot;User-Agent&quot;: &quot;curl/7.51.0&quot;,
+    &quot;X-Forwarded-Host&quot;: &quot;localhost&quot;
+    &amp;#125;,
+    &quot;origin&quot;: &quot;localhost, 52.89.171.202&quot;,
+    &quot;url&quot;: &quot;http://localhost/get&quot;
+&amp;#125;
+</code></pre>
 <p>它还是好的！Kong 已经接收了请求并将其代理到 httpbin，httpbin 已将我的请求头和我的原始 IP 地址进行了镜像。</p>
 <h3 id="添加基本的速率限制"><a class="header-anchor" href="#添加基本的速率限制">¶</a>添加基本的速率限制</h3>
 <p>让我们继续，通过使用社区版的限速插件 [1] 添加限速功能来保护它不受过多请求的影响，每个消费者每分钟只能发出 5 个请求：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -i -X POST http:&#x2F;&#x2F;localhost:8001&#x2F;apis&#x2F;test&#x2F;plugins&#x2F; \</span><br><span class="line">-d &quot;name&#x3D;rate-limiting&quot; \</span><br><span class="line">-d &quot;config.minute&#x3D;5&quot;</span><br></pre></td></tr></table></figure>
+<pre><code>curl -i -X POST http://localhost:8001/apis/test/plugins/ \
+-d &quot;name=rate-limiting&quot; \
+-d &quot;config.minute=5&quot;
+</code></pre>
 <p>如果我们现在发出超过 5 个请求，Kong 会回复以下错误信息：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">curl http:&#x2F;&#x2F;localhost:8000&#x2F;test</span><br><span class="line">&#123;</span><br><span class="line">    &quot;message&quot;:&quot;API rate limit exceeded&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>curl http://localhost:8000/test
+&amp;#123;
+    &quot;message&quot;:&quot;API rate limit exceeded&quot;
+&amp;#125;
+</code></pre>
 <p>看上去不错！我们在 Kong 上添加了一个 API，并且仅在两个 HTTP 请求中向 Kong 的 admin API 添加了速率限制。</p>
 <p>它默认使用固定的窗口来限制 IP 地址的速率，并使用默认的数据存储在集群中的所有节点之间进行同步。有关其他选项，包括每个用户的速率限制或使用其他数据存储（如 Redis），请参阅文档 [1]。</p>
 <h3 id="企业版-Kong，更好的性能"><a class="header-anchor" href="#企业版-Kong，更好的性能">¶</a>企业版 Kong，更好的性能</h3>
 <p>企业版 [2] 的速率限制增加了对滑动窗口算法的支持，以更好地控制和性能。滑动窗口可以防止你的 API 在窗口边界附近重载，如上面的部分所述。对于低延迟，它使用计数器的内存表，可以使用异步或同步更新跨集群进行同步。这提供了本地阈值的延迟，并且可以跨整个集群扩展。</p>
 <p>第一步是安装企业版的 Kong。然后，可以配置速率限制、以秒为单位的窗口大小和同步计数器值的频率。它真的很容易使用，你可以得到这个强大的控制与一个简单的 API 调用：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">curl -i -X POST http:&#x2F;&#x2F;localhost:8001&#x2F;apis&#x2F;test&#x2F;plugins \</span><br><span class="line">-d &quot;name&#x3D;rate-limiting&quot; \</span><br><span class="line">-d &quot;config.limit&#x3D;5&quot; \</span><br><span class="line">-d &quot;config.window_size&#x3D;60&quot; \</span><br><span class="line">-d &quot;config.sync_rate&#x3D;10&quot;</span><br></pre></td></tr></table></figure>
+<pre><code>curl -i -X POST http://localhost:8001/apis/test/plugins \
+-d &quot;name=rate-limiting&quot; \
+-d &quot;config.limit=5&quot; \
+-d &quot;config.window_size=60&quot; \
+-d &quot;config.sync_rate=10&quot;
+</code></pre>
 <p>企业还增加了对 Redis Sentinel 的支持，这使得 Redis 高可用性和更强的容错能力。你可以阅读更多的企业速率限制插件文档。</p>
 <div class="tag link"><a class="link-card" title="阅读原文" target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzA5OTAyNzQ2OA==&mid=2649704593&idx=1&sn=bccc83c5fc87bf4f032f91405be15cd4&scene=21#wechat_redirect'><i"><div class="left"><img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/256/safari.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/256/safari.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/></div><div class="right"><p class="text">阅读原文</p><p class="url">https://mp.weixin.qq.com/s?__biz=MzA5OTAyNzQ2OA==&mid=2649704593&idx=1&sn=bccc83c5fc87bf4f032f91405be15cd4&scene=21#wechat_redirect'><i</p></div></a></div>
   
@@ -1727,7 +1771,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       if (href.length == 0) {
         // 选中文本
         if (window.getSelection().toString()) {
-          if ('' == 'true') {
+          if ('true' == 'true') {
             copyText.style.display = 'block';
             hrText.style.display = 'block';
           }
@@ -1840,6 +1884,78 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
 
 
 
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+		if($(".highlight .code pre").length+$(".article pre code").length==0)return;
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
+</script>
+
+
+
+
+   <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script>
+<script type="text/javascript">
+  function pjax_scrollrebeal() {
+    ScrollReveal().reveal('.l_main .reveal', {
+      distance: '32px',
+      duration: '800',
+      interval: '20',
+      scale: '1',
+      easing: 'ease-out'
+    });
+  }
+  $(function () {
+    pjax_scrollrebeal();
+  });
+</script>
 
 
 
@@ -1871,7 +1987,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
   <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@3/dist/av-min.js"></script>
 
   
-<script src="https://cdn.jsdelivr.net/npm/valine@1.4/dist/Valine.min.js"></script>
+<script src="/js/valine.js"></script>
 
 
 <script>
@@ -1940,9 +2056,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
     })
   }
 
-  
   function newcomment() {
-
     function queryLeanCloud(k) {
       let root = this;
       let len = arguments.length;
@@ -1964,11 +2078,11 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       }
     }
     var valine = new Valine({
-      el: '#valine_container',
+      el: 'valine_container',
       app_id: 'wvx2KxLUqgjcKv9QE62FmvUY-MdYXbMMI',
       app_key: 'u1P8dl8u7IlizUpYbwXpc1VN',
       placeholder: '快来评论吧~',
-      serverURLs: 'https://gyl-coder.top'
+      serverURLs: 'https://wvx2kxlu.api.lncldglobal.com'
     });
 
     //判断博主，heson改为自己的昵称
@@ -1996,7 +2110,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
     }
 
     //查询评论
-    valine.Q('*').limit(7).find().then(function (comments) {
+    valine.Q('*').limit(5).find().then(function (comments) {
       var hotComments = $("#hot-comments");
       for (var i = 0; i < comments.length; i++) {
         if (i === 0) {
@@ -2143,9 +2257,35 @@ const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
 
 
 
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
 
 
 
+  
+<script src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+  
 
 
 
@@ -2476,8 +2616,16 @@ const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
           }
         
         
+        document.querySelectorAll('pre code').forEach((block) => {
+          hljs.highlightBlock(block);
+        });
         
         
+          pjax_scrollrebeal();
+        
+        
+        
+          pjax_initCopyCode();
         
         
           pjax_valine();

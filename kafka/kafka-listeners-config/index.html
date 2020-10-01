@@ -40,10 +40,18 @@
   <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
   
     
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/heson525/fontawesome-pro@5.13.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css">
 
   
   
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
 
   
 
@@ -60,6 +68,12 @@
   <!-- import link -->
   
 
+  
+    
+      
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.18.1/styles/solarized-light.css">
+
+    
   
   
     
@@ -964,7 +978,81 @@
 <div class="img-wrap"><div class="img-bg"><img class="img lazyload placeholder" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka7.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka7.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/></div></div>
 <p>一下是我这边的处理方式，大家可以参考下。如果有更好的方式欢迎大家相互交流。</p>
 <p>以下方法是在初始化Consumer的时候进行处理的：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> KafkaConsumerImpl <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (group == <span class="keyword">null</span> || group.isEmpty()) &#123;</span><br><span class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">&quot;phoenix.mq.group is empty&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	Properties props = <span class="keyword">new</span> Properties();</span><br><span class="line">	</span><br><span class="line">	props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, namesrvAddr);</span><br><span class="line">	props.put(ConsumerConfig.GROUP_ID_CONFIG, group);</span><br><span class="line">	<span class="comment">// 是否允许自动提交offset，这里设为false，下面手动提交</span></span><br><span class="line">	props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, <span class="string">&quot;false&quot;</span>);</span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">	consumer = <span class="keyword">new</span> KafkaConsumer&lt;&gt;(props);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// consumer 订阅的topic及partition</span></span><br><span class="line">	topicPartition = <span class="keyword">new</span> TopicPartition(<span class="keyword">this</span>.topic, <span class="keyword">this</span>.partitionId);</span><br><span class="line">	<span class="keyword">this</span>.partitions = Collections.singletonList(topicPartition);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 元数据初始化和连接测试，3次失败后抛出异常</span></span><br><span class="line">	Callable&lt;Boolean&gt; call = <span class="keyword">new</span> Callable&lt;Boolean&gt;() &#123;</span><br><span class="line">		<span class="keyword">boolean</span> res = <span class="keyword">false</span>;</span><br><span class="line">		<span class="keyword">int</span> tryTimes = <span class="number">3</span>;</span><br><span class="line">        </span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> Boolean <span class="title">call</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">			<span class="keyword">while</span> (tryTimes-- &gt; <span class="number">0</span>) &#123;</span><br><span class="line">				<span class="keyword">try</span> &#123;</span><br><span class="line">					consumer.assign(partitions);</span><br><span class="line">					<span class="comment">// 默认初始化offset当前最大值</span></span><br><span class="line">					nextBeginOffset = consumer.position(topicPartition);</span><br><span class="line">					res = <span class="keyword">true</span>;</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">					<span class="keyword">if</span> (e <span class="keyword">instanceof</span> InterruptedException) &#123;</span><br><span class="line">						<span class="keyword">break</span>; <span class="comment">// 如果position在阻塞状态时，调用了 task.cancel 会抛出此异常。直接退出即可</span></span><br><span class="line">					&#125;</span><br><span class="line">					LOG.error(e.getMessage(), e);</span><br><span class="line">					LOG.error(<span class="string">&quot; ==&gt; error when trying to fetch metadata for kafka. topic&lt;&#123;&#125;&gt;, partition&lt;&#123;&#125;&gt;&quot;</span>, topic,</span><br><span class="line">							partitionId);</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="comment">// sleep</span></span><br><span class="line">				<span class="keyword">try</span> &#123;</span><br><span class="line">					Thread.sleep(<span class="number">2000</span>);</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">					e.printStackTrace();</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">return</span> res;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line">	FutureTask&lt;Boolean&gt; task = <span class="keyword">new</span> FutureTask&lt;&gt;(call);</span><br><span class="line">	<span class="keyword">new</span> Thread(task).start();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">boolean</span> isOk = <span class="keyword">false</span>;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		isOk = task.get(<span class="number">10000</span>, TimeUnit.MILLISECONDS);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">		LOG.error(<span class="string">&quot;Get task result timeout&quot;</span>, e);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	task.cancel(<span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (isOk) &#123;</span><br><span class="line">		LOG.info(<span class="string">&quot; ==&gt; init kafka consumer succeed: servers&lt;&#123;&#125;&gt;, topic&lt;&#123;&#125;&gt;, partition&lt;&#123;&#125;&gt;, nextBeginOffset&lt;&#123;&#125;&gt;&quot;</span>,</span><br><span class="line">				namesrvAddr, topic, partitionId, nextBeginOffset);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(String.format(</span><br><span class="line">				<span class="string">&quot; ==&gt; init kafka consumer failed. please check the conf (listeners or advertised.listeners or ...) and try to ping the host name in the conf value&quot;</span>));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="language-java">public KafkaConsumerImpl init() &amp;#123;
+	if (group == null || group.isEmpty()) &amp;#123;
+		throw new RuntimeException(&quot;phoenix.mq.group is empty&quot;);
+	&amp;#125;
+	Properties props = new Properties();
+	
+	props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, namesrvAddr);
+	props.put(ConsumerConfig.GROUP_ID_CONFIG, group);
+	// 是否允许自动提交offset，这里设为false，下面手动提交
+	props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, &quot;false&quot;);
+	// ...
+	consumer = new KafkaConsumer&lt;&gt;(props);
+
+	// consumer 订阅的topic及partition
+	topicPartition = new TopicPartition(this.topic, this.partitionId);
+	this.partitions = Collections.singletonList(topicPartition);
+
+	// 元数据初始化和连接测试，3次失败后抛出异常
+	Callable&lt;Boolean&gt; call = new Callable&lt;Boolean&gt;() &amp;#123;
+		boolean res = false;
+		int tryTimes = 3;
+        
+		@Override
+		public Boolean call() throws Exception &amp;#123;
+			while (tryTimes-- &gt; 0) &amp;#123;
+				try &amp;#123;
+					consumer.assign(partitions);
+					// 默认初始化offset当前最大值
+					nextBeginOffset = consumer.position(topicPartition);
+					res = true;
+					break;
+				&amp;#125; catch (Exception e) &amp;#123;
+					if (e instanceof InterruptedException) &amp;#123;
+						break; // 如果position在阻塞状态时，调用了 task.cancel 会抛出此异常。直接退出即可
+					&amp;#125;
+					LOG.error(e.getMessage(), e);
+					LOG.error(&quot; ==&gt; error when trying to fetch metadata for kafka. topic&lt;&amp;#123;&amp;#125;&gt;, partition&lt;&amp;#123;&amp;#125;&gt;&quot;, topic,
+							partitionId);
+				&amp;#125;
+				// sleep
+				try &amp;#123;
+					Thread.sleep(2000);
+				&amp;#125;
+				catch (InterruptedException e) &amp;#123;
+					e.printStackTrace();
+				&amp;#125;
+			&amp;#125;
+			return res;
+		&amp;#125;
+	&amp;#125;;
+
+	FutureTask&lt;Boolean&gt; task = new FutureTask&lt;&gt;(call);
+	new Thread(task).start();
+
+	boolean isOk = false;
+	try &amp;#123;
+		isOk = task.get(10000, TimeUnit.MILLISECONDS);
+	&amp;#125;
+	catch (Exception e) &amp;#123;
+		LOG.error(&quot;Get task result timeout&quot;, e);
+	&amp;#125;
+
+	task.cancel(true);
+
+	if (isOk) &amp;#123;
+		LOG.info(&quot; ==&gt; init kafka consumer succeed: servers&lt;&amp;#123;&amp;#125;&gt;, topic&lt;&amp;#123;&amp;#125;&gt;, partition&lt;&amp;#123;&amp;#125;&gt;, nextBeginOffset&lt;&amp;#123;&amp;#125;&gt;&quot;,
+				namesrvAddr, topic, partitionId, nextBeginOffset);
+	&amp;#125;
+	else &amp;#123;
+		throw new RuntimeException(String.format(
+				&quot; ==&gt; init kafka consumer failed. please check the conf (listeners or advertised.listeners or ...) and try to ping the host name in the conf value&quot;));
+	&amp;#125;
+	return this;
+&amp;#125;
+</code></pre>
 <p>利用 FutureTask 的特性，定义一个定时任务， 在初始化Consumer的时候，尝试去连接kafka，如果配置的kafka的地址有误，或者配置出错在这里可以通过抛出错误体现出来。</p>
 <p>最后通过<code>task.get()</code> 方法返回的结果来判断 Consumer 是否成功初始化。</p>
 
@@ -981,11 +1069,11 @@
     </section>
     <section class='body'>
       <div class="vlts-rps"><a class="item" href="\kafka\kafka-hw-leo-lso\" title="Kafka中的HW、LEO、LSO等分别代表什么？" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka1.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka1.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">Kafka中的HW、LEO、LSO等分别代表什么？</span><span class="excerpt">HW 、 LEO 等概念和上一篇文章所说的 ISR有着紧密的关系，如果不了解 ISR 可以先看下ISR相关的介绍。
-HW ...</span></a><a class="item" href="\kafka\kafka-isr-ar\" title="kafka中的ISR、AR代表什么？ISR的伸缩性又指什么？" rel="bookmark "><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">kafka中的ISR、AR代表什么？ISR的伸缩性又指什么？</span><span class="excerpt">相信大家已经对 kafka 的基本概念已经有一定的了解了，下面直接来分析一下 ISR 和 AR 的概念。</span></a><a class="item" href="\kafka\kafka-rebalance\" title="Kafka Rebalance机制分析" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.3/img/kafka/3951011.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.3/img/kafka/3951011.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">Kafka Rebalance机制分析</span><span class="excerpt">Rebalance 本质上是一种协议，规定了一个 Consumer Group 下的所有 consumer 如何达成一致，...</span></a><a class="item" href="\kafka\kafka-todo-list\" title="kafka 问题总结" rel="bookmark "><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">kafka 问题总结</span><span class="excerpt">
+HW ...</span></a><a class="item" href="\kafka\kafka-isr-ar\" title="kafka中的ISR、AR代表什么？ISR的伸缩性又指什么？" rel="bookmark "><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">kafka中的ISR、AR代表什么？ISR的伸缩性又指什么？</span><span class="excerpt">相信大家已经对 kafka 的基本概念已经有一定的了解了，下面直接来分析一下 ISR 和 AR 的概念。</span></a><a class="item" href="\kafka\kafka-rebalance\" title="Kafka Rebalance机制分析" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.3/img/kafka/3951011.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.3/img/kafka/3951011.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">Kafka Rebalance机制分析</span><span class="excerpt">Rebalance 本质上是一种协议，规定了一个 Consumer Group 下的所有 consumer 如何达成一致，...</span></a><a class="item" href="\kafka\kafka-reliability\" title="kafka 如何保证数据的可靠性和一致性" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.2/img/kafka/1567762579648.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.2/img/kafka/1567762579648.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">kafka 如何保证数据的可靠性和一致性</span><span class="excerpt">¶数据可靠性
+Kafka 作为一个商业级消息中间件，消息可靠性的重要性可想而知。本文从 Producter 往 Broke...</span></a><a class="item" href="\kafka\kafka-todo-list\" title="kafka 问题总结" rel="bookmark "><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">kafka 问题总结</span><span class="excerpt">
 kafka如何保证数据可靠性和数据一致性
 Kafka Rebalance机制分析
-Kafka的用途有哪些？使用场景如何？...</span></a><a class="item" href="\kafka\kafka-reliability\" title="kafka 如何保证数据的可靠性和一致性" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.2/img/kafka/1567762579648.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.2/img/kafka/1567762579648.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">kafka 如何保证数据的可靠性和一致性</span><span class="excerpt">¶数据可靠性
-Kafka 作为一个商业级消息中间件，消息可靠性的重要性可想而知。本文从 Producter 往 Broke...</span></a></div></section></div>
+Kafka的用途有哪些？使用场景如何？...</span></a></div></section></div>
       
       
         <div class='copyright'>
@@ -1688,7 +1776,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       if (href.length == 0) {
         // 选中文本
         if (window.getSelection().toString()) {
-          if ('' == 'true') {
+          if ('true' == 'true') {
             copyText.style.display = 'block';
             hrText.style.display = 'block';
           }
@@ -1801,6 +1889,78 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
 
 
 
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+		if($(".highlight .code pre").length+$(".article pre code").length==0)return;
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
+</script>
+
+
+
+
+   <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script>
+<script type="text/javascript">
+  function pjax_scrollrebeal() {
+    ScrollReveal().reveal('.l_main .reveal', {
+      distance: '32px',
+      duration: '800',
+      interval: '20',
+      scale: '1',
+      easing: 'ease-out'
+    });
+  }
+  $(function () {
+    pjax_scrollrebeal();
+  });
+</script>
 
 
 
@@ -1832,7 +1992,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
   <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@3/dist/av-min.js"></script>
 
   
-<script src="https://cdn.jsdelivr.net/npm/valine@1.4/dist/Valine.min.js"></script>
+<script src="/js/valine.js"></script>
 
 
 <script>
@@ -1901,9 +2061,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
     })
   }
 
-  
   function newcomment() {
-
     function queryLeanCloud(k) {
       let root = this;
       let len = arguments.length;
@@ -1925,11 +2083,11 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       }
     }
     var valine = new Valine({
-      el: '#valine_container',
+      el: 'valine_container',
       app_id: 'wvx2KxLUqgjcKv9QE62FmvUY-MdYXbMMI',
       app_key: 'u1P8dl8u7IlizUpYbwXpc1VN',
       placeholder: '快来评论吧~',
-      serverURLs: 'https://gyl-coder.top'
+      serverURLs: 'https://wvx2kxlu.api.lncldglobal.com'
     });
 
     //判断博主，heson改为自己的昵称
@@ -1957,7 +2115,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
     }
 
     //查询评论
-    valine.Q('*').limit(7).find().then(function (comments) {
+    valine.Q('*').limit(5).find().then(function (comments) {
       var hotComments = $("#hot-comments");
       for (var i = 0; i < comments.length; i++) {
         if (i === 0) {
@@ -2104,9 +2262,35 @@ const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
 
 
 
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
 
 
 
+  
+<script src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+  
 
 
 
@@ -2437,8 +2621,16 @@ const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
           }
         
         
+        document.querySelectorAll('pre code').forEach((block) => {
+          hljs.highlightBlock(block);
+        });
         
         
+          pjax_scrollrebeal();
+        
+        
+        
+          pjax_initCopyCode();
         
         
           pjax_valine();

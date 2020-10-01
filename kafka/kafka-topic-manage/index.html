@@ -38,10 +38,18 @@
   <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
   
     
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/heson525/fontawesome-pro@5.13.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css">
 
   
   
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
 
   
 
@@ -58,6 +66,12 @@
   <!-- import link -->
   
 
+  
+    
+      
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.18.1/styles/solarized-light.css">
+
+    
   
   
     
@@ -955,7 +969,8 @@
 <a id="more"></a>
 <h2 id="创建主题"><a class="header-anchor" href="#创建主题">¶</a>创建主题</h2>
 <p>kafka提供了自带的 <code>kafka-topics</code> 脚本，用来帮助用户创建主题（topic）。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/kafka-topics.sh --bootstrap-server broker_host:port --create --topic my_topic_name  --partitions 1 --replication-factor 1</span><br></pre></td></tr></table></figure>
+<pre><code class="language-shell">bin/kafka-topics.sh --bootstrap-server broker_host:port --create --topic my_topic_name  --partitions 1 --replication-factor 1
+</code></pre>
 <p>create 表明我们要创建主题，而 partitions 和 replication factor 分别设置了主题的分区数以及每个分区下的副本数。</p>
 <h3 id="这里为什么用的-bootstrap-server-参数，而不是-zookeeper"><a class="header-anchor" href="#这里为什么用的-bootstrap-server-参数，而不是-zookeeper">¶</a>这里为什么用的 <code>--bootstrap-server</code> 参数，而不是 <code>--zookeeper</code> ?</h3>
 <p><code>--zookeeper</code> 参数是之前版本的用法，从kafka 2.2 版本开始，社区推荐使用 <code>--bootstrap-server</code> 参数替换 <code>--zoookeeper</code> ，并且显式地将后者标记为 “已过期”，因此，如果你已经在使用 2.2 版本了，那么创建主题请指定 <code>--bootstrap-server</code> 参数。</p>
@@ -966,20 +981,24 @@
 </ol>
 <h2 id="查询主题"><a class="header-anchor" href="#查询主题">¶</a>查询主题</h2>
 <p>创建好主题之后，Kafka 允许我们使用相同的脚本查询主题。你可以使用下面的命令，查询所有主题的列表。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/kafka-topics.sh --bootstrap-server broker_host:port --list</span><br></pre></td></tr></table></figure>
+<pre><code class="language-shell">bin/kafka-topics.sh --bootstrap-server broker_host:port --list
+</code></pre>
 <p>如果要查询单个主题的详细数据，你可以使用下面的命令。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/kafka-topics.sh --bootstrap-server broker_host:port --describe --topic &lt;topic_name&gt;</span><br></pre></td></tr></table></figure>
+<pre><code class="language-shell">bin/kafka-topics.sh --bootstrap-server broker_host:port --describe --topic &lt;topic_name&gt;
+</code></pre>
 <p>如果 describe 命令不指定具体的主题名称，那么 Kafka 默认会返回所有 “可见” 主题的详细数据给你。</p>
 <p><strong>这里的 “可见”，是指发起这个命令的用户能够看到的 Kafka 主题</strong>。这和前面说到主题创建时，使用 --zookeeper 和 --bootstrap-server 的区别是一样的。如果指定了 --bootstrap-server，那么这条命令就会受到安全认证体系的约束，即对命令发起者进行权限验证，然后返回它能看到的主题。否则，如果指定 --zookeeper 参数，那么默认会返回集群中所有的主题详细数据。基于这些原因，我建议你最好统一使用 --bootstrap-server 连接参数。</p>
 <h2 id="修改主题"><a class="header-anchor" href="#修改主题">¶</a>修改主题</h2>
 <h3 id="修改主题分区"><a class="header-anchor" href="#修改主题分区">¶</a>修改主题分区</h3>
 <p>其实就是增加分区，目前 Kafka 不允许减少某个主题的分区数。你可以使用 kafka-topics 脚本，结合 --alter 参数来增加某个主题的分区数，命令如下：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/kafka-topics.sh --bootstrap-server broker_host:port --alter --topic &lt;topic_name&gt; --partitions &lt; 新分区数 &gt;</span><br></pre></td></tr></table></figure>
+<pre><code class="language-shell">bin/kafka-topics.sh --bootstrap-server broker_host:port --alter --topic &lt;topic_name&gt; --partitions &lt; 新分区数 &gt;
+</code></pre>
 <p>这里要注意的是，你指定的分区数一定要比原有分区数大，否则 Kafka 会抛出 InvalidPartitionsException 异常。</p>
 <h3 id="修改主题级别参数"><a class="header-anchor" href="#修改主题级别参数">¶</a>修改主题级别参数</h3>
 <p>在主题创建之后，我们可以使用 kafka-configs 脚本修改对应的参数。</p>
 <p>假设我们要设置主题级别参数 max.message.bytes，那么命令如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin&#x2F;kafka-configs.sh --zookeeper zookeeper_host:port --entity-type topics --entity-name &lt;topic_name&gt; --alter --add-config max.message.bytes&#x3D;10485760</span><br></pre></td></tr></table></figure>
+<pre><code>bin/kafka-configs.sh --zookeeper zookeeper_host:port --entity-type topics --entity-name &lt;topic_name&gt; --alter --add-config max.message.bytes=10485760
+</code></pre>
 <p>也许你会觉得奇怪，为什么这个脚本就要指定 --zookeeper，而不是 --bootstrap-server 呢？其实，这个脚本也能指定 --bootstrap-server 参数，只是它是用来设置动态参数的。在专栏后面，我会详细介绍什么是动态参数，以及动态参数都有哪些。现在，你只需要了解设置常规的主题级别参数，还是使用 --zookeeper。</p>
 <h3 id="变更副本数"><a class="header-anchor" href="#变更副本数">¶</a>变更副本数</h3>
 <p>使用自带的 kafka-reassign-partitions 脚本，帮助我们增加主题的副本数。</p>
@@ -987,27 +1006,41 @@
 <ol>
 <li>创建一个 json 文件，显式提供 50 个分区对应的副本数。注意，replicas 中的 3 台 Broker 排列顺序不同，目的是将 Leader 副本均匀地分散在 Broker 上。该文件具体格式如下</li>
 </ol>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="attr">&quot;version&quot;</span>:<span class="number">1</span>, <span class="attr">&quot;partitions&quot;</span>:[</span><br><span class="line"> &#123;<span class="attr">&quot;topic&quot;</span>:<span class="string">&quot;__consumer_offsets&quot;</span>,<span class="attr">&quot;partition&quot;</span>:<span class="number">0</span>,<span class="attr">&quot;replicas&quot;</span>:[<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>]&#125;, </span><br><span class="line">  &#123;<span class="attr">&quot;topic&quot;</span>:<span class="string">&quot;__consumer_offsets&quot;</span>,<span class="attr">&quot;partition&quot;</span>:<span class="number">1</span>,<span class="attr">&quot;replicas&quot;</span>:[<span class="number">0</span>,<span class="number">2</span>,<span class="number">1</span>]&#125;,</span><br><span class="line">  &#123;<span class="attr">&quot;topic&quot;</span>:<span class="string">&quot;__consumer_offsets&quot;</span>,<span class="attr">&quot;partition&quot;</span>:<span class="number">2</span>,<span class="attr">&quot;replicas&quot;</span>:[<span class="number">1</span>,<span class="number">0</span>,<span class="number">2</span>]&#125;,</span><br><span class="line">  &#123;<span class="attr">&quot;topic&quot;</span>:<span class="string">&quot;__consumer_offsets&quot;</span>,<span class="attr">&quot;partition&quot;</span>:<span class="number">3</span>,<span class="attr">&quot;replicas&quot;</span>:[<span class="number">1</span>,<span class="number">2</span>,<span class="number">0</span>]&#125;,</span><br><span class="line">  ...</span><br><span class="line">  &#123;<span class="attr">&quot;topic&quot;</span>:<span class="string">&quot;__consumer_offsets&quot;</span>,<span class="attr">&quot;partition&quot;</span>:<span class="number">49</span>,<span class="attr">&quot;replicas&quot;</span>:[<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>]&#125;</span><br><span class="line">]&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="language-json">&amp;#123;&quot;version&quot;:1, &quot;partitions&quot;:[
+ &amp;#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:0,&quot;replicas&quot;:[0,1,2]&amp;#125;, 
+  &amp;#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:1,&quot;replicas&quot;:[0,2,1]&amp;#125;,
+  &amp;#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:2,&quot;replicas&quot;:[1,0,2]&amp;#125;,
+  &amp;#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:3,&quot;replicas&quot;:[1,2,0]&amp;#125;,
+  ...
+  &amp;#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:49,&quot;replicas&quot;:[0,1,2]&amp;#125;
+]&amp;#125;
+</code></pre>
 <ol start="2">
 <li>执行 <code>kafka-reassign-patitions</code> 脚本，命令如下：</li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/kafka-reassign-partitions.sh --zookeeper zookeeper_host:port --reassignment-json-file reassign.json --execute</span><br></pre></td></tr></table></figure>
+<pre><code class="language-shell">bin/kafka-reassign-partitions.sh --zookeeper zookeeper_host:port --reassignment-json-file reassign.json --execute
+</code></pre>
 <p>除了修改内部主题，我们可能还想查看这些内部主题的消息内容。特别是对于 __consumer_offsets 而言，由于它保存了消费者组的位移数据，有时候直接查看该主题消息是很方便的事情。下面的命令可以帮助我们直接查看消费者组提交的位移数据。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin&#x2F;kafka-console-consumer.sh --bootstrap-server kafka_host:port --topic __consumer_offsets --formatter &quot;kafka.coordinator.group.GroupMetadataManager\$OffsetsMessageFormatter&quot; --from-beginning</span><br></pre></td></tr></table></figure>
+<pre><code>bin/kafka-console-consumer.sh --bootstrap-server kafka_host:port --topic __consumer_offsets --formatter &quot;kafka.coordinator.group.GroupMetadataManager\$OffsetsMessageFormatter&quot; --from-beginning
+</code></pre>
 <p>除了查看位移提交数据，我们还可以直接读取该主题消息，查看消费者组的状态信息。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin&#x2F;kafka-console-consumer.sh --bootstrap-server kafka_host:port --topic __consumer_offsets --formatter &quot;kafka.coordinator.group.GroupMetadataManager\$GroupMetadataMessageFormatter&quot; --from-beginning</span><br></pre></td></tr></table></figure>
+<pre><code>bin/kafka-console-consumer.sh --bootstrap-server kafka_host:port --topic __consumer_offsets --formatter &quot;kafka.coordinator.group.GroupMetadataManager\$GroupMetadataMessageFormatter&quot; --from-beginning
+</code></pre>
 <p>对于内部主题 __transaction_state 而言，方法是相同的。你只需要指定 kafka.coordinator.transaction.TransactionLog$TransactionLogMessageFormatter 即可。</p>
 <h3 id="修改主题限速"><a class="header-anchor" href="#修改主题限速">¶</a>修改主题限速</h3>
 <p>这里主要是指设置 Leader 副本和 Follower 副本使用的带宽。有时候，我们想要让某个主题的副本在执行副本同步机制时，不要消耗过多的带宽。Kafka 提供了这样的功能。我来举个例子。假设我有个主题，名为 test，我想让该主题各个分区的 Leader 副本和 Follower 副本在处理副本同步时，不得占用超过 100MBps 的带宽。注意是大写 B，即每秒不超过 100MB。那么，我们应该怎么设置呢？</p>
 <p>要达到这个目的，我们必须先设置 Broker 端参数 leader.replication.throttled.rate 和 follower.replication.throttled.rate，命令如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin&#x2F;kafka-configs.sh --zookeeper zookeeper_host:port --alter --add-config &#39;leader.replication.throttled.rate&#x3D;104857600,follower.replication.throttled.rate&#x3D;104857600&#39; --entity-type brokers --entity-name 0</span><br></pre></td></tr></table></figure>
+<pre><code>bin/kafka-configs.sh --zookeeper zookeeper_host:port --alter --add-config 'leader.replication.throttled.rate=104857600,follower.replication.throttled.rate=104857600' --entity-type brokers --entity-name 0
+</code></pre>
 <p>这条命令结尾处的 --entity-name 就是 Broker ID。倘若该主题的副本分别在 0、1、2、3 多个 Broker 上，那么你还要依次为 Broker 1、2、3 执行这条命令。</p>
 <p>设置好这个参数之后，我们还需要为该主题设置要限速的副本。在这个例子中，我们想要为所有副本都设置限速，因此统一使用通配符 * 来表示，命令如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin&#x2F;kafka-configs.sh --zookeeper zookeeper_host:port --alter --add-config &#39;leader.replication.throttled.replicas&#x3D;*,follower.replication.throttled.replicas&#x3D;*&#39; --entity-type topics --entity-name test</span><br></pre></td></tr></table></figure>
+<pre><code>bin/kafka-configs.sh --zookeeper zookeeper_host:port --alter --add-config 'leader.replication.throttled.replicas=*,follower.replication.throttled.replicas=*' --entity-type topics --entity-name test
+</code></pre>
 <h3 id="主题分区迁移"><a class="header-anchor" href="#主题分区迁移">¶</a>主题分区迁移</h3>
 <p>同样是使用 kafka-reassign-partitions 脚本，对主题各个分区的副本进行 “手术” 般的调整，比如把某些分区批量迁移到其他 Broker 上。</p>
 <h2 id="删除主题"><a class="header-anchor" href="#删除主题">¶</a>删除主题</h2>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin&#x2F;kafka-topics.sh --bootstrap-server broker_host:port --delete  --topic &lt;topic_name&gt;</span><br></pre></td></tr></table></figure>
+<pre><code>bin/kafka-topics.sh --bootstrap-server broker_host:port --delete  --topic &lt;topic_name&gt;
+</code></pre>
 <p>删除主题的命令并不复杂，关键是删除操作是异步的，执行完这条命令不代表主题立即就被删除了。它仅仅是被标记成 “已删除” 状态而已。Kafka 会在后台默默地开启主题删除操作。因此，通常情况下，你都需要耐心地等待一段时间。</p>
 <h3 id="主题删除失败"><a class="header-anchor" href="#主题删除失败">¶</a>主题删除失败</h3>
 <p>当运行完上面的删除命令后，很多人发现已删除主题的分区数据依然 “躺在” 硬盘上，没有被清除。这时该怎么办呢？</p>
@@ -1041,12 +1074,10 @@
     </section>
     <section class='body'>
       <div class="vlts-rps"><a class="item" href="\kafka\kafka-hw-leo-lso\" title="Kafka中的HW、LEO、LSO等分别代表什么？" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka1.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka1.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">Kafka中的HW、LEO、LSO等分别代表什么？</span><span class="excerpt">HW 、 LEO 等概念和上一篇文章所说的 ISR有着紧密的关系，如果不了解 ISR 可以先看下ISR相关的介绍。
-HW ...</span></a><a class="item" href="\kafka\kafka-isr-ar\" title="kafka中的ISR、AR代表什么？ISR的伸缩性又指什么？" rel="bookmark "><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">kafka中的ISR、AR代表什么？ISR的伸缩性又指什么？</span><span class="excerpt">相信大家已经对 kafka 的基本概念已经有一定的了解了，下面直接来分析一下 ISR 和 AR 的概念。</span></a><a class="item" href="\kafka\kafka-listeners-config\" title="kafka的listeners配置错误导致主线程阻塞" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka6.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka6.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">kafka的listeners配置错误导致主线程阻塞</span><span class="excerpt">¶问题背景
+HW ...</span></a><a class="item" href="\kafka\kafka-listeners-config\" title="kafka的listeners配置错误导致主线程阻塞" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka6.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka6.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">kafka的listeners配置错误导致主线程阻塞</span><span class="excerpt">¶问题背景
 我们在用kafka的时候，偶尔会遇到这样这样一个问题。
-我们写的kafka的客户端程序，在启动的时候，会无缘无...</span></a><a class="item" href="\kafka\kafka-rebalance\" title="Kafka Rebalance机制分析" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.3/img/kafka/3951011.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.3/img/kafka/3951011.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">Kafka Rebalance机制分析</span><span class="excerpt">Rebalance 本质上是一种协议，规定了一个 Consumer Group 下的所有 consumer 如何达成一致，...</span></a><a class="item" href="\kafka\kafka-todo-list\" title="kafka 问题总结" rel="bookmark "><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">kafka 问题总结</span><span class="excerpt">
-kafka如何保证数据可靠性和数据一致性
-Kafka Rebalance机制分析
-Kafka的用途有哪些？使用场景如何？...</span></a></div></section></div>
+我们写的kafka的客户端程序，在启动的时候，会无缘无...</span></a><a class="item" href="\kafka\kafka-isr-ar\" title="kafka中的ISR、AR代表什么？ISR的伸缩性又指什么？" rel="bookmark "><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">kafka中的ISR、AR代表什么？ISR的伸缩性又指什么？</span><span class="excerpt">相信大家已经对 kafka 的基本概念已经有一定的了解了，下面直接来分析一下 ISR 和 AR 的概念。</span></a><a class="item" href="\kafka\kafka-rebalance\" title="Kafka Rebalance机制分析" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.3/img/kafka/3951011.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.3/img/kafka/3951011.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">Kafka Rebalance机制分析</span><span class="excerpt">Rebalance 本质上是一种协议，规定了一个 Consumer Group 下的所有 consumer 如何达成一致，...</span></a><a class="item" href="\kafka\kafka-reliability\" title="kafka 如何保证数据的可靠性和一致性" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.2/img/kafka/1567762579648.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.2/img/kafka/1567762579648.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">kafka 如何保证数据的可靠性和一致性</span><span class="excerpt">¶数据可靠性
+Kafka 作为一个商业级消息中间件，消息可靠性的重要性可想而知。本文从 Producter 往 Broke...</span></a></div></section></div>
       
       
         <div class='copyright'>
@@ -1745,7 +1776,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       if (href.length == 0) {
         // 选中文本
         if (window.getSelection().toString()) {
-          if ('' == 'true') {
+          if ('true' == 'true') {
             copyText.style.display = 'block';
             hrText.style.display = 'block';
           }
@@ -1858,6 +1889,78 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
 
 
 
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+		if($(".highlight .code pre").length+$(".article pre code").length==0)return;
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
+</script>
+
+
+
+
+   <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script>
+<script type="text/javascript">
+  function pjax_scrollrebeal() {
+    ScrollReveal().reveal('.l_main .reveal', {
+      distance: '32px',
+      duration: '800',
+      interval: '20',
+      scale: '1',
+      easing: 'ease-out'
+    });
+  }
+  $(function () {
+    pjax_scrollrebeal();
+  });
+</script>
 
 
 
@@ -1889,7 +1992,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
   <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@3/dist/av-min.js"></script>
 
   
-<script src="https://cdn.jsdelivr.net/npm/valine@1.4/dist/Valine.min.js"></script>
+<script src="/js/valine.js"></script>
 
 
 <script>
@@ -1958,9 +2061,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
     })
   }
 
-  
   function newcomment() {
-
     function queryLeanCloud(k) {
       let root = this;
       let len = arguments.length;
@@ -1982,11 +2083,11 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       }
     }
     var valine = new Valine({
-      el: '#valine_container',
+      el: 'valine_container',
       app_id: 'wvx2KxLUqgjcKv9QE62FmvUY-MdYXbMMI',
       app_key: 'u1P8dl8u7IlizUpYbwXpc1VN',
       placeholder: '快来评论吧~',
-      serverURLs: 'https://gyl-coder.top'
+      serverURLs: 'https://wvx2kxlu.api.lncldglobal.com'
     });
 
     //判断博主，heson改为自己的昵称
@@ -2014,7 +2115,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
     }
 
     //查询评论
-    valine.Q('*').limit(7).find().then(function (comments) {
+    valine.Q('*').limit(5).find().then(function (comments) {
       var hotComments = $("#hot-comments");
       for (var i = 0; i < comments.length; i++) {
         if (i === 0) {
@@ -2161,9 +2262,35 @@ const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
 
 
 
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
 
 
 
+  
+<script src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+  
 
 
 
@@ -2494,8 +2621,16 @@ const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
           }
         
         
+        document.querySelectorAll('pre code').forEach((block) => {
+          hljs.highlightBlock(block);
+        });
         
         
+          pjax_scrollrebeal();
+        
+        
+        
+          pjax_initCopyCode();
         
         
           pjax_valine();

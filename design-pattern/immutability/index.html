@@ -19,7 +19,7 @@
   
   <title>设计模式,Immutability - yanliang&#39;s blog</title>
   
-    <meta name="keywords" content="并发,设计模式,Immutability模式">
+    <meta name="keywords" content="设计模式,并发,Immutability模式">
   
 
   
@@ -39,10 +39,18 @@
   <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
   
     
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/heson525/fontawesome-pro@5.13.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css">
 
   
   
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
 
   
 
@@ -59,6 +67,12 @@
   <!-- import link -->
   
 
+  
+    
+      
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.18.1/styles/solarized-light.css">
+
+    
   
   
     
@@ -966,18 +980,95 @@
 <p>Java SDK 里很多类都具备不可变性，只是由于它们的使用太简单，最后反而被忽略了。例如经常用到的 String 和 Long、Integer、Double 等基础类型的包装类都具备不可变性，这些对象的线程安全性都是靠不可变性来保证的。如果你仔细翻看这些类的声明、属性和方法，你会发现它们都严格遵守不可变类的三点要求：<strong>类和属性都是 final 的，所有方法均是只读的</strong>。</p>
 <p>看到这里你可能会疑惑，Java 的 String 方法也有类似字符替换操作，怎么能说所有方法都是只读的呢？下面通过 String 的源代码来看一哈。</p>
 <p>下面的示例代码源自 Java 1.8 SDK。String 这个类以及它的属性 value[] 都是 final 的；而 replace() 方法的实现，就的确没有修改 value[]，而是将替换后的字符串作为返回值返回了。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">String</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">char</span> value[];</span><br><span class="line">  <span class="comment">// 字符替换</span></span><br><span class="line">  <span class="function">String <span class="title">replace</span><span class="params">(<span class="keyword">char</span> oldChar, </span></span></span><br><span class="line"><span class="function"><span class="params">      <span class="keyword">char</span> newChar)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 无需替换，直接返回 this  </span></span><br><span class="line">    <span class="keyword">if</span> (oldChar == newChar)&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> len = value.length;</span><br><span class="line">    <span class="keyword">int</span> i = -<span class="number">1</span>;</span><br><span class="line">    <span class="comment">/* avoid getfield opcode */</span></span><br><span class="line">    <span class="keyword">char</span>[] val = value; </span><br><span class="line">    <span class="comment">// 定位到需要替换的字符位置</span></span><br><span class="line">    <span class="keyword">while</span> (++i &lt; len) &#123;</span><br><span class="line">      <span class="keyword">if</span> (val[i] == oldChar) &#123;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 未找到 oldChar，无需替换</span></span><br><span class="line">    <span class="keyword">if</span> (i &gt;= len) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="comment">// 创建一个 buf[]，这是关键</span></span><br><span class="line">    <span class="comment">// 用来保存替换后的字符串</span></span><br><span class="line">    <span class="keyword">char</span> buf[] = <span class="keyword">new</span> <span class="keyword">char</span>[len];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i; j++) &#123;</span><br><span class="line">      buf[j] = val[j];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; len) &#123;</span><br><span class="line">      <span class="keyword">char</span> c = val[i];</span><br><span class="line">      buf[i] = (c == oldChar) ? </span><br><span class="line">        newChar : c;</span><br><span class="line">      i++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 创建一个新的字符串返回</span></span><br><span class="line">    <span class="comment">// 原字符串不会发生任何变化</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> String(buf, <span class="keyword">true</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="language-java">public final class String &amp;#123;
+  private final char value[];
+  // 字符替换
+  String replace(char oldChar, 
+      char newChar) &amp;#123;
+    // 无需替换，直接返回 this  
+    if (oldChar == newChar)&amp;#123;
+      return this;
+    &amp;#125;
+
+    int len = value.length;
+    int i = -1;
+    /* avoid getfield opcode */
+    char[] val = value; 
+    // 定位到需要替换的字符位置
+    while (++i &lt; len) &amp;#123;
+      if (val[i] == oldChar) &amp;#123;
+        break;
+      &amp;#125;
+    &amp;#125;
+    // 未找到 oldChar，无需替换
+    if (i &gt;= len) &amp;#123;
+      return this;
+    &amp;#125; 
+    // 创建一个 buf[]，这是关键
+    // 用来保存替换后的字符串
+    char buf[] = new char[len];
+    for (int j = 0; j &lt; i; j++) &amp;#123;
+      buf[j] = val[j];
+    &amp;#125;
+    while (i &lt; len) &amp;#123;
+      char c = val[i];
+      buf[i] = (c == oldChar) ? 
+        newChar : c;
+      i++;
+    &amp;#125;
+    // 创建一个新的字符串返回
+    // 原字符串不会发生任何变化
+    return new String(buf, true);
+  &amp;#125;
+&amp;#125;
+</code></pre>
 <p>由上面的代码可以发现，String 是通过<strong>创建一个新的不可变对象</strong> 来实现 <strong>修改</strong> 的功能。如果 所有的修改操作都创建一个新的不可变对象，你可能会有这种担心：是不是创建的对象太多了，有点太浪费内存呢？是的，这样做的确有些浪费，那如何解决呢？</p>
 <h2 id="利用享元模式避免创建重复对象"><a class="header-anchor" href="#利用享元模式避免创建重复对象">¶</a>利用享元模式避免创建重复对象</h2>
 <p>利用享元模式可以减少创建对象的数量，从而减少内存占用。Java 语言里面 Long、Integer、Short、Byte 等这些基本数据类型的包装类都用到了享元模式。</p>
 <p>下面以 Long 这个类作为例子，看看它是如何利用享元模式来优化对象的创建的。</p>
 <p>享元模式本质上其实就是一个<green>对象池</green>，利用享元模式创建对象的逻辑也很简单：创建之前，首先去对象池里看看是不是存在；如果已经存在，就利用对象池里的对象；如果不存在，就会新创建一个对象，并且把这个新创建出来的对象放进对象池里。</p>
 <p>Long 这个类并没有照搬享元模式，Long 内部维护了一个静态的对象池，仅缓存了 [-128,127] 之间的数字，这个对象池在 JVM 启动的时候就创建好了，而且这个对象池一直都不会变化，也就是说它是静态的。之所以采用这样的设计，是因为 Long 这个对象的状态共有 2 的 64 次方 种，实在太多，并不适合全部缓存，而 [-128,127] 之间的数字利用率最高。下面的示例代码出自 Java 1.8，valueOf() 方法就用到了 LongCache 这个缓存。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Long <span class="title">valueOf</span><span class="params">(<span class="keyword">long</span> l)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">final</span> <span class="keyword">int</span> offset = <span class="number">128</span>;</span><br><span class="line">  <span class="comment">// [-128,127] 直接的数字做了缓存</span></span><br><span class="line">  <span class="keyword">if</span> (l &gt;= -<span class="number">128</span> &amp;&amp; l &lt;= <span class="number">127</span>) &#123; </span><br><span class="line">    <span class="keyword">return</span> LongCache</span><br><span class="line">      .cache[(<span class="keyword">int</span>)l + offset];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> Long(l);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 缓存，等价于对象池</span></span><br><span class="line"><span class="comment">// 仅缓存 [-128,127] 直接的数字</span></span><br><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">LongCache</span> </span>&#123;</span><br><span class="line">  <span class="keyword">static</span> <span class="keyword">final</span> Long cache[] </span><br><span class="line">    = <span class="keyword">new</span> Long[-(-<span class="number">128</span>) + <span class="number">127</span> + <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">static</span> &#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;cache.length; i++)</span><br><span class="line">      cache[i] = <span class="keyword">new</span> Long(i-<span class="number">128</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="language-java">Long valueOf(long l) &amp;#123;
+  final int offset = 128;
+  // [-128,127] 直接的数字做了缓存
+  if (l &gt;= -128 &amp;&amp; l &lt;= 127) &amp;#123; 
+    return LongCache
+      .cache[(int)l + offset];
+  &amp;#125;
+  return new Long(l);
+&amp;#125;
+// 缓存，等价于对象池
+// 仅缓存 [-128,127] 直接的数字
+static class LongCache &amp;#123;
+  static final Long cache[] 
+    = new Long[-(-128) + 127 + 1];
+
+  static &amp;#123;
+    for(int i=0; i&lt;cache.length; i++)
+      cache[i] = new Long(i-128);
+  &amp;#125;
+&amp;#125;
+</code></pre>
 <blockquote>
 <p><red>注意</red>：** “Integer 和 String 类型的对象不适合做锁”，其实基本上所有的基础类型的包装类都不适合做锁，因为它们内部用到了享元模式，这会导致看上去私有的锁，其实是共有的。例如在下面代码中，本意是 A 用锁 al，B 用锁 bl，各自管理各自的，互不影响。但实际上 al 和 bl 是一个对象，结果 A 和 B 共用的是一把锁。</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">  Long al=Long.valueOf(<span class="number">1</span>);</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAX</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">synchronized</span> (al) &#123;</span><br><span class="line">      <span class="comment">// 省略代码无数</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> </span>&#123;</span><br><span class="line">  Long bl=Long.valueOf(<span class="number">1</span>);</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setBY</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">synchronized</span> (bl) &#123;</span><br><span class="line">      <span class="comment">// 省略代码无数</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="language-java">class A &amp;#123;
+  Long al=Long.valueOf(1);
+  public void setAX()&amp;#123;
+    synchronized (al) &amp;#123;
+      // 省略代码无数
+    &amp;#125;
+  &amp;#125;
+&amp;#125;
+class B &amp;#123;
+  Long bl=Long.valueOf(1);
+  public void setBY()&amp;#123;
+    synchronized (bl) &amp;#123;
+      // 省略代码无数
+    &amp;#125;
+  &amp;#125;
+&amp;#125;
+</code></pre>
 <h2 id="使用-Immutability-模式的注意事项"><a class="header-anchor" href="#使用-Immutability-模式的注意事项">¶</a>使用 Immutability 模式的注意事项</h2>
 <p>在使用 Immutability 模式的时候，需要注意以下两点：</p>
 <ol>
@@ -985,11 +1076,61 @@
 <li>不可变对象也需要正确发布。</li>
 </ol>
 <p>在 Java 语言中，final 修饰的属性一旦被赋值，就不可以再修改，但是如果属性的类型是普通对象，那么这个普通对象的属性是可以被修改的。例如下面的代码中，Bar 的属性 foo 虽然是 final 的，依然可以通过 setAge() 方法来设置 foo 的属性 age。所以，<strong>在使用 Immutability 模式的时候一定要确认保持不变性的边界在哪里，是否要求属性对象也具备不可变性</strong>。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> age=<span class="number">0</span>;</span><br><span class="line">  <span class="keyword">int</span> ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Bar</span> </span>&#123;</span><br><span class="line">  <span class="keyword">final</span> Foo foo;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> a)</span></span>&#123;</span><br><span class="line">    foo.age=a;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="language-java">class Foo&amp;#123;
+  int age=0;
+  int ;
+&amp;#125;
+final class Bar &amp;#123;
+  final Foo foo;
+  void setAge(int a)&amp;#123;
+    foo.age=a;
+  &amp;#125;
+&amp;#125;
+</code></pre>
 <p>下面我们再看看如何正确地发布不可变对象。不可变对象虽然是线程安全的，但是并不意味着引用这些不可变对象的对象就是线程安全的。例如在下面的代码中，Foo 具备不可变性，线程安全，但是类 Bar 并不是线程安全的，类 Bar 中持有对 Foo 的引用 foo，对 foo 这个引用的修改在多线程中并不能保证可见性和原子性。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Foo 线程安全</span></span><br><span class="line"><span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Foo</span></span>&#123;</span><br><span class="line">  <span class="keyword">final</span> <span class="keyword">int</span> age=<span class="number">0</span>;</span><br><span class="line">  <span class="keyword">final</span> <span class="keyword">int</span> ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//Bar 线程不安全</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bar</span> </span>&#123;</span><br><span class="line">  Foo foo;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">setFoo</span><span class="params">(Foo f)</span></span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.foo=f;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="language-java">//Foo 线程安全
+final class Foo&amp;#123;
+  final int age=0;
+  final int ;
+&amp;#125;
+//Bar 线程不安全
+class Bar &amp;#123;
+  Foo foo;
+  void setFoo(Foo f)&amp;#123;
+    this.foo=f;
+  &amp;#125;
+&amp;#125;
+</code></pre>
 <p>如果你的程序仅仅需要 foo 保持可见性，无需保证原子性，那么可以将 foo 声明为 volatile 变量，这样就能保证可见性。如果你的程序需要保证原子性，那么可以通过原子类来实现。下面的示例代码是合理库存的原子化实现，你应该很熟悉了，其中就是用原子类解决了不可变对象引用的原子性问题。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SafeWM</span> </span>&#123;</span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">WMRange</span></span>&#123;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> upper;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> lower;</span><br><span class="line">    WMRange(<span class="keyword">int</span> upper,<span class="keyword">int</span> lower)&#123;</span><br><span class="line">    <span class="comment">// 省略构造函数实现</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">final</span> AtomicReference&lt;WMRange&gt;</span><br><span class="line">    rf = <span class="keyword">new</span> AtomicReference&lt;&gt;(</span><br><span class="line">      <span class="keyword">new</span> WMRange(<span class="number">0</span>,<span class="number">0</span>)</span><br><span class="line">    );</span><br><span class="line">  <span class="comment">// 设置库存上限</span></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">setUpper</span><span class="params">(<span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="keyword">true</span>)&#123;</span><br><span class="line">      WMRange or = rf.get();</span><br><span class="line">      <span class="comment">// 检查参数合法性</span></span><br><span class="line">      <span class="keyword">if</span>(v &lt; or.lower)&#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException();</span><br><span class="line">      &#125;</span><br><span class="line">      WMRange nr = <span class="keyword">new</span></span><br><span class="line">          WMRange(v, or.lower);</span><br><span class="line">      <span class="keyword">if</span>(rf.compareAndSet(or, nr))&#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="language-java">public class SafeWM &amp;#123;
+  class WMRange&amp;#123;
+    final int upper;
+    final int lower;
+    WMRange(int upper,int lower)&amp;#123;
+    // 省略构造函数实现
+    &amp;#125;
+  &amp;#125;
+  final AtomicReference&lt;WMRange&gt;
+    rf = new AtomicReference&lt;&gt;(
+      new WMRange(0,0)
+    );
+  // 设置库存上限
+  void setUpper(int v)&amp;#123;
+    while(true)&amp;#123;
+      WMRange or = rf.get();
+      // 检查参数合法性
+      if(v &lt; or.lower)&amp;#123;
+        throw new IllegalArgumentException();
+      &amp;#125;
+      WMRange nr = new
+          WMRange(v, or.lower);
+      if(rf.compareAndSet(or, nr))&amp;#123;
+        return;
+      &amp;#125;
+    &amp;#125;
+  &amp;#125;
+&amp;#125;
+</code></pre>
 <h2 id="总结"><a class="header-anchor" href="#总结">¶</a>总结</h2>
 <p>具备不变性的对象，只有一种状态，这个状态由对象内部所有的不变属性共同决定。其实还有一种更简单的不变性对象，那就是<cyan>无状态</cyan>。无状态对象内部没有属性，只有方法。除了无状态的对象，你可能还听说过无状态的服务、无状态的协议等等。无状态有很多好处，最核心的一点就是性能。在多线程领域，无状态对象没有线程安全问题，无需同步处理，自然性能很好；在分布式领域，无状态意味着可以无限地水平扩展，所以分布式领域里面性能的瓶颈一定不是出在无状态的服务节点上。</p>
 
@@ -1005,10 +1146,14 @@
       <i class="fas fa-bookmark fa-fw" aria-hidden="true"></i><span>相关文章</span>
     </section>
     <section class='body'>
-      <div class="vlts-rps"><a class="item" href="\concurrency\lock_and_synchronized\" title="Lock & Synchronized" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life2.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life2.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">Lock & Synchronized</span><span class="excerpt">首先我们来考虑一个问题？
-在Lock出现之前我们一直使用synchronized来实现同步访问。那为什么还要提供lock呢...</span></a><a class="item" href="\concurrency\alternate_printing\" title="多个线程交替打印内容" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life1.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life1.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">多个线程交替打印内容</span><span class="excerpt">需求： 启动两个线程，交替打印奇偶数。 效果如下所示
-1234偶数线程：0奇数线程：1偶数线程：2...</span></a><a class="item" href="\concurrency\why_concurrency\" title="Why Concurrency ?" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life4.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life4.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">Why Concurrency ?</span><span class="excerpt">一门技术的出现必然有其出现的道理，后来需要了解它出现的时代环境和因素，扩充自己的视野，发掘技术发展的经过。分析其优缺点，以...</span></a><a class="item" href="\concurrency\waiting_for_notification\" title="等待通知机制" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life3.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life3.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">等待通知机制</span><span class="excerpt">多线程环境中，经常出现这样一种场景。一个线程修改了一个对象的值，而另一个线程感知到了变化，然后进行相应的操作，整个过程开始...</span></a><a class="item" href="\design-pattern\single-pattern\" title="单例模式" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life6.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life6.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">单例模式</span><span class="excerpt">在介绍单例模式之前，我们先了解一下，什么是设计模式？
-**设计模式（Design Pattern）：**是一套被反复使用，...</span></a></div></section></div>
+      <div class="vlts-rps"><a class="item" href="\design-pattern\single-pattern\" title="单例模式" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life6.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life6.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">单例模式</span><span class="excerpt">在介绍单例模式之前，我们先了解一下，什么是设计模式？
+**设计模式（Design Pattern）：**是一套被反复使用，...</span></a><a class="item" href="\concurrency\alternate_printing\" title="多个线程交替打印内容" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life1.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life1.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">多个线程交替打印内容</span><span class="excerpt">需求： 启动两个线程，交替打印奇偶数。 效果如下所示
+偶数线程：0
+奇数线程：1
+偶数线程：2
+...
+</span></a><a class="item" href="\concurrency\waiting_for_notification\" title="等待通知机制" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life3.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life3.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">等待通知机制</span><span class="excerpt">多线程环境中，经常出现这样一种场景。一个线程修改了一个对象的值，而另一个线程感知到了变化，然后进行相应的操作，整个过程开始...</span></a><a class="item" href="\concurrency\lock_and_synchronized\" title="Lock & Synchronized" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life2.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life2.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">Lock & Synchronized</span><span class="excerpt">首先我们来考虑一个问题？
+在Lock出现之前我们一直使用synchronized来实现同步访问。那为什么还要提供lock呢...</span></a></div></section></div>
       
       
         <div class='copyright'>
@@ -1049,7 +1194,7 @@
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%B9%B6%E5%8F%91/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>并发</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>设计模式</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Immutability%E6%A8%A1%E5%BC%8F/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Immutability模式</p></a></div>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>设计模式</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%B9%B6%E5%8F%91/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>并发</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Immutability%E6%A8%A1%E5%BC%8F/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Immutability模式</p></a></div>
 
 
         
@@ -1708,7 +1853,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       if (href.length == 0) {
         // 选中文本
         if (window.getSelection().toString()) {
-          if ('' == 'true') {
+          if ('true' == 'true') {
             copyText.style.display = 'block';
             hrText.style.display = 'block';
           }
@@ -1821,6 +1966,78 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
 
 
 
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+		if($(".highlight .code pre").length+$(".article pre code").length==0)return;
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
+</script>
+
+
+
+
+   <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script>
+<script type="text/javascript">
+  function pjax_scrollrebeal() {
+    ScrollReveal().reveal('.l_main .reveal', {
+      distance: '32px',
+      duration: '800',
+      interval: '20',
+      scale: '1',
+      easing: 'ease-out'
+    });
+  }
+  $(function () {
+    pjax_scrollrebeal();
+  });
+</script>
 
 
 
@@ -1852,7 +2069,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
   <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@3/dist/av-min.js"></script>
 
   
-<script src="https://cdn.jsdelivr.net/npm/valine@1.4/dist/Valine.min.js"></script>
+<script src="/js/valine.js"></script>
 
 
 <script>
@@ -1921,9 +2138,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
     })
   }
 
-  
   function newcomment() {
-
     function queryLeanCloud(k) {
       let root = this;
       let len = arguments.length;
@@ -1945,11 +2160,11 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       }
     }
     var valine = new Valine({
-      el: '#valine_container',
+      el: 'valine_container',
       app_id: 'wvx2KxLUqgjcKv9QE62FmvUY-MdYXbMMI',
       app_key: 'u1P8dl8u7IlizUpYbwXpc1VN',
       placeholder: '快来评论吧~',
-      serverURLs: 'https://gyl-coder.top'
+      serverURLs: 'https://wvx2kxlu.api.lncldglobal.com'
     });
 
     //判断博主，heson改为自己的昵称
@@ -1977,7 +2192,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
     }
 
     //查询评论
-    valine.Q('*').limit(7).find().then(function (comments) {
+    valine.Q('*').limit(5).find().then(function (comments) {
       var hotComments = $("#hot-comments");
       for (var i = 0; i < comments.length; i++) {
         if (i === 0) {
@@ -2124,9 +2339,35 @@ const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
 
 
 
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
 
 
 
+  
+<script src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+  
 
 
 
@@ -2457,8 +2698,16 @@ const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
           }
         
         
+        document.querySelectorAll('pre code').forEach((block) => {
+          hljs.highlightBlock(block);
+        });
         
         
+          pjax_scrollrebeal();
+        
+        
+        
+          pjax_initCopyCode();
         
         
           pjax_valine();

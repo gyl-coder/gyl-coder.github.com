@@ -19,12 +19,16 @@
   
   <title>多线程 - yanliang&#39;s blog</title>
   
-    <meta name="keywords" content="Java,并发">
+    <meta name="keywords" content="并发,Java">
   
 
   
     <meta name="description" content="需求： 启动两个线程，交替打印奇偶数。 效果如下所示
-1234偶数线程：0奇数线程：1偶数线程：2...">
+偶数线程：0
+奇数线程：1
+偶数线程：2
+...
+">
   
 
   <!-- feed -->
@@ -39,10 +43,18 @@
   <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
   
     
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/heson525/fontawesome-pro@5.13.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css">
 
   
   
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
 
   
 
@@ -59,6 +71,12 @@
   <!-- import link -->
   
 
+  
+    
+      
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.18.1/styles/solarized-light.css">
+
+    
   
   
     
@@ -959,26 +977,269 @@
 
   
   <p><strong>需求：</strong> 启动两个线程，交替打印奇偶数。 效果如下所示</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">偶数线程：<span class="number">0</span></span><br><span class="line">奇数线程：<span class="number">1</span></span><br><span class="line">偶数线程：<span class="number">2</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<pre><code class="language-java">偶数线程：0
+奇数线程：1
+偶数线程：2
+...
+</code></pre>
 <a id="more"></a>
 <h2 id="两个线程交替打印"><a class="header-anchor" href="#两个线程交替打印">¶</a>两个线程交替打印</h2>
 <h3 id="无锁实现"><a class="header-anchor" href="#无锁实现">¶</a>无锁实现</h3>
 <p>不需要进行任何加锁，利用并发包中的AtomicInteger和volidate修饰符组合进行实现。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Thread_demo1</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> Boolean flag = <span class="keyword">true</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> AtomicInteger num = <span class="keyword">new</span> AtomicInteger();</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> CountDownLatch latch = <span class="keyword">new</span> CountDownLatch(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> start =  System.currentTimeMillis();</span><br><span class="line"></span><br><span class="line">        Thread thread1 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">while</span>(num.get() &lt;= <span class="number">10000</span>)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(!flag)&#123;</span><br><span class="line">                        System.out.println(Thread.currentThread().getName()+<span class="string">&quot;: &quot;</span> + num.getAndIncrement());</span><br><span class="line">                        flag = <span class="keyword">true</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                latch.countDown();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="string">&quot;奇数线程&quot;</span>);</span><br><span class="line"></span><br><span class="line">        Thread thread2 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">while</span>(num.get() &lt;= <span class="number">10000</span>)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(flag)&#123;</span><br><span class="line">                        System.out.println(Thread.currentThread().getName()+ <span class="string">&quot;：&quot;</span> + num.getAndIncrement());</span><br><span class="line">                        flag = <span class="keyword">false</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                latch.countDown();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="string">&quot;偶数线程&quot;</span>);</span><br><span class="line"></span><br><span class="line">        thread1.start();</span><br><span class="line">        thread2.start();</span><br><span class="line"></span><br><span class="line">        latch.await();</span><br><span class="line">        System.out.println(<span class="string">&quot;共耗时：&quot;</span>+(System.currentTimeMillis() - start) + <span class="string">&quot;ms&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="language-java">public class Thread_demo1 &amp;#123;
+    private static volatile Boolean flag = true;
+    private static AtomicInteger num = new AtomicInteger();
+    public static CountDownLatch latch = new CountDownLatch(2);
+
+    public static void main(String[] args) throws InterruptedException &amp;#123;
+        long start =  System.currentTimeMillis();
+
+        Thread thread1 = new Thread(new Runnable() &amp;#123;
+            @Override
+            public void run() &amp;#123;
+                while(num.get() &lt;= 10000)&amp;#123;
+                    if(!flag)&amp;#123;
+                        System.out.println(Thread.currentThread().getName()+&quot;: &quot; + num.getAndIncrement());
+                        flag = true;
+                    &amp;#125;
+                &amp;#125;
+                latch.countDown();
+            &amp;#125;
+        &amp;#125;, &quot;奇数线程&quot;);
+
+        Thread thread2 = new Thread(new Runnable() &amp;#123;
+            @Override
+            public void run() &amp;#123;
+
+                while(num.get() &lt;= 10000)&amp;#123;
+                    if(flag)&amp;#123;
+                        System.out.println(Thread.currentThread().getName()+ &quot;：&quot; + num.getAndIncrement());
+                        flag = false;
+                    &amp;#125;
+                &amp;#125;
+                latch.countDown();
+            &amp;#125;
+        &amp;#125;, &quot;偶数线程&quot;);
+
+        thread1.start();
+        thread2.start();
+
+        latch.await();
+        System.out.println(&quot;共耗时：&quot;+(System.currentTimeMillis() - start) + &quot;ms&quot;);
+    &amp;#125;
+&amp;#125;
+</code></pre>
 <h3 id="加锁实现A"><a class="header-anchor" href="#加锁实现A">¶</a>加锁实现A</h3>
 <p>通过一个boolean类型的变量来限制两个线程，分别只输出奇数和偶数。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Thread_demo2</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Object lock = <span class="keyword">new</span> Object();</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> CountDownLatch latch = <span class="keyword">new</span> CountDownLatch(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">go</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> start = System.currentTimeMillis();</span><br><span class="line"></span><br><span class="line">        Thread thread1 = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">while</span> (count &lt; <span class="number">10000</span>) &#123;</span><br><span class="line">                <span class="keyword">synchronized</span> (lock) &#123;</span><br><span class="line">                    <span class="keyword">if</span> ((count &amp; <span class="number">1</span>) == <span class="number">0</span>) &#123;</span><br><span class="line">                        System.out.println(Thread.currentThread().getName() + <span class="string">&quot;: &quot;</span> + count ++);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            latch.countDown();</span><br><span class="line">        &#125;, <span class="string">&quot;偶数线程&quot;</span>);</span><br><span class="line"></span><br><span class="line">        Thread thread2 = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">while</span> (count &lt; <span class="number">10000</span>) &#123;</span><br><span class="line">                <span class="keyword">synchronized</span> (lock) &#123;</span><br><span class="line">                    <span class="keyword">if</span> ((count &amp; <span class="number">1</span>) == <span class="number">1</span>) &#123;</span><br><span class="line">                        System.out.println(Thread.currentThread().getName() + <span class="string">&quot;: &quot;</span> + count ++);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            latch.countDown();</span><br><span class="line">        &#125;, <span class="string">&quot;奇数线程&quot;</span>);</span><br><span class="line">        thread1.start();</span><br><span class="line">        thread2.start();</span><br><span class="line"></span><br><span class="line">        latch.await();</span><br><span class="line">        System.out.println(<span class="string">&quot;共耗时：&quot;</span>+(System.currentTimeMillis() - start) + <span class="string">&quot;ms&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        Thread_demo2 threaddemo2 = <span class="keyword">new</span> Thread_demo2();</span><br><span class="line">        threaddemo2.go();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="language-java">public class Thread_demo2 &amp;#123;
+    private int count = 0;
+    private final Object lock = new Object();
+    public static CountDownLatch latch = new CountDownLatch(2);
+
+    public void go() throws InterruptedException &amp;#123;
+        long start = System.currentTimeMillis();
+
+        Thread thread1 = new Thread(() -&gt; &amp;#123;
+            while (count &lt; 10000) &amp;#123;
+                synchronized (lock) &amp;#123;
+                    if ((count &amp; 1) == 0) &amp;#123;
+                        System.out.println(Thread.currentThread().getName() + &quot;: &quot; + count ++);
+                    &amp;#125;
+                &amp;#125;
+            &amp;#125;
+            latch.countDown();
+        &amp;#125;, &quot;偶数线程&quot;);
+
+        Thread thread2 = new Thread(() -&gt; &amp;#123;
+            while (count &lt; 10000) &amp;#123;
+                synchronized (lock) &amp;#123;
+                    if ((count &amp; 1) == 1) &amp;#123;
+                        System.out.println(Thread.currentThread().getName() + &quot;: &quot; + count ++);
+                    &amp;#125;
+                &amp;#125;
+            &amp;#125;
+            latch.countDown();
+        &amp;#125;, &quot;奇数线程&quot;);
+        thread1.start();
+        thread2.start();
+
+        latch.await();
+        System.out.println(&quot;共耗时：&quot;+(System.currentTimeMillis() - start) + &quot;ms&quot;);
+    &amp;#125;
+
+    public static void main(String[] args) throws InterruptedException &amp;#123;
+        Thread_demo2 threaddemo2 = new Thread_demo2();
+        threaddemo2.go();
+    &amp;#125;
+&amp;#125;
+</code></pre>
 <h3 id="加锁实现B"><a class="header-anchor" href="#加锁实现B">¶</a>加锁实现B</h3>
 <p>通过同一个对象锁来实现。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Thread_demo3</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Object lock = <span class="keyword">new</span> Object();</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> CountDownLatch latch = <span class="keyword">new</span> CountDownLatch(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">go</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> begin = System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">new</span> Thread(<span class="keyword">new</span> RunnerTest(), <span class="string">&quot;偶数线程&quot;</span>).start();</span><br><span class="line">        <span class="comment">// 确保偶数线程线先获取到锁</span></span><br><span class="line">        Thread.sleep(<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">new</span> Thread(<span class="keyword">new</span> RunnerTest(), <span class="string">&quot;奇数线程&quot;</span>).start();</span><br><span class="line"></span><br><span class="line">        latch.await();</span><br><span class="line">        System.out.println(System.currentTimeMillis() - begin);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">RunnerTest</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">while</span> (count &lt; <span class="number">10000</span>) &#123;</span><br><span class="line">                <span class="keyword">synchronized</span> (lock) &#123;</span><br><span class="line">                    <span class="comment">// 拿到锁就打印</span></span><br><span class="line">                    System.out.println(Thread.currentThread().getName() + <span class="string">&quot;: &quot;</span> + count ++);</span><br><span class="line">                    <span class="comment">// 唤醒其他线程</span></span><br><span class="line">                    lock.notifyAll();</span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line">                        <span class="keyword">if</span> (count &lt; <span class="number">10000</span>) &#123;</span><br><span class="line">                            <span class="comment">// 如果任务还没有结束，则让出当前的锁并休眠</span></span><br><span class="line">                            lock.wait();</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            latch.countDown();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        Thread_demo3 threaddemo3 = <span class="keyword">new</span> Thread_demo3();</span><br><span class="line">        threaddemo3.go();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="language-java">public class Thread_demo3 &amp;#123;
+    private int count = 0;
+    private final Object lock = new Object();
+    public static CountDownLatch latch = new CountDownLatch(2);
+
+    public void go() throws InterruptedException &amp;#123;
+        long begin = System.currentTimeMillis();
+        new Thread(new RunnerTest(), &quot;偶数线程&quot;).start();
+        // 确保偶数线程线先获取到锁
+        Thread.sleep(1);
+        new Thread(new RunnerTest(), &quot;奇数线程&quot;).start();
+
+        latch.await();
+        System.out.println(System.currentTimeMillis() - begin);
+    &amp;#125;
+
+    class RunnerTest implements Runnable &amp;#123;
+        @Override
+        public void run() &amp;#123;
+            while (count &lt; 10000) &amp;#123;
+                synchronized (lock) &amp;#123;
+                    // 拿到锁就打印
+                    System.out.println(Thread.currentThread().getName() + &quot;: &quot; + count ++);
+                    // 唤醒其他线程
+                    lock.notifyAll();
+                    try &amp;#123;
+                        if (count &lt; 10000) &amp;#123;
+                            // 如果任务还没有结束，则让出当前的锁并休眠
+                            lock.wait();
+                        &amp;#125;
+                    &amp;#125; catch (InterruptedException e) &amp;#123;
+                        e.printStackTrace();
+                    &amp;#125;
+                &amp;#125;
+            &amp;#125;
+            latch.countDown();
+        &amp;#125;
+    &amp;#125;
+
+    public static void main(String[] args) throws InterruptedException &amp;#123;
+        Thread_demo3 threaddemo3 = new Thread_demo3();
+        threaddemo3.go();
+    &amp;#125;
+&amp;#125;
+</code></pre>
 <h2 id="多个线程交替打印"><a class="header-anchor" href="#多个线程交替打印">¶</a>多个线程交替打印</h2>
 <p><strong>需求：</strong> n个线程，交替打印数字。 效果如下所示</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">线程<span class="number">1</span>：<span class="number">0</span></span><br><span class="line">线程<span class="number">2</span>：<span class="number">1</span></span><br><span class="line">线程<span class="number">3</span>：<span class="number">2</span></span><br><span class="line">线程<span class="number">1</span>：<span class="number">3</span></span><br><span class="line">线程<span class="number">2</span>：<span class="number">4</span></span><br><span class="line">线程<span class="number">3</span>：<span class="number">5</span></span><br><span class="line">线程<span class="number">1</span>：<span class="number">6</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Object LOCK = <span class="keyword">new</span> Object();</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 当前即将打印的数字</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> current = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 当前线程编号，从0开始</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> threadNo;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 线程数量</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> threadCount;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 打印的最大数值</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> maxInt;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Demo</span><span class="params">(<span class="keyword">int</span> threadNo, <span class="keyword">int</span> threadCount, <span class="keyword">int</span> maxInt)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.threadNo = threadNo;</span><br><span class="line">        <span class="keyword">this</span>.threadCount = threadCount;</span><br><span class="line">        <span class="keyword">this</span>.maxInt = maxInt;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (LOCK) &#123;</span><br><span class="line">                <span class="comment">// 判断是否轮到当前线程执行</span></span><br><span class="line">                <span class="keyword">while</span> (current % threadCount != threadNo) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (current &gt; maxInt) &#123;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line">                        <span class="comment">// 如果不是，则当前线程进入wait</span></span><br><span class="line">                        LOCK.wait();</span><br><span class="line">                    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// 最大值跳出循环</span></span><br><span class="line">                <span class="keyword">if</span> (current &gt; maxInt) &#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                System.out.println(<span class="string">&quot;thread&quot;</span> + threadNo + <span class="string">&quot; : &quot;</span> + current);</span><br><span class="line">                current++;</span><br><span class="line">                <span class="comment">// 唤醒其他wait线程</span></span><br><span class="line">                LOCK.notifyAll();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> threadCount = <span class="number">3</span>;</span><br><span class="line">        <span class="keyword">int</span> max = <span class="number">100</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; threadCount; i++) &#123;</span><br><span class="line">            <span class="keyword">new</span> Thread(<span class="keyword">new</span> Demo(i, threadCount, max)).start();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="language-java">线程1：0
+线程2：1
+线程3：2
+线程1：3
+线程2：4
+线程3：5
+线程1：6
+...
+</code></pre>
+<pre><code class="language-java">public class Demo implements Runnable &amp;#123;
+	private static final Object LOCK = new Object();
+    /**
+     * 当前即将打印的数字
+     */
+    private static int current = 0;
+    /**
+     * 当前线程编号，从0开始
+     */
+    private int threadNo;
+    /**
+     * 线程数量
+     */
+    private int threadCount;
+    /**
+     * 打印的最大数值
+     */
+    private int maxInt;
+
+    public Demo(int threadNo, int threadCount, int maxInt) &amp;#123;
+        this.threadNo = threadNo;
+        this.threadCount = threadCount;
+        this.maxInt = maxInt;
+    &amp;#125;
+
+    @Override
+    public void run() &amp;#123;
+        while (true) &amp;#123;
+            synchronized (LOCK) &amp;#123;
+                // 判断是否轮到当前线程执行
+                while (current % threadCount != threadNo) &amp;#123;
+                    if (current &gt; maxInt) &amp;#123;
+                        break;
+                    &amp;#125;
+                    try &amp;#123;
+                        // 如果不是，则当前线程进入wait
+                        LOCK.wait();
+                    &amp;#125; catch (Exception e) &amp;#123;
+                        e.printStackTrace();
+                    &amp;#125;
+                &amp;#125;
+                // 最大值跳出循环
+                if (current &gt; maxInt) &amp;#123;
+                    break;
+                &amp;#125;
+                System.out.println(&quot;thread&quot; + threadNo + &quot; : &quot; + current);
+                current++;
+                // 唤醒其他wait线程
+                LOCK.notifyAll();
+            &amp;#125;
+        &amp;#125;
+    &amp;#125;
+
+    public static void main(String[] args) &amp;#123;
+        int threadCount = 3;
+        int max = 100;
+        for (int i = 0; i &lt; threadCount; i++) &amp;#123;
+            new Thread(new Demo(i, threadCount, max)).start();
+        &amp;#125;
+    &amp;#125;
+&amp;#125;
+</code></pre>
 <p>可以看到，核心思想都是差不多的。都用的是<code>等待通知</code>机制。</p>
 <p>这里我们需要注意一个问题。当threadCount（线程数量）比较大的时候，在执行notifyAll唤醒其他线程的时候，可能会出现线程抢到了锁但并不该自己执行，然后又进入wait的情况。比如现在有100个线程，现在是第一个线程在执行，他执行完之后需要第二个线程执行，但是第100个线程抢到了，发现不是自己然后又进入wait，然后第99个线程抢到了，发现不是自己然后又进入wait，然后第98,97…直到第3个线程都抢到了，最后才到第二个线程抢到同步锁，这里就会白白的多执行很多过程，虽然最后能完成目标。</p>
 <p>解决办法多种多样，这里介绍一种基于<code>信号量</code>的实现方式。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> N = <span class="number">3</span>;</span><br><span class="line">        Thread[] threads = <span class="keyword">new</span> Thread[N];</span><br><span class="line">        <span class="keyword">final</span> Semaphore[] syncObjects = <span class="keyword">new</span> Semaphore[N];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">            syncObjects[i] = <span class="keyword">new</span> Semaphore(<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span> (i != N-<span class="number">1</span>)&#123;</span><br><span class="line">                syncObjects[i].acquire();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">            <span class="keyword">final</span> Semaphore lastSemphore = i == <span class="number">0</span> ? syncObjects[N - <span class="number">1</span>] : syncObjects[i - <span class="number">1</span>];</span><br><span class="line">            <span class="keyword">final</span> Semaphore curSemphore = syncObjects[i];</span><br><span class="line">            <span class="keyword">final</span> <span class="keyword">int</span> index = i;</span><br><span class="line">            threads[i] = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line"></span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line">                        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">                        	<span class="comment">// 第一次执行时，由于最后一个信号量并没有执行acquire，所以这里不会阻塞</span></span><br><span class="line">                            lastSemphore.acquire();</span><br><span class="line">                            System.out.println(<span class="string">&quot;thread&quot;</span> + index + <span class="string">&quot;: &quot;</span> + result++);</span><br><span class="line">                            <span class="keyword">if</span> (result &gt; <span class="number">100</span>)&#123;</span><br><span class="line">                                System.exit(<span class="number">0</span>);</span><br><span class="line">                            &#125;</span><br><span class="line">                            <span class="comment">// 释放下一个要执行的线程的</span></span><br><span class="line">                            curSemphore.release();</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">            threads[i].start();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="language-java">public class Main &amp;#123;
+	
+	static int result = 0;
+	
+    public static void main(String[] args) throws InterruptedException &amp;#123;
+        int N = 3;
+        Thread[] threads = new Thread[N];
+        final Semaphore[] syncObjects = new Semaphore[N];
+        for (int i = 0; i &lt; N; i++) &amp;#123;
+            syncObjects[i] = new Semaphore(1);
+            if (i != N-1)&amp;#123;
+                syncObjects[i].acquire();
+            &amp;#125;
+        &amp;#125;
+        for (int i = 0; i &lt; N; i++) &amp;#123;
+            final Semaphore lastSemphore = i == 0 ? syncObjects[N - 1] : syncObjects[i - 1];
+            final Semaphore curSemphore = syncObjects[i];
+            final int index = i;
+            threads[i] = new Thread(new Runnable() &amp;#123;
+
+                public void run() &amp;#123;
+                    try &amp;#123;
+                        while (true) &amp;#123;
+                        	// 第一次执行时，由于最后一个信号量并没有执行acquire，所以这里不会阻塞
+                            lastSemphore.acquire();
+                            System.out.println(&quot;thread&quot; + index + &quot;: &quot; + result++);
+                            if (result &gt; 100)&amp;#123;
+                                System.exit(0);
+                            &amp;#125;
+                            // 释放下一个要执行的线程的
+                            curSemphore.release();
+                        &amp;#125;
+                    &amp;#125; catch (Exception e) &amp;#123;
+                        e.printStackTrace();
+                    &amp;#125;
+
+                &amp;#125;
+            &amp;#125;);
+            threads[i].start();
+        &amp;#125;
+    &amp;#125;
+&amp;#125;
+</code></pre>
+
   
   
     
@@ -991,8 +1252,8 @@
       <i class="fas fa-bookmark fa-fw" aria-hidden="true"></i><span>相关文章</span>
     </section>
     <section class='body'>
-      <div class="vlts-rps"><a class="item" href="\concurrency\lock_and_synchronized\" title="Lock & Synchronized" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life2.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life2.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">Lock & Synchronized</span><span class="excerpt">首先我们来考虑一个问题？
-在Lock出现之前我们一直使用synchronized来实现同步访问。那为什么还要提供lock呢...</span></a><a class="item" href="\concurrency\why_concurrency\" title="Why Concurrency ?" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life4.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life4.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">Why Concurrency ?</span><span class="excerpt">一门技术的出现必然有其出现的道理，后来需要了解它出现的时代环境和因素，扩充自己的视野，发掘技术发展的经过。分析其优缺点，以...</span></a><a class="item" href="\concurrency\waiting_for_notification\" title="等待通知机制" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life3.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life3.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">等待通知机制</span><span class="excerpt">多线程环境中，经常出现这样一种场景。一个线程修改了一个对象的值，而另一个线程感知到了变化，然后进行相应的操作，整个过程开始...</span></a><a class="item" href="\java\abstract_interface\" title="接口 vs 抽象类的区别？" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">接口 vs 抽象类的区别？</span><span class="excerpt">在面向对象编程中，抽象类和接口是两个经常被用到的语法概念，是面向对象四大特性，以及很多设计模式、设计思想、设计原则编程实现...</span></a></div></section></div>
+      <div class="vlts-rps"><a class="item" href="\concurrency\waiting_for_notification\" title="等待通知机制" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life3.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life3.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">等待通知机制</span><span class="excerpt">多线程环境中，经常出现这样一种场景。一个线程修改了一个对象的值，而另一个线程感知到了变化，然后进行相应的操作，整个过程开始...</span></a><a class="item" href="\concurrency\lock_and_synchronized\" title="Lock & Synchronized" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life2.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life2.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">Lock & Synchronized</span><span class="excerpt">首先我们来考虑一个问题？
+在Lock出现之前我们一直使用synchronized来实现同步访问。那为什么还要提供lock呢...</span></a><a class="item" href="\concurrency\why_concurrency\" title="Why Concurrency ?" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life4.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life4.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">Why Concurrency ?</span><span class="excerpt">一门技术的出现必然有其出现的道理，后来需要了解它出现的时代环境和因素，扩充自己的视野，发掘技术发展的经过。分析其优缺点，以...</span></a><a class="item" href="\design-pattern\immutability\" title="并发设计模式：Immutability 模式" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life5.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life5.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">并发设计模式：Immutability 模式</span><span class="excerpt">多个线程同时读写同一共享变量存在并发问题**，其中的必要条件之一就是 读写 ，如果没有写，只存在读，是不会存在并发问题的。...</span></a></div></section></div>
       
       
         <div class='copyright'>
@@ -1033,7 +1294,7 @@
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Java/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Java</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%B9%B6%E5%8F%91/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>并发</p></a></div>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%B9%B6%E5%8F%91/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>并发</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Java/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Java</p></a></div>
 
 
         
@@ -1047,7 +1308,11 @@
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
           target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gyl-coder.top/concurrency/alternate_printing/&title=多线程 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life1.webp&summary=需求： 启动两个线程，交替打印奇偶数。 效果如下所示
-1234偶数线程：0奇数线程：1偶数线程：2..."
+偶数线程：0
+奇数线程：1
+偶数线程：2
+...
+"
           
           >
           
@@ -1060,7 +1325,11 @@
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
           target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://gyl-coder.top/concurrency/alternate_printing/&title=多线程 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life1.webp&summary=需求： 启动两个线程，交替打印奇偶数。 效果如下所示
-1234偶数线程：0奇数线程：1偶数线程：2..."
+偶数线程：0
+奇数线程：1
+偶数线程：2
+...
+"
           
           >
           
@@ -1073,7 +1342,11 @@
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
           target="_blank" href="http://service.weibo.com/share/share.php?url=https://gyl-coder.top/concurrency/alternate_printing/&title=多线程 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life1.webp&summary=需求： 启动两个线程，交替打印奇偶数。 效果如下所示
-1234偶数线程：0奇数线程：1偶数线程：2..."
+偶数线程：0
+奇数线程：1
+偶数线程：2
+...
+"
           
           >
           
@@ -1103,18 +1376,17 @@
   
     <div class="prev-next">
       
-        <a class='prev' href='/concurrency/lock_and_synchronized/'>
-          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Lock & Synchronized</p>
-          <p class='content'>首先我们来考虑一个问题？
-在Lock出现之前我们一直使用synchronized来实现同步访问。那为什么还要提供lock呢？
-我们知道如果一个代码块被synchronized修饰了，当有一个线程...</p>
+        <a class='prev' href='/concurrency/waiting_for_notification/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>等待通知机制</p>
+          <p class='content'>多线程环境中，经常出现这样一种场景。一个线程修改了一个对象的值，而另一个线程感知到了变化，然后进行相应的操作，整个过程开始于一个线程，最终结束于另一个线程。这就是传说中的生产者/消费者模型（前者...</p>
         </a>
       
       
-        <a class='next' href='/concurrency/why_concurrency/'>
-          <p class='title'>Why Concurrency ?<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>一门技术的出现必然有其出现的道理，后来需要了解它出现的时代环境和因素，扩充自己的视野，发掘技术发展的经过。分析其优缺点，以便更好的运用。
-一直以来，硬件的发展极其迅速，也有一个很著名的 摩尔定律...</p>
+        <a class='next' href='/concurrency/lock_and_synchronized/'>
+          <p class='title'>Lock & Synchronized<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>首先我们来考虑一个问题？
+在Lock出现之前我们一直使用synchronized来实现同步访问。那为什么还要提供lock呢？
+我们知道如果一个代码块被synchronized修饰了，当有一个线程...</p>
         </a>
       
     </div>
@@ -1692,7 +1964,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       if (href.length == 0) {
         // 选中文本
         if (window.getSelection().toString()) {
-          if ('' == 'true') {
+          if ('true' == 'true') {
             copyText.style.display = 'block';
             hrText.style.display = 'block';
           }
@@ -1805,6 +2077,78 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
 
 
 
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+		if($(".highlight .code pre").length+$(".article pre code").length==0)return;
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
+</script>
+
+
+
+
+   <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script>
+<script type="text/javascript">
+  function pjax_scrollrebeal() {
+    ScrollReveal().reveal('.l_main .reveal', {
+      distance: '32px',
+      duration: '800',
+      interval: '20',
+      scale: '1',
+      easing: 'ease-out'
+    });
+  }
+  $(function () {
+    pjax_scrollrebeal();
+  });
+</script>
 
 
 
@@ -1836,7 +2180,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
   <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@3/dist/av-min.js"></script>
 
   
-<script src="https://cdn.jsdelivr.net/npm/valine@1.4/dist/Valine.min.js"></script>
+<script src="/js/valine.js"></script>
 
 
 <script>
@@ -1905,9 +2249,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
     })
   }
 
-  
   function newcomment() {
-
     function queryLeanCloud(k) {
       let root = this;
       let len = arguments.length;
@@ -1929,11 +2271,11 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       }
     }
     var valine = new Valine({
-      el: '#valine_container',
+      el: 'valine_container',
       app_id: 'wvx2KxLUqgjcKv9QE62FmvUY-MdYXbMMI',
       app_key: 'u1P8dl8u7IlizUpYbwXpc1VN',
       placeholder: '快来评论吧~',
-      serverURLs: 'https://gyl-coder.top'
+      serverURLs: 'https://wvx2kxlu.api.lncldglobal.com'
     });
 
     //判断博主，heson改为自己的昵称
@@ -1961,7 +2303,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
     }
 
     //查询评论
-    valine.Q('*').limit(7).find().then(function (comments) {
+    valine.Q('*').limit(5).find().then(function (comments) {
       var hotComments = $("#hot-comments");
       for (var i = 0; i < comments.length; i++) {
         if (i === 0) {
@@ -2108,9 +2450,35 @@ const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
 
 
 
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
 
 
 
+  
+<script src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+  
 
 
 
@@ -2441,8 +2809,16 @@ const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
           }
         
         
+        document.querySelectorAll('pre code').forEach((block) => {
+          hljs.highlightBlock(block);
+        });
         
         
+          pjax_scrollrebeal();
+        
+        
+        
+          pjax_initCopyCode();
         
         
           pjax_valine();

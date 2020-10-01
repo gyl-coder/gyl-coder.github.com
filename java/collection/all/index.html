@@ -41,10 +41,18 @@
   <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
   
     
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/heson525/fontawesome-pro@5.13.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css">
 
   
   
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
 
   
 
@@ -61,6 +69,12 @@
   <!-- import link -->
   
 
+  
+    
+      
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.18.1/styles/solarized-light.css">
+
+    
   
   
     
@@ -1014,13 +1028,29 @@
             </div>
 <p>Collection 继承了 Iterable 接口，其中的 iterator() 方法能够产生一个 Iterator 对象，通过这个对象就可以迭代遍历 Collection 中的元素。<br>
 从 JDK 1.5 之后可以使用 foreach 方法来遍历实现了 Iterable 接口的聚合对象。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Iterator</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line">    <span class="comment">//集合中是否还有元素</span></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="comment">//获得集合中的下一个元素</span></span><br><span class="line">    <span class="function">E <span class="title">next</span><span class="params">()</span></span>;</span><br><span class="line">    ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="language-java">public interface Iterator&lt;E&gt; &amp;#123;
+    //集合中是否还有元素
+    boolean hasNext();
+    //获得集合中的下一个元素
+    E next();
+    ......
+&amp;#125;
+</code></pre>
 <p><code>Iterator</code> 对象称为迭代器（设计模式的一种），迭代器可以对集合进行遍历，但每一个集合内部的数据结构可能是不尽相同的，所以每一个集合存和取都很可能是不一样的，虽然我们可以人为地在每一个类中定义 <code>hasNext()</code> 和 <code>next()</code> 方法，但这样做会让整个集合体系过于臃肿。于是就有了迭代器。</p>
 <p>迭代器是将这样的方法抽取出接口，然后在每个类的内部，定义自己迭代方式，这样做就规定了整个集合体系的遍历方式都是 <code>hasNext()</code>和<code>next()</code>方法，使用者不用管怎么实现的，会用即可。迭代器的定义为：提供一种方法访问一个容器对象中各个元素，而又不需要暴露该对象的内部细节。</p>
 <h4 id="迭代器的作用"><a class="header-anchor" href="#迭代器的作用">¶</a>迭代器的作用</h4>
 <p>Iterator 主要用于遍历集合，他的特点是安全。因为它可以确保，当前遍历的集合元素被更改时，抛出 ConcurrentModificationException 异常。</p>
 <h4 id="如何使用"><a class="header-anchor" href="#如何使用">¶</a>如何使用</h4>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;Integer, String&gt; map = <span class="keyword">new</span> HashMap();</span><br><span class="line">map.put(<span class="number">1</span>, <span class="string">&quot;Java&quot;</span>);</span><br><span class="line">map.put(<span class="number">2</span>, <span class="string">&quot;C++&quot;</span>);</span><br><span class="line">map.put(<span class="number">3</span>, <span class="string">&quot;PHP&quot;</span>);</span><br><span class="line">Iterator&lt;Map.Entry&lt;Integer, String&gt;&gt; iterator = map.entrySet().iterator();</span><br><span class="line"><span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">  Map.Entry&lt;Integer, String&gt; entry = iterator.next();</span><br><span class="line">  System.out.println(entry.getKey() + entry.getValue());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="language-java">Map&lt;Integer, String&gt; map = new HashMap();
+map.put(1, &quot;Java&quot;);
+map.put(2, &quot;C++&quot;);
+map.put(3, &quot;PHP&quot;);
+Iterator&lt;Map.Entry&lt;Integer, String&gt;&gt; iterator = map.entrySet().iterator();
+while (iterator.hasNext()) &amp;#123;
+  Map.Entry&lt;Integer, String&gt; entry = iterator.next();
+  System.out.println(entry.getKey() + entry.getValue());
+&amp;#125;
+</code></pre>
 <h2 id="List"><a class="header-anchor" href="#List">¶</a>List</h2>
 <h3 id="ArrayList"><a class="header-anchor" href="#ArrayList">¶</a>ArrayList</h3>
 <p><a href="../ArrayList">查看专题文章</a></p>
@@ -1071,14 +1101,104 @@ hash数组默认大小是11，扩充方式是old*2+1</p>
 <p>TreeSet是一个有序集，基于TreeMap实现，是线程不安全的。<br>
 TreeSet底层采用TreeMap存储，构造器启动时新建TreeMap。TreeSet存储元素实际为TreeMap存储的键值对为&lt;key,PRESENT&gt;的key;，PRESENT为固定对象：private static final Object PRESENT = new Object().<br>
 TreeSet支持两种两种排序方式，通过不同构造器调用实现</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">自然排序：</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">TreeSet</span><span class="params">()</span> </span>&#123;</span><br><span class="line">   <span class="comment">// 新建TreeMap，自然排序</span></span><br><span class="line">   <span class="keyword">this</span>(<span class="keyword">new</span> TreeMap&lt;E,Object&gt;());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Comparator排序：</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">TreeSet</span><span class="params">(Comparator&lt;? <span class="keyword">super</span> E&gt; comparator)</span> </span>&#123;</span><br><span class="line">   <span class="comment">// 新建TreeMap，传入自定义比较器comparator</span></span><br><span class="line">   <span class="keyword">this</span>(<span class="keyword">new</span> TreeMap&lt;&gt;(comparator));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">TreeSet支持正向/反向迭代器遍历和foreach遍历</span><br><span class="line"></span><br><span class="line"><span class="comment">// 顺序TreeSet：迭代器实现</span></span><br><span class="line">Iterator iter = set.iterator();</span><br><span class="line"><span class="keyword">while</span> (iter.hasNext()) &#123;</span><br><span class="line">   System.out.println(iter.next());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 顺序遍历TreeSet：foreach实现</span></span><br><span class="line"><span class="keyword">for</span> (Integer i : set) &#123;</span><br><span class="line">   System.out.println(i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 逆序遍历TreeSet：反向迭代器实现</span></span><br><span class="line">Iterator iter1 = set.descendingIterator();</span><br><span class="line"><span class="keyword">while</span> (iter1.hasNext()) &#123;</span><br><span class="line">   System.out.println(iter1.next());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="language-java">自然排序：
+
+public TreeSet() &amp;#123;
+   // 新建TreeMap，自然排序
+   this(new TreeMap&lt;E,Object&gt;());
+&amp;#125;
+
+Comparator排序：
+
+public TreeSet(Comparator&lt;? super E&gt; comparator) &amp;#123;
+   // 新建TreeMap，传入自定义比较器comparator
+   this(new TreeMap&lt;&gt;(comparator));
+&amp;#125;
+
+TreeSet支持正向/反向迭代器遍历和foreach遍历
+
+// 顺序TreeSet：迭代器实现
+Iterator iter = set.iterator();
+while (iter.hasNext()) &amp;#123;
+   System.out.println(iter.next());
+&amp;#125;
+
+// 顺序遍历TreeSet：foreach实现
+for (Integer i : set) &amp;#123;
+   System.out.println(i);
+&amp;#125;
+
+// 逆序遍历TreeSet：反向迭代器实现
+Iterator iter1 = set.descendingIterator();
+while (iter1.hasNext()) &amp;#123;
+   System.out.println(iter1.next());
+&amp;#125;
+</code></pre>
 <h3 id="LinkedHashSet"><a class="header-anchor" href="#LinkedHashSet">¶</a>LinkedHashSet</h3>
 <p>LinkedHashSet介于HashSet和TreeSet之间。哈希表和链接列表实现。基本方法的复杂度为O(1)。<br>
 LinkedHashSet 是 Set 的一个具体实现，其维护着一个运行于所有条目的双重链接列表。此链接列表定义了迭代顺序，该迭代顺序可为插入顺序或是访问顺序。<br>
 LinkedHashSet 继承于 HashSet，并且其内部是通过 LinkedHashMap 来实现的。有点类似于我们之前说的LinkedHashMap 其内部是基于 Hashmap 实现的一样。<br>
 如果我们需要迭代的顺序为插入顺序或者访问顺序，那么 LinkedHashSet 是需要你首先考虑的。<br>
 LinkedHashSet 底层使用 LinkedHashMap 来保存所有元素，因为继承于 HashSet，所有的方法操作上又与 HashSet 相同，因此 LinkedHashSet 的实现上非常简单，只提供了四个构造方法，并通过传递一个标识参数，调用父类的构造器，底层构造一个 LinkedHashMap 来实现，在相关操作上与父类 HashSet 的操作相同，直接调用父类 HashSet 的方法即可。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> java.util;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LinkedHashSet</span>&lt;<span class="title">E</span>&gt;</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class">   <span class="keyword">extends</span> <span class="title">HashSet</span>&lt;<span class="title">E</span>&gt;</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class">   <span class="keyword">implements</span> <span class="title">Set</span>&lt;<span class="title">E</span>&gt;, <span class="title">Cloneable</span>, <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = -<span class="number">2851667679971038690L</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 构造一个带有指定初始容量和加载因子的空链表哈希set。</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * 底层会调用父类的构造方法，构造一个有指定初始容量和加载因子的LinkedHashMap实例。</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span> initialCapacity 初始容量。</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span> loadFactor 加载因子。</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="title">LinkedHashSet</span><span class="params">(<span class="keyword">int</span> initialCapacity, <span class="keyword">float</span> loadFactor)</span> </span>&#123;</span><br><span class="line">     <span class="keyword">super</span>(initialCapacity, loadFactor, <span class="keyword">true</span>);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/** </span></span><br><span class="line"><span class="comment">   * 构造一个指定初始容量和默认加载因子0.75的新链表哈希set。 </span></span><br><span class="line"><span class="comment">   * </span></span><br><span class="line"><span class="comment">   * 底层会调用父类的构造方法，构造一个指定初始容量和默认加载因子0.75的LinkedHashMap实例。 </span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span> initialCapacity 初始容量。 </span></span><br><span class="line"><span class="comment">   */</span>  </span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="title">LinkedHashSet</span><span class="params">(<span class="keyword">int</span> initialCapacity)</span> </span>&#123;</span><br><span class="line">     <span class="keyword">super</span>(initialCapacity, .<span class="number">75f</span>, <span class="keyword">true</span>);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/** </span></span><br><span class="line"><span class="comment">   * 构造一个默认初始容量16和加载因子0.75的新链表哈希set。 </span></span><br><span class="line"><span class="comment">   * </span></span><br><span class="line"><span class="comment">   * 底层会调用父类的构造方法，构造一个默认初始容量16和加载因子0.75的LinkedHashMap实例。 </span></span><br><span class="line"><span class="comment">   */</span>  </span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="title">LinkedHashSet</span><span class="params">()</span> </span>&#123;</span><br><span class="line">     <span class="keyword">super</span>(<span class="number">16</span>, .<span class="number">75f</span>, <span class="keyword">true</span>);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/** </span></span><br><span class="line"><span class="comment">   * 构造一个与指定collection中的元素相同的新链表哈希set。 </span></span><br><span class="line"><span class="comment">   *  </span></span><br><span class="line"><span class="comment">   * 底层会调用父类的构造方法，构造一个足以包含指定collection </span></span><br><span class="line"><span class="comment">   * 中所有元素的初始容量和加载因子为0.75的LinkedHashMap实例。 </span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span> c 其中的元素将存放在此set中的collection。 </span></span><br><span class="line"><span class="comment">   */</span>  </span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="title">LinkedHashSet</span><span class="params">(Collection&lt;? extends E&gt; c)</span> </span>&#123;</span><br><span class="line">     <span class="keyword">super</span>(Math.max(<span class="number">2</span>*c.size(), <span class="number">11</span>), .<span class="number">75f</span>, <span class="keyword">true</span>);</span><br><span class="line">     addAll(c);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> Spliterator&lt;E&gt; <span class="title">spliterator</span><span class="params">()</span> </span>&#123;</span><br><span class="line">     <span class="keyword">return</span> Spliterators.spliterator(<span class="keyword">this</span>, Spliterator.DISTINCT | Spliterator.ORDERED);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="language-java">package java.util;
+
+public class LinkedHashSet&lt;E&gt;
+
+   extends HashSet&lt;E&gt;
+
+   implements Set&lt;E&gt;, Cloneable, java.io.Serializable &amp;#123;
+
+   private static final long serialVersionUID = -2851667679971038690L;
+
+  /**
+   * 构造一个带有指定初始容量和加载因子的空链表哈希set。
+   *
+   * 底层会调用父类的构造方法，构造一个有指定初始容量和加载因子的LinkedHashMap实例。
+   * @param initialCapacity 初始容量。
+   * @param loadFactor 加载因子。
+   */
+
+   public LinkedHashSet(int initialCapacity, float loadFactor) &amp;#123;
+     super(initialCapacity, loadFactor, true);
+   &amp;#125;
+
+  /** 
+   * 构造一个指定初始容量和默认加载因子0.75的新链表哈希set。 
+   * 
+   * 底层会调用父类的构造方法，构造一个指定初始容量和默认加载因子0.75的LinkedHashMap实例。 
+   * @param initialCapacity 初始容量。 
+   */  
+   public LinkedHashSet(int initialCapacity) &amp;#123;
+     super(initialCapacity, .75f, true);
+   &amp;#125;
+
+  /** 
+   * 构造一个默认初始容量16和加载因子0.75的新链表哈希set。 
+   * 
+   * 底层会调用父类的构造方法，构造一个默认初始容量16和加载因子0.75的LinkedHashMap实例。 
+   */  
+   public LinkedHashSet() &amp;#123;
+     super(16, .75f, true);
+   &amp;#125;
+
+  /** 
+   * 构造一个与指定collection中的元素相同的新链表哈希set。 
+   *  
+   * 底层会调用父类的构造方法，构造一个足以包含指定collection 
+   * 中所有元素的初始容量和加载因子为0.75的LinkedHashMap实例。 
+   * @param c 其中的元素将存放在此set中的collection。 
+   */  
+   public LinkedHashSet(Collection&lt;? extends E&gt; c) &amp;#123;
+     super(Math.max(2*c.size(), 11), .75f, true);
+     addAll(c);
+   &amp;#125;
+
+   @Override
+   public Spliterator&lt;E&gt; spliterator() &amp;#123;
+     return Spliterators.spliterator(this, Spliterator.DISTINCT | Spliterator.ORDERED);
+   &amp;#125;
+&amp;#125;
+</code></pre>
 <p>通过观察<a href="../HashMapAnalysis">HashMap的源码</a>我们可以发现:<br>
 Hash Map的前三个构造函数，即访问权限为public类型的构造函数均是以HashMap作为实现。而以LinkedHashMap作为实现的构造函数的访问权限是默认访问权限，即包内访问权限。</p>
 <p>即：在java编程中，通过new创建的HashSet对象均是以HashMap作为实现基础。只有在jdk中java.util包内的源代码才可能创建以LinkedHashMap作为实现的HashSet(LinkedHashSet就是通过封装一个以LinkedHashMap为实现的HashSet来实现的)。<br>
@@ -1097,7 +1217,20 @@ TreeSet 底层使用红黑树，能够按照添加元素的顺序进行遍历，
 <p>TreeSet的底层是TreeMap的keySet()，而TreeMap是基于红黑树实现的，红黑树是一种平衡二叉查找树，它能保证任何一个节点的左右子树的高度差不会超过较矮的那棵的一倍。</p>
 <p>TreeMap是按key排序的，元素在插入TreeSet时compareTo()方法要被调用，所以TreeSet中的元素要实现Comparable接口。TreeSet作为一种Set，它不允许出现重复元素。TreeSet是用compareTo()来判断重复元素的。</p>
 <p>Set大多都用的Map接口的实现类来实现的（HashSet基于HashMap实现，TreeSet基于TreeMap实现，LinkedHashSet基于LinkedHashMap实现）在HashMap中通过如下实现来保证key值唯一</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">// 1. 如果key 相等  </span></span><br><span class="line"><span class="keyword">if</span> (p.hash == hash &amp;&amp;</span><br><span class="line">   ((k = p.key) == key || (key != <span class="keyword">null</span> &amp;&amp; key.equals(k))))</span><br><span class="line">   e = p;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 修改对应的value</span></span><br><span class="line">  <span class="keyword">if</span> (e != <span class="keyword">null</span>) &#123; <span class="comment">// existing mapping for key</span></span><br><span class="line">     V oldValue = e.value;</span><br><span class="line">     <span class="keyword">if</span> (!onlyIfAbsent || oldValue == <span class="keyword">null</span>)</span><br><span class="line">       e.value = value;</span><br><span class="line">     afterNodeAccess(e);</span><br><span class="line">     <span class="keyword">return</span> oldValue;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="language-java"> // 1. 如果key 相等  
+if (p.hash == hash &amp;&amp;
+   ((k = p.key) == key || (key != null &amp;&amp; key.equals(k))))
+   e = p;
+
+// 2. 修改对应的value
+  if (e != null) &amp;#123; // existing mapping for key
+     V oldValue = e.value;
+     if (!onlyIfAbsent || oldValue == null)
+       e.value = value;
+     afterNodeAccess(e);
+     return oldValue;
+  &amp;#125;
+</code></pre>
 <p>添加元素的时候，如果key(也对应的Set集合的元素)相等，那么则修改value值。而在Set集合中，value值仅仅是一个Object对象罢了(该对象对Set本身而言是无用的)。<br>
 也就是说：Set集合如果添加的元素相同时，是根本没有插入的(仅修改了一个无用的value值)。从源码(HashMap)中也看出来，==和equals()方法都有使用！</p>
 <h3 id="comparable-和-Comparator-的区别"><a class="header-anchor" href="#comparable-和-Comparator-的区别">¶</a>comparable 和 Comparator 的区别</h3>
@@ -1107,9 +1240,114 @@ TreeSet 底层使用红黑树，能够按照添加元素的顺序进行遍历，
 </ul>
 <p>一般我们需要对一个集合使用自定义排序时，我们就要重写<code>compareTo()</code>方法或<code>compare()</code>方法，当我们需要对某一个集合实现两种排序方式，比如一个 song 对象中的歌名和歌手名分别采用一种排序方法的话，我们可以重写<code>compareTo()</code>方法和使用自制的<code>Comparator</code>方法或者以两个 Comparator 来实现歌名排序和歌星名排序，第二种代表我们只能使用两个参数版的 <code>Collections.sort()</code>.</p>
 <h4 id="Comparator-定制排序"><a class="header-anchor" href="#Comparator-定制排序">¶</a>Comparator 定制排序</h4>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">        ArrayList&lt;Integer&gt; arrayList = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        arrayList.add(-<span class="number">1</span>);</span><br><span class="line">        arrayList.add(<span class="number">3</span>);</span><br><span class="line">        arrayList.add(<span class="number">3</span>);</span><br><span class="line">        arrayList.add(-<span class="number">5</span>);</span><br><span class="line">        arrayList.add(<span class="number">7</span>);</span><br><span class="line">        arrayList.add(<span class="number">4</span>);</span><br><span class="line">        arrayList.add(-<span class="number">9</span>);</span><br><span class="line">        arrayList.add(-<span class="number">7</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;原始数组:&quot;</span>);</span><br><span class="line">        System.out.println(arrayList);</span><br><span class="line">        <span class="comment">// void reverse(List list)：反转</span></span><br><span class="line">        Collections.reverse(arrayList);</span><br><span class="line">        System.out.println(<span class="string">&quot;Collections.reverse(arrayList):&quot;</span>);</span><br><span class="line">        System.out.println(arrayList);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// void sort(List list),按自然排序的升序排序</span></span><br><span class="line">        Collections.sort(arrayList);</span><br><span class="line">        System.out.println(<span class="string">&quot;Collections.sort(arrayList):&quot;</span>);</span><br><span class="line">        System.out.println(arrayList);</span><br><span class="line">        <span class="comment">// 定制排序的用法</span></span><br><span class="line">        Collections.sort(arrayList, <span class="keyword">new</span> Comparator&lt;Integer&gt;() &#123;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Integer o1, Integer o2)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> o2.compareTo(o1);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        System.out.println(<span class="string">&quot;定制排序后：&quot;</span>);</span><br><span class="line">        System.out.println(arrayList);</span><br><span class="line"></span><br><span class="line">OutPut :</span><br><span class="line"></span><br><span class="line">原始数组:</span><br><span class="line">[-<span class="number">1</span>, <span class="number">3</span>, <span class="number">3</span>, -<span class="number">5</span>, <span class="number">7</span>, <span class="number">4</span>, -<span class="number">9</span>, -<span class="number">7</span>]</span><br><span class="line">Collections.reverse(arrayList):</span><br><span class="line">[-<span class="number">7</span>, -<span class="number">9</span>, <span class="number">4</span>, <span class="number">7</span>, -<span class="number">5</span>, <span class="number">3</span>, <span class="number">3</span>, -<span class="number">1</span>]</span><br><span class="line">Collections.sort(arrayList):</span><br><span class="line">[-<span class="number">9</span>, -<span class="number">7</span>, -<span class="number">5</span>, -<span class="number">1</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">7</span>]</span><br><span class="line">定制排序后：</span><br><span class="line">[<span class="number">7</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">3</span>, -<span class="number">1</span>, -<span class="number">5</span>, -<span class="number">7</span>, -<span class="number">9</span>]</span><br></pre></td></tr></table></figure>
+<pre><code class="language-java">        ArrayList&lt;Integer&gt; arrayList = new ArrayList&lt;Integer&gt;();
+        arrayList.add(-1);
+        arrayList.add(3);
+        arrayList.add(3);
+        arrayList.add(-5);
+        arrayList.add(7);
+        arrayList.add(4);
+        arrayList.add(-9);
+        arrayList.add(-7);
+        System.out.println(&quot;原始数组:&quot;);
+        System.out.println(arrayList);
+        // void reverse(List list)：反转
+        Collections.reverse(arrayList);
+        System.out.println(&quot;Collections.reverse(arrayList):&quot;);
+        System.out.println(arrayList);
+
+        // void sort(List list),按自然排序的升序排序
+        Collections.sort(arrayList);
+        System.out.println(&quot;Collections.sort(arrayList):&quot;);
+        System.out.println(arrayList);
+        // 定制排序的用法
+        Collections.sort(arrayList, new Comparator&lt;Integer&gt;() &amp;#123;
+
+            @Override
+            public int compare(Integer o1, Integer o2) &amp;#123;
+                return o2.compareTo(o1);
+            &amp;#125;
+        &amp;#125;);
+        System.out.println(&quot;定制排序后：&quot;);
+        System.out.println(arrayList);
+
+OutPut :
+
+原始数组:
+[-1, 3, 3, -5, 7, 4, -9, -7]
+Collections.reverse(arrayList):
+[-7, -9, 4, 7, -5, 3, 3, -1]
+Collections.sort(arrayList):
+[-9, -7, -5, -1, 3, 3, 4, 7]
+定制排序后：
+[7, 4, 3, 3, -1, -5, -7, -9]
+</code></pre>
 <h4 id="重写-compareTo（）方法实现按年龄排序"><a class="header-anchor" href="#重写-compareTo（）方法实现按年龄排序">¶</a>重写 compareTo（）方法实现按年龄排序</h4>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// person对象没有实现Comparable接口，所以必须实现，这样才不会出错，才可以使treemap中的数据按顺序排列</span></span><br><span class="line"><span class="comment">// 前面一个例子的String类已经默认实现了Comparable接口，详细可以查看String类的API文档，另外其他</span></span><br><span class="line"><span class="comment">// 像Integer类等都已经实现了Comparable接口，所以不需要另外实现了</span></span><br><span class="line"><span class="keyword">public</span>  <span class="class"><span class="keyword">class</span> <span class="title">Person</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">Person</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(String name, <span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>();</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * T重写compareTo方法实现按年龄来排序</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Person o)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.age &gt; o.getAge()) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.age &lt; o.getAge()) &#123;</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        TreeMap&lt;Person, String&gt; pdata = <span class="keyword">new</span> TreeMap&lt;Person, String&gt;();</span><br><span class="line">        pdata.put(<span class="keyword">new</span> Person(<span class="string">&quot;张三&quot;</span>, <span class="number">30</span>), <span class="string">&quot;zhangsan&quot;</span>);</span><br><span class="line">        pdata.put(<span class="keyword">new</span> Person(<span class="string">&quot;李四&quot;</span>, <span class="number">20</span>), <span class="string">&quot;lisi&quot;</span>);</span><br><span class="line">        pdata.put(<span class="keyword">new</span> Person(<span class="string">&quot;王五&quot;</span>, <span class="number">10</span>), <span class="string">&quot;wangwu&quot;</span>);</span><br><span class="line">        pdata.put(<span class="keyword">new</span> Person(<span class="string">&quot;小红&quot;</span>, <span class="number">5</span>), <span class="string">&quot;xiaohong&quot;</span>);</span><br><span class="line">        <span class="comment">// 得到key的值的同时得到key所对应的值</span></span><br><span class="line">        Set&lt;Person&gt; keys = pdata.keySet();</span><br><span class="line">        <span class="keyword">for</span> (Person key : keys) &#123;</span><br><span class="line">            System.out.println(key.getAge() + <span class="string">&quot;-&quot;</span> + key.getName());</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">OutPut :</span><br><span class="line"></span><br><span class="line"><span class="number">5</span>-小红</span><br><span class="line"><span class="number">10</span>-王五</span><br><span class="line"><span class="number">20</span>-李四</span><br><span class="line"><span class="number">30</span>-张三</span><br></pre></td></tr></table></figure>
+<pre><code class="language-java">// person对象没有实现Comparable接口，所以必须实现，这样才不会出错，才可以使treemap中的数据按顺序排列
+// 前面一个例子的String类已经默认实现了Comparable接口，详细可以查看String类的API文档，另外其他
+// 像Integer类等都已经实现了Comparable接口，所以不需要另外实现了
+public  class Person implements Comparable&lt;Person&gt; &amp;#123;
+    private String name;
+    private int age;
+
+    public Person(String name, int age) &amp;#123;
+        super();
+        this.name = name;
+        this.age = age;
+    &amp;#125;
+
+    public String getName() &amp;#123;
+        return name;
+    &amp;#125;
+
+    public void setName(String name) &amp;#123;
+        this.name = name;
+    &amp;#125;
+
+    public int getAge() &amp;#123;
+        return age;
+    &amp;#125;
+
+    public void setAge(int age) &amp;#123;
+        this.age = age;
+    &amp;#125;
+
+    /**
+     * T重写compareTo方法实现按年龄来排序
+     */
+    @Override
+    public int compareTo(Person o) &amp;#123;
+        if (this.age &gt; o.getAge()) &amp;#123;
+            return 1;
+        &amp;#125;
+        if (this.age &lt; o.getAge()) &amp;#123;
+            return -1;
+        &amp;#125;
+        return 0;
+    &amp;#125;
+&amp;#125;
+
+    public static void main(String[] args) &amp;#123;
+        TreeMap&lt;Person, String&gt; pdata = new TreeMap&lt;Person, String&gt;();
+        pdata.put(new Person(&quot;张三&quot;, 30), &quot;zhangsan&quot;);
+        pdata.put(new Person(&quot;李四&quot;, 20), &quot;lisi&quot;);
+        pdata.put(new Person(&quot;王五&quot;, 10), &quot;wangwu&quot;);
+        pdata.put(new Person(&quot;小红&quot;, 5), &quot;xiaohong&quot;);
+        // 得到key的值的同时得到key所对应的值
+        Set&lt;Person&gt; keys = pdata.keySet();
+        for (Person key : keys) &amp;#123;
+            System.out.println(key.getAge() + &quot;-&quot; + key.getName());
+
+        &amp;#125;
+    &amp;#125;
+
+OutPut :
+
+5-小红
+10-王五
+20-李四
+30-张三
+</code></pre>
 <h2 id="其他"><a class="header-anchor" href="#其他">¶</a>其他</h2>
 <h3 id="说说List、Set、Map的区别"><a class="header-anchor" href="#说说List、Set、Map的区别">¶</a>说说List、Set、Map的区别</h3>
 <p>List 存储元素有序，可重复。<br>
@@ -1263,11 +1501,8 @@ Collections工具类的sort方法有两种重载的形式，<strong>第一种</s
     <section class='body'>
       <div class="vlts-rps"><a class="item" href="\java\collection\ArrayList_grow\" title="ArrayList动态扩容机制" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life9.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life9.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">ArrayList动态扩容机制</span><span class="excerpt">我们通过一个具体的例子看一下ArrayList的扩容效果
 先看一下ArrayList的初始容量
-1234567ArrayL...</span></a><a class="item" href="\java\collection\Vector\" title="Vector 底层实现原理分析" rel="bookmark "><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">Vector 底层实现原理分析</span><span class="excerpt">Vector，一个可变长的数组，底层实现与 ArrayList 大同小异，但Vector是同步的（线程安全），Vector...</span></a><a class="item" href="\java\collection\HashMapAnalysis\" title="HashMap 底层实现原理分析" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/20200323120021.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/20200323120021.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">HashMap 底层实现原理分析</span><span class="excerpt">HashMap 是 Map 的一个实现类，它代表的是一种键值对的数据存储形式。
-大多数情况下可以直接定位到它的值，因而具有...</span></a><a class="item" href="\java\collection\LinkedList\" title="LinkedList 底层实现原理分析" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/collection2.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/collection2.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">LinkedList 底层实现原理分析</span><span class="excerpt">
-在Java.util包下
-继承自AbstractSequentialList
-实现 List 接口，能对它进行队列操作。...</span></a><a class="item" href="\java\abstract_interface\" title="接口 vs 抽象类的区别？" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">接口 vs 抽象类的区别？</span><span class="excerpt">在面向对象编程中，抽象类和接口是两个经常被用到的语法概念，是面向对象四大特性，以及很多设计模式、设计思想、设计原则编程实现...</span></a></div></section></div>
+ArrayList&lt;...</span></a><a class="item" href="\java\collection\Vector\" title="Vector 底层实现原理分析" rel="bookmark "><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">Vector 底层实现原理分析</span><span class="excerpt">Vector，一个可变长的数组，底层实现与 ArrayList 大同小异，但Vector是同步的（线程安全），Vector...</span></a><a class="item" href="\java\collection\HashMapAnalysis\" title="HashMap 底层实现原理分析" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/20200323120021.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/20200323120021.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">HashMap 底层实现原理分析</span><span class="excerpt">HashMap 是 Map 的一个实现类，它代表的是一种键值对的数据存储形式。
+大多数情况下可以直接定位到它的值，因而具有...</span></a><a class="item" href="\java\collection\LinkedHashMap\" title="LinkedHashMap 底层实现原理分析" rel="bookmark "><img src="https://cdn.nlark.com/yuque/0/2020/png/420470/1594858298550-74cd2f4d-fbd7-4fb1-9137-66e8cabfa0c9.png#align=left&display=inline&height=481&margin=%5Bobject%20Object%5D&name=image.png&originHeight=481&originWidth=496&size=130674&status=done&style=none&width=496" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/420470/1594858298550-74cd2f4d-fbd7-4fb1-9137-66e8cabfa0c9.png#align=left&display=inline&height=481&margin=%5Bobject%20Object%5D&name=image.png&originHeight=481&originWidth=496&size=130674&status=done&style=none&width=496" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">LinkedHashMap 底层实现原理分析</span><span class="excerpt">LinkedHashMap继承自HashMap实现了Map接口。基本实现同HashMap一样，不同之处在于LinkedHa...</span></a><a class="item" href="\java\abstract_interface\" title="接口 vs 抽象类的区别？" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">接口 vs 抽象类的区别？</span><span class="excerpt">在面向对象编程中，抽象类和接口是两个经常被用到的语法概念，是面向对象四大特性，以及很多设计模式、设计思想、设计原则编程实现...</span></a></div></section></div>
       
       
         <div class='copyright'>
@@ -1983,7 +2218,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       if (href.length == 0) {
         // 选中文本
         if (window.getSelection().toString()) {
-          if ('' == 'true') {
+          if ('true' == 'true') {
             copyText.style.display = 'block';
             hrText.style.display = 'block';
           }
@@ -2096,6 +2331,78 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
 
 
 
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+		if($(".highlight .code pre").length+$(".article pre code").length==0)return;
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
+</script>
+
+
+
+
+   <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script>
+<script type="text/javascript">
+  function pjax_scrollrebeal() {
+    ScrollReveal().reveal('.l_main .reveal', {
+      distance: '32px',
+      duration: '800',
+      interval: '20',
+      scale: '1',
+      easing: 'ease-out'
+    });
+  }
+  $(function () {
+    pjax_scrollrebeal();
+  });
+</script>
 
 
 
@@ -2127,7 +2434,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
   <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@3/dist/av-min.js"></script>
 
   
-<script src="https://cdn.jsdelivr.net/npm/valine@1.4/dist/Valine.min.js"></script>
+<script src="/js/valine.js"></script>
 
 
 <script>
@@ -2196,9 +2503,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
     })
   }
 
-  
   function newcomment() {
-
     function queryLeanCloud(k) {
       let root = this;
       let len = arguments.length;
@@ -2220,11 +2525,11 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       }
     }
     var valine = new Valine({
-      el: '#valine_container',
+      el: 'valine_container',
       app_id: 'wvx2KxLUqgjcKv9QE62FmvUY-MdYXbMMI',
       app_key: 'u1P8dl8u7IlizUpYbwXpc1VN',
       placeholder: '快来评论吧~',
-      serverURLs: 'https://gyl-coder.top'
+      serverURLs: 'https://wvx2kxlu.api.lncldglobal.com'
     });
 
     //判断博主，heson改为自己的昵称
@@ -2252,7 +2557,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
     }
 
     //查询评论
-    valine.Q('*').limit(7).find().then(function (comments) {
+    valine.Q('*').limit(5).find().then(function (comments) {
       var hotComments = $("#hot-comments");
       for (var i = 0; i < comments.length; i++) {
         if (i === 0) {
@@ -2399,9 +2704,35 @@ const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
 
 
 
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
 
 
 
+  
+<script src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+  
 
 
 
@@ -2732,8 +3063,16 @@ const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
           }
         
         
+        document.querySelectorAll('pre code').forEach((block) => {
+          hljs.highlightBlock(block);
+        });
         
         
+          pjax_scrollrebeal();
+        
+        
+        
+          pjax_initCopyCode();
         
         
           pjax_valine();
