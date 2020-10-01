@@ -2642,7 +2642,7 @@ div.fancybox .image-caption:empty {
 .darkmode-toggle:before {
   font-family: 'Font Awesome 5 Free';
   font-weight: bold;
-  content: '\f005';
+  content: '\f186';
   color: #fff;
 }
 .darkmode-background {
