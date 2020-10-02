@@ -895,10 +895,6 @@
   <div class="article-meta" id="top">
     
     
-      <a title='Kafka Rebalance机制分析' href='/kafka/kafka-rebalance/'>
-        <img class='thumbnail' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/kafka.svg'>
-      </a>
-    
     
       <h1 class="title">
         Kafka Rebalance机制分析
@@ -939,10 +935,10 @@
           
         
           
-            <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-28T22:22:26+08:00">
+            <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-02T18:31:41+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Sep 28, 2020</p>
+    <p>更新于：Oct 2, 2020</p>
   </a>
 </div>
 
@@ -957,7 +953,7 @@
   <p>Rebalance 本质上是一种协议，规定了一个 Consumer Group 下的所有 consumer 如何达成一致，来分配订阅 Topic 的每个分区。</p>
 <p>例如：某 Group 下有 20 个 consumer 实例，它订阅了一个具有 100 个 partition 的 Topic 。正常情况下，kafka 会为每个 Consumer 平均的分配 5 个分区。这个分配的过程就是 Rebalance。</p>
 <a id="more"></a>
-<h2 id="触发-Rebalance-的时机"><a class="header-anchor" href="#触发-Rebalance-的时机">¶</a>触发 Rebalance 的时机</h2>
+<h2 id="触发-Rebalance-的时机"><a class="header-anchor" href="#触发-Rebalance-的时机">✨</a>触发 Rebalance 的时机</h2>
 <p>Rebalance 的触发条件有3个。</p>
 <ul>
 <li>组成员个数发生变化。例如有新的 consumer 实例加入该消费组或者离开组。</li>
@@ -965,7 +961,7 @@
 <li>订阅 Topic 的分区数发生变化。</li>
 </ul>
 <p>Rebalance 发生时，Group 下所有 consumer 实例都会协调在一起共同参与，kafka 能够保证尽量达到最公平的分配。但是 Rebalance 过程对 consumer group 会造成比较严重的影响。在 Rebalance 的过程中 consumer group 下的所有消费者实例都会停止工作，等待 Rebalance 过程完成。</p>
-<h2 id="Rebalance-过程分析"><a class="header-anchor" href="#Rebalance-过程分析">¶</a>Rebalance 过程分析</h2>
+<h2 id="Rebalance-过程分析"><a class="header-anchor" href="#Rebalance-过程分析">✨</a>Rebalance 过程分析</h2>
 <p>Rebalance 过程分为两步：Join 和 Sync。</p>
 <ol>
 <li>Join 顾名思义就是加入组。这一步中，所有成员都向coordinator发送JoinGroup请求，请求加入消费组。一旦所有成员都发送了JoinGroup请求，coordinator会从中选择一个consumer担任leader的角色，并把组成员信息以及订阅信息发给leader——注意leader和coordinator不是一个概念。leader负责消费分配方案的制定。</li>
@@ -975,17 +971,17 @@
 <li>Sync，这一步leader开始分配消费方案，即哪个consumer负责消费哪些topic的哪些partition。一旦完成分配，leader会将这个方案封装进SyncGroup请求中发给coordinator，非leader也会发SyncGroup请求，只是内容为空。coordinator接收到分配方案之后会把方案塞进SyncGroup的response中发给各个consumer。这样组内的所有成员就都知道自己应该消费哪些分区了。</li>
 </ol>
 <div class="img-wrap"><div class="img-bg"><img class="img lazyload placeholder" src="https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.3/img/kafka/3951012.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.3/img/kafka/3951012.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/></div></div>
-<h2 id="Rebalance-场景分析"><a class="header-anchor" href="#Rebalance-场景分析">¶</a>Rebalance 场景分析</h2>
-<h3 id="新成员加入组"><a class="header-anchor" href="#新成员加入组">¶</a>新成员加入组</h3>
+<h2 id="Rebalance-场景分析"><a class="header-anchor" href="#Rebalance-场景分析">✨</a>Rebalance 场景分析</h2>
+<h3 id="新成员加入组"><a class="header-anchor" href="#新成员加入组">✨</a>新成员加入组</h3>
 <div class="img-wrap"><div class="img-bg"><img class="img lazyload placeholder" src="https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.3/img/kafka/3951013.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.3/img/kafka/3951013.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/></div></div>
-<h3 id="组成员“崩溃”"><a class="header-anchor" href="#组成员“崩溃”">¶</a>组成员“崩溃”</h3>
+<h3 id="组成员“崩溃”"><a class="header-anchor" href="#组成员“崩溃”">✨</a>组成员“崩溃”</h3>
 <p>**组成员崩溃和组成员主动离开是两个不同的场景。**因为在崩溃时成员并不会主动地告知coordinator此事，coordinator有可能需要一个完整的session.timeout周期(心跳周期)才能检测到这种崩溃，这必然会造成consumer的滞后。可以说离开组是主动地发起rebalance；而崩溃则是被动地发起rebalance。</p>
 <div class="img-wrap"><div class="img-bg"><img class="img lazyload placeholder" src="https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.3/img/kafka/3951014.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.3/img/kafka/3951014.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/></div></div>
-<h3 id="组成员主动离开组"><a class="header-anchor" href="#组成员主动离开组">¶</a>组成员主动离开组</h3>
+<h3 id="组成员主动离开组"><a class="header-anchor" href="#组成员主动离开组">✨</a>组成员主动离开组</h3>
 <div class="img-wrap"><div class="img-bg"><img class="img lazyload placeholder" src="https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.3/img/kafka/3951015.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.3/img/kafka/3951015.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/></div></div>
-<h3 id="提交位移"><a class="header-anchor" href="#提交位移">¶</a>提交位移</h3>
+<h3 id="提交位移"><a class="header-anchor" href="#提交位移">✨</a>提交位移</h3>
 <div class="img-wrap"><div class="img-bg"><img class="img lazyload placeholder" src="https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.3/img/kafka/3951016.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.3/img/kafka/3951016.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/></div></div>
-<h2 id="如何避免不必要的rebalance"><a class="header-anchor" href="#如何避免不必要的rebalance">¶</a>如何避免不必要的rebalance</h2>
+<h2 id="如何避免不必要的rebalance"><a class="header-anchor" href="#如何避免不必要的rebalance">✨</a>如何避免不必要的rebalance</h2>
 <p>要避免 Rebalance，还是要从 Rebalance 发生的时机入手。我们在前面说过，Rebalance 发生的时机有三个：</p>
 <ul>
 <li>组成员数量发生变化</li>
@@ -1007,8 +1003,8 @@
 <p>将 <a target="_blank" rel="noopener" href="http://session.timeout.ms">session.timeout.ms</a> 设置成 6s 主要是为了让 Coordinator 能够更快地定位已经挂掉的 Consumer，早日把它们踢出 Group。</p>
 <p><strong>第二类非必要 Rebalance 是 Consumer 消费时间过长导致的</strong>。此时，<strong><a target="_blank" rel="noopener" href="http://max.poll.interval.ms">max.poll.interval.ms</a></strong> 参数值的设置显得尤为关键。如果要避免非预期的 Rebalance，你最好将该参数值设置得大一点，比你的下游最大处理时间稍长一点。</p>
 <p>总之，要为业务处理逻辑留下充足的时间。这样，Consumer 就不会因为处理这些消息的时间太长而引发 Rebalance 。</p>
-<h2 id="相关概念"><a class="header-anchor" href="#相关概念">¶</a>相关概念</h2>
-<h3 id="coordinator"><a class="header-anchor" href="#coordinator">¶</a>coordinator</h3>
+<h2 id="相关概念"><a class="header-anchor" href="#相关概念">✨</a>相关概念</h2>
+<h3 id="coordinator"><a class="header-anchor" href="#coordinator">✨</a>coordinator</h3>
 <p>Group Coordinator是一个服务，每个Broker在启动的时候都会启动一个该服务。Group Coordinator的作用是用来存储Group的相关Meta信息，并将对应Partition的Offset信息记录到Kafka内置Topic(__consumer_offsets)中。Kafka在0.9之前是基于Zookeeper来存储Partition的Offset信息(consumers/{group}/offsets/{topic}/{partition})，因为ZK并不适用于频繁的写操作，所以在0.9之后通过内置Topic的方式来记录对应Partition的Offset。</p>
 <p>每个Group都会选择一个Coordinator来完成自己组内各Partition的Offset信息，选择的规则如下：</p>
 <ul>
@@ -1032,11 +1028,14 @@
       <i class="fas fa-bookmark fa-fw" aria-hidden="true"></i><span>相关文章</span>
     </section>
     <section class='body'>
-      <div class="vlts-rps"><a class="item" href="\kafka\kafka-listeners-config\" title="kafka的listeners配置错误导致主线程阻塞" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka6.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka6.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">kafka的listeners配置错误导致主线程阻塞</span><span class="excerpt">¶问题背景
+      <div class="vlts-rps"><a class="item" href="\kafka\kafka-isr-ar\" title="kafka中的ISR、AR代表什么？ISR的伸缩性又指什么？" rel="bookmark "><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">kafka中的ISR、AR代表什么？ISR的伸缩性又指什么？</span><span class="excerpt">相信大家已经对 kafka 的基本概念已经有一定的了解了，下面直接来分析一下 ISR 和 AR 的概念。</span></a><a class="item" href="\kafka\kafka-hw-leo-lso\" title="Kafka中的HW、LEO、LSO等分别代表什么？" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka1.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka1.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">Kafka中的HW、LEO、LSO等分别代表什么？</span><span class="excerpt">HW 、 LEO 等概念和上一篇文章所说的 ISR有着紧密的关系，如果不了解 ISR 可以先看下ISR相关的介绍。
+HW ...</span></a><a class="item" href="\kafka\kafka-listeners-config\" title="kafka的listeners配置错误导致主线程阻塞" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka6.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka6.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">kafka的listeners配置错误导致主线程阻塞</span><span class="excerpt">✨问题背景
 我们在用kafka的时候，偶尔会遇到这样这样一个问题。
-我们写的kafka的客户端程序，在启动的时候，会无缘无...</span></a><a class="item" href="\kafka\kafka-isr-ar\" title="kafka中的ISR、AR代表什么？ISR的伸缩性又指什么？" rel="bookmark "><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">kafka中的ISR、AR代表什么？ISR的伸缩性又指什么？</span><span class="excerpt">相信大家已经对 kafka 的基本概念已经有一定的了解了，下面直接来分析一下 ISR 和 AR 的概念。</span></a><a class="item" href="\kafka\kafka-hw-leo-lso\" title="Kafka中的HW、LEO、LSO等分别代表什么？" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka1.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka1.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">Kafka中的HW、LEO、LSO等分别代表什么？</span><span class="excerpt">HW 、 LEO 等概念和上一篇文章所说的 ISR有着紧密的关系，如果不了解 ISR 可以先看下ISR相关的介绍。
-HW ...</span></a><a class="item" href="\kafka\kafka-reliability\" title="kafka 如何保证数据的可靠性和一致性" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.2/img/kafka/1567762579648.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.2/img/kafka/1567762579648.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">kafka 如何保证数据的可靠性和一致性</span><span class="excerpt">¶数据可靠性
-Kafka 作为一个商业级消息中间件，消息可靠性的重要性可想而知。本文从 Producter 往 Broke...</span></a><a class="item" href="\kafka\kafka-topic-manage\" title="kafka 主题管理" rel="bookmark "><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">kafka 主题管理</span><span class="excerpt">对于 kafka 主题（topic）的管理（增删改查），使用最多的便是kafka自带的脚本。</span></a></div></section></div>
+我们写的kafka的客户端程序，在启动的时候，会无缘无...</span></a><a class="item" href="\kafka\kafka-reliability\" title="kafka 如何保证数据的可靠性和一致性" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.2/img/kafka/1567762579648.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.2/img/kafka/1567762579648.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">kafka 如何保证数据的可靠性和一致性</span><span class="excerpt">✨数据可靠性
+Kafka 作为一个商业级消息中间件，消息可靠性的重要性可想而知。本文从 Producter 往 Broke...</span></a><a class="item" href="\kafka\kafka-todo-list\" title="kafka 问题总结" rel="bookmark "><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">kafka 问题总结</span><span class="excerpt">
+kafka如何保证数据可靠性和数据一致性
+Kafka Rebalance机制分析
+Kafka的用途有哪些？使用场景如何？...</span></a></div></section></div>
       
       
         <div class='copyright'>
@@ -1065,10 +1064,10 @@ Kafka 作为一个商业级消息中间件，消息可靠性的重要性可想�
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-28T22:22:26+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-02T18:31:41+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Sep 28, 2020</p>
+    <p>更新于：Oct 2, 2020</p>
   </a>
 </div>
 
@@ -1090,7 +1089,7 @@ Kafka 作为一个商业级消息中间件，消息可靠性的重要性可想�
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gyl-coder.top/kafka/kafka-rebalance/&title=Kafka Rebalance机制分析 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/kafka.svg&summary=Rebalance 本质上是一种协议，规定了一个 Consumer Group 下的所有 consumer 如何达成一致，来分配订阅 Topic 的每个分区。
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gyl-coder.top/kafka/kafka-rebalance/&title=Kafka Rebalance机制分析 - yanliang's blog&summary=Rebalance 本质上是一种协议，规定了一个 Consumer Group 下的所有 consumer 如何达成一致，来分配订阅 Topic 的每个分区。
 例如：某 Group 下有 20 个 consumer 实例，它订阅了一个具有 100 个 partition 的 Topic 。正常情况下，kafka 会为每个 Consumer 平均的分配 5 个分区。这个分配的过程就是 Rebalance。"
           
           >
@@ -1103,7 +1102,7 @@ Kafka 作为一个商业级消息中间件，消息可靠性的重要性可想�
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://gyl-coder.top/kafka/kafka-rebalance/&title=Kafka Rebalance机制分析 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/kafka.svg&summary=Rebalance 本质上是一种协议，规定了一个 Consumer Group 下的所有 consumer 如何达成一致，来分配订阅 Topic 的每个分区。
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://gyl-coder.top/kafka/kafka-rebalance/&title=Kafka Rebalance机制分析 - yanliang's blog&summary=Rebalance 本质上是一种协议，规定了一个 Consumer Group 下的所有 consumer 如何达成一致，来分配订阅 Topic 的每个分区。
 例如：某 Group 下有 20 个 consumer 实例，它订阅了一个具有 100 个 partition 的 Topic 。正常情况下，kafka 会为每个 Consumer 平均的分配 5 个分区。这个分配的过程就是 Rebalance。"
           
           >
@@ -1116,7 +1115,7 @@ Kafka 作为一个商业级消息中间件，消息可靠性的重要性可想�
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://gyl-coder.top/kafka/kafka-rebalance/&title=Kafka Rebalance机制分析 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/kafka.svg&summary=Rebalance 本质上是一种协议，规定了一个 Consumer Group 下的所有 consumer 如何达成一致，来分配订阅 Topic 的每个分区。
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://gyl-coder.top/kafka/kafka-rebalance/&title=Kafka Rebalance机制分析 - yanliang's blog&summary=Rebalance 本质上是一种协议，规定了一个 Consumer Group 下的所有 consumer 如何达成一致，来分配订阅 Topic 的每个分区。
 例如：某 Group 下有 20 个 consumer 实例，它订阅了一个具有 100 个 partition 的 Topic 。正常情况下，kafka 会为每个 Consumer 平均的分配 5 个分区。这个分配的过程就是 Rebalance。"
           
           >
@@ -1149,7 +1148,7 @@ Kafka 作为一个商业级消息中间件，消息可靠性的重要性可想�
       
         <a class='prev' href='/kafka/kafka-reliability/'>
           <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>kafka 如何保证数据的可靠性和一致性</p>
-          <p class='content'>¶数据可靠性
+          <p class='content'>✨数据可靠性
 Kafka 作为一个商业级消息中间件，消息可靠性的重要性可想而知。本文从 Producter 往 Broker 发送消息、Topic 分区副本以及 Leader 选举几个角度介绍数...</p>
         </a>
       
@@ -1575,12 +1574,12 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
         
           
     <li>
-      <a class='vlts-menu fix-cursor-default' href=https://album.gyl-coder.top
+      <a class='vlts-menu fix-cursor-default' href=/album/
         
         
         
         
-          id="https:albumgyl-codertop"
+          id="album"
         >
         <i class='fas fa-image fa-fw fa-fw'></i> My Album
       </a>

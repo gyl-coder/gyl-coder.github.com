@@ -945,10 +945,10 @@
           
         
           
-            <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-28T22:44:42+08:00">
+            <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-02T18:34:32+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Sep 28, 2020</p>
+    <p>更新于：Oct 2, 2020</p>
   </a>
 </div>
 
@@ -963,8 +963,292 @@
   <p>在面向对象编程中，抽象类和接口是两个经常被用到的语法概念，是面向对象四大特性，以及很多设计模式、设计思想、设计原则编程实现的基础。</p>
 <p>比如：我们可以使用接口来实现面向对象的抽象特性、多态特性和基于接口而非实现的设计原则，使用抽象类来实现面向对象的继承特性和模板设计模式等。</p>
 <a id="more"></a>
-<h2 id="什么是抽象类和接口？-区别点在哪里？"><a class="header-anchor" href="#什么是抽象类和接口？-区别点在哪里？">¶</a>什么是抽象类和接口？ 区别点在哪里？</h2>
-<p>马上更新…</p>
+<h2 id="什么是抽象类和接口？-区别在哪里？"><a class="header-anchor" href="#什么是抽象类和接口？-区别在哪里？">✨</a>什么是抽象类和接口？ 区别在哪里？</h2>
+<p>不同的编程语言对接口和抽象类的定义方式可能有些差别，但是差别并不大。本文使用 Java 语言。</p>
+<h3 id="抽象类"><a class="header-anchor" href="#抽象类">✨</a>抽象类</h3>
+<p>下面我们通过一个例子来看一个典型的抽象类的使用场景。</p>
+<p>Logger 是一个记录日志的抽象类，FileLogger 和 MessageQueueLogger 继承Logger，分别实现两种不同的日志记录方式：</p>
+<ul>
+<li>记录日志到文件中</li>
+<li>记录日志到消息队列中</li>
+</ul>
+<p>FileLogger 和 MessageQueuLogger 两个子类复用了父类 Logger 中的name、enabled 以及 minPermittedLevel 属性和 log 方法，但是因为两个子类写日志的方式不同，他们又各自重写了父类中的doLog方法。</p>
+<p>父类</p>
+<pre><code class="language-java">import java.util.logging.Level;
+
+/**
+ * 抽象父类
+ * @author yanliang
+ * @date 9/27/2020 5:59 PM
+ */
+public abstract class Logger &amp;#123;
+	private String name;
+	private boolean enabled;
+	private Level minPermittedLevel;
+
+	public Logger(String name, boolean enabled, Level minPermittedLevel) &amp;#123;
+		this.name = name;
+		this.enabled = enabled;
+		this.minPermittedLevel = minPermittedLevel;
+	&amp;#125;
+
+	public void log(Level level, String message) &amp;#123;
+		boolean loggable = enabled &amp;&amp; (minPermittedLevel.intValue() &lt;= level.intValue());
+		if(!loggable) return;
+		doLog(level, message);
+	&amp;#125;
+
+	protected abstract void doLog(Level level, String message);
+&amp;#125;
+</code></pre>
+<p>FileLogger</p>
+<pre><code class="language-java">import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
+import java.util.logging.Level;
+
+/**
+ * 抽象类Logger的子类：输出日志到文件中
+ * @author yanliang
+ * @date 9/28/2020 4:44 PM
+ */
+public class FileLogger extends Logger &amp;#123;
+
+	private Writer fileWriter;
+
+	public FileLogger(String name, boolean enabled, Level minPermittedLevel, String filePath) throws IOException &amp;#123;
+		super(name, enabled, minPermittedLevel);
+		this.fileWriter = new FileWriter(filePath);
+	&amp;#125;
+
+	@Override
+	protected void doLog(Level level, String message) &amp;#123;
+		// 格式化level 和 message，输出到日志文件
+		fileWriter.write(...);
+	&amp;#125;
+&amp;#125;
+</code></pre>
+<p>MessageQueuLogger</p>
+<pre><code class="language-java">import java.util.logging.Level;
+
+/**
+ * 抽象类Logger的子类：输出日志到消息队列中
+ * @author yanliang
+ * @date 9/28/2020 6:39 PM
+ */
+public class MessageQueueLogger extends Logger &amp;#123;
+	
+	private MessageQueueClient messageQueueClient;
+	
+	public MessageQueueLogger(String name, boolean enabled, Level minPermittedLevel, MessageQueueClient messageQueueClient) &amp;#123;
+		super(name, enabled, minPermittedLevel);
+		this.messageQueueClient = messageQueueClient;
+	&amp;#125;
+
+	@Override
+	protected void doLog(Level level, String message) &amp;#123;
+		// 格式化level 和 message，输出到消息队列中
+		messageQueueClient.send(...)
+	&amp;#125;
+&amp;#125;
+</code></pre>
+<p>通过上面的例子，我们来看下抽象类有哪些特性。</p>
+<ul>
+<li>抽象类不能被实例化，只能被继承。（new 一个抽象类，会报编译错误）</li>
+<li>抽象类可以包含属性和方法。方法既可以包含实现，也可以不包含实现。不包含实现的方法叫做<strong>抽象方法</strong></li>
+<li>子类继承抽象类，必须实现抽象类中的所有抽象方法。</li>
+</ul>
+<h3 id="接口"><a class="header-anchor" href="#接口">✨</a>接口</h3>
+<p>同样的，下面我们通过一个例子来看下接口的使用场景。</p>
+<pre><code class="language-java">/**
+ * 过滤器接口
+ * @author yanliang
+ * @date 9/28/2020 6:46 PM
+ */
+public interface Filter &amp;#123;
+	void doFilter(RpcRequest req) throws RpcException;
+&amp;#125;
+
+/**
+ * 接口实现类：鉴权过滤器
+ * @author yanliang
+ * @date 9/28/2020 6:48 PM
+ */
+public class AuthencationFilter implements Filter &amp;#123;
+
+	@Override
+	public void doFilter(RpcRequest req) throws RpcException &amp;#123;
+		// 鉴权逻辑
+	&amp;#125;
+&amp;#125;
+
+/**
+ * 接口实现类：限流过滤器
+ * @author yanliang
+ * @date 9/28/2020 6:48 PM
+ */
+public class RateLimitFilter implements Filter&amp;#123;
+
+	@Override
+	public void doFilter(RpcRequest req) throws RpcException &amp;#123;
+		// 限流逻辑
+	&amp;#125;
+&amp;#125;
+
+/**
+ * 过滤器使用demo
+ * @author yanliang
+ * @date 9/28/2020 6:48 PM
+ */
+public class Application &amp;#123;
+	// 过滤器列表
+	private List&lt;Filter&gt; filters = new ArrayList&lt;&gt;();
+	filters.add(new AuthencationFilter());
+	filters.add(new RateLimitFilter());
+
+	public void handleRpcRequest(RpcRequest req) &amp;#123;
+		try &amp;#123;
+			for (Filter filter : filters) &amp;#123;
+				filter.doFilter(req);
+			&amp;#125;
+		&amp;#125; catch (RpcException e) &amp;#123;
+			// 处理过滤结果
+		&amp;#125;
+		// ...
+	&amp;#125;
+&amp;#125;
+</code></pre>
+<p>上面的案例是一个典型的接口使用场景。通过Java中的 interface 关键字定义了一个Filter 接口，AuthencationFilter 和 RetaLimitFilter 是接口的两个实现类，分别实现了对Rpc请求的鉴权和限流的过滤功能。</p>
+<p>下面我们来看下接口的特性：</p>
+<ul>
+<li>接口不能包含属性（也就是成员变量）</li>
+<li>接口只能生命方法，方法不能包含代码实现</li>
+<li>类实现接口时，必须实现接口中生命的所有方法。</li>
+</ul>
+<p>综上，从语法上对比，这两者有比较大的区别，比如抽象类中可以定义属性、方法的实现，而接口中不能定义属性，方法也不能包含实现等。</p>
+<p>除了语法特性的不同外，从设计的角度，这两者也有较大区别。抽象类本质上就是类，只不过是一种特殊的类，这种类不能被实例化，只能被子类继承。属于is-a的关系。接口则是 has-a 的关系，表示具有某些功能。对于接口，有一个更形象的叫法：协议（contract）</p>
+<h2 id="抽象类和接口解决了什么问题？"><a class="header-anchor" href="#抽象类和接口解决了什么问题？">✨</a>抽象类和接口解决了什么问题？</h2>
+<p>下面我们先来思考一个问题~</p>
+<p>抽象类的存在意义是为了解决代码复用的问题（多个子类可以继承抽象类中定义的属性哈方法，避免在子类中，重复编写相同的代码）。</p>
+<p>那么，既然继承本身就能达到代码复用的目的，而且继承也不一定非要求是抽象类。我们不适用抽象类，貌似也可以实现继承和复用。从这个角度上讲，我们好像并不需要抽象类这种语法呀。那抽象类除了解决代码复用的问题，还有其他存在的意义吗？</p>
+<p>这里大家可以先思考一下哈~</p>
+<p>我们还是借用上面Logger的例子，首先对上面的案例实现做一些改造。在改造之后的实现中，Logger不再是抽象类，只是一个普通的父类，删除了Logger中的两个方法，新增了 isLoggable()方法。FileLogger 和 MessageQueueLogger 还是继承Logger父类已达到代码复用的目的。具体代码如下：</p>
+<pre><code class="language-java">/**
+ * 父类：非抽象类，就是普通的类
+ * @author yanliang
+ * @date 9/27/2020 5:59 PM
+ */
+public class Logger &amp;#123;
+	private String name;
+	private boolean enabled;
+	private Level minPermittedLevel;
+
+	public Logger(String name, boolean enabled, Level minPermittedLevel) &amp;#123;
+		this.name = name;
+		this.enabled = enabled;
+		this.minPermittedLevel = minPermittedLevel;
+	&amp;#125;
+
+	public boolean isLoggable(Level level) &amp;#123;
+		return enabled &amp;&amp; (minPermittedLevel.intValue() &lt;= level.intValue());
+	&amp;#125;
+	
+&amp;#125;
+
+/**
+ * 抽象类Logger的子类：输出日志到文件中
+ * @author yanliang
+ * @date 9/28/2020 4:44 PM
+ */
+public class FileLogger extends Logger &amp;#123;
+
+	private Writer fileWriter;
+
+	public FileLogger(String name, boolean enabled, Level minPermittedLevel, String filePath) throws IOException &amp;#123;
+		super(name, enabled, minPermittedLevel);
+		this.fileWriter = new FileWriter(filePath);
+	&amp;#125;
+
+	protected void log(Level level, String message) &amp;#123;
+		if (!isLoggable(level)) return ;
+		// 格式化level 和 message，输出到日志文件
+		fileWriter.write(...);
+	&amp;#125;
+&amp;#125;
+
+package com.yanliang.note.java.abstract_demo;
+
+import java.util.logging.Level;
+
+/**
+ * 抽象类Logger的子类：输出日志到消息队列中
+ * @author yanliang
+ * @date 9/28/2020 6:39 PM
+ */
+public class MessageQueueLogger extends Logger &amp;#123;
+
+	private MessageQueueClient messageQueueClient;
+
+	public MessageQueueLogger(String name, boolean enabled, Level minPermittedLevel, MessageQueueClient messageQueueClient) &amp;#123;
+		super(name, enabled, minPermittedLevel);
+		this.messageQueueClient = messageQueueClient;
+	&amp;#125;
+
+	protected void log(Level level, String message) &amp;#123;
+		if (!isLoggable(level)) return ;
+		// 格式化level 和 message，输出到消息队列中
+		messageQueueClient.send(...)
+	&amp;#125;
+&amp;#125;
+</code></pre>
+<p>以上实现虽然达到了代码复用的目的（复用了父类中的属性），但是却无法使用多态的特性了。</p>
+<p>像下面这样编写代码就会出现编译错误，因为Logger中并没有定义log（）方法。</p>
+<pre><code class="language-java">Logger logger = new FileLogger(&quot;access-log&quot;, true, Level.WARN, &quot;/user/log&quot;);
+logger.log(Level.ERROR, &quot;This is a test log message.&quot;);
+</code></pre>
+<p>如果我们在父类中，定义一个空的log（）方法，让子类重写父类的log（）方法，实现自己的记录日志逻辑。使用这种方式是否能够解决上面的问题呢？ 大家可以先思考下~</p>
+<p>这个思路可以用使用，但是并不优雅，主要有一下几点原因：</p>
+<ul>
+<li>在Logger中定义一个空的方法，会影响代码的可读性。如果不熟悉Logger背后的设计思想，又没有代码注释的话，在阅读Logger代码时就会感到疑惑（为什么这里会存在一个空的log（）方法）</li>
+<li>当创建一个新的子类继承Logger父类时，有时可能会忘记重新实现log方法。之前是基于抽象类的设计思想，编译器会强制要求子类重写父类的log方法，否则就会报编译错误。</li>
+<li>Logger可以被实例化，这也就意味着这个空的log方法有可能会被调用。这就增加了类被误用的风险。当然，这个问题 可以通过设置私有的构造函数的方式来解决，但是不如抽象类优雅。</li>
+</ul>
+<p>抽象类更多是为了代码复用，而接口更侧重于解耦。接口是对行为的一种抽象，相当于一组协议或者契约（可类比API接口）。调用者只需要关心抽象的接口，不需要了解具体的实现，具体的实现代码对调用者透明。接口实现了约定和实现相分离，可以降低代码间的耦合，提高代码的可扩展性。</p>
+<p>实际上，接口是一个比抽象类应用更加广泛、更加重要的知识点。比如，我们经常提到的 ”基于接口而非实现编程“ ,就是一条几乎天天会用到的，并且能极大的提高代码的灵活性、扩展性的设计思想。</p>
+<h2 id="如何模拟抽象类和接口"><a class="header-anchor" href="#如何模拟抽象类和接口">✨</a>如何模拟抽象类和接口</h2>
+<p>在前面列举的例子中，我们使用Java的接口实现了Filter过滤器。不过，在 C++ 中只提供了抽象类，并没有提供接口，那从代码的角度上说，是不是就无法实现 Filter 的设计思路了呢？ 大家可以先思考下 🤔 ~</p>
+<p>我们先会议下接口的定义：接口中没有成员变量，只有方法声明，没有方法实现，实现接口的类必须实现接口中的所有方法。主要满足以上几点从设计的角度上来说，我们就可以把他叫做接口。</p>
+<p>实际上，要满足接口的这些特性并不难。下面我们来看下实现：</p>
+<pre><code class="language-C++">class Strategy &amp;#123;
+  public: 
+    -Strategy();
+    virtual void algorithm()=0;
+  protected:
+    Strategy();
+&amp;#125;
+</code></pre>
+<p>抽象类 Strategy 没有定义任何属性，并且所有的方法都声明为 virtual 类型（等同于Java中的abstract关键字），这样，所有的方法都不能有代码实现，并且所有继承了这个抽象类的子类，都要实现这些方法。从语法特性上看，这个抽象类就相当于一个接口。</p>
+<p>处理用抽象类来模拟接口外，我们还可以用普通类来模拟接口。具体的Java实现如下所示：</p>
+<pre><code class="language-java">public class MockInterface &amp;#123;
+  protected MockInteface();
+  public void funcA() &amp;#123;
+    throw new MethodUnSupportedException();
+  &amp;#125;
+&amp;#125;
+</code></pre>
+<p>我们知道类中的方法必须包含实现，这个不符合接口的定义。但是，我们可以让类中的方法抛出 MethodUnSupportedException 异常，来模拟不包含实现的接口，并且强迫子类来继承这个父类的时候，都主动实现父类的方法，否则就会在运行时抛出异常。</p>
+<p>那又如何避免这个类被实例化呢？ 实际上很简单，我们只需要将这个类的构造函数声明为 protected 访问权限就可以了。</p>
+<h2 id="如何决定该用抽象还是接口？"><a class="header-anchor" href="#如何决定该用抽象还是接口？">✨</a>如何决定该用抽象还是接口？</h2>
+<p>上面的讲解可能偏理论，现在我们就从真实项目开发的角度来看下。在代码设计/编程时，什么时候该用接口？什么时候该用抽象类？</p>
+<p>实际上，判断的标准很简单。如果我们需要一种is-a关系，并且是为了解决代码复用的问题，就用抽象类。如果我们需要的是一种has-a关系，并且是为了解决抽象而非代码复用问题，我们就用接口。</p>
+<p>从类的继承层次来看，抽象类是一种自下而上的设计思路，先有子类的代码复用，然后再抽象成上层的父类（也就是抽象类）。而接口则相反，它是一种自上而下的设计思路，我们在编程的时候，一般都是先设计接口，再去思考具体实现。</p>
+<hr>
+<p>好了，你是否掌握了上面的内容呢。你可以通过一下几个维度来回顾自检一下：</p>
+<ul>
+<li>抽象类和接口的语法特性</li>
+<li>抽象类和接口存在的意义</li>
+<li>抽象类和接口的应用场景有哪些</li>
+</ul>
 
   
   
@@ -978,13 +1262,13 @@
       <i class="fas fa-bookmark fa-fw" aria-hidden="true"></i><span>相关文章</span>
     </section>
     <section class='body'>
-      <div class="vlts-rps"><a class="item" href="\concurrency\lock_and_synchronized\" title="Lock & Synchronized" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life2.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life2.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">Lock & Synchronized</span><span class="excerpt">首先我们来考虑一个问题？
-在Lock出现之前我们一直使用synchronized来实现同步访问。那为什么还要提供lock呢...</span></a><a class="item" href="\concurrency\alternate_printing\" title="多个线程交替打印内容" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life1.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life1.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">多个线程交替打印内容</span><span class="excerpt">需求： 启动两个线程，交替打印奇偶数。 效果如下所示
+      <div class="vlts-rps"><a class="item" href="\concurrency\alternate_printing\" title="多个线程交替打印内容" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life1.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life1.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">多个线程交替打印内容</span><span class="excerpt">需求： 启动两个线程，交替打印奇偶数。 效果如下所示
 偶数线程：0
 奇数线程：1
 偶数线程：2
 ...
-</span></a><a class="item" href="\concurrency\why_concurrency\" title="Why Concurrency ?" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life4.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life4.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">Why Concurrency ?</span><span class="excerpt">一门技术的出现必然有其出现的道理，后来需要了解它出现的时代环境和因素，扩充自己的视野，发掘技术发展的经过。分析其优缺点，以...</span></a><a class="item" href="\concurrency\waiting_for_notification\" title="等待通知机制" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life3.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life3.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">等待通知机制</span><span class="excerpt">多线程环境中，经常出现这样一种场景。一个线程修改了一个对象的值，而另一个线程感知到了变化，然后进行相应的操作，整个过程开始...</span></a><a class="item" href="\java\difference_between_int_and_integer\" title="int 和 Integer 有什么区别？谈谈Integer的值缓存范围" rel="bookmark "><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">int 和 Integer 有什么区别？谈谈Integer的值缓存范围</span><span class="excerpt">Java 虽然是面向对象的编程语言，但是依旧保留了一些原始数据类型，同时为了兼容java面向对象的特性，每种原始数据类型，...</span></a></div></section></div>
+</span></a><a class="item" href="\concurrency\lock_and_synchronized\" title="Lock & Synchronized" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life2.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life2.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">Lock & Synchronized</span><span class="excerpt">首先我们来考虑一个问题？
+在Lock出现之前我们一直使用synchronized来实现同步访问。那为什么还要提供lock呢...</span></a><a class="item" href="\concurrency\waiting_for_notification\" title="等待通知机制" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life3.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life3.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">等待通知机制</span><span class="excerpt">多线程环境中，经常出现这样一种场景。一个线程修改了一个对象的值，而另一个线程感知到了变化，然后进行相应的操作，整个过程开始...</span></a><a class="item" href="\concurrency\why_concurrency\" title="Why Concurrency ?" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life4.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life4.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">Why Concurrency ?</span><span class="excerpt">一门技术的出现必然有其出现的道理，后来需要了解它出现的时代环境和因素，扩充自己的视野，发掘技术发展的经过。分析其优缺点，以...</span></a><a class="item" href="\java\difference_between_int_and_integer\" title="int 和 Integer 有什么区别？谈谈Integer的值缓存范围" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life15.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life15.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">int 和 Integer 有什么区别？谈谈Integer的值缓存范围</span><span class="excerpt">Java 虽然是面向对象的编程语言，但是依旧保留了一些原始数据类型，同时为了兼容java面向对象的特性，每种原始数据类型，...</span></a></div></section></div>
       
       
         <div class='copyright'>
@@ -1013,10 +1297,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-28T22:44:42+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-02T18:34:32+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Sep 28, 2020</p>
+    <p>更新于：Oct 2, 2020</p>
   </a>
 </div>
 
@@ -1100,7 +1384,7 @@
           <p class='title'>Java 集合总结<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
           <p class='content'>集合中用到的数据结构有以下几种：
 
-**数组：**最常用的数据结构之一。数组的特点是长度固定，可以用下标索引，并且所有的元素的类型都是一致的。使用时尽量把数组封装在一个类里，防止数据被错误的操作...</p>
+数组： 最常用的数据结构之一。数组的特点是长度固定，可以用下标索引，并且所有的元素的类型都是一致的。使用时尽量把数组封装在一个类里，防止数据被错误的操作弄乱。...</p>
         </a>
       
     </div>
@@ -1143,7 +1427,7 @@
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8E%A5%E5%8F%A3%EF%BC%9F-%E5%8C%BA%E5%88%AB%E7%82%B9%E5%9C%A8%E5%93%AA%E9%87%8C%EF%BC%9F"><span class="toc-text">什么是抽象类和接口？ 区别点在哪里？</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8E%A5%E5%8F%A3%EF%BC%9F-%E5%8C%BA%E5%88%AB%E5%9C%A8%E5%93%AA%E9%87%8C%EF%BC%9F"><span class="toc-text">什么是抽象类和接口？ 区别在哪里？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%BD%E8%B1%A1%E7%B1%BB"><span class="toc-text">抽象类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3"><span class="toc-text">接口</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8E%A5%E5%8F%A3%E8%A7%A3%E5%86%B3%E4%BA%86%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="toc-text">抽象类和接口解决了什么问题？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E6%A8%A1%E6%8B%9F%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8E%A5%E5%8F%A3"><span class="toc-text">如何模拟抽象类和接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%86%B3%E5%AE%9A%E8%AF%A5%E7%94%A8%E6%8A%BD%E8%B1%A1%E8%BF%98%E6%98%AF%E6%8E%A5%E5%8F%A3%EF%BC%9F"><span class="toc-text">如何决定该用抽象还是接口？</span></a></li></ol>
     </div>
   </section>
 
@@ -1519,12 +1803,12 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
         
           
     <li>
-      <a class='vlts-menu fix-cursor-default' href=https://album.gyl-coder.top
+      <a class='vlts-menu fix-cursor-default' href=/album/
         
         
         
         
-          id="https:albumgyl-codertop"
+          id="album"
         >
         <i class='fas fa-image fa-fw fa-fw'></i> My Album
       </a>

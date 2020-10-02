@@ -894,10 +894,6 @@
   <div class="article-meta" id="top">
     
     
-      <a title='Kafka有哪几处地方有分区分配的概念？简述大致的过程及原理' href='/kafka/kafka-partition-alocation/'>
-        <img class='thumbnail' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/kafka.svg'>
-      </a>
-    
     
       <h1 class="title">
         Kafka有哪几处地方有分区分配的概念？简述大致的过程及原理
@@ -938,10 +934,10 @@
           
         
           
-            <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-28T22:22:26+08:00">
+            <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-02T18:31:37+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Sep 28, 2020</p>
+    <p>更新于：Oct 2, 2020</p>
   </a>
 </div>
 
@@ -955,7 +951,7 @@
   
   <p>在 kafka 中，分区分配是一个很重要的概念，它会影响Kafka整体的性能均衡。kafka 中一共有三处地方涉及此概念，分别是：生产者发送消息、消费者消费消息和创建主题。虽然这三处的对应操作都可以被称之为“分区分配”，但是其实质上所包含的内容却并不相同。</p>
 <a id="more"></a>
-<h2 id="生产者的分区分配"><a class="header-anchor" href="#生产者的分区分配">¶</a>生产者的分区分配</h2>
+<h2 id="生产者的分区分配"><a class="header-anchor" href="#生产者的分区分配">✨</a>生产者的分区分配</h2>
 <p>用户在使用 kafka 客户端发送消息时，调用 <code>send</code> 方法发送消息之后，消息就自然而然的发送到了 broker 中。</p>
 <p>其实这一过程需要经过拦截器、序列化器、分区器等一系列作用之后才能被真正发往 broker。消息在发往 broker 之前需要确认它需要发送到的分区，如果 ProducerRecord 中指定了 partition 字段，那就不需要分区器的作用，因为 partition 就代表的是所要发往的分区号。如果消息ProducerRecord中没有指定partition字段，那么就需要依赖分区器，根据key这个字段来计算partition的值。分区器的作用就是为消息分配分区。</p>
 <p>Kafka中提供的默认分区器是DefaultPartitioner，它实现了Partitioner接口（用户可以实现这个接口来自定义分区器），其中的partition方法就是用来实现具体的分区分配逻辑：</p>
@@ -966,12 +962,12 @@
 <blockquote>
 <p>注意：如果key不为null，那么计算得到的分区号会是所有分区中的任意一个；如果key为null并且有可用分区，那么计算得到的分区号仅为可用分区中的任意一个，注意两者之间的差别。</p>
 </blockquote>
-<h2 id="消费者的分区分配"><a class="header-anchor" href="#消费者的分区分配">¶</a>消费者的分区分配</h2>
+<h2 id="消费者的分区分配"><a class="header-anchor" href="#消费者的分区分配">✨</a>消费者的分区分配</h2>
 <p>在Kafka的默认规则中，每一个分区只能被同一个消费组中的一个消费者消费。消费者的分区分配是指为消费组中的消费者分配所订阅主题中的分区。</p>
 <div class="img-wrap"><div class="img-bg"><img class="img lazyload placeholder" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka8.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka8.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/></div></div>
 <p>如图所示，某个主题中共有4个分区（Partition）：P0、P1、P2、P3。有两个消费组A和B都订阅了这个主题，消费组A中有4个消费者（C0、C1、C2和C3），消费组B中有2个消费者（C4和C5）。按照Kafka默认的规则，最后的分配结果是消费组A中的每一个消费者分配到1个分区，消费组B中的每一个消费者分配到2个分区，两个消费组之间互不影响。每个消费者只能消费所分配到的分区中的消息。</p>
 <p>对于消费者的分区分配而言，Kafka自身提供了三种策略，分别为 <code>RangeAssignor</code>、<code> RoundRobinAssignor</code> 以及 <code>StickyAssignor</code> ，其中 <code>RangeAssignor</code> 为默认的分区分配策略。</p>
-<h3 id="RangeAssignor"><a class="header-anchor" href="#RangeAssignor">¶</a>RangeAssignor</h3>
+<h3 id="RangeAssignor"><a class="header-anchor" href="#RangeAssignor">✨</a>RangeAssignor</h3>
 <p>RangeAssignor策略的原理是按照消费者总数和分区总数进行整除运算来获得一个跨度，然后将分区按照跨度进行平均分配，以保证分区尽可能均匀地分配给所有的消费者。对于每一个topic，RangeAssignor策略会将消费组内所有订阅这个topic的消费者按照名称的字典序排序，然后为每个消费者划分固定的分区范围，如果不够平均分配，那么字典序靠前的消费者会被多分配一个分区。</p>
 <p>假设n=分区数/消费者数量，m=分区数%消费者数量，那么前m个消费者每个分配n+1个分区，后面的（消费者数量-m）个消费者每个分配n个分区。</p>
 <p>为了更加通俗的讲解RangeAssignor策略，我们不妨再举一些示例。假设消费组内有2个消费者C0和C1，都订阅了主题t0和t1，并且每个主题都有4个分区，那么所订阅的所有分区可以标识为：t0p0、t0p1、t0p2、t0p3、t1p0、t1p1、t1p2、t1p3。最终的分配结果为：</p>
@@ -983,7 +979,7 @@
 消费者C1：t0p2、t1p2
 </code></pre>
 <p>可以明显的看到这样的分配并不均匀，如果将类似的情形扩大，有可能会出现部分消费者过载的情况。对此我们再来看下另一种RoundRobinAssignor策略的分配效果如何。</p>
-<h3 id="RoundRobinAssignor"><a class="header-anchor" href="#RoundRobinAssignor">¶</a>RoundRobinAssignor</h3>
+<h3 id="RoundRobinAssignor"><a class="header-anchor" href="#RoundRobinAssignor">✨</a>RoundRobinAssignor</h3>
 <p>RoundRobinAssignor策略的原理是将消费组内所有消费者以及消费者所订阅的所有topic的partition按照字典序排序，然后通过轮询方式逐个将分区以此分配给每个消费者。RoundRobinAssignor策略对应的partition.assignment.strategy参数值为：org.apache.kafka.clients.consumer.RoundRobinAssignor。</p>
 <p>如果同一个消费组内所有的消费者的订阅信息都是相同的，那么RoundRobinAssignor策略的分区分配会是均匀的。举例，假设消费组中有2个消费者C0和C1，都订阅了主题t0和t1，并且每个主题都有3个分区，那么所订阅的所有分区可以标识为：t0p0、t0p1、t0p2、t1p0、t1p1、t1p2。最终的分配结果为：</p>
 <pre><code>消费者C0：t0p0、t0p2、t1p1
@@ -996,7 +992,7 @@
 消费者C2：t1p1、t2p0、t2p1、t2p2
 </code></pre>
 <p>可以看到RoundRobinAssignor策略也不是十分完美，这样分配其实并不是最优解，因为完全可以将分区t1p1分配给消费者C1。</p>
-<h3 id="StickyAssignor"><a class="header-anchor" href="#StickyAssignor">¶</a>StickyAssignor</h3>
+<h3 id="StickyAssignor"><a class="header-anchor" href="#StickyAssignor">✨</a>StickyAssignor</h3>
 <p>我们再来看一下StickyAssignor策略，“sticky”这个单词可以翻译为“粘性的”，Kafka从0.11.x版本开始引入这种分配策略，它主要有两个目的：</p>
 <ol>
 <li>分区的分配要尽可能的均匀；</li>
@@ -1042,7 +1038,7 @@
 </code></pre>
 <p>可以看到StickyAssignor策略保留了消费者C1和C2中原有的5个分区的分配：t1p0、t1p1、t2p0、t2p1、t2p2。</p>
 <p>从结果上看StickyAssignor策略比另外两者分配策略而言显得更加的优异，这个策略的代码实现也是异常复杂。</p>
-<h3 id="自定义分区分配策略"><a class="header-anchor" href="#自定义分区分配策略">¶</a>自定义分区分配策略</h3>
+<h3 id="自定义分区分配策略"><a class="header-anchor" href="#自定义分区分配策略">✨</a>自定义分区分配策略</h3>
 <p>kafka 处理支持默认提供的三种分区分配算法，还支持用户自定义分区分配算法，自定义的分配策略必须要实现org.apache.kafka.clients.consumer.internals.PartitionAssignor接口。PartitionAssignor接口的定义如下：</p>
 <pre><code class="language-java">Subscription subscription(Set&lt;String&gt; topics);
 String name();
@@ -1136,7 +1132,7 @@ consumerMetadata.entrySet()) &amp;#123;
 <pre><code class="language-java">properties.put(ConsumerConfig.PARTITION_ASSIGNMENT_STRATEGY_CONFIG, 
 RandomAssignor.class.getName());
 </code></pre>
-<h3 id="分配的实施"><a class="header-anchor" href="#分配的实施">¶</a>分配的实施</h3>
+<h3 id="分配的实施"><a class="header-anchor" href="#分配的实施">✨</a>分配的实施</h3>
 <p>我们了解了Kafka中消费者的分区分配策略之后是否会有这样的疑问：如果消费者客户端中配置了两个分配策略，那么以哪个为准？如果有多个消费者，彼此所配置的分配策略并不完全相同，那么以哪个为准？多个消费者之间的分区分配是需要协同的，那么这个协同的过程又是怎样？</p>
 <p>在kafka中有一个组协调器（GroupCoordinator）负责来协调消费组内各个消费者的分区分配，对于每一个消费组而言，在kafka服务端都会有其对应的一个组协调器。具体的协调分区分配的过程如下：<br>
 1.首先各个消费者向GroupCoordinator提案各自的分配策略。如下图所示，各个消费者提案的分配策略和订阅信息都包含在JoinGroupRequest请求中。</p>
@@ -1160,7 +1156,7 @@ var leaderId = members.keys.head
 <p>如上图所示，JoinGroupResponse回执中包含有GroupCoordinator中投票选举出的分配策略的信息。并且，只有leader消费者的回执中包含各个消费者的订阅信息，因为只需要leader消费者根据订阅信息来执行具体的分配，其余的消费并不需要。</p>
 <p>4.leader消费者在整理出具体的分区分配方案后通过SyncGroupRequest请求提交给GroupCoordinator，然后GroupCoordinator为每个消费者挑选出各自的分配结果并通过SyncGroupResponse回执以告知它们。</p>
 <div class="img-wrap"><div class="img-bg"><img class="img lazyload placeholder" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka12.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka12.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/></div></div>
-<h2 id="broker端的分区分配"><a class="header-anchor" href="#broker端的分区分配">¶</a>broker端的分区分配</h2>
+<h2 id="broker端的分区分配"><a class="header-anchor" href="#broker端的分区分配">✨</a>broker端的分区分配</h2>
 <p>生产者的分区分配是指为每条消息指定其所要发往的分区，消费者中的分区分配是指为消费者指定其可以消费消息的分区，而这里的分区分配是指为集群制定创建主题时的分区副本分配方案，即在哪个broker中创建哪些分区的副本。分区分配是否均衡会影响到Kafka整体的负载均衡，具体还会牵涉到优先副本等概念。</p>
 <p>在创建主题时，如果使用了replica-assignment参数，那么就按照指定的方案来进行分区副本的创建；如果没有使用replica-assignment参数，那么就需要按照内部的逻辑来计算分配方案了。使用kafka-topics.sh脚本创建主题时的内部分配逻辑按照机架信息划分成两种策略：未指定机架信息和指定机架信息。如果集群中所有的broker节点都没有配置broker.rack参数，或者使用disable-rack-aware参数来创建主题，那么采用的就是未指定机架信息的分配策略，否则采用的就是指定机架信息的分配策略。</p>
 
@@ -1176,11 +1172,11 @@ var leaderId = members.keys.head
       <i class="fas fa-bookmark fa-fw" aria-hidden="true"></i><span>相关文章</span>
     </section>
     <section class='body'>
-      <div class="vlts-rps"><a class="item" href="\kafka\kafka-listeners-config\" title="kafka的listeners配置错误导致主线程阻塞" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka6.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka6.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">kafka的listeners配置错误导致主线程阻塞</span><span class="excerpt">¶问题背景
+      <div class="vlts-rps"><a class="item" href="\kafka\kafka-isr-ar\" title="kafka中的ISR、AR代表什么？ISR的伸缩性又指什么？" rel="bookmark "><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">kafka中的ISR、AR代表什么？ISR的伸缩性又指什么？</span><span class="excerpt">相信大家已经对 kafka 的基本概念已经有一定的了解了，下面直接来分析一下 ISR 和 AR 的概念。</span></a><a class="item" href="\kafka\kafka-hw-leo-lso\" title="Kafka中的HW、LEO、LSO等分别代表什么？" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka1.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka1.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">Kafka中的HW、LEO、LSO等分别代表什么？</span><span class="excerpt">HW 、 LEO 等概念和上一篇文章所说的 ISR有着紧密的关系，如果不了解 ISR 可以先看下ISR相关的介绍。
+HW ...</span></a><a class="item" href="\kafka\kafka-listeners-config\" title="kafka的listeners配置错误导致主线程阻塞" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka6.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka6.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">kafka的listeners配置错误导致主线程阻塞</span><span class="excerpt">✨问题背景
 我们在用kafka的时候，偶尔会遇到这样这样一个问题。
-我们写的kafka的客户端程序，在启动的时候，会无缘无...</span></a><a class="item" href="\kafka\kafka-isr-ar\" title="kafka中的ISR、AR代表什么？ISR的伸缩性又指什么？" rel="bookmark "><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">kafka中的ISR、AR代表什么？ISR的伸缩性又指什么？</span><span class="excerpt">相信大家已经对 kafka 的基本概念已经有一定的了解了，下面直接来分析一下 ISR 和 AR 的概念。</span></a><a class="item" href="\kafka\kafka-hw-leo-lso\" title="Kafka中的HW、LEO、LSO等分别代表什么？" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka1.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka1.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">Kafka中的HW、LEO、LSO等分别代表什么？</span><span class="excerpt">HW 、 LEO 等概念和上一篇文章所说的 ISR有着紧密的关系，如果不了解 ISR 可以先看下ISR相关的介绍。
-HW ...</span></a><a class="item" href="\kafka\kafka-reliability\" title="kafka 如何保证数据的可靠性和一致性" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.2/img/kafka/1567762579648.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.2/img/kafka/1567762579648.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">kafka 如何保证数据的可靠性和一致性</span><span class="excerpt">¶数据可靠性
-Kafka 作为一个商业级消息中间件，消息可靠性的重要性可想而知。本文从 Producter 往 Broke...</span></a><a class="item" href="\kafka\kafka-rebalance\" title="Kafka Rebalance机制分析" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.3/img/kafka/3951011.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.3/img/kafka/3951011.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">Kafka Rebalance机制分析</span><span class="excerpt">Rebalance 本质上是一种协议，规定了一个 Consumer Group 下的所有 consumer 如何达成一致，...</span></a></div></section></div>
+我们写的kafka的客户端程序，在启动的时候，会无缘无...</span></a><a class="item" href="\kafka\kafka-rebalance\" title="Kafka Rebalance机制分析" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.3/img/kafka/3951011.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.3/img/kafka/3951011.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">Kafka Rebalance机制分析</span><span class="excerpt">Rebalance 本质上是一种协议，规定了一个 Consumer Group 下的所有 consumer 如何达成一致，...</span></a><a class="item" href="\kafka\kafka-reliability\" title="kafka 如何保证数据的可靠性和一致性" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.2/img/kafka/1567762579648.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.2/img/kafka/1567762579648.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">kafka 如何保证数据的可靠性和一致性</span><span class="excerpt">✨数据可靠性
+Kafka 作为一个商业级消息中间件，消息可靠性的重要性可想而知。本文从 Producter 往 Broke...</span></a></div></section></div>
       
       
         <div class='copyright'>
@@ -1209,10 +1205,10 @@ Kafka 作为一个商业级消息中间件，消息可靠性的重要性可想�
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-28T22:22:26+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-02T18:31:37+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Sep 28, 2020</p>
+    <p>更新于：Oct 2, 2020</p>
   </a>
 </div>
 
@@ -1234,7 +1230,7 @@ Kafka 作为一个商业级消息中间件，消息可靠性的重要性可想�
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gyl-coder.top/kafka/kafka-partition-alocation/&title=Kafka有哪几处地方有分区分配的概念？简述大致的过程及原理 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/kafka.svg&summary=在 kafka 中，分区分配是一个很重要的概念，它会影响Kafka整体的性能均衡。kafka 中一共有三处地方涉及此概念，分别是：生产者发送消息、消费者消费消息和创建主题。虽然这三处的对应操作都可以被称之为“分区分配”，但是其实质上所包含的内容却并不相同。"
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gyl-coder.top/kafka/kafka-partition-alocation/&title=Kafka有哪几处地方有分区分配的概念？简述大致的过程及原理 - yanliang's blog&summary=在 kafka 中，分区分配是一个很重要的概念，它会影响Kafka整体的性能均衡。kafka 中一共有三处地方涉及此概念，分别是：生产者发送消息、消费者消费消息和创建主题。虽然这三处的对应操作都可以被称之为“分区分配”，但是其实质上所包含的内容却并不相同。"
           
           >
           
@@ -1246,7 +1242,7 @@ Kafka 作为一个商业级消息中间件，消息可靠性的重要性可想�
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://gyl-coder.top/kafka/kafka-partition-alocation/&title=Kafka有哪几处地方有分区分配的概念？简述大致的过程及原理 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/kafka.svg&summary=在 kafka 中，分区分配是一个很重要的概念，它会影响Kafka整体的性能均衡。kafka 中一共有三处地方涉及此概念，分别是：生产者发送消息、消费者消费消息和创建主题。虽然这三处的对应操作都可以被称之为“分区分配”，但是其实质上所包含的内容却并不相同。"
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://gyl-coder.top/kafka/kafka-partition-alocation/&title=Kafka有哪几处地方有分区分配的概念？简述大致的过程及原理 - yanliang's blog&summary=在 kafka 中，分区分配是一个很重要的概念，它会影响Kafka整体的性能均衡。kafka 中一共有三处地方涉及此概念，分别是：生产者发送消息、消费者消费消息和创建主题。虽然这三处的对应操作都可以被称之为“分区分配”，但是其实质上所包含的内容却并不相同。"
           
           >
           
@@ -1258,7 +1254,7 @@ Kafka 作为一个商业级消息中间件，消息可靠性的重要性可想�
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://gyl-coder.top/kafka/kafka-partition-alocation/&title=Kafka有哪几处地方有分区分配的概念？简述大致的过程及原理 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/kafka.svg&summary=在 kafka 中，分区分配是一个很重要的概念，它会影响Kafka整体的性能均衡。kafka 中一共有三处地方涉及此概念，分别是：生产者发送消息、消费者消费消息和创建主题。虽然这三处的对应操作都可以被称之为“分区分配”，但是其实质上所包含的内容却并不相同。"
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://gyl-coder.top/kafka/kafka-partition-alocation/&title=Kafka有哪几处地方有分区分配的概念？简述大致的过程及原理 - yanliang's blog&summary=在 kafka 中，分区分配是一个很重要的概念，它会影响Kafka整体的性能均衡。kafka 中一共有三处地方涉及此概念，分别是：生产者发送消息、消费者消费消息和创建主题。虽然这三处的对应操作都可以被称之为“分区分配”，但是其实质上所包含的内容却并不相同。"
           
           >
           
@@ -1297,7 +1293,7 @@ Kafka 作为一个商业级消息中间件，消息可靠性的重要性可想�
       
         <a class='next' href='/kafka/kafka-listeners-config/'>
           <p class='title'>kafka的listeners配置错误导致主线程阻塞<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>¶问题背景
+          <p class='content'>✨问题背景
 我们在用kafka的时候，偶尔会遇到这样这样一个问题。
 我们写的kafka的客户端程序，在启动的时候，会无缘无故的 卡住（阻塞） 如下图所示：
 
@@ -1721,12 +1717,12 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
         
           
     <li>
-      <a class='vlts-menu fix-cursor-default' href=https://album.gyl-coder.top
+      <a class='vlts-menu fix-cursor-default' href=/album/
         
         
         
         
-          id="https:albumgyl-codertop"
+          id="album"
         >
         <i class='fas fa-image fa-fw fa-fw'></i> My Album
       </a>

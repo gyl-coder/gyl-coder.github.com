@@ -894,10 +894,6 @@
   <div class="article-meta" id="top">
     
     
-      <a title='撸一个JSON解析器' href='/JSONParser/'>
-        <img class='thumbnail' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/json.svg'>
-      </a>
-    
     
       <h1 class="title">
         撸一个JSON解析器
@@ -938,10 +934,10 @@
           
         
           
-            <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-28T22:22:26+08:00">
+            <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-02T18:32:19+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Sep 28, 2020</p>
+    <p>更新于：Oct 2, 2020</p>
   </a>
 </div>
 
@@ -1020,10 +1016,10 @@
 </tr>
 </tbody>
 </table>
-<h2 id="解析-JSON"><a class="header-anchor" href="#解析-JSON">¶</a>解析 JSON</h2>
-<h3 id="JSON-解析器的基本原理"><a class="header-anchor" href="#JSON-解析器的基本原理">¶</a>JSON 解析器的基本原理</h3>
+<h2 id="解析-JSON"><a class="header-anchor" href="#解析-JSON">✨</a>解析 JSON</h2>
+<h3 id="JSON-解析器的基本原理"><a class="header-anchor" href="#JSON-解析器的基本原理">✨</a>JSON 解析器的基本原理</h3>
 <p>输入一串 JSON 字符串，输出一个 JSON 对象。</p>
-<h3 id="步骤"><a class="header-anchor" href="#步骤">¶</a>步骤</h3>
+<h3 id="步骤"><a class="header-anchor" href="#步骤">✨</a>步骤</h3>
 <p>JSON 解析的过程主要分以下两步：</p>
 <p>**第一步：**对于输入的一串 JSON 字符串我们需要将其解析成一组 token 流。</p>
 <p>例如 JSON 字符串 {“姓名”: “张三”, “年龄”: “18”} 我们需要将它解析成</p>
@@ -1033,7 +1029,7 @@
 <p>这样一组 token 流</p>
 <p>**第二步：**根据得到的 token 流将其解析成对应的 JSON 对象（JSONObject）或者 JSON 数组（JSONArray）</p>
 <p>下面我们来详细分析下这两个步骤：</p>
-<h2 id="获取-token-流"><a class="header-anchor" href="#获取-token-流">¶</a>获取 token 流</h2>
+<h2 id="获取-token-流"><a class="header-anchor" href="#获取-token-流">✨</a>获取 token 流</h2>
 <p>根据 JSON 格式的定义，token 可以分为以下几种类型</p>
 <table>
 <thead>
@@ -1420,7 +1416,7 @@ public class TokenList &amp;#123;
 <p>具体的处理方法封装在了 isEscape() 方法中，处理 Unicode 编码时要特别注意一下 u 的后面会出现四位十六进制数。当读取到一个双引号或者读取到了非法字符（'r’或’、‘n’）循环退出。</p>
 <p>判断数字的时候也要特别小心，注意负数，frac，exp 等等情况。</p>
 <p>通过上面的解析，我们可以得到一组 token，接下来我们需要以这组 token 作为输入，解析出相应的 JSON 对象</p>
-<h2 id="解析出-JSON-对象"><a class="header-anchor" href="#解析出-JSON-对象">¶</a>解析出 JSON 对象</h2>
+<h2 id="解析出-JSON-对象"><a class="header-anchor" href="#解析出-JSON-对象">✨</a>解析出 JSON 对象</h2>
 <p>解析之前我们需要定义出 JSON 对象（JSONObject）和 JSON 数组 (JSONArray) 的实体类。</p>
 <pre><code>package com.json.demo.jsonstyle;
 
@@ -1487,7 +1483,7 @@ public class JsonArray &amp;#123;
 <p>具体效果如下图所示：</p>
 <div class="img-wrap"><div class="img-bg"><img class="img lazyload placeholder" src="https://segmentfault.com/img/remote/1460000015430807?w=872&h=859" class="lazyload placeholder" data-srcset="https://segmentfault.com/img/remote/1460000015430807?w=872&h=859" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/></div></div>
 <div class="img-wrap"><div class="img-bg"><img class="img lazyload placeholder" src="https://segmentfault.com/img/remote/1460000015430808" class="lazyload placeholder" data-srcset="https://segmentfault.com/img/remote/1460000015430808" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/></div></div>
-<h2 id="参考文章"><a class="header-anchor" href="#参考文章">¶</a>参考文章</h2>
+<h2 id="参考文章"><a class="header-anchor" href="#参考文章">✨</a>参考文章</h2>
 <ul>
 <li><a target="_blank" rel="noopener" href="http://www.cnblogs.com/absfree/p/5502705.html">http://www.cnblogs.com/absfre…</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/article/0014211269349633dda29ee3f29413c91fa65c372585f23000?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io">https://www.liaoxuefeng.com/a…</a></li>
@@ -1536,10 +1532,10 @@ public class JsonArray &amp;#123;
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-28T22:22:26+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-02T18:32:19+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Sep 28, 2020</p>
+    <p>更新于：Oct 2, 2020</p>
   </a>
 </div>
 
@@ -1561,7 +1557,7 @@ public class JsonArray &amp;#123;
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gyl-coder.top/JSONParser/&title=撸一个JSON解析器 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/json.svg&summary=JSON(JavaScript Object Notation, JS 对象简谱) 是一种轻量级的数据交换格式。易于人阅读和编写。同时也易于机器解析和生成。采用完全独立于语言的文本格式，但是也使用了类似于 C 语言家族的习惯（包括 C, C++, C#, Java, JavaScript, Perl, Python 等）。这些特性使 JSON 成为理想的数据交换语言。
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gyl-coder.top/JSONParser/&title=撸一个JSON解析器 - yanliang's blog&summary=JSON(JavaScript Object Notation, JS 对象简谱) 是一种轻量级的数据交换格式。易于人阅读和编写。同时也易于机器解析和生成。采用完全独立于语言的文本格式，但是也使用了类似于 C 语言家族的习惯（包括 C, C++, C#, Java, JavaScript, Perl, Python 等）。这些特性使 JSON 成为理想的数据交换语言。
 JSON 与 JS 的区别以及和 XML 的区别具体请参考百度百科"
           
           >
@@ -1574,7 +1570,7 @@ JSON 与 JS 的区别以及和 XML 的区别具体请参考百度百科"
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://gyl-coder.top/JSONParser/&title=撸一个JSON解析器 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/json.svg&summary=JSON(JavaScript Object Notation, JS 对象简谱) 是一种轻量级的数据交换格式。易于人阅读和编写。同时也易于机器解析和生成。采用完全独立于语言的文本格式，但是也使用了类似于 C 语言家族的习惯（包括 C, C++, C#, Java, JavaScript, Perl, Python 等）。这些特性使 JSON 成为理想的数据交换语言。
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://gyl-coder.top/JSONParser/&title=撸一个JSON解析器 - yanliang's blog&summary=JSON(JavaScript Object Notation, JS 对象简谱) 是一种轻量级的数据交换格式。易于人阅读和编写。同时也易于机器解析和生成。采用完全独立于语言的文本格式，但是也使用了类似于 C 语言家族的习惯（包括 C, C++, C#, Java, JavaScript, Perl, Python 等）。这些特性使 JSON 成为理想的数据交换语言。
 JSON 与 JS 的区别以及和 XML 的区别具体请参考百度百科"
           
           >
@@ -1587,7 +1583,7 @@ JSON 与 JS 的区别以及和 XML 的区别具体请参考百度百科"
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://gyl-coder.top/JSONParser/&title=撸一个JSON解析器 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/json.svg&summary=JSON(JavaScript Object Notation, JS 对象简谱) 是一种轻量级的数据交换格式。易于人阅读和编写。同时也易于机器解析和生成。采用完全独立于语言的文本格式，但是也使用了类似于 C 语言家族的习惯（包括 C, C++, C#, Java, JavaScript, Perl, Python 等）。这些特性使 JSON 成为理想的数据交换语言。
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://gyl-coder.top/JSONParser/&title=撸一个JSON解析器 - yanliang's blog&summary=JSON(JavaScript Object Notation, JS 对象简谱) 是一种轻量级的数据交换格式。易于人阅读和编写。同时也易于机器解析和生成。采用完全独立于语言的文本格式，但是也使用了类似于 C 语言家族的习惯（包括 C, C++, C#, Java, JavaScript, Perl, Python 等）。这些特性使 JSON 成为理想的数据交换语言。
 JSON 与 JS 的区别以及和 XML 的区别具体请参考百度百科"
           
           >
@@ -2042,12 +2038,12 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
         
           
     <li>
-      <a class='vlts-menu fix-cursor-default' href=https://album.gyl-coder.top
+      <a class='vlts-menu fix-cursor-default' href=/album/
         
         
         
         
-          id="https:albumgyl-codertop"
+          id="album"
         >
         <i class='fas fa-image fa-fw fa-fw'></i> My Album
       </a>

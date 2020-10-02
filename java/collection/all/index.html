@@ -25,8 +25,8 @@
   
     <meta name="description" content="集合中用到的数据结构有以下几种：
 
-**数组：**最常用的数据结构之一。数组的特点是长度固定，可以用下标索引，并且所有的元素的类型都是一致的。使用时尽量把数组封装在一个类里，防止数据被错误的操作弄乱。
-**链表：**是一种由多个节点组成的数据结构，并且每个节点包含有数据以及指向下一个节点的引用，在双向链表里，还会...">
+数组： 最常用的数据结构之一。数组的特点是长度固定，可以用下标索引，并且所有的元素的类型都是一致的。使用时尽量把数组封装在一个类里，防止数据被错误的操作弄乱。
+链表： 是一种由多个节点组成的数据结构，并且每个节点包含有数据以及指向下一个节点的引用，在双向链表里，还会有一个指向前...">
   
 
   <!-- feed -->
@@ -947,10 +947,10 @@
           
         
           
-            <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-28T22:56:10+08:00">
+            <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-02T17:53:02+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Sep 28, 2020</p>
+    <p>更新于：Oct 2, 2020</p>
   </a>
 </div>
 
@@ -964,16 +964,16 @@
   
   <p>集合中用到的数据结构有以下几种：</p>
 <ul>
-<li>**数组：**最常用的数据结构之一。数组的特点是长度固定，可以用下标索引，并且所有的元素的类型都是一致的。使用时尽量把数组封装在一个类里，防止数据被错误的操作弄乱。</li>
-<li>**链表：**是一种由多个节点组成的数据结构，并且每个节点包含有数据以及指向下一个节点的引用，在双向链表里，还会有一个指向前一个节点的引用。例如，可以用单向链表和双向链表来实现堆栈和队列，因为链表的两端都是可以进行插入和删除的动作的。当然，也会有在链表的中间频繁插入和删除节点的场景。</li>
-<li>**树：**是一种由节点组成的数据结构，每个节点都包含数据元素，并且有一个或多个子节点，每个子节点指向一个父节点可以表示层级关系或者数据元素的顺序关系。如果树的每个子节点最多有两个叶子节点，那么这种树被称为二叉树。二叉树是一种非常常用的树形结构， 因为它的这种结构使得节点的插入和删除都非常高效。树的边表示从一个节点到另外一个节点的快捷路径。</li>
-<li>**堆栈：**只允许对最后插入的元素进行操作（也就是后进先出，Last In First Out – LIFO）。如果你移除了栈顶的元素，那么你可以操作倒数第二个元素，依次类推。这种后进先出的方式是通过仅有的peek(),push()和pop()这几个方法的强制性限制达到的。这种结构在很多场景下都非常实用，例如解析像(4+2)*3这样的数学表达式，把源码中的方法和异常按照他们出现的顺序放到堆栈中，检查你的代码看看小括号和花括号是不是匹配的，等等。</li>
-<li>**队列：**和堆栈有些相似，不同之处在于在队列里第一个插入的元素也是第一个被删除的元素（即是先进先出）。这种先进先出的结构是通过只提供peek()，offer()和poll()这几个方法来访问数据进行限制来达到的。例如，排队等待公交车，银行或者超市里的等待列队等等，都是可以用队列来表示。</li>
+<li><strong>数组：</strong> 最常用的数据结构之一。数组的特点是长度固定，可以用下标索引，并且所有的元素的类型都是一致的。使用时尽量把数组封装在一个类里，防止数据被错误的操作弄乱。</li>
+<li><strong>链表：</strong> 是一种由多个节点组成的数据结构，并且每个节点包含有数据以及指向下一个节点的引用，在双向链表里，还会有一个指向前一个节点的引用。例如，可以用单向链表和双向链表来实现堆栈和队列，因为链表的两端都是可以进行插入和删除的动作的。当然，也会有在链表的中间频繁插入和删除节点的场景。</li>
+<li><strong>树：</strong> 是一种由节点组成的数据结构，每个节点都包含数据元素，并且有一个或多个子节点，每个子节点指向一个父节点可以表示层级关系或者数据元素的顺序关系。如果树的每个子节点最多有两个叶子节点，那么这种树被称为二叉树。二叉树是一种非常常用的树形结构， 因为它的这种结构使得节点的插入和删除都非常高效。树的边表示从一个节点到另外一个节点的快捷路径。</li>
+<li><strong>堆栈：</strong> 只允许对最后插入的元素进行操作（也就是后进先出，Last In First Out – LIFO）。如果你移除了栈顶的元素，那么你可以操作倒数第二个元素，依次类推。这种后进先出的方式是通过仅有的peek(),push()和pop()这几个方法的强制性限制达到的。这种结构在很多场景下都非常实用，例如解析像(4+2)*3这样的数学表达式，把源码中的方法和异常按照他们出现的顺序放到堆栈中，检查你的代码看看小括号和花括号是不是匹配的，等等。</li>
+<li><strong>队列：</strong> 和堆栈有些相似，不同之处在于在队列里第一个插入的元素也是第一个被删除的元素（即是先进先出）。这种先进先出的结构是通过只提供peek()，offer()和poll()这几个方法来访问数据进行限制来达到的。例如，排队等待公交车，银行或者超市里的等待列队等等，都是可以用队列来表示。</li>
 </ul>
 <a id="more"></a>
-<h2 id="概览"><a class="header-anchor" href="#概览">¶</a>概览</h2>
+<h2 id="概览"><a class="header-anchor" href="#概览">✨</a>概览</h2>
 <p>Java 容器主要包括 Collection 和 Map 两种，Collection存储着对象的集合，而Map存储着键值对（两个对象）的映射表。</p>
-<h3 id="Collection"><a class="header-anchor" href="#Collection">¶</a>Collection</h3>
+<h3 id="Collection"><a class="header-anchor" href="#Collection">✨</a>Collection</h3>
 <div class="gallery ">
               <p><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/collection1.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/collection1.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" alt="image.png"></p>
             </div>
@@ -1000,7 +1000,7 @@
 <li>LinkedList：可以用它来实现双向队列。</li>
 <li>PriorityQueue：基于堆结构实现，可以用它来实现优先队列。</li>
 </ul>
-<h3 id="Map"><a class="header-anchor" href="#Map">¶</a>Map</h3>
+<h3 id="Map"><a class="header-anchor" href="#Map">✨</a>Map</h3>
 <div class="gallery ">
               <p><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/collection3.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/collection3.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" alt="image.png"></p>
             </div>
@@ -1010,7 +1010,7 @@
 <li>**HashTable：**和 HashMap 类似，但它是线程安全的，这意味着同一时刻多个线程同时写入 HashTable 不会导致数据不一致。它是遗留类，不应该去使用它，而是使用 ConcurrentHashMap 来支持线程安全，ConcurrentHashMap 的效率会更高，因为 ConcurrentHashMap 引入了分段锁。</li>
 <li>**LinkedHashMap：**LinkedHashMap 继承自 HashMap，所以它的底层仍然是基于拉链式散列结构即由数组和链表或红黑树组成。另外，LinkedHashMap 在上面结构的基础上，增加了一条双向链表来维护元素的顺序，顺序为插入顺序或者最近最少使用（LRU）顺序。</li>
 </ul>
-<h3 id="迭代器-Iterator"><a class="header-anchor" href="#迭代器-Iterator">¶</a>迭代器 Iterator</h3>
+<h3 id="迭代器-Iterator"><a class="header-anchor" href="#迭代器-Iterator">✨</a>迭代器 Iterator</h3>
 <div class="gallery ">
               <p><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/collection4.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/collection4.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" alt="image.png"></p>
             </div>
@@ -1026,9 +1026,9 @@
 </code></pre>
 <p><code>Iterator</code> 对象称为迭代器（设计模式的一种），迭代器可以对集合进行遍历，但每一个集合内部的数据结构可能是不尽相同的，所以每一个集合存和取都很可能是不一样的，虽然我们可以人为地在每一个类中定义 <code>hasNext()</code> 和 <code>next()</code> 方法，但这样做会让整个集合体系过于臃肿。于是就有了迭代器。</p>
 <p>迭代器是将这样的方法抽取出接口，然后在每个类的内部，定义自己迭代方式，这样做就规定了整个集合体系的遍历方式都是 <code>hasNext()</code>和<code>next()</code>方法，使用者不用管怎么实现的，会用即可。迭代器的定义为：提供一种方法访问一个容器对象中各个元素，而又不需要暴露该对象的内部细节。</p>
-<h4 id="迭代器的作用"><a class="header-anchor" href="#迭代器的作用">¶</a>迭代器的作用</h4>
+<h4 id="迭代器的作用"><a class="header-anchor" href="#迭代器的作用">✨</a>迭代器的作用</h4>
 <p>Iterator 主要用于遍历集合，他的特点是安全。因为它可以确保，当前遍历的集合元素被更改时，抛出 ConcurrentModificationException 异常。</p>
-<h4 id="如何使用"><a class="header-anchor" href="#如何使用">¶</a>如何使用</h4>
+<h4 id="如何使用"><a class="header-anchor" href="#如何使用">✨</a>如何使用</h4>
 <pre><code class="language-java">Map&lt;Integer, String&gt; map = new HashMap();
 map.put(1, &quot;Java&quot;);
 map.put(2, &quot;C++&quot;);
@@ -1039,21 +1039,21 @@ while (iterator.hasNext()) &amp;#123;
   System.out.println(entry.getKey() + entry.getValue());
 &amp;#125;
 </code></pre>
-<h2 id="List"><a class="header-anchor" href="#List">¶</a>List</h2>
-<h3 id="ArrayList"><a class="header-anchor" href="#ArrayList">¶</a>ArrayList</h3>
+<h2 id="List"><a class="header-anchor" href="#List">✨</a>List</h2>
+<h3 id="ArrayList"><a class="header-anchor" href="#ArrayList">✨</a>ArrayList</h3>
 <p><a href="../ArrayList">查看专题文章</a></p>
-<h4 id="ArrayList扩容"><a class="header-anchor" href="#ArrayList扩容">¶</a>ArrayList扩容</h4>
+<h4 id="ArrayList扩容"><a class="header-anchor" href="#ArrayList扩容">✨</a>ArrayList扩容</h4>
 <p><a href="../ArrayList_grow">查看专题文章</a></p>
-<h3 id="Vector"><a class="header-anchor" href="#Vector">¶</a>Vector</h3>
+<h3 id="Vector"><a class="header-anchor" href="#Vector">✨</a>Vector</h3>
 <p><a href="../Vector">查看专题文章</a></p>
-<h3 id="LinkedList"><a class="header-anchor" href="#LinkedList">¶</a>LinkedList</h3>
+<h3 id="LinkedList"><a class="header-anchor" href="#LinkedList">✨</a>LinkedList</h3>
 <p><a href="../LinkedList">查看专题文章</a></p>
-<h3 id="Arraylist-和-Vector-的区别"><a class="header-anchor" href="#Arraylist-和-Vector-的区别">¶</a>Arraylist 和 Vector 的区别?</h3>
+<h3 id="Arraylist-和-Vector-的区别"><a class="header-anchor" href="#Arraylist-和-Vector-的区别">✨</a>Arraylist 和 Vector 的区别?</h3>
 <ol>
 <li>ArrayList 是 List 的主要实现类，底层使用 Object[ ]存储，适用于频繁的查找工作，线程不安全 ；</li>
 <li>Vector 是 List 的古老实现类，底层使用 Object[ ]存储，线程安全的。</li>
 </ol>
-<h3 id="Arraylist-与-LinkedList-区别"><a class="header-anchor" href="#Arraylist-与-LinkedList-区别">¶</a>Arraylist 与 LinkedList 区别?</h3>
+<h3 id="Arraylist-与-LinkedList-区别"><a class="header-anchor" href="#Arraylist-与-LinkedList-区别">✨</a>Arraylist 与 LinkedList 区别?</h3>
 <ol>
 <li><strong>是否保证线程安全：</strong> <code>ArrayList</code> 和 <code>LinkedList</code> 都是不同步的，也就是不保证线程安全；</li>
 <li><strong>底层数据结构：</strong> <code>Arraylist</code> 底层使用的是 <strong><code>Object</code> 数组</strong>；<code>LinkedList</code> 底层使用的是 <strong>双向链表</strong> 数据结构（JDK1.6 之前为循环链表，JDK1.7 取消了循环。注意双向链表和双向循环链表的区别，下面有介绍到！）</li>
@@ -1061,9 +1061,9 @@ while (iterator.hasNext()) &amp;#123;
 <li><strong>是否支持快速随机访问：</strong> <code>LinkedList</code> 不支持高效的随机元素访问，而 <code>ArrayList</code> 支持。快速随机访问就是通过元素的序号快速获取元素对象(对应于<code>get(int index)</code>方法)。</li>
 <li><strong>内存空间占用：</strong> ArrayList 的空 间浪费主要体现在在 list 列表的结尾会预留一定的容量空间，而 LinkedList 的空间花费则体现在它的每一个元素都需要消耗比 ArrayList 更多的空间（因为要存放直接后继和直接前驱以及数据）。</li>
 </ol>
-<h2 id="Map-v2"><a class="header-anchor" href="#Map-v2">¶</a>Map</h2>
+<h2 id="Map-v2"><a class="header-anchor" href="#Map-v2">✨</a>Map</h2>
 <p>Map与List、Set接口不同，它是由一系列键值对组成的集合，提供了key到Value的映射。同时它也没有继承Collection。在Map中它保证了key与value之间的一一对应关系。也就是说一个key对应一个value，所以它不能存在相同的key值，当然value值可以相同。key可以为空，但是只允许出现一个null。它的主要实现类有HashMap、HashTable、LinkedHashMap、TreeMap。</p>
-<h3 id="HashMap"><a class="header-anchor" href="#HashMap">¶</a>HashMap</h3>
+<h3 id="HashMap"><a class="header-anchor" href="#HashMap">✨</a>HashMap</h3>
 <p>HashMap 是 Map 的一个实现类，它代表的是一种键值对的数据存储形式。<br>
 大多数情况下可以直接定位到它的值，因而具有很快的访问速度，但遍历顺序却是不确定的。<br>
 HashMap最多只允许一条记录的键为null，允许多条记录的值为null。遇到key为null的时候，调用putForNullKey方法进行处理，而对value没有处理。不保证有序(比如插入的顺序)、也不保证序不随时间变化。<br>
@@ -1071,21 +1071,21 @@ jdk 8 之前，其内部是由数组+链表来实现的，而 jdk 8 对于链表
 HashMap非线程安全，即任一时刻可以有多个线程同时写HashMap，可能会导致数据的不一致。如果需要满足线程安全，可以用 Collections的synchronizedMap方法使HashMap具有线程安全的能力，或者使用ConcurrentHashMap。<br>
 hash数组的默认大小是16，而且大小一定是2的指数</p>
 <p><a href="../HashMapAnalysis">查看专题文章</a></p>
-<h3 id="HashTable"><a class="header-anchor" href="#HashTable">¶</a>HashTable</h3>
+<h3 id="HashTable"><a class="header-anchor" href="#HashTable">✨</a>HashTable</h3>
 <p>Hashtable和HashMap一样也是散列表，存储元素也是键值对，底层实现是一个Entry数组+链表。Hashtable继承于Dictionary类（Dictionary类声明了操作键值对的接口方法），实现Map接口（定义键值对接口）。HashTable是线程安全的，它的大部分类都被synchronized关键字修饰。key和value都不可为null。<br>
 hash数组默认大小是11，扩充方式是old*2+1</p>
-<h3 id="LinkedHashMap"><a class="header-anchor" href="#LinkedHashMap">¶</a>LinkedHashMap</h3>
+<h3 id="LinkedHashMap"><a class="header-anchor" href="#LinkedHashMap">✨</a>LinkedHashMap</h3>
 <p>LinkedHashMap继承自HashMap实现了Map接口。基本实现同HashMap一样（底层基于数组+链表+红黑树实现），不同之处在于LinkedHashMap保证了迭代的有序性。其内部维护了一个双向链表，解决了 HashMap不能随时保持遍历顺序和插入顺序一致的问题。除此之外，LinkedHashMap对访问顺序也提供了相关支持。在一些场景下，该特性很有用，比如缓存。<br>
 在实现上，LinkedHashMap很多方法直接继承自HashMap，仅为维护双向链表覆写了部分方法。<br>
 默认情况下，LinkedHashMap的迭代顺序是按照插入节点的顺序。也可以通过改变accessOrder参数的值，使得其遍历顺序按照访问顺序输出。</p>
 <p><a href="../LinkedHashMap">查看专题文章</a></p>
-<h3 id="TreeMap"><a class="header-anchor" href="#TreeMap">¶</a>TreeMap</h3>
+<h3 id="TreeMap"><a class="header-anchor" href="#TreeMap">✨</a>TreeMap</h3>
 <p>TreeMap集合是基于红黑树（Red-Black tree）的 NavigableMap实现。该集合最重要的特点就是可排序，该映射根据其键的自然顺序进行排序，或者根据创建映射时提供的 Comparator 进行排序，具体取决于使用的构造方法。</p>
-<h2 id="Set"><a class="header-anchor" href="#Set">¶</a>Set</h2>
+<h2 id="Set"><a class="header-anchor" href="#Set">✨</a>Set</h2>
 <p>Set接口继承了Collection接口。Set集合中不能包含重复的元素，每个元素必须是唯一的。你只需将元素加入set中，重复的元素会自动移除。有三种常见的Set实现——HashSet, TreeSet和LinkedHashSet。如果你需要一个访问快速的Set，你应该使用HashSet；当你需要一个排序的Set，你应该使用TreeSet；当你需要记录下插入时的顺序时，你应该使用LinedHashSet。</p>
-<h3 id="HashSet"><a class="header-anchor" href="#HashSet">¶</a>HashSet</h3>
+<h3 id="HashSet"><a class="header-anchor" href="#HashSet">✨</a>HashSet</h3>
 <p>HashSet是是基于 HashMap 实现的，底层采用 HashMap 来保存元素,所以它不保证set 的迭代顺序；特别是它不保证该顺序恒久不变。add()、remove()以及contains()等方法都是复杂度为O(1)的方法。由于HashMap中key不可重复，所以HashSet元素不可重复。可以存储null元素，是线程不安全的。</p>
-<h3 id="TreeSet"><a class="header-anchor" href="#TreeSet">¶</a>TreeSet</h3>
+<h3 id="TreeSet"><a class="header-anchor" href="#TreeSet">✨</a>TreeSet</h3>
 <p>TreeSet是一个有序集，基于TreeMap实现，是线程不安全的。<br>
 TreeSet底层采用TreeMap存储，构造器启动时新建TreeMap。TreeSet存储元素实际为TreeMap存储的键值对为&lt;key,PRESENT&gt;的key;，PRESENT为固定对象：private static final Object PRESENT = new Object().<br>
 TreeSet支持两种两种排序方式，通过不同构造器调用实现</p>
@@ -1122,7 +1122,7 @@ while (iter1.hasNext()) &amp;#123;
    System.out.println(iter1.next());
 &amp;#125;
 </code></pre>
-<h3 id="LinkedHashSet"><a class="header-anchor" href="#LinkedHashSet">¶</a>LinkedHashSet</h3>
+<h3 id="LinkedHashSet"><a class="header-anchor" href="#LinkedHashSet">✨</a>LinkedHashSet</h3>
 <p>LinkedHashSet介于HashSet和TreeSet之间。哈希表和链接列表实现。基本方法的复杂度为O(1)。<br>
 LinkedHashSet 是 Set 的一个具体实现，其维护着一个运行于所有条目的双重链接列表。此链接列表定义了迭代顺序，该迭代顺序可为插入顺序或是访问顺序。<br>
 LinkedHashSet 继承于 HashSet，并且其内部是通过 LinkedHashMap 来实现的。有点类似于我们之前说的LinkedHashMap 其内部是基于 Hashmap 实现的一样。<br>
@@ -1191,14 +1191,14 @@ public class LinkedHashSet&lt;E&gt;
 Hash Map的前三个构造函数，即访问权限为public类型的构造函数均是以HashMap作为实现。而以LinkedHashMap作为实现的构造函数的访问权限是默认访问权限，即包内访问权限。</p>
 <p>即：在java编程中，通过new创建的HashSet对象均是以HashMap作为实现基础。只有在jdk中java.util包内的源代码才可能创建以LinkedHashMap作为实现的HashSet(LinkedHashSet就是通过封装一个以LinkedHashMap为实现的HashSet来实现的)。<br>
 只有包含三个参数的构造函数才是采用的LinkedHashMap作为实现。</p>
-<h3 id="无序性和不可重复性的含义是什么"><a class="header-anchor" href="#无序性和不可重复性的含义是什么">¶</a>无序性和不可重复性的含义是什么</h3>
+<h3 id="无序性和不可重复性的含义是什么"><a class="header-anchor" href="#无序性和不可重复性的含义是什么">✨</a>无序性和不可重复性的含义是什么</h3>
 <p>1、什么是无序性？无序性不等于随机性 ，无序性是指存储的数据在底层数组中并非按照数组索引的顺序添加 ，而是根据数据的哈希值决定的。<br>
 2、什么是不可重复性？不可重复性是指添加的元素按照 equals()判断时 ，返回 false，需要同时重写 equals()方法和 HashCode()方法。</p>
-<h3 id="比较-HashSet、LinkedHashSet-和-TreeSet-三者的异同"><a class="header-anchor" href="#比较-HashSet、LinkedHashSet-和-TreeSet-三者的异同">¶</a>比较 HashSet、LinkedHashSet 和 TreeSet 三者的异同</h3>
+<h3 id="比较-HashSet、LinkedHashSet-和-TreeSet-三者的异同"><a class="header-anchor" href="#比较-HashSet、LinkedHashSet-和-TreeSet-三者的异同">✨</a>比较 HashSet、LinkedHashSet 和 TreeSet 三者的异同</h3>
 <p>HashSet 是 Set 接口的主要实现类 ，HashSet 的底层是 HashMap，线程不安全的，可以存储 null 值；<br>
 LinkedHashSet 是 HashSet 的子类，能够按照添加的顺序遍历；<br>
 TreeSet 底层使用红黑树，能够按照添加元素的顺序进行遍历，排序的方式有自然排序和定制排序。</p>
-<h3 id="Set中的元素不能重复，如何实现？"><a class="header-anchor" href="#Set中的元素不能重复，如何实现？">¶</a>Set中的元素不能重复，如何实现？</h3>
+<h3 id="Set中的元素不能重复，如何实现？"><a class="header-anchor" href="#Set中的元素不能重复，如何实现？">✨</a>Set中的元素不能重复，如何实现？</h3>
 <p>在Java的Set体系中，根据实现方式不同主要分为两大类。HashSet和TreeSet。</p>
 <p>TreeSet 是二叉树实现的,Treeset中的数据是自动排好序的，不允许放入null值 2、HashSet 是哈希表实现的,HashSet中的数据是无序的，可以放入null，但只能放入一个null，两者中的值都不能重复，就如数据库中唯一约束</p>
 <p>在HashSet中，基本的操作都是有HashMap底层实现的，因为HashSet底层是用HashMap存储数据的。当向HashSet中添加元素的时候，首先计算元素的hashcode值，然后通过扰动计算和按位与的方式计算出这个元素的存储位置，如果这个位置位空，就将元素添加进去；如果不为空，则用equals方法比较元素是否相等，相等就不添加，否则找一个空位添加。</p>
@@ -1221,13 +1221,13 @@ if (p.hash == hash &amp;&amp;
 </code></pre>
 <p>添加元素的时候，如果key(也对应的Set集合的元素)相等，那么则修改value值。而在Set集合中，value值仅仅是一个Object对象罢了(该对象对Set本身而言是无用的)。<br>
 也就是说：Set集合如果添加的元素相同时，是根本没有插入的(仅修改了一个无用的value值)。从源码(HashMap)中也看出来，==和equals()方法都有使用！</p>
-<h3 id="comparable-和-Comparator-的区别"><a class="header-anchor" href="#comparable-和-Comparator-的区别">¶</a>comparable 和 Comparator 的区别</h3>
+<h3 id="comparable-和-Comparator-的区别"><a class="header-anchor" href="#comparable-和-Comparator-的区别">✨</a>comparable 和 Comparator 的区别</h3>
 <ul>
 <li><code>comparable</code> 接口实际上是出自<code>java.lang</code>包 它有一个 <code>compareTo(Object obj)</code>方法用来排序</li>
 <li><code>comparator</code>接口实际上是出自 java.util 包它有一个<code>compare(Object obj1, Object obj2)</code>方法用来排序</li>
 </ul>
 <p>一般我们需要对一个集合使用自定义排序时，我们就要重写<code>compareTo()</code>方法或<code>compare()</code>方法，当我们需要对某一个集合实现两种排序方式，比如一个 song 对象中的歌名和歌手名分别采用一种排序方法的话，我们可以重写<code>compareTo()</code>方法和使用自制的<code>Comparator</code>方法或者以两个 Comparator 来实现歌名排序和歌星名排序，第二种代表我们只能使用两个参数版的 <code>Collections.sort()</code>.</p>
-<h4 id="Comparator-定制排序"><a class="header-anchor" href="#Comparator-定制排序">¶</a>Comparator 定制排序</h4>
+<h4 id="Comparator-定制排序"><a class="header-anchor" href="#Comparator-定制排序">✨</a>Comparator 定制排序</h4>
 <pre><code class="language-java">        ArrayList&lt;Integer&gt; arrayList = new ArrayList&lt;Integer&gt;();
         arrayList.add(-1);
         arrayList.add(3);
@@ -1270,7 +1270,7 @@ Collections.sort(arrayList):
 定制排序后：
 [7, 4, 3, 3, -1, -5, -7, -9]
 </code></pre>
-<h4 id="重写-compareTo（）方法实现按年龄排序"><a class="header-anchor" href="#重写-compareTo（）方法实现按年龄排序">¶</a>重写 compareTo（）方法实现按年龄排序</h4>
+<h4 id="重写-compareTo（）方法实现按年龄排序"><a class="header-anchor" href="#重写-compareTo（）方法实现按年龄排序">✨</a>重写 compareTo（）方法实现按年龄排序</h4>
 <pre><code class="language-java">// person对象没有实现Comparable接口，所以必须实现，这样才不会出错，才可以使treemap中的数据按顺序排列
 // 前面一个例子的String类已经默认实现了Comparable接口，详细可以查看String类的API文档，另外其他
 // 像Integer类等都已经实现了Comparable接口，所以不需要另外实现了
@@ -1336,18 +1336,18 @@ OutPut :
 20-李四
 30-张三
 </code></pre>
-<h2 id="其他"><a class="header-anchor" href="#其他">¶</a>其他</h2>
-<h3 id="说说List、Set、Map的区别"><a class="header-anchor" href="#说说List、Set、Map的区别">¶</a>说说List、Set、Map的区别</h3>
+<h2 id="其他"><a class="header-anchor" href="#其他">✨</a>其他</h2>
+<h3 id="说说List、Set、Map的区别"><a class="header-anchor" href="#说说List、Set、Map的区别">✨</a>说说List、Set、Map的区别</h3>
 <p>List 存储元素有序，可重复。<br>
 Set 存储元素无序，不可重复。<br>
 Map 使用键值对（kye-value）存储，类似于数学上的函数 y=f(x)，“x”代表 key，&quot;y&quot;代表 value，Key 是无序的、不可重复的，value 是无序的、可重复的，每个键最多映射到一个值。</p>
-<h3 id="如何选用集合"><a class="header-anchor" href="#如何选用集合">¶</a>如何选用集合?</h3>
+<h3 id="如何选用集合"><a class="header-anchor" href="#如何选用集合">✨</a>如何选用集合?</h3>
 <p>主要根据集合的特点来选用，比如我们需要根据键值获取到元素值时就选用 <code>Map</code> 接口下的集合，需要排序时选择 <code>TreeMap</code>,不需要排序时就选择 <code>HashMap</code>,需要保证线程安全就选用 <code>ConcurrentHashMap</code>。</p>
 <p>当我们只需要存放元素值时，就选择实现<code>Collection</code> 接口的集合，需要保证元素唯一时选择实现 <code>Set</code> 接口的集合比如 <code>TreeSet</code> 或 <code>HashSet</code>，不需要就选择实现 <code>List</code> 接口的比如 <code>ArrayList</code> 或 <code>LinkedList</code>，然后再根据实现这些接口的集合的特点来选用。</p>
-<h3 id="为什么要使用集合？"><a class="header-anchor" href="#为什么要使用集合？">¶</a>为什么要使用集合？</h3>
+<h3 id="为什么要使用集合？"><a class="header-anchor" href="#为什么要使用集合？">✨</a>为什么要使用集合？</h3>
 <p>当我们需要保存一组类型相同的数据的时候，我们应该是用一个容器来保存，这个容器就是数组，但是，使用数组存储对象具有一定的弊端， 因为我们在实际开发中，存储的数据的类型是多种多样的，于是，就出现了“集合”，集合同样也是用来存储多个数据的。</p>
 <p>数组的缺点是一旦声明之后，长度就不可变了；同时，声明数组时的数据类型也决定了该数组存储的数据的类型；而且，数组存储的数据是有序的、可重复的，特点单一。 但是集合提高了数据存储的灵活性，Java 集合不仅可以用来存储不同类型不同数量的对象，还可以保存具有映射关系的数据</p>
-<h3 id="有哪些集合是线程不安全的？怎么解决呢？"><a class="header-anchor" href="#有哪些集合是线程不安全的？怎么解决呢？">¶</a>有哪些集合是线程不安全的？怎么解决呢？</h3>
+<h3 id="有哪些集合是线程不安全的？怎么解决呢？"><a class="header-anchor" href="#有哪些集合是线程不安全的？怎么解决呢？">✨</a>有哪些集合是线程不安全的？怎么解决呢？</h3>
 <p>我们常用的 <code>Arraylist</code> ,<code>LinkedList</code>,<code>Hashmap</code>,<code>HashSet</code>,<code>TreeSet</code>,<code>TreeMap</code>，<code>PriorityQueue</code> 都不是线程安全的。解决办法很简单，可以使用线程安全的集合来代替。<br>
 如果你要使用线程安全的集合的话， <code>java.util.concurrent</code> 包中提供了很多并发容器供你使用：</p>
 <ol>
@@ -1357,7 +1357,7 @@ Map 使用键值对（kye-value）存储，类似于数学上的函数 y=f(x)，
 <li><code>BlockingQueue</code>: 这是一个接口，JDK 内部通过链表、数组等方式实现了这个接口。表示阻塞队列，非常适合用于作为数据共享的通道。</li>
 <li><code>ConcurrentSkipListMap</code> :跳表的实现。这是一个<code>Map</code>，使用跳表的数据结构进行快速查找。</li>
 </ol>
-<h3 id="fail-fast"><a class="header-anchor" href="#fail-fast">¶</a>fail-fast</h3>
+<h3 id="fail-fast"><a class="header-anchor" href="#fail-fast">✨</a>fail-fast</h3>
 <p>fail-fast 机制是java集合(Collection)中的一种错误机制。当多个线程对同一个集合的内容进行操作时，就可能会产生fail-fast事件。例如：当某一个线程A通过iterator去遍历某集合的过程中，若该集合的内容被其他线程所改变了；那么线程A访问集合时，就会抛出ConcurrentModificationException异常，产生fail-fast事件。<br>
 <strong>快速失败（fail—fast）</strong><br>
 在用迭代器遍历一个集合对象时，如果遍历过程中对集合对象的内容进行了修改（增加、删除、修改），则会抛出Concurrent Modification Exception。<br>
@@ -1369,12 +1369,12 @@ Map 使用键值对（kye-value）存储，类似于数学上的函数 y=f(x)，
 **原理：**由于迭代时是对原集合的拷贝进行遍历，所以在遍历过程中对原集合所作的修改并不能被迭代器检测到，所以不会触发Concurrent Modification Exception。<br>
 缺点：基于拷贝内容的优点是避免了Concurrent Modification Exception，但同样地，迭代器并不能访问到修改后的内容，即：迭代器遍历的是开始遍历那一刻拿到的集合拷贝，在遍历期间原集合发生的修改迭代器是不知道的。<br>
 场景：java.util.concurrent包下的容器都是安全失败，可以在多线程下并发使用，并发修改。</p>
-<h3 id="Vector和ArrayList"><a class="header-anchor" href="#Vector和ArrayList">¶</a>Vector和ArrayList</h3>
+<h3 id="Vector和ArrayList"><a class="header-anchor" href="#Vector和ArrayList">✨</a>Vector和ArrayList</h3>
 <p>**相同点：**这两个类都实现了List接口，他们都是有序的集合（储存有序），底层都用数组实现。可以通过索引来获取某个元素。允许元素重复和出现null值。ArrayList和Vector的迭代器实现都是fail-fast的。<br>
 **不同点：**vector是线程同步的，所以它也是线程安全的，而arraylist是线程异步的，是不安全的。如果不考虑到线程的安全因素，一般用arraylist效率比较高。<br>
 扩容时，arraylist扩容1.5倍，vector扩容2倍（或者扩容指定的大小）<br>
 ArrayList 和Vector是采用数组方式存储数据，此数组元素数大于实际存储的数据以便增加和插入元素，都允许直接序号索引元素，但是插入数据要设计到数组元素移动等内存操作，所以索引数据快插入数据慢，Vector由于使用了synchronized方法（线程安全）所以性能上比ArrayList要差，LinkedList使用双向链表实现存储，按序号索引数据需要进行向前或向后遍历，但是插入数据时只需要记录本项的前后项即可，所以插入数度较快！</p>
-<h3 id="Aarraylist和Linkedlist"><a class="header-anchor" href="#Aarraylist和Linkedlist">¶</a>Aarraylist和Linkedlist</h3>
+<h3 id="Aarraylist和Linkedlist"><a class="header-anchor" href="#Aarraylist和Linkedlist">✨</a>Aarraylist和Linkedlist</h3>
 <p>ArrayList是基于数组实现的，LinkedList基于双向链表实现的。<br>
 ArrayList它支持以下标位置进行索引出对应的元素(随机访问)，而LinkedList则需要遍历整个链表来获取对应的元素。因此一般来说ArrayList的访问速度是要比LinkedList要快的<br>
 ArrayList由于是数组，对于删除和修改而言消耗是比较大(复制和移动数组实现)，LinkedList是双向链表删除和修改只需要修改对应的指针即可，消耗是很小的。因此一般来说LinkedList的增删速度是要比ArrayList要快的<br>
@@ -1382,18 +1382,18 @@ LinkedList比ArrayList消耗更多的内存，因为LinkedList中的每个节点
 <strong>对于增加/删除元素操作</strong><br>
 如果增删都是在末尾来操作（每次调用的都是remove()和add()），此时ArrayList就不需要移动和复制数组来进行操作了。如果数据量有百万级的时，速度是会比LinkedList要快的。<br>
 如果删除操作的位置是在中间。由于LinkedList的消耗主要是在遍历上，ArrayList的消耗主要是在移动和复制上(底层调用的是arraycopy()方法，是native方法)。LinkedList的遍历速度是要慢于ArrayList的复制移动速度的如果数据量有百万级的时，还是ArrayList要快。</p>
-<h3 id="哪些集合类提供对元素的随机访问？"><a class="header-anchor" href="#哪些集合类提供对元素的随机访问？">¶</a>哪些集合类提供对元素的随机访问？</h3>
+<h3 id="哪些集合类提供对元素的随机访问？"><a class="header-anchor" href="#哪些集合类提供对元素的随机访问？">✨</a>哪些集合类提供对元素的随机访问？</h3>
 <p>ArrayList、HashMap、TreeMap和HashTable类提供对元素的随机访问。</p>
-<h3 id="Enumeration和Iterator接口的区别"><a class="header-anchor" href="#Enumeration和Iterator接口的区别">¶</a>Enumeration和Iterator接口的区别</h3>
+<h3 id="Enumeration和Iterator接口的区别"><a class="header-anchor" href="#Enumeration和Iterator接口的区别">✨</a>Enumeration和Iterator接口的区别</h3>
 <p>Enumeration的速度是Iterator的两倍，也使用更少的内存。Enumeration是非常基础的，也满足了基础的需要。但是，与Enumeration相比，Iterator更加安全，因为当一个集合正在被遍历的时候，它会阻止其它线程去修改集合。<br>
 Iterator的方法名比Enumeration更科学Iterator有fail-fast机制，比Enumeration更安全Iterator能够删除元素，Enumeration并不能删除元素</p>
-<h3 id="Iterater和ListIterator之间有什么区别？"><a class="header-anchor" href="#Iterater和ListIterator之间有什么区别？">¶</a>Iterater和ListIterator之间有什么区别？</h3>
+<h3 id="Iterater和ListIterator之间有什么区别？"><a class="header-anchor" href="#Iterater和ListIterator之间有什么区别？">✨</a>Iterater和ListIterator之间有什么区别？</h3>
 <p>我们可以使用Iterator来遍历Set和List集合，而ListIterator只能遍历List。Iterator只可以向前遍历，而LIstIterator可以双向遍历。ListIterator从Iterator接口继承，然后添加了一些额外的功能，比如添加一个元素、替换一个元素、获取前面或后面元素的索引位置。</p>
-<h3 id="Java中HashMap的key值要是为类对象则该类需要满足什么条件？"><a class="header-anchor" href="#Java中HashMap的key值要是为类对象则该类需要满足什么条件？">¶</a>Java中HashMap的key值要是为类对象则该类需要满足什么条件？</h3>
+<h3 id="Java中HashMap的key值要是为类对象则该类需要满足什么条件？"><a class="header-anchor" href="#Java中HashMap的key值要是为类对象则该类需要满足什么条件？">✨</a>Java中HashMap的key值要是为类对象则该类需要满足什么条件？</h3>
 <p>需要同时重写该类的hashCode()方法和它的equals()方法。<br>
 从源码可以得知，在插入元素的时候是先算出该对象的hashCode。如果hashcode相等话的。那么表明该对象是存储在同一个位置上的。如果调用equals()方法，两个key相同，则替换元素如果调用equals()方法，两个key不相同，则说明该hashCode仅仅是碰巧相同，此时是散列冲突，将新增的元素放在桶子上<br>
 重写了equals()方法，就要重写hashCode()的方法。因为equals()认定了这两个对象相同，而同一个对象调用hashCode()方法时，是应该返回相同的值的！</p>
-<h3 id="HashSet与HashMap"><a class="header-anchor" href="#HashSet与HashMap">¶</a>HashSet与HashMap</h3>
+<h3 id="HashSet与HashMap"><a class="header-anchor" href="#HashSet与HashMap">✨</a>HashSet与HashMap</h3>
 <p>HashSet 实现了 Set 接口，它不允许集合中有重复的值，当我们提到 HashSet 时，第一件事情就是在将对象存储在 HashSet 之前，要先确保对象重写 equals()和 hashCode()方法，这样才能比较对象的值是否相等，以确保set中没有储存相等的对象。如果我们没有重写这两个方法，将会使用这个方法的默认实现。<br>
 public boolean add(Object o)方法用来在 Set 中添加元素，当元素值重复时则会立即返回 false，如果成功添加的话会返回 true。<br>
 HashMap 实现了 Map 接口，Map 接口对键值对进行映射。Map 中不允许重复的键。Map 接口有两个基本的实现，HashMap 和 TreeMap。TreeMap 保存了对象的排列次序，而 HashMap 则不能。HashMap 允许键和值为 null。HashMap 是非 synchronized 的，但 collection 框架提供方法能保证 HashMap synchronized，这样多个线程同时访问 HashMap 时，能保证只有一个线程更改 Map。<br>
@@ -1424,32 +1424,32 @@ public Object put(Object Key,Object value)方法用来将元素添加到 map 中
 </tr>
 </tbody>
 </table>
-<h3 id="hashtable与hashmap"><a class="header-anchor" href="#hashtable与hashmap">¶</a>hashtable与hashmap</h3>
+<h3 id="hashtable与hashmap"><a class="header-anchor" href="#hashtable与hashmap">✨</a>hashtable与hashmap</h3>
 <p>**相同点：**储存结构和实现基本相同，都是是实现的Map接口<br>
 **不同点：**HashTable是同步的，HashMap是非同步的，需要同步的时候可以ConcurrentHashMap方法<br>
 HashMap允许为null，HashTable不允许为null<br>
 继承不同，HashMap继承的是AbstractMap，HashTable继承的是Dictionary<br>
 HashMap提供对key的Set进行遍历，因此它是fail-fast的，但HashTable提供对key的Enumeration进行遍历，它不支持fail-fast。<br>
 HashTable是一个遗留类，如果需要保证线程安全推荐使用CocurrentHashMap</p>
-<h3 id="HashMap与TreeMap"><a class="header-anchor" href="#HashMap与TreeMap">¶</a>HashMap与TreeMap</h3>
+<h3 id="HashMap与TreeMap"><a class="header-anchor" href="#HashMap与TreeMap">✨</a>HashMap与TreeMap</h3>
 <p>HashMap通过hashcode对其内容进行快速查找，而TreeMap中所有的元素都保持着某种固定的顺序，如果你需要得到一个有序的结果你就应该使用TreeMap（HashMap中元素的排列顺序是不固定的）。HashMap中元素的排列顺序是不固定的）。<br>
 在Map 中插入、删除和定位元素，HashMap 是最好的选择。但如果您要按自然顺序或自定义顺序遍历键，那么TreeMap会更好。使用HashMap要求添加的键类明确定义了hashCode()和 equals()的实现。 这个TreeMap没有调优选项，因为该树总处于平衡状态。</p>
-<h3 id="集合框架中的泛型有什么优点？"><a class="header-anchor" href="#集合框架中的泛型有什么优点？">¶</a>集合框架中的泛型有什么优点？</h3>
+<h3 id="集合框架中的泛型有什么优点？"><a class="header-anchor" href="#集合框架中的泛型有什么优点？">✨</a>集合框架中的泛型有什么优点？</h3>
 <p>Java1.5引入了泛型，所有的集合接口和实现都大量地使用它。泛型允许我们为集合提供一个可以容纳的对象类型，因此，如果你添加其它类型的任何元素，它会在编译时报错。这避免了在运行时出现ClassCastException，因为你将会在编译时得到报错信息。泛型也使得代码整洁，我们不需要使用显式转换和instanceOf操作符。它也给运行时带来好处，因为不会产生类型检查的字节码指令。</p>
-<h3 id="comparable-和-comparator的不同之处？"><a class="header-anchor" href="#comparable-和-comparator的不同之处？">¶</a>comparable 和 comparator的不同之处？</h3>
+<h3 id="comparable-和-comparator的不同之处？"><a class="header-anchor" href="#comparable-和-comparator的不同之处？">✨</a>comparable 和 comparator的不同之处？</h3>
 <p>comparable接口实际上是出自java.lang包它有一个 compareTo(Object obj)方法来将objects排序comparator接口实际上是出自 java.util 包它有一个compare(Object obj1, Object obj2)方法来将objects排序</p>
-<h3 id="如何保证一个集合线程安全？"><a class="header-anchor" href="#如何保证一个集合线程安全？">¶</a>如何保证一个集合线程安全？</h3>
+<h3 id="如何保证一个集合线程安全？"><a class="header-anchor" href="#如何保证一个集合线程安全？">✨</a>如何保证一个集合线程安全？</h3>
 <p>Vector, Hashtable, Properties 和 Stack 都是同步的类，所以它们都线程安全的，可以被使用在多线程环境中使用Collections.synchronizedList(list)) 方法，可以保证list类是线程安全的使用java.util.Collections.synchronizedSet()方法可以保证set类是线程安全的。</p>
-<h3 id="TreeMap和TreeSet在排序时如何比较元素？Collections工具类中的sort-方法如何比较元素？"><a class="header-anchor" href="#TreeMap和TreeSet在排序时如何比较元素？Collections工具类中的sort-方法如何比较元素？">¶</a>TreeMap和TreeSet在排序时如何比较元素？Collections工具类中的sort()方法如何比较元素？</h3>
+<h3 id="TreeMap和TreeSet在排序时如何比较元素？Collections工具类中的sort-方法如何比较元素？"><a class="header-anchor" href="#TreeMap和TreeSet在排序时如何比较元素？Collections工具类中的sort-方法如何比较元素？">✨</a>TreeMap和TreeSet在排序时如何比较元素？Collections工具类中的sort()方法如何比较元素？</h3>
 <p>TreeSet要求存放的对象所属的类必须实现Comparable接口，该接口提供了比较元素的compareTo()方法，当插入元素时会回调该方法比较元素的大小。<br>
 TreeMap要求存放的键值对映射的键必须实现Comparable接口从而根据键对元素进行排序。<br>
 Collections工具类的sort方法有两种重载的形式，<strong>第一种</strong>要求传入的待排序容器中存放的对象比较实现Comparable接口以实现元素的比较；<strong>第二种</strong>不强制性的要求容器中的元素必须可比较，但是要求传入第二个参数，参数是Comparator接口的子类型（需要重写compare方法实现元素的比较），相当于一个临时定义的排序规则，其实就是通过接口注入比较元素大小的算法，也是对回调模式的应用（Java中对函数式编程的支持）。</p>
-<h3 id="什么是Java优先级队列？"><a class="header-anchor" href="#什么是Java优先级队列？">¶</a>什么是Java优先级队列？</h3>
+<h3 id="什么是Java优先级队列？"><a class="header-anchor" href="#什么是Java优先级队列？">✨</a>什么是Java优先级队列？</h3>
 <p>Java PriorityQueue是一个数据结构，它是Java集合框架的一部分。 它是一个队列的实现，其中元素的顺序将根据每个元素的优先级来决定。 实例化PriorityQueue时，可以在构造函数中提供比较器。 该比较器将决定PriorityQueue集合实例中元素的排序顺序。</p>
-<h3 id="Java-hashCode（）和equals（）方法。"><a class="header-anchor" href="#Java-hashCode（）和equals（）方法。">¶</a>Java hashCode（）和equals（）方法。</h3>
+<h3 id="Java-hashCode（）和equals（）方法。"><a class="header-anchor" href="#Java-hashCode（）和equals（）方法。">✨</a>Java hashCode（）和equals（）方法。</h3>
 <p>equals（）方法用于确定两个Java对象的相等性。 当我们有一个自定义类时，我们需要重写equals（）方法并提供一个实现，以便它可以用来找到它的两个实例之间的相等性。 通过Java规范，equals（）和hashCode（）之间有一个契约。 它说，“如果两个对象相等，即obj1.equals（obj2）为true，那么obj1.hashCode（）和obj2.hashCode（）必须返回相同的整数”<br>
 无论何时我们选择重写equals（），我们都必须重写hashCode（）方法。 hashCode（）用于计算位置存储区和key。</p>
-<h3 id="Enumeration和Iterator区别"><a class="header-anchor" href="#Enumeration和Iterator区别">¶</a>Enumeration和Iterator区别</h3>
+<h3 id="Enumeration和Iterator区别"><a class="header-anchor" href="#Enumeration和Iterator区别">✨</a>Enumeration和Iterator区别</h3>
 <p>函数接口不同</p>
 <ul>
 <li>Enumeration只有2个函数接口。通过Enumeration，我们只能读取集合的数据，而不能对数据进行修改。</li>
@@ -1461,18 +1461,18 @@ Collections工具类的sort方法有两种重载的形式，<strong>第一种</s
 <li>而Iterator 是JDK 1.2才添加的接口，它也是为了HashMap、ArrayList等集合提供遍历接口。Iterator是支持fail-fast机制的：当多个线程对同一个集合的内容进行操作时，就可能会产生fail-fast事件。</li>
 </ul>
 <p>注意：Enumeration迭代器只能遍历Vector、Hashtable这种古老的集合，因此通常不要使用它，除非在某些极端情况下，不得不使用Enumeration，否则都应该选择Iterator迭代器。</p>
-<h3 id="HashMap-和-ConcurrentHashMap-的区别？"><a class="header-anchor" href="#HashMap-和-ConcurrentHashMap-的区别？">¶</a>HashMap 和 ConcurrentHashMap 的区别？</h3>
+<h3 id="HashMap-和-ConcurrentHashMap-的区别？"><a class="header-anchor" href="#HashMap-和-ConcurrentHashMap-的区别？">✨</a>HashMap 和 ConcurrentHashMap 的区别？</h3>
 <p>ConcurrentHashMap和HashMap的实现方式不一样，虽然都是使用桶数组实现的，但是还是有区别，ConcurrentHashMap对桶数组进行了分段，而HashMap并没有。</p>
 <p>ConcurrentHashMap在每一个分段上都用锁进行了保护。HashMap没有锁机制。所以，前者线程安全的，后者不是线程安全的。</p>
-<h3 id="HashMap中hash方法的原理"><a class="header-anchor" href="#HashMap中hash方法的原理">¶</a>HashMap中hash方法的原理</h3>
+<h3 id="HashMap中hash方法的原理"><a class="header-anchor" href="#HashMap中hash方法的原理">✨</a>HashMap中hash方法的原理</h3>
 <p><a target="_blank" rel="noopener" href="https://hollischuang.github.io/toBeTopJavaer/#/basics/java-basic/hash-in-hashmap">https://hollischuang.github.io/toBeTopJavaer/#/basics/java-basic/hash-in-hashmap</a></p>
-<h3 id="为什么HashMap的默认容量设置成16"><a class="header-anchor" href="#为什么HashMap的默认容量设置成16">¶</a>为什么HashMap的默认容量设置成16</h3>
+<h3 id="为什么HashMap的默认容量设置成16"><a class="header-anchor" href="#为什么HashMap的默认容量设置成16">✨</a>为什么HashMap的默认容量设置成16</h3>
 <p><a target="_blank" rel="noopener" href="https://hollischuang.github.io/toBeTopJavaer/#/basics/java-basic/hashmap-default-capacity">https://hollischuang.github.io/toBeTopJavaer/#/basics/java-basic/hashmap-default-capacity</a></p>
-<h3 id="为什么HashMap的默认负载因子设置成0-75"><a class="header-anchor" href="#为什么HashMap的默认负载因子设置成0-75">¶</a>为什么HashMap的默认负载因子设置成0.75</h3>
+<h3 id="为什么HashMap的默认负载因子设置成0-75"><a class="header-anchor" href="#为什么HashMap的默认负载因子设置成0-75">✨</a>为什么HashMap的默认负载因子设置成0.75</h3>
 <p><a target="_blank" rel="noopener" href="https://hollischuang.github.io/toBeTopJavaer/#/basics/java-basic/hashmap-default-loadfactor">https://hollischuang.github.io/toBeTopJavaer/#/basics/java-basic/hashmap-default-loadfactor</a></p>
-<h3 id="Java-8中stream相关用法"><a class="header-anchor" href="#Java-8中stream相关用法">¶</a>Java 8中stream相关用法</h3>
+<h3 id="Java-8中stream相关用法"><a class="header-anchor" href="#Java-8中stream相关用法">✨</a>Java 8中stream相关用法</h3>
 <p><a target="_blank" rel="noopener" href="https://hollischuang.github.io/toBeTopJavaer/#/basics/java-basic/stream">https://hollischuang.github.io/toBeTopJavaer/#/basics/java-basic/stream</a></p>
-<h3 id="Apache集合处理工具类的使用"><a class="header-anchor" href="#Apache集合处理工具类的使用">¶</a>Apache集合处理工具类的使用</h3>
+<h3 id="Apache集合处理工具类的使用"><a class="header-anchor" href="#Apache集合处理工具类的使用">✨</a>Apache集合处理工具类的使用</h3>
 <p><a target="_blank" rel="noopener" href="https://hollischuang.github.io/toBeTopJavaer/#/basics/java-basic/apache-collections">https://hollischuang.github.io/toBeTopJavaer/#/basics/java-basic/apache-collections</a></p>
 
   
@@ -1489,10 +1489,8 @@ Collections工具类的sort方法有两种重载的形式，<strong>第一种</s
     <section class='body'>
       <div class="vlts-rps"><a class="item" href="\java\collection\ArrayList_grow\" title="ArrayList动态扩容机制" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life9.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life9.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">ArrayList动态扩容机制</span><span class="excerpt">我们通过一个具体的例子看一下ArrayList的扩容效果
 先看一下ArrayList的初始容量
-ArrayList&lt;...</span></a><a class="item" href="\java\collection\Vector\" title="Vector 底层实现原理分析" rel="bookmark "><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">Vector 底层实现原理分析</span><span class="excerpt">Vector，一个可变长的数组，底层实现与 ArrayList 大同小异，但Vector是同步的（线程安全），Vector...</span></a><a class="item" href="\java\collection\LinkedHashMap\" title="LinkedHashMap 底层实现原理分析" rel="bookmark "><img src="https://cdn.nlark.com/yuque/0/2020/png/420470/1594858298550-74cd2f4d-fbd7-4fb1-9137-66e8cabfa0c9.png#align=left&display=inline&height=481&margin=%5Bobject%20Object%5D&name=image.png&originHeight=481&originWidth=496&size=130674&status=done&style=none&width=496" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/420470/1594858298550-74cd2f4d-fbd7-4fb1-9137-66e8cabfa0c9.png#align=left&display=inline&height=481&margin=%5Bobject%20Object%5D&name=image.png&originHeight=481&originWidth=496&size=130674&status=done&style=none&width=496" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">LinkedHashMap 底层实现原理分析</span><span class="excerpt">LinkedHashMap继承自HashMap实现了Map接口。基本实现同HashMap一样，不同之处在于LinkedHa...</span></a><a class="item" href="\java\collection\LinkedList\" title="LinkedList 底层实现原理分析" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/collection2.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/collection2.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">LinkedList 底层实现原理分析</span><span class="excerpt">
-在Java.util包下
-继承自AbstractSequentialList
-实现 List 接口，能对它进行队列操作。...</span></a><a class="item" href="\java\abstract_interface\" title="接口 vs 抽象类的区别？" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">接口 vs 抽象类的区别？</span><span class="excerpt">在面向对象编程中，抽象类和接口是两个经常被用到的语法概念，是面向对象四大特性，以及很多设计模式、设计思想、设计原则编程实现...</span></a></div></section></div>
+ArrayList&lt;...</span></a><a class="item" href="\java\collection\Vector\" title="Vector 底层实现原理分析" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life14.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life14.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">Vector 底层实现原理分析</span><span class="excerpt">Vector，一个可变长的数组，底层实现与 ArrayList 大同小异，但Vector是同步的（线程安全），Vector...</span></a><a class="item" href="\java\collection\HashMapAnalysis\" title="HashMap 底层实现原理分析" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life11.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life11.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">HashMap 底层实现原理分析</span><span class="excerpt">HashMap 是 Map 的一个实现类，它代表的是一种键值对的数据存储形式。
+大多数情况下可以直接定位到它的值，因而具有...</span></a><a class="item" href="\java\collection\LinkedHashMap\" title="LinkedHashMap 底层实现原理分析" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life12.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life12.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">LinkedHashMap 底层实现原理分析</span><span class="excerpt">LinkedHashMap继承自HashMap实现了Map接口。基本实现同HashMap一样，不同之处在于LinkedHa...</span></a><a class="item" href="\java\abstract_interface\" title="接口 vs 抽象类的区别？" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">接口 vs 抽象类的区别？</span><span class="excerpt">在面向对象编程中，抽象类和接口是两个经常被用到的语法概念，是面向对象四大特性，以及很多设计模式、设计思想、设计原则编程实现...</span></a></div></section></div>
       
       
         <div class='copyright'>
@@ -1521,10 +1519,10 @@ ArrayList&lt;...</span></a><a class="item" href="\java\collection\Vector\" title
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-28T22:56:10+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-02T17:53:02+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Sep 28, 2020</p>
+    <p>更新于：Oct 2, 2020</p>
   </a>
 </div>
 
@@ -1548,11 +1546,11 @@ ArrayList&lt;...</span></a><a class="item" href="\java\collection\Vector\" title
           
           target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gyl-coder.top/java/collection/all/&title=集合 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life8.webp&summary=集合中用到的数据结构有以下几种：
 
-**数组：**最常用的数据结构之一。数组的特点是长度固定，可以用下标索引，并且所有的元素的类型都是一致的。使用时尽量把数组封装在一个类里，防止数据被错误的操作弄乱。
-**链表：**是一种由多个节点组成的数据结构，并且每个节点包含有数据以及指向下一个节点的引用，在双向链表里，还会有一个指向前一个节点的引用。例如，可以用单向链表和双向链表来实现堆栈和队列，因为链表的两端都是可以进行插入和删除的动作的。当然，也会有在链表的中间频繁插入和删除节点的场景。
-**树：**是一种由节点组成的数据结构，每个节点都包含数据元素，并且有一个或多个子节点，每个子节点指向一个父节点可以表示层级关系或者数据元素的顺序关系。如果树的每个子节点最多有两个叶子节点，那么这种树被称为二叉树。二叉树是一种非常常用的树形结构， 因为它的这种结构使得节点的插入和删除都非常高效。树的边表示从一个节点到另外一个节点的快捷路径。
-**堆栈：**只允许对最后插入的元素进行操作（也就是后进先出，Last In First Out – LIFO）。如果你移除了栈顶的元素，那么你可以操作倒数第二个元素，依次类推。这种后进先出的方式是通过仅有的peek(),push()和pop()这几个方法的强制性限制达到的。这种结构在很多场景下都非常实用，例如解析像(4+2)*3这样的数学表达式，把源码中的方法和异常按照他们出现的顺序放到堆栈中，检查你的代码看看小括号和花括号是不是匹配的，等等。
-**队列：**和堆栈有些相似，不同之处在于在队列里第一个插入的元素也是第一个被删除的元素（即是先进先出）。这种先进先出的结构是通过只提供peek()，offer()和poll()这几个方法来访问数据进行限制来达到的。例如，排队等待公交车，银行或者超市里的等待列队等等，都是可以用队列来表示。
+数组： 最常用的数据结构之一。数组的特点是长度固定，可以用下标索引，并且所有的元素的类型都是一致的。使用时尽量把数组封装在一个类里，防止数据被错误的操作弄乱。
+链表： 是一种由多个节点组成的数据结构，并且每个节点包含有数据以及指向下一个节点的引用，在双向链表里，还会有一个指向前一个节点的引用。例如，可以用单向链表和双向链表来实现堆栈和队列，因为链表的两端都是可以进行插入和删除的动作的。当然，也会有在链表的中间频繁插入和删除节点的场景。
+树： 是一种由节点组成的数据结构，每个节点都包含数据元素，并且有一个或多个子节点，每个子节点指向一个父节点可以表示层级关系或者数据元素的顺序关系。如果树的每个子节点最多有两个叶子节点，那么这种树被称为二叉树。二叉树是一种非常常用的树形结构， 因为它的这种结构使得节点的插入和删除都非常高效。树的边表示从一个节点到另外一个节点的快捷路径。
+堆栈： 只允许对最后插入的元素进行操作（也就是后进先出，Last In First Out – LIFO）。如果你移除了栈顶的元素，那么你可以操作倒数第二个元素，依次类推。这种后进先出的方式是通过仅有的peek(),push()和pop()这几个方法的强制性限制达到的。这种结构在很多场景下都非常实用，例如解析像(4+2)*3这样的数学表达式，把源码中的方法和异常按照他们出现的顺序放到堆栈中，检查你的代码看看小括号和花括号是不是匹配的，等等。
+队列： 和堆栈有些相似，不同之处在于在队列里第一个插入的元素也是第一个被删除的元素（即是先进先出）。这种先进先出的结构是通过只提供peek()，offer()和poll()这几个方法来访问数据进行限制来达到的。例如，排队等待公交车，银行或者超市里的等待列队等等，都是可以用队列来表示。
 "
           
           >
@@ -1567,11 +1565,11 @@ ArrayList&lt;...</span></a><a class="item" href="\java\collection\Vector\" title
           
           target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://gyl-coder.top/java/collection/all/&title=集合 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life8.webp&summary=集合中用到的数据结构有以下几种：
 
-**数组：**最常用的数据结构之一。数组的特点是长度固定，可以用下标索引，并且所有的元素的类型都是一致的。使用时尽量把数组封装在一个类里，防止数据被错误的操作弄乱。
-**链表：**是一种由多个节点组成的数据结构，并且每个节点包含有数据以及指向下一个节点的引用，在双向链表里，还会有一个指向前一个节点的引用。例如，可以用单向链表和双向链表来实现堆栈和队列，因为链表的两端都是可以进行插入和删除的动作的。当然，也会有在链表的中间频繁插入和删除节点的场景。
-**树：**是一种由节点组成的数据结构，每个节点都包含数据元素，并且有一个或多个子节点，每个子节点指向一个父节点可以表示层级关系或者数据元素的顺序关系。如果树的每个子节点最多有两个叶子节点，那么这种树被称为二叉树。二叉树是一种非常常用的树形结构， 因为它的这种结构使得节点的插入和删除都非常高效。树的边表示从一个节点到另外一个节点的快捷路径。
-**堆栈：**只允许对最后插入的元素进行操作（也就是后进先出，Last In First Out – LIFO）。如果你移除了栈顶的元素，那么你可以操作倒数第二个元素，依次类推。这种后进先出的方式是通过仅有的peek(),push()和pop()这几个方法的强制性限制达到的。这种结构在很多场景下都非常实用，例如解析像(4+2)*3这样的数学表达式，把源码中的方法和异常按照他们出现的顺序放到堆栈中，检查你的代码看看小括号和花括号是不是匹配的，等等。
-**队列：**和堆栈有些相似，不同之处在于在队列里第一个插入的元素也是第一个被删除的元素（即是先进先出）。这种先进先出的结构是通过只提供peek()，offer()和poll()这几个方法来访问数据进行限制来达到的。例如，排队等待公交车，银行或者超市里的等待列队等等，都是可以用队列来表示。
+数组： 最常用的数据结构之一。数组的特点是长度固定，可以用下标索引，并且所有的元素的类型都是一致的。使用时尽量把数组封装在一个类里，防止数据被错误的操作弄乱。
+链表： 是一种由多个节点组成的数据结构，并且每个节点包含有数据以及指向下一个节点的引用，在双向链表里，还会有一个指向前一个节点的引用。例如，可以用单向链表和双向链表来实现堆栈和队列，因为链表的两端都是可以进行插入和删除的动作的。当然，也会有在链表的中间频繁插入和删除节点的场景。
+树： 是一种由节点组成的数据结构，每个节点都包含数据元素，并且有一个或多个子节点，每个子节点指向一个父节点可以表示层级关系或者数据元素的顺序关系。如果树的每个子节点最多有两个叶子节点，那么这种树被称为二叉树。二叉树是一种非常常用的树形结构， 因为它的这种结构使得节点的插入和删除都非常高效。树的边表示从一个节点到另外一个节点的快捷路径。
+堆栈： 只允许对最后插入的元素进行操作（也就是后进先出，Last In First Out – LIFO）。如果你移除了栈顶的元素，那么你可以操作倒数第二个元素，依次类推。这种后进先出的方式是通过仅有的peek(),push()和pop()这几个方法的强制性限制达到的。这种结构在很多场景下都非常实用，例如解析像(4+2)*3这样的数学表达式，把源码中的方法和异常按照他们出现的顺序放到堆栈中，检查你的代码看看小括号和花括号是不是匹配的，等等。
+队列： 和堆栈有些相似，不同之处在于在队列里第一个插入的元素也是第一个被删除的元素（即是先进先出）。这种先进先出的结构是通过只提供peek()，offer()和poll()这几个方法来访问数据进行限制来达到的。例如，排队等待公交车，银行或者超市里的等待列队等等，都是可以用队列来表示。
 "
           
           >
@@ -1586,11 +1584,11 @@ ArrayList&lt;...</span></a><a class="item" href="\java\collection\Vector\" title
           
           target="_blank" href="http://service.weibo.com/share/share.php?url=https://gyl-coder.top/java/collection/all/&title=集合 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life8.webp&summary=集合中用到的数据结构有以下几种：
 
-**数组：**最常用的数据结构之一。数组的特点是长度固定，可以用下标索引，并且所有的元素的类型都是一致的。使用时尽量把数组封装在一个类里，防止数据被错误的操作弄乱。
-**链表：**是一种由多个节点组成的数据结构，并且每个节点包含有数据以及指向下一个节点的引用，在双向链表里，还会有一个指向前一个节点的引用。例如，可以用单向链表和双向链表来实现堆栈和队列，因为链表的两端都是可以进行插入和删除的动作的。当然，也会有在链表的中间频繁插入和删除节点的场景。
-**树：**是一种由节点组成的数据结构，每个节点都包含数据元素，并且有一个或多个子节点，每个子节点指向一个父节点可以表示层级关系或者数据元素的顺序关系。如果树的每个子节点最多有两个叶子节点，那么这种树被称为二叉树。二叉树是一种非常常用的树形结构， 因为它的这种结构使得节点的插入和删除都非常高效。树的边表示从一个节点到另外一个节点的快捷路径。
-**堆栈：**只允许对最后插入的元素进行操作（也就是后进先出，Last In First Out – LIFO）。如果你移除了栈顶的元素，那么你可以操作倒数第二个元素，依次类推。这种后进先出的方式是通过仅有的peek(),push()和pop()这几个方法的强制性限制达到的。这种结构在很多场景下都非常实用，例如解析像(4+2)*3这样的数学表达式，把源码中的方法和异常按照他们出现的顺序放到堆栈中，检查你的代码看看小括号和花括号是不是匹配的，等等。
-**队列：**和堆栈有些相似，不同之处在于在队列里第一个插入的元素也是第一个被删除的元素（即是先进先出）。这种先进先出的结构是通过只提供peek()，offer()和poll()这几个方法来访问数据进行限制来达到的。例如，排队等待公交车，银行或者超市里的等待列队等等，都是可以用队列来表示。
+数组： 最常用的数据结构之一。数组的特点是长度固定，可以用下标索引，并且所有的元素的类型都是一致的。使用时尽量把数组封装在一个类里，防止数据被错误的操作弄乱。
+链表： 是一种由多个节点组成的数据结构，并且每个节点包含有数据以及指向下一个节点的引用，在双向链表里，还会有一个指向前一个节点的引用。例如，可以用单向链表和双向链表来实现堆栈和队列，因为链表的两端都是可以进行插入和删除的动作的。当然，也会有在链表的中间频繁插入和删除节点的场景。
+树： 是一种由节点组成的数据结构，每个节点都包含数据元素，并且有一个或多个子节点，每个子节点指向一个父节点可以表示层级关系或者数据元素的顺序关系。如果树的每个子节点最多有两个叶子节点，那么这种树被称为二叉树。二叉树是一种非常常用的树形结构， 因为它的这种结构使得节点的插入和删除都非常高效。树的边表示从一个节点到另外一个节点的快捷路径。
+堆栈： 只允许对最后插入的元素进行操作（也就是后进先出，Last In First Out – LIFO）。如果你移除了栈顶的元素，那么你可以操作倒数第二个元素，依次类推。这种后进先出的方式是通过仅有的peek(),push()和pop()这几个方法的强制性限制达到的。这种结构在很多场景下都非常实用，例如解析像(4+2)*3这样的数学表达式，把源码中的方法和异常按照他们出现的顺序放到堆栈中，检查你的代码看看小括号和花括号是不是匹配的，等等。
+队列： 和堆栈有些相似，不同之处在于在队列里第一个插入的元素也是第一个被删除的元素（即是先进先出）。这种先进先出的结构是通过只提供peek()，offer()和poll()这几个方法来访问数据进行限制来达到的。例如，排队等待公交车，银行或者超市里的等待列队等等，都是可以用队列来表示。
 "
           
           >
@@ -2049,12 +2047,12 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
         
           
     <li>
-      <a class='vlts-menu fix-cursor-default' href=https://album.gyl-coder.top
+      <a class='vlts-menu fix-cursor-default' href=/album/
         
         
         
         
-          id="https:albumgyl-codertop"
+          id="album"
         >
         <i class='fas fa-image fa-fw fa-fw'></i> My Album
       </a>

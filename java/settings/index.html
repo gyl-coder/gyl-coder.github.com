@@ -17,9 +17,9 @@
 
   <!-- 页面元数据 -->
   
-  <title>Settings.xml 详解 - yanliang&#39;s blog</title>
+  <title>Java - yanliang&#39;s blog</title>
   
-    <meta name="keywords" content="Java,settings">
+    <meta name="keywords" content="Java,Settings">
   
 
   
@@ -895,11 +895,17 @@ pom.xml 文件是本地项目配置文件。
 
 
   
+    <div class='headimg-div'>
+      <a class='headimg-a'>
+        <img class='headimg' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life17.webp'/>
+      </a>
+    </div>
+  
   <div class="article-meta" id="top">
     
     
       <a title='Settings.xml 详解' href='/java/settings/'>
-        <img class='thumbnail' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/settings.svg'>
+        <img class='thumbnail' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life17.webp'>
       </a>
     
     
@@ -942,10 +948,10 @@ pom.xml 文件是本地项目配置文件。
           
         
           
-            <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-28T22:22:26+08:00">
+            <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-02T18:30:16+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Sep 28, 2020</p>
+    <p>更新于：Oct 2, 2020</p>
   </a>
 </div>
 
@@ -963,7 +969,7 @@ pom.xml 文件是本地项目配置文件。
 <li>pom.xml 文件是本地<strong>项目配置文件</strong>。</li>
 </ul>
 <a id="more"></a>
-<h2 id="settings-xml-文件位置"><a class="header-anchor" href="#settings-xml-文件位置">¶</a>settings.xml 文件位置</h2>
+<h2 id="settings-xml-文件位置"><a class="header-anchor" href="#settings-xml-文件位置">✨</a>settings.xml 文件位置</h2>
 <p>settings.xml 文件一般位于两个位置：</p>
 <ul>
 <li>
@@ -978,14 +984,14 @@ pom.xml 文件是本地项目配置文件。
 <blockquote>
 <p>**注意：**用户配置优先于全局配置。<code>$&#123;user.home&#125;</code> 和和所有其他系统属性只能在 3.0+版本上使用。</p>
 </blockquote>
-<h2 id="配置优先级"><a class="header-anchor" href="#配置优先级">¶</a>配置优先级</h2>
+<h2 id="配置优先级"><a class="header-anchor" href="#配置优先级">✨</a>配置优先级</h2>
 <blockquote>
 <p>**重要：**局部配置优先于全局配置</p>
 </blockquote>
 <p>配置优先级从高到低：<code>pom.xml &gt; user settings &gt; global settings</code></p>
 <p>如果这些文件同时存在，在应用配置时，会合并它们的内容，如果有重复的配置，优先级高的配置会覆盖优先级低的。</p>
-<h2 id="settings-xml-元素详解"><a class="header-anchor" href="#settings-xml-元素详解">¶</a>settings.xml 元素详解</h2>
-<h3 id="顶级元素概览"><a class="header-anchor" href="#顶级元素概览">¶</a>顶级元素概览</h3>
+<h2 id="settings-xml-元素详解"><a class="header-anchor" href="#settings-xml-元素详解">✨</a>settings.xml 元素详解</h2>
+<h3 id="顶级元素概览"><a class="header-anchor" href="#顶级元素概览">✨</a>顶级元素概览</h3>
 <pre><code>&lt;settings xmlns=&quot;http://maven.apache.org/SETTINGS/1.0.0&quot;
       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
       xsi:schemaLocation=&quot;http://maven.apache.org/SETTINGS/1.0.0
@@ -1002,28 +1008,28 @@ pom.xml 文件是本地项目配置文件。
   &lt;activeProfiles/&gt;
 &lt;/settings&gt;
 </code></pre>
-<h3 id="LocalRepository"><a class="header-anchor" href="#LocalRepository">¶</a>LocalRepository</h3>
+<h3 id="LocalRepository"><a class="header-anchor" href="#LocalRepository">✨</a>LocalRepository</h3>
 <p>**作用：**该值表示构建系统本地仓库的路径。</p>
 <p>默认值：<code>~/.m2/repository</code></p>
 <pre><code>&lt;localRepository&gt;$&#123;user.home&#125;/.m2/repository&lt;/localRepository&gt;
 </code></pre>
-<h3 id="InteractiveMode"><a class="header-anchor" href="#InteractiveMode">¶</a>InteractiveMode</h3>
+<h3 id="InteractiveMode"><a class="header-anchor" href="#InteractiveMode">✨</a>InteractiveMode</h3>
 <p><strong>作用</strong>：表示 maven 是否需要和用户交互以获得输入。</p>
 <p>如果 maven 需要和用户交互以获得输入，则设置成 true，反之则应为 false。默认为 true。</p>
 <pre><code>&lt;interactiveMode&gt;true&lt;/interactiveMode&gt;
 </code></pre>
-<h3 id="UsePluginRegistry"><a class="header-anchor" href="#UsePluginRegistry">¶</a>UsePluginRegistry</h3>
+<h3 id="UsePluginRegistry"><a class="header-anchor" href="#UsePluginRegistry">✨</a>UsePluginRegistry</h3>
 <p><strong>作用</strong>：maven 是否需要使用 <code>plugin-registry.xml</code> 文件来管理插件版本。</p>
 <p>如果需要让 maven 使用文件<code>~/.m2/plugin-registry.xml</code> 来管理插件版本，则设为 true。默认为 false。</p>
 <pre><code>&lt;usePluginRegistry&gt;false&lt;/usePluginRegistry&gt;
 </code></pre>
-<h3 id="Offline"><a class="header-anchor" href="#Offline">¶</a>Offline</h3>
+<h3 id="Offline"><a class="header-anchor" href="#Offline">✨</a>Offline</h3>
 <p><strong>作用</strong>：表示 maven 是否需要在离线模式下运行。</p>
 <p>如果构建系统需要在离线模式下运行，则为 true，默认为 false。</p>
 <p>当由于网络设置原因或者安全因素，构建服务器不能连接远程仓库的时候，该配置就十分有用。</p>
 <pre><code>&lt;offline&gt;false&lt;/offline&gt;
 </code></pre>
-<h3 id="PluginGroups"><a class="header-anchor" href="#PluginGroups">¶</a>PluginGroups</h3>
+<h3 id="PluginGroups"><a class="header-anchor" href="#PluginGroups">✨</a>PluginGroups</h3>
 <p><strong>作用</strong>：当插件的组织 id（groupId）没有显式提供时，供搜寻插件组织 Id（groupId）的列表。</p>
 <p>该元素包含一个 pluginGroup 元素列表，每个子元素包含了一个组织 Id（groupId）。</p>
 <p>当我们使用某个插件，并且没有在命令行为其提供组织 Id（groupId）的时候，Maven 就会使用该列表。默认情况下该列表包含了 <code>org.apache.maven.plugins</code> 和 <code>org.codehaus.mojo</code>。</p>
@@ -1038,7 +1044,7 @@ pom.xml 文件是本地项目配置文件。
   ...
 &lt;/settings&gt;
 </code></pre>
-<h3 id="Servers"><a class="header-anchor" href="#Servers">¶</a>Servers</h3>
+<h3 id="Servers"><a class="header-anchor" href="#Servers">✨</a>Servers</h3>
 <p><strong>作用</strong>：一般，仓库的下载和部署是在 pom.xml 文件中的 <code>repositories</code> 和 <code>distributionManagement</code> 元素中定义的。然而，一般类似用户名、密码（<strong>有些仓库访问是需要安全认证的</strong>）等信息不应该在 pom.xml 文件中配置，这些信息可以配置在 <code>settings.xml</code> 中。</p>
 <pre><code>&lt;settings xmlns=&quot;http://maven.apache.org/SETTINGS/1.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
   xsi:schemaLocation=&quot;http://maven.apache.org/SETTINGS/1.0.0
@@ -1067,7 +1073,7 @@ pom.xml 文件是本地项目配置文件。
   ...
 &lt;/settings&gt;
 </code></pre>
-<h3 id="Mirrors"><a class="header-anchor" href="#Mirrors">¶</a>Mirrors</h3>
+<h3 id="Mirrors"><a class="header-anchor" href="#Mirrors">✨</a>Mirrors</h3>
 <p><strong>作用</strong>：为仓库列表配置的下载镜像列表。</p>
 <pre><code>&lt;settings xmlns=&quot;http://maven.apache.org/SETTINGS/1.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
   xsi:schemaLocation=&quot;http://maven.apache.org/SETTINGS/1.0.0
@@ -1089,7 +1095,7 @@ pom.xml 文件是本地项目配置文件。
   ...
 &lt;/settings&gt;
 </code></pre>
-<h3 id="Proxies"><a class="header-anchor" href="#Proxies">¶</a>Proxies</h3>
+<h3 id="Proxies"><a class="header-anchor" href="#Proxies">✨</a>Proxies</h3>
 <p><strong>作用</strong>：用来配置不同的代理。</p>
 <pre><code>&lt;settings xmlns=&quot;http://maven.apache.org/SETTINGS/1.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
   xsi:schemaLocation=&quot;http://maven.apache.org/SETTINGS/1.0.0
@@ -1119,7 +1125,7 @@ pom.xml 文件是本地项目配置文件。
   ...
 &lt;/settings&gt;
 </code></pre>
-<h3 id="Profiles"><a class="header-anchor" href="#Profiles">¶</a>Profiles</h3>
+<h3 id="Profiles"><a class="header-anchor" href="#Profiles">✨</a>Profiles</h3>
 <p><strong>作用</strong>：根据环境参数来调整构建配置的列表。</p>
 <p><code>settings.xml</code> 中的 <code>profile</code> 元素是 <code>pom.xml</code> 中 <code>profile</code> 元素的<strong>裁剪版本</strong>。</p>
 <p>它包含了<code>id</code>、<code>activation</code>、<code>repositories</code>、<code>pluginRepositories</code> 和 <code>properties</code> 元素。这里的 profile 元素只包含这五个子元素是因为这里只关心构建系统这个整体（这正是 settings.xml 文件的角色定位），而非单独的项目对象模型设置。如果一个 <code>settings.xml</code> 中的 <code>profile</code> 被激活，它的值会覆盖任何其它定义在 <code>pom.xml</code> 中带有相同 id 的 <code>profile</code>。</p>
@@ -1144,7 +1150,7 @@ pom.xml 文件是本地项目配置文件。
   ...
 &lt;/settings&gt;
 </code></pre>
-<h3 id="Activation"><a class="header-anchor" href="#Activation">¶</a>Activation</h3>
+<h3 id="Activation"><a class="header-anchor" href="#Activation">✨</a>Activation</h3>
 <p><strong>作用</strong>：自动触发 <code>profile</code> 的条件逻辑。</p>
 <p>如 <code>pom.xml</code> 中的 <code>profile</code> 一样，<code>profile</code> 的作用在于它能够在某些特定的环境中自动使用某些特定的值；这些环境通过 <code>activation</code> 元素指定。<code>activation</code> 元素并不是激活 <code>profile</code> 的唯一方式。<code>settings.xml</code> 文件中的 <code>activeProfile</code> 元素可以包含 <code>profile</code> 的 <code>id</code>。<code>profile</code> 也可以通过在命令行，使用 <code>-P</code> 标记和逗号分隔的列表来显式的激活（如，<code>-P test</code>）。</p>
 <pre><code>&lt;activation&gt;
@@ -1182,7 +1188,7 @@ pom.xml 文件是本地项目配置文件。
 <blockquote>
 <p>注：在 maven 工程的 pom.xml 所在目录下执行 mvn help:active-profiles 命令可以查看中央仓储的 profile 是否在工程中生效。</p>
 </blockquote>
-<h3 id="properties"><a class="header-anchor" href="#properties">¶</a>properties</h3>
+<h3 id="properties"><a class="header-anchor" href="#properties">✨</a>properties</h3>
 <p><strong>作用</strong>：对应<code>profile</code>的扩展属性列表。</p>
 <p>maven 属性和 ant 中的属性一样，可以用来存放一些值。这些值可以在 <code>pom.xml</code> 中的任何地方使用标记${X}来使用，这里 X 是指属性的名称。属性有五种不同的形式，并且都能在 settings.xml 文件中访问。</p>
 <pre><code>&lt;!--
@@ -1197,7 +1203,7 @@ pom.xml 文件是本地项目配置文件。
 &lt;/properties&gt;
 </code></pre>
 <div class="note "><p>注：如果该 profile 被激活，则可以在pom.xml中使用${user.install}。</p></div> 
-<h3 id="Repositories"><a class="header-anchor" href="#Repositories">¶</a>Repositories</h3>
+<h3 id="Repositories"><a class="header-anchor" href="#Repositories">✨</a>Repositories</h3>
 <p><strong>作用</strong>：远程仓库列表，它是 maven 用来填充构建系统本地仓库所使用的一组远程仓库。</p>
 <pre><code>&lt;repositories&gt;
   &lt;!--包含需要连接到远程仓库的信息 --&gt;
@@ -1228,12 +1234,12 @@ pom.xml 文件是本地项目配置文件。
   &lt;/repository&gt;
 &lt;/repositories&gt;
 </code></pre>
-<h3 id="pluginRepositories"><a class="header-anchor" href="#pluginRepositories">¶</a>pluginRepositories</h3>
+<h3 id="pluginRepositories"><a class="header-anchor" href="#pluginRepositories">✨</a>pluginRepositories</h3>
 <p><strong>作用</strong>：发现插件的远程仓库列表。</p>
 <p>和 <code>repository</code> 类似，只是 <code>repository</code> 是管理 jar 包依赖的仓库，<code>pluginRepositories</code> 则是管理插件的仓库。maven 插件是一种特殊类型的构件。由于这个原因，插件仓库独立于其它仓库。<code>pluginRepositories</code> 元素的结构和 <code>repositories</code> 元素的结构类似。每个 <code>pluginRepository</code> 元素指定一个 Maven 可以用来寻找新插件的远程地址。</p>
 <pre><code>pluginRepositoriespluginRepositoryreleasesenabledupdatePolicychecksumPolicyreleasessnapshotsenabledupdatePolicychecksumPolicysnapshotsidnameurllayoutpluginRepositorypluginRepositories
 </code></pre>
-<h3 id="ActiveProfiles"><a class="header-anchor" href="#ActiveProfiles">¶</a>ActiveProfiles</h3>
+<h3 id="ActiveProfiles"><a class="header-anchor" href="#ActiveProfiles">✨</a>ActiveProfiles</h3>
 <p><strong>作用</strong>：手动激活 profiles 的列表，按照<code>profile</code>被应用的顺序定义<code>activeProfile</code>。</p>
 <p>该元素包含了一组 <code>activeProfile</code> 元素，每个 <code>activeProfile</code> 都含有一个 profile id。任何在 <code>activeProfile</code> 中定义的 profile id，不论环境设置如何，其对应的 <code>profile</code> 都会被激活。如果没有匹配的 <code>profile</code>，则什么都不会发生。</p>
 <p>例如，env-test 是一个 activeProfile，则在 pom.xml（或者 profile.xml）中对应 id 的 profile 会被激活。如果运行过程中找不到这样一个 profile，Maven 则会像往常一样运行。</p>
@@ -1252,13 +1258,13 @@ pom.xml 文件是本地项目配置文件。
       <i class="fas fa-bookmark fa-fw" aria-hidden="true"></i><span>相关文章</span>
     </section>
     <section class='body'>
-      <div class="vlts-rps"><a class="item" href="\concurrency\lock_and_synchronized\" title="Lock & Synchronized" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life2.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life2.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">Lock & Synchronized</span><span class="excerpt">首先我们来考虑一个问题？
-在Lock出现之前我们一直使用synchronized来实现同步访问。那为什么还要提供lock呢...</span></a><a class="item" href="\concurrency\alternate_printing\" title="多个线程交替打印内容" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life1.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life1.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">多个线程交替打印内容</span><span class="excerpt">需求： 启动两个线程，交替打印奇偶数。 效果如下所示
+      <div class="vlts-rps"><a class="item" href="\concurrency\alternate_printing\" title="多个线程交替打印内容" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life1.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life1.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">多个线程交替打印内容</span><span class="excerpt">需求： 启动两个线程，交替打印奇偶数。 效果如下所示
 偶数线程：0
 奇数线程：1
 偶数线程：2
 ...
-</span></a><a class="item" href="\concurrency\why_concurrency\" title="Why Concurrency ?" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life4.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life4.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">Why Concurrency ?</span><span class="excerpt">一门技术的出现必然有其出现的道理，后来需要了解它出现的时代环境和因素，扩充自己的视野，发掘技术发展的经过。分析其优缺点，以...</span></a><a class="item" href="\concurrency\waiting_for_notification\" title="等待通知机制" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life3.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life3.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">等待通知机制</span><span class="excerpt">多线程环境中，经常出现这样一种场景。一个线程修改了一个对象的值，而另一个线程感知到了变化，然后进行相应的操作，整个过程开始...</span></a><a class="item" href="\java\abstract_interface\" title="接口 vs 抽象类的区别？" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">接口 vs 抽象类的区别？</span><span class="excerpt">在面向对象编程中，抽象类和接口是两个经常被用到的语法概念，是面向对象四大特性，以及很多设计模式、设计思想、设计原则编程实现...</span></a></div></section></div>
+</span></a><a class="item" href="\concurrency\lock_and_synchronized\" title="Lock & Synchronized" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life2.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life2.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">Lock & Synchronized</span><span class="excerpt">首先我们来考虑一个问题？
+在Lock出现之前我们一直使用synchronized来实现同步访问。那为什么还要提供lock呢...</span></a><a class="item" href="\concurrency\waiting_for_notification\" title="等待通知机制" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life3.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life3.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">等待通知机制</span><span class="excerpt">多线程环境中，经常出现这样一种场景。一个线程修改了一个对象的值，而另一个线程感知到了变化，然后进行相应的操作，整个过程开始...</span></a><a class="item" href="\concurrency\why_concurrency\" title="Why Concurrency ?" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life4.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life4.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">Why Concurrency ?</span><span class="excerpt">一门技术的出现必然有其出现的道理，后来需要了解它出现的时代环境和因素，扩充自己的视野，发掘技术发展的经过。分析其优缺点，以...</span></a><a class="item" href="\java\abstract_interface\" title="接口 vs 抽象类的区别？" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">接口 vs 抽象类的区别？</span><span class="excerpt">在面向对象编程中，抽象类和接口是两个经常被用到的语法概念，是面向对象四大特性，以及很多设计模式、设计思想、设计原则编程实现...</span></a></div></section></div>
       
       
         <div class='copyright'>
@@ -1287,10 +1293,10 @@ pom.xml 文件是本地项目配置文件。
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-28T22:22:26+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-02T18:30:16+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Sep 28, 2020</p>
+    <p>更新于：Oct 2, 2020</p>
   </a>
 </div>
 
@@ -1299,7 +1305,7 @@ pom.xml 文件是本地项目配置文件。
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Java/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Java</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/settings/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>settings</p></a></div>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Java/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Java</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Settings/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Settings</p></a></div>
 
 
         
@@ -1312,7 +1318,7 @@ pom.xml 文件是本地项目配置文件。
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gyl-coder.top/java/settings/&title=Settings.xml 详解 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/settings.svg&summary=从 settings.xml 的文件名就可以看出，它是用来设置 maven 参数的配置文件。settings.xml 中包含类似本地仓储位置、修改远程仓储服务器、认证信息等配置。
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gyl-coder.top/java/settings/&title=Java - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life17.webp&summary=从 settings.xml 的文件名就可以看出，它是用来设置 maven 参数的配置文件。settings.xml 中包含类似本地仓储位置、修改远程仓储服务器、认证信息等配置。
 
 settings.xml 是maven的全局配置文件。
 pom.xml 文件是本地项目配置文件。
@@ -1328,7 +1334,7 @@ pom.xml 文件是本地项目配置文件。
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://gyl-coder.top/java/settings/&title=Settings.xml 详解 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/settings.svg&summary=从 settings.xml 的文件名就可以看出，它是用来设置 maven 参数的配置文件。settings.xml 中包含类似本地仓储位置、修改远程仓储服务器、认证信息等配置。
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://gyl-coder.top/java/settings/&title=Java - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life17.webp&summary=从 settings.xml 的文件名就可以看出，它是用来设置 maven 参数的配置文件。settings.xml 中包含类似本地仓储位置、修改远程仓储服务器、认证信息等配置。
 
 settings.xml 是maven的全局配置文件。
 pom.xml 文件是本地项目配置文件。
@@ -1344,7 +1350,7 @@ pom.xml 文件是本地项目配置文件。
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://gyl-coder.top/java/settings/&title=Settings.xml 详解 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/settings.svg&summary=从 settings.xml 的文件名就可以看出，它是用来设置 maven 参数的配置文件。settings.xml 中包含类似本地仓储位置、修改远程仓储服务器、认证信息等配置。
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://gyl-coder.top/java/settings/&title=Java - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life17.webp&summary=从 settings.xml 的文件名就可以看出，它是用来设置 maven 参数的配置文件。settings.xml 中包含类似本地仓储位置、修改远程仓储服务器、认证信息等配置。
 
 settings.xml 是maven的全局配置文件。
 pom.xml 文件是本地项目配置文件。
@@ -1812,12 +1818,12 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
         
           
     <li>
-      <a class='vlts-menu fix-cursor-default' href=https://album.gyl-coder.top
+      <a class='vlts-menu fix-cursor-default' href=/album/
         
         
         
         
-          id="https:albumgyl-codertop"
+          id="album"
         >
         <i class='fas fa-image fa-fw fa-fw'></i> My Album
       </a>

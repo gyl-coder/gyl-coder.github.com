@@ -17,7 +17,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>ArrayList 底层实现原理分析 - yanliang&#39;s blog</title>
+  <title>集合, ArrayList - yanliang&#39;s blog</title>
   
     <meta name="keywords" content="Java,集合,ArrayList">
   
@@ -891,11 +891,17 @@
 
 
   
+    <div class='headimg-div'>
+      <a class='headimg-a'>
+        <img class='headimg' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life10.webp'/>
+      </a>
+    </div>
+  
   <div class="article-meta" id="top">
     
     
       <a title='ArrayList 底层实现原理分析' href='/java/collection/ArrayList/'>
-        <img class='thumbnail' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/collection.svg'>
+        <img class='thumbnail' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life10.webp'>
       </a>
     
     
@@ -938,10 +944,10 @@
           
         
           
-            <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-28T22:22:26+08:00">
+            <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-02T17:54:08+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Sep 28, 2020</p>
+    <p>更新于：Oct 2, 2020</p>
   </a>
 </div>
 
@@ -991,7 +997,7 @@ public class ArrayList&lt;E&gt; extends AbstractList&lt;E&gt;
 &amp;#125;
 </code></pre>
 <p>elementData 是&quot;Object[] 类型的数组&quot;，它保存了添加到ArrayList中的元素。实际上，elementData是个动态数组，我们能通过构造函数 ArrayList(intinitialCapacity)来执行它的初始容量为initialCapacity；如果通过不含参数的构造函数ArrayList()来创建ArrayList，则elementData的容量默认是10。elementData数组的大小会根据ArrayList容量的增长而动态的增长。</p>
-<h2 id="构造函数"><a class="header-anchor" href="#构造函数">¶</a>构造函数</h2>
+<h2 id="构造函数"><a class="header-anchor" href="#构造函数">✨</a>构造函数</h2>
 <p>ArrayList提供了三种方式的构造器。可以构造一个默认初始容量为10的空列表、构造一个指定初始容量的空列表以及构造一个包含指定collection的元素的列表。</p>
 <p>这些元素按照该collection的迭代器返回的顺序排列的。</p>
 <pre><code class="language-java">// 构造一个指定初始容量的空列表
@@ -1028,7 +1034,7 @@ public ArrayList(Collection&lt;? extends E&gt; c) &amp;#123;
 <li>在ensureCapacityInternal(int minCapacity)方法中，minCapacity=DEFAULT_CAPACITY=10，然后再调用ensureExplicitCapacity(minCapacity)方法，即ensureExplicitCapacity(10)；</li>
 <li>在ensureExplicitCapacity(minCapacity)方法中调用grow(minCapacity)方法，即grow(10)，此处为真正具体的数组扩容的算法，在此方法中，通过elementData = Arrays.copyOf(elementData, 10)具体实现了elementData数组初始容量为10的构造。</li>
 </ol>
-<h2 id="添加元素"><a class="header-anchor" href="#添加元素">¶</a>添加元素</h2>
+<h2 id="添加元素"><a class="header-anchor" href="#添加元素">✨</a>添加元素</h2>
 <pre><code class="language-java">// 在数组末尾加上一个元素
 public boolean add(E e) &amp;#123;
     ensureCapacityInternal(size + 1);  // 进行扩容检查
@@ -1075,7 +1081,7 @@ public boolean addAll(int index, Collection&lt;? extends E&gt; c) &amp;#123;
     return numNew != 0;
 &amp;#125;
 </code></pre>
-<h2 id="扩容相关"><a class="header-anchor" href="#扩容相关">¶</a>扩容相关</h2>
+<h2 id="扩容相关"><a class="header-anchor" href="#扩容相关">✨</a>扩容相关</h2>
 <pre><code class="language-java">// 用于自定义设置ArrayList的容量
 public void ensureCapacity(int minCapacity) &amp;#123;
     int minExpand = (elementData != DEFAULTCAPACITY_EMPTY_ELEMENTDATA)
@@ -1124,7 +1130,7 @@ private static int hugeCapacity(int minCapacity) &amp;#123;
         MAX_ARRAY_SIZE;
 &amp;#125;
 </code></pre>
-<h2 id="删除元素"><a class="header-anchor" href="#删除元素">¶</a>删除元素</h2>
+<h2 id="删除元素"><a class="header-anchor" href="#删除元素">✨</a>删除元素</h2>
 <pre><code class="language-java">// 删除指定位置的元素
 public E remove(int index) &amp;#123;
     rangeCheck(index);    //数组越界检查
@@ -1245,7 +1251,7 @@ public void trimToSize() &amp;#123;
 <p>去掉预留元素的位置。返回一个新数组，新数组不含null，数组的size和elementData.length相等，以节省空间。此函数可避免size很小但elementData.length很大的情况。</p>
 <p>ArrayList会每次增长会预申请多一点空间，1.5倍，这样就会出现当size() = 10的时候，ArrayList已经申请了15空间， trimToSize就是删除多余的5，只留10。</p>
 <p>或许有人会有疑问：调用Arrays.copyOf复制size长度的元素到elementData，而且由源码看应该是从0复制到size处，那么如果我之前调用过add(int index, E element)呢？比如，list={1，2，3，null，null，4，null，null}，如果调用trimToSize返回的应该是list={1，2，3，null}（因为size=4）。其实上面这种情况不会发生的，因为调用add(int index, E element)时，会检查index的合法性，所以list的元素肯定是相邻的，而不会出现上述这种中间出现null的情况。</p>
-<h2 id="修改元素"><a class="header-anchor" href="#修改元素">¶</a>修改元素</h2>
+<h2 id="修改元素"><a class="header-anchor" href="#修改元素">✨</a>修改元素</h2>
 <pre><code class="language-java">// 将指定位置的元素改为指定的值 
 public E set(int index, E element) &amp;#123;
     rangeCheck(index);    // 检查index是否越界
@@ -1254,7 +1260,7 @@ public E set(int index, E element) &amp;#123;
     return oldValue;
 &amp;#125;
 </code></pre>
-<h2 id="查找元素"><a class="header-anchor" href="#查找元素">¶</a>查找元素</h2>
+<h2 id="查找元素"><a class="header-anchor" href="#查找元素">✨</a>查找元素</h2>
 <pre><code class="language-java">//判断ArrayList中是否包含Object(o)
 public boolean contains(Object o) &amp;#123;
     return indexOf(o) &gt;= 0;
@@ -1296,7 +1302,7 @@ public E get(int index) &amp;#123;
     return elementData(index); //实质上return (E) elementData[index]
 &amp;#125;
 </code></pre>
-<h2 id="序列化"><a class="header-anchor" href="#序列化">¶</a>序列化</h2>
+<h2 id="序列化"><a class="header-anchor" href="#序列化">✨</a>序列化</h2>
 <pre><code class="language-java">//保存数组实例的状态到一个流（即它序列化）。写入过程数组被更改会抛出异常
 private void writeObject(java.io.ObjectOutputStream s) throws java.io.IOException&amp;#123;
     int expectedModCount = modCount;
@@ -1338,7 +1344,7 @@ private void readObject(java.io.ObjectInputStream s) throws java.io.IOException,
 ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
 oos.writeObject(list);
 </code></pre>
-<h2 id="迭代器"><a class="header-anchor" href="#迭代器">¶</a>迭代器</h2>
+<h2 id="迭代器"><a class="header-anchor" href="#迭代器">✨</a>迭代器</h2>
 <pre><code class="language-java">//返回ListIterator，开始位置为指定参数
 public ListIterator&lt;E&gt; listIterator(int index) &amp;#123;
     if (index &lt; 0 || index &gt; size)
@@ -1472,7 +1478,7 @@ private class ListItr extends Itr implements ListIterator&lt;E&gt; &amp;#123;
 <li>Iterator只能实现顺序向后遍历，ListIterator可实现顺序向后遍历和逆向（顺序向前）遍历；</li>
 <li>Iterator只能实现remove操作，ListIterator可以实现remove操作，add操作，set操作。</li>
 </ol>
-<h2 id="其他方法"><a class="header-anchor" href="#其他方法">¶</a>其他方法</h2>
+<h2 id="其他方法"><a class="header-anchor" href="#其他方法">✨</a>其他方法</h2>
 <pre><code class="language-java">//返回ArrayList的大小（元素个数）
 public int size() &amp;#123;
     return size;
@@ -1514,10 +1520,10 @@ public &lt;T&gt; T[] toArray(T[] a) &amp;#123;
     return a;
 &amp;#125;
 </code></pre>
-<h2 id="ArrayList相关问题"><a class="header-anchor" href="#ArrayList相关问题">¶</a>ArrayList相关问题</h2>
-<h3 id="Integer-MAX-VALUE-8-这里为什么要减去8？"><a class="header-anchor" href="#Integer-MAX-VALUE-8-这里为什么要减去8？">¶</a>Integer.MAX_VALUE - 8  这里为什么要减去8？</h3>
+<h2 id="ArrayList相关问题"><a class="header-anchor" href="#ArrayList相关问题">✨</a>ArrayList相关问题</h2>
+<h3 id="Integer-MAX-VALUE-8-这里为什么要减去8？"><a class="header-anchor" href="#Integer-MAX-VALUE-8-这里为什么要减去8？">✨</a>Integer.MAX_VALUE - 8  这里为什么要减去8？</h3>
 <p>主要是考虑到不同的JVM,有的VM会在加入一些数据头,当扩容后的容量大于MAX_ARRAY_SIZE,我们会将最小需要容量和MAX_ARRAY_SIZE做比较,如果比它大, 只能取Integer.MAX_VALUE,否则是Integer.MAX_VALUE -8。<strong>这个是从jdk1.7开始才有的</strong></p>
-<h3 id="jdk1-8的无参构造函数和之前版本的构造函数有什么区别"><a class="header-anchor" href="#jdk1-8的无参构造函数和之前版本的构造函数有什么区别">¶</a>jdk1.8的无参构造函数和之前版本的构造函数有什么区别?</h3>
+<h3 id="jdk1-8的无参构造函数和之前版本的构造函数有什么区别"><a class="header-anchor" href="#jdk1-8的无参构造函数和之前版本的构造函数有什么区别">✨</a>jdk1.8的无参构造函数和之前版本的构造函数有什么区别?</h3>
 <pre><code class="language-java">jdk1.6
 public ArrayList() &amp;#123;    
     this(10);    
@@ -1536,7 +1542,7 @@ public ArrayList() &amp;#123;
 <p>java集合类在jdk1.7版本基本上都有一种改动：懒初始化。懒初始化指的是默认构造方法构造的集合类，占据尽可能少的内存空间（对于ArrayList来说，使用空数组来占据尽量少的空间，不使用null是为了避免null判断），在第一次进行包含有添加语义的操作时，才进行真正的<strong>初始化</strong>工作。</p>
 <p>1.7开始的ArrayList，默认构造方法构造的实例，底层数组是空数组，容量为0，在进行第一次add/addAll等操作时才会真正给底层数组赋非empty的值。如果add/addAll添加的元素小于10，则把elementData数组扩容为10个元素大小，否则使用刚好合适的大小（例如，第一次addAll添加6个，那么扩容为10个，第一次添加大于10个的，比如24个，扩容为24个，刚好合适）</p>
 <p>1.8版本，默认构造的实例这个行为没有改变，只是用的数组名字变了。</p>
-<h3 id="jdk1-6中扩容算法的缺陷"><a class="header-anchor" href="#jdk1-6中扩容算法的缺陷">¶</a>jdk1.6中扩容算法的缺陷</h3>
+<h3 id="jdk1-6中扩容算法的缺陷"><a class="header-anchor" href="#jdk1-6中扩容算法的缺陷">✨</a>jdk1.6中扩容算法的缺陷</h3>
 <p>（由于jdk1.7和jdk1.8在扩容算法方面差别不大，所以下面没有严格区分）</p>
 <pre><code class="language-java">jdk1.6
 public void ensureCapacity(int minCapacity) &amp;#123;  
@@ -1573,11 +1579,11 @@ public void ensureCapacity(int minCapacity) &amp;#123;
 <pre><code class="language-java">newCapacity = oldCapacity + (oldCapacity &gt;&gt; 1);
 </code></pre>
 <p>这行代码不仅仅是使用位运算加快执行速度，上面说了，这种做法才是对的，是真正的1.5倍。不仅仅因为那一个大小的差别，更重要的是避免过早出现int溢出的情况，保证了内部自动扩容会尽量按规定的策略执行。同时整个扩容处理流程中多增加了几处if判断，对各种情况处理更加完善。</p>
-<h3 id="为什么ArrayList自动容量扩充选择扩充1-5倍？"><a class="header-anchor" href="#为什么ArrayList自动容量扩充选择扩充1-5倍？">¶</a>为什么ArrayList自动容量扩充选择扩充1.5倍？</h3>
+<h3 id="为什么ArrayList自动容量扩充选择扩充1-5倍？"><a class="header-anchor" href="#为什么ArrayList自动容量扩充选择扩充1-5倍？">✨</a>为什么ArrayList自动容量扩充选择扩充1.5倍？</h3>
 <p>这种算法构造出来的新的数组长度的增量都会比上一次大( 而且是越来越大) ，避免频繁newInstance 的情况。</p>
-<h3 id="为什么ArrayList-不适合频繁插入和删除操作？"><a class="header-anchor" href="#为什么ArrayList-不适合频繁插入和删除操作？">¶</a>为什么ArrayList 不适合频繁插入和删除操作？</h3>
+<h3 id="为什么ArrayList-不适合频繁插入和删除操作？"><a class="header-anchor" href="#为什么ArrayList-不适合频繁插入和删除操作？">✨</a>为什么ArrayList 不适合频繁插入和删除操作？</h3>
 <p>由上面分析的增加删除方法可以看出在ArrayList中经常会调用 System.arraycopy 这个效率很低的操作来复制数组，所以导致ArrayList在插入和删除操作中效率不高。</p>
-<h3 id="RandomAccess接口"><a class="header-anchor" href="#RandomAccess接口">¶</a>RandomAccess接口</h3>
+<h3 id="RandomAccess接口"><a class="header-anchor" href="#RandomAccess接口">✨</a>RandomAccess接口</h3>
 <pre><code class="language-java">public interface RandomAccess &amp;#123;
 &amp;#125;
 </code></pre>
@@ -1607,10 +1613,8 @@ public void ensureCapacity(int minCapacity) &amp;#123;
     <section class='body'>
       <div class="vlts-rps"><a class="item" href="\java\collection\ArrayList_grow\" title="ArrayList动态扩容机制" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life9.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life9.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">ArrayList动态扩容机制</span><span class="excerpt">我们通过一个具体的例子看一下ArrayList的扩容效果
 先看一下ArrayList的初始容量
-ArrayList&lt;...</span></a><a class="item" href="\java\collection\Vector\" title="Vector 底层实现原理分析" rel="bookmark "><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">Vector 底层实现原理分析</span><span class="excerpt">Vector，一个可变长的数组，底层实现与 ArrayList 大同小异，但Vector是同步的（线程安全），Vector...</span></a><a class="item" href="\java\collection\LinkedHashMap\" title="LinkedHashMap 底层实现原理分析" rel="bookmark "><img src="https://cdn.nlark.com/yuque/0/2020/png/420470/1594858298550-74cd2f4d-fbd7-4fb1-9137-66e8cabfa0c9.png#align=left&display=inline&height=481&margin=%5Bobject%20Object%5D&name=image.png&originHeight=481&originWidth=496&size=130674&status=done&style=none&width=496" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/420470/1594858298550-74cd2f4d-fbd7-4fb1-9137-66e8cabfa0c9.png#align=left&display=inline&height=481&margin=%5Bobject%20Object%5D&name=image.png&originHeight=481&originWidth=496&size=130674&status=done&style=none&width=496" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">LinkedHashMap 底层实现原理分析</span><span class="excerpt">LinkedHashMap继承自HashMap实现了Map接口。基本实现同HashMap一样，不同之处在于LinkedHa...</span></a><a class="item" href="\java\collection\LinkedList\" title="LinkedList 底层实现原理分析" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/collection2.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/collection2.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">LinkedList 底层实现原理分析</span><span class="excerpt">
-在Java.util包下
-继承自AbstractSequentialList
-实现 List 接口，能对它进行队列操作。...</span></a><a class="item" href="\java\abstract_interface\" title="接口 vs 抽象类的区别？" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">接口 vs 抽象类的区别？</span><span class="excerpt">在面向对象编程中，抽象类和接口是两个经常被用到的语法概念，是面向对象四大特性，以及很多设计模式、设计思想、设计原则编程实现...</span></a></div></section></div>
+ArrayList&lt;...</span></a><a class="item" href="\java\collection\Vector\" title="Vector 底层实现原理分析" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life14.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life14.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">Vector 底层实现原理分析</span><span class="excerpt">Vector，一个可变长的数组，底层实现与 ArrayList 大同小异，但Vector是同步的（线程安全），Vector...</span></a><a class="item" href="\java\collection\HashMapAnalysis\" title="HashMap 底层实现原理分析" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life11.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life11.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">HashMap 底层实现原理分析</span><span class="excerpt">HashMap 是 Map 的一个实现类，它代表的是一种键值对的数据存储形式。
+大多数情况下可以直接定位到它的值，因而具有...</span></a><a class="item" href="\java\collection\LinkedHashMap\" title="LinkedHashMap 底层实现原理分析" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life12.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life12.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">LinkedHashMap 底层实现原理分析</span><span class="excerpt">LinkedHashMap继承自HashMap实现了Map接口。基本实现同HashMap一样，不同之处在于LinkedHa...</span></a><a class="item" href="\java\abstract_interface\" title="接口 vs 抽象类的区别？" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">接口 vs 抽象类的区别？</span><span class="excerpt">在面向对象编程中，抽象类和接口是两个经常被用到的语法概念，是面向对象四大特性，以及很多设计模式、设计思想、设计原则编程实现...</span></a></div></section></div>
       
       
         <div class='copyright'>
@@ -1639,10 +1643,10 @@ ArrayList&lt;...</span></a><a class="item" href="\java\collection\Vector\" title
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-28T22:22:26+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-02T17:54:08+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Sep 28, 2020</p>
+    <p>更新于：Oct 2, 2020</p>
   </a>
 </div>
 
@@ -1664,7 +1668,7 @@ ArrayList&lt;...</span></a><a class="item" href="\java\collection\Vector\" title
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gyl-coder.top/java/collection/ArrayList/&title=ArrayList 底层实现原理分析 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/collection.svg&summary=ArrayList是List接口的 可变数组的实现。实现了所有可选列表操作，并允许包括 null 在内的所有元素。除了实现 List接口外，此类还提供一些方法来操作内部用来存储列表的数组的大小。ArrayList继承自 AbstractList，这是一个抽象类对一些基础的list操作做了一些封装.实现了RandomAccess 标记接口，表明可以实现快速随机访问.实现了Cloneable接口的实现表示该容器具有Clone函数操作，Serializable是序列化。
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gyl-coder.top/java/collection/ArrayList/&title=集合, ArrayList - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life10.webp&summary=ArrayList是List接口的 可变数组的实现。实现了所有可选列表操作，并允许包括 null 在内的所有元素。除了实现 List接口外，此类还提供一些方法来操作内部用来存储列表的数组的大小。ArrayList继承自 AbstractList，这是一个抽象类对一些基础的list操作做了一些封装.实现了RandomAccess 标记接口，表明可以实现快速随机访问.实现了Cloneable接口的实现表示该容器具有Clone函数操作，Serializable是序列化。
 每个ArrayList实例都有一个容量，该容量是指用来存储列表元素的数组的大小。它总是至少等于列表的大小。随着向ArrayList中不断添加元素，其容量也自动增长。自动增长会带来数据向新数组的重新拷贝，因此，如果可预知数据量的大小，就可在构造ArrayList实例时指定其容量。
 在添加大量元素前，应用程序也可以使用ensureCapacity操作来增加ArrayList实例的容量，这可以减少递增式再分配的数量。
 注意，此实现不是同步的。如果多个线程同时访问一个ArrayList实例，而其中至少一个线程从结构上修改了列表，那么它必须保持外部同步。
@@ -1682,7 +1686,7 @@ ArrayList这个数据结构比较简单，总体来说，ArrayList底层结构�
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://gyl-coder.top/java/collection/ArrayList/&title=ArrayList 底层实现原理分析 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/collection.svg&summary=ArrayList是List接口的 可变数组的实现。实现了所有可选列表操作，并允许包括 null 在内的所有元素。除了实现 List接口外，此类还提供一些方法来操作内部用来存储列表的数组的大小。ArrayList继承自 AbstractList，这是一个抽象类对一些基础的list操作做了一些封装.实现了RandomAccess 标记接口，表明可以实现快速随机访问.实现了Cloneable接口的实现表示该容器具有Clone函数操作，Serializable是序列化。
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://gyl-coder.top/java/collection/ArrayList/&title=集合, ArrayList - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life10.webp&summary=ArrayList是List接口的 可变数组的实现。实现了所有可选列表操作，并允许包括 null 在内的所有元素。除了实现 List接口外，此类还提供一些方法来操作内部用来存储列表的数组的大小。ArrayList继承自 AbstractList，这是一个抽象类对一些基础的list操作做了一些封装.实现了RandomAccess 标记接口，表明可以实现快速随机访问.实现了Cloneable接口的实现表示该容器具有Clone函数操作，Serializable是序列化。
 每个ArrayList实例都有一个容量，该容量是指用来存储列表元素的数组的大小。它总是至少等于列表的大小。随着向ArrayList中不断添加元素，其容量也自动增长。自动增长会带来数据向新数组的重新拷贝，因此，如果可预知数据量的大小，就可在构造ArrayList实例时指定其容量。
 在添加大量元素前，应用程序也可以使用ensureCapacity操作来增加ArrayList实例的容量，这可以减少递增式再分配的数量。
 注意，此实现不是同步的。如果多个线程同时访问一个ArrayList实例，而其中至少一个线程从结构上修改了列表，那么它必须保持外部同步。
@@ -1700,7 +1704,7 @@ ArrayList这个数据结构比较简单，总体来说，ArrayList底层结构�
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://gyl-coder.top/java/collection/ArrayList/&title=ArrayList 底层实现原理分析 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/collection.svg&summary=ArrayList是List接口的 可变数组的实现。实现了所有可选列表操作，并允许包括 null 在内的所有元素。除了实现 List接口外，此类还提供一些方法来操作内部用来存储列表的数组的大小。ArrayList继承自 AbstractList，这是一个抽象类对一些基础的list操作做了一些封装.实现了RandomAccess 标记接口，表明可以实现快速随机访问.实现了Cloneable接口的实现表示该容器具有Clone函数操作，Serializable是序列化。
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://gyl-coder.top/java/collection/ArrayList/&title=集合, ArrayList - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life10.webp&summary=ArrayList是List接口的 可变数组的实现。实现了所有可选列表操作，并允许包括 null 在内的所有元素。除了实现 List接口外，此类还提供一些方法来操作内部用来存储列表的数组的大小。ArrayList继承自 AbstractList，这是一个抽象类对一些基础的list操作做了一些封装.实现了RandomAccess 标记接口，表明可以实现快速随机访问.实现了Cloneable接口的实现表示该容器具有Clone函数操作，Serializable是序列化。
 每个ArrayList实例都有一个容量，该容量是指用来存储列表元素的数组的大小。它总是至少等于列表的大小。随着向ArrayList中不断添加元素，其容量也自动增长。自动增长会带来数据向新数组的重新拷贝，因此，如果可预知数据量的大小，就可在构造ArrayList实例时指定其容量。
 在添加大量元素前，应用程序也可以使用ensureCapacity操作来增加ArrayList实例的容量，这可以减少递增式再分配的数量。
 注意，此实现不是同步的。如果多个线程同时访问一个ArrayList实例，而其中至少一个线程从结构上修改了列表，那么它必须保持外部同步。
@@ -1744,13 +1748,9 @@ ArrayList&lt;Integer&gt; array = new ArrayList&lt...</p>
         </a>
       
       
-        <a class='next' href='/java/try_catch_finally/'>
-          <p class='title'>try catch finally执行顺序<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>首先在finally和try中对数据的操作时数据分为 基本数据类型和引用数据类型，他们存放的地方也不一样，一个是栈区另一个是在堆区。
-
-¶finally中没有return
-
-public cla...</p>
+        <a class='next' href='/spring/custom-ioc-aop/'>
+          <p class='title'>手写实现IOC 和 AOP<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>通过上一篇 IOC &amp; AOP 详解 我们了解了 IOC 和 AOP 这两个思想，下面我们先不去考虑Spring是如何实现这两个思想的，先通过一个 银行转账 的案例，分析一下该案例在代码...</p>
         </a>
       
     </div>
@@ -2169,12 +2169,12 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
         
           
     <li>
-      <a class='vlts-menu fix-cursor-default' href=https://album.gyl-coder.top
+      <a class='vlts-menu fix-cursor-default' href=/album/
         
         
         
         
-          id="https:albumgyl-codertop"
+          id="album"
         >
         <i class='fas fa-image fa-fw fa-fw'></i> My Album
       </a>

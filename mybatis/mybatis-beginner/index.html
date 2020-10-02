@@ -894,10 +894,6 @@
   <div class="article-meta" id="top">
     
     
-      <a title='MyBatis 入门' href='/mybatis/mybatis-beginner/'>
-        <img class='thumbnail' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/geshi.svg'>
-      </a>
-    
     
       <h1 class="title">
         MyBatis 入门
@@ -938,10 +934,10 @@
           
         
           
-            <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-28T22:22:26+08:00">
+            <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-02T18:32:01+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Sep 28, 2020</p>
+    <p>更新于：Oct 2, 2020</p>
   </a>
 </div>
 
@@ -959,22 +955,22 @@
 <div class="tag link"><a class="link-card" title="官网地址" target="_blank" rel="noopener" href="https://mybatis.org/mybatis-3/"><div class="left"><img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/></div><div class="right"><p class="text">官网地址</p><p class="url">https://mybatis.org/mybatis-3/</p></div></a></div>
 <a id="more"></a>
 <p>上面简单介绍了一下 MyBatis ，下面我们来看下MyBatis 的优势</p>
-<h2 id="MyBatis-的优势-劣势"><a class="header-anchor" href="#MyBatis-的优势-劣势">¶</a>MyBatis 的优势&amp;劣势</h2>
-<h3 id="优势"><a class="header-anchor" href="#优势">¶</a>优势</h3>
+<h2 id="MyBatis-的优势-劣势"><a class="header-anchor" href="#MyBatis-的优势-劣势">✨</a>MyBatis 的优势&amp;劣势</h2>
+<h3 id="优势"><a class="header-anchor" href="#优势">✨</a>优势</h3>
 <p>我认为 MyBatis 有以下几点优势</p>
 <ul>
 <li><strong>简单易学</strong> MyBatis 本身体积较小且没有第三方依赖，使用起来简单容易上手。源码也比较容易看懂</li>
 <li><strong>边界清晰</strong> MyBatis 是一个半自动化的持久层框架，Sql 和 Java代码分开，功能边界较为清晰。一个专注业务，一个专注数据。</li>
 <li><strong>代码量相对较少</strong> 因为MyBatis核心是对JDBC代码的封装，避免开发人员写大量重复的代码。</li>
 </ul>
-<h3 id="劣势"><a class="header-anchor" href="#劣势">¶</a>劣势</h3>
+<h3 id="劣势"><a class="header-anchor" href="#劣势">✨</a>劣势</h3>
 <ul>
 <li>依赖SQL 要求开发人员有一定的SQL 功底</li>
 <li>SQL 语句的编写工作量大（表多，表结构复杂时）</li>
 <li>数据库移植性差（针对不同的数据库SQL 有差异）</li>
 </ul>
-<h2 id="MyBatis-基本应用"><a class="header-anchor" href="#MyBatis-基本应用">¶</a>MyBatis 基本应用</h2>
-<h3 id="开发步骤"><a class="header-anchor" href="#开发步骤">¶</a>开发步骤</h3>
+<h2 id="MyBatis-基本应用"><a class="header-anchor" href="#MyBatis-基本应用">✨</a>MyBatis 基本应用</h2>
+<h3 id="开发步骤"><a class="header-anchor" href="#开发步骤">✨</a>开发步骤</h3>
 <p>如果要在工程中使用MyBatis 基本流程如下：</p>
 <ol>
 <li>在pom 文件中添加Mybatis 的依赖</li>
@@ -985,7 +981,7 @@
 <li>编写测试类</li>
 </ol>
 <p>下面我们通过使用MyBatis 对一个User 实体进行CRUD 操作。</p>
-<h4 id="引入相关依赖"><a class="header-anchor" href="#引入相关依赖">¶</a>引入相关依赖</h4>
+<h4 id="引入相关依赖"><a class="header-anchor" href="#引入相关依赖">✨</a>引入相关依赖</h4>
 <p>在工程所在的 pom 文件中加入以下依赖</p>
 <pre><code>    &lt;properties&gt;
         &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
@@ -1021,7 +1017,7 @@
         &lt;/dependency&gt;
     &lt;/dependencies&gt;
 </code></pre>
-<h4 id="创建User-表结构"><a class="header-anchor" href="#创建User-表结构">¶</a>创建User 表结构</h4>
+<h4 id="创建User-表结构"><a class="header-anchor" href="#创建User-表结构">✨</a>创建User 表结构</h4>
 <p>在数据库中建立一个简单的User 表结构</p>
 <table>
 <thead>
@@ -1049,7 +1045,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="编写User-实体"><a class="header-anchor" href="#编写User-实体">¶</a>编写User 实体</h4>
+<h4 id="编写User-实体"><a class="header-anchor" href="#编写User-实体">✨</a>编写User 实体</h4>
 <p>这里为了减少代码量，引入了 lombok</p>
 <pre><code>@Getter
 @Setter
@@ -1067,7 +1063,7 @@ public class User &amp;#123;
 
 &amp;#125;
 </code></pre>
-<h4 id="编写UserMapper-映射文件"><a class="header-anchor" href="#编写UserMapper-映射文件">¶</a>编写UserMapper 映射文件</h4>
+<h4 id="编写UserMapper-映射文件"><a class="header-anchor" href="#编写UserMapper-映射文件">✨</a>编写UserMapper 映射文件</h4>
 <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
 &lt;!DOCTYPE mapper 
  PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot; 
@@ -1140,10 +1136,10 @@ public class User &amp;#123;
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-28T22:22:26+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-02T18:32:01+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Sep 28, 2020</p>
+    <p>更新于：Oct 2, 2020</p>
   </a>
 </div>
 
@@ -1165,7 +1161,7 @@ public class User &amp;#123;
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gyl-coder.top/mybatis/mybatis-beginner/&title=MyBatis 入门 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/geshi.svg&summary=MyBatis 是一款优秀的基于 ORM 的半自动轻量级持久层框架。它支持定制化SQL、存储过程以及高级映射。MyBatis 避免了几乎所有的 JDBC 代码和手动设置参数以及获取结果集。MyBatis 可以使用简单的 XML 或注解来配置和映射原生类型、接口和 Java 的POJO（Plain Old Java Objects，普通老式Java 对象）为数据库的记录。
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gyl-coder.top/mybatis/mybatis-beginner/&title=MyBatis 入门 - yanliang's blog&summary=MyBatis 是一款优秀的基于 ORM 的半自动轻量级持久层框架。它支持定制化SQL、存储过程以及高级映射。MyBatis 避免了几乎所有的 JDBC 代码和手动设置参数以及获取结果集。MyBatis 可以使用简单的 XML 或注解来配置和映射原生类型、接口和 Java 的POJO（Plain Old Java Objects，普通老式Java 对象）为数据库的记录。
 MyBatis 原本是Apache 的一个开源项目IBatis，2010年6月这个项目由 Apache Software Foundation 迁移到了 Google Code，随后更名为 MyBatis 。
 iBatis 一词来源于 “internet” 和 “abatis” 的组合，是一个基于Java的持久层框架。
 官网地址https://mybatis.org/mybatis-3/"
@@ -1180,7 +1176,7 @@ iBatis 一词来源于 “internet” 和 “abatis” 的组合，是一个基�
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://gyl-coder.top/mybatis/mybatis-beginner/&title=MyBatis 入门 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/geshi.svg&summary=MyBatis 是一款优秀的基于 ORM 的半自动轻量级持久层框架。它支持定制化SQL、存储过程以及高级映射。MyBatis 避免了几乎所有的 JDBC 代码和手动设置参数以及获取结果集。MyBatis 可以使用简单的 XML 或注解来配置和映射原生类型、接口和 Java 的POJO（Plain Old Java Objects，普通老式Java 对象）为数据库的记录。
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://gyl-coder.top/mybatis/mybatis-beginner/&title=MyBatis 入门 - yanliang's blog&summary=MyBatis 是一款优秀的基于 ORM 的半自动轻量级持久层框架。它支持定制化SQL、存储过程以及高级映射。MyBatis 避免了几乎所有的 JDBC 代码和手动设置参数以及获取结果集。MyBatis 可以使用简单的 XML 或注解来配置和映射原生类型、接口和 Java 的POJO（Plain Old Java Objects，普通老式Java 对象）为数据库的记录。
 MyBatis 原本是Apache 的一个开源项目IBatis，2010年6月这个项目由 Apache Software Foundation 迁移到了 Google Code，随后更名为 MyBatis 。
 iBatis 一词来源于 “internet” 和 “abatis” 的组合，是一个基于Java的持久层框架。
 官网地址https://mybatis.org/mybatis-3/"
@@ -1195,7 +1191,7 @@ iBatis 一词来源于 “internet” 和 “abatis” 的组合，是一个基�
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://gyl-coder.top/mybatis/mybatis-beginner/&title=MyBatis 入门 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/geshi.svg&summary=MyBatis 是一款优秀的基于 ORM 的半自动轻量级持久层框架。它支持定制化SQL、存储过程以及高级映射。MyBatis 避免了几乎所有的 JDBC 代码和手动设置参数以及获取结果集。MyBatis 可以使用简单的 XML 或注解来配置和映射原生类型、接口和 Java 的POJO（Plain Old Java Objects，普通老式Java 对象）为数据库的记录。
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://gyl-coder.top/mybatis/mybatis-beginner/&title=MyBatis 入门 - yanliang's blog&summary=MyBatis 是一款优秀的基于 ORM 的半自动轻量级持久层框架。它支持定制化SQL、存储过程以及高级映射。MyBatis 避免了几乎所有的 JDBC 代码和手动设置参数以及获取结果集。MyBatis 可以使用简单的 XML 或注解来配置和映射原生类型、接口和 Java 的POJO（Plain Old Java Objects，普通老式Java 对象）为数据库的记录。
 MyBatis 原本是Apache 的一个开源项目IBatis，2010年6月这个项目由 Apache Software Foundation 迁移到了 Google Code，随后更名为 MyBatis 。
 iBatis 一词来源于 “internet” 和 “abatis” 的组合，是一个基于Java的持久层框架。
 官网地址https://mybatis.org/mybatis-3/"
@@ -1659,12 +1655,12 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
         
           
     <li>
-      <a class='vlts-menu fix-cursor-default' href=https://album.gyl-coder.top
+      <a class='vlts-menu fix-cursor-default' href=/album/
         
         
         
         
-          id="https:albumgyl-codertop"
+          id="album"
         >
         <i class='fas fa-image fa-fw fa-fw'></i> My Album
       </a>

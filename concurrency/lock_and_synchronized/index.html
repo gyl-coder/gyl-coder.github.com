@@ -979,7 +979,7 @@
 <li>**非阻塞地获取锁。**如果尝试获取锁失败，并不进入阻塞状态，而是直接返回，那这个线程也有机会释放曾经持有的锁。</li>
 </ol>
 <a id="more"></a>
-<h2 id="Lock"><a class="header-anchor" href="#Lock">¶</a>Lock</h2>
+<h2 id="Lock"><a class="header-anchor" href="#Lock">✨</a>Lock</h2>
 <p>下面我们看下lock接口的API</p>
 <pre><code class="language-java">// 支持中断的 API
 void lockInterruptibly() 
@@ -1039,7 +1039,7 @@ if(lock.tryLock()) &amp;#123;
 <p>注意，当一个线程获取了锁之后，是不会被interrupt()方法中断的。因为本身在前面的文章中讲过单独调用interrupt()方法不能中断正在运行过程中的线程，只能中断阻塞过程中的线程。</p>
 <p>因此当通过lockInterruptibly()方法获取某个锁时，如果不能获取到，只有进行等待的情况下，是可以响应中断的。</p>
 <p>而用synchronized修饰的话，当一个线程处于等待某个锁的状态，是无法被中断的，只有一直等待下去。</p>
-<h2 id="Lock如果保证可见性"><a class="header-anchor" href="#Lock如果保证可见性">¶</a>Lock如果保证可见性</h2>
+<h2 id="Lock如果保证可见性"><a class="header-anchor" href="#Lock如果保证可见性">✨</a>Lock如果保证可见性</h2>
 <p>synchronized 之所以能够保证可见性，也是因为有一条synchronized 相关的规则：synchronized 的解锁 Happens-Before 于后续对这个锁的加锁。那 Lock 靠什么保证可见性呢？例如在下面的代码中，线程 T1 对 value 进行了 +=1 操作，那后续的线程 T2 能够看到 value 的正确结果吗？</p>
 <pre><code class="language-java">class X &amp;#123;
   private final Lock rtl =
@@ -1106,7 +1106,7 @@ if(lock.tryLock()) &amp;#123;
 奇数线程：1
 偶数线程：2
 ...
-</span></a><a class="item" href="\concurrency\why_concurrency\" title="Why Concurrency ?" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life4.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life4.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">Why Concurrency ?</span><span class="excerpt">一门技术的出现必然有其出现的道理，后来需要了解它出现的时代环境和因素，扩充自己的视野，发掘技术发展的经过。分析其优缺点，以...</span></a><a class="item" href="\concurrency\waiting_for_notification\" title="等待通知机制" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life3.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life3.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">等待通知机制</span><span class="excerpt">多线程环境中，经常出现这样一种场景。一个线程修改了一个对象的值，而另一个线程感知到了变化，然后进行相应的操作，整个过程开始...</span></a><a class="item" href="\java\abstract_interface\" title="接口 vs 抽象类的区别？" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">接口 vs 抽象类的区别？</span><span class="excerpt">在面向对象编程中，抽象类和接口是两个经常被用到的语法概念，是面向对象四大特性，以及很多设计模式、设计思想、设计原则编程实现...</span></a></div></section></div>
+</span></a><a class="item" href="\concurrency\waiting_for_notification\" title="等待通知机制" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life3.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life3.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">等待通知机制</span><span class="excerpt">多线程环境中，经常出现这样一种场景。一个线程修改了一个对象的值，而另一个线程感知到了变化，然后进行相应的操作，整个过程开始...</span></a><a class="item" href="\concurrency\why_concurrency\" title="Why Concurrency ?" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life4.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life4.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">Why Concurrency ?</span><span class="excerpt">一门技术的出现必然有其出现的道理，后来需要了解它出现的时代环境和因素，扩充自己的视野，发掘技术发展的经过。分析其优缺点，以...</span></a><a class="item" href="\java\abstract_interface\" title="接口 vs 抽象类的区别？" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">接口 vs 抽象类的区别？</span><span class="excerpt">在面向对象编程中，抽象类和接口是两个经常被用到的语法概念，是面向对象四大特性，以及很多设计模式、设计思想、设计原则编程实现...</span></a></div></section></div>
       
       
         <div class='copyright'>
@@ -1259,14 +1259,8 @@ if(lock.tryLock()) &amp;#123;
   
     <div class="prev-next">
       
-        <a class='prev' href='/concurrency/waiting_for_notification/'>
-          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>等待通知机制</p>
-          <p class='content'>多线程环境中，经常出现这样一种场景。一个线程修改了一个对象的值，而另一个线程感知到了变化，然后进行相应的操作，整个过程开始于一个线程，最终结束于另一个线程。这就是传说中的生产者/消费者模型（前者...</p>
-        </a>
-      
-      
-        <a class='next' href='/concurrency/alternate_printing/'>
-          <p class='title'>多个线程交替打印内容<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+        <a class='prev' href='/concurrency/alternate_printing/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>多个线程交替打印内容</p>
           <p class='content'>需求： 启动两个线程，交替打印奇偶数。 效果如下所示
 偶数线程：0
 奇数线程：1
@@ -1274,9 +1268,16 @@ if(lock.tryLock()) &amp;#123;
 ...
 
 
-¶两个线程交替打印
-¶无锁实现
+✨两个线程交替打印
+✨无锁实现
 不需要进行任何加锁，利用并发包中的AtomicInte...</p>
+        </a>
+      
+      
+        <a class='next' href='/concurrency/why_concurrency/'>
+          <p class='title'>Why Concurrency ?<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>一门技术的出现必然有其出现的道理，后来需要了解它出现的时代环境和因素，扩充自己的视野，发掘技术发展的经过。分析其优缺点，以便更好的运用。
+一直以来，硬件的发展极其迅速，也有一个很著名的 摩尔定律...</p>
         </a>
       
     </div>
@@ -1695,12 +1696,12 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
         
           
     <li>
-      <a class='vlts-menu fix-cursor-default' href=https://album.gyl-coder.top
+      <a class='vlts-menu fix-cursor-default' href=/album/
         
         
         
         
-          id="https:albumgyl-codertop"
+          id="album"
         >
         <i class='fas fa-image fa-fw fa-fw'></i> My Album
       </a>

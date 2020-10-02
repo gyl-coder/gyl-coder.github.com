@@ -17,7 +17,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>Vector 底层实现原理分析 - yanliang&#39;s blog</title>
+  <title>集合, Vector - yanliang&#39;s blog</title>
   
     <meta name="keywords" content="Java,集合,Vector">
   
@@ -892,11 +892,17 @@
 
 
   
+    <div class='headimg-div'>
+      <a class='headimg-a'>
+        <img class='headimg' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life14.webp'/>
+      </a>
+    </div>
+  
   <div class="article-meta" id="top">
     
     
       <a title='Vector 底层实现原理分析' href='/java/collection/Vector/'>
-        <img class='thumbnail' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/collection.svg'>
+        <img class='thumbnail' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life14.webp'>
       </a>
     
     
@@ -939,10 +945,10 @@
           
         
           
-            <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-28T22:22:26+08:00">
+            <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-02T17:57:27+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Sep 28, 2020</p>
+    <p>更新于：Oct 2, 2020</p>
   </a>
 </div>
 
@@ -970,7 +976,7 @@
     private static final int MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;       // 能够分配元素数量的最大值
 &amp;#125;
 </code></pre>
-<h2 id="构造方法"><a class="header-anchor" href="#构造方法">¶</a>构造方法</h2>
+<h2 id="构造方法"><a class="header-anchor" href="#构造方法">✨</a>构造方法</h2>
 <p><code>Vector</code>有四个构造方法，其内部有两个重要的参数，一个是<code>elementCount</code>代表当前元素个数，一个是<code>capacityIncrement</code>代表当列表元素满了之后增加的容量。如果不设置<code>capacityIncrement</code>，那么<code>Vector</code>容量扩展时默认将扩展两倍，在<a href="../ArrayList">ArrayList源码分析</a>中，我们可以知道<code>ArrayList</code>在扩容时默认将扩展1.5倍。<br>
 <code>ector</code>初始时容量为<strong>10</strong>，而<code>ArrayList</code>初始容量为<strong>0</strong>。</p>
 <pre><code class="language-java">// Vector构造函数。默认容量是10。    
@@ -1004,7 +1010,7 @@ public Vector(Collection&lt;? extends E&gt; c) &amp;#123;
 &amp;#125;
 </code></pre>
 <p><code>Vector</code>中的构造器和<code>ArrayList</code>中的基本相同，只不过<code>Vector</code>中多了一个可以自定义增长系数的构造器<strong>public Vector(int initialCapacity, int capacityIncrement)</strong></p>
-<h2 id="扩容机制"><a class="header-anchor" href="#扩容机制">¶</a>扩容机制</h2>
+<h2 id="扩容机制"><a class="header-anchor" href="#扩容机制">✨</a>扩容机制</h2>
 <p><code>Vector</code>中的添加元素和<code>ArrayList</code>中的大同小异，这里不再具体分析，这里只分析下Vector的扩容机制</p>
 <pre><code class="language-java">/**
  * 增加vector容量
@@ -1063,7 +1069,7 @@ private static int hugeCapacity(int minCapacity) &amp;#123;
         MAX_ARRAY_SIZE;
 &amp;#125;
 </code></pre>
-<h2 id="其他方法"><a class="header-anchor" href="#其他方法">¶</a>其他方法</h2>
+<h2 id="其他方法"><a class="header-anchor" href="#其他方法">✨</a>其他方法</h2>
 <p><code>Vector</code>中添加一个枚举方法</p>
 <pre><code class="language-java">// 返回一个枚举类型的对象
 public Enumeration&lt;E&gt; elements() &amp;#123;
@@ -1094,7 +1100,7 @@ public Enumeration&lt;E&gt; elements() &amp;#123;
 </li>
 </ul>
 <p>下面我们再来分析下Vector的子类Stack方法。</p>
-<h2 id="Stack"><a class="header-anchor" href="#Stack">¶</a>Stack</h2>
+<h2 id="Stack"><a class="header-anchor" href="#Stack">✨</a>Stack</h2>
 <p>Stack类代表最先进先出（LIFO）堆栈的对象。 它扩展了Vector五个操作，允许一个vector被视为堆栈。<br>
 五个方法分别是：</p>
 <div class='checkbox'><input type="radio" />
@@ -1170,11 +1176,11 @@ class Stack&lt;E&gt; extends Vector&lt;E&gt; &amp;#123;
     <section class='body'>
       <div class="vlts-rps"><a class="item" href="\java\collection\ArrayList_grow\" title="ArrayList动态扩容机制" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life9.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life9.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">ArrayList动态扩容机制</span><span class="excerpt">我们通过一个具体的例子看一下ArrayList的扩容效果
 先看一下ArrayList的初始容量
-ArrayList&lt;...</span></a><a class="item" href="\java\collection\LinkedHashMap\" title="LinkedHashMap 底层实现原理分析" rel="bookmark "><img src="https://cdn.nlark.com/yuque/0/2020/png/420470/1594858298550-74cd2f4d-fbd7-4fb1-9137-66e8cabfa0c9.png#align=left&display=inline&height=481&margin=%5Bobject%20Object%5D&name=image.png&originHeight=481&originWidth=496&size=130674&status=done&style=none&width=496" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/420470/1594858298550-74cd2f4d-fbd7-4fb1-9137-66e8cabfa0c9.png#align=left&display=inline&height=481&margin=%5Bobject%20Object%5D&name=image.png&originHeight=481&originWidth=496&size=130674&status=done&style=none&width=496" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">LinkedHashMap 底层实现原理分析</span><span class="excerpt">LinkedHashMap继承自HashMap实现了Map接口。基本实现同HashMap一样，不同之处在于LinkedHa...</span></a><a class="item" href="\java\collection\LinkedList\" title="LinkedList 底层实现原理分析" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/collection2.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/collection2.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">LinkedList 底层实现原理分析</span><span class="excerpt">
+ArrayList&lt;...</span></a><a class="item" href="\java\collection\HashMapAnalysis\" title="HashMap 底层实现原理分析" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life11.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life11.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">HashMap 底层实现原理分析</span><span class="excerpt">HashMap 是 Map 的一个实现类，它代表的是一种键值对的数据存储形式。
+大多数情况下可以直接定位到它的值，因而具有...</span></a><a class="item" href="\java\collection\LinkedHashMap\" title="LinkedHashMap 底层实现原理分析" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life12.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life12.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">LinkedHashMap 底层实现原理分析</span><span class="excerpt">LinkedHashMap继承自HashMap实现了Map接口。基本实现同HashMap一样，不同之处在于LinkedHa...</span></a><a class="item" href="\java\collection\LinkedList\" title="LinkedList 底层实现原理分析" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life13.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life13.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">LinkedList 底层实现原理分析</span><span class="excerpt">
 在Java.util包下
 继承自AbstractSequentialList
-实现 List 接口，能对它进行队列操作。...</span></a><a class="item" href="\java\collection\HashMapAnalysis\" title="HashMap 底层实现原理分析" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/20200323120021.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/20200323120021.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">HashMap 底层实现原理分析</span><span class="excerpt">HashMap 是 Map 的一个实现类，它代表的是一种键值对的数据存储形式。
-大多数情况下可以直接定位到它的值，因而具有...</span></a><a class="item" href="\java\abstract_interface\" title="接口 vs 抽象类的区别？" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">接口 vs 抽象类的区别？</span><span class="excerpt">在面向对象编程中，抽象类和接口是两个经常被用到的语法概念，是面向对象四大特性，以及很多设计模式、设计思想、设计原则编程实现...</span></a></div></section></div>
+实现 List 接口，能对它进行队列操作。...</span></a><a class="item" href="\java\abstract_interface\" title="接口 vs 抽象类的区别？" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">接口 vs 抽象类的区别？</span><span class="excerpt">在面向对象编程中，抽象类和接口是两个经常被用到的语法概念，是面向对象四大特性，以及很多设计模式、设计思想、设计原则编程实现...</span></a></div></section></div>
       
       
         <div class='copyright'>
@@ -1203,10 +1209,10 @@ ArrayList&lt;...</span></a><a class="item" href="\java\collection\LinkedHashMap\
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-28T22:22:26+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-02T17:57:27+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Sep 28, 2020</p>
+    <p>更新于：Oct 2, 2020</p>
   </a>
 </div>
 
@@ -1228,7 +1234,7 @@ ArrayList&lt;...</span></a><a class="item" href="\java\collection\LinkedHashMap\
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gyl-coder.top/java/collection/Vector/&title=Vector 底层实现原理分析 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/collection.svg&summary=Vector，一个可变长的数组，底层实现与 ArrayList 大同小异，但Vector是同步的（线程安全），Vector的很多方法之前都加了关键字synchronized，所以是线程安全的。
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gyl-coder.top/java/collection/Vector/&title=集合, Vector - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life14.webp&summary=Vector，一个可变长的数组，底层实现与 ArrayList 大同小异，但Vector是同步的（线程安全），Vector的很多方法之前都加了关键字synchronized，所以是线程安全的。
 由于Vector的实现和ArrayList的实现大同小异，这里就不再逐一分析Vector中的方法，主要分析一下和ArrayList不同的方法。
 首先我们还是来看以下Vector中定义的变量"
           
@@ -1242,7 +1248,7 @@ ArrayList&lt;...</span></a><a class="item" href="\java\collection\LinkedHashMap\
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://gyl-coder.top/java/collection/Vector/&title=Vector 底层实现原理分析 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/collection.svg&summary=Vector，一个可变长的数组，底层实现与 ArrayList 大同小异，但Vector是同步的（线程安全），Vector的很多方法之前都加了关键字synchronized，所以是线程安全的。
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://gyl-coder.top/java/collection/Vector/&title=集合, Vector - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life14.webp&summary=Vector，一个可变长的数组，底层实现与 ArrayList 大同小异，但Vector是同步的（线程安全），Vector的很多方法之前都加了关键字synchronized，所以是线程安全的。
 由于Vector的实现和ArrayList的实现大同小异，这里就不再逐一分析Vector中的方法，主要分析一下和ArrayList不同的方法。
 首先我们还是来看以下Vector中定义的变量"
           
@@ -1256,7 +1262,7 @@ ArrayList&lt;...</span></a><a class="item" href="\java\collection\LinkedHashMap\
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://gyl-coder.top/java/collection/Vector/&title=Vector 底层实现原理分析 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/collection.svg&summary=Vector，一个可变长的数组，底层实现与 ArrayList 大同小异，但Vector是同步的（线程安全），Vector的很多方法之前都加了关键字synchronized，所以是线程安全的。
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://gyl-coder.top/java/collection/Vector/&title=集合, Vector - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life14.webp&summary=Vector，一个可变长的数组，底层实现与 ArrayList 大同小异，但Vector是同步的（线程安全），Vector的很多方法之前都加了关键字synchronized，所以是线程安全的。
 由于Vector的实现和ArrayList的实现大同小异，这里就不再逐一分析Vector中的方法，主要分析一下和ArrayList不同的方法。
 首先我们还是来看以下Vector中定义的变量"
           
@@ -1722,12 +1728,12 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
         
           
     <li>
-      <a class='vlts-menu fix-cursor-default' href=https://album.gyl-coder.top
+      <a class='vlts-menu fix-cursor-default' href=/album/
         
         
         
         
-          id="https:albumgyl-codertop"
+          id="album"
         >
         <i class='fas fa-image fa-fw fa-fw'></i> My Album
       </a>

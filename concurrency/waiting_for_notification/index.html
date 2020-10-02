@@ -972,7 +972,7 @@ doIt();
 <p>如果isOK方法的判断逻辑比较简单，操作耗时较短，而且并发冲突量不大的情况下，使用这种方案也未尝不可。但是如果判断逻辑比较复杂，或者并发冲突较大时。这种方案就不行了，while循环会执行很多很多次，CPU消耗较大。</p>
 <p>针对这种问题，Java内置的<code>等待通知机制</code>能够较好的解决。当条件不满足时，线程阻塞自己，进入等待状态。当线程条件满足时，通知等待的线程重新执行。线程阻塞避免了循环等待带来的CPU消耗问题。</p>
 <a id="more"></a>
-<h2 id="就诊流程"><a class="header-anchor" href="#就诊流程">¶</a>就诊流程</h2>
+<h2 id="就诊流程"><a class="header-anchor" href="#就诊流程">✨</a>就诊流程</h2>
 <p>这里借用极客时间中<a target="_blank" rel="noopener" href="https://time.geekbang.org/column/article/98923e784b3bd3957bae96f39c2ad28c/share?code=qM3%2Fe3xQXVhoZX1Ey1Edz9S8e4pFJgBCiihOxtiS5S0%3D">大佬文章</a>（文末有链接，名额十个，先到先得）中的一个例子来更好的理解一下等待通知机制。</p>
 <p>我们去医院看病，一般都会经历以下流程：</p>
 <ol>
@@ -987,7 +987,7 @@ doIt();
 <p>患者去做检查类似于线程进入等待状态，然后大夫叫下一个患者，这个步骤我们在前面的<code>等待 - 通知机制</code>中忽略掉了，这个步骤对应到程序里，本质是线程释放持有的互斥锁。</p>
 <p>患者做完检查，类似于线程要求的条件已经满足；患者拿检测报告重新分诊，类似于线程需要重新获取互斥锁，这个步骤我们在前面的等待 - 通知机制中也忽视了。</p>
 <p>由此可以总结出：一个完整的等待 - 通知机制：线程首先获取互斥锁，当线程要求的条件不满足时，释放互斥锁，进入等待状态；当要求的条件满足时，通知等待的线程，重新获取互斥锁。</p>
-<h2 id="用Synchronized实现等待通知机制"><a class="header-anchor" href="#用Synchronized实现等待通知机制">¶</a>用Synchronized实现等待通知机制</h2>
+<h2 id="用Synchronized实现等待通知机制"><a class="header-anchor" href="#用Synchronized实现等待通知机制">✨</a>用Synchronized实现等待通知机制</h2>
 <p>通过synchronized配合wait(), notifyAll(), notify()方法来实现等待通知机制。</p>
 <pre><code class="language-java">// 调用该方法的线程进入WAITING状态，只有等待另外线程的通知或被中断才返回，调用wait方法会释放锁
 wait();
@@ -1068,7 +1068,7 @@ notifyAll();
 <li>notify()或notifyAll()方法调用后，等待线程依旧不会从wait()返回，需要调用notify()或 notifAll()的线程释放锁之后，等待线程才有机会从wait()返回。</li>
 <li>从wait()方法返回的前提是获得了调用对象的锁。</li>
 </ol>
-<h2 id="等待超时模式"><a class="header-anchor" href="#等待超时模式">¶</a>等待超时模式</h2>
+<h2 id="等待超时模式"><a class="header-anchor" href="#等待超时模式">✨</a>等待超时模式</h2>
 <p>在开发的过程中经常会遇到这样的情况，调用一个方法时等待一段时间（一般来说是给<br>
 定一个时间段），如果该方法能够在给定的时间段之内得到结果，那么将结果立刻返回，反之，<br>
 超时返回默认结果或自定义处理。</p>
@@ -1093,7 +1093,7 @@ public synchronized Object get(long mills) throws InterruptedException &amp;#123
     return result; 
 &amp;#125;
 </code></pre>
-<h2 id="一个简单的数据库连接池示例"><a class="header-anchor" href="#一个简单的数据库连接池示例">¶</a>一个简单的数据库连接池示例</h2>
+<h2 id="一个简单的数据库连接池示例"><a class="header-anchor" href="#一个简单的数据库连接池示例">✨</a>一个简单的数据库连接池示例</h2>
 <p>我们使用等待超时模式来构造一个简单的数据库连接池，在示例中模拟从连接池中获取、使用和释放连接的过程，而客户端获取连接的过程被设定为等待超时的模式，也就是在1000毫秒内如果无法获取到可用连接，将会返回给客户端一个null。设定连接池的大小为10个，然后通过调节客户端的线程数来模拟无法获取连接的场景。</p>
 <p>首先看一下连接池的定义。它通过构造函数初始化连接的最大上限，通过一个双向队列来维护连接，调用方需要先调用fetchConnection(long)方法来指定在多少毫秒内超时获取连接，当连接使用完成后，需要调用releaseConnection(Connection)方法将连接放回线程池。</p>
 <pre><code class="language-java">import java.sql.Connection;
@@ -1272,13 +1272,13 @@ public class Main &amp;#123;
       <i class="fas fa-bookmark fa-fw" aria-hidden="true"></i><span>相关文章</span>
     </section>
     <section class='body'>
-      <div class="vlts-rps"><a class="item" href="\concurrency\lock_and_synchronized\" title="Lock & Synchronized" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life2.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life2.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">Lock & Synchronized</span><span class="excerpt">首先我们来考虑一个问题？
-在Lock出现之前我们一直使用synchronized来实现同步访问。那为什么还要提供lock呢...</span></a><a class="item" href="\concurrency\alternate_printing\" title="多个线程交替打印内容" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life1.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life1.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">多个线程交替打印内容</span><span class="excerpt">需求： 启动两个线程，交替打印奇偶数。 效果如下所示
+      <div class="vlts-rps"><a class="item" href="\concurrency\alternate_printing\" title="多个线程交替打印内容" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life1.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life1.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">多个线程交替打印内容</span><span class="excerpt">需求： 启动两个线程，交替打印奇偶数。 效果如下所示
 偶数线程：0
 奇数线程：1
 偶数线程：2
 ...
-</span></a><a class="item" href="\concurrency\why_concurrency\" title="Why Concurrency ?" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life4.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life4.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">Why Concurrency ?</span><span class="excerpt">一门技术的出现必然有其出现的道理，后来需要了解它出现的时代环境和因素，扩充自己的视野，发掘技术发展的经过。分析其优缺点，以...</span></a><a class="item" href="\java\abstract_interface\" title="接口 vs 抽象类的区别？" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">接口 vs 抽象类的区别？</span><span class="excerpt">在面向对象编程中，抽象类和接口是两个经常被用到的语法概念，是面向对象四大特性，以及很多设计模式、设计思想、设计原则编程实现...</span></a></div></section></div>
+</span></a><a class="item" href="\concurrency\lock_and_synchronized\" title="Lock & Synchronized" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life2.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life2.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">Lock & Synchronized</span><span class="excerpt">首先我们来考虑一个问题？
+在Lock出现之前我们一直使用synchronized来实现同步访问。那为什么还要提供lock呢...</span></a><a class="item" href="\concurrency\why_concurrency\" title="Why Concurrency ?" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life4.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life4.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">Why Concurrency ?</span><span class="excerpt">一门技术的出现必然有其出现的道理，后来需要了解它出现的时代环境和因素，扩充自己的视野，发掘技术发展的经过。分析其优缺点，以...</span></a><a class="item" href="\java\abstract_interface\" title="接口 vs 抽象类的区别？" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">接口 vs 抽象类的区别？</span><span class="excerpt">在面向对象编程中，抽象类和接口是两个经常被用到的语法概念，是面向对象四大特性，以及很多设计模式、设计思想、设计原则编程实现...</span></a></div></section></div>
       
       
         <div class='copyright'>
@@ -1415,17 +1415,24 @@ while 循环中设置不满足的条件，如果条件满足则退出循环（�
       
         <a class='prev' href='/iq/'>
           <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>智力题</p>
-          <p class='content'>¶No.1
+          <p class='content'>✨No.1
 给一个瞎子52张扑克牌，并告诉他里面恰好有10张牌是正面朝上的。要求这个瞎子把牌分成两堆，使得每堆牌里正面朝上的牌的张数一样多。瞎子应该怎么做？
 **答案：**把扑克牌分成两堆，一堆...</p>
         </a>
       
       
-        <a class='next' href='/concurrency/lock_and_synchronized/'>
-          <p class='title'>Lock & Synchronized<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>首先我们来考虑一个问题？
-在Lock出现之前我们一直使用synchronized来实现同步访问。那为什么还要提供lock呢？
-我们知道如果一个代码块被synchronized修饰了，当有一个线程...</p>
+        <a class='next' href='/concurrency/alternate_printing/'>
+          <p class='title'>多个线程交替打印内容<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>需求： 启动两个线程，交替打印奇偶数。 效果如下所示
+偶数线程：0
+奇数线程：1
+偶数线程：2
+...
+
+
+✨两个线程交替打印
+✨无锁实现
+不需要进行任何加锁，利用并发包中的AtomicInte...</p>
         </a>
       
     </div>
@@ -1844,12 +1851,12 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
         
           
     <li>
-      <a class='vlts-menu fix-cursor-default' href=https://album.gyl-coder.top
+      <a class='vlts-menu fix-cursor-default' href=/album/
         
         
         
         
-          id="https:albumgyl-codertop"
+          id="album"
         >
         <i class='fas fa-image fa-fw fa-fw'></i> My Album
       </a>

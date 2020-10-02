@@ -895,10 +895,6 @@
   <div class="article-meta" id="top">
     
     
-      <a title='手写实现IOC 和 AOP' href='/spring/custom-ioc-aop/'>
-        <img class='thumbnail' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/spring.svg'>
-      </a>
-    
     
       <h1 class="title">
         手写实现IOC 和 AOP
@@ -939,10 +935,10 @@
           
         
           
-            <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-28T22:22:26+08:00">
+            <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-02T18:32:06+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Sep 28, 2020</p>
+    <p>更新于：Oct 2, 2020</p>
   </a>
 </div>
 
@@ -957,16 +953,16 @@
   <p>通过上一篇 <a href="https://gyl-coder.top/spring/spring-ioc-aop">IOC &amp; AOP 详解</a> 我们了解了 IOC 和 AOP 这两个思想，下面我们先不去考虑Spring是如何实现这两个思想的，先通过一个 <red>银行转账</red> 的案例，分析一下该案例在代码层面存在什么问题？分析之后使用我们已有的知识来解决这些问题（痛点）。</p>
 <p>其实这个过程就是在一步步分析并手动实现 IOC 和 AOP 。</p>
 <a id="more"></a>
-<h2 id="案例介绍"><a class="header-anchor" href="#案例介绍">¶</a>案例介绍</h2>
+<h2 id="案例介绍"><a class="header-anchor" href="#案例介绍">✨</a>案例介绍</h2>
 <p>银行转账：账户A向账户B转账（账户A减钱，账户B加钱）。为了简单起见，在前端页面中写死了两个账户。每次只需要输入转账金额，进行转账操作，验证功能即可。</p>
-<h3 id="案例表结构"><a class="header-anchor" href="#案例表结构">¶</a>案例表结构</h3>
+<h3 id="案例表结构"><a class="header-anchor" href="#案例表结构">✨</a>案例表结构</h3>
 <pre><code class="language-sql">name    varcher  255 用户名
 money   int      255 账户金额
 cardNo  varcher  255 银行卡号
 </code></pre>
-<h3 id="案例代码调用关系"><a class="header-anchor" href="#案例代码调用关系">¶</a>案例代码调用关系</h3>
+<h3 id="案例代码调用关系"><a class="header-anchor" href="#案例代码调用关系">✨</a>案例代码调用关系</h3>
 <div class="img-wrap"><div class="img-bg"><img class="img lazyload placeholder" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/spring/ioc-aop/image-20200411155954500.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/spring/ioc-aop/image-20200411155954500.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/></div></div>
-<h3 id="核心代码"><a class="header-anchor" href="#核心代码">¶</a>核心代码</h3>
+<h3 id="核心代码"><a class="header-anchor" href="#核心代码">✨</a>核心代码</h3>
 <pre><code class="language-java">@WebServlet(name=&quot;transferServlet&quot;,urlPatterns = &quot;/transferServlet&quot;)
 public class TransferServlet extends HttpServlet &amp;#123;
 
@@ -1090,13 +1086,13 @@ public class TransferServlet extends HttpServlet &amp;#123;
     &amp;#125;
 &amp;#125;
 </code></pre>
-<h2 id="案例问题分析"><a class="header-anchor" href="#案例问题分析">¶</a>案例问题分析</h2>
+<h2 id="案例问题分析"><a class="header-anchor" href="#案例问题分析">✨</a>案例问题分析</h2>
 <div class="img-wrap"><div class="img-bg"><img class="img lazyload placeholder" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/spring/ioc-aop/image-20200411161239748.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/spring/ioc-aop/image-20200411161239748.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/></div></div>
 <p>通过上面的流程分析以及简要代码，我们可以发现如下问题：</p>
 <p><strong>问题一：</strong> new 关键字将 service 层的实现类 TransferServiceImpl 和 Dao 层的具体实现类 JdbcAccountDaoImpl 耦合在了一起，当需要切换Dao层实现类的时候必须要修改 service 的代码、重新编译，这样不符合面向接口开发的最优原则。</p>
 <p><strong>问题二：</strong> service 层没有事务控制，如果转账过程中出现异常可能会导致数据错乱，后果很严重，尤其是在金融银行领域。</p>
-<h2 id="问题解决思路"><a class="header-anchor" href="#问题解决思路">¶</a>问题解决思路</h2>
-<h3 id="new关键字耦合问题解决方案"><a class="header-anchor" href="#new关键字耦合问题解决方案">¶</a>new关键字耦合问题解决方案</h3>
+<h2 id="问题解决思路"><a class="header-anchor" href="#问题解决思路">✨</a>问题解决思路</h2>
+<h3 id="new关键字耦合问题解决方案"><a class="header-anchor" href="#new关键字耦合问题解决方案">✨</a>new关键字耦合问题解决方案</h3>
 <p>实例化对象的方式处理 <red>new</red> 之外，还有什么技术？</p>
 <p>答：反射（将类的权限定类名配置在xml文件中）</p>
 <p>项目中往往有很多对象需要实例化，考虑使用<red>工程模式</red>通过反射来实例化对象。（工厂模式是解耦合非常好的一种方式）</p>
@@ -1112,7 +1108,7 @@ public class TransferServlet extends HttpServlet &amp;#123;
 &amp;#125;
 </code></pre>
 <div class="img-wrap"><div class="img-bg"><img class="img lazyload placeholder" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/spring/ioc-aop/image-20200411170129158.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/spring/ioc-aop/image-20200411170129158.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/></div></div>
-<h3 id="new关键字耦合问题代码改造"><a class="header-anchor" href="#new关键字耦合问题代码改造">¶</a>new关键字耦合问题代码改造</h3>
+<h3 id="new关键字耦合问题代码改造"><a class="header-anchor" href="#new关键字耦合问题代码改造">✨</a>new关键字耦合问题代码改造</h3>
 <p><strong>首先定义 bean.xml 文件</strong></p>
 <pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
 
@@ -1245,7 +1241,7 @@ public class TransferServiceImpl implements TransferService &amp;#123;
         this.accountDao = accountDao;
     &amp;#125;
 </code></pre>
-<h3 id="事务控制问题分析"><a class="header-anchor" href="#事务控制问题分析">¶</a>事务控制问题分析</h3>
+<h3 id="事务控制问题分析"><a class="header-anchor" href="#事务控制问题分析">✨</a>事务控制问题分析</h3>
 <p>在转账的业务代码中手动模拟转账异常，来验证一下。在两个账户的转入和转出之间模拟一个分母为0的异常。</p>
 <pre><code class="language-java">accountDao.updateAccountByCardNo(to);
 int i = 1/0;
@@ -1268,7 +1264,7 @@ accountDao.updateAccountByCardNo(from);
 <p>两次update属于同一个线程内的执行调用，我们可以给当前线程绑定一个Connection，和当前线程有关系的数据库操作都去使用这个connection（从当前线程中获取，第一次使用连接，发现当前线程没有，就从连接池获取一个连接绑定到当前线程）</p>
 <p>另一方面，目前事务控制是在Dao层进行的（connection），我们需要将事务控制提到service层（service层才是具体执行业务逻辑的地方，这里可能会调用多个dao层的方法，我们需要对service层的方法进行整体的事务控制）。</p>
 <p>有了上面两个思路，下面我们进行代码修改。</p>
-<h3 id="事务控制代码修改"><a class="header-anchor" href="#事务控制代码修改">¶</a>事务控制代码修改</h3>
+<h3 id="事务控制代码修改"><a class="header-anchor" href="#事务控制代码修改">✨</a>事务控制代码修改</h3>
 <p>增加 ConnectionUtils 工具类</p>
 <pre><code class="language-java">/**
  * 获取连接，并将连接与线程绑定
@@ -1530,7 +1526,7 @@ public class TransferServlet extends HttpServlet &amp;#123;
 &amp;#125;
 </code></pre>
 <p>改造完之后，我们再次进行测试，这时会发现当转账过程中出现错误是，事务能够成功的被控制住（转出账户不会少钱，转入账户不会多钱）。</p>
-<h3 id="为什么要使用代理的方式来实现事务控制？"><a class="header-anchor" href="#为什么要使用代理的方式来实现事务控制？">¶</a>为什么要使用代理的方式来实现事务控制？</h3>
+<h3 id="为什么要使用代理的方式来实现事务控制？"><a class="header-anchor" href="#为什么要使用代理的方式来实现事务控制？">✨</a>为什么要使用代理的方式来实现事务控制？</h3>
 <p>这里我们可以考虑一个问题，为什么要使用代理的方式来实现事务控制？</p>
 <p>如果没有使用代理的方式，我们要向实现事务控制这需要将，事务控制的相关代码写在service层的TransferServiceImpl 具体实现中。</p>
 <pre><code class="language-java">public class TransferServiceImpl implements TransferService &amp;#123;
@@ -1591,7 +1587,7 @@ public class TransferServlet extends HttpServlet &amp;#123;
 
 什么是IOC？
 IOC解决了什么问题？
-IOC 和 DI...</span></a><a class="item" href="\java\dynamic-proxy\" title="动态代理原理剖析" rel="bookmark "><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">动态代理原理剖析</span><span class="excerpt">动态代理的常用实现方式是反射。反射机制是 Java 语言提供的一种基础功能，赋予程序在运行时自省（introspect，官...</span></a></div></section></div>
+IOC 和 DI...</span></a><a class="item" href="\java\dynamic-proxy\" title="动态代理原理剖析" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life16.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life16.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">动态代理原理剖析</span><span class="excerpt">动态代理的常用实现方式是反射。反射机制是 Java 语言提供的一种基础功能，赋予程序在运行时自省（introspect，官...</span></a></div></section></div>
       
       
         <div class='copyright'>
@@ -1620,10 +1616,10 @@ IOC 和 DI...</span></a><a class="item" href="\java\dynamic-proxy\" title="动�
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-28T22:22:26+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-02T18:32:06+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Sep 28, 2020</p>
+    <p>更新于：Oct 2, 2020</p>
   </a>
 </div>
 
@@ -1645,7 +1641,7 @@ IOC 和 DI...</span></a><a class="item" href="\java\dynamic-proxy\" title="动�
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gyl-coder.top/spring/custom-ioc-aop/&title=手写实现IOC 和 AOP - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/spring.svg&summary=通过上一篇 IOC &amp; AOP 详解 我们了解了 IOC 和 AOP 这两个思想，下面我们先不去考虑Spring是如何实现这两个思想的，先通过一个 银行转账 的案例，分析一下该案例在代码层面存在什么问题？分析之后使用我们已有的知识来解决这些问题（痛点）。
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gyl-coder.top/spring/custom-ioc-aop/&title=手写实现IOC 和 AOP - yanliang's blog&summary=通过上一篇 IOC &amp; AOP 详解 我们了解了 IOC 和 AOP 这两个思想，下面我们先不去考虑Spring是如何实现这两个思想的，先通过一个 银行转账 的案例，分析一下该案例在代码层面存在什么问题？分析之后使用我们已有的知识来解决这些问题（痛点）。
 其实这个过程就是在一步步分析并手动实现 IOC 和 AOP 。"
           
           >
@@ -1658,7 +1654,7 @@ IOC 和 DI...</span></a><a class="item" href="\java\dynamic-proxy\" title="动�
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://gyl-coder.top/spring/custom-ioc-aop/&title=手写实现IOC 和 AOP - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/spring.svg&summary=通过上一篇 IOC &amp; AOP 详解 我们了解了 IOC 和 AOP 这两个思想，下面我们先不去考虑Spring是如何实现这两个思想的，先通过一个 银行转账 的案例，分析一下该案例在代码层面存在什么问题？分析之后使用我们已有的知识来解决这些问题（痛点）。
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://gyl-coder.top/spring/custom-ioc-aop/&title=手写实现IOC 和 AOP - yanliang's blog&summary=通过上一篇 IOC &amp; AOP 详解 我们了解了 IOC 和 AOP 这两个思想，下面我们先不去考虑Spring是如何实现这两个思想的，先通过一个 银行转账 的案例，分析一下该案例在代码层面存在什么问题？分析之后使用我们已有的知识来解决这些问题（痛点）。
 其实这个过程就是在一步步分析并手动实现 IOC 和 AOP 。"
           
           >
@@ -1671,7 +1667,7 @@ IOC 和 DI...</span></a><a class="item" href="\java\dynamic-proxy\" title="动�
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://gyl-coder.top/spring/custom-ioc-aop/&title=手写实现IOC 和 AOP - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/spring.svg&summary=通过上一篇 IOC &amp; AOP 详解 我们了解了 IOC 和 AOP 这两个思想，下面我们先不去考虑Spring是如何实现这两个思想的，先通过一个 银行转账 的案例，分析一下该案例在代码层面存在什么问题？分析之后使用我们已有的知识来解决这些问题（痛点）。
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://gyl-coder.top/spring/custom-ioc-aop/&title=手写实现IOC 和 AOP - yanliang's blog&summary=通过上一篇 IOC &amp; AOP 详解 我们了解了 IOC 和 AOP 这两个思想，下面我们先不去考虑Spring是如何实现这两个思想的，先通过一个 银行转账 的案例，分析一下该案例在代码层面存在什么问题？分析之后使用我们已有的知识来解决这些问题（痛点）。
 其实这个过程就是在一步步分析并手动实现 IOC 和 AOP 。"
           
           >
@@ -1702,13 +1698,9 @@ IOC 和 DI...</span></a><a class="item" href="\java\dynamic-proxy\" title="动�
   
     <div class="prev-next">
       
-        <a class='prev' href='/java/try_catch_finally/'>
-          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>try catch finally执行顺序</p>
-          <p class='content'>首先在finally和try中对数据的操作时数据分为 基本数据类型和引用数据类型，他们存放的地方也不一样，一个是栈区另一个是在堆区。
-
-¶finally中没有return
-
-public cla...</p>
+        <a class='prev' href='/java/collection/ArrayList/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>ArrayList 底层实现原理分析</p>
+          <p class='content'>ArrayList是List接口的 可变数组的实现。实现了所有可选列表操作，并允许包括 null 在内的所有元素。除了实现 List接口外，此类还提供一些方法来操作内部用来存储列表的数组的大小。...</p>
         </a>
       
       
@@ -2133,12 +2125,12 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
         
           
     <li>
-      <a class='vlts-menu fix-cursor-default' href=https://album.gyl-coder.top
+      <a class='vlts-menu fix-cursor-default' href=/album/
         
         
         
         
-          id="https:albumgyl-codertop"
+          id="album"
         >
         <i class='fas fa-image fa-fw fa-fw'></i> My Album
       </a>

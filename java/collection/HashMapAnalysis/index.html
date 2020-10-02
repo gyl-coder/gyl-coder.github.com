@@ -17,7 +17,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>HashMap 底层实现原理分析 - yanliang&#39;s blog</title>
+  <title>集合, Hashmap, HashMap - yanliang&#39;s blog</title>
   
     <meta name="keywords" content="Java,集合,HashMap">
   
@@ -894,11 +894,17 @@ jdk 8 之前...">
 
 
   
+    <div class='headimg-div'>
+      <a class='headimg-a'>
+        <img class='headimg' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life11.webp'/>
+      </a>
+    </div>
+  
   <div class="article-meta" id="top">
     
     
       <a title='HashMap 底层实现原理分析' href='/java/collection/HashMapAnalysis/'>
-        <img class='thumbnail' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/collection.svg'>
+        <img class='thumbnail' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life11.webp'>
       </a>
     
     
@@ -941,10 +947,10 @@ jdk 8 之前...">
           
         
           
-            <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-28T22:22:26+08:00">
+            <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-02T17:55:22+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Sep 28, 2020</p>
+    <p>更新于：Oct 2, 2020</p>
   </a>
 </div>
 
@@ -964,7 +970,7 @@ jdk 8 之前...">
 <p><code>HashMap</code>是 <blue>数组 + 链表 + 红黑树</blue>（JDK1.8 增加了红黑树部分）实现的。JDK 1.8 之所以添加红黑树是因为一旦链表过长，会严重影响 HashMap 的性能，而红黑树具有快速增删改查的特点，这样就可以有效的解决链表过长时操作比较慢的问题。</p>
 <div class="img-wrap"><div class="img-bg"><img class="img lazyload placeholder" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/20200323120021.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/20200323120021.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/></div></div>
 <a id="more"></a>
-<h2 id="存储结构"><a class="header-anchor" href="#存储结构">¶</a>存储结构</h2>
+<h2 id="存储结构"><a class="header-anchor" href="#存储结构">✨</a>存储结构</h2>
 <blockquote><p>下面我们先来看一下 HashMap 内部所用到的存储结构</p>
 </blockquote>
 <pre><code class="language-java">static class Node&lt;K,V&gt; implements Map.Entry&lt;K,V&gt; &amp;#123;
@@ -1020,7 +1026,7 @@ jdk 8 之前...">
 <li>当有哈希冲突时，HashMap是如何查找并确认元素的？HashMap源码中有哪些重要的方法？</li>
 <li>HashMap 源码中有哪些重要的方法？</li>
 </ul>
-<h2 id="成员变量"><a class="header-anchor" href="#成员变量">¶</a>成员变量</h2>
+<h2 id="成员变量"><a class="header-anchor" href="#成员变量">✨</a>成员变量</h2>
 <p>不过在这之前我们先了解下 hashmap 中的变量</p>
 <pre><code class="language-java">// HashMap 初始化长度
 static final int DEFAULT_INITIAL_CAPACITY = 1 &lt;&lt; 4; 
@@ -1049,7 +1055,7 @@ final float loadFactor;
 </code></pre>
 <div class="note "><p>在 HashMap 中有两个很重要的参数，容量 (Capacity) 和负载因子(Load factor)</p></div>
 <p><code>Capacity</code>就是<code>buckets</code>的数目，<code>Load factor</code>就是<code>buckets</code>填满程度的最大比例。如果对迭代性能要求很高的话不要把<code>capacity</code>设置过大，也不要把<code>load factor</code>设置过小。当<code>bucket</code>填充的数目（即 hashmap 中元素的个数）大于<code>capacity*load factor</code>时就需要调整 buckets 的数目为当前的 <strong>2 倍</strong>。</p>
-<h2 id="HashMap-中的hash算法如何实现？"><a class="header-anchor" href="#HashMap-中的hash算法如何实现？">¶</a>HashMap 中的hash算法如何实现？</h2>
+<h2 id="HashMap-中的hash算法如何实现？"><a class="header-anchor" href="#HashMap-中的hash算法如何实现？">✨</a>HashMap 中的hash算法如何实现？</h2>
 <pre><code class="language-java">static final int hash(Object key) &amp;#123;
     int h;
     return (key == null) ? 0 : (h = key.hashCode()) ^ (h &gt;&gt;&gt; 16);
@@ -1071,7 +1077,7 @@ static int indexFor(int h, int length) &amp;#123;
 <p>这个方法非常巧妙，它通过<code>h &amp; (table.length -1)</code>来得到该对象的保存位，而<code>HashMap</code>底层数组的长度总是 <strong>2 的 n 次方</strong>，这是<code>HashMap</code>在速度上的优化。当 length 总是 2 的 n 次方时，<code>h&amp; (length-1)</code>运算等价于对 length 取模，也就是<code>h%length</code>，但是 <strong>&amp;</strong> 比 <strong>%</strong> 具有更高的效率。</p>
 <p>在<code>JDK1.8</code>的实现中，优化了高位运算的算法，通过<code>hashCode()</code>的高 16 位异或低 16 位实现的：(h = k.hashCode()) ^ (h &gt;&gt;&gt; 16)，主要是从速度、功效、质量来考虑的，这么做可以 Node 数组 table 的 length 比较小的时候，也能保证考虑到高低 Bit 都参与到 Hash 的计算中，同时不会有太大的开销。</p>
 <div class="img-wrap"><div class="img-bg"><img class="img lazyload placeholder" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/20200323122051.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/20200323122051.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/></div></div>
-<h2 id="JDK1-8HashMap扩容时做了哪些优化？"><a class="header-anchor" href="#JDK1-8HashMap扩容时做了哪些优化？">¶</a>JDK1.8HashMap扩容时做了哪些优化？</h2>
+<h2 id="JDK1-8HashMap扩容时做了哪些优化？"><a class="header-anchor" href="#JDK1-8HashMap扩容时做了哪些优化？">✨</a>JDK1.8HashMap扩容时做了哪些优化？</h2>
 <p>扩容 (resize) 就是重新计算容量，向<code>HashMap</code>对象里不停的添加元素，而<code>HashMap</code>对象内部的数组无法装载更多的元素时，对象就需要扩大数组的长度，以便能装入更多的元素。</p>
 <p>当然<code>Java</code>里的数组是无法自动扩容的，方法是使用一个新的数组代替已有的容量小的数组，就像我们用一个小桶装水，如果想装更多的水，就得换大水桶。</p>
 <p>当<code>put</code>时，如果发现目前的<code>bucket</code>占用程度已经超过了<code>Load Factor</code>所希望的比例，那么就会发生<code>resize</code>。在<code>resize</code>的过程，简单的说就是把<code>bucket</code>扩充为 <strong>2 倍</strong>，之后重新计算<code>index</code>，把节点再放到新的<code>bucket</code>中。<br>
@@ -1175,7 +1181,7 @@ static int indexFor(int h, int length) &amp;#123;
     return newTab;
 &amp;#125;
 </code></pre>
-<h2 id="加载因子为什么是0-75？"><a class="header-anchor" href="#加载因子为什么是0-75？">¶</a>加载因子为什么是0.75？</h2>
+<h2 id="加载因子为什么是0-75？"><a class="header-anchor" href="#加载因子为什么是0-75？">✨</a>加载因子为什么是0.75？</h2>
 <p>加载因子也叫扩容因子或负载因子，用来判断什么时候进行扩容的，假如加载因子是 0.5，HashMap 的初始化容量是 16，那么当 HashMap 中有 16*0.5=8 个元素时，HashMap 就会进行扩容。</p>
 <p>那加载因子为什么是 0.75 而不是 0.5 或者 1.0 呢？</p>
 <p>这其实是出于容量和性能之间平衡的结果：</p>
@@ -1188,9 +1194,9 @@ static int indexFor(int h, int length) &amp;#123;
 <li>当有哈希冲突时，HashMap是如何查找并确认元素的？</li>
 <li>HashMap 源码中有哪些重要的方法？</li>
 </ul>
-<h2 id="HashMap-中的核心方法"><a class="header-anchor" href="#HashMap-中的核心方法">¶</a>HashMap 中的核心方法</h2>
+<h2 id="HashMap-中的核心方法"><a class="header-anchor" href="#HashMap-中的核心方法">✨</a>HashMap 中的核心方法</h2>
 <p>HashMap 源码中三个重要方法：查询、新增和数据扩容。</p>
-<h3 id="查询"><a class="header-anchor" href="#查询">¶</a>查询</h3>
+<h3 id="查询"><a class="header-anchor" href="#查询">✨</a>查询</h3>
 <p>bucket 里的第一个节点，直接命中；<br>
 如果有冲突，则通过 key.equals(k) 去查找对应的 entry<br>
 若为树，则在树中通过 key.equals(k) 查找，O(logn)；<br>
@@ -1229,7 +1235,7 @@ final Node&lt;K,V&gt; getNode(int hash, Object key) &amp;#123;
 &amp;#125;
 </code></pre>
 <p>从以上源码可以看出，当哈希冲突时我们需要通过判断 key 值是否相等，才能确认此元素是不是我们想要的元素。</p>
-<h3 id="新增"><a class="header-anchor" href="#新增">¶</a>新增</h3>
+<h3 id="新增"><a class="header-anchor" href="#新增">✨</a>新增</h3>
 <p><code>put</code> 方法也是<code>HashMap</code>中比较重要的方法，因为通过该方法我们可以窥探到 <code>HashMap</code> 在内部是如何进行数据存储的，所谓的<red>数组 + 链表 + 红黑树</red>的存储结构是如何形成的，又是在何种情况下将链表转换成红黑树来优化性能的。</p>
 <p>put 方法的大致实现过程如下：</p>
 <ul>
@@ -1303,7 +1309,7 @@ final V putVal(int hash, K key, V value, boolean onlyIfAbsent,
 </code></pre>
 <p>新增方法的执行流程，如下图所示：</p>
 <div class="img-wrap"><div class="img-bg"><img class="img lazyload placeholder" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/20200323143244.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/20200323143244.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/></div></div>
-<h2 id="HashMap-死循环分析"><a class="header-anchor" href="#HashMap-死循环分析">¶</a>HashMap 死循环分析</h2>
+<h2 id="HashMap-死循环分析"><a class="header-anchor" href="#HashMap-死循环分析">✨</a>HashMap 死循环分析</h2>
 <p>以 JDK 1.7 为例，假设 HashMap 默认大小为 2，原本 HashMap 中有一个元素 key(5)，我们再使用两个线程：t1 添加元素 key(3)，t2 添加元素 key(7)，当元素 key(3) 和 key(7) 都添加到 HashMap 中之后，线程 t1 在执行到 Entry&lt;K,V&gt; next = e.next; 时，交出了 CPU 的使用权，源码如下：</p>
 <pre><code class="language-java">void transfer(Entry[] newTable, boolean rehash) &amp;#123;
     int newCapacity = newTable.length;
@@ -1326,8 +1332,8 @@ final V putVal(int hash, K key, V value, boolean onlyIfAbsent,
 <div class="img-wrap"><div class="img-bg"><img class="img lazyload placeholder" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/20200323151453.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/20200323151453.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/></div></div>
 <p>当然发生死循环的原因是 JDK 1.7 链表插入方式为首部倒序插入，这个问题在 JDK 1.8 得到了改善，变成了尾部正序插入。</p>
 <div class="tag link"><a class="link-card" title="参考文章" target="_blank" rel="noopener" href="https://coolshell.cn/articles/9606.html"><div class="left"><img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/></div><div class="right"><p class="text">参考文章</p><p class="url">https://coolshell.cn/articles/9606.html</p></div></a></div>
-<h2 id="其他方法"><a class="header-anchor" href="#其他方法">¶</a>其他方法</h2>
-<h3 id="构造方法"><a class="header-anchor" href="#构造方法">¶</a>构造方法</h3>
+<h2 id="其他方法"><a class="header-anchor" href="#其他方法">✨</a>其他方法</h2>
+<h3 id="构造方法"><a class="header-anchor" href="#构造方法">✨</a>构造方法</h3>
 <pre><code class="language-java">public HashMap(int initialCapacity, float loadFactor) &amp;#123;
     if (initialCapacity &lt; 0)
         throw new IllegalArgumentException(&quot;Illegal initial capacity: &quot; +
@@ -1397,7 +1403,7 @@ public HashMap() &amp;#123;
 &amp;#125;
 
 </code></pre>
-<h3 id="remove-方法"><a class="header-anchor" href="#remove-方法">¶</a>remove 方法</h3>
+<h3 id="remove-方法"><a class="header-anchor" href="#remove-方法">✨</a>remove 方法</h3>
 <p>删除操作就是一个查找 + 删除的过程，相对于添加操作其实容易一些</p>
 <pre><code>public V remove(Object key) &amp;#123;
     Node&lt;K,V&gt; e;
@@ -1487,7 +1493,7 @@ public HashMap() &amp;#123;
 </code></pre>
 <p>删除操作也很简单，如果是红黑树结点的删除，直接调用红黑树的删除方法进行删除即可，如果是待删结点就是一个头节点，那么用它的 next 结点顶替它作为头节点存放在 table[index] 中，如果删除的是普通链表中的一个节点，用该结点的前一个节点直接跳过该待删结点指向它的 next 结点即可。</p>
 <p>最后，如果 removeNode 方法删除成功将返回被删结点，否则返回 null。</p>
-<h3 id="keySet"><a class="header-anchor" href="#keySet">¶</a>keySet</h3>
+<h3 id="keySet"><a class="header-anchor" href="#keySet">✨</a>keySet</h3>
 <pre><code>transient volatile Set&lt;K&gt;        keySet;
 
 public Set&lt;K&gt; keySet() &amp;#123;
@@ -1525,7 +1531,7 @@ final class KeySet extends AbstractSet&lt;K&gt; &amp;#123;
     <section class='body'>
       <div class="vlts-rps"><a class="item" href="\java\collection\ArrayList_grow\" title="ArrayList动态扩容机制" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life9.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life9.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">ArrayList动态扩容机制</span><span class="excerpt">我们通过一个具体的例子看一下ArrayList的扩容效果
 先看一下ArrayList的初始容量
-ArrayList&lt;...</span></a><a class="item" href="\java\collection\Vector\" title="Vector 底层实现原理分析" rel="bookmark "><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">Vector 底层实现原理分析</span><span class="excerpt">Vector，一个可变长的数组，底层实现与 ArrayList 大同小异，但Vector是同步的（线程安全），Vector...</span></a><a class="item" href="\java\collection\LinkedHashMap\" title="LinkedHashMap 底层实现原理分析" rel="bookmark "><img src="https://cdn.nlark.com/yuque/0/2020/png/420470/1594858298550-74cd2f4d-fbd7-4fb1-9137-66e8cabfa0c9.png#align=left&display=inline&height=481&margin=%5Bobject%20Object%5D&name=image.png&originHeight=481&originWidth=496&size=130674&status=done&style=none&width=496" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/420470/1594858298550-74cd2f4d-fbd7-4fb1-9137-66e8cabfa0c9.png#align=left&display=inline&height=481&margin=%5Bobject%20Object%5D&name=image.png&originHeight=481&originWidth=496&size=130674&status=done&style=none&width=496" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">LinkedHashMap 底层实现原理分析</span><span class="excerpt">LinkedHashMap继承自HashMap实现了Map接口。基本实现同HashMap一样，不同之处在于LinkedHa...</span></a><a class="item" href="\java\collection\LinkedList\" title="LinkedList 底层实现原理分析" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/collection2.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/collection2.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">LinkedList 底层实现原理分析</span><span class="excerpt">
+ArrayList&lt;...</span></a><a class="item" href="\java\collection\Vector\" title="Vector 底层实现原理分析" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life14.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life14.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">Vector 底层实现原理分析</span><span class="excerpt">Vector，一个可变长的数组，底层实现与 ArrayList 大同小异，但Vector是同步的（线程安全），Vector...</span></a><a class="item" href="\java\collection\LinkedHashMap\" title="LinkedHashMap 底层实现原理分析" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life12.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life12.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">LinkedHashMap 底层实现原理分析</span><span class="excerpt">LinkedHashMap继承自HashMap实现了Map接口。基本实现同HashMap一样，不同之处在于LinkedHa...</span></a><a class="item" href="\java\collection\LinkedList\" title="LinkedList 底层实现原理分析" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life13.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life13.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">LinkedList 底层实现原理分析</span><span class="excerpt">
 在Java.util包下
 继承自AbstractSequentialList
 实现 List 接口，能对它进行队列操作。...</span></a><a class="item" href="\java\abstract_interface\" title="接口 vs 抽象类的区别？" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">接口 vs 抽象类的区别？</span><span class="excerpt">在面向对象编程中，抽象类和接口是两个经常被用到的语法概念，是面向对象四大特性，以及很多设计模式、设计思想、设计原则编程实现...</span></a></div></section></div>
@@ -1557,10 +1563,10 @@ ArrayList&lt;...</span></a><a class="item" href="\java\collection\Vector\" title
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-28T22:22:26+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-02T17:55:22+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Sep 28, 2020</p>
+    <p>更新于：Oct 2, 2020</p>
   </a>
 </div>
 
@@ -1582,7 +1588,7 @@ ArrayList&lt;...</span></a><a class="item" href="\java\collection\Vector\" title
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gyl-coder.top/java/collection/HashMapAnalysis/&title=HashMap 底层实现原理分析 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/collection.svg&summary=HashMap 是 Map 的一个实现类，它代表的是一种键值对的数据存储形式。
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gyl-coder.top/java/collection/HashMapAnalysis/&title=集合, Hashmap, HashMap - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life11.webp&summary=HashMap 是 Map 的一个实现类，它代表的是一种键值对的数据存储形式。
 大多数情况下可以直接定位到它的值，因而具有很快的访问速度，但遍历顺序却是不确定的。
 HashMap最多只允许一条记录的键为null，允许多条记录的值为null。不保证有序 (比如插入的顺序)、也不保证序不随时间变化。
 jdk 8 之前，其内部是由 数组 + 链表 来实现的，而 jdk 8 对于链表长度超过 8 的链表将转储为 红黑树。
@@ -1600,7 +1606,7 @@ HashMap是 数组 + 链表 + 红黑树（JDK1.8 增加了红黑树部分）实�
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://gyl-coder.top/java/collection/HashMapAnalysis/&title=HashMap 底层实现原理分析 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/collection.svg&summary=HashMap 是 Map 的一个实现类，它代表的是一种键值对的数据存储形式。
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://gyl-coder.top/java/collection/HashMapAnalysis/&title=集合, Hashmap, HashMap - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life11.webp&summary=HashMap 是 Map 的一个实现类，它代表的是一种键值对的数据存储形式。
 大多数情况下可以直接定位到它的值，因而具有很快的访问速度，但遍历顺序却是不确定的。
 HashMap最多只允许一条记录的键为null，允许多条记录的值为null。不保证有序 (比如插入的顺序)、也不保证序不随时间变化。
 jdk 8 之前，其内部是由 数组 + 链表 来实现的，而 jdk 8 对于链表长度超过 8 的链表将转储为 红黑树。
@@ -1618,7 +1624,7 @@ HashMap是 数组 + 链表 + 红黑树（JDK1.8 增加了红黑树部分）实�
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://gyl-coder.top/java/collection/HashMapAnalysis/&title=HashMap 底层实现原理分析 - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/thumbnail/collection.svg&summary=HashMap 是 Map 的一个实现类，它代表的是一种键值对的数据存储形式。
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://gyl-coder.top/java/collection/HashMapAnalysis/&title=集合, Hashmap, HashMap - yanliang's blog&pics=https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life11.webp&summary=HashMap 是 Map 的一个实现类，它代表的是一种键值对的数据存储形式。
 大多数情况下可以直接定位到它的值，因而具有很快的访问速度，但遍历顺序却是不确定的。
 HashMap最多只允许一条记录的键为null，允许多条记录的值为null。不保证有序 (比如插入的顺序)、也不保证序不随时间变化。
 jdk 8 之前，其内部是由 数组 + 链表 来实现的，而 jdk 8 对于链表长度超过 8 的链表将转储为 红黑树。
@@ -2082,12 +2088,12 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
         
           
     <li>
-      <a class='vlts-menu fix-cursor-default' href=https://album.gyl-coder.top
+      <a class='vlts-menu fix-cursor-default' href=/album/
         
         
         
         
-          id="https:albumgyl-codertop"
+          id="album"
         >
         <i class='fas fa-image fa-fw fa-fw'></i> My Album
       </a>
