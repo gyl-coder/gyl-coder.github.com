@@ -259,29 +259,6 @@ System.out.println(&amp;quot;大小：&amp;quot;+size);
   </entry>
   
   <entry>
-    <title>try catch finally执行顺序</title>
-    <link href="https://gyl-coder.top/java/try_catch_finally/"/>
-    <id>https://gyl-coder.top/java/try_catch_finally/</id>
-    <published>2020-04-01T16:00:00.000Z</published>
-    <updated>2020-10-02T10:30:59.255Z</updated>
-    
-    <content type="html"><![CDATA[<p>首先在finally和try中对数据的操作时数据分为 基本数据类型和引用数据类型，他们存放的地方也不一样，一个是栈区另一个是在堆区。</p><a id="more"></a><h3 id="finally中没有return"><a class="header-anchor" href="#finally中没有return">✨</a>finally中没有return</h3><pre><code class="language-java">public class Main &amp;#123;    private  static  int a=2;     public static void main(String[] args) &amp;#123;         System.out.println(&quot;test输出的结果 &quot;+test());        System.out.println(&quot;main 自加后 a=&quot;+(a++));    &amp;#125;        private  static  int test()&amp;#123;        try &amp;#123;            a+=3;            System.out.println(&quot;try  a=&quot;+a);            return a;        &amp;#125;catch (Exception e)&amp;#123;         &amp;#125;finally &amp;#123;            ++a;            System.out.println(&quot;finally a=&quot;+a);        &amp;#125;    &amp;#125;</code></pre><p>输出结果:</p><p>try  a=5<br>finally a=6<br>test输出的结果 5<br>main a=6</p><p>结论: 可见方法test的返回值不受finally中的影响，但是变量a还是受到了影响，值改变了，返回值是存放在栈中的，return是就           已经把返回值压入栈了，相当于一个临时变量。在finally中并不会影响返回值</p><h3 id="finally中加入return"><a class="header-anchor" href="#finally中加入return">✨</a>finally中加入return</h3><pre><code class="language-java">public class Main &amp;#123;    private  static  int a=2;     public static void main(String[] args) &amp;#123;         System.out.println(&quot;test输出的结果 &quot;+test());        System.out.println(&quot;main 自加后 a=&quot;+(a++));    &amp;#125;        private  static  int test()&amp;#123;        try &amp;#123;            a+=3;            System.out.println(&quot;try  a=&quot;+a);            return a;        &amp;#125;catch (Exception e)&amp;#123;         &amp;#125;finally &amp;#123;            ++a;            System.out.println(&quot;finally a=&quot;+a);            return a;        &amp;#125;    &amp;#125;</code></pre><p>输出结果:</p><p>try  a=5<br>finally a=6<br>test输出的结果 6<br>main a=6</p><p>结论: 此时test方法的返回值是6和a的值相等， 在try,catch中的返回值可以发现被finally的返回值给屏蔽了，所以如果finally中              有return则会屏蔽当前方法中的返回值</p><h3 id="现在对引用变量进行分析"><a class="header-anchor" href="#现在对引用变量进行分析">✨</a>现在对引用变量进行分析</h3><p>finally中没有return</p><pre><code class="language-java">public class Main &amp;#123;    private  static List&lt;String&gt; list=new ArrayList&lt;&gt;();     public static void main(String[] args) &amp;#123;        System.out.println(&quot;test输出的结果 &quot;+test());        System.out.println(&quot;main list=&quot;+list.toString());      &amp;#125;    private  static  List test()&amp;#123;        try &amp;#123;            list.add(&quot;33&quot;);            System.out.println(&quot;try  list=&quot;+list.toString());            return list;        &amp;#125;catch (Exception e)&amp;#123;         &amp;#125;finally &amp;#123;            list.add(&quot;66&quot;);            System.out.println(&quot;finally list=&quot;+list.toString());        &amp;#125;        return null;    &amp;#125;&amp;#125;</code></pre><p>输出结果:</p><p>try  list=[33]<br>finally list=[33, 66]<br>test输出的结果 [33, 66]<br>main list=[33, 66]</p><p>结论: 通过结果可以知道 test的返回值内容也是跟集合list一样的， 因为list是引用类型所以堆区中存放了内存地址，在finally对值          进行改变时还是只想同一个地址，只是地址的内容变化了</p><p>2 finally中有return 、</p><p>输出值:</p><p>try  list=[33]<br>finally list=[33, 66]<br>test输出的结果 [33, 66]<br>main list=[33, 66]</p><p>结论:可见引用类型时finally有没有return都会对当前方法的返回值产生影响</p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;首先在finally和try中对数据的操作时数据分为 基本数据类型和引用数据类型，他们存放的地方也不一样，一个是栈区另一个是在堆区。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Java" scheme="https://gyl-coder.top/categories/Java/"/>
-    
-    
-    <category term="Java" scheme="https://gyl-coder.top/tags/Java/"/>
-    
-    <category term="try-catch" scheme="https://gyl-coder.top/tags/try-catch/"/>
-    
-  </entry>
-  
-  <entry>
     <title>动态代理原理剖析</title>
     <link href="https://gyl-coder.top/java/dynamic-proxy/"/>
     <id>https://gyl-coder.top/java/dynamic-proxy/</id>
@@ -303,6 +280,29 @@ System.out.println(&amp;quot;大小：&amp;quot;+size);
     <category term="Java" scheme="https://gyl-coder.top/tags/Java/"/>
     
     <category term="动态代理" scheme="https://gyl-coder.top/tags/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>try catch finally执行顺序</title>
+    <link href="https://gyl-coder.top/java/try_catch_finally/"/>
+    <id>https://gyl-coder.top/java/try_catch_finally/</id>
+    <published>2020-04-01T16:00:00.000Z</published>
+    <updated>2020-10-02T10:30:59.255Z</updated>
+    
+    <content type="html"><![CDATA[<p>首先在finally和try中对数据的操作时数据分为 基本数据类型和引用数据类型，他们存放的地方也不一样，一个是栈区另一个是在堆区。</p><a id="more"></a><h3 id="finally中没有return"><a class="header-anchor" href="#finally中没有return">✨</a>finally中没有return</h3><pre><code class="language-java">public class Main &amp;#123;    private  static  int a=2;     public static void main(String[] args) &amp;#123;         System.out.println(&quot;test输出的结果 &quot;+test());        System.out.println(&quot;main 自加后 a=&quot;+(a++));    &amp;#125;        private  static  int test()&amp;#123;        try &amp;#123;            a+=3;            System.out.println(&quot;try  a=&quot;+a);            return a;        &amp;#125;catch (Exception e)&amp;#123;         &amp;#125;finally &amp;#123;            ++a;            System.out.println(&quot;finally a=&quot;+a);        &amp;#125;    &amp;#125;</code></pre><p>输出结果:</p><p>try  a=5<br>finally a=6<br>test输出的结果 5<br>main a=6</p><p>结论: 可见方法test的返回值不受finally中的影响，但是变量a还是受到了影响，值改变了，返回值是存放在栈中的，return是就           已经把返回值压入栈了，相当于一个临时变量。在finally中并不会影响返回值</p><h3 id="finally中加入return"><a class="header-anchor" href="#finally中加入return">✨</a>finally中加入return</h3><pre><code class="language-java">public class Main &amp;#123;    private  static  int a=2;     public static void main(String[] args) &amp;#123;         System.out.println(&quot;test输出的结果 &quot;+test());        System.out.println(&quot;main 自加后 a=&quot;+(a++));    &amp;#125;        private  static  int test()&amp;#123;        try &amp;#123;            a+=3;            System.out.println(&quot;try  a=&quot;+a);            return a;        &amp;#125;catch (Exception e)&amp;#123;         &amp;#125;finally &amp;#123;            ++a;            System.out.println(&quot;finally a=&quot;+a);            return a;        &amp;#125;    &amp;#125;</code></pre><p>输出结果:</p><p>try  a=5<br>finally a=6<br>test输出的结果 6<br>main a=6</p><p>结论: 此时test方法的返回值是6和a的值相等， 在try,catch中的返回值可以发现被finally的返回值给屏蔽了，所以如果finally中              有return则会屏蔽当前方法中的返回值</p><h3 id="现在对引用变量进行分析"><a class="header-anchor" href="#现在对引用变量进行分析">✨</a>现在对引用变量进行分析</h3><p>finally中没有return</p><pre><code class="language-java">public class Main &amp;#123;    private  static List&lt;String&gt; list=new ArrayList&lt;&gt;();     public static void main(String[] args) &amp;#123;        System.out.println(&quot;test输出的结果 &quot;+test());        System.out.println(&quot;main list=&quot;+list.toString());      &amp;#125;    private  static  List test()&amp;#123;        try &amp;#123;            list.add(&quot;33&quot;);            System.out.println(&quot;try  list=&quot;+list.toString());            return list;        &amp;#125;catch (Exception e)&amp;#123;         &amp;#125;finally &amp;#123;            list.add(&quot;66&quot;);            System.out.println(&quot;finally list=&quot;+list.toString());        &amp;#125;        return null;    &amp;#125;&amp;#125;</code></pre><p>输出结果:</p><p>try  list=[33]<br>finally list=[33, 66]<br>test输出的结果 [33, 66]<br>main list=[33, 66]</p><p>结论: 通过结果可以知道 test的返回值内容也是跟集合list一样的， 因为list是引用类型所以堆区中存放了内存地址，在finally对值          进行改变时还是只想同一个地址，只是地址的内容变化了</p><p>2 finally中有return 、</p><p>输出值:</p><p>try  list=[33]<br>finally list=[33, 66]<br>test输出的结果 [33, 66]<br>main list=[33, 66]</p><p>结论:可见引用类型时finally有没有return都会对当前方法的返回值产生影响</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;首先在finally和try中对数据的操作时数据分为 基本数据类型和引用数据类型，他们存放的地方也不一样，一个是栈区另一个是在堆区。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Java" scheme="https://gyl-coder.top/categories/Java/"/>
+    
+    
+    <category term="Java" scheme="https://gyl-coder.top/tags/Java/"/>
+    
+    <category term="try-catch" scheme="https://gyl-coder.top/tags/try-catch/"/>
     
   </entry>
   
@@ -711,39 +711,11 @@ doIt();
     <category term="并发" scheme="https://gyl-coder.top/categories/%E5%B9%B6%E5%8F%91/"/>
     
     
-    <category term="并发" scheme="https://gyl-coder.top/tags/%E5%B9%B6%E5%8F%91/"/>
-    
     <category term="Java" scheme="https://gyl-coder.top/tags/Java/"/>
+    
+    <category term="并发" scheme="https://gyl-coder.top/tags/%E5%B9%B6%E5%8F%91/"/>
     
     <category term="等待通知机制" scheme="https://gyl-coder.top/tags/%E7%AD%89%E5%BE%85%E9%80%9A%E7%9F%A5%E6%9C%BA%E5%88%B6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>多个线程交替打印内容</title>
-    <link href="https://gyl-coder.top/concurrency/alternate_printing/"/>
-    <id>https://gyl-coder.top/concurrency/alternate_printing/</id>
-    <published>2019-11-04T16:00:00.000Z</published>
-    <updated>2020-09-28T14:52:28.379Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>需求：</strong> 启动两个线程，交替打印奇偶数。 效果如下所示</p><pre><code class="language-java">偶数线程：0奇数线程：1偶数线程：2...</code></pre><a id="more"></a><h2 id="两个线程交替打印"><a class="header-anchor" href="#两个线程交替打印">✨</a>两个线程交替打印</h2><h3 id="无锁实现"><a class="header-anchor" href="#无锁实现">✨</a>无锁实现</h3><p>不需要进行任何加锁，利用并发包中的AtomicInteger和volidate修饰符组合进行实现。</p><pre><code class="language-java">public class Thread_demo1 &amp;#123;    private static volatile Boolean flag = true;    private static AtomicInteger num = new AtomicInteger();    public static CountDownLatch latch = new CountDownLatch(2);    public static void main(String[] args) throws InterruptedException &amp;#123;        long start =  System.currentTimeMillis();        Thread thread1 = new Thread(new Runnable() &amp;#123;            @Override            public void run() &amp;#123;                while(num.get() &lt;= 10000)&amp;#123;                    if(!flag)&amp;#123;                        System.out.println(Thread.currentThread().getName()+&quot;: &quot; + num.getAndIncrement());                        flag = true;                    &amp;#125;                &amp;#125;                latch.countDown();            &amp;#125;        &amp;#125;, &quot;奇数线程&quot;);        Thread thread2 = new Thread(new Runnable() &amp;#123;            @Override            public void run() &amp;#123;                while(num.get() &lt;= 10000)&amp;#123;                    if(flag)&amp;#123;                        System.out.println(Thread.currentThread().getName()+ &quot;：&quot; + num.getAndIncrement());                        flag = false;                    &amp;#125;                &amp;#125;                latch.countDown();            &amp;#125;        &amp;#125;, &quot;偶数线程&quot;);        thread1.start();        thread2.start();        latch.await();        System.out.println(&quot;共耗时：&quot;+(System.currentTimeMillis() - start) + &quot;ms&quot;);    &amp;#125;&amp;#125;</code></pre><h3 id="加锁实现A"><a class="header-anchor" href="#加锁实现A">✨</a>加锁实现A</h3><p>通过一个boolean类型的变量来限制两个线程，分别只输出奇数和偶数。</p><pre><code class="language-java">public class Thread_demo2 &amp;#123;    private int count = 0;    private final Object lock = new Object();    public static CountDownLatch latch = new CountDownLatch(2);    public void go() throws InterruptedException &amp;#123;        long start = System.currentTimeMillis();        Thread thread1 = new Thread(() -&gt; &amp;#123;            while (count &lt; 10000) &amp;#123;                synchronized (lock) &amp;#123;                    if ((count &amp; 1) == 0) &amp;#123;                        System.out.println(Thread.currentThread().getName() + &quot;: &quot; + count ++);                    &amp;#125;                &amp;#125;            &amp;#125;            latch.countDown();        &amp;#125;, &quot;偶数线程&quot;);        Thread thread2 = new Thread(() -&gt; &amp;#123;            while (count &lt; 10000) &amp;#123;                synchronized (lock) &amp;#123;                    if ((count &amp; 1) == 1) &amp;#123;                        System.out.println(Thread.currentThread().getName() + &quot;: &quot; + count ++);                    &amp;#125;                &amp;#125;            &amp;#125;            latch.countDown();        &amp;#125;, &quot;奇数线程&quot;);        thread1.start();        thread2.start();        latch.await();        System.out.println(&quot;共耗时：&quot;+(System.currentTimeMillis() - start) + &quot;ms&quot;);    &amp;#125;    public static void main(String[] args) throws InterruptedException &amp;#123;        Thread_demo2 threaddemo2 = new Thread_demo2();        threaddemo2.go();    &amp;#125;&amp;#125;</code></pre><h3 id="加锁实现B"><a class="header-anchor" href="#加锁实现B">✨</a>加锁实现B</h3><p>通过同一个对象锁来实现。</p><pre><code class="language-java">public class Thread_demo3 &amp;#123;    private int count = 0;    private final Object lock = new Object();    public static CountDownLatch latch = new CountDownLatch(2);    public void go() throws InterruptedException &amp;#123;        long begin = System.currentTimeMillis();        new Thread(new RunnerTest(), &quot;偶数线程&quot;).start();        // 确保偶数线程线先获取到锁        Thread.sleep(1);        new Thread(new RunnerTest(), &quot;奇数线程&quot;).start();        latch.await();        System.out.println(System.currentTimeMillis() - begin);    &amp;#125;    class RunnerTest implements Runnable &amp;#123;        @Override        public void run() &amp;#123;            while (count &lt; 10000) &amp;#123;                synchronized (lock) &amp;#123;                    // 拿到锁就打印                    System.out.println(Thread.currentThread().getName() + &quot;: &quot; + count ++);                    // 唤醒其他线程                    lock.notifyAll();                    try &amp;#123;                        if (count &lt; 10000) &amp;#123;                            // 如果任务还没有结束，则让出当前的锁并休眠                            lock.wait();                        &amp;#125;                    &amp;#125; catch (InterruptedException e) &amp;#123;                        e.printStackTrace();                    &amp;#125;                &amp;#125;            &amp;#125;            latch.countDown();        &amp;#125;    &amp;#125;    public static void main(String[] args) throws InterruptedException &amp;#123;        Thread_demo3 threaddemo3 = new Thread_demo3();        threaddemo3.go();    &amp;#125;&amp;#125;</code></pre><h2 id="多个线程交替打印"><a class="header-anchor" href="#多个线程交替打印">✨</a>多个线程交替打印</h2><p><strong>需求：</strong> n个线程，交替打印数字。 效果如下所示</p><pre><code class="language-java">线程1：0线程2：1线程3：2线程1：3线程2：4线程3：5线程1：6...</code></pre><pre><code class="language-java">public class Demo implements Runnable &amp;#123;private static final Object LOCK = new Object();    /**     * 当前即将打印的数字     */    private static int current = 0;    /**     * 当前线程编号，从0开始     */    private int threadNo;    /**     * 线程数量     */    private int threadCount;    /**     * 打印的最大数值     */    private int maxInt;    public Demo(int threadNo, int threadCount, int maxInt) &amp;#123;        this.threadNo = threadNo;        this.threadCount = threadCount;        this.maxInt = maxInt;    &amp;#125;    @Override    public void run() &amp;#123;        while (true) &amp;#123;            synchronized (LOCK) &amp;#123;                // 判断是否轮到当前线程执行                while (current % threadCount != threadNo) &amp;#123;                    if (current &gt; maxInt) &amp;#123;                        break;                    &amp;#125;                    try &amp;#123;                        // 如果不是，则当前线程进入wait                        LOCK.wait();                    &amp;#125; catch (Exception e) &amp;#123;                        e.printStackTrace();                    &amp;#125;                &amp;#125;                // 最大值跳出循环                if (current &gt; maxInt) &amp;#123;                    break;                &amp;#125;                System.out.println(&quot;thread&quot; + threadNo + &quot; : &quot; + current);                current++;                // 唤醒其他wait线程                LOCK.notifyAll();            &amp;#125;        &amp;#125;    &amp;#125;    public static void main(String[] args) &amp;#123;        int threadCount = 3;        int max = 100;        for (int i = 0; i &lt; threadCount; i++) &amp;#123;            new Thread(new Demo(i, threadCount, max)).start();        &amp;#125;    &amp;#125;&amp;#125;</code></pre><p>可以看到，核心思想都是差不多的。都用的是<code>等待通知</code>机制。</p><p>这里我们需要注意一个问题。当threadCount（线程数量）比较大的时候，在执行notifyAll唤醒其他线程的时候，可能会出现线程抢到了锁但并不该自己执行，然后又进入wait的情况。比如现在有100个线程，现在是第一个线程在执行，他执行完之后需要第二个线程执行，但是第100个线程抢到了，发现不是自己然后又进入wait，然后第99个线程抢到了，发现不是自己然后又进入wait，然后第98,97…直到第3个线程都抢到了，最后才到第二个线程抢到同步锁，这里就会白白的多执行很多过程，虽然最后能完成目标。</p><p>解决办法多种多样，这里介绍一种基于<code>信号量</code>的实现方式。</p><pre><code class="language-java">public class Main &amp;#123;static int result = 0;    public static void main(String[] args) throws InterruptedException &amp;#123;        int N = 3;        Thread[] threads = new Thread[N];        final Semaphore[] syncObjects = new Semaphore[N];        for (int i = 0; i &lt; N; i++) &amp;#123;            syncObjects[i] = new Semaphore(1);            if (i != N-1)&amp;#123;                syncObjects[i].acquire();            &amp;#125;        &amp;#125;        for (int i = 0; i &lt; N; i++) &amp;#123;            final Semaphore lastSemphore = i == 0 ? syncObjects[N - 1] : syncObjects[i - 1];            final Semaphore curSemphore = syncObjects[i];            final int index = i;            threads[i] = new Thread(new Runnable() &amp;#123;                public void run() &amp;#123;                    try &amp;#123;                        while (true) &amp;#123;                        // 第一次执行时，由于最后一个信号量并没有执行acquire，所以这里不会阻塞                            lastSemphore.acquire();                            System.out.println(&quot;thread&quot; + index + &quot;: &quot; + result++);                            if (result &gt; 100)&amp;#123;                                System.exit(0);                            &amp;#125;                            // 释放下一个要执行的线程的                            curSemphore.release();                        &amp;#125;                    &amp;#125; catch (Exception e) &amp;#123;                        e.printStackTrace();                    &amp;#125;                &amp;#125;            &amp;#125;);            threads[i].start();        &amp;#125;    &amp;#125;&amp;#125;</code></pre>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;&lt;strong&gt;需求：&lt;/strong&gt; 启动两个线程，交替打印奇偶数。 效果如下所示&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;偶数线程：0
-奇数线程：1
-偶数线程：2
-...
-&lt;/code&gt;&lt;/pre&gt;</summary>
-    
-    
-    
-    <category term="并发" scheme="https://gyl-coder.top/categories/%E5%B9%B6%E5%8F%91/"/>
-    
-    
-    <category term="并发" scheme="https://gyl-coder.top/tags/%E5%B9%B6%E5%8F%91/"/>
-    
-    <category term="Java" scheme="https://gyl-coder.top/tags/Java/"/>
     
   </entry>
   
@@ -779,9 +751,37 @@ doIt();
     <category term="并发" scheme="https://gyl-coder.top/categories/%E5%B9%B6%E5%8F%91/"/>
     
     
+    <category term="Java" scheme="https://gyl-coder.top/tags/Java/"/>
+    
     <category term="并发" scheme="https://gyl-coder.top/tags/%E5%B9%B6%E5%8F%91/"/>
     
+  </entry>
+  
+  <entry>
+    <title>多个线程交替打印内容</title>
+    <link href="https://gyl-coder.top/concurrency/alternate_printing/"/>
+    <id>https://gyl-coder.top/concurrency/alternate_printing/</id>
+    <published>2019-11-04T16:00:00.000Z</published>
+    <updated>2020-09-28T14:52:28.379Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>需求：</strong> 启动两个线程，交替打印奇偶数。 效果如下所示</p><pre><code class="language-java">偶数线程：0奇数线程：1偶数线程：2...</code></pre><a id="more"></a><h2 id="两个线程交替打印"><a class="header-anchor" href="#两个线程交替打印">✨</a>两个线程交替打印</h2><h3 id="无锁实现"><a class="header-anchor" href="#无锁实现">✨</a>无锁实现</h3><p>不需要进行任何加锁，利用并发包中的AtomicInteger和volidate修饰符组合进行实现。</p><pre><code class="language-java">public class Thread_demo1 &amp;#123;    private static volatile Boolean flag = true;    private static AtomicInteger num = new AtomicInteger();    public static CountDownLatch latch = new CountDownLatch(2);    public static void main(String[] args) throws InterruptedException &amp;#123;        long start =  System.currentTimeMillis();        Thread thread1 = new Thread(new Runnable() &amp;#123;            @Override            public void run() &amp;#123;                while(num.get() &lt;= 10000)&amp;#123;                    if(!flag)&amp;#123;                        System.out.println(Thread.currentThread().getName()+&quot;: &quot; + num.getAndIncrement());                        flag = true;                    &amp;#125;                &amp;#125;                latch.countDown();            &amp;#125;        &amp;#125;, &quot;奇数线程&quot;);        Thread thread2 = new Thread(new Runnable() &amp;#123;            @Override            public void run() &amp;#123;                while(num.get() &lt;= 10000)&amp;#123;                    if(flag)&amp;#123;                        System.out.println(Thread.currentThread().getName()+ &quot;：&quot; + num.getAndIncrement());                        flag = false;                    &amp;#125;                &amp;#125;                latch.countDown();            &amp;#125;        &amp;#125;, &quot;偶数线程&quot;);        thread1.start();        thread2.start();        latch.await();        System.out.println(&quot;共耗时：&quot;+(System.currentTimeMillis() - start) + &quot;ms&quot;);    &amp;#125;&amp;#125;</code></pre><h3 id="加锁实现A"><a class="header-anchor" href="#加锁实现A">✨</a>加锁实现A</h3><p>通过一个boolean类型的变量来限制两个线程，分别只输出奇数和偶数。</p><pre><code class="language-java">public class Thread_demo2 &amp;#123;    private int count = 0;    private final Object lock = new Object();    public static CountDownLatch latch = new CountDownLatch(2);    public void go() throws InterruptedException &amp;#123;        long start = System.currentTimeMillis();        Thread thread1 = new Thread(() -&gt; &amp;#123;            while (count &lt; 10000) &amp;#123;                synchronized (lock) &amp;#123;                    if ((count &amp; 1) == 0) &amp;#123;                        System.out.println(Thread.currentThread().getName() + &quot;: &quot; + count ++);                    &amp;#125;                &amp;#125;            &amp;#125;            latch.countDown();        &amp;#125;, &quot;偶数线程&quot;);        Thread thread2 = new Thread(() -&gt; &amp;#123;            while (count &lt; 10000) &amp;#123;                synchronized (lock) &amp;#123;                    if ((count &amp; 1) == 1) &amp;#123;                        System.out.println(Thread.currentThread().getName() + &quot;: &quot; + count ++);                    &amp;#125;                &amp;#125;            &amp;#125;            latch.countDown();        &amp;#125;, &quot;奇数线程&quot;);        thread1.start();        thread2.start();        latch.await();        System.out.println(&quot;共耗时：&quot;+(System.currentTimeMillis() - start) + &quot;ms&quot;);    &amp;#125;    public static void main(String[] args) throws InterruptedException &amp;#123;        Thread_demo2 threaddemo2 = new Thread_demo2();        threaddemo2.go();    &amp;#125;&amp;#125;</code></pre><h3 id="加锁实现B"><a class="header-anchor" href="#加锁实现B">✨</a>加锁实现B</h3><p>通过同一个对象锁来实现。</p><pre><code class="language-java">public class Thread_demo3 &amp;#123;    private int count = 0;    private final Object lock = new Object();    public static CountDownLatch latch = new CountDownLatch(2);    public void go() throws InterruptedException &amp;#123;        long begin = System.currentTimeMillis();        new Thread(new RunnerTest(), &quot;偶数线程&quot;).start();        // 确保偶数线程线先获取到锁        Thread.sleep(1);        new Thread(new RunnerTest(), &quot;奇数线程&quot;).start();        latch.await();        System.out.println(System.currentTimeMillis() - begin);    &amp;#125;    class RunnerTest implements Runnable &amp;#123;        @Override        public void run() &amp;#123;            while (count &lt; 10000) &amp;#123;                synchronized (lock) &amp;#123;                    // 拿到锁就打印                    System.out.println(Thread.currentThread().getName() + &quot;: &quot; + count ++);                    // 唤醒其他线程                    lock.notifyAll();                    try &amp;#123;                        if (count &lt; 10000) &amp;#123;                            // 如果任务还没有结束，则让出当前的锁并休眠                            lock.wait();                        &amp;#125;                    &amp;#125; catch (InterruptedException e) &amp;#123;                        e.printStackTrace();                    &amp;#125;                &amp;#125;            &amp;#125;            latch.countDown();        &amp;#125;    &amp;#125;    public static void main(String[] args) throws InterruptedException &amp;#123;        Thread_demo3 threaddemo3 = new Thread_demo3();        threaddemo3.go();    &amp;#125;&amp;#125;</code></pre><h2 id="多个线程交替打印"><a class="header-anchor" href="#多个线程交替打印">✨</a>多个线程交替打印</h2><p><strong>需求：</strong> n个线程，交替打印数字。 效果如下所示</p><pre><code class="language-java">线程1：0线程2：1线程3：2线程1：3线程2：4线程3：5线程1：6...</code></pre><pre><code class="language-java">public class Demo implements Runnable &amp;#123;private static final Object LOCK = new Object();    /**     * 当前即将打印的数字     */    private static int current = 0;    /**     * 当前线程编号，从0开始     */    private int threadNo;    /**     * 线程数量     */    private int threadCount;    /**     * 打印的最大数值     */    private int maxInt;    public Demo(int threadNo, int threadCount, int maxInt) &amp;#123;        this.threadNo = threadNo;        this.threadCount = threadCount;        this.maxInt = maxInt;    &amp;#125;    @Override    public void run() &amp;#123;        while (true) &amp;#123;            synchronized (LOCK) &amp;#123;                // 判断是否轮到当前线程执行                while (current % threadCount != threadNo) &amp;#123;                    if (current &gt; maxInt) &amp;#123;                        break;                    &amp;#125;                    try &amp;#123;                        // 如果不是，则当前线程进入wait                        LOCK.wait();                    &amp;#125; catch (Exception e) &amp;#123;                        e.printStackTrace();                    &amp;#125;                &amp;#125;                // 最大值跳出循环                if (current &gt; maxInt) &amp;#123;                    break;                &amp;#125;                System.out.println(&quot;thread&quot; + threadNo + &quot; : &quot; + current);                current++;                // 唤醒其他wait线程                LOCK.notifyAll();            &amp;#125;        &amp;#125;    &amp;#125;    public static void main(String[] args) &amp;#123;        int threadCount = 3;        int max = 100;        for (int i = 0; i &lt; threadCount; i++) &amp;#123;            new Thread(new Demo(i, threadCount, max)).start();        &amp;#125;    &amp;#125;&amp;#125;</code></pre><p>可以看到，核心思想都是差不多的。都用的是<code>等待通知</code>机制。</p><p>这里我们需要注意一个问题。当threadCount（线程数量）比较大的时候，在执行notifyAll唤醒其他线程的时候，可能会出现线程抢到了锁但并不该自己执行，然后又进入wait的情况。比如现在有100个线程，现在是第一个线程在执行，他执行完之后需要第二个线程执行，但是第100个线程抢到了，发现不是自己然后又进入wait，然后第99个线程抢到了，发现不是自己然后又进入wait，然后第98,97…直到第3个线程都抢到了，最后才到第二个线程抢到同步锁，这里就会白白的多执行很多过程，虽然最后能完成目标。</p><p>解决办法多种多样，这里介绍一种基于<code>信号量</code>的实现方式。</p><pre><code class="language-java">public class Main &amp;#123;static int result = 0;    public static void main(String[] args) throws InterruptedException &amp;#123;        int N = 3;        Thread[] threads = new Thread[N];        final Semaphore[] syncObjects = new Semaphore[N];        for (int i = 0; i &lt; N; i++) &amp;#123;            syncObjects[i] = new Semaphore(1);            if (i != N-1)&amp;#123;                syncObjects[i].acquire();            &amp;#125;        &amp;#125;        for (int i = 0; i &lt; N; i++) &amp;#123;            final Semaphore lastSemphore = i == 0 ? syncObjects[N - 1] : syncObjects[i - 1];            final Semaphore curSemphore = syncObjects[i];            final int index = i;            threads[i] = new Thread(new Runnable() &amp;#123;                public void run() &amp;#123;                    try &amp;#123;                        while (true) &amp;#123;                        // 第一次执行时，由于最后一个信号量并没有执行acquire，所以这里不会阻塞                            lastSemphore.acquire();                            System.out.println(&quot;thread&quot; + index + &quot;: &quot; + result++);                            if (result &gt; 100)&amp;#123;                                System.exit(0);                            &amp;#125;                            // 释放下一个要执行的线程的                            curSemphore.release();                        &amp;#125;                    &amp;#125; catch (Exception e) &amp;#123;                        e.printStackTrace();                    &amp;#125;                &amp;#125;            &amp;#125;);            threads[i].start();        &amp;#125;    &amp;#125;&amp;#125;</code></pre>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;strong&gt;需求：&lt;/strong&gt; 启动两个线程，交替打印奇偶数。 效果如下所示&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;偶数线程：0
+奇数线程：1
+偶数线程：2
+...
+&lt;/code&gt;&lt;/pre&gt;</summary>
+    
+    
+    
+    <category term="并发" scheme="https://gyl-coder.top/categories/%E5%B9%B6%E5%8F%91/"/>
+    
+    
     <category term="Java" scheme="https://gyl-coder.top/tags/Java/"/>
+    
+    <category term="并发" scheme="https://gyl-coder.top/tags/%E5%B9%B6%E5%8F%91/"/>
     
   </entry>
   
@@ -803,9 +803,9 @@ doIt();
     <category term="并发" scheme="https://gyl-coder.top/categories/%E5%B9%B6%E5%8F%91/"/>
     
     
-    <category term="并发" scheme="https://gyl-coder.top/tags/%E5%B9%B6%E5%8F%91/"/>
-    
     <category term="Java" scheme="https://gyl-coder.top/tags/Java/"/>
+    
+    <category term="并发" scheme="https://gyl-coder.top/tags/%E5%B9%B6%E5%8F%91/"/>
     
     <category term="Concurrency" scheme="https://gyl-coder.top/tags/Concurrency/"/>
     
@@ -829,9 +829,9 @@ doIt();
     <category term="设计模式" scheme="https://gyl-coder.top/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
     
-    <category term="设计模式" scheme="https://gyl-coder.top/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
     <category term="并发" scheme="https://gyl-coder.top/tags/%E5%B9%B6%E5%8F%91/"/>
+    
+    <category term="设计模式" scheme="https://gyl-coder.top/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
     <category term="Immutability模式" scheme="https://gyl-coder.top/tags/Immutability%E6%A8%A1%E5%BC%8F/"/>
     
