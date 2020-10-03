@@ -236,33 +236,6 @@
     
     
     <entry>
-      <title>动态代理原理剖析</title>
-      <link href="java/dynamic-proxy/"/>
-      <url>java/dynamic-proxy/</url>
-      
-        <content type="html"><![CDATA[<p>动态代理的常用实现方式是反射。反射机制是 Java 语言提供的一种基础功能，赋予程序在运行时自省（introspect，官方用语）的能力。通过反射我们可以直接操作类或者对象，比如获取某个对象的类定义，获取类声明的属性和方法，调用方法或者构造对象，甚至可以运行时修改类定义。</p><p>动态代理是一种方便运行时动态构建代理、动态处理代理方法调用的机制，很多场景都是利用类似机制做到的，比如用来包装 RPC 调用、面向切面的编程（AOP）。</p><p>JDK 自身提供的动态代理，就是主要利用了上面提到的反射机制。但动态代理不止有反射一种实现方式，还有其他的实现方式，比如利用传说中更高性能的字节码操作机制，类似 ASM、cglib（基于 ASM，一个 Java 字节码操作框架）、Javassist 等。简单来说，动态代理是一种行为方式，而反射或 ASM 只是它的一种实现手段而已。</p><a id="more"></a><p>JDK Proxy 和 CGLib 的区别主要体现在以下几个方面：</p><ul><li>JDK Proxy 是 Java 语言自带的功能，无需通过加载第三方类实现；</li><li>Java 对 JDK Proxy 提供了稳定的支持，并且会持续的升级和更新 JDK Proxy，例如 Java 8 版本中的 JDK Proxy 性能相比于之前版本提升了很多；</li><li>JDK Proxy 是通过拦截器加反射的方式实现的；</li><li>JDK Proxy 只能代理继承接口的类；</li><li>JDK Proxy 实现和调用起来比较简单；</li><li>CGLib 是第三方提供的工具，基于 ASM 实现的，性能比较高；</li><li>CGLib 无需通过接口来实现，它是通过实现子类的方式来完成调用的。</li></ul><h2 id="什么是静态代理"><a class="header-anchor" href="#什么是静态代理">✨</a>什么是静态代理</h2><p>静态代理是代理类在编译期间就创建好了，不是编译器生成的代理类，而是手动创建的类。在编译时就已经将接口，被代理类，代理类等确定下来。，软件设计中所指的代理一般是指静态代理，也就是在代码中显式指定的代理。</p><p>下面我们通过一个简单的案例，来了解下静态代理。</p><pre><code class="language-java">/** * 静态代理类接口, 委托类和代理类都需要实现的接口规范。 * 定义了一个猫科动物的两个行为接口，吃东西，奔跑。 * 作为代理类 和委托类之间的约束接口 */public interface Cat &amp;#123;         public String eatFood(String foodName);         public boolean running();&amp;#125;</code></pre><pre><code class="language-java">    /**     * 狮子 实现了猫科动物接口Cat， 并实现了具体的行为。作为委托类实现     */    public class Lion implements Cat &amp;#123;            private String name;            private int runningSpeed;            public String getName() &amp;#123;                    return name;        &amp;#125;            public void setName(String name) &amp;#123;                    this.name = name;         &amp;#125;            public int getRunningSpeed() &amp;#123;                    return runningSpeed;         &amp;#125;            public void setRunningSpeed(int runningSpeed) &amp;#123;                    this.runningSpeed = runningSpeed;         &amp;#125;            public Lion() &amp;#123; &amp;#125;                    @Override        public String eatFood(String foodName) &amp;#123;            String eat = this.name + &quot; Lion eat food. foodName = &quot; + foodName;            System.out.println(eat);        return eat;        &amp;#125;            @Override        public boolean running() &amp;#123;            System.out.println(this.name + &quot; Lion is running . Speed :&quot; + this.runningSpeed);        return false;        &amp;#125;    &amp;#125;</code></pre><p>代理类角色(FeederProxy)</p><pre><code class="language-java">/** * 饲养员 实现Cat接口，作为静态代理类实现。代理狮子的行为。 * 代理类中可以新增一些其他行为，在实践中主要做的是参数校验的功能。 */public class FeederProxy implements Cat &amp;#123;        private Cat cat;        public FeederProxy()&amp;#123;&amp;#125;        public FeederProxy(Cat cat) &amp;#123;                 if (cat instanceof Cat) &amp;#123;                         this.cat = cat;          &amp;#125;     &amp;#125;        public void setCat(Cat cat) &amp;#123;                 if (cat instanceof Cat) &amp;#123;                         this.cat = cat;          &amp;#125;     &amp;#125;        @Override    public String eatFood(String foodName) &amp;#123;        System.out.println(&quot;proxy Lion exec eatFood &quot;);                return cat.eatFood(foodName);    &amp;#125;        @Override    public boolean running() &amp;#123;        System.out.println(&quot;proxy Lion exec running.&quot;);                return cat.running();    &amp;#125;&amp;#125;</code></pre><p>静态代理类测试</p><pre><code class="language-java">    /**     * 静态代理类测试     */    public class staticProxyTest &amp;#123;            public static void main(String[] args) &amp;#123;            Lion lion = new Lion();            lion.setName(&quot;狮子 小王&quot;);            lion.setRunningSpeed(100);                    /**             * new 静态代理类，静态代理类在编译前已经创建好了，和动态代理的最大区别点             */            Cat proxy = new FeederProxy(lion);                   System.out.println(Thread.currentThread().getName()+&quot; -- &quot; + proxy.eatFood(&quot;水牛&quot;));            proxy.running();         &amp;#125;    &amp;#125;</code></pre><p>静态代理很好的诠释了代理设计模式，代理模式最主要的就是有一个公共接口（Cat），一个委托类（Lion），一个代理类（FeederProxy）,代理类持有委托类的实例，代为执行具体类实例方法。</p><p>代理模式就是在访问实际对象时引入一定程度的间接性，因为这种间接性，可以附加多种用途。这里的间接性就是指客户端不直接调用实际对象的方法，客户端依赖公共接口并使用代理类。 那么我们在代理过程中就可以加上一些其他用途。</p><p>就这个例子来说在 eatFood 方法调用中，代理类在调用具体实现类之前添加System.out.println(&quot;proxy Lion exec eatFood &quot;);语句 就是添加间接性带来的收益。代理类存在的意义是为了增加一些公共的逻辑代码。</p><h3 id="静态代理的缺陷"><a class="header-anchor" href="#静态代理的缺陷">✨</a>静态代理的缺陷</h3><ol><li><p>代理类和委托类实现了相同的接口，代理类通过委托类实现了相同的方法。这样就出现了大量的代码重复。如果接口增加一个方法，除了所有实现类需要实现这个方法外，所有代理类也需要实现此方法。增加了代码维护的复杂度。</p></li><li><p>代理对象只服务于一种类型的对象，如果要服务多类型的对象。势必要为每一种对象都进行代理，静态代理在程序规模稍大时就无法胜任了。</p></li><li><p>静态代理一个代理只能代理一种类型，而且是在编译器就已经确定被代理的对象。</p></li></ol><h2 id="JDK-Proxy-和-CGLib-的使用样例"><a class="header-anchor" href="#JDK-Proxy-和-CGLib-的使用样例">✨</a>JDK Proxy 和 CGLib 的使用样例</h2><h3 id="JDK-Proxy-动态代理实现"><a class="header-anchor" href="#JDK-Proxy-动态代理实现">✨</a>JDK Proxy 动态代理实现</h3>]]></content>
-      
-      
-      <categories>
-          
-          <category> Java </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Java </tag>
-            
-            <tag> 动态代理 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>try catch finally执行顺序</title>
       <link href="java/try_catch_finally/"/>
       <url>java/try_catch_finally/</url>
@@ -282,6 +255,33 @@
             <tag> Java </tag>
             
             <tag> try-catch </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>动态代理原理剖析</title>
+      <link href="java/dynamic-proxy/"/>
+      <url>java/dynamic-proxy/</url>
+      
+        <content type="html"><![CDATA[<p>动态代理的常用实现方式是反射。反射机制是 Java 语言提供的一种基础功能，赋予程序在运行时自省（introspect，官方用语）的能力。通过反射我们可以直接操作类或者对象，比如获取某个对象的类定义，获取类声明的属性和方法，调用方法或者构造对象，甚至可以运行时修改类定义。</p><p>动态代理是一种方便运行时动态构建代理、动态处理代理方法调用的机制，很多场景都是利用类似机制做到的，比如用来包装 RPC 调用、面向切面的编程（AOP）。</p><p>JDK 自身提供的动态代理，就是主要利用了上面提到的反射机制。但动态代理不止有反射一种实现方式，还有其他的实现方式，比如利用传说中更高性能的字节码操作机制，类似 ASM、cglib（基于 ASM，一个 Java 字节码操作框架）、Javassist 等。简单来说，动态代理是一种行为方式，而反射或 ASM 只是它的一种实现手段而已。</p><a id="more"></a><p>JDK Proxy 和 CGLib 的区别主要体现在以下几个方面：</p><ul><li>JDK Proxy 是 Java 语言自带的功能，无需通过加载第三方类实现；</li><li>Java 对 JDK Proxy 提供了稳定的支持，并且会持续的升级和更新 JDK Proxy，例如 Java 8 版本中的 JDK Proxy 性能相比于之前版本提升了很多；</li><li>JDK Proxy 是通过拦截器加反射的方式实现的；</li><li>JDK Proxy 只能代理继承接口的类；</li><li>JDK Proxy 实现和调用起来比较简单；</li><li>CGLib 是第三方提供的工具，基于 ASM 实现的，性能比较高；</li><li>CGLib 无需通过接口来实现，它是通过实现子类的方式来完成调用的。</li></ul><h2 id="什么是静态代理"><a class="header-anchor" href="#什么是静态代理">✨</a>什么是静态代理</h2><p>静态代理是代理类在编译期间就创建好了，不是编译器生成的代理类，而是手动创建的类。在编译时就已经将接口，被代理类，代理类等确定下来。，软件设计中所指的代理一般是指静态代理，也就是在代码中显式指定的代理。</p><p>下面我们通过一个简单的案例，来了解下静态代理。</p><pre><code class="language-java">/** * 静态代理类接口, 委托类和代理类都需要实现的接口规范。 * 定义了一个猫科动物的两个行为接口，吃东西，奔跑。 * 作为代理类 和委托类之间的约束接口 */public interface Cat &amp;#123;         public String eatFood(String foodName);         public boolean running();&amp;#125;</code></pre><pre><code class="language-java">    /**     * 狮子 实现了猫科动物接口Cat， 并实现了具体的行为。作为委托类实现     */    public class Lion implements Cat &amp;#123;            private String name;            private int runningSpeed;            public String getName() &amp;#123;                    return name;        &amp;#125;            public void setName(String name) &amp;#123;                    this.name = name;         &amp;#125;            public int getRunningSpeed() &amp;#123;                    return runningSpeed;         &amp;#125;            public void setRunningSpeed(int runningSpeed) &amp;#123;                    this.runningSpeed = runningSpeed;         &amp;#125;            public Lion() &amp;#123; &amp;#125;                    @Override        public String eatFood(String foodName) &amp;#123;            String eat = this.name + &quot; Lion eat food. foodName = &quot; + foodName;            System.out.println(eat);        return eat;        &amp;#125;            @Override        public boolean running() &amp;#123;            System.out.println(this.name + &quot; Lion is running . Speed :&quot; + this.runningSpeed);        return false;        &amp;#125;    &amp;#125;</code></pre><p>代理类角色(FeederProxy)</p><pre><code class="language-java">/** * 饲养员 实现Cat接口，作为静态代理类实现。代理狮子的行为。 * 代理类中可以新增一些其他行为，在实践中主要做的是参数校验的功能。 */public class FeederProxy implements Cat &amp;#123;        private Cat cat;        public FeederProxy()&amp;#123;&amp;#125;        public FeederProxy(Cat cat) &amp;#123;                 if (cat instanceof Cat) &amp;#123;                         this.cat = cat;          &amp;#125;     &amp;#125;        public void setCat(Cat cat) &amp;#123;                 if (cat instanceof Cat) &amp;#123;                         this.cat = cat;          &amp;#125;     &amp;#125;        @Override    public String eatFood(String foodName) &amp;#123;        System.out.println(&quot;proxy Lion exec eatFood &quot;);                return cat.eatFood(foodName);    &amp;#125;        @Override    public boolean running() &amp;#123;        System.out.println(&quot;proxy Lion exec running.&quot;);                return cat.running();    &amp;#125;&amp;#125;</code></pre><p>静态代理类测试</p><pre><code class="language-java">    /**     * 静态代理类测试     */    public class staticProxyTest &amp;#123;            public static void main(String[] args) &amp;#123;            Lion lion = new Lion();            lion.setName(&quot;狮子 小王&quot;);            lion.setRunningSpeed(100);                    /**             * new 静态代理类，静态代理类在编译前已经创建好了，和动态代理的最大区别点             */            Cat proxy = new FeederProxy(lion);                   System.out.println(Thread.currentThread().getName()+&quot; -- &quot; + proxy.eatFood(&quot;水牛&quot;));            proxy.running();         &amp;#125;    &amp;#125;</code></pre><p>静态代理很好的诠释了代理设计模式，代理模式最主要的就是有一个公共接口（Cat），一个委托类（Lion），一个代理类（FeederProxy）,代理类持有委托类的实例，代为执行具体类实例方法。</p><p>代理模式就是在访问实际对象时引入一定程度的间接性，因为这种间接性，可以附加多种用途。这里的间接性就是指客户端不直接调用实际对象的方法，客户端依赖公共接口并使用代理类。 那么我们在代理过程中就可以加上一些其他用途。</p><p>就这个例子来说在 eatFood 方法调用中，代理类在调用具体实现类之前添加System.out.println(&quot;proxy Lion exec eatFood &quot;);语句 就是添加间接性带来的收益。代理类存在的意义是为了增加一些公共的逻辑代码。</p><h3 id="静态代理的缺陷"><a class="header-anchor" href="#静态代理的缺陷">✨</a>静态代理的缺陷</h3><ol><li><p>代理类和委托类实现了相同的接口，代理类通过委托类实现了相同的方法。这样就出现了大量的代码重复。如果接口增加一个方法，除了所有实现类需要实现这个方法外，所有代理类也需要实现此方法。增加了代码维护的复杂度。</p></li><li><p>代理对象只服务于一种类型的对象，如果要服务多类型的对象。势必要为每一种对象都进行代理，静态代理在程序规模稍大时就无法胜任了。</p></li><li><p>静态代理一个代理只能代理一种类型，而且是在编译器就已经确定被代理的对象。</p></li></ol><h2 id="JDK-Proxy-和-CGLib-的使用样例"><a class="header-anchor" href="#JDK-Proxy-和-CGLib-的使用样例">✨</a>JDK Proxy 和 CGLib 的使用样例</h2><h3 id="JDK-Proxy-动态代理实现"><a class="header-anchor" href="#JDK-Proxy-动态代理实现">✨</a>JDK Proxy 动态代理实现</h3>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+            <tag> 动态代理 </tag>
             
         </tags>
       
@@ -693,9 +693,9 @@
       
         <tags>
             
-            <tag> Java </tag>
-            
             <tag> 并发 </tag>
+            
+            <tag> Java </tag>
             
             <tag> 等待通知机制 </tag>
             
@@ -722,9 +722,9 @@
       
         <tags>
             
-            <tag> Java </tag>
-            
             <tag> 并发 </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -749,9 +749,9 @@
       
         <tags>
             
-            <tag> Java </tag>
-            
             <tag> 并发 </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -776,9 +776,9 @@
       
         <tags>
             
-            <tag> Java </tag>
-            
             <tag> 并发 </tag>
+            
+            <tag> Java </tag>
             
             <tag> Concurrency </tag>
             
@@ -805,9 +805,9 @@
       
         <tags>
             
-            <tag> 并发 </tag>
-            
             <tag> 设计模式 </tag>
+            
+            <tag> 并发 </tag>
             
             <tag> Immutability模式 </tag>
             

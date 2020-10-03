@@ -259,6 +259,29 @@ System.out.println(&amp;quot;大小：&amp;quot;+size);
   </entry>
   
   <entry>
+    <title>try catch finally执行顺序</title>
+    <link href="https://gyl-coder.top/java/try_catch_finally/"/>
+    <id>https://gyl-coder.top/java/try_catch_finally/</id>
+    <published>2020-04-01T16:00:00.000Z</published>
+    <updated>2020-10-02T10:30:59.255Z</updated>
+    
+    <content type="html"><![CDATA[<p>首先在finally和try中对数据的操作时数据分为 基本数据类型和引用数据类型，他们存放的地方也不一样，一个是栈区另一个是在堆区。</p><a id="more"></a><h3 id="finally中没有return"><a class="header-anchor" href="#finally中没有return">✨</a>finally中没有return</h3><pre><code class="language-java">public class Main &amp;#123;    private  static  int a=2;     public static void main(String[] args) &amp;#123;         System.out.println(&quot;test输出的结果 &quot;+test());        System.out.println(&quot;main 自加后 a=&quot;+(a++));    &amp;#125;        private  static  int test()&amp;#123;        try &amp;#123;            a+=3;            System.out.println(&quot;try  a=&quot;+a);            return a;        &amp;#125;catch (Exception e)&amp;#123;         &amp;#125;finally &amp;#123;            ++a;            System.out.println(&quot;finally a=&quot;+a);        &amp;#125;    &amp;#125;</code></pre><p>输出结果:</p><p>try  a=5<br>finally a=6<br>test输出的结果 5<br>main a=6</p><p>结论: 可见方法test的返回值不受finally中的影响，但是变量a还是受到了影响，值改变了，返回值是存放在栈中的，return是就           已经把返回值压入栈了，相当于一个临时变量。在finally中并不会影响返回值</p><h3 id="finally中加入return"><a class="header-anchor" href="#finally中加入return">✨</a>finally中加入return</h3><pre><code class="language-java">public class Main &amp;#123;    private  static  int a=2;     public static void main(String[] args) &amp;#123;         System.out.println(&quot;test输出的结果 &quot;+test());        System.out.println(&quot;main 自加后 a=&quot;+(a++));    &amp;#125;        private  static  int test()&amp;#123;        try &amp;#123;            a+=3;            System.out.println(&quot;try  a=&quot;+a);            return a;        &amp;#125;catch (Exception e)&amp;#123;         &amp;#125;finally &amp;#123;            ++a;            System.out.println(&quot;finally a=&quot;+a);            return a;        &amp;#125;    &amp;#125;</code></pre><p>输出结果:</p><p>try  a=5<br>finally a=6<br>test输出的结果 6<br>main a=6</p><p>结论: 此时test方法的返回值是6和a的值相等， 在try,catch中的返回值可以发现被finally的返回值给屏蔽了，所以如果finally中              有return则会屏蔽当前方法中的返回值</p><h3 id="现在对引用变量进行分析"><a class="header-anchor" href="#现在对引用变量进行分析">✨</a>现在对引用变量进行分析</h3><p>finally中没有return</p><pre><code class="language-java">public class Main &amp;#123;    private  static List&lt;String&gt; list=new ArrayList&lt;&gt;();     public static void main(String[] args) &amp;#123;        System.out.println(&quot;test输出的结果 &quot;+test());        System.out.println(&quot;main list=&quot;+list.toString());      &amp;#125;    private  static  List test()&amp;#123;        try &amp;#123;            list.add(&quot;33&quot;);            System.out.println(&quot;try  list=&quot;+list.toString());            return list;        &amp;#125;catch (Exception e)&amp;#123;         &amp;#125;finally &amp;#123;            list.add(&quot;66&quot;);            System.out.println(&quot;finally list=&quot;+list.toString());        &amp;#125;        return null;    &amp;#125;&amp;#125;</code></pre><p>输出结果:</p><p>try  list=[33]<br>finally list=[33, 66]<br>test输出的结果 [33, 66]<br>main list=[33, 66]</p><p>结论: 通过结果可以知道 test的返回值内容也是跟集合list一样的， 因为list是引用类型所以堆区中存放了内存地址，在finally对值          进行改变时还是只想同一个地址，只是地址的内容变化了</p><p>2 finally中有return 、</p><p>输出值:</p><p>try  list=[33]<br>finally list=[33, 66]<br>test输出的结果 [33, 66]<br>main list=[33, 66]</p><p>结论:可见引用类型时finally有没有return都会对当前方法的返回值产生影响</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;首先在finally和try中对数据的操作时数据分为 基本数据类型和引用数据类型，他们存放的地方也不一样，一个是栈区另一个是在堆区。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Java" scheme="https://gyl-coder.top/categories/Java/"/>
+    
+    
+    <category term="Java" scheme="https://gyl-coder.top/tags/Java/"/>
+    
+    <category term="try-catch" scheme="https://gyl-coder.top/tags/try-catch/"/>
+    
+  </entry>
+  
+  <entry>
     <title>动态代理原理剖析</title>
     <link href="https://gyl-coder.top/java/dynamic-proxy/"/>
     <id>https://gyl-coder.top/java/dynamic-proxy/</id>
@@ -280,29 +303,6 @@ System.out.println(&amp;quot;大小：&amp;quot;+size);
     <category term="Java" scheme="https://gyl-coder.top/tags/Java/"/>
     
     <category term="动态代理" scheme="https://gyl-coder.top/tags/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>try catch finally执行顺序</title>
-    <link href="https://gyl-coder.top/java/try_catch_finally/"/>
-    <id>https://gyl-coder.top/java/try_catch_finally/</id>
-    <published>2020-04-01T16:00:00.000Z</published>
-    <updated>2020-10-02T10:30:59.255Z</updated>
-    
-    <content type="html"><![CDATA[<p>首先在finally和try中对数据的操作时数据分为 基本数据类型和引用数据类型，他们存放的地方也不一样，一个是栈区另一个是在堆区。</p><a id="more"></a><h3 id="finally中没有return"><a class="header-anchor" href="#finally中没有return">✨</a>finally中没有return</h3><pre><code class="language-java">public class Main &amp;#123;    private  static  int a=2;     public static void main(String[] args) &amp;#123;         System.out.println(&quot;test输出的结果 &quot;+test());        System.out.println(&quot;main 自加后 a=&quot;+(a++));    &amp;#125;        private  static  int test()&amp;#123;        try &amp;#123;            a+=3;            System.out.println(&quot;try  a=&quot;+a);            return a;        &amp;#125;catch (Exception e)&amp;#123;         &amp;#125;finally &amp;#123;            ++a;            System.out.println(&quot;finally a=&quot;+a);        &amp;#125;    &amp;#125;</code></pre><p>输出结果:</p><p>try  a=5<br>finally a=6<br>test输出的结果 5<br>main a=6</p><p>结论: 可见方法test的返回值不受finally中的影响，但是变量a还是受到了影响，值改变了，返回值是存放在栈中的，return是就           已经把返回值压入栈了，相当于一个临时变量。在finally中并不会影响返回值</p><h3 id="finally中加入return"><a class="header-anchor" href="#finally中加入return">✨</a>finally中加入return</h3><pre><code class="language-java">public class Main &amp;#123;    private  static  int a=2;     public static void main(String[] args) &amp;#123;         System.out.println(&quot;test输出的结果 &quot;+test());        System.out.println(&quot;main 自加后 a=&quot;+(a++));    &amp;#125;        private  static  int test()&amp;#123;        try &amp;#123;            a+=3;            System.out.println(&quot;try  a=&quot;+a);            return a;        &amp;#125;catch (Exception e)&amp;#123;         &amp;#125;finally &amp;#123;            ++a;            System.out.println(&quot;finally a=&quot;+a);            return a;        &amp;#125;    &amp;#125;</code></pre><p>输出结果:</p><p>try  a=5<br>finally a=6<br>test输出的结果 6<br>main a=6</p><p>结论: 此时test方法的返回值是6和a的值相等， 在try,catch中的返回值可以发现被finally的返回值给屏蔽了，所以如果finally中              有return则会屏蔽当前方法中的返回值</p><h3 id="现在对引用变量进行分析"><a class="header-anchor" href="#现在对引用变量进行分析">✨</a>现在对引用变量进行分析</h3><p>finally中没有return</p><pre><code class="language-java">public class Main &amp;#123;    private  static List&lt;String&gt; list=new ArrayList&lt;&gt;();     public static void main(String[] args) &amp;#123;        System.out.println(&quot;test输出的结果 &quot;+test());        System.out.println(&quot;main list=&quot;+list.toString());      &amp;#125;    private  static  List test()&amp;#123;        try &amp;#123;            list.add(&quot;33&quot;);            System.out.println(&quot;try  list=&quot;+list.toString());            return list;        &amp;#125;catch (Exception e)&amp;#123;         &amp;#125;finally &amp;#123;            list.add(&quot;66&quot;);            System.out.println(&quot;finally list=&quot;+list.toString());        &amp;#125;        return null;    &amp;#125;&amp;#125;</code></pre><p>输出结果:</p><p>try  list=[33]<br>finally list=[33, 66]<br>test输出的结果 [33, 66]<br>main list=[33, 66]</p><p>结论: 通过结果可以知道 test的返回值内容也是跟集合list一样的， 因为list是引用类型所以堆区中存放了内存地址，在finally对值          进行改变时还是只想同一个地址，只是地址的内容变化了</p><p>2 finally中有return 、</p><p>输出值:</p><p>try  list=[33]<br>finally list=[33, 66]<br>test输出的结果 [33, 66]<br>main list=[33, 66]</p><p>结论:可见引用类型时finally有没有return都会对当前方法的返回值产生影响</p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;首先在finally和try中对数据的操作时数据分为 基本数据类型和引用数据类型，他们存放的地方也不一样，一个是栈区另一个是在堆区。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Java" scheme="https://gyl-coder.top/categories/Java/"/>
-    
-    
-    <category term="Java" scheme="https://gyl-coder.top/tags/Java/"/>
-    
-    <category term="try-catch" scheme="https://gyl-coder.top/tags/try-catch/"/>
     
   </entry>
   
@@ -711,9 +711,9 @@ doIt();
     <category term="并发" scheme="https://gyl-coder.top/categories/%E5%B9%B6%E5%8F%91/"/>
     
     
-    <category term="Java" scheme="https://gyl-coder.top/tags/Java/"/>
-    
     <category term="并发" scheme="https://gyl-coder.top/tags/%E5%B9%B6%E5%8F%91/"/>
+    
+    <category term="Java" scheme="https://gyl-coder.top/tags/Java/"/>
     
     <category term="等待通知机制" scheme="https://gyl-coder.top/tags/%E7%AD%89%E5%BE%85%E9%80%9A%E7%9F%A5%E6%9C%BA%E5%88%B6/"/>
     
@@ -741,9 +741,9 @@ doIt();
     <category term="并发" scheme="https://gyl-coder.top/categories/%E5%B9%B6%E5%8F%91/"/>
     
     
-    <category term="Java" scheme="https://gyl-coder.top/tags/Java/"/>
-    
     <category term="并发" scheme="https://gyl-coder.top/tags/%E5%B9%B6%E5%8F%91/"/>
+    
+    <category term="Java" scheme="https://gyl-coder.top/tags/Java/"/>
     
   </entry>
   
@@ -779,9 +779,9 @@ doIt();
     <category term="并发" scheme="https://gyl-coder.top/categories/%E5%B9%B6%E5%8F%91/"/>
     
     
-    <category term="Java" scheme="https://gyl-coder.top/tags/Java/"/>
-    
     <category term="并发" scheme="https://gyl-coder.top/tags/%E5%B9%B6%E5%8F%91/"/>
+    
+    <category term="Java" scheme="https://gyl-coder.top/tags/Java/"/>
     
   </entry>
   
@@ -803,9 +803,9 @@ doIt();
     <category term="并发" scheme="https://gyl-coder.top/categories/%E5%B9%B6%E5%8F%91/"/>
     
     
-    <category term="Java" scheme="https://gyl-coder.top/tags/Java/"/>
-    
     <category term="并发" scheme="https://gyl-coder.top/tags/%E5%B9%B6%E5%8F%91/"/>
+    
+    <category term="Java" scheme="https://gyl-coder.top/tags/Java/"/>
     
     <category term="Concurrency" scheme="https://gyl-coder.top/tags/Concurrency/"/>
     
@@ -829,9 +829,9 @@ doIt();
     <category term="设计模式" scheme="https://gyl-coder.top/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
     
-    <category term="并发" scheme="https://gyl-coder.top/tags/%E5%B9%B6%E5%8F%91/"/>
-    
     <category term="设计模式" scheme="https://gyl-coder.top/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    <category term="并发" scheme="https://gyl-coder.top/tags/%E5%B9%B6%E5%8F%91/"/>
     
     <category term="Immutability模式" scheme="https://gyl-coder.top/tags/Immutability%E6%A8%A1%E5%BC%8F/"/>
     
