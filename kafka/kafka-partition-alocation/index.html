@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
-<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/tree/4.0.0'>
+<html>
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/tree/1.0'>
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
@@ -13,7 +13,6 @@
   <meta name="HandheldFriendly" content="True" >
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta http-equiv='x-dns-prefetch-control' content='on' />
 
   <!-- 页面元数据 -->
   
@@ -35,21 +34,17 @@
   
 
   <!-- link -->
-  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
   
     
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/heson525/fontawesome-pro@5.13.1/css/all.min.css">
 
   
   
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css">
-
-  
-
   
     
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
 
   
 
@@ -58,10 +53,13 @@
   
 
   
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
+
   
 
   
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC&display=swap" media="print" onload="this.media='all'">
+  
+
 
   <!-- import link -->
   
@@ -69,7 +67,7 @@
   
     
       
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.18.1/styles/solarized-light.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.2.0/styles/a11y-dark.css">
 
     
   
@@ -80,28 +78,24 @@
   
   
   
-  <!-- 脚本懒加载函数 -->
-  <script>
-  function loadScript(src, cb) {
-    var HEAD = document.getElementsByTagName('head')[0] || document.documentElement;
-    var script = document.createElement('script');
-    script.setAttribute('type','text/javascript');
-    if (cb) script.onload = cb;
-    script.setAttribute('src', src);
-    HEAD.appendChild(script);
-  }
-  //https://github.com/filamentgroup/loadCSS
-  !function(c){"use strict";var e=function(e,t,n,r){var o,i=c.document,a=i.createElement("link");if(t)o=t;else{var d=(i.body||i.getElementsByTagName("head")[0]).childNodes;o=d[d.length-1]}var f=i.styleSheets;if(r)for(var l in r)r.hasOwnProperty(l)&&a.setAttribute(l,r[l]);a.rel="stylesheet",a.href=e,a.media="only x",function e(t){if(i.body)return t();setTimeout(function(){e(t)})}(function(){o.parentNode.insertBefore(a,t?o:o.nextSibling)});var s=function(e){for(var t=a.href,n=f.length;n--;)if(f[n].href===t)return e();setTimeout(function(){s(e)})};function u(){a.addEventListener&&a.removeEventListener("load",u),a.media=n||"all"}return a.addEventListener&&a.addEventListener("load",u),(a.onloadcssdefined=s)(u),a};"undefined"!=typeof exports?exports.loadCSS=e:c.loadCSS=e}("undefined"!=typeof global?global:this);
-  </script>
-  <script id="loadcss"></script>
+    <!-- 脚本懒加载函数 -->
+    <script>
+      function loadScript(src, cb) {
+        var HEAD = document.getElementsByTagName('head')[0] || document.documentElement;
+        var script = document.createElement('script');
+        script.setAttribute('type','text/javascript');
+        if (cb) script.onload = cb;
+        script.setAttribute('src', src);
+        HEAD.appendChild(script);
+      }
+       </script>
+    
 </head>
 
 <body>
   <!-- 页面点击小红心 -->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/js/love.js"></script>
-  <!--浏览器搞笑标题-->
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/js/ergao.js"></script>  
-  <header class="l_header always shadow blur "  >
+  <header class="l_header auto shadow floatable blur" style='opacity: 0' >
   <div class='container'>
   <div class='wrapper'>
     <div class='nav-sub'>
@@ -118,11 +112,9 @@
         
         <a class="title flat-box" target="_self" href='/'>
           
+            <img no-lazy class='logo' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/logo/logo1200x200.png'/>
           
-            <i class='fa-fw fab fa-modx fa-spin'></i>
           
-          
-            Yanliang
           
         </a>
       
@@ -426,22 +418,6 @@
                       <div class="aplayer-container">
                         
 
-  
-    <meting-js
-      theme='#1BCDFC'
-      autoplay='false'
-      volume='0.7'
-      loop='all'
-      order='list'
-      fixed='false'
-      list-max-height='320px'
-      server='netease'
-      type='song'
-      id='186453'
-      list-folded='true'>
-    </meting-js>
-  
-
 
                       </div>
                     </li>
@@ -462,14 +438,14 @@
 
       <div class="m_search">
         <form name="searchform" class="form u-search-form">
-          <i class="icon fas fa-search fa-fw"></i>
-          <input type="text" class="input u-search-input" placeholder="Search..." />
+          <i class="icon fal fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="搜索..." />
         </form>
       </div>
 
 			<ul class='switcher nav-list-h m-phone'>
 				
-					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+					<li><a class="s-search fal fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
 				
 				<li>
           <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
@@ -779,18 +755,19 @@
 
   <div class="l_body">
     <div class="l_cover">
+
   
-    
-    
-        <div class='cover-wrapper post featured' style="display: none;">
-          
-            <div class='cover-backstretch'></div>
-          
-          <div class='cover-body'>
+  
+      <div class='cover-wrapper post featured' style="display: none;">
+        <canvas id="header_canvas" style="position:absolute;bottom:0;z-index: 1;" width="900" height="350"></canvas>
+        
+          <div class='cover-bg lazyload placeholder' data-bg="https://picup.heson10.com/img/upyun/home_top_bg.webp"></div>
+        
+        <div class='cover-body'>
   <div class='top'>
     
-      <img no-lazy class='logo' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/logo.png'/>
     
+      <p class="title">Yanliang</p>
     
     
   </div>
@@ -840,53 +817,204 @@
   </div>
 </div>
 
-          <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
-        </div>
-    
+        <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+      </div>
   
-  </div>
-  
+
+</div>
+
     <div class='safearea'>
       <div class='body-wrapper' id="pjax-container">
         
-          <!--此文件用来存放一些不方便取值的变量--> 
-<!--思路大概是将值藏到重加载的区域内--> 
- 
- 
- 
-<div id="pjax-data" style="display: none"> 
-  <div id="pjax-ispage">true</div> 
-  <div id="pjax-pageTitle">Kafka有哪几处地方有分区分配的概念？简述大致的过程及原理</div> 
-  <div id="pjax-enable-cover">true</div> 
-  <div id="pjax-comment-path"></div> 
-  <div id="pjax-comment-placeholder"></div> 
-</div> 
- 
- 
-<script> 
-  // 处理封面 此时 jquery 还没加载 
-  if ("half" == "none") { // 移除封面 
-    document.getElementsByClassName('cover-wrapper')[0].style.display = "none"; 
-    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show"); 
-  } else { 
-    if ("half" == "half") { // 半屏 
-      document.getElementsByClassName('cover-wrapper')[0].setAttribute('id', 'half'); 
-      document.getElementsByClassName('scroll-down')[0].style.display = "none"; 
-    } else if ("half" == "full") { // 全屏 
-      document.getElementsByClassName('cover-wrapper')[0].setAttribute('id', 'full'); 
-      document.getElementsByClassName('scroll-down')[0].style.display = ""; 
-    } 
-    document.getElementsByClassName('cover-wrapper')[0].style.display = ""; 
-    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show"); 
-  } 
-</script> 
- 
+          <!--此文件用来存放一些不方便取值的变量-->
+<!--思路大概是将值藏到重加载的区域内-->
+
+
+
+<div id="pjax-data" style="display: none">
+  <div id="pjax-ispage">true</div>
+  <div id="pjax-pageTitle">Kafka有哪几处地方有分区分配的概念？简述大致的过程及原理</div>
+  <div id="pjax-enable-cover">true</div>
+  <div id="pjax-comment-path"></div>
+  <div id="pjax-comment-placeholder"></div>
+</div>
+
+
+<script>
+  // 处理封面 此时 jquery 还没加载
+  if ("half" == "none") { // 移除封面
+    document.getElementsByClassName('cover-wrapper')[0].style.display = "none";
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show");
+  } else {
+    if ("half" == "half") { // 半屏
+      document.getElementsByClassName('cover-wrapper')[0].setAttribute('id', 'half');
+      document.getElementsByClassName('scroll-down')[0].style.display = "none";
+    } else if ("half" == "full") { // 全屏
+      document.getElementsByClassName('cover-wrapper')[0].setAttribute('id', 'full');
+      document.getElementsByClassName('scroll-down')[0].style.display = "";
+    }
+    document.getElementsByClassName('cover-wrapper')[0].style.display = "";
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show");
+  }
+</script>
+
 
         
         
+
+<aside class='l_side'>
+  <div style="margin-bottom: 16px;border-radius: 8px;" class='shadow floatable widget_author desktop'>
+    <div id="zuozhebg" class="newauthor"
+      style="background: url(https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/touxiang.webp) center center no-repeat;background-size:cover">
+    </div>
+    <div class="relive_widget_v3">
+      <div class="box-author-info">
+        <div class="author-face">
+          <a href="/about" target="_blank" rel="nofollow" title="关于yanliang">
+            <img no-lazy alt="" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/touxiang.webp"
+              class="avatar avatar-200 photo" height="200" width="200"> </a>
+        </div>
+        <div class="author-name">yanliang</div>
+        <div id="author-one" class="author-one">
+          <script>
+            var binft = function (r) {
+              function t() {
+                return b[Math.floor(Math.random() * b.length)]
+              }
+              function e() {
+                return String.fromCharCode(94 * Math.random() + 33)
+              }
+              function n(r) {
+                for (var n = document.createDocumentFragment(), i = 0; r > i; i++) {
+                  var l = document.createElement("span");
+                  l.textContent = e(), l.style.color = t(), n.appendChild(l)
+                }
+                return n
+              }
+              function i() {
+                var t = o[c.skillI];
+                c.step ? c.step-- : (c.step = g, c.prefixP < l.length ? (c.prefixP >= 0 && (c.text += l[c.prefixP]), c.prefixP++) : "forward" === c.direction ? c.skillP < t.length ? (c.text += t[c.skillP], c.skillP++) : c.delay ? c.delay-- : (c.direction = "backward", c.delay = a) : c.skillP > 0 ? (c.text = c.text.slice(0, -1), c.skillP--) : (c.skillI = (c.skillI + 1) % o.length, c.direction = "forward")), r.textContent = c.text, r.appendChild(n(c.prefixP < l.length ? Math.min(s, s + c.prefixP) : Math.min(s, t.length - c.skillP))), setTimeout(i, d)
+              }
+              var l = "",
+                o = ["人生在勤，不索何获", "日日待明日,万事成蹉跎", "丈夫志四海，万里犹比邻", "还在看这里吗？", "能不能别看了？", "文章更精彩...."].map(function (r) {
+                  return r + ""
+                }),
+                a = 2,
+                g = 1,
+                s = 5,
+                d = 75,
+                b = ["rgb(110,64,170)", "rgb(150,61,179)", "rgb(191,60,175)", "rgb(228,65,157)", "rgb(254,75,131)", "rgb(255,94,99)", "rgb(255,120,71)", "rgb(251,150,51)", "rgb(226,183,47)", "rgb(198,214,60)", "rgb(175,240,91)", "rgb(127,246,88)", "rgb(82,246,103)", "rgb(48,239,130)", "rgb(29,223,163)", "rgb(26,199,194)", "rgb(35,171,216)", "rgb(54,140,225)", "rgb(76,110,219)", "rgb(96,84,200)"],
+                c = {
+                  text: "",
+                  prefixP: -s,
+                  skillI: 0,
+                  skillP: 0,
+                  direction: "forward",
+                  delay: a,
+                  step: g
+                };
+              i()
+            };
+            binft(document.getElementById('author-one'));
+          </script>
+
+
+        </div>
+        <div class="site-state-wrap motion-element">
+          <nav class="site-state">
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+
+                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/">
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          </nav>
+        </div>
+      </div>
+       
+      <!-- 主题配置文件开启此功能 按需修改文章标题和链接  -->
+      <dl class="article-newest">
+        <dt>———<span class="tit" style="font-weight: bold;">热门文章</span>———</dt>
+        <li>
+          <span class="order od-1">1</span>
+          <a href="/spring/custom-ioc-aop/" title="手写实现IOC 和 AOP"><i
+              class="iconfont icon-sanjiao"></i>手写实现IOC 和 AOP</a>
+        </li>
+        <li>
+          <span class="order od-2">2</span>
+          <a href="/java/collection/HashMapAnalysis/" title="HashMap 底层实现原理分析"><i class="iconfont icon-sanjiao"></i>HashMap 底层实现原理分析</a>
+        </li>
+        <li>
+          <span class="order od-3">3</span>
+          <a href="/good/how-to-design-extensible-limiting-algorithm/" title="如何设计一个可扩展的限流算法 [转]"><i class="iconfont icon-sanjiao"></i>如何设计一个可扩展的限流算法 [转]</a>
+        </li>
+        <li>
+          <span class="order od-4">4</span>
+          <a href="/concurrency/lock_and_synchronized/" title="Lock & Synchronized"><i
+              class="iconfont icon-sanjiao"></i>Lock & Synchronized</a>
+        </li>
+        <li>
+          <span class="order od-5">5</span>
+          <a href="/design-pattern/immutability/" title="并发设计模式：Immutability 模式"><i
+              class="iconfont icon-sanjiao"></i>并发设计模式：Immutability 模式</a>
+        </li>
+        <li>
+          <span class="order od-6">6</span>
+          <a href="/JSONParser/" title="撸一个JSON解析器"><i
+              class="iconfont icon-sanjiao"></i>撸一个JSON解析器</a>
+        </li>
+      </dl>
+      
+
+    </div>
+  </div>
+
+  
+
+  
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow floatable desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fal fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E4%BA%A7%E8%80%85%E7%9A%84%E5%88%86%E5%8C%BA%E5%88%86%E9%85%8D"><span class="toc-text">生产者的分区分配</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B6%88%E8%B4%B9%E8%80%85%E7%9A%84%E5%88%86%E5%8C%BA%E5%88%86%E9%85%8D"><span class="toc-text">消费者的分区分配</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RangeAssignor"><span class="toc-text">RangeAssignor</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RoundRobinAssignor"><span class="toc-text">RoundRobinAssignor</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#StickyAssignor"><span class="toc-text">StickyAssignor</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%88%86%E5%8C%BA%E5%88%86%E9%85%8D%E7%AD%96%E7%95%A5"><span class="toc-text">自定义分区分配策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E9%85%8D%E7%9A%84%E5%AE%9E%E6%96%BD"><span class="toc-text">分配的实施</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#broker%E7%AB%AF%E7%9A%84%E5%88%86%E5%8C%BA%E5%88%86%E9%85%8D"><span class="toc-text">broker端的分区分配</span></a></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
 
 <div class='l_main'>
-  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  <article
+  class="article post white-box reveal md shadow floatable article-type-post"
+  id="post" itemscope itemprop="blogPost">
   
 
 
@@ -903,9 +1031,9 @@
           
             
 <div class='new-meta-item author'>
-  <a class='author' href="/" rel="nofollow">
+  <a class='author' target="_blank" href="https://gyl-coder.github.io" rel="nofollow noopener">
     <img no-lazy src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/touxiang.webp">
-    <p>Yanliang</p>
+    <p>yanliang</p>
   </a>
 </div>
 
@@ -915,7 +1043,7 @@
             
   <div class='new-meta-item category'>
     <a class='notlink'>
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <i class="fal fa-folder-open fa-fw" aria-hidden="true"></i>
       <a class="category-link" href="/categories/kafka/">kafka</a>
     </a>
   </div>
@@ -926,7 +1054,7 @@
           
             <div class="new-meta-item date">
   <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <i class="fal fa-calendar-alt fa-fw" aria-hidden="true"></i>
     <p>发布于：Dec 4, 2019</p>
   </a>
 </div>
@@ -934,12 +1062,19 @@
           
         
           
-            <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-02T18:31:37+08:00">
-  <a class='notlink'>
-    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Oct 2, 2020</p>
-  </a>
-</div>
+            
+  <div class="new-meta-item browse busuanzi">
+    <a class='notlink'>
+      <i class="fal fa-eye fa-fw" aria-hidden="true"></i>
+      <p>
+        <span id="busuanzi_value_page_pv">
+          <i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i>
+        </span>
+        次浏览
+      </p>
+    </a>
+  </div>
+
 
           
         
@@ -949,51 +1084,45 @@
 
 
   
+
+  
   <p>在 kafka 中，分区分配是一个很重要的概念，它会影响Kafka整体的性能均衡。kafka 中一共有三处地方涉及此概念，分别是：生产者发送消息、消费者消费消息和创建主题。虽然这三处的对应操作都可以被称之为“分区分配”，但是其实质上所包含的内容却并不相同。</p>
 <a id="more"></a>
-<h2 id="生产者的分区分配"><a class="header-anchor" href="#生产者的分区分配">✨</a>生产者的分区分配</h2>
-<p>用户在使用 kafka 客户端发送消息时，调用 <code>send</code> 方法发送消息之后，消息就自然而然的发送到了 broker 中。</p>
+
+<h2 id="生产者的分区分配"><a href="#生产者的分区分配" class="headerlink" title="生产者的分区分配"></a>生产者的分区分配</h2><p>用户在使用 kafka 客户端发送消息时，调用 <code>send</code> 方法发送消息之后，消息就自然而然的发送到了 broker 中。</p>
 <p>其实这一过程需要经过拦截器、序列化器、分区器等一系列作用之后才能被真正发往 broker。消息在发往 broker 之前需要确认它需要发送到的分区，如果 ProducerRecord 中指定了 partition 字段，那就不需要分区器的作用，因为 partition 就代表的是所要发往的分区号。如果消息ProducerRecord中没有指定partition字段，那么就需要依赖分区器，根据key这个字段来计算partition的值。分区器的作用就是为消息分配分区。</p>
 <p>Kafka中提供的默认分区器是DefaultPartitioner，它实现了Partitioner接口（用户可以实现这个接口来自定义分区器），其中的partition方法就是用来实现具体的分区分配逻辑：</p>
-<pre><code class="language-java">public int partition(String topic, Object key, byte[] keyBytes,
-                     Object value, byte[] valueBytes, Cluster cluster);
-</code></pre>
+<pre><code class="java">public int partition(String topic, Object key, byte[] keyBytes,
+                     Object value, byte[] valueBytes, Cluster cluster);</code></pre>
 <p>默认情况下，如果消息的key不为null，那么默认的分区器会对key进行哈希（采用MurmurHash2算法，具备高运算性能及低碰撞率），最终根据得到的哈希值来计算分区号，拥有相同key的消息会被写入同一个分区。如果key为null，那么消息将会以轮询的方式发往 topic 的各个可用分区。</p>
 <blockquote>
 <p>注意：如果key不为null，那么计算得到的分区号会是所有分区中的任意一个；如果key为null并且有可用分区，那么计算得到的分区号仅为可用分区中的任意一个，注意两者之间的差别。</p>
 </blockquote>
-<h2 id="消费者的分区分配"><a class="header-anchor" href="#消费者的分区分配">✨</a>消费者的分区分配</h2>
-<p>在Kafka的默认规则中，每一个分区只能被同一个消费组中的一个消费者消费。消费者的分区分配是指为消费组中的消费者分配所订阅主题中的分区。</p>
-<div class="img-wrap"><div class="img-bg"><img class="img lazyload placeholder" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka8.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka8.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/></div></div>
+<h2 id="消费者的分区分配"><a href="#消费者的分区分配" class="headerlink" title="消费者的分区分配"></a>消费者的分区分配</h2><p>在Kafka的默认规则中，每一个分区只能被同一个消费组中的一个消费者消费。消费者的分区分配是指为消费组中的消费者分配所订阅主题中的分区。</p>
+<img class="img lazyload" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka8.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka8.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="/>
+
 <p>如图所示，某个主题中共有4个分区（Partition）：P0、P1、P2、P3。有两个消费组A和B都订阅了这个主题，消费组A中有4个消费者（C0、C1、C2和C3），消费组B中有2个消费者（C4和C5）。按照Kafka默认的规则，最后的分配结果是消费组A中的每一个消费者分配到1个分区，消费组B中的每一个消费者分配到2个分区，两个消费组之间互不影响。每个消费者只能消费所分配到的分区中的消息。</p>
 <p>对于消费者的分区分配而言，Kafka自身提供了三种策略，分别为 <code>RangeAssignor</code>、<code> RoundRobinAssignor</code> 以及 <code>StickyAssignor</code> ，其中 <code>RangeAssignor</code> 为默认的分区分配策略。</p>
-<h3 id="RangeAssignor"><a class="header-anchor" href="#RangeAssignor">✨</a>RangeAssignor</h3>
-<p>RangeAssignor策略的原理是按照消费者总数和分区总数进行整除运算来获得一个跨度，然后将分区按照跨度进行平均分配，以保证分区尽可能均匀地分配给所有的消费者。对于每一个topic，RangeAssignor策略会将消费组内所有订阅这个topic的消费者按照名称的字典序排序，然后为每个消费者划分固定的分区范围，如果不够平均分配，那么字典序靠前的消费者会被多分配一个分区。</p>
+<h3 id="RangeAssignor"><a href="#RangeAssignor" class="headerlink" title="RangeAssignor"></a>RangeAssignor</h3><p>RangeAssignor策略的原理是按照消费者总数和分区总数进行整除运算来获得一个跨度，然后将分区按照跨度进行平均分配，以保证分区尽可能均匀地分配给所有的消费者。对于每一个topic，RangeAssignor策略会将消费组内所有订阅这个topic的消费者按照名称的字典序排序，然后为每个消费者划分固定的分区范围，如果不够平均分配，那么字典序靠前的消费者会被多分配一个分区。</p>
 <p>假设n=分区数/消费者数量，m=分区数%消费者数量，那么前m个消费者每个分配n+1个分区，后面的（消费者数量-m）个消费者每个分配n个分区。</p>
 <p>为了更加通俗的讲解RangeAssignor策略，我们不妨再举一些示例。假设消费组内有2个消费者C0和C1，都订阅了主题t0和t1，并且每个主题都有4个分区，那么所订阅的所有分区可以标识为：t0p0、t0p1、t0p2、t0p3、t1p0、t1p1、t1p2、t1p3。最终的分配结果为：</p>
 <pre><code>消费者C0：t0p0、t0p1、t1p0、t1p1
-消费者C1：t0p2、t0p3、t1p2、t1p3
-</code></pre>
+消费者C1：t0p2、t0p3、t1p2、t1p3</code></pre>
 <p>这样分配的很均匀，那么此种分配策略能够一直保持这种良好的特性呢？我们再来看下另外一种情况。假设上面例子中2个主题都只有3个分区，那么所订阅的所有分区可以标识为：t0p0、t0p1、t0p2、t1p0、t1p1、t1p2。最终的分配结果为：</p>
 <pre><code>消费者C0：t0p0、t0p1、t1p0、t1p1
-消费者C1：t0p2、t1p2
-</code></pre>
+消费者C1：t0p2、t1p2</code></pre>
 <p>可以明显的看到这样的分配并不均匀，如果将类似的情形扩大，有可能会出现部分消费者过载的情况。对此我们再来看下另一种RoundRobinAssignor策略的分配效果如何。</p>
-<h3 id="RoundRobinAssignor"><a class="header-anchor" href="#RoundRobinAssignor">✨</a>RoundRobinAssignor</h3>
-<p>RoundRobinAssignor策略的原理是将消费组内所有消费者以及消费者所订阅的所有topic的partition按照字典序排序，然后通过轮询方式逐个将分区以此分配给每个消费者。RoundRobinAssignor策略对应的partition.assignment.strategy参数值为：org.apache.kafka.clients.consumer.RoundRobinAssignor。</p>
+<h3 id="RoundRobinAssignor"><a href="#RoundRobinAssignor" class="headerlink" title="RoundRobinAssignor"></a>RoundRobinAssignor</h3><p>RoundRobinAssignor策略的原理是将消费组内所有消费者以及消费者所订阅的所有topic的partition按照字典序排序，然后通过轮询方式逐个将分区以此分配给每个消费者。RoundRobinAssignor策略对应的partition.assignment.strategy参数值为：org.apache.kafka.clients.consumer.RoundRobinAssignor。</p>
 <p>如果同一个消费组内所有的消费者的订阅信息都是相同的，那么RoundRobinAssignor策略的分区分配会是均匀的。举例，假设消费组中有2个消费者C0和C1，都订阅了主题t0和t1，并且每个主题都有3个分区，那么所订阅的所有分区可以标识为：t0p0、t0p1、t0p2、t1p0、t1p1、t1p2。最终的分配结果为：</p>
 <pre><code>消费者C0：t0p0、t0p2、t1p1
-消费者C1：t0p1、t1p0、t1p2
-</code></pre>
+消费者C1：t0p1、t1p0、t1p2</code></pre>
 <p>如果同一个消费组内的消费者所订阅的信息是不相同的，那么在执行分区分配的时候就不是完全的轮询分配，有可能会导致分区分配的不均匀。如果某个消费者没有订阅消费组内的某个topic，那么在分配分区的时候此消费者将分配不到这个topic的任何分区。</p>
 <p>举例，假设消费组内有3个消费者C0、C1和C2，它们共订阅了3个主题：t0、t1、t2，这3个主题分别有1、2、3个分区，即整个消费组订阅了t0p0、t1p0、t1p1、t2p0、t2p1、t2p2这6个分区。具体而言，消费者C0订阅的是主题t0，消费者C1订阅的是主题t0和t1，消费者C2订阅的是主题t0、t1和t2，那么最终的分配结果为：</p>
 <pre><code>消费者C0：t0p0
 消费者C1：t1p0
-消费者C2：t1p1、t2p0、t2p1、t2p2
-</code></pre>
+消费者C2：t1p1、t2p0、t2p1、t2p2</code></pre>
 <p>可以看到RoundRobinAssignor策略也不是十分完美，这样分配其实并不是最优解，因为完全可以将分区t1p1分配给消费者C1。</p>
-<h3 id="StickyAssignor"><a class="header-anchor" href="#StickyAssignor">✨</a>StickyAssignor</h3>
-<p>我们再来看一下StickyAssignor策略，“sticky”这个单词可以翻译为“粘性的”，Kafka从0.11.x版本开始引入这种分配策略，它主要有两个目的：</p>
+<h3 id="StickyAssignor"><a href="#StickyAssignor" class="headerlink" title="StickyAssignor"></a>StickyAssignor</h3><p>我们再来看一下StickyAssignor策略，“sticky”这个单词可以翻译为“粘性的”，Kafka从0.11.x版本开始引入这种分配策略，它主要有两个目的：</p>
 <ol>
 <li>分区的分配要尽可能的均匀；</li>
 <li>分区的分配尽可能的与上次分配的保持相同。当两者发生冲突时，第一个目标优先于第二个目标。鉴于这两个目标，StickyAssignor策略的具体实现要比RangeAssignor和RoundRobinAssignor这两种分配策略要复杂很多。我们举例来看一下StickyAssignor策略的实际效果。</li>
@@ -1001,16 +1130,13 @@
 <p>假设消费组内有3个消费者：C0、C1和C2，它们都订阅了4个主题：t0、t1、t2、t3，并且每个主题有2个分区，也就是说整个消费组订阅了t0p0、t0p1、t1p0、t1p1、t2p0、t2p1、t3p0、t3p1这8个分区。最终的分配结果如下：</p>
 <pre><code>消费者C0：t0p0、t1p1、t3p0
 消费者C1：t0p1、t2p0、t3p1
-消费者C2：t1p0、t2p1
-</code></pre>
+消费者C2：t1p0、t2p1</code></pre>
 <p>这样初看上去似乎与采用RoundRobinAssignor策略所分配的结果相同，但事实是否真的如此呢？再假设此时消费者C1脱离了消费组，那么消费组就会执行再平衡操作，进而消费分区会重新分配。如果采用RoundRobinAssignor策略，那么此时的分配结果如下：</p>
 <pre><code>消费者C0：t0p0、t1p0、t2p0、t3p0
-消费者C2：t0p1、t1p1、t2p1、t3p1
-</code></pre>
+消费者C2：t0p1、t1p1、t2p1、t3p1</code></pre>
 <p>如分配结果所示，RoundRobinAssignor策略会按照消费者C0和C2进行重新轮询分配。而如果此时使用的是StickyAssignor策略，那么分配结果为：</p>
 <pre><code>消费者C0：t0p0、t1p1、t3p0、t2p0
-消费者C2：t1p0、t2p1、t0p1、t3p1
-</code></pre>
+消费者C2：t1p0、t2p1、t0p1、t3p1</code></pre>
 <p>可以看到分配结果中保留了上一次分配中对于消费者C0和C2的所有分配结果，并将原来消费者C1的“负担”分配给了剩余的两个消费者C0和C2，最终C0和C2的分配还保持了均衡。</p>
 <p>如果发生分区重分配，那么对于同一个分区而言有可能之前的消费者和新指派的消费者不是同一个，对于之前消费者进行到一半的处理还要在新指派的消费者中再次复现一遍，这显然很浪费系统资源。StickyAssignor策略如同其名称中的“sticky”一样，让分配策略具备一定的“粘性”，尽可能地让前后两次分配相同，进而减少系统资源的损耗以及其它异常情况的发生。</p>
 <p>到目前为止所分析的都是消费者的订阅信息都是相同的情况，我们来看一下订阅信息不同的情况下的处理。</p>
@@ -1019,196 +1145,180 @@
 <pre><code>【分配结果集1】
 消费者C0：t0p0
 消费者C1：t1p0
-消费者C2：t1p1、t2p0、t2p1、t2p2
-</code></pre>
+消费者C2：t1p1、t2p0、t2p1、t2p2</code></pre>
 <p>如果此时采用的是StickyAssignor策略，那么最终的分配结果为：</p>
 <pre><code>【分配结果集2】
 消费者C0：t0p0
 消费者C1：t1p0、t1p1
-消费者C2：t2p0、t2p1、t2p2
-</code></pre>
-<p>可以看到这是一个最优解（消费者C0没有订阅主题t1和t2，所以不能分配主题t1和t2中的任何分区给它，对于消费者C1也可同理推断）。<br>
-假如此时消费者C0脱离了消费组，那么RoundRobinAssignor策略的分配结果为：</p>
+消费者C2：t2p0、t2p1、t2p2</code></pre>
+<p>可以看到这是一个最优解（消费者C0没有订阅主题t1和t2，所以不能分配主题t1和t2中的任何分区给它，对于消费者C1也可同理推断）。<br>假如此时消费者C0脱离了消费组，那么RoundRobinAssignor策略的分配结果为：</p>
 <pre><code>消费者C1：t0p0、t1p1
-消费者C2：t1p0、t2p0、t2p1、t2p2
-</code></pre>
+消费者C2：t1p0、t2p0、t2p1、t2p2</code></pre>
 <p>可以看到RoundRobinAssignor策略保留了消费者C1和C2中原有的3个分区的分配：t2p0、t2p1和t2p2（针对结果集1）。而如果采用的是StickyAssignor策略，那么分配结果为：</p>
 <pre><code>消费者C1：t1p0、t1p1、t0p0
-消费者C2：t2p0、t2p1、t2p2
-</code></pre>
+消费者C2：t2p0、t2p1、t2p2</code></pre>
 <p>可以看到StickyAssignor策略保留了消费者C1和C2中原有的5个分区的分配：t1p0、t1p1、t2p0、t2p1、t2p2。</p>
 <p>从结果上看StickyAssignor策略比另外两者分配策略而言显得更加的优异，这个策略的代码实现也是异常复杂。</p>
-<h3 id="自定义分区分配策略"><a class="header-anchor" href="#自定义分区分配策略">✨</a>自定义分区分配策略</h3>
-<p>kafka 处理支持默认提供的三种分区分配算法，还支持用户自定义分区分配算法，自定义的分配策略必须要实现org.apache.kafka.clients.consumer.internals.PartitionAssignor接口。PartitionAssignor接口的定义如下：</p>
-<pre><code class="language-java">Subscription subscription(Set&lt;String&gt; topics);
+<h3 id="自定义分区分配策略"><a href="#自定义分区分配策略" class="headerlink" title="自定义分区分配策略"></a>自定义分区分配策略</h3><p>kafka 处理支持默认提供的三种分区分配算法，还支持用户自定义分区分配算法，自定义的分配策略必须要实现org.apache.kafka.clients.consumer.internals.PartitionAssignor接口。PartitionAssignor接口的定义如下：</p>
+<pre><code class="java">Subscription subscription(Set&lt;String&gt; topics);
 String name();
 Map&lt;String, Assignment&gt; assign(Cluster metadata, 
                                Map&lt;String, Subscription&gt; subscriptions);
 void onAssignment(Assignment assignment);
-class Subscription &amp;#123;
+class Subscription &#123;
     private final List&lt;String&gt; topics;
     private final ByteBuffer userData;
 （省略若干方法……）
-&amp;#125;
-class Assignment &amp;#123;
+&#125;
+class Assignment &#123;
     private final List&lt;TopicPartition&gt; partitions;
     private final ByteBuffer userData;
 （省略若干方法……）
-&amp;#125;
-</code></pre>
+&#125;</code></pre>
 <p>PartitionAssignor接口中定义了两个内部类：Subscription和Assignment。</p>
 <p>Subscription类用来表示消费者的订阅信息，类中有两个属性：topics和userData，分别表示消费者所订阅topic列表和用户自定义信息。PartitionAssignor接口通过subscription()方法来设置消费者自身相关的Subscription信息，注意到此方法中只有一个参数topics，与Subscription类中的topics的相互呼应，但是并没有有关userData的参数体现。为了增强用户对分配结果的控制，可以在subscription()方法内部添加一些影响分配的用户自定义信息赋予userData，比如：权重、ip地址、host或者机架（rack）等等。</p>
-<div class="img-wrap"><div class="img-bg"><img class="img lazyload placeholder" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka9.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka9.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/></div></div>
+<img class="img lazyload" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka9.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka9.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="/>
+
 <p>举例，在subscription()这个方法中提供机架信息，标识此消费者所部署的机架位置，在分区分配时可以根据分区的leader副本所在的机架位置来实施具体的分配，这样可以让消费者与所需拉取消息的broker节点处于同一机架。参考下图，消费者consumer1和broker1都部署在机架rack1上，消费者consumer2和broker2都部署在机架rack2上。如果分区的分配不是机架感知的，那么有可能与图（上部分）中的分配结果一样，consumer1消费broker2中的分区，而consumer2消费broker1中的分区；如果分区的分配是机架感知的，那么就会出现图（下部分）的分配结果，consumer1消费broker1中的分区，而consumer2消费broker2中的分区，这样相比于前一种情形而言，既可以减少消费延迟又可以减少跨机架带宽的占用。</p>
 <p>再来说一下Assignment类，它是用来表示分配结果信息的，类中也有两个属性：partitions和userData，分别表示所分配到的分区集合和用户自定义的数据。可以通过PartitionAssignor接口中的onAssignment()方法是在每个消费者收到消费组leader分配结果时的回调函数，例如在StickyAssignor策略中就是通过这个方法保存当前的分配方案，以备在下次消费组再平衡（rebalance）时可以提供分配参考依据。</p>
 <p>接口中的name()方法用来提供分配策略的名称，对于Kafka提供的3种分配策略而言，RangeAssignor对应的protocol_name为“range”，RoundRobinAssignor对应的protocol_name为“roundrobin”，StickyAssignor对应的protocol_name为“sticky”，所以自定义的分配策略中要注意命名的时候不要与已存在的分配策略发生冲突。这个命名用来标识分配策略的名称，在后面所描述的加入消费组以及选举消费组leader的时候会有涉及。</p>
 <p>真正的分区分配方案的实现是在assign()方法中，方法中的参数metadata表示集群的元数据信息，而subscriptions表示消费组内各个消费者成员的订阅信息，最终方法返回各个消费者的分配信息。</p>
 <p>Kafka中还提供了一个抽象类org.apache.kafka.clients.consumer.internals.AbstractPartitionAssignor，它可以简化PartitionAssignor接口的实现，对assign()方法进行了实现，其中会将Subscription中的userData信息去掉后，在进行分配。Kafka提供的3种分配策略都是继承自这个抽象类。如果开发人员在自定义分区分配策略时需要使用userData信息来控制分区分配的结果，那么就不能直接继承AbstractPartitionAssignor这个抽象类，而需要直接实现PartitionAssignor接口。</p>
 <p>下面代码参考Kafka中的RangeAssignor策略来自定义一个随机的分配策略，这里笔者称之为RandomAssignor，具体代码实现如下：</p>
-<pre><code class="language-java">package org.apache.kafka.clients.consumer;
+<pre><code class="java">package org.apache.kafka.clients.consumer;
 
 import org.apache.kafka.clients.consumer.internals.AbstractPartitionAssignor;
 import org.apache.kafka.common.TopicPartition;
 import java.util.*;
 
-public class RandomAssignor extends AbstractPartitionAssignor &amp;#123;
+public class RandomAssignor extends AbstractPartitionAssignor &#123;
     @Override
-    public String name() &amp;#123;
+    public String name() &#123;
         return &quot;random&quot;;
-    &amp;#125;
+    &#125;
 
     @Override
     public Map&lt;String, List&lt;TopicPartition&gt;&gt; assign(
             Map&lt;String, Integer&gt; partitionsPerTopic,
-            Map&lt;String, Subscription&gt; subscriptions) &amp;#123;
+            Map&lt;String, Subscription&gt; subscriptions) &#123;
         Map&lt;String, List&lt;String&gt;&gt; consumersPerTopic = 
 consumersPerTopic(subscriptions);
         Map&lt;String, List&lt;TopicPartition&gt;&gt; assignment = new HashMap&lt;&gt;();
-        for (String memberId : subscriptions.keySet()) &amp;#123;
+        for (String memberId : subscriptions.keySet()) &#123;
             assignment.put(memberId, new ArrayList&lt;&gt;());
-        &amp;#125;
+        &#125;
 
         // 针对每一个topic进行分区分配
         for (Map.Entry&lt;String, List&lt;String&gt;&gt; topicEntry : 
-consumersPerTopic.entrySet()) &amp;#123;
+consumersPerTopic.entrySet()) &#123;
             String topic = topicEntry.getKey();
             List&lt;String&gt; consumersForTopic = topicEntry.getValue();
             int consumerSize = consumersForTopic.size();
 
             Integer numPartitionsForTopic = partitionsPerTopic.get(topic);
-            if (numPartitionsForTopic == null) &amp;#123;
+            if (numPartitionsForTopic == null) &#123;
                 continue;
-            &amp;#125;
+            &#125;
 
             // 当前topic下的所有分区
             List&lt;TopicPartition&gt; partitions = 
 AbstractPartitionAssignor.partitions(topic, 
 numPartitionsForTopic);
             // 将每个分区随机分配给一个消费者
-            for (TopicPartition partition : partitions) &amp;#123;
+            for (TopicPartition partition : partitions) &#123;
                 int rand = new Random().nextInt(consumerSize);
                 String randomConsumer = consumersForTopic.get(rand);
                 assignment.get(randomConsumer).add(partition);
-            &amp;#125;
-        &amp;#125;
+            &#125;
+        &#125;
         return assignment;
-    &amp;#125;
+    &#125;
 
     // 获取每个topic所对应的消费者列表，即：[topic, List[consumer]]
     private Map&lt;String, List&lt;String&gt;&gt; consumersPerTopic(
-Map&lt;String, Subscription&gt; consumerMetadata) &amp;#123;
+Map&lt;String, Subscription&gt; consumerMetadata) &#123;
         Map&lt;String, List&lt;String&gt;&gt; res = new HashMap&lt;&gt;();
         for (Map.Entry&lt;String, Subscription&gt; subscriptionEntry : 
-consumerMetadata.entrySet()) &amp;#123;
+consumerMetadata.entrySet()) &#123;
             String consumerId = subscriptionEntry.getKey();
             for (String topic : subscriptionEntry.getValue().topics())
                 put(res, topic, consumerId);
-        &amp;#125;
+        &#125;
         return res;
-    &amp;#125;
-&amp;#125;
-</code></pre>
+    &#125;
+&#125;</code></pre>
 <p>在使用时，消费者客户端需要添加相应的Properties参数，示例如下：</p>
-<pre><code class="language-java">properties.put(ConsumerConfig.PARTITION_ASSIGNMENT_STRATEGY_CONFIG, 
-RandomAssignor.class.getName());
-</code></pre>
-<h3 id="分配的实施"><a class="header-anchor" href="#分配的实施">✨</a>分配的实施</h3>
-<p>我们了解了Kafka中消费者的分区分配策略之后是否会有这样的疑问：如果消费者客户端中配置了两个分配策略，那么以哪个为准？如果有多个消费者，彼此所配置的分配策略并不完全相同，那么以哪个为准？多个消费者之间的分区分配是需要协同的，那么这个协同的过程又是怎样？</p>
-<p>在kafka中有一个组协调器（GroupCoordinator）负责来协调消费组内各个消费者的分区分配，对于每一个消费组而言，在kafka服务端都会有其对应的一个组协调器。具体的协调分区分配的过程如下：<br>
-1.首先各个消费者向GroupCoordinator提案各自的分配策略。如下图所示，各个消费者提案的分配策略和订阅信息都包含在JoinGroupRequest请求中。</p>
-<div class="img-wrap"><div class="img-bg"><img class="img lazyload placeholder" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka10.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka10.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/></div></div>
+<pre><code class="java">properties.put(ConsumerConfig.PARTITION_ASSIGNMENT_STRATEGY_CONFIG, 
+RandomAssignor.class.getName());</code></pre>
+<h3 id="分配的实施"><a href="#分配的实施" class="headerlink" title="分配的实施"></a>分配的实施</h3><p>我们了解了Kafka中消费者的分区分配策略之后是否会有这样的疑问：如果消费者客户端中配置了两个分配策略，那么以哪个为准？如果有多个消费者，彼此所配置的分配策略并不完全相同，那么以哪个为准？多个消费者之间的分区分配是需要协同的，那么这个协同的过程又是怎样？</p>
+<p>在kafka中有一个组协调器（GroupCoordinator）负责来协调消费组内各个消费者的分区分配，对于每一个消费组而言，在kafka服务端都会有其对应的一个组协调器。具体的协调分区分配的过程如下：<br>1.首先各个消费者向GroupCoordinator提案各自的分配策略。如下图所示，各个消费者提案的分配策略和订阅信息都包含在JoinGroupRequest请求中。</p>
+<img class="img lazyload" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka10.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka10.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="/>
+
 <p>2.GroupCoordinator收集各个消费者的提案，然后执行以下两个步骤：一、选举消费组的leader；二、选举消费组的分区分配策略。</p>
 <p>选举消费组的分区分配策略比较好理解，为什么这里还要选举消费组的leader，因为最终的分区分配策略的实施需要有一个成员来执行，而这个leader消费者正好扮演了这一个角色。在Kafka中把具体的分区分配策略的具体执行权交给了消费者客户端，这样可以提供更高的灵活性。比如需要变更分配策略，那么只需修改消费者客户端就醒来，而不必要修改并重启Kafka服务端。</p>
 <p>怎么选举消费组的leader? 这个分两种情况分析：如果消费组内还没有leader，那么第一个加入消费组的消费者即为消费组的leader；如果某一时刻leader消费者由于某些原因退出了消费组，那么就会重新选举一个新的leader，这个重新选举leader的过程又更为“随意”了，相关代码如下：</p>
-<pre><code class="language-scala">//scala code.
+<pre><code class="scala">//scala code.
 private val members = new mutable.HashMap[String, MemberMetadata]
-var leaderId = members.keys.head
-</code></pre>
-<p>解释一下这2行代码：在GroupCoordinator中消费者的信息是以HashMap的形式存储的，其中key为消费者的名称，而value是消费者相关的元数据信息。leaderId表示leader消费者的名称，它的取值为HashMap中的第一个键值对的key，这种选举的方式基本上和随机挑选无异。<br>
-总体上来说，消费组的leader选举过程是很随意的。</p>
+var leaderId = members.keys.head</code></pre>
+<p>解释一下这2行代码：在GroupCoordinator中消费者的信息是以HashMap的形式存储的，其中key为消费者的名称，而value是消费者相关的元数据信息。leaderId表示leader消费者的名称，它的取值为HashMap中的第一个键值对的key，这种选举的方式基本上和随机挑选无异。<br>总体上来说，消费组的leader选举过程是很随意的。</p>
 <p>怎么选举消费组的分配策略？投票决定。每个消费者都可以设置自己的分区分配策略，对于消费组而言需要从各个消费者所呈报上来的各个分配策略中选举一个彼此都“信服”的策略来进行整体上的分区分配。这个分区分配的选举并非由leader消费者来决定，而是根据消费组内的各个消费者投票来决定。这里所说的“根据组内的各个消费者投票来决定”不是指GroupCoordinator还要与各个消费者进行进一步交互来实施，而是根据各个消费者所呈报的分配策略来实施。最终所选举的分配策略基本上可以看做是被各个消费者所支持的最多的策略，具体的选举过程如下：</p>
-<p>收集各个消费者所支持的所有分配策略，组成候选集candidates。<br>
-每个消费者从候选集candidates中找出第一个自身所支持的策略，为这个策略投上一票。<br>
-计算候选集中各个策略的选票数，选票数最多的策略即为当前消费组的分配策略。<br>
-如果某个消费者并不支持所选举出的分配策略，那么就会报错。<br>
-3.GroupCoordinator发送回执给各个消费者，并交由leader消费者执行具体的分区分配。</p>
-<div class="img-wrap"><div class="img-bg"><img class="img lazyload placeholder" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka11.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka11.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/></div></div>
+<p>收集各个消费者所支持的所有分配策略，组成候选集candidates。<br>每个消费者从候选集candidates中找出第一个自身所支持的策略，为这个策略投上一票。<br>计算候选集中各个策略的选票数，选票数最多的策略即为当前消费组的分配策略。<br>如果某个消费者并不支持所选举出的分配策略，那么就会报错。<br>3.GroupCoordinator发送回执给各个消费者，并交由leader消费者执行具体的分区分配。</p>
+<img class="img lazyload" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka11.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka11.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="/>
+
 <p>如上图所示，JoinGroupResponse回执中包含有GroupCoordinator中投票选举出的分配策略的信息。并且，只有leader消费者的回执中包含各个消费者的订阅信息，因为只需要leader消费者根据订阅信息来执行具体的分配，其余的消费并不需要。</p>
 <p>4.leader消费者在整理出具体的分区分配方案后通过SyncGroupRequest请求提交给GroupCoordinator，然后GroupCoordinator为每个消费者挑选出各自的分配结果并通过SyncGroupResponse回执以告知它们。</p>
-<div class="img-wrap"><div class="img-bg"><img class="img lazyload placeholder" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka12.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka12.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/></div></div>
-<h2 id="broker端的分区分配"><a class="header-anchor" href="#broker端的分区分配">✨</a>broker端的分区分配</h2>
-<p>生产者的分区分配是指为每条消息指定其所要发往的分区，消费者中的分区分配是指为消费者指定其可以消费消息的分区，而这里的分区分配是指为集群制定创建主题时的分区副本分配方案，即在哪个broker中创建哪些分区的副本。分区分配是否均衡会影响到Kafka整体的负载均衡，具体还会牵涉到优先副本等概念。</p>
+<img class="img lazyload" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka12.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka12.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="/>
+
+<h2 id="broker端的分区分配"><a href="#broker端的分区分配" class="headerlink" title="broker端的分区分配"></a>broker端的分区分配</h2><p>生产者的分区分配是指为每条消息指定其所要发往的分区，消费者中的分区分配是指为消费者指定其可以消费消息的分区，而这里的分区分配是指为集群制定创建主题时的分区副本分配方案，即在哪个broker中创建哪些分区的副本。分区分配是否均衡会影响到Kafka整体的负载均衡，具体还会牵涉到优先副本等概念。</p>
 <p>在创建主题时，如果使用了replica-assignment参数，那么就按照指定的方案来进行分区副本的创建；如果没有使用replica-assignment参数，那么就需要按照内部的逻辑来计算分配方案了。使用kafka-topics.sh脚本创建主题时的内部分配逻辑按照机架信息划分成两种策略：未指定机架信息和指定机架信息。如果集群中所有的broker节点都没有配置broker.rack参数，或者使用disable-rack-aware参数来创建主题，那么采用的就是未指定机架信息的分配策略，否则采用的就是指定机架信息的分配策略。</p>
 
   
   
+  
+  <div class='footer'>
     
-    <div class='footer'>
-      
-      
-        
+    
+    
   <div class="related_posts">
     <section class='header'>
-      <i class="fas fa-bookmark fa-fw" aria-hidden="true"></i><span>相关文章</span>
+      <i class="fal fa-bookmark fa-fw" aria-hidden="true"></i><span>相关文章</span>
     </section>
     <section class='body'>
-      <div class="vlts-rps"><a class="item" href="\kafka\kafka-hw-leo-lso\" title="Kafka中的HW、LEO、LSO等分别代表什么？" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka1.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka1.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">Kafka中的HW、LEO、LSO等分别代表什么？</span><span class="excerpt">HW 、 LEO 等概念和上一篇文章所说的 ISR有着紧密的关系，如果不了解 ISR 可以先看下ISR相关的介绍。
-HW ...</span></a><a class="item" href="\kafka\kafka-isr-ar\" title="kafka中的ISR、AR代表什么？ISR的伸缩性又指什么？" rel="bookmark "><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">kafka中的ISR、AR代表什么？ISR的伸缩性又指什么？</span><span class="excerpt">相信大家已经对 kafka 的基本概念已经有一定的了解了，下面直接来分析一下 ISR 和 AR 的概念。</span></a><a class="item" href="\kafka\kafka-listeners-config\" title="kafka的listeners配置错误导致主线程阻塞" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka6.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka6.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">kafka的listeners配置错误导致主线程阻塞</span><span class="excerpt">✨问题背景
-我们在用kafka的时候，偶尔会遇到这样这样一个问题。
-我们写的kafka的客户端程序，在启动的时候，会无缘无...</span></a><a class="item" href="\kafka\kafka-rebalance\" title="Kafka Rebalance机制分析" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.3/img/kafka/3951011.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.3/img/kafka/3951011.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">Kafka Rebalance机制分析</span><span class="excerpt">Rebalance 本质上是一种协议，规定了一个 Consumer Group 下的所有 consumer 如何达成一致，...</span></a><a class="item" href="\kafka\kafka-reliability\" title="kafka 如何保证数据的可靠性和一致性" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.2/img/kafka/1567762579648.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.2/img/kafka/1567762579648.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">kafka 如何保证数据的可靠性和一致性</span><span class="excerpt">✨数据可靠性
-Kafka 作为一个商业级消息中间件，消息可靠性的重要性可想而知。本文从 Producter 往 Broke...</span></a></div></section></div>
-      
-      
-        <div class='copyright'>
-          <blockquote>
-            
-              
-                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
-
-              
-            
-              
-                <p>本文永久链接是：<a href=https://gyl-coder.top/kafka/kafka-partition-alocation/>https://gyl-coder.top/kafka/kafka-partition-alocation/</a></p>
-              
-            
-          </blockquote>
-        </div>
-      
-      
-    </div>
-  
-  
+      <div class="vlts-rps"><a class="item" href="\kafka\kafka-hw-leo-lso\" title="Kafka中的HW、LEO、LSO等分别代表什么？" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka1.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka1.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">Kafka中的HW、LEO、LSO等分别代表什么？</span><span class="excerpt">HW 、 LEO 等概念和上一篇文章所说的 ISR有着紧密的关系，如果不了解 ISR 可以先看下ISR相关的介绍。
+HW ...</span></a><a class="item" href="\kafka\kafka-isr-ar\" title="kafka中的ISR、AR代表什么？ISR的伸缩性又指什么？" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.jpg" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">kafka中的ISR、AR代表什么？ISR的伸缩性又指什么？</span><span class="excerpt">相信大家已经对 kafka 的基本概念已经有一定的了解了，下面直接来分析一下 ISR 和 AR 的概念。</span></a><a class="item" href="\kafka\kafka-listeners-config\" title="kafka的listeners配置错误导致主线程阻塞" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka6.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka6.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">kafka的listeners配置错误导致主线程阻塞</span><span class="excerpt">问题背景我们在用kafka的时候，偶尔会遇到这样这样一个问题。
+我们写的kafka的客户端程序，在启动的时候，会无缘无故的...</span></a><a class="item" href="\kafka\kafka-rebalance\" title="Kafka Rebalance机制分析" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.3/img/kafka/3951011.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.3/img/kafka/3951011.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">Kafka Rebalance机制分析</span><span class="excerpt">Rebalance 本质上是一种协议，规定了一个 Consumer Group 下的所有 consumer 如何达成一致，...</span></a></div></section></div>
     
+    
+    <div class='copyright'>
+      <blockquote>
+        
+        
+        <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+        
+        
+        
+        <p>本文永久链接是：<a href=https://gyl-coder.top/kafka/kafka-partition-alocation/>https://gyl-coder.top/kafka/kafka-partition-alocation/</a></p>
+        
+        
+      </blockquote>
+    </div>
+    
+    
+  </div>
+  
+  
+  
 
 
   <div class='article-meta' id="bottom">
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-02T18:31:37+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-11-21T08:15:50+08:00">
   <a class='notlink'>
-    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Oct 2, 2020</p>
+    <i class="fal fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Nov 21, 2020</p>
   </a>
 </div>
 
@@ -1217,7 +1327,7 @@ Kafka 作为一个商业级消息中间件，消息可靠性的重要性可想�
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/kafka/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>kafka</p></a></div>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/kafka/" rel="nofollow"><i class="fal fa-hashtag fa-fw" aria-hidden="true"></i><p>kafka</p></a></div>
 
 
         
@@ -1234,7 +1344,7 @@ Kafka 作为一个商业级消息中间件，消息可靠性的重要性可想�
           
           >
           
-            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg">
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
           
         </a>
       
@@ -1246,7 +1356,7 @@ Kafka 作为一个商业级消息中间件，消息可靠性的重要性可想�
           
           >
           
-            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg">
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
           
         </a>
       
@@ -1258,7 +1368,7 @@ Kafka 作为一个商业级消息中间件，消息可靠性的重要性可想�
           
           >
           
-            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg">
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
           
         </a>
       
@@ -1282,34 +1392,35 @@ Kafka 作为一个商业级消息中间件，消息可靠性的重要性可想�
   
 
   
-    <div class="prev-next">
-      
-        <a class='prev' href='/kafka/kafka-rebalance/'>
-          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Kafka Rebalance机制分析</p>
-          <p class='content'>Rebalance 本质上是一种协议，规定了一个 Consumer Group 下的所有 consumer 如何达成一致，来分配订阅 Topic 的每个分区。
+  <div class="prev-next">
+    
+    <a class='prev' href='/kafka/kafka-rebalance/'>
+      <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Kafka Rebalance机制分析</p>
+      <p class='content'>Rebalance 本质上是一种协议，规定了一个 Consumer Group 下的所有 consumer 如何达成一致，来分配订阅 Topic 的每个分区。
 例如：某 Group 下有 20 ...</p>
-        </a>
-      
-      
-        <a class='next' href='/kafka/kafka-listeners-config/'>
-          <p class='title'>kafka的listeners配置错误导致主线程阻塞<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>✨问题背景
-我们在用kafka的时候，偶尔会遇到这样这样一个问题。
+    </a>
+    
+    
+    <a class='next' href='/kafka/kafka-listeners-config/'>
+      <p class='title'>kafka的listeners配置错误导致主线程阻塞<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+      <p class='content'>问题背景我们在用kafka的时候，偶尔会遇到这样这样一个问题。
 我们写的kafka的客户端程序，在启动的时候，会无缘无故的 卡住（阻塞） 如下图所示：
 
 
+
+
 这时程序会长时间阻塞在这里，无法继...</p>
-        </a>
-      
-    </div>
+    </a>
+    
+  </div>
   
 </article>
 
 
-  
 
-  <article class="post white-box reveal shadow" id="comments">
-    <p ct><i class='fas fa-comments'></i> 评论</p>
+
+  <article class="post white-box reveal shadow floatable" id="comments">
+    <p ct><i class='fal fa-comments'></i> 评论</p>
     
     <div id="valine_container" class="valine_thread">
   <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
@@ -1321,68 +1432,19 @@ Kafka 作为一个商业级消息中间件，消息可靠性的重要性可想�
 
 
 
-
 </div>
-<aside class='l_side'>
-  
-  
-    
-    
-
-
-
-  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
-    
-  <header>
-    
-      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>目录</span>
-    
-  </header>
-
-
-    <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E4%BA%A7%E8%80%85%E7%9A%84%E5%88%86%E5%8C%BA%E5%88%86%E9%85%8D"><span class="toc-text">生产者的分区分配</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B6%88%E8%B4%B9%E8%80%85%E7%9A%84%E5%88%86%E5%8C%BA%E5%88%86%E9%85%8D"><span class="toc-text">消费者的分区分配</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RangeAssignor"><span class="toc-text">RangeAssignor</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RoundRobinAssignor"><span class="toc-text">RoundRobinAssignor</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#StickyAssignor"><span class="toc-text">StickyAssignor</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%88%86%E5%8C%BA%E5%88%86%E9%85%8D%E7%AD%96%E7%95%A5"><span class="toc-text">自定义分区分配策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E9%85%8D%E7%9A%84%E5%AE%9E%E6%96%BD"><span class="toc-text">分配的实施</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#broker%E7%AB%AF%E7%9A%84%E5%88%86%E5%8C%BA%E5%88%86%E9%85%8D"><span class="toc-text">broker端的分区分配</span></a></li></ol>
-    </div>
-  </section>
-
-
-  
-
-
-</aside>
-
-
-
-        
       </div>
       
   
   <footer class="footer clearfix">
-    <br><br>
+    
     
       
         <div class="aplayer-container">
           
 
-  
-    <meting-js
-      theme='#1BCDFC'
-      autoplay='false'
-      volume='0.7'
-      loop='all'
-      order='list'
-      fixed='false'
-      list-max-height='320px'
-      server='netease'
-      type='song'
-      id='186453'
-      list-folded='true'>
-    </meting-js>
-  
-
 
         </div>
-        <!--
       
     
       
@@ -1395,7 +1457,7 @@ Kafka 作为一个商业级消息中间件，消息可靠性的重要性可想�
                 target="_blank"
                 rel="external nofollow noopener noreferrer">
                 
-                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/020-rss.svg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/020-rss.svg" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/>
+                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/020-rss.svg" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/020-rss.svg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="/>
                 
               </a>
             
@@ -1406,7 +1468,7 @@ Kafka 作为一个商业级消息中间件，消息可靠性的重要性可想�
                 target="_blank"
                 rel="external nofollow noopener noreferrer">
                 
-                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/029-github.svg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/029-github.svg" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/>
+                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/029-github.svg" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/029-github.svg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="/>
                 
               </a>
             
@@ -1417,7 +1479,7 @@ Kafka 作为一个商业级消息中间件，消息可靠性的重要性可想�
                 target="_blank"
                 rel="external nofollow noopener noreferrer">
                 
-                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/010-facebook.svg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/010-facebook.svg" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/>
+                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/010-facebook.svg" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/010-facebook.svg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="/>
                 
               </a>
             
@@ -1428,7 +1490,7 @@ Kafka 作为一个商业级消息中间件，消息可靠性的重要性可想�
                 target="_blank"
                 rel="external nofollow noopener noreferrer">
                 
-                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/018-twitter.svg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/018-twitter.svg" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/>
+                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/018-twitter.svg" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/018-twitter.svg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="/>
                 
               </a>
             
@@ -1439,7 +1501,7 @@ Kafka 作为一个商业级消息中间件，消息可靠性的重要性可想�
                 target="_blank"
                 rel="external nofollow noopener noreferrer">
                 
-                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/045-telegram.svg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/045-telegram.svg" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/>
+                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/045-telegram.svg" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/045-telegram.svg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="/>
                 
               </a>
             
@@ -1450,7 +1512,7 @@ Kafka 作为一个商业级消息中间件，消息可靠性的重要性可想�
                 target="_blank"
                 rel="external nofollow noopener noreferrer">
                 
-                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/006-youtube.svg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/006-youtube.svg" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/>
+                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/006-youtube.svg" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/006-youtube.svg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="/>
                 
               </a>
             
@@ -1465,14 +1527,14 @@ Kafka 作为一个商业级消息中间件，消息可靠性的重要性可想�
     
       
         
-          <div><p><span id="lc-sv">本站总访问量为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 次</span> <span id="lc-uv">访客数为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 人</span></p>
+          <div><p><span id="lc-sv">本站总访问量为 <span id='number'><i class="fal fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 次</span> <span id="lc-uv">访客数为 <span id='number'><i class="fal fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 人</span></p>
 </div>
         
       
     
       
         Use
-        <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/4.0.0" target="_blank" class="codename">Volantis</a>
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/1.0" target="_blank" class="codename">Volantis</a>
         as theme, total visits
           <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
           times
@@ -1481,89 +1543,18 @@ Kafka 作为一个商业级消息中间件，消息可靠性的重要性可想�
     
       
         <div class='copyright'>
-        <p><a href="https://gyl-coder.top">Copyright © 2019-2020 Yanliang</a></p>
+        <p><a href="https://gyl-coder.top/">Copyright © 2019-2020 Yanliang</a></p>
 
         </div>
       
     
-    -->
-
-      <!--自定义footer样式-->
-      <!--自定义footer样式-->
-<a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank">
-    <img no-lazy src="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/upyun.png" width="60" height="auto">
-</a>
-<br>
-Copyright <i class="far fa-copyright"></i> 2019-2020
-<a href="/" target="_blank"> YANLIANG'S BLOG </a>丨
-<!-- 在网页底部添加网站运行时间 -->
-<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
-<script>
-    var now = new Date();
-
-    function createtime() {
-        var grt = new Date("07/01/2019 00:00:00");//此处修改你的建站时间或者网站上线时间
-        now.setTime(now.getTime() + 250);
-        days = (now - grt) / 1000 / 60 / 60 / 24;
-        dnum = Math.floor(days);
-        hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
-        hnum = Math.floor(hours);
-        if (String(hnum).length == 1) {
-            hnum = "0" + hnum;
-        }
-        minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
-        mnum = Math.floor(minutes);
-        if (String(mnum).length == 1) {
-            mnum = "0" + mnum;
-        }
-        seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
-        snum = Math.round(seconds);
-        if (String(snum).length == 1) {
-            snum = "0" + snum;
-        }
-        document.getElementById("timeDate").innerHTML = "网站已运行 " + dnum + " 天 ";
-        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
-    }
-
-    setInterval("createtime()", 250);
-</script>
-<br/>
-<br/>
-<div class="github-badge">
-    <a style="color: #fff" rel="license" href="https://hexo.io/" target="_blank" title="由 Hexo 强力驱动">
-        <span class="badge-subject">Powered</span><span class="badge-value bg-blue">Hexo</span></a>
-</div>
-<div class="github-badge">
-    <a style="color: #fff" rel="license" href="https://github.com/" target="_blank"
-       title="静态网页托管于 GitHub Pages 和 Coding Pages">
-        <span class="badge-subject">Hosted</span><span
-                class="badge-value bg-brightgreen">GitHub &amp; Coding</span></a>
-</div>
-<div class="github-badge">
-    <a style="color: #fff" rel="license" href="https://www.aliyun.com/" target="_blank" title="阿里云提供域名相关服务">
-        <span class="badge-subject">DNS</span><span class="badge-value bg-blueviolet">Aliyun</span></a>
-</div>
-<div class="github-badge">
-    <a style="color: #fff" rel="license" href="https://www.jsdelivr.com/" target="_blank"
-       title="jsDelivr 提供 CDN 加速服务">
-        <span class="badge-subject">CDN</span><span class="badge-value bg-orange">jsDelivr</span></a>
-</div>
-<div class="github-badge">
-    <a style="color: #fff" rel="license" href="https://github.com/volantis-x/hexo-theme-volantis/"
-       target="_blank" title="站点使用 Volantis 主题">
-        <span class="badge-subject">Theme</span><span class="badge-value bg-blue">Volantis</span></a>
-</div>
-<div class="github-badge">
-    <a style="color: #fff" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
-       target="_blank" title="本站点采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议进行许可">
-        <span class="badge-subject"><i class="fa fa-copyright"></i></span><span
-                class="badge-value bg-gradient">BY-NC-SA 4.0</span></a>
-</div>
-<div class="github-badge">
-    <a style="color: #fff" rel="license" href="https://github.com/botui/botui" target="_blank" title="A JavaScript framework to create conversational UIs.">
-        <span class="badge-subject">AI机器人</span><span class="badge-value bg-blueviolet">botui</span></a>
-</div>
-
+      
+        
+          <div><script id="ribbon" mobile="true" src="https://cdn.jsdelivr.net/gh/heson525/pic@master/img/ribbons2.js"></script></div>
+        
+      
+    
+    
   </footer>
 
 
@@ -1575,9 +1566,10 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js"></script>
 
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 <script>
   function pjax_fancybox() {
-    $(".md .gallery").find("img").each(function () { //渲染 fancybox
+    $(".md").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
       var element = document.createElement("a"); // a 标签
       $(element).attr("class", "fancybox");
       $(element).attr("pjax-fancybox", "");  // 过滤 pjax
@@ -1598,9 +1590,16 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       $(span).addClass("image-caption");
       $(span).text(caption); // 加描述
       $(this).after(span);  // 再套一层描述
+      // 背景层
+      var bgDiv = document.createElement("div");
+      $(bgDiv).addClass("bg");
+      if ($(this).attr('bg')) {
+        $(bgDiv).css('background', $(this).attr('bg'));
+      }
+      $(this).wrap(bgDiv); // 背景层
       $(this).wrap(element);  // 最后套 a 标签
     })
-    $(".md .gallery").find("img").fancybox({
+    $(".md").find("img").fancybox({
       selector: '[data-fancybox="images"]',
       hash: false,
       loop: false,
@@ -1614,61 +1613,13 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       ]
     });
   };
-  function SCload_fancybox() {
-    if ($(".md .gallery").find("img").length == 0) return;
-    loadCSS("https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css", document.getElementById("loadcss"));
-    setTimeout(function() {
-      loadScript('https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js', pjax_fancybox)
-    }, 1);
-  };
   $(function () {
-    SCload_fancybox();
+    pjax_fancybox();
   });
 </script>
 
 
 <!-- internal -->
-
-  
-  
-  
-    
-<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
-
-    <script type="text/javascript">
-      $(function(){
-        var imgs=["https://cdn.jsdelivr.net/gh/luvying/ying-blog-cdn@master/files/static/images/pictures/pixiv/69752223_p0.jpg"];
-        if ('true' == 'true') {
-          function shuffle(arr){
-            /*From countercurrent-time*/
-            var n = arr.length;
-            while(n--) {
-              var index = Math.floor(Math.random() * n);
-              var temp = arr[index];
-              arr[index] = arr[n];
-              arr[n] = temp;
-            }
-          }
-          shuffle(imgs);
-        }
-        if ('.cover-backstretch') {
-          $('.cover-backstretch').backstretch(
-            imgs,
-          {
-            duration: "2000",
-            fade: "1500"
-          });
-        } else {
-          $.backstretch(
-            imgs,
-          {
-            duration: "2000",
-            fade: "1500"
-          });
-        }
-      });
-    </script>
-  
 
 
 
@@ -1678,7 +1629,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
   <div id="rightmenu-wrapper">
     <ul class="list-v rightmenu" id="rightmenu-content">
       <li class='option'>
-        <a class='vlts-menu opt fix-cursor-default' id='menu-copy-text' onclick="document.execCommand('copy')"><i class='fa fa-copy fa-fw'></i>Copy Text</a>
+        <a class='vlts-menu opt fix-cursor-default' id='menu-copy-text' onclick='document.execCommand("copy")'><i class='fa fa-copy fa-fw'></i>Copy Text</a>
         <hr id='hr-text'>
         <a class='vlts-menu opt fix-cursor-default' id='menu-copy-href'><i class='fa fa-link fa-fw'></i>Copy Link</a>
         <a class='vlts-menu opt fix-cursor-default' id='menu-open-href'><i class='fa fa-external-link-square-alt fa-fw'></i>Open Link in New Tab</a>
@@ -1787,26 +1738,6 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
         
       
         
-          <li class='music name'>
-            <p class='nav music-title fix-cursor-default'></p>
-          </li>
-          <li class='music ctrl'>
-            <a class='nav icon-only backward fix-cursor-default' onclick='aplayerBackward()'><i class='fa fa-step-backward fa-fw'></i></a>
-            <a class='nav icon-only toggle fix-cursor-default' onclick='aplayerToggle()'><i class='fa fa-play fa-fw'></i></a>
-            <a class='nav icon-only forward fix-cursor-default' onclick='aplayerForward()'><i class='fa fa-step-forward fa-fw'></i></a>
-          </li>
-          <li class='music volume'>
-            <a class='nav volume'>
-              <div class="aplayer-volume-bar-wrap">
-                <div class="aplayer-volume-bar fix-cursor-pointer">
-                  <div class="aplayer-volume"></div>
-                  <i class='left fa fa-volume-off fa-fw'></i>
-                  <i class='right fa fa-volume-up fa-fw'></i>
-                </div>
-              </div>
-            </a>
-          </li>
-        
       
     </ul>
   </div>
@@ -1876,10 +1807,8 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       if (href.length == 0) {
         // 选中文本
         if (window.getSelection().toString()) {
-          if ('true' == 'true') {
-            copyText.style.display = 'block';
-            hrText.style.display = 'block';
-          }
+          copyText.style.display = 'block';
+          hrText.style.display = 'block';
         }
       }
 
@@ -1911,7 +1840,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       }
 
       // 有音乐播放器
-      if ('true' == true && ('home,me,album,resume,friends,hr,catchTheCat,hr,music'||[]).includes('music')) {
+      if ('' == true && ('home,me,album,resume,friends,hr,catchTheCat,hr,music'||[]).includes('music')) {
         // 如果有aplayer，初始化一下
       	try {
       		checkAPlayer();
@@ -1940,6 +1869,30 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
 
 
 
+
+
+  <script>
+  function loadIssuesJS() {
+    if ($(".md").find(".issues-api").length == 0) return;
+    setTimeout(function() {
+      loadScript('/js/issues.js');
+    }, 1);
+  };
+  $(function () {
+    loadIssuesJS();
+  });
+</script>
+
+
+
+<!-- optional -->
+
+  <script>
+  
+  var SEARCH_SERVICE = "hexo" || "hexo";
+  var ROOT = "/" || "/";
+  if (!ROOT.endsWith('/')) ROOT += '/';
+</script>
 
 
 
@@ -1975,15 +1928,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
 
   
   
-    <script>
-      window.FPConfig = {
-        delay: 0,
-        ignoreKeywords: [],
-        maxRPS: 5,
-        hoverDelay: 25
-      };
-    </script>
-    <script defer src="https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"></script>
+    <script async src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
   
 
 
@@ -2065,34 +2010,13 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
 
 
 
-  <script>
-  let APlayerController = new Object();
-  APlayerController.id = '186453';  // 设定全局音乐播放ID
-  APlayerController.volume = '0.7';
-</script>
-
-  
-<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script>
-
-
-  
-<script src="https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js"></script>
-
-
-
-
-  
-<script src="/js/aplayer.js"></script>
-
-
-
-
 
 
   <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@3/dist/av-min.js"></script>
 
   
-<script src="/js/valine.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/HCLonely/Valine@latest/dist/Valine.min.js"></script>
+
 
 
 <script>
@@ -2129,7 +2053,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
   function pjax_valine() {
     if(!document.querySelectorAll("#valine_container")[0])return;
 
-    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) || "快来评论吧~";
+    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) || "填写邮箱会收到回复提示！粘贴图片可直接上传~";
 
     let path = $.trim($('#pjax-comment-path').text());
     if (path.length == 0) {
@@ -2152,86 +2076,93 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       highlight: 'true',
       mathJax: 'false',
       enableQQ: 'true',
-      recordIP: 'false',
       requiredFields: requiredFields,
       emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
       emojiMaps: emojiMaps,
-      master: '[]',
-      friends: '[]'
+      master: '[6e52e95ab454c5a82b0eb13055d79bd5]',
+      friends: '[104e5bfa98048a2dac66f28ca4d4d846,e399c5e8f4b4b8b86fc88e2b5bd04497,32d39099d6da89788fe3827cb90b1eb7,a5c27d1df34fcd4d8195e7e7d16675d4,09c82fd631755bf5dbb04b4189225637,b548550ae129b82aa01b60e18ccbf141,6a565e6c47127afdd40d5d46089db2c5,4a713ec085a4431f15a8da0942656713&#34;,58bc3a8cecadf26a676e1b8f217698bc,aaf4fe5dd76d0a1390cbd08cdb16c05f,0a106ca9ec8d5e8a2d14f99e5b8bd863,3ecc56d90844b70e49d9f8a61e9cd98c,8a6f99e8ce4af26a93f20c0cbab8a186,5392ad0ec563aa56f6faf597ef966762,6bcf44de7033a4451f38d576fb6e6822,135ae111f8fcfeecc1ea1f06fde149ab]'
     })
   }
 
   function newcomment() {
-    function queryLeanCloud(k) {
-      let root = this;
-      let len = arguments.length;
-      if (len == 1) {
-        let notExist = new AV.Query("Comment");
-        notExist.doesNotExist('rid');
-        let isEmpty = new AV.Query("Comment");
-        isEmpty.equalTo('rid', '');
-        let q = AV.Query.or(notExist, isEmpty);
-        if (k === '*') q.exists('url');
-        else q.equalTo('url', decodeURI(k));
-        q.addDescending('createdAt');
-        q.addDescending('insertedAt');
-        return q;
-      } else {
-        let ids = JSON.stringify(arguments[1]).replace(/(\[|\])/g, '');
-        let cql = `select * from ${root['config']['clazzName']} where rid in (${ids}) order by -createdAt,-createdAt`;
-        return AV.Query.doCloudQuery(cql)
-      }
-    }
-    var valine = new Valine({
-      el: 'valine_container',
+
+function queryLeanCloud(k) {
+  let root = this;
+  let len = arguments.length;
+  if (len == 1) {
+    let notExist = new AV.Query("Comment");
+    notExist.doesNotExist('rid');
+    let isEmpty = new AV.Query("Comment");
+    isEmpty.equalTo('rid', '');
+    let q = AV.Query.or(notExist, isEmpty);
+    if (k === '*') q.exists('url');
+    else q.equalTo('url', decodeURI(k));
+    q.addDescending('createdAt');
+    q.addDescending('insertedAt');
+    return q;
+  } else {
+    let ids = JSON.stringify(arguments[1]).replace(/(\[|\])/g, '');
+    let cql = `select * from ${root['config']['clazzName']} where rid in (${ids}) order by -createdAt,-createdAt`;
+    return AV.Query.doCloudQuery(cql)
+  }
+}
+var valine = new Valine({
+      el: '#valine_container_ba',
+      notify: false,
+      verify: false,
       app_id: 'wvx2KxLUqgjcKv9QE62FmvUY-MdYXbMMI',
       app_key: 'u1P8dl8u7IlizUpYbwXpc1VN',
-      placeholder: '快来评论吧~',
+      placeholder: '发表您的意见，让我们一起交流，共同提高吧...',
       serverURLs: 'https://wvx2kxlu.api.lncldglobal.com'
-    });
+});
 
-    //判断博主，heson改为自己的昵称
-    function bozhu(e){
-        if (e == "yanliang" || e == "Yanliang"){
-            nick = e + '[博主]'
-            return nick;
-        } else {
-          return e
-        }
+//判断博主，heson改为自己的昵称
+function bozhu(e){
+    if (e == "heson"){
+        nick = e + '[博主]'
+        return nick;
+    } else {
+      return e
     }
+}
 
-    //判断网址
-    function wangzhi(e){
-        http = e.slice(0,4)
-        https = e.slice(0,5)
-        if (http == "http" || https == "https" ){
-            return e
-        } else if (e == "" || e == null || e == undefined){
-          return e
-        } else {
-          e = 'http://'+ e
-          return e
-        }
+//判断网址
+function wangzhi(e){
+    http = e.slice(0,4)
+    https = e.slice(0,5)
+    if (http == "http" || https == "https" ){
+         return e
+    } else if (e == "" || e == null || e == undefined){
+      return e
+    } else {
+      e = 'http://'+ e
+      return e
     }
+}
 
-    //查询评论
-    valine.Q('*').limit(5).find().then(function (comments) {
-      var hotComments = $("#hot-comments");
-      for (var i = 0; i < comments.length; i++) {
-        if (i === 0) {
-          console.log(comments[0]);
-        }
-        var nick = bozhu(comments[i]._serverData.nick);
-        var content = comments[i]._serverData.comment;
-        var newcontent = content.substring(0, 50).replace(/<[^>]+>/g,"");
-        var url = comments[i]._serverData.url;
-        var link = wangzhi(comments[i]._serverData.link);
-        var updatedAt = timeago(comments[i].updatedAt);
-        var commentId = '#' + comments[i].id;
-        hotComments.append('<div class="card-comment-item"><div class="item-header-text"><a href="'+ link +'" target="_blank" rel="nofollow noopener noreferrer" class="newcomment" >' + nick + '</a>&nbsp;发表于' + updatedAt + '</div><div class="item-text"><a href="' + url + commentId +'"  rel="nofollow" style="color:#717171" class="comments-detail" >' + newcontent + '</a></div></div>');
-      }
-    });
-  };
+
+
+
+//查询评论
+valine.Q('*').limit(7).find().then(function (comments) {
+  var hotComments = $("#hot-comments");
+  for (var i = 0; i < comments.length; i++) {
+    if (i === 0) {
+      console.log(comments[0]);
+    }
+    var nick = bozhu(comments[i]._serverData.nick);
+    var content = comments[i]._serverData.comment;
+    var newcontent = content.replace(/<[^>]+>/g,"").replace(/:.*?:/g,"[表情]").substring(0, 50);
+    var url = comments[i]._serverData.url;
+    var link = wangzhi(comments[i]._serverData.link);
+    var updatedAt = timeago(comments[i].updatedAt);
+    var commentId = '#' + comments[i].id;
+    hotComments.append('<div class="card-comment-item"><div class="item-header-text"><a href="'+ link +'" target="_blank" rel="nofollow noopener noreferrer" class="newcomment" >' + nick + '</a>&nbsp;发表于' + updatedAt + '</div><div class="item-text"><a href="' + url + commentId +'"  rel="nofollow" style="color:#717171" class="comments-detail" >' + newcontent + '</a></div></div>');
+  }
+});
+};
+
+
 
   $(function () {
     pjax_valine();
@@ -2240,89 +2171,6 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
 </script>
 
 
-
-
-  
-<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5/lib/darkmode-js.min.js" aysc></script>
-
-<script type="text/javascript">
-function getClientHeight(){
-  var clientHeight=0;
-  if(document.body.clientHeight&&document.documentElement.clientHeight){
-  var clientHeight = (document.body.clientHeight<document.documentElement.clientHeight)?document.body.clientHeight:document.documentElement.clientHeight;
-  }else{
-  var clientHeight = (document.body.clientHeight>document.documentElement.clientHeight)?document.body.clientHeight:document.documentElement.clientHeight;
-  }
-  return clientHeight;
-}
-function supportCss3(style) {
-  var prefix = ['webkit', 'Moz', 'ms', 'o'],
-  i,
-  humpString = [],
-  htmlStyle = document.documentElement.style,
-  _toHumb = function (string) {
-  return string.replace(/-(\w)/g, function ($0, $1) {
-  return $1.toUpperCase();
-  });
-  };
-  for (i in prefix)
-  humpString.push(_toHumb(prefix[i] + '-' + style));
-  humpString.push(_toHumb(style));
-  for (i in humpString)
-  if (humpString[i] in htmlStyle) return true;
-  return false;
-};
-//配置信息
-var options = {
-  bottom: '32px',
-  right: 'unset',
-  left: '16px',
-  time: '0s',
-  mixColor: '#f4f4f4',
-  backgroundColor: '#f4f4f4',
-  buttonColorDark: '#333',
-  buttonColorLight: '#ddd',
-  saveInCookies: true,
-  label: '',
-  autoMatchOsTheme: true
-};
-// 卡片兼容处理 mix-blend-mode 与 effect: [blur] 冲突
-
-function pjax_darkmodejs(){
-  
-  if(!supportCss3('mix-blend-mode'))return;
-  var checkExist2 = setInterval(function() {
-     if (typeof jQuery == 'undefined'){return;}
-     clearInterval(checkExist2);
-     var TopFlag=getClientHeight();
-    $(window).scroll(function(){
-      var top = $(document).scrollTop();
-      if(top > TopFlag) {
-        $(".darkmode-layer").css("mix-blend-mode","normal");
-        $(".darkmode-layer").css("background-color","#222");
-      }else{
-        $(".darkmode-layer").css("mix-blend-mode","difference");
-        $(".darkmode-layer").css("background-color","");
-      }
-    })
-  }, 100);
-  
-}
-// mix-blend-mode support?
-if(supportCss3('mix-blend-mode')){
-  window.darkmode = new Darkmode(options);
-  
-  window.darkmode.showWidget();
-  
-  pjax_darkmodejs();
-}
-////////////////Development///////////////////////
-//////////////darkmode模式切换////////////////////
-//window.darkmode.toggle();                     //
-//////////////darkmode模式判断////////////////////
-//console.log(window.darkmode.isActivated())    //
-//////////////////////////////////////////////////
-</script>
 
 
 
@@ -2338,49 +2186,13 @@ if(supportCss3('mix-blend-mode')){
 
   
     
-<script src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2.6.4/js/search.js"></script>
+<script src="/js/search.js"></script>
 
   
 
 
-<!-- optional -->
-
-  <script>
-const SearchServiceimagePath="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/img/";
-const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
-(function ($) {
-  
-    customSearch = new HexoSearch({
-      imagePath: SearchServiceimagePath
-    });
-  
-})(jQuery);
-
-</script>
 
 
-
-
-
-  
-<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
-
-  <script type="text/javascript">
-    $(function () {
-      Waves.attach('.flat-btn', ['waves-button']);
-      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
-      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
-      Waves.attach('.flat-box', ['waves-block']);
-      Waves.attach('.float-box', ['waves-block', 'waves-float']);
-      Waves.attach('.waves-image');
-      Waves.init();
-    });
-  </script>
-
-
-
-  
-<script src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/comment_typing.js"></script>
 
 
 
@@ -2442,7 +2254,7 @@ const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
       try {
         var currentUrl = window.location.pathname;
         var targetUrl = e.triggerElement.href;
-        var banUrl = [""];
+        var banUrl = ["/bb/"];
         if (banUrl[0] != "") {
           banUrl.forEach(item => {
             if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
@@ -2453,9 +2265,7 @@ const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
       } catch (error) {}
 
       window.subData = null; // 移除标题（用于一二级导航栏切换处）
-      if (typeof $.fancybox != "undefined") {
-        $.fancybox.close();    // 关闭弹窗
-      }
+      $.fancybox.close();    // 关闭弹窗
       $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
       $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
       $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
@@ -2475,7 +2285,7 @@ const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
       // 关于百度统计对 SPA 页面的处理：
       // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
       // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
-      // 
+       
 
       // 关于谷歌统计对 SPA 页面的处理：
       // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
@@ -2488,28 +2298,7 @@ const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
         $(this).parent().append($(this).remove());
       });
       try{
-          if (typeof $.fancybox == "undefined") {
-            SCload_fancybox();
-          } else {
-            pjax_fancybox();
-          }
-        
-          
-          if ('.cover-backstretch') {
-            $('.cover-backstretch').backstretch("resize");
-            if($('.cover-wrapper').is(':hidden')){
-              $('.cover-backstretch').backstretch("pause");
-            }else{
-              $('.cover-backstretch').backstretch("next");
-            }
-          } else {
-            $.backstretch("resize");
-            if($('.cover-wrapper').is(':hidden')){
-              $.backstretch("pause");
-            }else{
-              $.backstretch("next");
-            }
-          }
+        pjax_fancybox();
         
         
         document.querySelectorAll('pre code').forEach((block) => {
@@ -2519,6 +2308,10 @@ const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
         
           pjax_scrollrebeal();
         
+        
+          if (typeof IssuesAPI == "undefined") {
+            loadIssuesJS();
+          }
         
         
           pjax_initCopyCode();
@@ -2530,8 +2323,6 @@ const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
         
         
         
-        
-          pjax_darkmodejs();
         
       } catch (e) {
         console.log(e);
@@ -2547,26 +2338,5 @@ const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
 
     
   </div>
-
-  <!-- 一言API -->
-  <!-- 现代写法，推荐 -->
-  <!-- 兼容低版本浏览器 (包括 IE)，可移除 -->
-  <script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
-  <!--End-->
-  <script>
-    fetch('https://v1.hitokoto.cn')
-      .then(function (res){
-        return res.json();
-      })
-      .then(function (data) {
-        var hitokoto = document.getElementById('hitokoto');
-        hitokoto.innerText = data.hitokoto + '——【' + data.from + '】';
-      })
-      .catch(function (err) {
-        console.error(err);
-      })
-  </script>
-
 </body>
 </html>

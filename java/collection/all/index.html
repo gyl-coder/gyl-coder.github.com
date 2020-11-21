@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
-<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/tree/4.0.0'>
+<html>
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/tree/1.0'>
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
@@ -13,7 +13,6 @@
   <meta name="HandheldFriendly" content="True" >
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta http-equiv='x-dns-prefetch-control' content='on' />
 
   <!-- 页面元数据 -->
   
@@ -38,21 +37,17 @@
   
 
   <!-- link -->
-  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
   
     
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/heson525/fontawesome-pro@5.13.1/css/all.min.css">
 
   
   
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css">
-
-  
-
   
     
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
 
   
 
@@ -61,10 +56,13 @@
   
 
   
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
+
   
 
   
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC&display=swap" media="print" onload="this.media='all'">
+  
+
 
   <!-- import link -->
   
@@ -72,7 +70,7 @@
   
     
       
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.18.1/styles/solarized-light.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.2.0/styles/a11y-dark.css">
 
     
   
@@ -83,28 +81,24 @@
   
   
   
-  <!-- 脚本懒加载函数 -->
-  <script>
-  function loadScript(src, cb) {
-    var HEAD = document.getElementsByTagName('head')[0] || document.documentElement;
-    var script = document.createElement('script');
-    script.setAttribute('type','text/javascript');
-    if (cb) script.onload = cb;
-    script.setAttribute('src', src);
-    HEAD.appendChild(script);
-  }
-  //https://github.com/filamentgroup/loadCSS
-  !function(c){"use strict";var e=function(e,t,n,r){var o,i=c.document,a=i.createElement("link");if(t)o=t;else{var d=(i.body||i.getElementsByTagName("head")[0]).childNodes;o=d[d.length-1]}var f=i.styleSheets;if(r)for(var l in r)r.hasOwnProperty(l)&&a.setAttribute(l,r[l]);a.rel="stylesheet",a.href=e,a.media="only x",function e(t){if(i.body)return t();setTimeout(function(){e(t)})}(function(){o.parentNode.insertBefore(a,t?o:o.nextSibling)});var s=function(e){for(var t=a.href,n=f.length;n--;)if(f[n].href===t)return e();setTimeout(function(){s(e)})};function u(){a.addEventListener&&a.removeEventListener("load",u),a.media=n||"all"}return a.addEventListener&&a.addEventListener("load",u),(a.onloadcssdefined=s)(u),a};"undefined"!=typeof exports?exports.loadCSS=e:c.loadCSS=e}("undefined"!=typeof global?global:this);
-  </script>
-  <script id="loadcss"></script>
+    <!-- 脚本懒加载函数 -->
+    <script>
+      function loadScript(src, cb) {
+        var HEAD = document.getElementsByTagName('head')[0] || document.documentElement;
+        var script = document.createElement('script');
+        script.setAttribute('type','text/javascript');
+        if (cb) script.onload = cb;
+        script.setAttribute('src', src);
+        HEAD.appendChild(script);
+      }
+       </script>
+    
 </head>
 
 <body>
   <!-- 页面点击小红心 -->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/js/love.js"></script>
-  <!--浏览器搞笑标题-->
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/js/ergao.js"></script>  
-  <header class="l_header always shadow blur "  >
+  <header class="l_header auto shadow floatable blur" style='opacity: 0' >
   <div class='container'>
   <div class='wrapper'>
     <div class='nav-sub'>
@@ -121,11 +115,9 @@
         
         <a class="title flat-box" target="_self" href='/'>
           
+            <img no-lazy class='logo' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/logo/logo1200x200.png'/>
           
-            <i class='fa-fw fab fa-modx fa-spin'></i>
           
-          
-            Yanliang
           
         </a>
       
@@ -429,22 +421,6 @@
                       <div class="aplayer-container">
                         
 
-  
-    <meting-js
-      theme='#1BCDFC'
-      autoplay='false'
-      volume='0.7'
-      loop='all'
-      order='list'
-      fixed='false'
-      list-max-height='320px'
-      server='netease'
-      type='song'
-      id='186453'
-      list-folded='true'>
-    </meting-js>
-  
-
 
                       </div>
                     </li>
@@ -465,14 +441,14 @@
 
       <div class="m_search">
         <form name="searchform" class="form u-search-form">
-          <i class="icon fas fa-search fa-fw"></i>
-          <input type="text" class="input u-search-input" placeholder="Search..." />
+          <i class="icon fal fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="搜索..." />
         </form>
       </div>
 
 			<ul class='switcher nav-list-h m-phone'>
 				
-					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+					<li><a class="s-search fal fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
 				
 				<li>
           <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
@@ -782,18 +758,19 @@
 
   <div class="l_body">
     <div class="l_cover">
+
   
-    
-    
-        <div class='cover-wrapper post featured' style="display: none;">
-          
-            <div class='cover-backstretch'></div>
-          
-          <div class='cover-body'>
+  
+      <div class='cover-wrapper post featured' style="display: none;">
+        <canvas id="header_canvas" style="position:absolute;bottom:0;z-index: 1;" width="900" height="350"></canvas>
+        
+          <div class='cover-bg lazyload placeholder' data-bg="https://picup.heson10.com/img/upyun/home_top_bg.webp"></div>
+        
+        <div class='cover-body'>
   <div class='top'>
     
-      <img no-lazy class='logo' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/logo.png'/>
     
+      <p class="title">Yanliang</p>
     
     
   </div>
@@ -843,68 +820,430 @@
   </div>
 </div>
 
-          <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
-        </div>
-    
+        <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+      </div>
   
-  </div>
-  
+
+</div>
+
     <div class='safearea'>
       <div class='body-wrapper' id="pjax-container">
         
-          <!--此文件用来存放一些不方便取值的变量--> 
-<!--思路大概是将值藏到重加载的区域内--> 
- 
- 
- 
-<div id="pjax-data" style="display: none"> 
-  <div id="pjax-ispage">true</div> 
-  <div id="pjax-pageTitle">Java 集合总结</div> 
-  <div id="pjax-enable-cover">true</div> 
-  <div id="pjax-comment-path"></div> 
-  <div id="pjax-comment-placeholder"></div> 
-</div> 
- 
- 
-<script> 
-  // 处理封面 此时 jquery 还没加载 
-  if ("half" == "none") { // 移除封面 
-    document.getElementsByClassName('cover-wrapper')[0].style.display = "none"; 
-    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show"); 
-  } else { 
-    if ("half" == "half") { // 半屏 
-      document.getElementsByClassName('cover-wrapper')[0].setAttribute('id', 'half'); 
-      document.getElementsByClassName('scroll-down')[0].style.display = "none"; 
-    } else if ("half" == "full") { // 全屏 
-      document.getElementsByClassName('cover-wrapper')[0].setAttribute('id', 'full'); 
-      document.getElementsByClassName('scroll-down')[0].style.display = ""; 
-    } 
-    document.getElementsByClassName('cover-wrapper')[0].style.display = ""; 
-    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show"); 
-  } 
-</script> 
- 
+          <!--此文件用来存放一些不方便取值的变量-->
+<!--思路大概是将值藏到重加载的区域内-->
+
+
+
+<div id="pjax-data" style="display: none">
+  <div id="pjax-ispage">true</div>
+  <div id="pjax-pageTitle">Java 集合总结</div>
+  <div id="pjax-enable-cover">true</div>
+  <div id="pjax-comment-path"></div>
+  <div id="pjax-comment-placeholder"></div>
+</div>
+
+
+<script>
+  // 处理封面 此时 jquery 还没加载
+  if ("half" == "none") { // 移除封面
+    document.getElementsByClassName('cover-wrapper')[0].style.display = "none";
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show");
+  } else {
+    if ("half" == "half") { // 半屏
+      document.getElementsByClassName('cover-wrapper')[0].setAttribute('id', 'half');
+      document.getElementsByClassName('scroll-down')[0].style.display = "none";
+    } else if ("half" == "full") { // 全屏
+      document.getElementsByClassName('cover-wrapper')[0].setAttribute('id', 'full');
+      document.getElementsByClassName('scroll-down')[0].style.display = "";
+    }
+    document.getElementsByClassName('cover-wrapper')[0].style.display = "";
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show");
+  }
+</script>
+
 
         
         
+
+<aside class='l_side'>
+  <div style="margin-bottom: 16px;border-radius: 8px;" class='shadow floatable widget_author desktop'>
+    <div id="zuozhebg" class="newauthor"
+      style="background: url(https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/touxiang.webp) center center no-repeat;background-size:cover">
+    </div>
+    <div class="relive_widget_v3">
+      <div class="box-author-info">
+        <div class="author-face">
+          <a href="/about" target="_blank" rel="nofollow" title="关于yanliang">
+            <img no-lazy alt="" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/touxiang.webp"
+              class="avatar avatar-200 photo" height="200" width="200"> </a>
+        </div>
+        <div class="author-name">yanliang</div>
+        <div id="author-one" class="author-one">
+          <script>
+            var binft = function (r) {
+              function t() {
+                return b[Math.floor(Math.random() * b.length)]
+              }
+              function e() {
+                return String.fromCharCode(94 * Math.random() + 33)
+              }
+              function n(r) {
+                for (var n = document.createDocumentFragment(), i = 0; r > i; i++) {
+                  var l = document.createElement("span");
+                  l.textContent = e(), l.style.color = t(), n.appendChild(l)
+                }
+                return n
+              }
+              function i() {
+                var t = o[c.skillI];
+                c.step ? c.step-- : (c.step = g, c.prefixP < l.length ? (c.prefixP >= 0 && (c.text += l[c.prefixP]), c.prefixP++) : "forward" === c.direction ? c.skillP < t.length ? (c.text += t[c.skillP], c.skillP++) : c.delay ? c.delay-- : (c.direction = "backward", c.delay = a) : c.skillP > 0 ? (c.text = c.text.slice(0, -1), c.skillP--) : (c.skillI = (c.skillI + 1) % o.length, c.direction = "forward")), r.textContent = c.text, r.appendChild(n(c.prefixP < l.length ? Math.min(s, s + c.prefixP) : Math.min(s, t.length - c.skillP))), setTimeout(i, d)
+              }
+              var l = "",
+                o = ["人生在勤，不索何获", "日日待明日,万事成蹉跎", "丈夫志四海，万里犹比邻", "还在看这里吗？", "能不能别看了？", "文章更精彩...."].map(function (r) {
+                  return r + ""
+                }),
+                a = 2,
+                g = 1,
+                s = 5,
+                d = 75,
+                b = ["rgb(110,64,170)", "rgb(150,61,179)", "rgb(191,60,175)", "rgb(228,65,157)", "rgb(254,75,131)", "rgb(255,94,99)", "rgb(255,120,71)", "rgb(251,150,51)", "rgb(226,183,47)", "rgb(198,214,60)", "rgb(175,240,91)", "rgb(127,246,88)", "rgb(82,246,103)", "rgb(48,239,130)", "rgb(29,223,163)", "rgb(26,199,194)", "rgb(35,171,216)", "rgb(54,140,225)", "rgb(76,110,219)", "rgb(96,84,200)"],
+                c = {
+                  text: "",
+                  prefixP: -s,
+                  skillI: 0,
+                  skillP: 0,
+                  direction: "forward",
+                  delay: a,
+                  step: g
+                };
+              i()
+            };
+            binft(document.getElementById('author-one'));
+          </script>
+
+
+        </div>
+        <div class="site-state-wrap motion-element">
+          <nav class="site-state">
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+
+                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/">
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          </nav>
+        </div>
+      </div>
+       
+      <!-- 主题配置文件开启此功能 按需修改文章标题和链接  -->
+      <dl class="article-newest">
+        <dt>———<span class="tit" style="font-weight: bold;">热门文章</span>———</dt>
+        <li>
+          <span class="order od-1">1</span>
+          <a href="/spring/custom-ioc-aop/" title="手写实现IOC 和 AOP"><i
+              class="iconfont icon-sanjiao"></i>手写实现IOC 和 AOP</a>
+        </li>
+        <li>
+          <span class="order od-2">2</span>
+          <a href="/java/collection/HashMapAnalysis/" title="HashMap 底层实现原理分析"><i class="iconfont icon-sanjiao"></i>HashMap 底层实现原理分析</a>
+        </li>
+        <li>
+          <span class="order od-3">3</span>
+          <a href="/good/how-to-design-extensible-limiting-algorithm/" title="如何设计一个可扩展的限流算法 [转]"><i class="iconfont icon-sanjiao"></i>如何设计一个可扩展的限流算法 [转]</a>
+        </li>
+        <li>
+          <span class="order od-4">4</span>
+          <a href="/concurrency/lock_and_synchronized/" title="Lock & Synchronized"><i
+              class="iconfont icon-sanjiao"></i>Lock & Synchronized</a>
+        </li>
+        <li>
+          <span class="order od-5">5</span>
+          <a href="/design-pattern/immutability/" title="并发设计模式：Immutability 模式"><i
+              class="iconfont icon-sanjiao"></i>并发设计模式：Immutability 模式</a>
+        </li>
+        <li>
+          <span class="order od-6">6</span>
+          <a href="/JSONParser/" title="撸一个JSON解析器"><i
+              class="iconfont icon-sanjiao"></i>撸一个JSON解析器</a>
+        </li>
+      </dl>
+      
+
+    </div>
+  </div>
+
+  
+
+  
+  
+    
+    
+  
+
+  <section class="widget category shadow floatable desktop">
+    
+  <header>
+    
+      <a href='/categories/'><i class="fal fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+    
+  </header>
+
+
+    <div class='content'>
+      <ul class="entry navigation">
+        
+          <li><a class="flat-box"
+            title="/categories/Java/" href="/categories/Java/"
+            id="categoriesJava"
+            ><div class='name'>Java</div><div class='badge'>(13)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/Mybatis/" href="/categories/Mybatis/"
+            id="categoriesMybatis"
+            ><div class='name'>Mybatis</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/Spring/" href="/categories/Spring/"
+            id="categoriesSpring"
+            ><div class='name'>Spring</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/kafka/" href="/categories/kafka/"
+            id="categorieskafka"
+            ><div class='name'>kafka</div><div class='badge'>(8)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E5%B9%B6%E5%8F%91/" href="/categories/%E5%B9%B6%E5%8F%91/"
+            id="categoriesE5B9B6E58F91"
+            ><div class='name'>并发</div><div class='badge'>(4)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E8%AE%BE%E8%AE%A1/" href="/categories/%E8%AE%BE%E8%AE%A1/"
+            id="categoriesE8AEBEE8AEA1"
+            ><div class='name'>设计</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"
+            id="categoriesE8AEBEE8AEA1E6A8A1E5BC8F"
+            ><div class='name'>设计模式</div><div class='badge'>(2)</div></a></li>
+        
+      </ul>
+    </div>
+  </section>
+
+
+  
+
+  
+
+  
+    
+    
+
+<section class="widget text shadow floatable desktop">
+  
+  <header>
+    
+      <i class="far fa-comments fa-fw" aria-hidden="true"></i><span class='name'>最新评论</span>
+    
+  </header>
+
+
+  <div class='content'>
+    
+      <div id="hot-comments"></div>
+    
+  </div>
+</section>
+
+  
+
+  
+    
+    
+
+<section class="widget shadow floatable desktop mobile">
+  
+  <header>
+    
+      <i class="fal fa-award fa-fw" aria-hidden="true"></i><span class='name'>站点信息</span>
+    
+  </header>
+
+
+  <div class='content'>
+    <div class="webinfo">
+      
+        <div class="webinfo-item">
+          <div>文章数目：</div>
+          <div>32 篇</div>
+        </div>
+      
+
+      
+        <div class="webinfo-item">
+          <div>已运行时间：</div>
+          <div id="webinfo-runtime-count" publish_date="03/24/2020 21:34:09"></div>
+        </div>
+        <script>
+          var BirthDay = new Date(new Date('2020/07/06'));
+          var today = new Date();
+          var timeold = (today.getTime() - BirthDay.getTime());
+          var daysold = Math.floor(timeold / (24 * 60 * 60 * 1000));
+          document.getElementById('webinfo-runtime-count').innerHTML = daysold + ' 天';
+        </script>
+      
+
+
+      
+        <div class="webinfo-item">
+          <div>本站总字数：</div>
+          <div>84.9k 字</div>
+        </div>
+      
+
+      
+        <div class="webinfo-item">
+          <div>本站访客数：</div>
+          <div><span id="busuanzi_value_site_uv"><i class="fas fa-fan fa-spin fa-fw" aria-hidden="true"></i></span> 人</div>
+        </div>
+      
+
+      
+        <div class="webinfo-item">
+          <div>本站总访问量：</div>
+          <div><span id="busuanzi_value_site_pv"><i class="fas fa-fan fa-spin fa-fw" aria-hidden="true"></i></span> 次</div>
+        </div>
+      
+
+      
+        <div class="webinfo-item">
+          <div>最后活动时间：</div>
+          
+            <div id="last-update" style="display: none;">Sat Nov 21 2020 10:13:13 GMT+0800 (GMT+08:00)</div>
+            <div id="last-update-show">2020-11-21 日</div>
+          
+        </div>
+        
+        <script>
+          function timeago(dateTimeStamp) {
+              var minute = 1000 * 60; //把分，时，天，周，半个月，一个月用毫秒表示
+              var hour = minute * 60;
+              var day = hour * 24;
+              var week = day * 7;
+              var month = day * 30;
+              var now = new Date().getTime(); //获取当前时间毫秒
+              var diffValue = now - dateTimeStamp; //时间差
+              if (diffValue < 0) {
+                  return;
+              }
+              var minC = diffValue / minute; //计算时间差的分，时，天，周，月
+              var hourC = diffValue / hour;
+              var dayC = diffValue / day;
+              var weekC = diffValue / week;
+              var monthC = diffValue / month;
+              if (monthC >= 1 && monthC <= 3) {
+                  result = " " + parseInt(monthC) + " 月前"
+              } else if (weekC >= 1 && weekC <= 3) {
+                  result = " " + parseInt(weekC) + " 周前"
+              } else if (dayC >= 1 && dayC <= 6) {
+                  result = " " + parseInt(dayC) + " 天前"
+              } else if (hourC >= 1 && hourC <= 23) {
+                  result = " " + parseInt(hourC) + " 小时前"
+              } else if (minC >= 1 && minC <= 59) {
+                  result = " " + parseInt(minC) + " 分钟前"
+              } else if (diffValue >= 0 && diffValue <= minute) {
+                  result = "刚刚"
+              } else {
+                  var datetime = new Date();
+                  datetime.setTime(dateTimeStamp);
+                  var Nyear = datetime.getFullYear();
+                  var Nmonth = datetime.getMonth() + 1 < 10 ? "0" + (datetime.getMonth() + 1) : datetime.getMonth() + 1;
+                  var Ndate = datetime.getDate() < 10 ? "0" + datetime.getDate() : datetime.getDate();
+                  var Nhour = datetime.getHours() < 10 ? "0" + datetime.getHours() : datetime.getHours();
+                  var Nminute = datetime.getMinutes() < 10 ? "0" + datetime.getMinutes() : datetime.getMinutes();
+                  var Nsecond = datetime.getSeconds() < 10 ? "0" + datetime.getSeconds() : datetime.getSeconds();
+                  result = Nyear + "-" + Nmonth + "-" + Ndate
+              }
+              return result;
+          }
+          var lastUpDate = document.getElementById('last-update').innerHTML;
+          try {
+            document.getElementById('last-update-show').innerHTML = timeago(new Date(lastUpDate));
+          } catch (error) {
+            document.getElementById('last-update-show').innerHTML = '2020-11-21 日';
+          }
+        </script>
+        
+      
+    </div>
+  </div>
+</section>
+
+  
+
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow floatable desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fal fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%A7%88"><span class="toc-text">概览</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Collection"><span class="toc-text">Collection</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Map"><span class="toc-text">Map</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E5%99%A8-Iterator"><span class="toc-text">迭代器 Iterator</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E5%99%A8%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-text">迭代器的作用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8"><span class="toc-text">如何使用</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#List"><span class="toc-text">List</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ArrayList"><span class="toc-text">ArrayList</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ArrayList%E6%89%A9%E5%AE%B9"><span class="toc-text">ArrayList扩容</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vector"><span class="toc-text">Vector</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LinkedList"><span class="toc-text">LinkedList</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Arraylist-%E5%92%8C-Vector-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">Arraylist 和 Vector 的区别?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Arraylist-%E4%B8%8E-LinkedList-%E5%8C%BA%E5%88%AB"><span class="toc-text">Arraylist 与 LinkedList 区别?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Map-1"><span class="toc-text">Map</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HashMap"><span class="toc-text">HashMap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HashTable"><span class="toc-text">HashTable</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LinkedHashMap"><span class="toc-text">LinkedHashMap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TreeMap"><span class="toc-text">TreeMap</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Set"><span class="toc-text">Set</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HashSet"><span class="toc-text">HashSet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TreeSet"><span class="toc-text">TreeSet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LinkedHashSet"><span class="toc-text">LinkedHashSet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E5%BA%8F%E6%80%A7%E5%92%8C%E4%B8%8D%E5%8F%AF%E9%87%8D%E5%A4%8D%E6%80%A7%E7%9A%84%E5%90%AB%E4%B9%89%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">无序性和不可重复性的含义是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AF%94%E8%BE%83-HashSet%E3%80%81LinkedHashSet-%E5%92%8C-TreeSet-%E4%B8%89%E8%80%85%E7%9A%84%E5%BC%82%E5%90%8C"><span class="toc-text">比较 HashSet、LinkedHashSet 和 TreeSet 三者的异同</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Set%E4%B8%AD%E7%9A%84%E5%85%83%E7%B4%A0%E4%B8%8D%E8%83%BD%E9%87%8D%E5%A4%8D%EF%BC%8C%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%EF%BC%9F"><span class="toc-text">Set中的元素不能重复，如何实现？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#comparable-%E5%92%8C-Comparator-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">comparable 和 Comparator 的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Comparator-%E5%AE%9A%E5%88%B6%E6%8E%92%E5%BA%8F"><span class="toc-text">Comparator 定制排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%87%8D%E5%86%99-compareTo%EF%BC%88%EF%BC%89%E6%96%B9%E6%B3%95%E5%AE%9E%E7%8E%B0%E6%8C%89%E5%B9%B4%E9%BE%84%E6%8E%92%E5%BA%8F"><span class="toc-text">重写 compareTo（）方法实现按年龄排序</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-text">其他</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B4%E8%AF%B4List%E3%80%81Set%E3%80%81Map%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">说说List、Set、Map的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E9%80%89%E7%94%A8%E9%9B%86%E5%90%88"><span class="toc-text">如何选用集合?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BD%BF%E7%94%A8%E9%9B%86%E5%90%88%EF%BC%9F"><span class="toc-text">为什么要使用集合？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%89%E5%93%AA%E4%BA%9B%E9%9B%86%E5%90%88%E6%98%AF%E7%BA%BF%E7%A8%8B%E4%B8%8D%E5%AE%89%E5%85%A8%E7%9A%84%EF%BC%9F%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3%E5%91%A2%EF%BC%9F"><span class="toc-text">有哪些集合是线程不安全的？怎么解决呢？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fail-fast"><span class="toc-text">fail-fast</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vector%E5%92%8CArrayList"><span class="toc-text">Vector和ArrayList</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Aarraylist%E5%92%8CLinkedlist"><span class="toc-text">Aarraylist和Linkedlist</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%93%AA%E4%BA%9B%E9%9B%86%E5%90%88%E7%B1%BB%E6%8F%90%E4%BE%9B%E5%AF%B9%E5%85%83%E7%B4%A0%E7%9A%84%E9%9A%8F%E6%9C%BA%E8%AE%BF%E9%97%AE%EF%BC%9F"><span class="toc-text">哪些集合类提供对元素的随机访问？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Enumeration%E5%92%8CIterator%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">Enumeration和Iterator接口的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Iterater%E5%92%8CListIterator%E4%B9%8B%E9%97%B4%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-text">Iterater和ListIterator之间有什么区别？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java%E4%B8%ADHashMap%E7%9A%84key%E5%80%BC%E8%A6%81%E6%98%AF%E4%B8%BA%E7%B1%BB%E5%AF%B9%E8%B1%A1%E5%88%99%E8%AF%A5%E7%B1%BB%E9%9C%80%E8%A6%81%E6%BB%A1%E8%B6%B3%E4%BB%80%E4%B9%88%E6%9D%A1%E4%BB%B6%EF%BC%9F"><span class="toc-text">Java中HashMap的key值要是为类对象则该类需要满足什么条件？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HashSet%E4%B8%8EHashMap"><span class="toc-text">HashSet与HashMap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hashtable%E4%B8%8Ehashmap"><span class="toc-text">hashtable与hashmap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HashMap%E4%B8%8ETreeMap"><span class="toc-text">HashMap与TreeMap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E4%B8%AD%E7%9A%84%E6%B3%9B%E5%9E%8B%E6%9C%89%E4%BB%80%E4%B9%88%E4%BC%98%E7%82%B9%EF%BC%9F"><span class="toc-text">集合框架中的泛型有什么优点？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#comparable-%E5%92%8C-comparator%E7%9A%84%E4%B8%8D%E5%90%8C%E4%B9%8B%E5%A4%84%EF%BC%9F"><span class="toc-text">comparable 和 comparator的不同之处？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E4%B8%80%E4%B8%AA%E9%9B%86%E5%90%88%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%EF%BC%9F"><span class="toc-text">如何保证一个集合线程安全？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TreeMap%E5%92%8CTreeSet%E5%9C%A8%E6%8E%92%E5%BA%8F%E6%97%B6%E5%A6%82%E4%BD%95%E6%AF%94%E8%BE%83%E5%85%83%E7%B4%A0%EF%BC%9FCollections%E5%B7%A5%E5%85%B7%E7%B1%BB%E4%B8%AD%E7%9A%84sort-%E6%96%B9%E6%B3%95%E5%A6%82%E4%BD%95%E6%AF%94%E8%BE%83%E5%85%83%E7%B4%A0%EF%BC%9F"><span class="toc-text">TreeMap和TreeSet在排序时如何比较元素？Collections工具类中的sort()方法如何比较元素？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFJava%E4%BC%98%E5%85%88%E7%BA%A7%E9%98%9F%E5%88%97%EF%BC%9F"><span class="toc-text">什么是Java优先级队列？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-hashCode%EF%BC%88%EF%BC%89%E5%92%8Cequals%EF%BC%88%EF%BC%89%E6%96%B9%E6%B3%95%E3%80%82"><span class="toc-text">Java hashCode（）和equals（）方法。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Enumeration%E5%92%8CIterator%E5%8C%BA%E5%88%AB"><span class="toc-text">Enumeration和Iterator区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HashMap-%E5%92%8C-ConcurrentHashMap-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-text">HashMap 和 ConcurrentHashMap 的区别？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HashMap%E4%B8%ADhash%E6%96%B9%E6%B3%95%E7%9A%84%E5%8E%9F%E7%90%86"><span class="toc-text">HashMap中hash方法的原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88HashMap%E7%9A%84%E9%BB%98%E8%AE%A4%E5%AE%B9%E9%87%8F%E8%AE%BE%E7%BD%AE%E6%88%9016"><span class="toc-text">为什么HashMap的默认容量设置成16</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88HashMap%E7%9A%84%E9%BB%98%E8%AE%A4%E8%B4%9F%E8%BD%BD%E5%9B%A0%E5%AD%90%E8%AE%BE%E7%BD%AE%E6%88%900-75"><span class="toc-text">为什么HashMap的默认负载因子设置成0.75</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-8%E4%B8%ADstream%E7%9B%B8%E5%85%B3%E7%94%A8%E6%B3%95"><span class="toc-text">Java 8中stream相关用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Apache%E9%9B%86%E5%90%88%E5%A4%84%E7%90%86%E5%B7%A5%E5%85%B7%E7%B1%BB%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">Apache集合处理工具类的使用</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
 
 <div class='l_main'>
-  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  <article
+  class="article post white-box reveal md shadow floatable article-type-post"
+  id="post" itemscope itemprop="blogPost">
   
 
 
   
-    <div class='headimg-div'>
-      <a class='headimg-a'>
-        <img class='headimg' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life8.webp'/>
-      </a>
-    </div>
+    
+      
+        <div class='headimg lazyload' data-bg='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life8.webp'></div>
+      
+    
   
   <div class="article-meta" id="top">
     
     
       <a title='Java 集合总结' href='/java/collection/all/'>
-        <img class='thumbnail' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life8.webp'>
+        
+          
+            <img class='thumbnail lazyload' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life8.webp'>
+          
+        
       </a>
     
     
@@ -916,9 +1255,9 @@
           
             
 <div class='new-meta-item author'>
-  <a class='author' href="/" rel="nofollow">
+  <a class='author' href="https://gyl-coder.top" rel="nofollow">
     <img no-lazy src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/touxiang.webp">
-    <p>Yanliang</p>
+    <p>yanliang</p>
   </a>
 </div>
 
@@ -928,7 +1267,7 @@
             
   <div class='new-meta-item category'>
     <a class='notlink'>
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <i class="fal fa-folder-open fa-fw" aria-hidden="true"></i>
       <a class="category-link" href="/categories/Java/">Java</a>
     </a>
   </div>
@@ -939,7 +1278,7 @@
           
             <div class="new-meta-item date">
   <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <i class="fal fa-calendar-alt fa-fw" aria-hidden="true"></i>
     <p>发布于：Jul 6, 2020</p>
   </a>
 </div>
@@ -947,12 +1286,19 @@
           
         
           
-            <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-02T17:53:02+08:00">
-  <a class='notlink'>
-    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Oct 2, 2020</p>
-  </a>
-</div>
+            
+  <div class="new-meta-item browse busuanzi">
+    <a class='notlink'>
+      <i class="fal fa-eye fa-fw" aria-hidden="true"></i>
+      <p>
+        <span id="busuanzi_value_page_pv">
+          <i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i>
+        </span>
+        次浏览
+      </p>
+    </a>
+  </div>
+
 
           
         
@@ -960,6 +1306,8 @@
     
   </div>
 
+
+  
 
   
   <p>集合中用到的数据结构有以下几种：</p>
@@ -971,22 +1319,19 @@
 <li><strong>队列：</strong> 和堆栈有些相似，不同之处在于在队列里第一个插入的元素也是第一个被删除的元素（即是先进先出）。这种先进先出的结构是通过只提供peek()，offer()和poll()这几个方法来访问数据进行限制来达到的。例如，排队等待公交车，银行或者超市里的等待列队等等，都是可以用队列来表示。</li>
 </ul>
 <a id="more"></a>
-<h2 id="概览"><a class="header-anchor" href="#概览">✨</a>概览</h2>
-<p>Java 容器主要包括 Collection 和 Map 两种，Collection存储着对象的集合，而Map存储着键值对（两个对象）的映射表。</p>
-<h3 id="Collection"><a class="header-anchor" href="#Collection">✨</a>Collection</h3>
-<div class="gallery ">
-              <p><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/collection1.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/collection1.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" alt="image.png"></p>
+
+<h2 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h2><p>Java 容器主要包括 Collection 和 Map 两种，Collection存储着对象的集合，而Map存储着键值对（两个对象）的映射表。</p>
+<h3 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h3><div class="gallery ">
+              <p><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/collection1.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/collection1.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"></p>
             </div>
+
 <p><strong>Set</strong></p>
 <ul>
-<li>
-<p>TreeSet（有序，唯一）：基于红黑树实现，支持有序性操作，例如根据一个范围查找元素的操作。但是查找效率不如 HashSet，HashSet 查找的时间复杂度为 O(1)，TreeSet 则为 O(logN)。</p>
+<li><p>TreeSet（有序，唯一）：基于红黑树实现，支持有序性操作，例如根据一个范围查找元素的操作。但是查找效率不如 HashSet，HashSet 查找的时间复杂度为 O(1)，TreeSet 则为 O(logN)。</p>
 </li>
-<li>
-<p>HashSet（无序，唯一）：基于Hashmap实现，支持快速查找，但不支持有序性操作。并且失去了元素的插入顺序信息，也就是说使用 Iterator 遍历 HashSet 得到的结果是不确定的。</p>
+<li><p>HashSet（无序，唯一）：基于Hashmap实现，支持快速查找，但不支持有序性操作。并且失去了元素的插入顺序信息，也就是说使用 Iterator 遍历 HashSet 得到的结果是不确定的。</p>
 </li>
-<li>
-<p>LinkedHashSet：<code>LinkedHashSet</code> 是 <code>HashSet</code> 的子类，并且其内部是通过 <code>LinkedHashMap</code> 来实现的。具有 HashSet 的查找效率，并且内部使用双向链表维护元素的插入顺序。</p>
+<li><p>LinkedHashSet：<code>LinkedHashSet</code> 是 <code>HashSet</code> 的子类，并且其内部是通过 <code>LinkedHashMap</code> 来实现的。具有 HashSet 的查找效率，并且内部使用双向链表维护元素的插入顺序。</p>
 </li>
 </ul>
 <p>List</p>
@@ -1000,141 +1345,105 @@
 <li>LinkedList：可以用它来实现双向队列。</li>
 <li>PriorityQueue：基于堆结构实现，可以用它来实现优先队列。</li>
 </ul>
-<h3 id="Map"><a class="header-anchor" href="#Map">✨</a>Map</h3>
-<div class="gallery ">
-              <p><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/collection3.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/collection3.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" alt="image.png"></p>
+<h3 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h3><div class="gallery ">
+              <p><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/collection3.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/collection3.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"></p>
             </div>
+
 <ul>
-<li>**TreeMap：**基于红黑树实现。（自平衡的排序二叉树）</li>
-<li>**HashMap：**JDK1.8 之前 HashMap 由数组+链表组成的，数组是 HashMap 的主体，链表则是主要为了解决哈希冲突而存在的（“拉链法”解决冲突）。JDK1.8 以后在解决哈希冲突时有了较大的变化，当链表长度大于阈值（默认为 8）（将链表转换成红黑树前会判断，如果当前数组的长度小于 64，那么会选择先进行数组扩容，而不是转换为红黑树）时，将链表转化为红黑树，以减少搜索时间</li>
-<li>**HashTable：**和 HashMap 类似，但它是线程安全的，这意味着同一时刻多个线程同时写入 HashTable 不会导致数据不一致。它是遗留类，不应该去使用它，而是使用 ConcurrentHashMap 来支持线程安全，ConcurrentHashMap 的效率会更高，因为 ConcurrentHashMap 引入了分段锁。</li>
-<li>**LinkedHashMap：**LinkedHashMap 继承自 HashMap，所以它的底层仍然是基于拉链式散列结构即由数组和链表或红黑树组成。另外，LinkedHashMap 在上面结构的基础上，增加了一条双向链表来维护元素的顺序，顺序为插入顺序或者最近最少使用（LRU）顺序。</li>
+<li><strong>TreeMap：</strong>基于红黑树实现。（自平衡的排序二叉树）</li>
+<li><strong>HashMap：</strong>JDK1.8 之前 HashMap 由数组+链表组成的，数组是 HashMap 的主体，链表则是主要为了解决哈希冲突而存在的（“拉链法”解决冲突）。JDK1.8 以后在解决哈希冲突时有了较大的变化，当链表长度大于阈值（默认为 8）（将链表转换成红黑树前会判断，如果当前数组的长度小于 64，那么会选择先进行数组扩容，而不是转换为红黑树）时，将链表转化为红黑树，以减少搜索时间</li>
+<li><strong>HashTable：</strong>和 HashMap 类似，但它是线程安全的，这意味着同一时刻多个线程同时写入 HashTable 不会导致数据不一致。它是遗留类，不应该去使用它，而是使用 ConcurrentHashMap 来支持线程安全，ConcurrentHashMap 的效率会更高，因为 ConcurrentHashMap 引入了分段锁。</li>
+<li><strong>LinkedHashMap：</strong>LinkedHashMap 继承自 HashMap，所以它的底层仍然是基于拉链式散列结构即由数组和链表或红黑树组成。另外，LinkedHashMap 在上面结构的基础上，增加了一条双向链表来维护元素的顺序，顺序为插入顺序或者最近最少使用（LRU）顺序。</li>
 </ul>
-<h3 id="迭代器-Iterator"><a class="header-anchor" href="#迭代器-Iterator">✨</a>迭代器 Iterator</h3>
-<div class="gallery ">
-              <p><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/collection4.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/collection4.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" alt="image.png"></p>
+<h3 id="迭代器-Iterator"><a href="#迭代器-Iterator" class="headerlink" title="迭代器 Iterator"></a>迭代器 Iterator</h3><div class="gallery ">
+              <p><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/collection4.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/collection/collection4.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"></p>
             </div>
-<p>Collection 继承了 Iterable 接口，其中的 iterator() 方法能够产生一个 Iterator 对象，通过这个对象就可以迭代遍历 Collection 中的元素。<br>
-从 JDK 1.5 之后可以使用 foreach 方法来遍历实现了 Iterable 接口的聚合对象。</p>
-<pre><code class="language-java">public interface Iterator&lt;E&gt; &amp;#123;
+
+<p>Collection 继承了 Iterable 接口，其中的 iterator() 方法能够产生一个 Iterator 对象，通过这个对象就可以迭代遍历 Collection 中的元素。<br>从 JDK 1.5 之后可以使用 foreach 方法来遍历实现了 Iterable 接口的聚合对象。</p>
+<pre><code class="java">public interface Iterator&lt;E&gt; &#123;
     //集合中是否还有元素
     boolean hasNext();
     //获得集合中的下一个元素
     E next();
     ......
-&amp;#125;
-</code></pre>
+&#125;</code></pre>
 <p><code>Iterator</code> 对象称为迭代器（设计模式的一种），迭代器可以对集合进行遍历，但每一个集合内部的数据结构可能是不尽相同的，所以每一个集合存和取都很可能是不一样的，虽然我们可以人为地在每一个类中定义 <code>hasNext()</code> 和 <code>next()</code> 方法，但这样做会让整个集合体系过于臃肿。于是就有了迭代器。</p>
 <p>迭代器是将这样的方法抽取出接口，然后在每个类的内部，定义自己迭代方式，这样做就规定了整个集合体系的遍历方式都是 <code>hasNext()</code>和<code>next()</code>方法，使用者不用管怎么实现的，会用即可。迭代器的定义为：提供一种方法访问一个容器对象中各个元素，而又不需要暴露该对象的内部细节。</p>
-<h4 id="迭代器的作用"><a class="header-anchor" href="#迭代器的作用">✨</a>迭代器的作用</h4>
-<p>Iterator 主要用于遍历集合，他的特点是安全。因为它可以确保，当前遍历的集合元素被更改时，抛出 ConcurrentModificationException 异常。</p>
-<h4 id="如何使用"><a class="header-anchor" href="#如何使用">✨</a>如何使用</h4>
-<pre><code class="language-java">Map&lt;Integer, String&gt; map = new HashMap();
+<h4 id="迭代器的作用"><a href="#迭代器的作用" class="headerlink" title="迭代器的作用"></a>迭代器的作用</h4><p>Iterator 主要用于遍历集合，他的特点是安全。因为它可以确保，当前遍历的集合元素被更改时，抛出 ConcurrentModificationException 异常。</p>
+<h4 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h4><pre><code class="java">Map&lt;Integer, String&gt; map = new HashMap();
 map.put(1, &quot;Java&quot;);
 map.put(2, &quot;C++&quot;);
 map.put(3, &quot;PHP&quot;);
 Iterator&lt;Map.Entry&lt;Integer, String&gt;&gt; iterator = map.entrySet().iterator();
-while (iterator.hasNext()) &amp;#123;
+while (iterator.hasNext()) &#123;
   Map.Entry&lt;Integer, String&gt; entry = iterator.next();
   System.out.println(entry.getKey() + entry.getValue());
-&amp;#125;
-</code></pre>
-<h2 id="List"><a class="header-anchor" href="#List">✨</a>List</h2>
-<h3 id="ArrayList"><a class="header-anchor" href="#ArrayList">✨</a>ArrayList</h3>
-<p><a href="../ArrayList">查看专题文章</a></p>
-<h4 id="ArrayList扩容"><a class="header-anchor" href="#ArrayList扩容">✨</a>ArrayList扩容</h4>
-<p><a href="../ArrayList_grow">查看专题文章</a></p>
-<h3 id="Vector"><a class="header-anchor" href="#Vector">✨</a>Vector</h3>
-<p><a href="../Vector">查看专题文章</a></p>
-<h3 id="LinkedList"><a class="header-anchor" href="#LinkedList">✨</a>LinkedList</h3>
-<p><a href="../LinkedList">查看专题文章</a></p>
-<h3 id="Arraylist-和-Vector-的区别"><a class="header-anchor" href="#Arraylist-和-Vector-的区别">✨</a>Arraylist 和 Vector 的区别?</h3>
-<ol>
+&#125;</code></pre>
+<h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><h3 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h3><p><a href="../ArrayList">查看专题文章</a></p>
+<h4 id="ArrayList扩容"><a href="#ArrayList扩容" class="headerlink" title="ArrayList扩容"></a>ArrayList扩容</h4><p><a href="../ArrayList_grow">查看专题文章</a></p>
+<h3 id="Vector"><a href="#Vector" class="headerlink" title="Vector"></a>Vector</h3><p><a href="../Vector">查看专题文章</a></p>
+<h3 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h3><p><a href="../LinkedList">查看专题文章</a></p>
+<h3 id="Arraylist-和-Vector-的区别"><a href="#Arraylist-和-Vector-的区别" class="headerlink" title="Arraylist 和 Vector 的区别?"></a>Arraylist 和 Vector 的区别?</h3><ol>
 <li>ArrayList 是 List 的主要实现类，底层使用 Object[ ]存储，适用于频繁的查找工作，线程不安全 ；</li>
 <li>Vector 是 List 的古老实现类，底层使用 Object[ ]存储，线程安全的。</li>
 </ol>
-<h3 id="Arraylist-与-LinkedList-区别"><a class="header-anchor" href="#Arraylist-与-LinkedList-区别">✨</a>Arraylist 与 LinkedList 区别?</h3>
-<ol>
+<h3 id="Arraylist-与-LinkedList-区别"><a href="#Arraylist-与-LinkedList-区别" class="headerlink" title="Arraylist 与 LinkedList 区别?"></a>Arraylist 与 LinkedList 区别?</h3><ol>
 <li><strong>是否保证线程安全：</strong> <code>ArrayList</code> 和 <code>LinkedList</code> 都是不同步的，也就是不保证线程安全；</li>
 <li><strong>底层数据结构：</strong> <code>Arraylist</code> 底层使用的是 <strong><code>Object</code> 数组</strong>；<code>LinkedList</code> 底层使用的是 <strong>双向链表</strong> 数据结构（JDK1.6 之前为循环链表，JDK1.7 取消了循环。注意双向链表和双向循环链表的区别，下面有介绍到！）</li>
 <li><strong>插入和删除是否受元素位置的影响：</strong> ① <strong><code>ArrayList</code> 采用数组存储，所以插入和删除元素的时间复杂度受元素位置的影响。</strong> 比如：执行<code>add(E e)</code>方法的时候， <code>ArrayList</code> 会默认在将指定的元素追加到此列表的末尾，这种情况时间复杂度就是 O(1)。但是如果要在指定位置 i 插入和删除元素的话（<code>add(int index, E element)</code>）时间复杂度就为 O(n-i)。因为在进行上述操作的时候集合中第 i 和第 i 个元素之后的(n-i)个元素都要执行向后位/向前移一位的操作。 ② <strong><code>LinkedList</code> 采用链表存储，所以对于<code>add(E e)</code>方法的插入，删除元素时间复杂度不受元素位置的影响，近似 O(1)，如果是要在指定位置<code>i</code>插入和删除元素的话（<code>(add(int index, E element)</code>） 时间复杂度近似为<code>o(n))</code>因为需要先移动到指定位置再插入。</strong></li>
 <li><strong>是否支持快速随机访问：</strong> <code>LinkedList</code> 不支持高效的随机元素访问，而 <code>ArrayList</code> 支持。快速随机访问就是通过元素的序号快速获取元素对象(对应于<code>get(int index)</code>方法)。</li>
 <li><strong>内存空间占用：</strong> ArrayList 的空 间浪费主要体现在在 list 列表的结尾会预留一定的容量空间，而 LinkedList 的空间花费则体现在它的每一个元素都需要消耗比 ArrayList 更多的空间（因为要存放直接后继和直接前驱以及数据）。</li>
 </ol>
-<h2 id="Map-v2"><a class="header-anchor" href="#Map-v2">✨</a>Map</h2>
-<p>Map与List、Set接口不同，它是由一系列键值对组成的集合，提供了key到Value的映射。同时它也没有继承Collection。在Map中它保证了key与value之间的一一对应关系。也就是说一个key对应一个value，所以它不能存在相同的key值，当然value值可以相同。key可以为空，但是只允许出现一个null。它的主要实现类有HashMap、HashTable、LinkedHashMap、TreeMap。</p>
-<h3 id="HashMap"><a class="header-anchor" href="#HashMap">✨</a>HashMap</h3>
-<p>HashMap 是 Map 的一个实现类，它代表的是一种键值对的数据存储形式。<br>
-大多数情况下可以直接定位到它的值，因而具有很快的访问速度，但遍历顺序却是不确定的。<br>
-HashMap最多只允许一条记录的键为null，允许多条记录的值为null。遇到key为null的时候，调用putForNullKey方法进行处理，而对value没有处理。不保证有序(比如插入的顺序)、也不保证序不随时间变化。<br>
-jdk 8 之前，其内部是由数组+链表来实现的，而 jdk 8 对于链表长度超过 8 的链表将转储为红黑树。<br>
-HashMap非线程安全，即任一时刻可以有多个线程同时写HashMap，可能会导致数据的不一致。如果需要满足线程安全，可以用 Collections的synchronizedMap方法使HashMap具有线程安全的能力，或者使用ConcurrentHashMap。<br>
-hash数组的默认大小是16，而且大小一定是2的指数</p>
+<h2 id="Map-1"><a href="#Map-1" class="headerlink" title="Map"></a>Map</h2><p>Map与List、Set接口不同，它是由一系列键值对组成的集合，提供了key到Value的映射。同时它也没有继承Collection。在Map中它保证了key与value之间的一一对应关系。也就是说一个key对应一个value，所以它不能存在相同的key值，当然value值可以相同。key可以为空，但是只允许出现一个null。它的主要实现类有HashMap、HashTable、LinkedHashMap、TreeMap。</p>
+<h3 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h3><p>HashMap 是 Map 的一个实现类，它代表的是一种键值对的数据存储形式。<br>大多数情况下可以直接定位到它的值，因而具有很快的访问速度，但遍历顺序却是不确定的。<br>HashMap最多只允许一条记录的键为null，允许多条记录的值为null。遇到key为null的时候，调用putForNullKey方法进行处理，而对value没有处理。不保证有序(比如插入的顺序)、也不保证序不随时间变化。<br>jdk 8 之前，其内部是由数组+链表来实现的，而 jdk 8 对于链表长度超过 8 的链表将转储为红黑树。<br>HashMap非线程安全，即任一时刻可以有多个线程同时写HashMap，可能会导致数据的不一致。如果需要满足线程安全，可以用 Collections的synchronizedMap方法使HashMap具有线程安全的能力，或者使用ConcurrentHashMap。<br>hash数组的默认大小是16，而且大小一定是2的指数</p>
 <p><a href="../HashMapAnalysis">查看专题文章</a></p>
-<h3 id="HashTable"><a class="header-anchor" href="#HashTable">✨</a>HashTable</h3>
-<p>Hashtable和HashMap一样也是散列表，存储元素也是键值对，底层实现是一个Entry数组+链表。Hashtable继承于Dictionary类（Dictionary类声明了操作键值对的接口方法），实现Map接口（定义键值对接口）。HashTable是线程安全的，它的大部分类都被synchronized关键字修饰。key和value都不可为null。<br>
-hash数组默认大小是11，扩充方式是old*2+1</p>
-<h3 id="LinkedHashMap"><a class="header-anchor" href="#LinkedHashMap">✨</a>LinkedHashMap</h3>
-<p>LinkedHashMap继承自HashMap实现了Map接口。基本实现同HashMap一样（底层基于数组+链表+红黑树实现），不同之处在于LinkedHashMap保证了迭代的有序性。其内部维护了一个双向链表，解决了 HashMap不能随时保持遍历顺序和插入顺序一致的问题。除此之外，LinkedHashMap对访问顺序也提供了相关支持。在一些场景下，该特性很有用，比如缓存。<br>
-在实现上，LinkedHashMap很多方法直接继承自HashMap，仅为维护双向链表覆写了部分方法。<br>
-默认情况下，LinkedHashMap的迭代顺序是按照插入节点的顺序。也可以通过改变accessOrder参数的值，使得其遍历顺序按照访问顺序输出。</p>
+<h3 id="HashTable"><a href="#HashTable" class="headerlink" title="HashTable"></a>HashTable</h3><p>Hashtable和HashMap一样也是散列表，存储元素也是键值对，底层实现是一个Entry数组+链表。Hashtable继承于Dictionary类（Dictionary类声明了操作键值对的接口方法），实现Map接口（定义键值对接口）。HashTable是线程安全的，它的大部分类都被synchronized关键字修饰。key和value都不可为null。<br>hash数组默认大小是11，扩充方式是old*2+1</p>
+<h3 id="LinkedHashMap"><a href="#LinkedHashMap" class="headerlink" title="LinkedHashMap"></a>LinkedHashMap</h3><p>LinkedHashMap继承自HashMap实现了Map接口。基本实现同HashMap一样（底层基于数组+链表+红黑树实现），不同之处在于LinkedHashMap保证了迭代的有序性。其内部维护了一个双向链表，解决了 HashMap不能随时保持遍历顺序和插入顺序一致的问题。除此之外，LinkedHashMap对访问顺序也提供了相关支持。在一些场景下，该特性很有用，比如缓存。<br>在实现上，LinkedHashMap很多方法直接继承自HashMap，仅为维护双向链表覆写了部分方法。<br>默认情况下，LinkedHashMap的迭代顺序是按照插入节点的顺序。也可以通过改变accessOrder参数的值，使得其遍历顺序按照访问顺序输出。</p>
 <p><a href="../LinkedHashMap">查看专题文章</a></p>
-<h3 id="TreeMap"><a class="header-anchor" href="#TreeMap">✨</a>TreeMap</h3>
-<p>TreeMap集合是基于红黑树（Red-Black tree）的 NavigableMap实现。该集合最重要的特点就是可排序，该映射根据其键的自然顺序进行排序，或者根据创建映射时提供的 Comparator 进行排序，具体取决于使用的构造方法。</p>
-<h2 id="Set"><a class="header-anchor" href="#Set">✨</a>Set</h2>
-<p>Set接口继承了Collection接口。Set集合中不能包含重复的元素，每个元素必须是唯一的。你只需将元素加入set中，重复的元素会自动移除。有三种常见的Set实现——HashSet, TreeSet和LinkedHashSet。如果你需要一个访问快速的Set，你应该使用HashSet；当你需要一个排序的Set，你应该使用TreeSet；当你需要记录下插入时的顺序时，你应该使用LinedHashSet。</p>
-<h3 id="HashSet"><a class="header-anchor" href="#HashSet">✨</a>HashSet</h3>
-<p>HashSet是是基于 HashMap 实现的，底层采用 HashMap 来保存元素,所以它不保证set 的迭代顺序；特别是它不保证该顺序恒久不变。add()、remove()以及contains()等方法都是复杂度为O(1)的方法。由于HashMap中key不可重复，所以HashSet元素不可重复。可以存储null元素，是线程不安全的。</p>
-<h3 id="TreeSet"><a class="header-anchor" href="#TreeSet">✨</a>TreeSet</h3>
-<p>TreeSet是一个有序集，基于TreeMap实现，是线程不安全的。<br>
-TreeSet底层采用TreeMap存储，构造器启动时新建TreeMap。TreeSet存储元素实际为TreeMap存储的键值对为&lt;key,PRESENT&gt;的key;，PRESENT为固定对象：private static final Object PRESENT = new Object().<br>
-TreeSet支持两种两种排序方式，通过不同构造器调用实现</p>
-<pre><code class="language-java">自然排序：
+<h3 id="TreeMap"><a href="#TreeMap" class="headerlink" title="TreeMap"></a>TreeMap</h3><p>TreeMap集合是基于红黑树（Red-Black tree）的 NavigableMap实现。该集合最重要的特点就是可排序，该映射根据其键的自然顺序进行排序，或者根据创建映射时提供的 Comparator 进行排序，具体取决于使用的构造方法。</p>
+<h2 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h2><p>Set接口继承了Collection接口。Set集合中不能包含重复的元素，每个元素必须是唯一的。你只需将元素加入set中，重复的元素会自动移除。有三种常见的Set实现——HashSet, TreeSet和LinkedHashSet。如果你需要一个访问快速的Set，你应该使用HashSet；当你需要一个排序的Set，你应该使用TreeSet；当你需要记录下插入时的顺序时，你应该使用LinedHashSet。</p>
+<h3 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet"></a>HashSet</h3><p>HashSet是是基于 HashMap 实现的，底层采用 HashMap 来保存元素,所以它不保证set 的迭代顺序；特别是它不保证该顺序恒久不变。add()、remove()以及contains()等方法都是复杂度为O(1)的方法。由于HashMap中key不可重复，所以HashSet元素不可重复。可以存储null元素，是线程不安全的。</p>
+<h3 id="TreeSet"><a href="#TreeSet" class="headerlink" title="TreeSet"></a>TreeSet</h3><p>TreeSet是一个有序集，基于TreeMap实现，是线程不安全的。<br>TreeSet底层采用TreeMap存储，构造器启动时新建TreeMap。TreeSet存储元素实际为TreeMap存储的键值对为&lt;key,PRESENT&gt;的key;，PRESENT为固定对象：private static final Object PRESENT = new Object().<br>TreeSet支持两种两种排序方式，通过不同构造器调用实现</p>
+<pre><code class="java">自然排序：
 
-public TreeSet() &amp;#123;
+public TreeSet() &#123;
    // 新建TreeMap，自然排序
    this(new TreeMap&lt;E,Object&gt;());
-&amp;#125;
+&#125;
 
 Comparator排序：
 
-public TreeSet(Comparator&lt;? super E&gt; comparator) &amp;#123;
+public TreeSet(Comparator&lt;? super E&gt; comparator) &#123;
    // 新建TreeMap，传入自定义比较器comparator
    this(new TreeMap&lt;&gt;(comparator));
-&amp;#125;
+&#125;
 
 TreeSet支持正向/反向迭代器遍历和foreach遍历
 
 // 顺序TreeSet：迭代器实现
 Iterator iter = set.iterator();
-while (iter.hasNext()) &amp;#123;
+while (iter.hasNext()) &#123;
    System.out.println(iter.next());
-&amp;#125;
+&#125;
 
 // 顺序遍历TreeSet：foreach实现
-for (Integer i : set) &amp;#123;
+for (Integer i : set) &#123;
    System.out.println(i);
-&amp;#125;
+&#125;
 
 // 逆序遍历TreeSet：反向迭代器实现
 Iterator iter1 = set.descendingIterator();
-while (iter1.hasNext()) &amp;#123;
+while (iter1.hasNext()) &#123;
    System.out.println(iter1.next());
-&amp;#125;
-</code></pre>
-<h3 id="LinkedHashSet"><a class="header-anchor" href="#LinkedHashSet">✨</a>LinkedHashSet</h3>
-<p>LinkedHashSet介于HashSet和TreeSet之间。哈希表和链接列表实现。基本方法的复杂度为O(1)。<br>
-LinkedHashSet 是 Set 的一个具体实现，其维护着一个运行于所有条目的双重链接列表。此链接列表定义了迭代顺序，该迭代顺序可为插入顺序或是访问顺序。<br>
-LinkedHashSet 继承于 HashSet，并且其内部是通过 LinkedHashMap 来实现的。有点类似于我们之前说的LinkedHashMap 其内部是基于 Hashmap 实现的一样。<br>
-如果我们需要迭代的顺序为插入顺序或者访问顺序，那么 LinkedHashSet 是需要你首先考虑的。<br>
-LinkedHashSet 底层使用 LinkedHashMap 来保存所有元素，因为继承于 HashSet，所有的方法操作上又与 HashSet 相同，因此 LinkedHashSet 的实现上非常简单，只提供了四个构造方法，并通过传递一个标识参数，调用父类的构造器，底层构造一个 LinkedHashMap 来实现，在相关操作上与父类 HashSet 的操作相同，直接调用父类 HashSet 的方法即可。</p>
-<pre><code class="language-java">package java.util;
+&#125;</code></pre>
+<h3 id="LinkedHashSet"><a href="#LinkedHashSet" class="headerlink" title="LinkedHashSet"></a>LinkedHashSet</h3><p>LinkedHashSet介于HashSet和TreeSet之间。哈希表和链接列表实现。基本方法的复杂度为O(1)。<br>LinkedHashSet 是 Set 的一个具体实现，其维护着一个运行于所有条目的双重链接列表。此链接列表定义了迭代顺序，该迭代顺序可为插入顺序或是访问顺序。<br>LinkedHashSet 继承于 HashSet，并且其内部是通过 LinkedHashMap 来实现的。有点类似于我们之前说的LinkedHashMap 其内部是基于 Hashmap 实现的一样。<br>如果我们需要迭代的顺序为插入顺序或者访问顺序，那么 LinkedHashSet 是需要你首先考虑的。<br>LinkedHashSet 底层使用 LinkedHashMap 来保存所有元素，因为继承于 HashSet，所有的方法操作上又与 HashSet 相同，因此 LinkedHashSet 的实现上非常简单，只提供了四个构造方法，并通过传递一个标识参数，调用父类的构造器，底层构造一个 LinkedHashMap 来实现，在相关操作上与父类 HashSet 的操作相同，直接调用父类 HashSet 的方法即可。</p>
+<pre><code class="java">package java.util;
 
 public class LinkedHashSet&lt;E&gt;
 
    extends HashSet&lt;E&gt;
 
-   implements Set&lt;E&gt;, Cloneable, java.io.Serializable &amp;#123;
+   implements Set&lt;E&gt;, Cloneable, java.io.Serializable &#123;
 
    private static final long serialVersionUID = -2851667679971038690L;
 
@@ -1146,9 +1455,9 @@ public class LinkedHashSet&lt;E&gt;
    * @param loadFactor 加载因子。
    */
 
-   public LinkedHashSet(int initialCapacity, float loadFactor) &amp;#123;
+   public LinkedHashSet(int initialCapacity, float loadFactor) &#123;
      super(initialCapacity, loadFactor, true);
-   &amp;#125;
+   &#125;
 
   /** 
    * 构造一个指定初始容量和默认加载因子0.75的新链表哈希set。 
@@ -1156,18 +1465,18 @@ public class LinkedHashSet&lt;E&gt;
    * 底层会调用父类的构造方法，构造一个指定初始容量和默认加载因子0.75的LinkedHashMap实例。 
    * @param initialCapacity 初始容量。 
    */  
-   public LinkedHashSet(int initialCapacity) &amp;#123;
+   public LinkedHashSet(int initialCapacity) &#123;
      super(initialCapacity, .75f, true);
-   &amp;#125;
+   &#125;
 
   /** 
    * 构造一个默认初始容量16和加载因子0.75的新链表哈希set。 
    * 
    * 底层会调用父类的构造方法，构造一个默认初始容量16和加载因子0.75的LinkedHashMap实例。 
    */  
-   public LinkedHashSet() &amp;#123;
+   public LinkedHashSet() &#123;
      super(16, .75f, true);
-   &amp;#125;
+   &#125;
 
   /** 
    * 构造一个与指定collection中的元素相同的新链表哈希set。 
@@ -1176,59 +1485,46 @@ public class LinkedHashSet&lt;E&gt;
    * 中所有元素的初始容量和加载因子为0.75的LinkedHashMap实例。 
    * @param c 其中的元素将存放在此set中的collection。 
    */  
-   public LinkedHashSet(Collection&lt;? extends E&gt; c) &amp;#123;
+   public LinkedHashSet(Collection&lt;? extends E&gt; c) &#123;
      super(Math.max(2*c.size(), 11), .75f, true);
      addAll(c);
-   &amp;#125;
+   &#125;
 
    @Override
-   public Spliterator&lt;E&gt; spliterator() &amp;#123;
+   public Spliterator&lt;E&gt; spliterator() &#123;
      return Spliterators.spliterator(this, Spliterator.DISTINCT | Spliterator.ORDERED);
-   &amp;#125;
-&amp;#125;
-</code></pre>
-<p>通过观察<a href="../HashMapAnalysis">HashMap的源码</a>我们可以发现:<br>
-Hash Map的前三个构造函数，即访问权限为public类型的构造函数均是以HashMap作为实现。而以LinkedHashMap作为实现的构造函数的访问权限是默认访问权限，即包内访问权限。</p>
-<p>即：在java编程中，通过new创建的HashSet对象均是以HashMap作为实现基础。只有在jdk中java.util包内的源代码才可能创建以LinkedHashMap作为实现的HashSet(LinkedHashSet就是通过封装一个以LinkedHashMap为实现的HashSet来实现的)。<br>
-只有包含三个参数的构造函数才是采用的LinkedHashMap作为实现。</p>
-<h3 id="无序性和不可重复性的含义是什么"><a class="header-anchor" href="#无序性和不可重复性的含义是什么">✨</a>无序性和不可重复性的含义是什么</h3>
-<p>1、什么是无序性？无序性不等于随机性 ，无序性是指存储的数据在底层数组中并非按照数组索引的顺序添加 ，而是根据数据的哈希值决定的。<br>
-2、什么是不可重复性？不可重复性是指添加的元素按照 equals()判断时 ，返回 false，需要同时重写 equals()方法和 HashCode()方法。</p>
-<h3 id="比较-HashSet、LinkedHashSet-和-TreeSet-三者的异同"><a class="header-anchor" href="#比较-HashSet、LinkedHashSet-和-TreeSet-三者的异同">✨</a>比较 HashSet、LinkedHashSet 和 TreeSet 三者的异同</h3>
-<p>HashSet 是 Set 接口的主要实现类 ，HashSet 的底层是 HashMap，线程不安全的，可以存储 null 值；<br>
-LinkedHashSet 是 HashSet 的子类，能够按照添加的顺序遍历；<br>
-TreeSet 底层使用红黑树，能够按照添加元素的顺序进行遍历，排序的方式有自然排序和定制排序。</p>
-<h3 id="Set中的元素不能重复，如何实现？"><a class="header-anchor" href="#Set中的元素不能重复，如何实现？">✨</a>Set中的元素不能重复，如何实现？</h3>
-<p>在Java的Set体系中，根据实现方式不同主要分为两大类。HashSet和TreeSet。</p>
+   &#125;
+&#125;</code></pre>
+<p>通过观察<a href="../HashMapAnalysis">HashMap的源码</a>我们可以发现:<br>Hash Map的前三个构造函数，即访问权限为public类型的构造函数均是以HashMap作为实现。而以LinkedHashMap作为实现的构造函数的访问权限是默认访问权限，即包内访问权限。 </p>
+<p>即：在java编程中，通过new创建的HashSet对象均是以HashMap作为实现基础。只有在jdk中java.util包内的源代码才可能创建以LinkedHashMap作为实现的HashSet(LinkedHashSet就是通过封装一个以LinkedHashMap为实现的HashSet来实现的)。<br>只有包含三个参数的构造函数才是采用的LinkedHashMap作为实现。</p>
+<h3 id="无序性和不可重复性的含义是什么"><a href="#无序性和不可重复性的含义是什么" class="headerlink" title="无序性和不可重复性的含义是什么"></a>无序性和不可重复性的含义是什么</h3><p>1、什么是无序性？无序性不等于随机性 ，无序性是指存储的数据在底层数组中并非按照数组索引的顺序添加 ，而是根据数据的哈希值决定的。<br>2、什么是不可重复性？不可重复性是指添加的元素按照 equals()判断时 ，返回 false，需要同时重写 equals()方法和 HashCode()方法。</p>
+<h3 id="比较-HashSet、LinkedHashSet-和-TreeSet-三者的异同"><a href="#比较-HashSet、LinkedHashSet-和-TreeSet-三者的异同" class="headerlink" title="比较 HashSet、LinkedHashSet 和 TreeSet 三者的异同"></a>比较 HashSet、LinkedHashSet 和 TreeSet 三者的异同</h3><p>HashSet 是 Set 接口的主要实现类 ，HashSet 的底层是 HashMap，线程不安全的，可以存储 null 值；<br>LinkedHashSet 是 HashSet 的子类，能够按照添加的顺序遍历；<br>TreeSet 底层使用红黑树，能够按照添加元素的顺序进行遍历，排序的方式有自然排序和定制排序。</p>
+<h3 id="Set中的元素不能重复，如何实现？"><a href="#Set中的元素不能重复，如何实现？" class="headerlink" title="Set中的元素不能重复，如何实现？"></a>Set中的元素不能重复，如何实现？</h3><p>在Java的Set体系中，根据实现方式不同主要分为两大类。HashSet和TreeSet。</p>
 <p>TreeSet 是二叉树实现的,Treeset中的数据是自动排好序的，不允许放入null值 2、HashSet 是哈希表实现的,HashSet中的数据是无序的，可以放入null，但只能放入一个null，两者中的值都不能重复，就如数据库中唯一约束</p>
 <p>在HashSet中，基本的操作都是有HashMap底层实现的，因为HashSet底层是用HashMap存储数据的。当向HashSet中添加元素的时候，首先计算元素的hashcode值，然后通过扰动计算和按位与的方式计算出这个元素的存储位置，如果这个位置位空，就将元素添加进去；如果不为空，则用equals方法比较元素是否相等，相等就不添加，否则找一个空位添加。</p>
 <p>TreeSet的底层是TreeMap的keySet()，而TreeMap是基于红黑树实现的，红黑树是一种平衡二叉查找树，它能保证任何一个节点的左右子树的高度差不会超过较矮的那棵的一倍。</p>
 <p>TreeMap是按key排序的，元素在插入TreeSet时compareTo()方法要被调用，所以TreeSet中的元素要实现Comparable接口。TreeSet作为一种Set，它不允许出现重复元素。TreeSet是用compareTo()来判断重复元素的。</p>
 <p>Set大多都用的Map接口的实现类来实现的（HashSet基于HashMap实现，TreeSet基于TreeMap实现，LinkedHashSet基于LinkedHashMap实现）在HashMap中通过如下实现来保证key值唯一</p>
-<pre><code class="language-java"> // 1. 如果key 相等  
+<pre><code class="java"> // 1. 如果key 相等  
 if (p.hash == hash &amp;&amp;
    ((k = p.key) == key || (key != null &amp;&amp; key.equals(k))))
    e = p;
 
 // 2. 修改对应的value
-  if (e != null) &amp;#123; // existing mapping for key
+  if (e != null) &#123; // existing mapping for key
      V oldValue = e.value;
      if (!onlyIfAbsent || oldValue == null)
        e.value = value;
      afterNodeAccess(e);
      return oldValue;
-  &amp;#125;
-</code></pre>
-<p>添加元素的时候，如果key(也对应的Set集合的元素)相等，那么则修改value值。而在Set集合中，value值仅仅是一个Object对象罢了(该对象对Set本身而言是无用的)。<br>
-也就是说：Set集合如果添加的元素相同时，是根本没有插入的(仅修改了一个无用的value值)。从源码(HashMap)中也看出来，==和equals()方法都有使用！</p>
-<h3 id="comparable-和-Comparator-的区别"><a class="header-anchor" href="#comparable-和-Comparator-的区别">✨</a>comparable 和 Comparator 的区别</h3>
-<ul>
+  &#125;</code></pre>
+<p>添加元素的时候，如果key(也对应的Set集合的元素)相等，那么则修改value值。而在Set集合中，value值仅仅是一个Object对象罢了(该对象对Set本身而言是无用的)。<br>也就是说：Set集合如果添加的元素相同时，是根本没有插入的(仅修改了一个无用的value值)。从源码(HashMap)中也看出来，==和equals()方法都有使用！</p>
+<h3 id="comparable-和-Comparator-的区别"><a href="#comparable-和-Comparator-的区别" class="headerlink" title="comparable 和 Comparator 的区别"></a>comparable 和 Comparator 的区别</h3><ul>
 <li><code>comparable</code> 接口实际上是出自<code>java.lang</code>包 它有一个 <code>compareTo(Object obj)</code>方法用来排序</li>
 <li><code>comparator</code>接口实际上是出自 java.util 包它有一个<code>compare(Object obj1, Object obj2)</code>方法用来排序</li>
 </ul>
 <p>一般我们需要对一个集合使用自定义排序时，我们就要重写<code>compareTo()</code>方法或<code>compare()</code>方法，当我们需要对某一个集合实现两种排序方式，比如一个 song 对象中的歌名和歌手名分别采用一种排序方法的话，我们可以重写<code>compareTo()</code>方法和使用自制的<code>Comparator</code>方法或者以两个 Comparator 来实现歌名排序和歌星名排序，第二种代表我们只能使用两个参数版的 <code>Collections.sort()</code>.</p>
-<h4 id="Comparator-定制排序"><a class="header-anchor" href="#Comparator-定制排序">✨</a>Comparator 定制排序</h4>
-<pre><code class="language-java">        ArrayList&lt;Integer&gt; arrayList = new ArrayList&lt;Integer&gt;();
+<h4 id="Comparator-定制排序"><a href="#Comparator-定制排序" class="headerlink" title="Comparator 定制排序"></a>Comparator 定制排序</h4><pre><code class="java">        ArrayList&lt;Integer&gt; arrayList = new ArrayList&lt;Integer&gt;();
         arrayList.add(-1);
         arrayList.add(3);
         arrayList.add(3);
@@ -1249,13 +1545,13 @@ if (p.hash == hash &amp;&amp;
         System.out.println(&quot;Collections.sort(arrayList):&quot;);
         System.out.println(arrayList);
         // 定制排序的用法
-        Collections.sort(arrayList, new Comparator&lt;Integer&gt;() &amp;#123;
+        Collections.sort(arrayList, new Comparator&lt;Integer&gt;() &#123;
 
             @Override
-            public int compare(Integer o1, Integer o2) &amp;#123;
+            public int compare(Integer o1, Integer o2) &#123;
                 return o2.compareTo(o1);
-            &amp;#125;
-        &amp;#125;);
+            &#125;
+        &#125;);
         System.out.println(&quot;定制排序后：&quot;);
         System.out.println(arrayList);
 
@@ -1268,54 +1564,52 @@ Collections.reverse(arrayList):
 Collections.sort(arrayList):
 [-9, -7, -5, -1, 3, 3, 4, 7]
 定制排序后：
-[7, 4, 3, 3, -1, -5, -7, -9]
-</code></pre>
-<h4 id="重写-compareTo（）方法实现按年龄排序"><a class="header-anchor" href="#重写-compareTo（）方法实现按年龄排序">✨</a>重写 compareTo（）方法实现按年龄排序</h4>
-<pre><code class="language-java">// person对象没有实现Comparable接口，所以必须实现，这样才不会出错，才可以使treemap中的数据按顺序排列
+[7, 4, 3, 3, -1, -5, -7, -9]</code></pre>
+<h4 id="重写-compareTo（）方法实现按年龄排序"><a href="#重写-compareTo（）方法实现按年龄排序" class="headerlink" title="重写 compareTo（）方法实现按年龄排序"></a>重写 compareTo（）方法实现按年龄排序</h4><pre><code class="java">// person对象没有实现Comparable接口，所以必须实现，这样才不会出错，才可以使treemap中的数据按顺序排列
 // 前面一个例子的String类已经默认实现了Comparable接口，详细可以查看String类的API文档，另外其他
 // 像Integer类等都已经实现了Comparable接口，所以不需要另外实现了
-public  class Person implements Comparable&lt;Person&gt; &amp;#123;
+public  class Person implements Comparable&lt;Person&gt; &#123;
     private String name;
     private int age;
 
-    public Person(String name, int age) &amp;#123;
+    public Person(String name, int age) &#123;
         super();
         this.name = name;
         this.age = age;
-    &amp;#125;
+    &#125;
 
-    public String getName() &amp;#123;
+    public String getName() &#123;
         return name;
-    &amp;#125;
+    &#125;
 
-    public void setName(String name) &amp;#123;
+    public void setName(String name) &#123;
         this.name = name;
-    &amp;#125;
+    &#125;
 
-    public int getAge() &amp;#123;
+    public int getAge() &#123;
         return age;
-    &amp;#125;
+    &#125;
 
-    public void setAge(int age) &amp;#123;
+    public void setAge(int age) &#123;
         this.age = age;
-    &amp;#125;
+    &#125;
 
     /**
      * T重写compareTo方法实现按年龄来排序
      */
     @Override
-    public int compareTo(Person o) &amp;#123;
-        if (this.age &gt; o.getAge()) &amp;#123;
+    public int compareTo(Person o) &#123;
+        if (this.age &gt; o.getAge()) &#123;
             return 1;
-        &amp;#125;
-        if (this.age &lt; o.getAge()) &amp;#123;
+        &#125;
+        if (this.age &lt; o.getAge()) &#123;
             return -1;
-        &amp;#125;
+        &#125;
         return 0;
-    &amp;#125;
-&amp;#125;
+    &#125;
+&#125;
 
-    public static void main(String[] args) &amp;#123;
+    public static void main(String[] args) &#123;
         TreeMap&lt;Person, String&gt; pdata = new TreeMap&lt;Person, String&gt;();
         pdata.put(new Person(&quot;张三&quot;, 30), &quot;zhangsan&quot;);
         pdata.put(new Person(&quot;李四&quot;, 20), &quot;lisi&quot;);
@@ -1323,33 +1617,24 @@ public  class Person implements Comparable&lt;Person&gt; &amp;#123;
         pdata.put(new Person(&quot;小红&quot;, 5), &quot;xiaohong&quot;);
         // 得到key的值的同时得到key所对应的值
         Set&lt;Person&gt; keys = pdata.keySet();
-        for (Person key : keys) &amp;#123;
+        for (Person key : keys) &#123;
             System.out.println(key.getAge() + &quot;-&quot; + key.getName());
 
-        &amp;#125;
-    &amp;#125;
+        &#125;
+    &#125;
 
 OutPut :
 
 5-小红
 10-王五
 20-李四
-30-张三
-</code></pre>
-<h2 id="其他"><a class="header-anchor" href="#其他">✨</a>其他</h2>
-<h3 id="说说List、Set、Map的区别"><a class="header-anchor" href="#说说List、Set、Map的区别">✨</a>说说List、Set、Map的区别</h3>
-<p>List 存储元素有序，可重复。<br>
-Set 存储元素无序，不可重复。<br>
-Map 使用键值对（kye-value）存储，类似于数学上的函数 y=f(x)，“x”代表 key，&quot;y&quot;代表 value，Key 是无序的、不可重复的，value 是无序的、可重复的，每个键最多映射到一个值。</p>
-<h3 id="如何选用集合"><a class="header-anchor" href="#如何选用集合">✨</a>如何选用集合?</h3>
-<p>主要根据集合的特点来选用，比如我们需要根据键值获取到元素值时就选用 <code>Map</code> 接口下的集合，需要排序时选择 <code>TreeMap</code>,不需要排序时就选择 <code>HashMap</code>,需要保证线程安全就选用 <code>ConcurrentHashMap</code>。</p>
+30-张三</code></pre>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="说说List、Set、Map的区别"><a href="#说说List、Set、Map的区别" class="headerlink" title="说说List、Set、Map的区别"></a>说说List、Set、Map的区别</h3><p>List 存储元素有序，可重复。<br>Set 存储元素无序，不可重复。<br>Map 使用键值对（kye-value）存储，类似于数学上的函数 y=f(x)，“x”代表 key，”y”代表 value，Key 是无序的、不可重复的，value 是无序的、可重复的，每个键最多映射到一个值。</p>
+<h3 id="如何选用集合"><a href="#如何选用集合" class="headerlink" title="如何选用集合?"></a>如何选用集合?</h3><p>主要根据集合的特点来选用，比如我们需要根据键值获取到元素值时就选用 <code>Map</code> 接口下的集合，需要排序时选择 <code>TreeMap</code>,不需要排序时就选择 <code>HashMap</code>,需要保证线程安全就选用 <code>ConcurrentHashMap</code>。</p>
 <p>当我们只需要存放元素值时，就选择实现<code>Collection</code> 接口的集合，需要保证元素唯一时选择实现 <code>Set</code> 接口的集合比如 <code>TreeSet</code> 或 <code>HashSet</code>，不需要就选择实现 <code>List</code> 接口的比如 <code>ArrayList</code> 或 <code>LinkedList</code>，然后再根据实现这些接口的集合的特点来选用。</p>
-<h3 id="为什么要使用集合？"><a class="header-anchor" href="#为什么要使用集合？">✨</a>为什么要使用集合？</h3>
-<p>当我们需要保存一组类型相同的数据的时候，我们应该是用一个容器来保存，这个容器就是数组，但是，使用数组存储对象具有一定的弊端， 因为我们在实际开发中，存储的数据的类型是多种多样的，于是，就出现了“集合”，集合同样也是用来存储多个数据的。</p>
+<h3 id="为什么要使用集合？"><a href="#为什么要使用集合？" class="headerlink" title="为什么要使用集合？"></a>为什么要使用集合？</h3><p>当我们需要保存一组类型相同的数据的时候，我们应该是用一个容器来保存，这个容器就是数组，但是，使用数组存储对象具有一定的弊端， 因为我们在实际开发中，存储的数据的类型是多种多样的，于是，就出现了“集合”，集合同样也是用来存储多个数据的。</p>
 <p>数组的缺点是一旦声明之后，长度就不可变了；同时，声明数组时的数据类型也决定了该数组存储的数据的类型；而且，数组存储的数据是有序的、可重复的，特点单一。 但是集合提高了数据存储的灵活性，Java 集合不仅可以用来存储不同类型不同数量的对象，还可以保存具有映射关系的数据</p>
-<h3 id="有哪些集合是线程不安全的？怎么解决呢？"><a class="header-anchor" href="#有哪些集合是线程不安全的？怎么解决呢？">✨</a>有哪些集合是线程不安全的？怎么解决呢？</h3>
-<p>我们常用的 <code>Arraylist</code> ,<code>LinkedList</code>,<code>Hashmap</code>,<code>HashSet</code>,<code>TreeSet</code>,<code>TreeMap</code>，<code>PriorityQueue</code> 都不是线程安全的。解决办法很简单，可以使用线程安全的集合来代替。<br>
-如果你要使用线程安全的集合的话， <code>java.util.concurrent</code> 包中提供了很多并发容器供你使用：</p>
+<h3 id="有哪些集合是线程不安全的？怎么解决呢？"><a href="#有哪些集合是线程不安全的？怎么解决呢？" class="headerlink" title="有哪些集合是线程不安全的？怎么解决呢？"></a>有哪些集合是线程不安全的？怎么解决呢？</h3><p>我们常用的 <code>Arraylist</code> ,<code>LinkedList</code>,<code>Hashmap</code>,<code>HashSet</code>,<code>TreeSet</code>,<code>TreeMap</code>，<code>PriorityQueue</code> 都不是线程安全的。解决办法很简单，可以使用线程安全的集合来代替。<br>如果你要使用线程安全的集合的话， <code>java.util.concurrent</code> 包中提供了很多并发容器供你使用：</p>
 <ol>
 <li><code>ConcurrentHashMap</code>: 可以看作是线程安全的 <code>HashMap</code></li>
 <li><code>CopyOnWriteArrayList</code>:可以看作是线程安全的 <code>ArrayList</code>，在读多写少的场合性能非常好，远远好于 <code>Vector</code>.</li>
@@ -1357,47 +1642,14 @@ Map 使用键值对（kye-value）存储，类似于数学上的函数 y=f(x)，
 <li><code>BlockingQueue</code>: 这是一个接口，JDK 内部通过链表、数组等方式实现了这个接口。表示阻塞队列，非常适合用于作为数据共享的通道。</li>
 <li><code>ConcurrentSkipListMap</code> :跳表的实现。这是一个<code>Map</code>，使用跳表的数据结构进行快速查找。</li>
 </ol>
-<h3 id="fail-fast"><a class="header-anchor" href="#fail-fast">✨</a>fail-fast</h3>
-<p>fail-fast 机制是java集合(Collection)中的一种错误机制。当多个线程对同一个集合的内容进行操作时，就可能会产生fail-fast事件。例如：当某一个线程A通过iterator去遍历某集合的过程中，若该集合的内容被其他线程所改变了；那么线程A访问集合时，就会抛出ConcurrentModificationException异常，产生fail-fast事件。<br>
-<strong>快速失败（fail—fast）</strong><br>
-在用迭代器遍历一个集合对象时，如果遍历过程中对集合对象的内容进行了修改（增加、删除、修改），则会抛出Concurrent Modification Exception。<br>
-**原理：**迭代器在遍历时直接访问集合中的内容，并且在遍历过程中使用一个 modCount 变量。集合在被遍历期间如果内容发生变化，就会改变modCount的值。每当迭代器使用hashNext()/next()遍历下一个元素之前，都会检测modCount变量是否为expectedmodCount值，是的话就返回遍历；否则抛出异常，终止遍历。<br>
-注意：这里异常的抛出条件是检测到 modCount！=expectedmodCount 这个条件。如果集合发生变化时修改modCount值刚好又设置为了expectedmodCount值，则异常不会抛出。因此，不能依赖于这个异常是否抛出而进行并发操作的编程，这个异常只建议用于检测并发修改的bug。<br>
-场景：java.util包下的集合类都是快速失败的，不能在多线程下发生并发修改（迭代过程中被修改）。<br>
-<strong>安全失败（fail—safe）</strong><br>
-采用安全失败机制的集合容器，在遍历时不是直接在集合内容上访问的，而是先复制原有集合内容，在拷贝的集合上进行遍历。<br>
-**原理：**由于迭代时是对原集合的拷贝进行遍历，所以在遍历过程中对原集合所作的修改并不能被迭代器检测到，所以不会触发Concurrent Modification Exception。<br>
-缺点：基于拷贝内容的优点是避免了Concurrent Modification Exception，但同样地，迭代器并不能访问到修改后的内容，即：迭代器遍历的是开始遍历那一刻拿到的集合拷贝，在遍历期间原集合发生的修改迭代器是不知道的。<br>
-场景：java.util.concurrent包下的容器都是安全失败，可以在多线程下并发使用，并发修改。</p>
-<h3 id="Vector和ArrayList"><a class="header-anchor" href="#Vector和ArrayList">✨</a>Vector和ArrayList</h3>
-<p>**相同点：**这两个类都实现了List接口，他们都是有序的集合（储存有序），底层都用数组实现。可以通过索引来获取某个元素。允许元素重复和出现null值。ArrayList和Vector的迭代器实现都是fail-fast的。<br>
-**不同点：**vector是线程同步的，所以它也是线程安全的，而arraylist是线程异步的，是不安全的。如果不考虑到线程的安全因素，一般用arraylist效率比较高。<br>
-扩容时，arraylist扩容1.5倍，vector扩容2倍（或者扩容指定的大小）<br>
-ArrayList 和Vector是采用数组方式存储数据，此数组元素数大于实际存储的数据以便增加和插入元素，都允许直接序号索引元素，但是插入数据要设计到数组元素移动等内存操作，所以索引数据快插入数据慢，Vector由于使用了synchronized方法（线程安全）所以性能上比ArrayList要差，LinkedList使用双向链表实现存储，按序号索引数据需要进行向前或向后遍历，但是插入数据时只需要记录本项的前后项即可，所以插入数度较快！</p>
-<h3 id="Aarraylist和Linkedlist"><a class="header-anchor" href="#Aarraylist和Linkedlist">✨</a>Aarraylist和Linkedlist</h3>
-<p>ArrayList是基于数组实现的，LinkedList基于双向链表实现的。<br>
-ArrayList它支持以下标位置进行索引出对应的元素(随机访问)，而LinkedList则需要遍历整个链表来获取对应的元素。因此一般来说ArrayList的访问速度是要比LinkedList要快的<br>
-ArrayList由于是数组，对于删除和修改而言消耗是比较大(复制和移动数组实现)，LinkedList是双向链表删除和修改只需要修改对应的指针即可，消耗是很小的。因此一般来说LinkedList的增删速度是要比ArrayList要快的<br>
-LinkedList比ArrayList消耗更多的内存，因为LinkedList中的每个节点存储了前后节点的引用。<br>
-<strong>对于增加/删除元素操作</strong><br>
-如果增删都是在末尾来操作（每次调用的都是remove()和add()），此时ArrayList就不需要移动和复制数组来进行操作了。如果数据量有百万级的时，速度是会比LinkedList要快的。<br>
-如果删除操作的位置是在中间。由于LinkedList的消耗主要是在遍历上，ArrayList的消耗主要是在移动和复制上(底层调用的是arraycopy()方法，是native方法)。LinkedList的遍历速度是要慢于ArrayList的复制移动速度的如果数据量有百万级的时，还是ArrayList要快。</p>
-<h3 id="哪些集合类提供对元素的随机访问？"><a class="header-anchor" href="#哪些集合类提供对元素的随机访问？">✨</a>哪些集合类提供对元素的随机访问？</h3>
-<p>ArrayList、HashMap、TreeMap和HashTable类提供对元素的随机访问。</p>
-<h3 id="Enumeration和Iterator接口的区别"><a class="header-anchor" href="#Enumeration和Iterator接口的区别">✨</a>Enumeration和Iterator接口的区别</h3>
-<p>Enumeration的速度是Iterator的两倍，也使用更少的内存。Enumeration是非常基础的，也满足了基础的需要。但是，与Enumeration相比，Iterator更加安全，因为当一个集合正在被遍历的时候，它会阻止其它线程去修改集合。<br>
-Iterator的方法名比Enumeration更科学Iterator有fail-fast机制，比Enumeration更安全Iterator能够删除元素，Enumeration并不能删除元素</p>
-<h3 id="Iterater和ListIterator之间有什么区别？"><a class="header-anchor" href="#Iterater和ListIterator之间有什么区别？">✨</a>Iterater和ListIterator之间有什么区别？</h3>
-<p>我们可以使用Iterator来遍历Set和List集合，而ListIterator只能遍历List。Iterator只可以向前遍历，而LIstIterator可以双向遍历。ListIterator从Iterator接口继承，然后添加了一些额外的功能，比如添加一个元素、替换一个元素、获取前面或后面元素的索引位置。</p>
-<h3 id="Java中HashMap的key值要是为类对象则该类需要满足什么条件？"><a class="header-anchor" href="#Java中HashMap的key值要是为类对象则该类需要满足什么条件？">✨</a>Java中HashMap的key值要是为类对象则该类需要满足什么条件？</h3>
-<p>需要同时重写该类的hashCode()方法和它的equals()方法。<br>
-从源码可以得知，在插入元素的时候是先算出该对象的hashCode。如果hashcode相等话的。那么表明该对象是存储在同一个位置上的。如果调用equals()方法，两个key相同，则替换元素如果调用equals()方法，两个key不相同，则说明该hashCode仅仅是碰巧相同，此时是散列冲突，将新增的元素放在桶子上<br>
-重写了equals()方法，就要重写hashCode()的方法。因为equals()认定了这两个对象相同，而同一个对象调用hashCode()方法时，是应该返回相同的值的！</p>
-<h3 id="HashSet与HashMap"><a class="header-anchor" href="#HashSet与HashMap">✨</a>HashSet与HashMap</h3>
-<p>HashSet 实现了 Set 接口，它不允许集合中有重复的值，当我们提到 HashSet 时，第一件事情就是在将对象存储在 HashSet 之前，要先确保对象重写 equals()和 hashCode()方法，这样才能比较对象的值是否相等，以确保set中没有储存相等的对象。如果我们没有重写这两个方法，将会使用这个方法的默认实现。<br>
-public boolean add(Object o)方法用来在 Set 中添加元素，当元素值重复时则会立即返回 false，如果成功添加的话会返回 true。<br>
-HashMap 实现了 Map 接口，Map 接口对键值对进行映射。Map 中不允许重复的键。Map 接口有两个基本的实现，HashMap 和 TreeMap。TreeMap 保存了对象的排列次序，而 HashMap 则不能。HashMap 允许键和值为 null。HashMap 是非 synchronized 的，但 collection 框架提供方法能保证 HashMap synchronized，这样多个线程同时访问 HashMap 时，能保证只有一个线程更改 Map。<br>
-public Object put(Object Key,Object value)方法用来将元素添加到 map 中。</p>
+<h3 id="fail-fast"><a href="#fail-fast" class="headerlink" title="fail-fast"></a>fail-fast</h3><p>fail-fast 机制是java集合(Collection)中的一种错误机制。当多个线程对同一个集合的内容进行操作时，就可能会产生fail-fast事件。例如：当某一个线程A通过iterator去遍历某集合的过程中，若该集合的内容被其他线程所改变了；那么线程A访问集合时，就会抛出ConcurrentModificationException异常，产生fail-fast事件。<br><strong>快速失败（fail—fast）</strong><br>在用迭代器遍历一个集合对象时，如果遍历过程中对集合对象的内容进行了修改（增加、删除、修改），则会抛出Concurrent Modification Exception。<br><strong>原理：</strong>迭代器在遍历时直接访问集合中的内容，并且在遍历过程中使用一个 modCount 变量。集合在被遍历期间如果内容发生变化，就会改变modCount的值。每当迭代器使用hashNext()/next()遍历下一个元素之前，都会检测modCount变量是否为expectedmodCount值，是的话就返回遍历；否则抛出异常，终止遍历。<br>注意：这里异常的抛出条件是检测到 modCount！=expectedmodCount 这个条件。如果集合发生变化时修改modCount值刚好又设置为了expectedmodCount值，则异常不会抛出。因此，不能依赖于这个异常是否抛出而进行并发操作的编程，这个异常只建议用于检测并发修改的bug。<br>场景：java.util包下的集合类都是快速失败的，不能在多线程下发生并发修改（迭代过程中被修改）。<br><strong>安全失败（fail—safe）</strong><br>采用安全失败机制的集合容器，在遍历时不是直接在集合内容上访问的，而是先复制原有集合内容，在拷贝的集合上进行遍历。<br><strong>原理：</strong>由于迭代时是对原集合的拷贝进行遍历，所以在遍历过程中对原集合所作的修改并不能被迭代器检测到，所以不会触发Concurrent Modification Exception。<br>缺点：基于拷贝内容的优点是避免了Concurrent Modification Exception，但同样地，迭代器并不能访问到修改后的内容，即：迭代器遍历的是开始遍历那一刻拿到的集合拷贝，在遍历期间原集合发生的修改迭代器是不知道的。<br>场景：java.util.concurrent包下的容器都是安全失败，可以在多线程下并发使用，并发修改。</p>
+<h3 id="Vector和ArrayList"><a href="#Vector和ArrayList" class="headerlink" title="Vector和ArrayList"></a>Vector和ArrayList</h3><p><strong>相同点：</strong>这两个类都实现了List接口，他们都是有序的集合（储存有序），底层都用数组实现。可以通过索引来获取某个元素。允许元素重复和出现null值。ArrayList和Vector的迭代器实现都是fail-fast的。<br><strong>不同点：</strong>vector是线程同步的，所以它也是线程安全的，而arraylist是线程异步的，是不安全的。如果不考虑到线程的安全因素，一般用arraylist效率比较高。<br>扩容时，arraylist扩容1.5倍，vector扩容2倍（或者扩容指定的大小）<br>ArrayList 和Vector是采用数组方式存储数据，此数组元素数大于实际存储的数据以便增加和插入元素，都允许直接序号索引元素，但是插入数据要设计到数组元素移动等内存操作，所以索引数据快插入数据慢，Vector由于使用了synchronized方法（线程安全）所以性能上比ArrayList要差，LinkedList使用双向链表实现存储，按序号索引数据需要进行向前或向后遍历，但是插入数据时只需要记录本项的前后项即可，所以插入数度较快！</p>
+<h3 id="Aarraylist和Linkedlist"><a href="#Aarraylist和Linkedlist" class="headerlink" title="Aarraylist和Linkedlist"></a>Aarraylist和Linkedlist</h3><p>ArrayList是基于数组实现的，LinkedList基于双向链表实现的。<br>ArrayList它支持以下标位置进行索引出对应的元素(随机访问)，而LinkedList则需要遍历整个链表来获取对应的元素。因此一般来说ArrayList的访问速度是要比LinkedList要快的<br>ArrayList由于是数组，对于删除和修改而言消耗是比较大(复制和移动数组实现)，LinkedList是双向链表删除和修改只需要修改对应的指针即可，消耗是很小的。因此一般来说LinkedList的增删速度是要比ArrayList要快的<br>LinkedList比ArrayList消耗更多的内存，因为LinkedList中的每个节点存储了前后节点的引用。<br><strong>对于增加/删除元素操作</strong><br>如果增删都是在末尾来操作（每次调用的都是remove()和add()），此时ArrayList就不需要移动和复制数组来进行操作了。如果数据量有百万级的时，速度是会比LinkedList要快的。<br>如果删除操作的位置是在中间。由于LinkedList的消耗主要是在遍历上，ArrayList的消耗主要是在移动和复制上(底层调用的是arraycopy()方法，是native方法)。LinkedList的遍历速度是要慢于ArrayList的复制移动速度的如果数据量有百万级的时，还是ArrayList要快。</p>
+<h3 id="哪些集合类提供对元素的随机访问？"><a href="#哪些集合类提供对元素的随机访问？" class="headerlink" title="哪些集合类提供对元素的随机访问？"></a>哪些集合类提供对元素的随机访问？</h3><p>ArrayList、HashMap、TreeMap和HashTable类提供对元素的随机访问。</p>
+<h3 id="Enumeration和Iterator接口的区别"><a href="#Enumeration和Iterator接口的区别" class="headerlink" title="Enumeration和Iterator接口的区别"></a>Enumeration和Iterator接口的区别</h3><p>Enumeration的速度是Iterator的两倍，也使用更少的内存。Enumeration是非常基础的，也满足了基础的需要。但是，与Enumeration相比，Iterator更加安全，因为当一个集合正在被遍历的时候，它会阻止其它线程去修改集合。<br>Iterator的方法名比Enumeration更科学Iterator有fail-fast机制，比Enumeration更安全Iterator能够删除元素，Enumeration并不能删除元素</p>
+<h3 id="Iterater和ListIterator之间有什么区别？"><a href="#Iterater和ListIterator之间有什么区别？" class="headerlink" title="Iterater和ListIterator之间有什么区别？"></a>Iterater和ListIterator之间有什么区别？</h3><p>我们可以使用Iterator来遍历Set和List集合，而ListIterator只能遍历List。Iterator只可以向前遍历，而LIstIterator可以双向遍历。ListIterator从Iterator接口继承，然后添加了一些额外的功能，比如添加一个元素、替换一个元素、获取前面或后面元素的索引位置。</p>
+<h3 id="Java中HashMap的key值要是为类对象则该类需要满足什么条件？"><a href="#Java中HashMap的key值要是为类对象则该类需要满足什么条件？" class="headerlink" title="Java中HashMap的key值要是为类对象则该类需要满足什么条件？"></a>Java中HashMap的key值要是为类对象则该类需要满足什么条件？</h3><p>需要同时重写该类的hashCode()方法和它的equals()方法。<br>从源码可以得知，在插入元素的时候是先算出该对象的hashCode。如果hashcode相等话的。那么表明该对象是存储在同一个位置上的。如果调用equals()方法，两个key相同，则替换元素如果调用equals()方法，两个key不相同，则说明该hashCode仅仅是碰巧相同，此时是散列冲突，将新增的元素放在桶子上<br>重写了equals()方法，就要重写hashCode()的方法。因为equals()认定了这两个对象相同，而同一个对象调用hashCode()方法时，是应该返回相同的值的！</p>
+<h3 id="HashSet与HashMap"><a href="#HashSet与HashMap" class="headerlink" title="HashSet与HashMap"></a>HashSet与HashMap</h3><p>HashSet 实现了 Set 接口，它不允许集合中有重复的值，当我们提到 HashSet 时，第一件事情就是在将对象存储在 HashSet 之前，要先确保对象重写 equals()和 hashCode()方法，这样才能比较对象的值是否相等，以确保set中没有储存相等的对象。如果我们没有重写这两个方法，将会使用这个方法的默认实现。<br>public boolean add(Object o)方法用来在 Set 中添加元素，当元素值重复时则会立即返回 false，如果成功添加的话会返回 true。<br>HashMap 实现了 Map 接口，Map 接口对键值对进行映射。Map 中不允许重复的键。Map 接口有两个基本的实现，HashMap 和 TreeMap。TreeMap 保存了对象的排列次序，而 HashMap 则不能。HashMap 允许键和值为 null。HashMap 是非 synchronized 的，但 collection 框架提供方法能保证 HashMap synchronized，这样多个线程同时访问 HashMap 时，能保证只有一个线程更改 Map。<br>public Object put(Object Key,Object value)方法用来将元素添加到 map 中。</p>
 <table>
 <thead>
 <tr>
@@ -1405,8 +1657,7 @@ public Object put(Object Key,Object value)方法用来将元素添加到 map 中
 <th>HashSet</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>HashMap实现了Map接口</td>
 <td>HashSet实现了Set接口</td>
 </tr>
@@ -1422,35 +1673,16 @@ public Object put(Object Key,Object value)方法用来将元素添加到 map 中
 <td>HashMap中使用键对象来计算hashcode值</td>
 <td>HashSet使用成员对象来计算hashcode值，对于两个对象来说hashcode可能相同，所以equals()方法用来判断对象的相等性，如果两个对象不同的话，那么返回false</td>
 </tr>
-</tbody>
-</table>
-<h3 id="hashtable与hashmap"><a class="header-anchor" href="#hashtable与hashmap">✨</a>hashtable与hashmap</h3>
-<p>**相同点：**储存结构和实现基本相同，都是是实现的Map接口<br>
-**不同点：**HashTable是同步的，HashMap是非同步的，需要同步的时候可以ConcurrentHashMap方法<br>
-HashMap允许为null，HashTable不允许为null<br>
-继承不同，HashMap继承的是AbstractMap，HashTable继承的是Dictionary<br>
-HashMap提供对key的Set进行遍历，因此它是fail-fast的，但HashTable提供对key的Enumeration进行遍历，它不支持fail-fast。<br>
-HashTable是一个遗留类，如果需要保证线程安全推荐使用CocurrentHashMap</p>
-<h3 id="HashMap与TreeMap"><a class="header-anchor" href="#HashMap与TreeMap">✨</a>HashMap与TreeMap</h3>
-<p>HashMap通过hashcode对其内容进行快速查找，而TreeMap中所有的元素都保持着某种固定的顺序，如果你需要得到一个有序的结果你就应该使用TreeMap（HashMap中元素的排列顺序是不固定的）。HashMap中元素的排列顺序是不固定的）。<br>
-在Map 中插入、删除和定位元素，HashMap 是最好的选择。但如果您要按自然顺序或自定义顺序遍历键，那么TreeMap会更好。使用HashMap要求添加的键类明确定义了hashCode()和 equals()的实现。 这个TreeMap没有调优选项，因为该树总处于平衡状态。</p>
-<h3 id="集合框架中的泛型有什么优点？"><a class="header-anchor" href="#集合框架中的泛型有什么优点？">✨</a>集合框架中的泛型有什么优点？</h3>
-<p>Java1.5引入了泛型，所有的集合接口和实现都大量地使用它。泛型允许我们为集合提供一个可以容纳的对象类型，因此，如果你添加其它类型的任何元素，它会在编译时报错。这避免了在运行时出现ClassCastException，因为你将会在编译时得到报错信息。泛型也使得代码整洁，我们不需要使用显式转换和instanceOf操作符。它也给运行时带来好处，因为不会产生类型检查的字节码指令。</p>
-<h3 id="comparable-和-comparator的不同之处？"><a class="header-anchor" href="#comparable-和-comparator的不同之处？">✨</a>comparable 和 comparator的不同之处？</h3>
-<p>comparable接口实际上是出自java.lang包它有一个 compareTo(Object obj)方法来将objects排序comparator接口实际上是出自 java.util 包它有一个compare(Object obj1, Object obj2)方法来将objects排序</p>
-<h3 id="如何保证一个集合线程安全？"><a class="header-anchor" href="#如何保证一个集合线程安全？">✨</a>如何保证一个集合线程安全？</h3>
-<p>Vector, Hashtable, Properties 和 Stack 都是同步的类，所以它们都线程安全的，可以被使用在多线程环境中使用Collections.synchronizedList(list)) 方法，可以保证list类是线程安全的使用java.util.Collections.synchronizedSet()方法可以保证set类是线程安全的。</p>
-<h3 id="TreeMap和TreeSet在排序时如何比较元素？Collections工具类中的sort-方法如何比较元素？"><a class="header-anchor" href="#TreeMap和TreeSet在排序时如何比较元素？Collections工具类中的sort-方法如何比较元素？">✨</a>TreeMap和TreeSet在排序时如何比较元素？Collections工具类中的sort()方法如何比较元素？</h3>
-<p>TreeSet要求存放的对象所属的类必须实现Comparable接口，该接口提供了比较元素的compareTo()方法，当插入元素时会回调该方法比较元素的大小。<br>
-TreeMap要求存放的键值对映射的键必须实现Comparable接口从而根据键对元素进行排序。<br>
-Collections工具类的sort方法有两种重载的形式，<strong>第一种</strong>要求传入的待排序容器中存放的对象比较实现Comparable接口以实现元素的比较；<strong>第二种</strong>不强制性的要求容器中的元素必须可比较，但是要求传入第二个参数，参数是Comparator接口的子类型（需要重写compare方法实现元素的比较），相当于一个临时定义的排序规则，其实就是通过接口注入比较元素大小的算法，也是对回调模式的应用（Java中对函数式编程的支持）。</p>
-<h3 id="什么是Java优先级队列？"><a class="header-anchor" href="#什么是Java优先级队列？">✨</a>什么是Java优先级队列？</h3>
-<p>Java PriorityQueue是一个数据结构，它是Java集合框架的一部分。 它是一个队列的实现，其中元素的顺序将根据每个元素的优先级来决定。 实例化PriorityQueue时，可以在构造函数中提供比较器。 该比较器将决定PriorityQueue集合实例中元素的排序顺序。</p>
-<h3 id="Java-hashCode（）和equals（）方法。"><a class="header-anchor" href="#Java-hashCode（）和equals（）方法。">✨</a>Java hashCode（）和equals（）方法。</h3>
-<p>equals（）方法用于确定两个Java对象的相等性。 当我们有一个自定义类时，我们需要重写equals（）方法并提供一个实现，以便它可以用来找到它的两个实例之间的相等性。 通过Java规范，equals（）和hashCode（）之间有一个契约。 它说，“如果两个对象相等，即obj1.equals（obj2）为true，那么obj1.hashCode（）和obj2.hashCode（）必须返回相同的整数”<br>
-无论何时我们选择重写equals（），我们都必须重写hashCode（）方法。 hashCode（）用于计算位置存储区和key。</p>
-<h3 id="Enumeration和Iterator区别"><a class="header-anchor" href="#Enumeration和Iterator区别">✨</a>Enumeration和Iterator区别</h3>
-<p>函数接口不同</p>
+</tbody></table>
+<h3 id="hashtable与hashmap"><a href="#hashtable与hashmap" class="headerlink" title="hashtable与hashmap"></a>hashtable与hashmap</h3><p><strong>相同点：</strong>储存结构和实现基本相同，都是是实现的Map接口<br><strong>不同点：</strong>HashTable是同步的，HashMap是非同步的，需要同步的时候可以ConcurrentHashMap方法<br>HashMap允许为null，HashTable不允许为null<br>继承不同，HashMap继承的是AbstractMap，HashTable继承的是Dictionary<br>HashMap提供对key的Set进行遍历，因此它是fail-fast的，但HashTable提供对key的Enumeration进行遍历，它不支持fail-fast。<br>HashTable是一个遗留类，如果需要保证线程安全推荐使用CocurrentHashMap</p>
+<h3 id="HashMap与TreeMap"><a href="#HashMap与TreeMap" class="headerlink" title="HashMap与TreeMap"></a>HashMap与TreeMap</h3><p>HashMap通过hashcode对其内容进行快速查找，而TreeMap中所有的元素都保持着某种固定的顺序，如果你需要得到一个有序的结果你就应该使用TreeMap（HashMap中元素的排列顺序是不固定的）。HashMap中元素的排列顺序是不固定的）。<br>在Map 中插入、删除和定位元素，HashMap 是最好的选择。但如果您要按自然顺序或自定义顺序遍历键，那么TreeMap会更好。使用HashMap要求添加的键类明确定义了hashCode()和 equals()的实现。 这个TreeMap没有调优选项，因为该树总处于平衡状态。</p>
+<h3 id="集合框架中的泛型有什么优点？"><a href="#集合框架中的泛型有什么优点？" class="headerlink" title="集合框架中的泛型有什么优点？"></a>集合框架中的泛型有什么优点？</h3><p>Java1.5引入了泛型，所有的集合接口和实现都大量地使用它。泛型允许我们为集合提供一个可以容纳的对象类型，因此，如果你添加其它类型的任何元素，它会在编译时报错。这避免了在运行时出现ClassCastException，因为你将会在编译时得到报错信息。泛型也使得代码整洁，我们不需要使用显式转换和instanceOf操作符。它也给运行时带来好处，因为不会产生类型检查的字节码指令。</p>
+<h3 id="comparable-和-comparator的不同之处？"><a href="#comparable-和-comparator的不同之处？" class="headerlink" title="comparable 和 comparator的不同之处？"></a>comparable 和 comparator的不同之处？</h3><p>comparable接口实际上是出自java.lang包它有一个 compareTo(Object obj)方法来将objects排序comparator接口实际上是出自 java.util 包它有一个compare(Object obj1, Object obj2)方法来将objects排序</p>
+<h3 id="如何保证一个集合线程安全？"><a href="#如何保证一个集合线程安全？" class="headerlink" title="如何保证一个集合线程安全？"></a>如何保证一个集合线程安全？</h3><p>Vector, Hashtable, Properties 和 Stack 都是同步的类，所以它们都线程安全的，可以被使用在多线程环境中使用Collections.synchronizedList(list)) 方法，可以保证list类是线程安全的使用java.util.Collections.synchronizedSet()方法可以保证set类是线程安全的。</p>
+<h3 id="TreeMap和TreeSet在排序时如何比较元素？Collections工具类中的sort-方法如何比较元素？"><a href="#TreeMap和TreeSet在排序时如何比较元素？Collections工具类中的sort-方法如何比较元素？" class="headerlink" title="TreeMap和TreeSet在排序时如何比较元素？Collections工具类中的sort()方法如何比较元素？"></a>TreeMap和TreeSet在排序时如何比较元素？Collections工具类中的sort()方法如何比较元素？</h3><p>TreeSet要求存放的对象所属的类必须实现Comparable接口，该接口提供了比较元素的compareTo()方法，当插入元素时会回调该方法比较元素的大小。<br>TreeMap要求存放的键值对映射的键必须实现Comparable接口从而根据键对元素进行排序。<br>Collections工具类的sort方法有两种重载的形式，<strong>第一种</strong>要求传入的待排序容器中存放的对象比较实现Comparable接口以实现元素的比较；<strong>第二种</strong>不强制性的要求容器中的元素必须可比较，但是要求传入第二个参数，参数是Comparator接口的子类型（需要重写compare方法实现元素的比较），相当于一个临时定义的排序规则，其实就是通过接口注入比较元素大小的算法，也是对回调模式的应用（Java中对函数式编程的支持）。</p>
+<h3 id="什么是Java优先级队列？"><a href="#什么是Java优先级队列？" class="headerlink" title="什么是Java优先级队列？"></a>什么是Java优先级队列？</h3><p>Java PriorityQueue是一个数据结构，它是Java集合框架的一部分。 它是一个队列的实现，其中元素的顺序将根据每个元素的优先级来决定。 实例化PriorityQueue时，可以在构造函数中提供比较器。 该比较器将决定PriorityQueue集合实例中元素的排序顺序。</p>
+<h3 id="Java-hashCode（）和equals（）方法。"><a href="#Java-hashCode（）和equals（）方法。" class="headerlink" title="Java hashCode（）和equals（）方法。"></a>Java hashCode（）和equals（）方法。</h3><p>equals（）方法用于确定两个Java对象的相等性。 当我们有一个自定义类时，我们需要重写equals（）方法并提供一个实现，以便它可以用来找到它的两个实例之间的相等性。 通过Java规范，equals（）和hashCode（）之间有一个契约。 它说，“如果两个对象相等，即obj1.equals（obj2）为true，那么obj1.hashCode（）和obj2.hashCode（）必须返回相同的整数”<br>无论何时我们选择重写equals（），我们都必须重写hashCode（）方法。 hashCode（）用于计算位置存储区和key。</p>
+<h3 id="Enumeration和Iterator区别"><a href="#Enumeration和Iterator区别" class="headerlink" title="Enumeration和Iterator区别"></a>Enumeration和Iterator区别</h3><p>函数接口不同</p>
 <ul>
 <li>Enumeration只有2个函数接口。通过Enumeration，我们只能读取集合的数据，而不能对数据进行修改。</li>
 <li>Iterator只有3个函数接口。Iterator除了能读取集合的数据之外，也能数据进行删除操作。</li>
@@ -1461,68 +1693,63 @@ Collections工具类的sort方法有两种重载的形式，<strong>第一种</s
 <li>而Iterator 是JDK 1.2才添加的接口，它也是为了HashMap、ArrayList等集合提供遍历接口。Iterator是支持fail-fast机制的：当多个线程对同一个集合的内容进行操作时，就可能会产生fail-fast事件。</li>
 </ul>
 <p>注意：Enumeration迭代器只能遍历Vector、Hashtable这种古老的集合，因此通常不要使用它，除非在某些极端情况下，不得不使用Enumeration，否则都应该选择Iterator迭代器。</p>
-<h3 id="HashMap-和-ConcurrentHashMap-的区别？"><a class="header-anchor" href="#HashMap-和-ConcurrentHashMap-的区别？">✨</a>HashMap 和 ConcurrentHashMap 的区别？</h3>
-<p>ConcurrentHashMap和HashMap的实现方式不一样，虽然都是使用桶数组实现的，但是还是有区别，ConcurrentHashMap对桶数组进行了分段，而HashMap并没有。</p>
+<h3 id="HashMap-和-ConcurrentHashMap-的区别？"><a href="#HashMap-和-ConcurrentHashMap-的区别？" class="headerlink" title="HashMap 和 ConcurrentHashMap 的区别？"></a>HashMap 和 ConcurrentHashMap 的区别？</h3><p>ConcurrentHashMap和HashMap的实现方式不一样，虽然都是使用桶数组实现的，但是还是有区别，ConcurrentHashMap对桶数组进行了分段，而HashMap并没有。</p>
 <p>ConcurrentHashMap在每一个分段上都用锁进行了保护。HashMap没有锁机制。所以，前者线程安全的，后者不是线程安全的。</p>
-<h3 id="HashMap中hash方法的原理"><a class="header-anchor" href="#HashMap中hash方法的原理">✨</a>HashMap中hash方法的原理</h3>
-<p><a target="_blank" rel="noopener" href="https://hollischuang.github.io/toBeTopJavaer/#/basics/java-basic/hash-in-hashmap">https://hollischuang.github.io/toBeTopJavaer/#/basics/java-basic/hash-in-hashmap</a></p>
-<h3 id="为什么HashMap的默认容量设置成16"><a class="header-anchor" href="#为什么HashMap的默认容量设置成16">✨</a>为什么HashMap的默认容量设置成16</h3>
-<p><a target="_blank" rel="noopener" href="https://hollischuang.github.io/toBeTopJavaer/#/basics/java-basic/hashmap-default-capacity">https://hollischuang.github.io/toBeTopJavaer/#/basics/java-basic/hashmap-default-capacity</a></p>
-<h3 id="为什么HashMap的默认负载因子设置成0-75"><a class="header-anchor" href="#为什么HashMap的默认负载因子设置成0-75">✨</a>为什么HashMap的默认负载因子设置成0.75</h3>
-<p><a target="_blank" rel="noopener" href="https://hollischuang.github.io/toBeTopJavaer/#/basics/java-basic/hashmap-default-loadfactor">https://hollischuang.github.io/toBeTopJavaer/#/basics/java-basic/hashmap-default-loadfactor</a></p>
-<h3 id="Java-8中stream相关用法"><a class="header-anchor" href="#Java-8中stream相关用法">✨</a>Java 8中stream相关用法</h3>
-<p><a target="_blank" rel="noopener" href="https://hollischuang.github.io/toBeTopJavaer/#/basics/java-basic/stream">https://hollischuang.github.io/toBeTopJavaer/#/basics/java-basic/stream</a></p>
-<h3 id="Apache集合处理工具类的使用"><a class="header-anchor" href="#Apache集合处理工具类的使用">✨</a>Apache集合处理工具类的使用</h3>
-<p><a target="_blank" rel="noopener" href="https://hollischuang.github.io/toBeTopJavaer/#/basics/java-basic/apache-collections">https://hollischuang.github.io/toBeTopJavaer/#/basics/java-basic/apache-collections</a></p>
+<h3 id="HashMap中hash方法的原理"><a href="#HashMap中hash方法的原理" class="headerlink" title="HashMap中hash方法的原理"></a>HashMap中hash方法的原理</h3><p><a target="_blank" rel="noopener" href="https://hollischuang.github.io/toBeTopJavaer/#/basics/java-basic/hash-in-hashmap">https://hollischuang.github.io/toBeTopJavaer/#/basics/java-basic/hash-in-hashmap</a></p>
+<h3 id="为什么HashMap的默认容量设置成16"><a href="#为什么HashMap的默认容量设置成16" class="headerlink" title="为什么HashMap的默认容量设置成16"></a>为什么HashMap的默认容量设置成16</h3><p><a target="_blank" rel="noopener" href="https://hollischuang.github.io/toBeTopJavaer/#/basics/java-basic/hashmap-default-capacity">https://hollischuang.github.io/toBeTopJavaer/#/basics/java-basic/hashmap-default-capacity</a></p>
+<h3 id="为什么HashMap的默认负载因子设置成0-75"><a href="#为什么HashMap的默认负载因子设置成0-75" class="headerlink" title="为什么HashMap的默认负载因子设置成0.75"></a>为什么HashMap的默认负载因子设置成0.75</h3><p><a target="_blank" rel="noopener" href="https://hollischuang.github.io/toBeTopJavaer/#/basics/java-basic/hashmap-default-loadfactor">https://hollischuang.github.io/toBeTopJavaer/#/basics/java-basic/hashmap-default-loadfactor</a></p>
+<h3 id="Java-8中stream相关用法"><a href="#Java-8中stream相关用法" class="headerlink" title="Java 8中stream相关用法"></a>Java 8中stream相关用法</h3><p><a target="_blank" rel="noopener" href="https://hollischuang.github.io/toBeTopJavaer/#/basics/java-basic/stream">https://hollischuang.github.io/toBeTopJavaer/#/basics/java-basic/stream</a></p>
+<h3 id="Apache集合处理工具类的使用"><a href="#Apache集合处理工具类的使用" class="headerlink" title="Apache集合处理工具类的使用"></a>Apache集合处理工具类的使用</h3><p><a target="_blank" rel="noopener" href="https://hollischuang.github.io/toBeTopJavaer/#/basics/java-basic/apache-collections">https://hollischuang.github.io/toBeTopJavaer/#/basics/java-basic/apache-collections</a></p>
 
   
   
+  
+  <div class='footer'>
     
-    <div class='footer'>
-      
-      
-        
+    
+    
   <div class="related_posts">
     <section class='header'>
-      <i class="fas fa-bookmark fa-fw" aria-hidden="true"></i><span>相关文章</span>
+      <i class="fal fa-bookmark fa-fw" aria-hidden="true"></i><span>相关文章</span>
     </section>
     <section class='body'>
-      <div class="vlts-rps"><a class="item" href="\java\collection\ArrayList_grow\" title="ArrayList动态扩容机制" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life9.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life9.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">ArrayList动态扩容机制</span><span class="excerpt">我们通过一个具体的例子看一下ArrayList的扩容效果
-先看一下ArrayList的初始容量
-ArrayList&lt;...</span></a><a class="item" href="\java\collection\Vector\" title="Vector 底层实现原理分析" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life14.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life14.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">Vector 底层实现原理分析</span><span class="excerpt">Vector，一个可变长的数组，底层实现与 ArrayList 大同小异，但Vector是同步的（线程安全），Vector...</span></a><a class="item" href="\java\collection\HashMapAnalysis\" title="HashMap 底层实现原理分析" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life11.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life11.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">HashMap 底层实现原理分析</span><span class="excerpt">HashMap 是 Map 的一个实现类，它代表的是一种键值对的数据存储形式。
-大多数情况下可以直接定位到它的值，因而具有...</span></a><a class="item" href="\java\collection\LinkedHashMap\" title="LinkedHashMap 底层实现原理分析" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life12.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life12.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">LinkedHashMap 底层实现原理分析</span><span class="excerpt">LinkedHashMap继承自HashMap实现了Map接口。基本实现同HashMap一样，不同之处在于LinkedHa...</span></a><a class="item" href="\java\abstract_interface\" title="接口 vs 抽象类的区别？" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">接口 vs 抽象类的区别？</span><span class="excerpt">在面向对象编程中，抽象类和接口是两个经常被用到的语法概念，是面向对象四大特性，以及很多设计模式、设计思想、设计原则编程实现...</span></a></div></section></div>
-      
-      
-        <div class='copyright'>
-          <blockquote>
-            
-              
-                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
-
-              
-            
-              
-                <p>本文永久链接是：<a href=https://gyl-coder.top/java/collection/all/>https://gyl-coder.top/java/collection/all/</a></p>
-              
-            
-          </blockquote>
-        </div>
-      
-      
-    </div>
-  
-  
+      <div class="vlts-rps"><a class="item" href="\java\collection\ArrayList_grow\" title="ArrayList动态扩容机制" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life9.webp" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life9.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">ArrayList动态扩容机制</span><span class="excerpt">我们通过一个具体的例子看一下ArrayList的扩容效果先看一下ArrayList的初始容量
+ArrayList&lt;I...</span></a><a class="item" href="\java\collection\Vector\" title="Vector 底层实现原理分析" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life14.webp" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life14.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">Vector 底层实现原理分析</span><span class="excerpt">Vector，一个可变长的数组，底层实现与 ArrayList 大同小异，但Vector是同步的（线程安全），Vector...</span></a><a class="item" href="\java\collection\LinkedList\" title="LinkedList 底层实现原理分析" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life13.webp" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life13.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">LinkedList 底层实现原理分析</span><span class="excerpt">
+在Java.util包下
+继承自AbstractSequentialList
+实现 List 接口，能对它进行队列操作。...</span></a><a class="item" href="\java\abstract_interface\" title="接口 vs 抽象类的区别？" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">接口 vs 抽象类的区别？</span><span class="excerpt">在面向对象编程中，抽象类和接口是两个经常被用到的语法概念，是面向对象四大特性，以及很多设计模式、设计思想、设计原则编程实现...</span></a></div></section></div>
     
+    
+    <div class='copyright'>
+      <blockquote>
+        
+        
+        <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+        
+        
+        
+        <p>本文永久链接是：<a href=https://gyl-coder.top/java/collection/all/>https://gyl-coder.top/java/collection/all/</a></p>
+        
+        
+      </blockquote>
+    </div>
+    
+    
+  </div>
+  
+  
+  
 
 
   <div class='article-meta' id="bottom">
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-02T17:53:02+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-11-21T08:15:50+08:00">
   <a class='notlink'>
-    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Oct 2, 2020</p>
+    <i class="fal fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Nov 21, 2020</p>
   </a>
 </div>
 
@@ -1531,7 +1758,7 @@ ArrayList&lt;...</span></a><a class="item" href="\java\collection\Vector\" title
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Java/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Java</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E9%9B%86%E5%90%88/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>集合</p></a></div>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Java/" rel="nofollow"><i class="fal fa-hashtag fa-fw" aria-hidden="true"></i><p>Java</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E9%9B%86%E5%90%88/" rel="nofollow"><i class="fal fa-hashtag fa-fw" aria-hidden="true"></i><p>集合</p></a></div>
 
 
         
@@ -1555,7 +1782,7 @@ ArrayList&lt;...</span></a><a class="item" href="\java\collection\Vector\" title
           
           >
           
-            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg">
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
           
         </a>
       
@@ -1574,7 +1801,7 @@ ArrayList&lt;...</span></a><a class="item" href="\java\collection\Vector\" title
           
           >
           
-            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg">
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
           
         </a>
       
@@ -1593,7 +1820,7 @@ ArrayList&lt;...</span></a><a class="item" href="\java\collection\Vector\" title
           
           >
           
-            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg">
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
           
         </a>
       
@@ -1617,29 +1844,29 @@ ArrayList&lt;...</span></a><a class="item" href="\java\collection\Vector\" title
   
 
   
-    <div class="prev-next">
-      
-        <a class='prev' href='/java/abstract_interface/'>
-          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>接口 vs 抽象类的区别？</p>
-          <p class='content'>在面向对象编程中，抽象类和接口是两个经常被用到的语法概念，是面向对象四大特性，以及很多设计模式、设计思想、设计原则编程实现的基础。
+  <div class="prev-next">
+    
+    <a class='prev' href='/java/abstract_interface/'>
+      <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>接口 vs 抽象类的区别？</p>
+      <p class='content'>在面向对象编程中，抽象类和接口是两个经常被用到的语法概念，是面向对象四大特性，以及很多设计模式、设计思想、设计原则编程实现的基础。
 比如：我们可以使用接口来实现面向对象的抽象特性、多态特性和基于...</p>
-        </a>
-      
-      
-        <a class='next' href='/java/collection/LinkedHashMap/'>
-          <p class='title'>LinkedHashMap 底层实现原理分析<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>LinkedHashMap继承自HashMap实现了Map接口。基本实现同HashMap一样，不同之处在于LinkedHashMap保证了迭代的有序性。其内部维护了一个双向链表，解决了 Hash...</p>
-        </a>
-      
-    </div>
+    </a>
+    
+    
+    <a class='next' href='/java/collection/LinkedHashMap/'>
+      <p class='title'>LinkedHashMap 底层实现原理分析<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+      <p class='content'>LinkedHashMap继承自HashMap实现了Map接口。基本实现同HashMap一样，不同之处在于LinkedHashMap保证了迭代的有序性。其内部维护了一个双向链表，解决了 Hash...</p>
+    </a>
+    
+  </div>
   
 </article>
 
 
-  
 
-  <article class="post white-box reveal shadow" id="comments">
-    <p ct><i class='fas fa-comments'></i> 评论</p>
+
+  <article class="post white-box reveal shadow floatable" id="comments">
+    <p ct><i class='fal fa-comments'></i> 评论</p>
     
     <div id="valine_container" class="valine_thread">
   <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
@@ -1651,68 +1878,19 @@ ArrayList&lt;...</span></a><a class="item" href="\java\collection\Vector\" title
 
 
 
-
 </div>
-<aside class='l_side'>
-  
-  
-    
-    
-
-
-
-  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
-    
-  <header>
-    
-      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>目录</span>
-    
-  </header>
-
-
-    <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%A7%88"><span class="toc-text">概览</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Collection"><span class="toc-text">Collection</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Map"><span class="toc-text">Map</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E5%99%A8-Iterator"><span class="toc-text">迭代器 Iterator</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E5%99%A8%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-text">迭代器的作用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8"><span class="toc-text">如何使用</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#List"><span class="toc-text">List</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ArrayList"><span class="toc-text">ArrayList</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ArrayList%E6%89%A9%E5%AE%B9"><span class="toc-text">ArrayList扩容</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vector"><span class="toc-text">Vector</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LinkedList"><span class="toc-text">LinkedList</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Arraylist-%E5%92%8C-Vector-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">Arraylist 和 Vector 的区别?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Arraylist-%E4%B8%8E-LinkedList-%E5%8C%BA%E5%88%AB"><span class="toc-text">Arraylist 与 LinkedList 区别?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Map-v2"><span class="toc-text">Map</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HashMap"><span class="toc-text">HashMap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HashTable"><span class="toc-text">HashTable</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LinkedHashMap"><span class="toc-text">LinkedHashMap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TreeMap"><span class="toc-text">TreeMap</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Set"><span class="toc-text">Set</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HashSet"><span class="toc-text">HashSet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TreeSet"><span class="toc-text">TreeSet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LinkedHashSet"><span class="toc-text">LinkedHashSet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E5%BA%8F%E6%80%A7%E5%92%8C%E4%B8%8D%E5%8F%AF%E9%87%8D%E5%A4%8D%E6%80%A7%E7%9A%84%E5%90%AB%E4%B9%89%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">无序性和不可重复性的含义是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AF%94%E8%BE%83-HashSet%E3%80%81LinkedHashSet-%E5%92%8C-TreeSet-%E4%B8%89%E8%80%85%E7%9A%84%E5%BC%82%E5%90%8C"><span class="toc-text">比较 HashSet、LinkedHashSet 和 TreeSet 三者的异同</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Set%E4%B8%AD%E7%9A%84%E5%85%83%E7%B4%A0%E4%B8%8D%E8%83%BD%E9%87%8D%E5%A4%8D%EF%BC%8C%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%EF%BC%9F"><span class="toc-text">Set中的元素不能重复，如何实现？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#comparable-%E5%92%8C-Comparator-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">comparable 和 Comparator 的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Comparator-%E5%AE%9A%E5%88%B6%E6%8E%92%E5%BA%8F"><span class="toc-text">Comparator 定制排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%87%8D%E5%86%99-compareTo%EF%BC%88%EF%BC%89%E6%96%B9%E6%B3%95%E5%AE%9E%E7%8E%B0%E6%8C%89%E5%B9%B4%E9%BE%84%E6%8E%92%E5%BA%8F"><span class="toc-text">重写 compareTo（）方法实现按年龄排序</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-text">其他</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B4%E8%AF%B4List%E3%80%81Set%E3%80%81Map%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">说说List、Set、Map的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E9%80%89%E7%94%A8%E9%9B%86%E5%90%88"><span class="toc-text">如何选用集合?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BD%BF%E7%94%A8%E9%9B%86%E5%90%88%EF%BC%9F"><span class="toc-text">为什么要使用集合？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%89%E5%93%AA%E4%BA%9B%E9%9B%86%E5%90%88%E6%98%AF%E7%BA%BF%E7%A8%8B%E4%B8%8D%E5%AE%89%E5%85%A8%E7%9A%84%EF%BC%9F%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3%E5%91%A2%EF%BC%9F"><span class="toc-text">有哪些集合是线程不安全的？怎么解决呢？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fail-fast"><span class="toc-text">fail-fast</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vector%E5%92%8CArrayList"><span class="toc-text">Vector和ArrayList</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Aarraylist%E5%92%8CLinkedlist"><span class="toc-text">Aarraylist和Linkedlist</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%93%AA%E4%BA%9B%E9%9B%86%E5%90%88%E7%B1%BB%E6%8F%90%E4%BE%9B%E5%AF%B9%E5%85%83%E7%B4%A0%E7%9A%84%E9%9A%8F%E6%9C%BA%E8%AE%BF%E9%97%AE%EF%BC%9F"><span class="toc-text">哪些集合类提供对元素的随机访问？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Enumeration%E5%92%8CIterator%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">Enumeration和Iterator接口的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Iterater%E5%92%8CListIterator%E4%B9%8B%E9%97%B4%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-text">Iterater和ListIterator之间有什么区别？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java%E4%B8%ADHashMap%E7%9A%84key%E5%80%BC%E8%A6%81%E6%98%AF%E4%B8%BA%E7%B1%BB%E5%AF%B9%E8%B1%A1%E5%88%99%E8%AF%A5%E7%B1%BB%E9%9C%80%E8%A6%81%E6%BB%A1%E8%B6%B3%E4%BB%80%E4%B9%88%E6%9D%A1%E4%BB%B6%EF%BC%9F"><span class="toc-text">Java中HashMap的key值要是为类对象则该类需要满足什么条件？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HashSet%E4%B8%8EHashMap"><span class="toc-text">HashSet与HashMap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hashtable%E4%B8%8Ehashmap"><span class="toc-text">hashtable与hashmap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HashMap%E4%B8%8ETreeMap"><span class="toc-text">HashMap与TreeMap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E4%B8%AD%E7%9A%84%E6%B3%9B%E5%9E%8B%E6%9C%89%E4%BB%80%E4%B9%88%E4%BC%98%E7%82%B9%EF%BC%9F"><span class="toc-text">集合框架中的泛型有什么优点？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#comparable-%E5%92%8C-comparator%E7%9A%84%E4%B8%8D%E5%90%8C%E4%B9%8B%E5%A4%84%EF%BC%9F"><span class="toc-text">comparable 和 comparator的不同之处？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E4%B8%80%E4%B8%AA%E9%9B%86%E5%90%88%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%EF%BC%9F"><span class="toc-text">如何保证一个集合线程安全？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TreeMap%E5%92%8CTreeSet%E5%9C%A8%E6%8E%92%E5%BA%8F%E6%97%B6%E5%A6%82%E4%BD%95%E6%AF%94%E8%BE%83%E5%85%83%E7%B4%A0%EF%BC%9FCollections%E5%B7%A5%E5%85%B7%E7%B1%BB%E4%B8%AD%E7%9A%84sort-%E6%96%B9%E6%B3%95%E5%A6%82%E4%BD%95%E6%AF%94%E8%BE%83%E5%85%83%E7%B4%A0%EF%BC%9F"><span class="toc-text">TreeMap和TreeSet在排序时如何比较元素？Collections工具类中的sort()方法如何比较元素？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFJava%E4%BC%98%E5%85%88%E7%BA%A7%E9%98%9F%E5%88%97%EF%BC%9F"><span class="toc-text">什么是Java优先级队列？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-hashCode%EF%BC%88%EF%BC%89%E5%92%8Cequals%EF%BC%88%EF%BC%89%E6%96%B9%E6%B3%95%E3%80%82"><span class="toc-text">Java hashCode（）和equals（）方法。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Enumeration%E5%92%8CIterator%E5%8C%BA%E5%88%AB"><span class="toc-text">Enumeration和Iterator区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HashMap-%E5%92%8C-ConcurrentHashMap-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-text">HashMap 和 ConcurrentHashMap 的区别？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HashMap%E4%B8%ADhash%E6%96%B9%E6%B3%95%E7%9A%84%E5%8E%9F%E7%90%86"><span class="toc-text">HashMap中hash方法的原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88HashMap%E7%9A%84%E9%BB%98%E8%AE%A4%E5%AE%B9%E9%87%8F%E8%AE%BE%E7%BD%AE%E6%88%9016"><span class="toc-text">为什么HashMap的默认容量设置成16</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88HashMap%E7%9A%84%E9%BB%98%E8%AE%A4%E8%B4%9F%E8%BD%BD%E5%9B%A0%E5%AD%90%E8%AE%BE%E7%BD%AE%E6%88%900-75"><span class="toc-text">为什么HashMap的默认负载因子设置成0.75</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-8%E4%B8%ADstream%E7%9B%B8%E5%85%B3%E7%94%A8%E6%B3%95"><span class="toc-text">Java 8中stream相关用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Apache%E9%9B%86%E5%90%88%E5%A4%84%E7%90%86%E5%B7%A5%E5%85%B7%E7%B1%BB%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">Apache集合处理工具类的使用</span></a></li></ol></li></ol>
-    </div>
-  </section>
-
-
-  
-
-
-</aside>
-
-
-
-        
       </div>
       
   
   <footer class="footer clearfix">
-    <br><br>
+    
     
       
         <div class="aplayer-container">
           
 
-  
-    <meting-js
-      theme='#1BCDFC'
-      autoplay='false'
-      volume='0.7'
-      loop='all'
-      order='list'
-      fixed='false'
-      list-max-height='320px'
-      server='netease'
-      type='song'
-      id='186453'
-      list-folded='true'>
-    </meting-js>
-  
-
 
         </div>
-        <!--
       
     
       
@@ -1725,7 +1903,7 @@ ArrayList&lt;...</span></a><a class="item" href="\java\collection\Vector\" title
                 target="_blank"
                 rel="external nofollow noopener noreferrer">
                 
-                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/020-rss.svg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/020-rss.svg" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/>
+                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/020-rss.svg" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/020-rss.svg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="/>
                 
               </a>
             
@@ -1736,7 +1914,7 @@ ArrayList&lt;...</span></a><a class="item" href="\java\collection\Vector\" title
                 target="_blank"
                 rel="external nofollow noopener noreferrer">
                 
-                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/029-github.svg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/029-github.svg" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/>
+                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/029-github.svg" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/029-github.svg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="/>
                 
               </a>
             
@@ -1747,7 +1925,7 @@ ArrayList&lt;...</span></a><a class="item" href="\java\collection\Vector\" title
                 target="_blank"
                 rel="external nofollow noopener noreferrer">
                 
-                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/010-facebook.svg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/010-facebook.svg" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/>
+                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/010-facebook.svg" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/010-facebook.svg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="/>
                 
               </a>
             
@@ -1758,7 +1936,7 @@ ArrayList&lt;...</span></a><a class="item" href="\java\collection\Vector\" title
                 target="_blank"
                 rel="external nofollow noopener noreferrer">
                 
-                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/018-twitter.svg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/018-twitter.svg" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/>
+                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/018-twitter.svg" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/018-twitter.svg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="/>
                 
               </a>
             
@@ -1769,7 +1947,7 @@ ArrayList&lt;...</span></a><a class="item" href="\java\collection\Vector\" title
                 target="_blank"
                 rel="external nofollow noopener noreferrer">
                 
-                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/045-telegram.svg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/045-telegram.svg" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/>
+                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/045-telegram.svg" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/045-telegram.svg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="/>
                 
               </a>
             
@@ -1780,7 +1958,7 @@ ArrayList&lt;...</span></a><a class="item" href="\java\collection\Vector\" title
                 target="_blank"
                 rel="external nofollow noopener noreferrer">
                 
-                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/006-youtube.svg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/006-youtube.svg" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/>
+                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/006-youtube.svg" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/006-youtube.svg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="/>
                 
               </a>
             
@@ -1795,14 +1973,14 @@ ArrayList&lt;...</span></a><a class="item" href="\java\collection\Vector\" title
     
       
         
-          <div><p><span id="lc-sv">本站总访问量为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 次</span> <span id="lc-uv">访客数为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 人</span></p>
+          <div><p><span id="lc-sv">本站总访问量为 <span id='number'><i class="fal fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 次</span> <span id="lc-uv">访客数为 <span id='number'><i class="fal fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 人</span></p>
 </div>
         
       
     
       
         Use
-        <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/4.0.0" target="_blank" class="codename">Volantis</a>
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/1.0" target="_blank" class="codename">Volantis</a>
         as theme, total visits
           <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
           times
@@ -1811,89 +1989,18 @@ ArrayList&lt;...</span></a><a class="item" href="\java\collection\Vector\" title
     
       
         <div class='copyright'>
-        <p><a href="https://gyl-coder.top">Copyright © 2019-2020 Yanliang</a></p>
+        <p><a href="https://gyl-coder.top/">Copyright © 2019-2020 Yanliang</a></p>
 
         </div>
       
     
-    -->
-
-      <!--自定义footer样式-->
-      <!--自定义footer样式-->
-<a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank">
-    <img no-lazy src="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/upyun.png" width="60" height="auto">
-</a>
-<br>
-Copyright <i class="far fa-copyright"></i> 2019-2020
-<a href="/" target="_blank"> YANLIANG'S BLOG </a>丨
-<!-- 在网页底部添加网站运行时间 -->
-<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
-<script>
-    var now = new Date();
-
-    function createtime() {
-        var grt = new Date("07/01/2019 00:00:00");//此处修改你的建站时间或者网站上线时间
-        now.setTime(now.getTime() + 250);
-        days = (now - grt) / 1000 / 60 / 60 / 24;
-        dnum = Math.floor(days);
-        hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
-        hnum = Math.floor(hours);
-        if (String(hnum).length == 1) {
-            hnum = "0" + hnum;
-        }
-        minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
-        mnum = Math.floor(minutes);
-        if (String(mnum).length == 1) {
-            mnum = "0" + mnum;
-        }
-        seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
-        snum = Math.round(seconds);
-        if (String(snum).length == 1) {
-            snum = "0" + snum;
-        }
-        document.getElementById("timeDate").innerHTML = "网站已运行 " + dnum + " 天 ";
-        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
-    }
-
-    setInterval("createtime()", 250);
-</script>
-<br/>
-<br/>
-<div class="github-badge">
-    <a style="color: #fff" rel="license" href="https://hexo.io/" target="_blank" title="由 Hexo 强力驱动">
-        <span class="badge-subject">Powered</span><span class="badge-value bg-blue">Hexo</span></a>
-</div>
-<div class="github-badge">
-    <a style="color: #fff" rel="license" href="https://github.com/" target="_blank"
-       title="静态网页托管于 GitHub Pages 和 Coding Pages">
-        <span class="badge-subject">Hosted</span><span
-                class="badge-value bg-brightgreen">GitHub &amp; Coding</span></a>
-</div>
-<div class="github-badge">
-    <a style="color: #fff" rel="license" href="https://www.aliyun.com/" target="_blank" title="阿里云提供域名相关服务">
-        <span class="badge-subject">DNS</span><span class="badge-value bg-blueviolet">Aliyun</span></a>
-</div>
-<div class="github-badge">
-    <a style="color: #fff" rel="license" href="https://www.jsdelivr.com/" target="_blank"
-       title="jsDelivr 提供 CDN 加速服务">
-        <span class="badge-subject">CDN</span><span class="badge-value bg-orange">jsDelivr</span></a>
-</div>
-<div class="github-badge">
-    <a style="color: #fff" rel="license" href="https://github.com/volantis-x/hexo-theme-volantis/"
-       target="_blank" title="站点使用 Volantis 主题">
-        <span class="badge-subject">Theme</span><span class="badge-value bg-blue">Volantis</span></a>
-</div>
-<div class="github-badge">
-    <a style="color: #fff" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
-       target="_blank" title="本站点采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议进行许可">
-        <span class="badge-subject"><i class="fa fa-copyright"></i></span><span
-                class="badge-value bg-gradient">BY-NC-SA 4.0</span></a>
-</div>
-<div class="github-badge">
-    <a style="color: #fff" rel="license" href="https://github.com/botui/botui" target="_blank" title="A JavaScript framework to create conversational UIs.">
-        <span class="badge-subject">AI机器人</span><span class="badge-value bg-blueviolet">botui</span></a>
-</div>
-
+      
+        
+          <div><script id="ribbon" mobile="true" src="https://cdn.jsdelivr.net/gh/heson525/pic@master/img/ribbons2.js"></script></div>
+        
+      
+    
+    
   </footer>
 
 
@@ -1905,9 +2012,10 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js"></script>
 
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 <script>
   function pjax_fancybox() {
-    $(".md .gallery").find("img").each(function () { //渲染 fancybox
+    $(".md").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
       var element = document.createElement("a"); // a 标签
       $(element).attr("class", "fancybox");
       $(element).attr("pjax-fancybox", "");  // 过滤 pjax
@@ -1928,9 +2036,16 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       $(span).addClass("image-caption");
       $(span).text(caption); // 加描述
       $(this).after(span);  // 再套一层描述
+      // 背景层
+      var bgDiv = document.createElement("div");
+      $(bgDiv).addClass("bg");
+      if ($(this).attr('bg')) {
+        $(bgDiv).css('background', $(this).attr('bg'));
+      }
+      $(this).wrap(bgDiv); // 背景层
       $(this).wrap(element);  // 最后套 a 标签
     })
-    $(".md .gallery").find("img").fancybox({
+    $(".md").find("img").fancybox({
       selector: '[data-fancybox="images"]',
       hash: false,
       loop: false,
@@ -1944,61 +2059,13 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       ]
     });
   };
-  function SCload_fancybox() {
-    if ($(".md .gallery").find("img").length == 0) return;
-    loadCSS("https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css", document.getElementById("loadcss"));
-    setTimeout(function() {
-      loadScript('https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js', pjax_fancybox)
-    }, 1);
-  };
   $(function () {
-    SCload_fancybox();
+    pjax_fancybox();
   });
 </script>
 
 
 <!-- internal -->
-
-  
-  
-  
-    
-<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
-
-    <script type="text/javascript">
-      $(function(){
-        var imgs=["https://cdn.jsdelivr.net/gh/luvying/ying-blog-cdn@master/files/static/images/pictures/pixiv/69752223_p0.jpg"];
-        if ('true' == 'true') {
-          function shuffle(arr){
-            /*From countercurrent-time*/
-            var n = arr.length;
-            while(n--) {
-              var index = Math.floor(Math.random() * n);
-              var temp = arr[index];
-              arr[index] = arr[n];
-              arr[n] = temp;
-            }
-          }
-          shuffle(imgs);
-        }
-        if ('.cover-backstretch') {
-          $('.cover-backstretch').backstretch(
-            imgs,
-          {
-            duration: "2000",
-            fade: "1500"
-          });
-        } else {
-          $.backstretch(
-            imgs,
-          {
-            duration: "2000",
-            fade: "1500"
-          });
-        }
-      });
-    </script>
-  
 
 
 
@@ -2008,7 +2075,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
   <div id="rightmenu-wrapper">
     <ul class="list-v rightmenu" id="rightmenu-content">
       <li class='option'>
-        <a class='vlts-menu opt fix-cursor-default' id='menu-copy-text' onclick="document.execCommand('copy')"><i class='fa fa-copy fa-fw'></i>Copy Text</a>
+        <a class='vlts-menu opt fix-cursor-default' id='menu-copy-text' onclick='document.execCommand("copy")'><i class='fa fa-copy fa-fw'></i>Copy Text</a>
         <hr id='hr-text'>
         <a class='vlts-menu opt fix-cursor-default' id='menu-copy-href'><i class='fa fa-link fa-fw'></i>Copy Link</a>
         <a class='vlts-menu opt fix-cursor-default' id='menu-open-href'><i class='fa fa-external-link-square-alt fa-fw'></i>Open Link in New Tab</a>
@@ -2117,26 +2184,6 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
         
       
         
-          <li class='music name'>
-            <p class='nav music-title fix-cursor-default'></p>
-          </li>
-          <li class='music ctrl'>
-            <a class='nav icon-only backward fix-cursor-default' onclick='aplayerBackward()'><i class='fa fa-step-backward fa-fw'></i></a>
-            <a class='nav icon-only toggle fix-cursor-default' onclick='aplayerToggle()'><i class='fa fa-play fa-fw'></i></a>
-            <a class='nav icon-only forward fix-cursor-default' onclick='aplayerForward()'><i class='fa fa-step-forward fa-fw'></i></a>
-          </li>
-          <li class='music volume'>
-            <a class='nav volume'>
-              <div class="aplayer-volume-bar-wrap">
-                <div class="aplayer-volume-bar fix-cursor-pointer">
-                  <div class="aplayer-volume"></div>
-                  <i class='left fa fa-volume-off fa-fw'></i>
-                  <i class='right fa fa-volume-up fa-fw'></i>
-                </div>
-              </div>
-            </a>
-          </li>
-        
       
     </ul>
   </div>
@@ -2206,10 +2253,8 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       if (href.length == 0) {
         // 选中文本
         if (window.getSelection().toString()) {
-          if ('true' == 'true') {
-            copyText.style.display = 'block';
-            hrText.style.display = 'block';
-          }
+          copyText.style.display = 'block';
+          hrText.style.display = 'block';
         }
       }
 
@@ -2241,7 +2286,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       }
 
       // 有音乐播放器
-      if ('true' == true && ('home,me,album,resume,friends,hr,catchTheCat,hr,music'||[]).includes('music')) {
+      if ('' == true && ('home,me,album,resume,friends,hr,catchTheCat,hr,music'||[]).includes('music')) {
         // 如果有aplayer，初始化一下
       	try {
       		checkAPlayer();
@@ -2270,6 +2315,30 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
 
 
 
+
+
+  <script>
+  function loadIssuesJS() {
+    if ($(".md").find(".issues-api").length == 0) return;
+    setTimeout(function() {
+      loadScript('/js/issues.js');
+    }, 1);
+  };
+  $(function () {
+    loadIssuesJS();
+  });
+</script>
+
+
+
+<!-- optional -->
+
+  <script>
+  
+  var SEARCH_SERVICE = "hexo" || "hexo";
+  var ROOT = "/" || "/";
+  if (!ROOT.endsWith('/')) ROOT += '/';
+</script>
 
 
 
@@ -2305,15 +2374,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
 
   
   
-    <script>
-      window.FPConfig = {
-        delay: 0,
-        ignoreKeywords: [],
-        maxRPS: 5,
-        hoverDelay: 25
-      };
-    </script>
-    <script defer src="https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"></script>
+    <script async src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
   
 
 
@@ -2395,34 +2456,13 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
 
 
 
-  <script>
-  let APlayerController = new Object();
-  APlayerController.id = '186453';  // 设定全局音乐播放ID
-  APlayerController.volume = '0.7';
-</script>
-
-  
-<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script>
-
-
-  
-<script src="https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js"></script>
-
-
-
-
-  
-<script src="/js/aplayer.js"></script>
-
-
-
-
 
 
   <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@3/dist/av-min.js"></script>
 
   
-<script src="/js/valine.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/HCLonely/Valine@latest/dist/Valine.min.js"></script>
+
 
 
 <script>
@@ -2459,7 +2499,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
   function pjax_valine() {
     if(!document.querySelectorAll("#valine_container")[0])return;
 
-    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) || "快来评论吧~";
+    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) || "填写邮箱会收到回复提示！粘贴图片可直接上传~";
 
     let path = $.trim($('#pjax-comment-path').text());
     if (path.length == 0) {
@@ -2482,86 +2522,93 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       highlight: 'true',
       mathJax: 'false',
       enableQQ: 'true',
-      recordIP: 'false',
       requiredFields: requiredFields,
       emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
       emojiMaps: emojiMaps,
-      master: '[]',
-      friends: '[]'
+      master: '[6e52e95ab454c5a82b0eb13055d79bd5]',
+      friends: '[104e5bfa98048a2dac66f28ca4d4d846,e399c5e8f4b4b8b86fc88e2b5bd04497,32d39099d6da89788fe3827cb90b1eb7,a5c27d1df34fcd4d8195e7e7d16675d4,09c82fd631755bf5dbb04b4189225637,b548550ae129b82aa01b60e18ccbf141,6a565e6c47127afdd40d5d46089db2c5,4a713ec085a4431f15a8da0942656713&#34;,58bc3a8cecadf26a676e1b8f217698bc,aaf4fe5dd76d0a1390cbd08cdb16c05f,0a106ca9ec8d5e8a2d14f99e5b8bd863,3ecc56d90844b70e49d9f8a61e9cd98c,8a6f99e8ce4af26a93f20c0cbab8a186,5392ad0ec563aa56f6faf597ef966762,6bcf44de7033a4451f38d576fb6e6822,135ae111f8fcfeecc1ea1f06fde149ab]'
     })
   }
 
   function newcomment() {
-    function queryLeanCloud(k) {
-      let root = this;
-      let len = arguments.length;
-      if (len == 1) {
-        let notExist = new AV.Query("Comment");
-        notExist.doesNotExist('rid');
-        let isEmpty = new AV.Query("Comment");
-        isEmpty.equalTo('rid', '');
-        let q = AV.Query.or(notExist, isEmpty);
-        if (k === '*') q.exists('url');
-        else q.equalTo('url', decodeURI(k));
-        q.addDescending('createdAt');
-        q.addDescending('insertedAt');
-        return q;
-      } else {
-        let ids = JSON.stringify(arguments[1]).replace(/(\[|\])/g, '');
-        let cql = `select * from ${root['config']['clazzName']} where rid in (${ids}) order by -createdAt,-createdAt`;
-        return AV.Query.doCloudQuery(cql)
-      }
-    }
-    var valine = new Valine({
-      el: 'valine_container',
+
+function queryLeanCloud(k) {
+  let root = this;
+  let len = arguments.length;
+  if (len == 1) {
+    let notExist = new AV.Query("Comment");
+    notExist.doesNotExist('rid');
+    let isEmpty = new AV.Query("Comment");
+    isEmpty.equalTo('rid', '');
+    let q = AV.Query.or(notExist, isEmpty);
+    if (k === '*') q.exists('url');
+    else q.equalTo('url', decodeURI(k));
+    q.addDescending('createdAt');
+    q.addDescending('insertedAt');
+    return q;
+  } else {
+    let ids = JSON.stringify(arguments[1]).replace(/(\[|\])/g, '');
+    let cql = `select * from ${root['config']['clazzName']} where rid in (${ids}) order by -createdAt,-createdAt`;
+    return AV.Query.doCloudQuery(cql)
+  }
+}
+var valine = new Valine({
+      el: '#valine_container_ba',
+      notify: false,
+      verify: false,
       app_id: 'wvx2KxLUqgjcKv9QE62FmvUY-MdYXbMMI',
       app_key: 'u1P8dl8u7IlizUpYbwXpc1VN',
-      placeholder: '快来评论吧~',
+      placeholder: '发表您的意见，让我们一起交流，共同提高吧...',
       serverURLs: 'https://wvx2kxlu.api.lncldglobal.com'
-    });
+});
 
-    //判断博主，heson改为自己的昵称
-    function bozhu(e){
-        if (e == "yanliang" || e == "Yanliang"){
-            nick = e + '[博主]'
-            return nick;
-        } else {
-          return e
-        }
+//判断博主，heson改为自己的昵称
+function bozhu(e){
+    if (e == "heson"){
+        nick = e + '[博主]'
+        return nick;
+    } else {
+      return e
     }
+}
 
-    //判断网址
-    function wangzhi(e){
-        http = e.slice(0,4)
-        https = e.slice(0,5)
-        if (http == "http" || https == "https" ){
-            return e
-        } else if (e == "" || e == null || e == undefined){
-          return e
-        } else {
-          e = 'http://'+ e
-          return e
-        }
+//判断网址
+function wangzhi(e){
+    http = e.slice(0,4)
+    https = e.slice(0,5)
+    if (http == "http" || https == "https" ){
+         return e
+    } else if (e == "" || e == null || e == undefined){
+      return e
+    } else {
+      e = 'http://'+ e
+      return e
     }
+}
 
-    //查询评论
-    valine.Q('*').limit(5).find().then(function (comments) {
-      var hotComments = $("#hot-comments");
-      for (var i = 0; i < comments.length; i++) {
-        if (i === 0) {
-          console.log(comments[0]);
-        }
-        var nick = bozhu(comments[i]._serverData.nick);
-        var content = comments[i]._serverData.comment;
-        var newcontent = content.substring(0, 50).replace(/<[^>]+>/g,"");
-        var url = comments[i]._serverData.url;
-        var link = wangzhi(comments[i]._serverData.link);
-        var updatedAt = timeago(comments[i].updatedAt);
-        var commentId = '#' + comments[i].id;
-        hotComments.append('<div class="card-comment-item"><div class="item-header-text"><a href="'+ link +'" target="_blank" rel="nofollow noopener noreferrer" class="newcomment" >' + nick + '</a>&nbsp;发表于' + updatedAt + '</div><div class="item-text"><a href="' + url + commentId +'"  rel="nofollow" style="color:#717171" class="comments-detail" >' + newcontent + '</a></div></div>');
-      }
-    });
-  };
+
+
+
+//查询评论
+valine.Q('*').limit(7).find().then(function (comments) {
+  var hotComments = $("#hot-comments");
+  for (var i = 0; i < comments.length; i++) {
+    if (i === 0) {
+      console.log(comments[0]);
+    }
+    var nick = bozhu(comments[i]._serverData.nick);
+    var content = comments[i]._serverData.comment;
+    var newcontent = content.replace(/<[^>]+>/g,"").replace(/:.*?:/g,"[表情]").substring(0, 50);
+    var url = comments[i]._serverData.url;
+    var link = wangzhi(comments[i]._serverData.link);
+    var updatedAt = timeago(comments[i].updatedAt);
+    var commentId = '#' + comments[i].id;
+    hotComments.append('<div class="card-comment-item"><div class="item-header-text"><a href="'+ link +'" target="_blank" rel="nofollow noopener noreferrer" class="newcomment" >' + nick + '</a>&nbsp;发表于' + updatedAt + '</div><div class="item-text"><a href="' + url + commentId +'"  rel="nofollow" style="color:#717171" class="comments-detail" >' + newcontent + '</a></div></div>');
+  }
+});
+};
+
+
 
   $(function () {
     pjax_valine();
@@ -2570,89 +2617,6 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
 </script>
 
 
-
-
-  
-<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5/lib/darkmode-js.min.js" aysc></script>
-
-<script type="text/javascript">
-function getClientHeight(){
-  var clientHeight=0;
-  if(document.body.clientHeight&&document.documentElement.clientHeight){
-  var clientHeight = (document.body.clientHeight<document.documentElement.clientHeight)?document.body.clientHeight:document.documentElement.clientHeight;
-  }else{
-  var clientHeight = (document.body.clientHeight>document.documentElement.clientHeight)?document.body.clientHeight:document.documentElement.clientHeight;
-  }
-  return clientHeight;
-}
-function supportCss3(style) {
-  var prefix = ['webkit', 'Moz', 'ms', 'o'],
-  i,
-  humpString = [],
-  htmlStyle = document.documentElement.style,
-  _toHumb = function (string) {
-  return string.replace(/-(\w)/g, function ($0, $1) {
-  return $1.toUpperCase();
-  });
-  };
-  for (i in prefix)
-  humpString.push(_toHumb(prefix[i] + '-' + style));
-  humpString.push(_toHumb(style));
-  for (i in humpString)
-  if (humpString[i] in htmlStyle) return true;
-  return false;
-};
-//配置信息
-var options = {
-  bottom: '32px',
-  right: 'unset',
-  left: '16px',
-  time: '0s',
-  mixColor: '#f4f4f4',
-  backgroundColor: '#f4f4f4',
-  buttonColorDark: '#333',
-  buttonColorLight: '#ddd',
-  saveInCookies: true,
-  label: '',
-  autoMatchOsTheme: true
-};
-// 卡片兼容处理 mix-blend-mode 与 effect: [blur] 冲突
-
-function pjax_darkmodejs(){
-  
-  if(!supportCss3('mix-blend-mode'))return;
-  var checkExist2 = setInterval(function() {
-     if (typeof jQuery == 'undefined'){return;}
-     clearInterval(checkExist2);
-     var TopFlag=getClientHeight();
-    $(window).scroll(function(){
-      var top = $(document).scrollTop();
-      if(top > TopFlag) {
-        $(".darkmode-layer").css("mix-blend-mode","normal");
-        $(".darkmode-layer").css("background-color","#222");
-      }else{
-        $(".darkmode-layer").css("mix-blend-mode","difference");
-        $(".darkmode-layer").css("background-color","");
-      }
-    })
-  }, 100);
-  
-}
-// mix-blend-mode support?
-if(supportCss3('mix-blend-mode')){
-  window.darkmode = new Darkmode(options);
-  
-  window.darkmode.showWidget();
-  
-  pjax_darkmodejs();
-}
-////////////////Development///////////////////////
-//////////////darkmode模式切换////////////////////
-//window.darkmode.toggle();                     //
-//////////////darkmode模式判断////////////////////
-//console.log(window.darkmode.isActivated())    //
-//////////////////////////////////////////////////
-</script>
 
 
 
@@ -2668,49 +2632,13 @@ if(supportCss3('mix-blend-mode')){
 
   
     
-<script src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2.6.4/js/search.js"></script>
+<script src="/js/search.js"></script>
 
   
 
 
-<!-- optional -->
-
-  <script>
-const SearchServiceimagePath="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/img/";
-const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
-(function ($) {
-  
-    customSearch = new HexoSearch({
-      imagePath: SearchServiceimagePath
-    });
-  
-})(jQuery);
-
-</script>
 
 
-
-
-
-  
-<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
-
-  <script type="text/javascript">
-    $(function () {
-      Waves.attach('.flat-btn', ['waves-button']);
-      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
-      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
-      Waves.attach('.flat-box', ['waves-block']);
-      Waves.attach('.float-box', ['waves-block', 'waves-float']);
-      Waves.attach('.waves-image');
-      Waves.init();
-    });
-  </script>
-
-
-
-  
-<script src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/comment_typing.js"></script>
 
 
 
@@ -2772,7 +2700,7 @@ const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
       try {
         var currentUrl = window.location.pathname;
         var targetUrl = e.triggerElement.href;
-        var banUrl = [""];
+        var banUrl = ["/bb/"];
         if (banUrl[0] != "") {
           banUrl.forEach(item => {
             if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
@@ -2783,9 +2711,7 @@ const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
       } catch (error) {}
 
       window.subData = null; // 移除标题（用于一二级导航栏切换处）
-      if (typeof $.fancybox != "undefined") {
-        $.fancybox.close();    // 关闭弹窗
-      }
+      $.fancybox.close();    // 关闭弹窗
       $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
       $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
       $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
@@ -2805,7 +2731,7 @@ const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
       // 关于百度统计对 SPA 页面的处理：
       // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
       // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
-      // 
+       
 
       // 关于谷歌统计对 SPA 页面的处理：
       // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
@@ -2818,28 +2744,7 @@ const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
         $(this).parent().append($(this).remove());
       });
       try{
-          if (typeof $.fancybox == "undefined") {
-            SCload_fancybox();
-          } else {
-            pjax_fancybox();
-          }
-        
-          
-          if ('.cover-backstretch') {
-            $('.cover-backstretch').backstretch("resize");
-            if($('.cover-wrapper').is(':hidden')){
-              $('.cover-backstretch').backstretch("pause");
-            }else{
-              $('.cover-backstretch').backstretch("next");
-            }
-          } else {
-            $.backstretch("resize");
-            if($('.cover-wrapper').is(':hidden')){
-              $.backstretch("pause");
-            }else{
-              $.backstretch("next");
-            }
-          }
+        pjax_fancybox();
         
         
         document.querySelectorAll('pre code').forEach((block) => {
@@ -2849,6 +2754,10 @@ const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
         
           pjax_scrollrebeal();
         
+        
+          if (typeof IssuesAPI == "undefined") {
+            loadIssuesJS();
+          }
         
         
           pjax_initCopyCode();
@@ -2860,8 +2769,6 @@ const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
         
         
         
-        
-          pjax_darkmodejs();
         
       } catch (e) {
         console.log(e);
@@ -2877,26 +2784,5 @@ const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
 
     
   </div>
-
-  <!-- 一言API -->
-  <!-- 现代写法，推荐 -->
-  <!-- 兼容低版本浏览器 (包括 IE)，可移除 -->
-  <script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
-  <!--End-->
-  <script>
-    fetch('https://v1.hitokoto.cn')
-      .then(function (res){
-        return res.json();
-      })
-      .then(function (data) {
-        var hitokoto = document.getElementById('hitokoto');
-        hitokoto.innerText = data.hitokoto + '——【' + data.from + '】';
-      })
-      .catch(function (err) {
-        console.error(err);
-      })
-  </script>
-
 </body>
 </html>

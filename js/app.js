@@ -1,26 +1,8 @@
 /* eslint-disable */
 var customSearch;
-
-// 函数防抖 (只执行最后一次点击) 
-var Debounce = (fn, t) => {
-	let delay = t || 200;
-	let timer;
-	return function () {
-		let args = arguments;
-		if(timer){
-			clearTimeout(timer);
-		}
-		timer = setTimeout(() => {
-			timer = null;
-			fn.apply(this, args);
-		}, delay);
-	}	
-};
-
 (function ($) {
 
 	"use strict";
-	const isMobile = /mobile/i.test(window.navigator.userAgent);
 
 	// 校正页面定位（被导航栏挡住的区域）
 	var scrollCorrection = 80; // (header height = 64px) + (gap = 16px)
@@ -83,27 +65,25 @@ var Debounce = (fn, t) => {
 
 		//==========================================
 
+		const $coverAnchor = $('.cover-wrapper');
+
 		var enableCover = $('#pjax-enable-cover').text(); // Pjax 处理
 
 		var showHeaderPoint = 0;
-		var $coverHeight = 0;
-
-		if (enableCover) {
-			const $coverAnchor = $('.cover-wrapper');
-
-			if ($coverAnchor[0]) {
-				if($('.cover-wrapper#half').css('display') !== 'none') // Pjax 处理
-					$coverHeight = 240;
-				showHeaderPoint = $coverAnchor[0].clientHeight - $coverHeight;
-			}
+		if ($coverAnchor[0]) {
+			if(enableCover == "true" && $('.cover-wrapper#half').css('display') !== 'none') // Pjax 处理
+				showHeaderPoint = $coverAnchor[0].clientHeight - 240;
 		}
 
-		var pos = document.body.scrollTop + $coverHeight; 	// Pjax 处理
+		var pos = document.body.scrollTop;
+		if(enableCover == "true" && $('.cover-wrapper#half').css('display') === 'none')
+			pos += 240; // Pjax 处理
 
-		$(document, window).scroll(Debounce( () => {
+		$(document, window).scroll(() => {
 			let scrollTop = $(window).scrollTop();  // 滚动条距离顶部的距离
 
-			scrollTop += $coverHeight; // Pjax 处理
+			if(enableCover == "true" && $('.cover-wrapper#half').css('display') === 'none')
+				scrollTop += 240; // Pjax 处理
 
 			const del = scrollTop - pos;
 			pos = scrollTop;
@@ -122,7 +102,7 @@ var Debounce = (fn, t) => {
 			} else {
 				$headerAnchor.removeClass('show');
 			}
-		}));
+		});
 		//==========================================
 	}
 
@@ -141,20 +121,20 @@ var Debounce = (fn, t) => {
 		const $toc = $('.s-toc', $wrapper);           // 目录按钮  仅移动端
 
 		$wrapper.find('.nav-sub .title').text(window.subData.title);   // 二级导航文章标题
-
 		// 决定一二级导航栏的切换
-		let pos = document.body.scrollTop;
-		$(document, window).scroll(Debounce( () => {
-			const scrollTop = $(window).scrollTop();
-			const del = scrollTop - pos;
-			if (del >= 50 && scrollTop > 100) {
-				pos = scrollTop;
-				$wrapper.addClass('sub');
-			} else if (del <= -50) {
-				pos = scrollTop;
-				$wrapper.removeClass('sub');  // <---- 取消二级导航显示
-			}
-		}));
+		//let pos = document.body.scrollTop;
+		//$(document, window).scroll(() => {
+		//	const scrollTop = $(window).scrollTop();
+		//	const del = scrollTop - pos;
+		//	if (del >= 50 && scrollTop > 100) {
+		//		pos = scrollTop;
+		//		$wrapper.addClass('sub');
+		//	} else if (del <= -50) {
+		//		pos = scrollTop;
+		//		$wrapper.removeClass('sub');  // <---- 取消二级导航显示
+		//	}
+		//});
+
 
 		// bind events to every btn
 		let $commentTarget = $('.l_body article#comments');  // 评论区域
@@ -179,10 +159,10 @@ var Debounce = (fn, t) => {
 				$tocTarget.removeClass('active');
 				$toc.removeClass('active');
 			});
-			$(document, window).scroll(Debounce(() => {
+			$(document, window).scroll(() => {
 				$tocTarget.removeClass('active');
 				$toc.removeClass('active');
-			}, 100));
+			});
 		} else $toc.remove();
 	}
 
@@ -216,8 +196,6 @@ var Debounce = (fn, t) => {
 			index = index[0];
 			idname = idname.split(index)[0];
 		}
-		// 转义字符如 [, ], ~, #, @
-		idname = idname.replace(/(\[|\]|~|#|@)/g, "\\$1");   
 		if (idname && $headerMenu) {
 			$active_link = $('#' + idname, $headerMenu);
 			setUnderline($active_link);
@@ -226,34 +204,30 @@ var Debounce = (fn, t) => {
 
 	// 设置全局事件
 	function setGlobalHeaderMenuEvent() {
-		if (isMobile) {
-			// 手机端 点击展开子菜单
-			$('.m-phone li').click(function (e) {
-				e.stopPropagation();
-				$($(e.currentTarget).children('ul')).show();
-			});
-		} else {
-			// PC端 hover时展开子菜单，点击时隐藏子菜单
-			$('.m-pc li > a[href]').parent().click(function (e) {
-				e.stopPropagation();
-				if (e.target.origin == e.target.baseURI) {
-					$('.m-pc .list-v').hide();
-				}
-			});
-		}
+		// PC端 hover时展开子菜单，点击时隐藏子菜单
+		$('.m-pc li > a[href]').parent().click(function (e) {
+			e.stopPropagation();
+			if (e.target.origin == e.target.baseURI) {
+				$('.m-pc .list-v').hide();
+			}
+		});
+		// 手机端 点击展开子菜单
+		$('.m-phone li').click(function (e) {
+			e.stopPropagation();
+			$($(e.currentTarget).children('ul')).show();
+		});
 		setPageHeaderMenuEvent();
 	}
 
 	function setPageHeaderMenuEvent() {
-		if (!isMobile) return;
 		// 手机端 点击空白处隐藏子菜单
 		$(document).click(function (e) {
 			$('.m-phone .list-v').hide();
 		});
 		// 手机端 滚动时隐藏子菜单
-		$(window).scroll(Debounce(() => {
+		$(window).scroll(() => {
 			$('.m-phone .list-v').hide();
-		}));
+		});
 	}
 	// 设置导航栏搜索框   fix √
 	function setHeaderSearch() {
@@ -356,9 +330,9 @@ var Debounce = (fn, t) => {
 			$(liElements).removeClass('active').eq(l).addClass('active');
 		};
 
-		$(window).scroll(Debounce(() => {
+		$(window).scroll(() => {
 			scrollListener();
-		}));
+		});
 
 		// 监听窗口改变事件
 		let resizeTimer = null;
@@ -373,28 +347,40 @@ var Debounce = (fn, t) => {
 		scrollListener();
 	}
 
-	// 彩虹标签
-	function colortag(){
-		$("ul.tag-list li").each(function(){
-			let random = Math.floor(Math.random()*5+1);
-			if(random == 2){
-				$(this).find('a').addClass('tagred');
-			} else if ( random == 3 ){
-				$(this).find('a').addClass('tagyellow');
-			} else if ( random == 4 ){
-				$(this).find('a').addClass('tagblue');
-			} else if ( random == 5 ){
-				$(this).find('a').addClass('taggreen');
-			} else if ( random == 2 ){
-				$(this).find('a').addClass('tagpurple');
-			} else if ( random == 1 ){
-				$(this).find('a').addClass('taggrown');
-			}
-				
-		});
+	// 设置搜索服务
+	function setSearchService() {
+		var SearchServiceimagePath="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/img/"
+		if (SEARCH_SERVICE === 'google') {
+			customSearch = new GoogleCustomSearch({
+				apiKey: GOOGLE_CUSTOM_SEARCH_API_KEY,
+				engineId: GOOGLE_CUSTOM_SEARCH_ENGINE_ID,
+				imagePath: SearchServiceimagePath
+			});
+		} else if (SEARCH_SERVICE === 'algolia') {
+			customSearch = new AlgoliaSearch({
+				apiKey: ALGOLIA_API_KEY,
+				appId: ALGOLIA_APP_ID,
+				indexName: ALGOLIA_INDEX_NAME,
+				imagePath: SearchServiceimagePath
+			});
+		} else if (SEARCH_SERVICE === 'hexo') {
+			customSearch = new HexoSearch({
+				imagePath: SearchServiceimagePath
+			});
+		} else if (SEARCH_SERVICE === 'azure') {
+			customSearch = new AzureSearch({
+				serviceName: AZURE_SERVICE_NAME,
+				indexName: AZURE_INDEX_NAME,
+				queryKey: AZURE_QUERY_KEY,
+				imagePath: SearchServiceimagePath
+			});
+		} else if (SEARCH_SERVICE === 'baidu') {
+			customSearch = new BaiduSearch({
+				apiId: BAIDU_API_ID,
+				imagePath: SearchServiceimagePath
+			});
+		}
 	}
-
-	colortag();
 
 	// 设置 tabs 标签
 	function setTabs() {
@@ -425,6 +411,7 @@ var Debounce = (fn, t) => {
 		setHeaderSearch();
 		setTocToggle();
 		setScrollAnchor();
+		setSearchService();
 		setTabs();
 
 		// 全屏封面底部箭头
@@ -461,6 +448,8 @@ var Debounce = (fn, t) => {
 			// console.log(error);
 		}
 	});
+
+
 })(jQuery);
 
 /*锚点定位*/
@@ -475,7 +464,9 @@ if(window.location.hash){
 }
 
 
+
 /*泡泡*/
+
 (function() {
 	var canvas, ctx, width, height, bubbles, animateHeader = true;
 	initHeader();
@@ -547,5 +538,28 @@ if(window.location.hash){
 		}; 
 	}
 })();
+
+
+//彩虹标签
+function colortag(){
+$("ul.tag-list li").each(function(){
+	let random = Math.floor(Math.random()*5+1);
+	if(random == 2){
+		$(this).find('a').addClass('tagred');
+	} else if ( random == 3 ){
+		$(this).find('a').addClass('tagyellow');
+	} else if ( random == 4 ){
+		$(this).find('a').addClass('tagblue');
+	} else if ( random == 5 ){
+		$(this).find('a').addClass('taggreen');
+	} else if ( random == 2 ){
+		$(this).find('a').addClass('tagpurple');
+	} else if ( random == 1 ){
+		$(this).find('a').addClass('taggrown');
+	}
+		
+});}
+
+colortag();
 
 

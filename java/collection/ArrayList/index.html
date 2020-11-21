@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
-<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/tree/4.0.0'>
+<html>
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/tree/1.0'>
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
@@ -13,7 +13,6 @@
   <meta name="HandheldFriendly" content="True" >
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta http-equiv='x-dns-prefetch-control' content='on' />
 
   <!-- 页面元数据 -->
   
@@ -35,21 +34,17 @@
   
 
   <!-- link -->
-  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
   
     
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/heson525/fontawesome-pro@5.13.1/css/all.min.css">
 
   
   
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css">
-
-  
-
   
     
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
 
   
 
@@ -58,10 +53,13 @@
   
 
   
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
+
   
 
   
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC&display=swap" media="print" onload="this.media='all'">
+  
+
 
   <!-- import link -->
   
@@ -69,7 +67,7 @@
   
     
       
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.18.1/styles/solarized-light.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.2.0/styles/a11y-dark.css">
 
     
   
@@ -80,28 +78,24 @@
   
   
   
-  <!-- 脚本懒加载函数 -->
-  <script>
-  function loadScript(src, cb) {
-    var HEAD = document.getElementsByTagName('head')[0] || document.documentElement;
-    var script = document.createElement('script');
-    script.setAttribute('type','text/javascript');
-    if (cb) script.onload = cb;
-    script.setAttribute('src', src);
-    HEAD.appendChild(script);
-  }
-  //https://github.com/filamentgroup/loadCSS
-  !function(c){"use strict";var e=function(e,t,n,r){var o,i=c.document,a=i.createElement("link");if(t)o=t;else{var d=(i.body||i.getElementsByTagName("head")[0]).childNodes;o=d[d.length-1]}var f=i.styleSheets;if(r)for(var l in r)r.hasOwnProperty(l)&&a.setAttribute(l,r[l]);a.rel="stylesheet",a.href=e,a.media="only x",function e(t){if(i.body)return t();setTimeout(function(){e(t)})}(function(){o.parentNode.insertBefore(a,t?o:o.nextSibling)});var s=function(e){for(var t=a.href,n=f.length;n--;)if(f[n].href===t)return e();setTimeout(function(){s(e)})};function u(){a.addEventListener&&a.removeEventListener("load",u),a.media=n||"all"}return a.addEventListener&&a.addEventListener("load",u),(a.onloadcssdefined=s)(u),a};"undefined"!=typeof exports?exports.loadCSS=e:c.loadCSS=e}("undefined"!=typeof global?global:this);
-  </script>
-  <script id="loadcss"></script>
+    <!-- 脚本懒加载函数 -->
+    <script>
+      function loadScript(src, cb) {
+        var HEAD = document.getElementsByTagName('head')[0] || document.documentElement;
+        var script = document.createElement('script');
+        script.setAttribute('type','text/javascript');
+        if (cb) script.onload = cb;
+        script.setAttribute('src', src);
+        HEAD.appendChild(script);
+      }
+       </script>
+    
 </head>
 
 <body>
   <!-- 页面点击小红心 -->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/js/love.js"></script>
-  <!--浏览器搞笑标题-->
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/js/ergao.js"></script>  
-  <header class="l_header always shadow blur "  >
+  <header class="l_header auto shadow floatable blur" style='opacity: 0' >
   <div class='container'>
   <div class='wrapper'>
     <div class='nav-sub'>
@@ -118,11 +112,9 @@
         
         <a class="title flat-box" target="_self" href='/'>
           
+            <img no-lazy class='logo' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/logo/logo1200x200.png'/>
           
-            <i class='fa-fw fab fa-modx fa-spin'></i>
           
-          
-            Yanliang
           
         </a>
       
@@ -426,22 +418,6 @@
                       <div class="aplayer-container">
                         
 
-  
-    <meting-js
-      theme='#1BCDFC'
-      autoplay='false'
-      volume='0.7'
-      loop='all'
-      order='list'
-      fixed='false'
-      list-max-height='320px'
-      server='netease'
-      type='song'
-      id='186453'
-      list-folded='true'>
-    </meting-js>
-  
-
 
                       </div>
                     </li>
@@ -462,14 +438,14 @@
 
       <div class="m_search">
         <form name="searchform" class="form u-search-form">
-          <i class="icon fas fa-search fa-fw"></i>
-          <input type="text" class="input u-search-input" placeholder="Search..." />
+          <i class="icon fal fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="搜索..." />
         </form>
       </div>
 
 			<ul class='switcher nav-list-h m-phone'>
 				
-					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+					<li><a class="s-search fal fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
 				
 				<li>
           <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
@@ -779,18 +755,19 @@
 
   <div class="l_body">
     <div class="l_cover">
+
   
-    
-    
-        <div class='cover-wrapper post featured' style="display: none;">
-          
-            <div class='cover-backstretch'></div>
-          
-          <div class='cover-body'>
+  
+      <div class='cover-wrapper post featured' style="display: none;">
+        <canvas id="header_canvas" style="position:absolute;bottom:0;z-index: 1;" width="900" height="350"></canvas>
+        
+          <div class='cover-bg lazyload placeholder' data-bg="https://picup.heson10.com/img/upyun/home_top_bg.webp"></div>
+        
+        <div class='cover-body'>
   <div class='top'>
     
-      <img no-lazy class='logo' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/logo.png'/>
     
+      <p class="title">Yanliang</p>
     
     
   </div>
@@ -840,68 +817,430 @@
   </div>
 </div>
 
-          <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
-        </div>
-    
+        <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+      </div>
   
-  </div>
-  
+
+</div>
+
     <div class='safearea'>
       <div class='body-wrapper' id="pjax-container">
         
-          <!--此文件用来存放一些不方便取值的变量--> 
-<!--思路大概是将值藏到重加载的区域内--> 
- 
- 
- 
-<div id="pjax-data" style="display: none"> 
-  <div id="pjax-ispage">true</div> 
-  <div id="pjax-pageTitle">ArrayList 底层实现原理分析</div> 
-  <div id="pjax-enable-cover">true</div> 
-  <div id="pjax-comment-path"></div> 
-  <div id="pjax-comment-placeholder"></div> 
-</div> 
- 
- 
-<script> 
-  // 处理封面 此时 jquery 还没加载 
-  if ("half" == "none") { // 移除封面 
-    document.getElementsByClassName('cover-wrapper')[0].style.display = "none"; 
-    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show"); 
-  } else { 
-    if ("half" == "half") { // 半屏 
-      document.getElementsByClassName('cover-wrapper')[0].setAttribute('id', 'half'); 
-      document.getElementsByClassName('scroll-down')[0].style.display = "none"; 
-    } else if ("half" == "full") { // 全屏 
-      document.getElementsByClassName('cover-wrapper')[0].setAttribute('id', 'full'); 
-      document.getElementsByClassName('scroll-down')[0].style.display = ""; 
-    } 
-    document.getElementsByClassName('cover-wrapper')[0].style.display = ""; 
-    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show"); 
-  } 
-</script> 
- 
+          <!--此文件用来存放一些不方便取值的变量-->
+<!--思路大概是将值藏到重加载的区域内-->
+
+
+
+<div id="pjax-data" style="display: none">
+  <div id="pjax-ispage">true</div>
+  <div id="pjax-pageTitle">ArrayList 底层实现原理分析</div>
+  <div id="pjax-enable-cover">true</div>
+  <div id="pjax-comment-path"></div>
+  <div id="pjax-comment-placeholder"></div>
+</div>
+
+
+<script>
+  // 处理封面 此时 jquery 还没加载
+  if ("half" == "none") { // 移除封面
+    document.getElementsByClassName('cover-wrapper')[0].style.display = "none";
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show");
+  } else {
+    if ("half" == "half") { // 半屏
+      document.getElementsByClassName('cover-wrapper')[0].setAttribute('id', 'half');
+      document.getElementsByClassName('scroll-down')[0].style.display = "none";
+    } else if ("half" == "full") { // 全屏
+      document.getElementsByClassName('cover-wrapper')[0].setAttribute('id', 'full');
+      document.getElementsByClassName('scroll-down')[0].style.display = "";
+    }
+    document.getElementsByClassName('cover-wrapper')[0].style.display = "";
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show");
+  }
+</script>
+
 
         
         
+
+<aside class='l_side'>
+  <div style="margin-bottom: 16px;border-radius: 8px;" class='shadow floatable widget_author desktop'>
+    <div id="zuozhebg" class="newauthor"
+      style="background: url(https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/touxiang.webp) center center no-repeat;background-size:cover">
+    </div>
+    <div class="relive_widget_v3">
+      <div class="box-author-info">
+        <div class="author-face">
+          <a href="/about" target="_blank" rel="nofollow" title="关于yanliang">
+            <img no-lazy alt="" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/touxiang.webp"
+              class="avatar avatar-200 photo" height="200" width="200"> </a>
+        </div>
+        <div class="author-name">yanliang</div>
+        <div id="author-one" class="author-one">
+          <script>
+            var binft = function (r) {
+              function t() {
+                return b[Math.floor(Math.random() * b.length)]
+              }
+              function e() {
+                return String.fromCharCode(94 * Math.random() + 33)
+              }
+              function n(r) {
+                for (var n = document.createDocumentFragment(), i = 0; r > i; i++) {
+                  var l = document.createElement("span");
+                  l.textContent = e(), l.style.color = t(), n.appendChild(l)
+                }
+                return n
+              }
+              function i() {
+                var t = o[c.skillI];
+                c.step ? c.step-- : (c.step = g, c.prefixP < l.length ? (c.prefixP >= 0 && (c.text += l[c.prefixP]), c.prefixP++) : "forward" === c.direction ? c.skillP < t.length ? (c.text += t[c.skillP], c.skillP++) : c.delay ? c.delay-- : (c.direction = "backward", c.delay = a) : c.skillP > 0 ? (c.text = c.text.slice(0, -1), c.skillP--) : (c.skillI = (c.skillI + 1) % o.length, c.direction = "forward")), r.textContent = c.text, r.appendChild(n(c.prefixP < l.length ? Math.min(s, s + c.prefixP) : Math.min(s, t.length - c.skillP))), setTimeout(i, d)
+              }
+              var l = "",
+                o = ["人生在勤，不索何获", "日日待明日,万事成蹉跎", "丈夫志四海，万里犹比邻", "还在看这里吗？", "能不能别看了？", "文章更精彩...."].map(function (r) {
+                  return r + ""
+                }),
+                a = 2,
+                g = 1,
+                s = 5,
+                d = 75,
+                b = ["rgb(110,64,170)", "rgb(150,61,179)", "rgb(191,60,175)", "rgb(228,65,157)", "rgb(254,75,131)", "rgb(255,94,99)", "rgb(255,120,71)", "rgb(251,150,51)", "rgb(226,183,47)", "rgb(198,214,60)", "rgb(175,240,91)", "rgb(127,246,88)", "rgb(82,246,103)", "rgb(48,239,130)", "rgb(29,223,163)", "rgb(26,199,194)", "rgb(35,171,216)", "rgb(54,140,225)", "rgb(76,110,219)", "rgb(96,84,200)"],
+                c = {
+                  text: "",
+                  prefixP: -s,
+                  skillI: 0,
+                  skillP: 0,
+                  direction: "forward",
+                  delay: a,
+                  step: g
+                };
+              i()
+            };
+            binft(document.getElementById('author-one'));
+          </script>
+
+
+        </div>
+        <div class="site-state-wrap motion-element">
+          <nav class="site-state">
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+
+                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/">
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          </nav>
+        </div>
+      </div>
+       
+      <!-- 主题配置文件开启此功能 按需修改文章标题和链接  -->
+      <dl class="article-newest">
+        <dt>———<span class="tit" style="font-weight: bold;">热门文章</span>———</dt>
+        <li>
+          <span class="order od-1">1</span>
+          <a href="/spring/custom-ioc-aop/" title="手写实现IOC 和 AOP"><i
+              class="iconfont icon-sanjiao"></i>手写实现IOC 和 AOP</a>
+        </li>
+        <li>
+          <span class="order od-2">2</span>
+          <a href="/java/collection/HashMapAnalysis/" title="HashMap 底层实现原理分析"><i class="iconfont icon-sanjiao"></i>HashMap 底层实现原理分析</a>
+        </li>
+        <li>
+          <span class="order od-3">3</span>
+          <a href="/good/how-to-design-extensible-limiting-algorithm/" title="如何设计一个可扩展的限流算法 [转]"><i class="iconfont icon-sanjiao"></i>如何设计一个可扩展的限流算法 [转]</a>
+        </li>
+        <li>
+          <span class="order od-4">4</span>
+          <a href="/concurrency/lock_and_synchronized/" title="Lock & Synchronized"><i
+              class="iconfont icon-sanjiao"></i>Lock & Synchronized</a>
+        </li>
+        <li>
+          <span class="order od-5">5</span>
+          <a href="/design-pattern/immutability/" title="并发设计模式：Immutability 模式"><i
+              class="iconfont icon-sanjiao"></i>并发设计模式：Immutability 模式</a>
+        </li>
+        <li>
+          <span class="order od-6">6</span>
+          <a href="/JSONParser/" title="撸一个JSON解析器"><i
+              class="iconfont icon-sanjiao"></i>撸一个JSON解析器</a>
+        </li>
+      </dl>
+      
+
+    </div>
+  </div>
+
+  
+
+  
+  
+    
+    
+  
+
+  <section class="widget category shadow floatable desktop">
+    
+  <header>
+    
+      <a href='/categories/'><i class="fal fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+    
+  </header>
+
+
+    <div class='content'>
+      <ul class="entry navigation">
+        
+          <li><a class="flat-box"
+            title="/categories/Java/" href="/categories/Java/"
+            id="categoriesJava"
+            ><div class='name'>Java</div><div class='badge'>(13)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/Mybatis/" href="/categories/Mybatis/"
+            id="categoriesMybatis"
+            ><div class='name'>Mybatis</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/Spring/" href="/categories/Spring/"
+            id="categoriesSpring"
+            ><div class='name'>Spring</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/kafka/" href="/categories/kafka/"
+            id="categorieskafka"
+            ><div class='name'>kafka</div><div class='badge'>(8)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E5%B9%B6%E5%8F%91/" href="/categories/%E5%B9%B6%E5%8F%91/"
+            id="categoriesE5B9B6E58F91"
+            ><div class='name'>并发</div><div class='badge'>(4)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E8%AE%BE%E8%AE%A1/" href="/categories/%E8%AE%BE%E8%AE%A1/"
+            id="categoriesE8AEBEE8AEA1"
+            ><div class='name'>设计</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"
+            id="categoriesE8AEBEE8AEA1E6A8A1E5BC8F"
+            ><div class='name'>设计模式</div><div class='badge'>(2)</div></a></li>
+        
+      </ul>
+    </div>
+  </section>
+
+
+  
+
+  
+
+  
+    
+    
+
+<section class="widget text shadow floatable desktop">
+  
+  <header>
+    
+      <i class="far fa-comments fa-fw" aria-hidden="true"></i><span class='name'>最新评论</span>
+    
+  </header>
+
+
+  <div class='content'>
+    
+      <div id="hot-comments"></div>
+    
+  </div>
+</section>
+
+  
+
+  
+    
+    
+
+<section class="widget shadow floatable desktop mobile">
+  
+  <header>
+    
+      <i class="fal fa-award fa-fw" aria-hidden="true"></i><span class='name'>站点信息</span>
+    
+  </header>
+
+
+  <div class='content'>
+    <div class="webinfo">
+      
+        <div class="webinfo-item">
+          <div>文章数目：</div>
+          <div>32 篇</div>
+        </div>
+      
+
+      
+        <div class="webinfo-item">
+          <div>已运行时间：</div>
+          <div id="webinfo-runtime-count" publish_date="03/24/2020 21:34:09"></div>
+        </div>
+        <script>
+          var BirthDay = new Date(new Date('2020/07/06'));
+          var today = new Date();
+          var timeold = (today.getTime() - BirthDay.getTime());
+          var daysold = Math.floor(timeold / (24 * 60 * 60 * 1000));
+          document.getElementById('webinfo-runtime-count').innerHTML = daysold + ' 天';
+        </script>
+      
+
+
+      
+        <div class="webinfo-item">
+          <div>本站总字数：</div>
+          <div>84.9k 字</div>
+        </div>
+      
+
+      
+        <div class="webinfo-item">
+          <div>本站访客数：</div>
+          <div><span id="busuanzi_value_site_uv"><i class="fas fa-fan fa-spin fa-fw" aria-hidden="true"></i></span> 人</div>
+        </div>
+      
+
+      
+        <div class="webinfo-item">
+          <div>本站总访问量：</div>
+          <div><span id="busuanzi_value_site_pv"><i class="fas fa-fan fa-spin fa-fw" aria-hidden="true"></i></span> 次</div>
+        </div>
+      
+
+      
+        <div class="webinfo-item">
+          <div>最后活动时间：</div>
+          
+            <div id="last-update" style="display: none;">Sat Nov 21 2020 10:13:13 GMT+0800 (GMT+08:00)</div>
+            <div id="last-update-show">2020-11-21 日</div>
+          
+        </div>
+        
+        <script>
+          function timeago(dateTimeStamp) {
+              var minute = 1000 * 60; //把分，时，天，周，半个月，一个月用毫秒表示
+              var hour = minute * 60;
+              var day = hour * 24;
+              var week = day * 7;
+              var month = day * 30;
+              var now = new Date().getTime(); //获取当前时间毫秒
+              var diffValue = now - dateTimeStamp; //时间差
+              if (diffValue < 0) {
+                  return;
+              }
+              var minC = diffValue / minute; //计算时间差的分，时，天，周，月
+              var hourC = diffValue / hour;
+              var dayC = diffValue / day;
+              var weekC = diffValue / week;
+              var monthC = diffValue / month;
+              if (monthC >= 1 && monthC <= 3) {
+                  result = " " + parseInt(monthC) + " 月前"
+              } else if (weekC >= 1 && weekC <= 3) {
+                  result = " " + parseInt(weekC) + " 周前"
+              } else if (dayC >= 1 && dayC <= 6) {
+                  result = " " + parseInt(dayC) + " 天前"
+              } else if (hourC >= 1 && hourC <= 23) {
+                  result = " " + parseInt(hourC) + " 小时前"
+              } else if (minC >= 1 && minC <= 59) {
+                  result = " " + parseInt(minC) + " 分钟前"
+              } else if (diffValue >= 0 && diffValue <= minute) {
+                  result = "刚刚"
+              } else {
+                  var datetime = new Date();
+                  datetime.setTime(dateTimeStamp);
+                  var Nyear = datetime.getFullYear();
+                  var Nmonth = datetime.getMonth() + 1 < 10 ? "0" + (datetime.getMonth() + 1) : datetime.getMonth() + 1;
+                  var Ndate = datetime.getDate() < 10 ? "0" + datetime.getDate() : datetime.getDate();
+                  var Nhour = datetime.getHours() < 10 ? "0" + datetime.getHours() : datetime.getHours();
+                  var Nminute = datetime.getMinutes() < 10 ? "0" + datetime.getMinutes() : datetime.getMinutes();
+                  var Nsecond = datetime.getSeconds() < 10 ? "0" + datetime.getSeconds() : datetime.getSeconds();
+                  result = Nyear + "-" + Nmonth + "-" + Ndate
+              }
+              return result;
+          }
+          var lastUpDate = document.getElementById('last-update').innerHTML;
+          try {
+            document.getElementById('last-update-show').innerHTML = timeago(new Date(lastUpDate));
+          } catch (error) {
+            document.getElementById('last-update-show').innerHTML = '2020-11-21 日';
+          }
+        </script>
+        
+      
+    </div>
+  </div>
+</section>
+
+  
+
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow floatable desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fal fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-text">构造函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E5%85%83%E7%B4%A0"><span class="toc-text">添加元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%A9%E5%AE%B9%E7%9B%B8%E5%85%B3"><span class="toc-text">扩容相关</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E5%85%83%E7%B4%A0"><span class="toc-text">删除元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E5%85%83%E7%B4%A0"><span class="toc-text">修改元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E5%85%83%E7%B4%A0"><span class="toc-text">查找元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">序列化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="toc-text">迭代器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E6%96%B9%E6%B3%95"><span class="toc-text">其他方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ArrayList%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98"><span class="toc-text">ArrayList相关问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Integer-MAX-VALUE-8-%E8%BF%99%E9%87%8C%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%87%8F%E5%8E%BB8%EF%BC%9F"><span class="toc-text">Integer.MAX_VALUE - 8  这里为什么要减去8？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jdk1-8%E7%9A%84%E6%97%A0%E5%8F%82%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E4%B9%8B%E5%89%8D%E7%89%88%E6%9C%AC%E7%9A%84%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="toc-text">jdk1.8的无参构造函数和之前版本的构造函数有什么区别?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jdk1-6%E4%B8%AD%E6%89%A9%E5%AE%B9%E7%AE%97%E6%B3%95%E7%9A%84%E7%BC%BA%E9%99%B7"><span class="toc-text">jdk1.6中扩容算法的缺陷</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88ArrayList%E8%87%AA%E5%8A%A8%E5%AE%B9%E9%87%8F%E6%89%A9%E5%85%85%E9%80%89%E6%8B%A9%E6%89%A9%E5%85%851-5%E5%80%8D%EF%BC%9F"><span class="toc-text">为什么ArrayList自动容量扩充选择扩充1.5倍？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88ArrayList-%E4%B8%8D%E9%80%82%E5%90%88%E9%A2%91%E7%B9%81%E6%8F%92%E5%85%A5%E5%92%8C%E5%88%A0%E9%99%A4%E6%93%8D%E4%BD%9C%EF%BC%9F"><span class="toc-text">为什么ArrayList 不适合频繁插入和删除操作？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RandomAccess%E6%8E%A5%E5%8F%A3"><span class="toc-text">RandomAccess接口</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
 
 <div class='l_main'>
-  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  <article
+  class="article post white-box reveal md shadow floatable article-type-post"
+  id="post" itemscope itemprop="blogPost">
   
 
 
   
-    <div class='headimg-div'>
-      <a class='headimg-a'>
-        <img class='headimg' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life10.webp'/>
-      </a>
-    </div>
+    
+      
+        <div class='headimg lazyload' data-bg='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life10.webp'></div>
+      
+    
   
   <div class="article-meta" id="top">
     
     
       <a title='ArrayList 底层实现原理分析' href='/java/collection/ArrayList/'>
-        <img class='thumbnail' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life10.webp'>
+        
+          
+            <img class='thumbnail lazyload' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life10.webp'>
+          
+        
       </a>
     
     
@@ -913,9 +1252,9 @@
           
             
 <div class='new-meta-item author'>
-  <a class='author' href="/" rel="nofollow">
+  <a class='author' href="https://gyl-coder.top" rel="nofollow">
     <img no-lazy src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/touxiang.webp">
-    <p>Yanliang</p>
+    <p>yanliang</p>
   </a>
 </div>
 
@@ -925,7 +1264,7 @@
             
   <div class='new-meta-item category'>
     <a class='notlink'>
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <i class="fal fa-folder-open fa-fw" aria-hidden="true"></i>
       <a class="category-link" href="/categories/Java/">Java</a>
     </a>
   </div>
@@ -936,7 +1275,7 @@
           
             <div class="new-meta-item date">
   <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <i class="fal fa-calendar-alt fa-fw" aria-hidden="true"></i>
     <p>发布于：Jul 1, 2020</p>
   </a>
 </div>
@@ -944,12 +1283,19 @@
           
         
           
-            <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-02T17:54:08+08:00">
-  <a class='notlink'>
-    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Oct 2, 2020</p>
-  </a>
-</div>
+            
+  <div class="new-meta-item browse busuanzi">
+    <a class='notlink'>
+      <i class="fal fa-eye fa-fw" aria-hidden="true"></i>
+      <p>
+        <span id="busuanzi_value_page_pv">
+          <i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i>
+        </span>
+        次浏览
+      </p>
+    </a>
+  </div>
+
 
           
         
@@ -959,27 +1305,31 @@
 
 
   
+
+  
   <p>ArrayList是List接口的 可变数组的实现。实现了所有可选列表操作，并允许包括 null 在内的所有元素。除了实现 List接口外，此类还提供一些方法来操作内部用来存储列表的数组的大小。ArrayList继承自 AbstractList，这是一个抽象类对一些基础的list操作做了一些封装.实现了RandomAccess 标记接口，表明可以实现快速随机访问.实现了Cloneable接口的实现表示该容器具有Clone函数操作，Serializable是序列化。</p>
 <p>每个ArrayList实例都有一个容量，该容量是指用来存储列表元素的数组的大小。它总是至少等于列表的大小。随着向ArrayList中不断添加元素，其容量也自动增长。自动增长会带来数据向新数组的重新拷贝，因此，如果可预知数据量的大小，就可在构造ArrayList实例时指定其容量。</p>
 <p>在添加大量元素前，应用程序也可以使用ensureCapacity操作来增加ArrayList实例的容量，这可以减少递增式再分配的数量。</p>
 <p>注意，此实现不是同步的。如果多个线程同时访问一个ArrayList实例，而其中至少一个线程从结构上修改了列表，那么它必须保持外部同步。</p>
 <blockquote><p>ArrayList这个数据结构比较简单，总体来说，ArrayList底层结构是数组，他的很多方法都是从数组上面演变而来的。</p>
 </blockquote>
+
 <p>下面我们先来看一下ArrayList中的一些初始值</p>
 <a id="more"></a>
-<pre><code class="language-java">//通过ArrayList实现的接口可知，其支持随机访问，能被克隆，支持序列化
+
+<pre><code class="java">//通过ArrayList实现的接口可知，其支持随机访问，能被克隆，支持序列化
 public class ArrayList&lt;E&gt; extends AbstractList&lt;E&gt;
         implements List&lt;E&gt;, RandomAccess, Cloneable, java.io.Serializable
-&amp;#123;
+&#123;
     //序列版本号
     private static final long serialVersionUID = 8683452581122892189L;
   //默认初始容量
     private static final int DEFAULT_CAPACITY = 10;
     //空实例的共享空数组实例
-    private static final Object[] EMPTY_ELEMENTDATA = &amp;#123;&amp;#125;;
+    private static final Object[] EMPTY_ELEMENTDATA = &#123;&#125;;
     //被用于默认大小的空实例的共享数组实例。
     //与EMPTY_ELEMENTDATA的区别是：当我们向数组中添加第一个元素时，知道数组该扩充多少。
-    private static final Object[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA = &amp;#123;&amp;#125;;
+    private static final Object[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA = &#123;&#125;;
     /**
      * Object[]类型的数组，保存了添加到ArrayList中的元素。ArrayList的容量是该Object[]类型数组的长度
      * 当第一个元素被添加时，任何空ArrayList中的elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA将会被
@@ -988,45 +1338,42 @@ public class ArrayList&lt;E&gt; extends AbstractList&lt;E&gt;
      transient Object[] elementData; //没有被私有化是为了简化内部类访问
     // ArrayList的大小（指其所含的元素个数）
     private int size;
-    
+
     // 记录被修改的次数  
     protected transient int modCount = 0;  
-    
+
     // 数组的最大值  
     private static final int MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8  
-&amp;#125;
-</code></pre>
-<p>elementData 是&quot;Object[] 类型的数组&quot;，它保存了添加到ArrayList中的元素。实际上，elementData是个动态数组，我们能通过构造函数 ArrayList(intinitialCapacity)来执行它的初始容量为initialCapacity；如果通过不含参数的构造函数ArrayList()来创建ArrayList，则elementData的容量默认是10。elementData数组的大小会根据ArrayList容量的增长而动态的增长。</p>
-<h2 id="构造函数"><a class="header-anchor" href="#构造函数">✨</a>构造函数</h2>
-<p>ArrayList提供了三种方式的构造器。可以构造一个默认初始容量为10的空列表、构造一个指定初始容量的空列表以及构造一个包含指定collection的元素的列表。</p>
+&#125;</code></pre>
+<p>elementData 是”Object[] 类型的数组”，它保存了添加到ArrayList中的元素。实际上，elementData是个动态数组，我们能通过构造函数 ArrayList(intinitialCapacity)来执行它的初始容量为initialCapacity；如果通过不含参数的构造函数ArrayList()来创建ArrayList，则elementData的容量默认是10。elementData数组的大小会根据ArrayList容量的增长而动态的增长。</p>
+<h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><p>ArrayList提供了三种方式的构造器。可以构造一个默认初始容量为10的空列表、构造一个指定初始容量的空列表以及构造一个包含指定collection的元素的列表。</p>
 <p>这些元素按照该collection的迭代器返回的顺序排列的。</p>
-<pre><code class="language-java">// 构造一个指定初始容量的空列表
-public ArrayList(int initialCapacity) &amp;#123;
-    if (initialCapacity &gt; 0) &amp;#123;
+<pre><code class="java">// 构造一个指定初始容量的空列表
+public ArrayList(int initialCapacity) &#123;
+    if (initialCapacity &gt; 0) &#123;
         this.elementData = new Object[initialCapacity];
-    &amp;#125; else if (initialCapacity == 0) &amp;#123;
+    &#125; else if (initialCapacity == 0) &#123;
         this.elementData = EMPTY_ELEMENTDATA;
-    &amp;#125; else &amp;#123;              // 如果给定的初始容量为负值
+    &#125; else &#123;              // 如果给定的初始容量为负值
         throw new IllegalArgumentException(&quot;Illegal Capacity: &quot;+
                                            initialCapacity);
-    &amp;#125;
-&amp;#125;
+    &#125;
+&#125;
 // 构造一个默认初始容量为10的空列表
-public ArrayList() &amp;#123;   //这里并没有初始化，jdk 1.8之后是在进行add操作后初始化 
+public ArrayList() &#123;   //这里并没有初始化，jdk 1.8之后是在进行add操作后初始化 
     this.elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;
-&amp;#125;
+&#125;
 // 构造一个包含指定collection的元素的列表，这些元素按照该collection的迭代器返回的顺序排列的
-public ArrayList(Collection&lt;? extends E&gt; c) &amp;#123;
+public ArrayList(Collection&lt;? extends E&gt; c) &#123;
     elementData = c.toArray();
-    if ((size = elementData.length) != 0) &amp;#123; 
+    if ((size = elementData.length) != 0) &#123; 
         // c.toArray()可能不会正确地返回一个 Object[]数组，那么使用Arrays.copyOf()方法
         if (elementData.getClass() != Object[].class)
             elementData = Arrays.copyOf(elementData, size, Object[].class);
-    &amp;#125; else &amp;#123;     // 如果指定的collection为空
+    &#125; else &#123;     // 如果指定的collection为空
         this.elementData = EMPTY_ELEMENTDATA;
-    &amp;#125;
-&amp;#125;
-</code></pre>
+    &#125;
+&#125;</code></pre>
 <p>使用无参构造器，默认初始容量为什么是10？</p>
 <ol>
 <li>初始时：this.elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA = {};  size = 0;</li>
@@ -1034,37 +1381,36 @@ public ArrayList(Collection&lt;? extends E&gt; c) &amp;#123;
 <li>在ensureCapacityInternal(int minCapacity)方法中，minCapacity=DEFAULT_CAPACITY=10，然后再调用ensureExplicitCapacity(minCapacity)方法，即ensureExplicitCapacity(10)；</li>
 <li>在ensureExplicitCapacity(minCapacity)方法中调用grow(minCapacity)方法，即grow(10)，此处为真正具体的数组扩容的算法，在此方法中，通过elementData = Arrays.copyOf(elementData, 10)具体实现了elementData数组初始容量为10的构造。</li>
 </ol>
-<h2 id="添加元素"><a class="header-anchor" href="#添加元素">✨</a>添加元素</h2>
-<pre><code class="language-java">// 在数组末尾加上一个元素
-public boolean add(E e) &amp;#123;
+<h2 id="添加元素"><a href="#添加元素" class="headerlink" title="添加元素"></a>添加元素</h2><pre><code class="java">// 在数组末尾加上一个元素
+public boolean add(E e) &#123;
     ensureCapacityInternal(size + 1);  // 进行扩容检查
     elementData[size++] = e;
     return true;
-&amp;#125;
+&#125;
 
 // 在数组的指定位置添加元素
-public void add(int index, E element) &amp;#123;
+public void add(int index, E element) &#123;
     rangeCheckForAdd(index);   // 检查index是否越界
     ensureCapacityInternal(size + 1);  // 进行扩容检查
-    
+
     // 对数据进行复制操作，空出index位置，并插入element，将源数组中从index位置开始后的size-index个元素统一后移一位
     System.arraycopy(elementData, index, elementData, index + 1, size - index);
     elementData[index] = element;
     size++;    // 元素个数加1
-&amp;#125;
+&#125;
 
 // 按照指定collection集合的迭代器所返回的元素顺序，将该collection中的所有元素添加到列表的尾部
-public boolean addAll(Collection&lt;? extends E&gt; c) &amp;#123;
+public boolean addAll(Collection&lt;? extends E&gt; c) &#123;
     Object[] a = c.toArray();      // 将collection转换为数组类型
     int numNew = a.length;         // collection中的元素个数
     ensureCapacityInternal(size + numNew);  // 进行扩容检查
     System.arraycopy(a, 0, elementData, size, numNew);    // 将数组a[0,...,numNew-1]复制到数组elementData[size,...,size+numNew-1]
     size += numNew;
     return numNew != 0;
-&amp;#125;
+&#125;
 
 // 按照指定collection集合的迭代器所返回的元素顺序，将该collection中的所有元素添加到列表的指定位置
-public boolean addAll(int index, Collection&lt;? extends E&gt; c) &amp;#123;
+public boolean addAll(int index, Collection&lt;? extends E&gt; c) &#123;
     rangeCheckForAdd(index);    // 检查index是否越界
     Object[] a = c.toArray();
     int numNew = a.length;
@@ -1079,37 +1425,35 @@ public boolean addAll(int index, Collection&lt;? extends E&gt; c) &amp;#123;
     System.arraycopy(a, 0, elementData, index, numNew);
     size += numNew;
     return numNew != 0;
-&amp;#125;
-</code></pre>
-<h2 id="扩容相关"><a class="header-anchor" href="#扩容相关">✨</a>扩容相关</h2>
-<pre><code class="language-java">// 用于自定义设置ArrayList的容量
-public void ensureCapacity(int minCapacity) &amp;#123;
+&#125;</code></pre>
+<h2 id="扩容相关"><a href="#扩容相关" class="headerlink" title="扩容相关"></a>扩容相关</h2><pre><code class="java">// 用于自定义设置ArrayList的容量
+public void ensureCapacity(int minCapacity) &#123;
     int minExpand = (elementData != DEFAULTCAPACITY_EMPTY_ELEMENTDATA)
         ? 0
         : DEFAULT_CAPACITY;
-    if (minCapacity &gt; minExpand) &amp;#123;
+    if (minCapacity &gt; minExpand) &#123;
         ensureExplicitCapacity(minCapacity);
-    &amp;#125;
-&amp;#125;
+    &#125;
+&#125;
 // 进行扩容检查
-private void ensureCapacityInternal(int minCapacity) &amp;#123;
+private void ensureCapacityInternal(int minCapacity) &#123;
     //第一次add操作初始化，如果为空ArrayList，那么初始化容量为10
-    if (elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA) &amp;#123;
+    if (elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA) &#123;
         minCapacity = Math.max(DEFAULT_CAPACITY, minCapacity);
-    &amp;#125;
+    &#125;
     //判断是否需要扩容
     ensureExplicitCapacity(minCapacity);
-&amp;#125;
+&#125;
 //判断是否需要扩容
-private void ensureExplicitCapacity(int minCapacity) &amp;#123;
+private void ensureExplicitCapacity(int minCapacity) &#123;
     //modCount这个参数运用到了 fail-fast 机制
     modCount++;
-    
+
     if (minCapacity - elementData.length &gt; 0)
         grow(minCapacity);   // 扩容
-&amp;#125;
+&#125;
 // 扩容
-private void grow(int minCapacity) &amp;#123;
+private void grow(int minCapacity) &#123;
     int oldCapacity = elementData.length;
     //newCapacity为以前的1.5倍
     int newCapacity = oldCapacity + (oldCapacity &gt;&gt; 1);
@@ -1120,19 +1464,17 @@ private void grow(int minCapacity) &amp;#123;
         newCapacity = hugeCapacity(minCapacity);
     // 对数组进行复制处理
     elementData = Arrays.copyOf(elementData, newCapacity);
-&amp;#125;
+&#125;
 // 检查是否超过最大容量 0x7fffffff ，是否抛出异常
-private static int hugeCapacity(int minCapacity) &amp;#123;
+private static int hugeCapacity(int minCapacity) &#123;
     if (minCapacity &lt; 0) // overflow
         throw new OutOfMemoryError();
     return (minCapacity &gt; MAX_ARRAY_SIZE) ?
         Integer.MAX_VALUE :
         MAX_ARRAY_SIZE;
-&amp;#125;
-</code></pre>
-<h2 id="删除元素"><a class="header-anchor" href="#删除元素">✨</a>删除元素</h2>
-<pre><code class="language-java">// 删除指定位置的元素
-public E remove(int index) &amp;#123;
+&#125;</code></pre>
+<h2 id="删除元素"><a href="#删除元素" class="headerlink" title="删除元素"></a>删除元素</h2><pre><code class="java">// 删除指定位置的元素
+public E remove(int index) &#123;
     rangeCheck(index);    //数组越界检查
     modCount++;
     E oldValue = elementData(index);
@@ -1142,235 +1484,220 @@ public E remove(int index) &amp;#123;
                          numMoved);
     elementData[--size] = null;   //help  GC
     return oldValue;
-&amp;#125;
+&#125;
 // 删除指定内容的元素（只删除第一个匹配成功的）
-public boolean remove(Object o) &amp;#123;
-    if (o == null) &amp;#123;
+public boolean remove(Object o) &#123;
+    if (o == null) &#123;
         for (int index = 0; index &lt; size; index++)
-            if (elementData[index] == null) &amp;#123;
+            if (elementData[index] == null) &#123;
                 fastRemove(index);
                 return true;
-            &amp;#125;
-    &amp;#125; else &amp;#123;
+            &#125;
+    &#125; else &#123;
         for (int index = 0; index &lt; size; index++)
-            if (o.equals(elementData[index])) &amp;#123;
+            if (o.equals(elementData[index])) &#123;
                 fastRemove(index);
                 return true;
-            &amp;#125;
-    &amp;#125;
+            &#125;
+    &#125;
     return false;
-&amp;#125;
+&#125;
 //找到对应的元素后，删除。删除元素后的元素都向前移动一位
-private void fastRemove(int index) &amp;#123;
+private void fastRemove(int index) &#123;
     modCount++;
     int numMoved = size - index - 1;
     if (numMoved &gt; 0)     // 将index后面的元素整体向前移动一位
         System.arraycopy(elementData, index+1, elementData, index,
                          numMoved);
     elementData[--size] = null; // help GC
-&amp;#125;
+&#125;
 //清空ArrayList，将全部的元素设为null
-public void clear() &amp;#123;
+public void clear() &#123;
     modCount++;
     for (int i = 0; i &lt; size; i++)    // help  GC
         elementData[i] = null;
     size = 0;
-&amp;#125;
+&#125;
 //删除ArrayList中从fromIndex到toIndex（区间--左闭右开）之间所有的元素
-protected void removeRange(int fromIndex, int toIndex) &amp;#123;
+protected void removeRange(int fromIndex, int toIndex) &#123;
     modCount++;
     int numMoved = size - toIndex;  //需向前移动的元素的个数
     System.arraycopy(elementData, toIndex, elementData, fromIndex,
                      numMoved);
     // help GC
     int newSize = size - (toIndex-fromIndex);
-    for (int i = newSize; i &lt; size; i++) &amp;#123;
+    for (int i = newSize; i &lt; size; i++) &#123;
         elementData[i] = null;
-    &amp;#125;
+    &#125;
     size = newSize;
-&amp;#125;
+&#125;
 //删除ArrayList中包含在指定容器c中的所有元素
-public boolean removeAll(Collection&lt;?&gt; c) &amp;#123;
+public boolean removeAll(Collection&lt;?&gt; c) &#123;
     Objects.requireNonNull(c);  //检查指定的对象c是否为空
     return batchRemove(c, false);
-&amp;#125;
+&#125;
 //移除ArrayList中不包含在指定容器c中的所有元素，与removeAll(Collection&lt;?&gt; c)正好相反
-public boolean retainAll(Collection&lt;?&gt; c) &amp;#123;
+public boolean retainAll(Collection&lt;?&gt; c) &#123;
     Objects.requireNonNull(c);     //检查指定的对象c是否为空
     return batchRemove(c, true);
-&amp;#125;
+&#125;
 // 根据complement的值删除元素
-private boolean batchRemove(Collection&lt;?&gt; c, boolean complement) &amp;#123;
+private boolean batchRemove(Collection&lt;?&gt; c, boolean complement) &#123;
     final Object[] elementData = this.elementData;
     int r = 0, w = 0;    //读写双指针  w是重新存元素时的索引，r是原来的索引
     boolean modified = false;
-    try &amp;#123;
+    try &#123;
         //遍历数组，并检查这个集合是否包含对应的值，移动要保留的值到数组前面，w最后值为要保留的元素的数量
         //简单点：若保留，就将相同元素移动到前段；若删除，就将不同元素移动到前段
         for (; r &lt; size; r++)
             if (c.contains(elementData[r]) == complement)  //判断指定容器c中是否含有elementData[r]元素
                 elementData[w++] = elementData[r];
-    &amp;#125;finally &amp;#123;//确保异常抛出前的部分可以完成期望的操作，而未被遍历的部分会被接到后面
+    &#125;finally &#123;//确保异常抛出前的部分可以完成期望的操作，而未被遍历的部分会被接到后面
         //r!=size表示可能出错了：c.contains(elementData[r])抛出异常
-        if (r != size) &amp;#123;
+        if (r != size) &#123;
             System.arraycopy(elementData, r,elementData, w,size - r);
             w += size - r;
-        &amp;#125;
+        &#125;
         //如果w==size：表示全部元素都保留了，所以也就没有删除操作发生，所以会返回false；反之，返回true，并更改数组
         //而w!=size的时候，即使try块抛出异常，也能正确处理异常抛出前的操作，因为w始终为要保留的前段部分的长度，数组也不会因此乱序
-        if (w != size) &amp;#123;
+        if (w != size) &#123;
             for (int i = w; i &lt; size; i++)
                 elementData[i] = null;
             modCount += size - w;//改变的次数
             size = w;   //新的大小为保留的元素的个数
             modified = true;
-        &amp;#125;
-    &amp;#125;
+        &#125;
+    &#125;
     return modified;
-&amp;#125;
-</code></pre>
+&#125;</code></pre>
 <p>removeAll和retainAll方法：实现删除或保留ArrayList中包含Collection c中的的元素。</p>
 <p>这两个方法都用到batchRemove方法（boolean complement使得batchRemove方法得到了重用）</p>
-<p>下面以removeAll为例，分析batchRemove(c, false)<br>
-a. 遍历elementData<br>
-b. 如果集合c中包含elementData的元素e，即c.contains(elementData[r])为true，if不成立，if结束；如果c不包含elementData的元素e，则if成立，将此元素e赋值给elementData[w++] （即elementData保留了c中没有的元素，也就是删除了c中存在的所有元素。）<br>
-c. 执行finally<br>
-d. finally是不管try中结果如何都会执行的。if(r!=size)，则将elementData未参加比较的元素arraycopy到elementData后面；新索引w加上刚arraycopy的数目；if (w != size)，此时w还不等于size，则将w后的元素移除.只有执行了if (w != size)（事实上只要c中含有elementData的元素，w肯定不等于size），才令modified = true，才说明remove成功，返回true，否则返回false。</p>
+<p>下面以removeAll为例，分析batchRemove(c, false)<br>a. 遍历elementData<br>b. 如果集合c中包含elementData的元素e，即c.contains(elementData[r])为true，if不成立，if结束；如果c不包含elementData的元素e，则if成立，将此元素e赋值给elementData[w++] （即elementData保留了c中没有的元素，也就是删除了c中存在的所有元素。）<br>c. 执行finally<br>d. finally是不管try中结果如何都会执行的。if(r!=size)，则将elementData未参加比较的元素arraycopy到elementData后面；新索引w加上刚arraycopy的数目；if (w != size)，此时w还不等于size，则将w后的元素移除.只有执行了if (w != size)（事实上只要c中含有elementData的元素，w肯定不等于size），才令modified = true，才说明remove成功，返回true，否则返回false。</p>
 <p>ArrayList中还有一个用于节约数组内存空间，缩小容量的方法</p>
-<pre><code class="language-java">// 因为容量常常会大于实际元素的数量。内存紧张时，可以调用该方法删除预留的位置，调整容量为元素实际数量。
+<pre><code class="java">// 因为容量常常会大于实际元素的数量。内存紧张时，可以调用该方法删除预留的位置，调整容量为元素实际数量。
 // 如果确定不会再有元素添加进来时也可以调用该方法来节约空间
-public void trimToSize() &amp;#123;
+public void trimToSize() &#123;
     modCount++;
     // length是数组长度，size表示数组内元素个数  
     // size&lt;length那么就说明数组内有空元素，进行缩小容量操作  
-    if (size &lt; elementData.length) &amp;#123;
+    if (size &lt; elementData.length) &#123;
         elementData = (size == 0) ? EMPTY_ELEMENTDATA : Arrays.copyOf(elementData, size);
-    &amp;#125;
-&amp;#125;
-</code></pre>
+    &#125;
+&#125;</code></pre>
 <p>去掉预留元素的位置。返回一个新数组，新数组不含null，数组的size和elementData.length相等，以节省空间。此函数可避免size很小但elementData.length很大的情况。</p>
 <p>ArrayList会每次增长会预申请多一点空间，1.5倍，这样就会出现当size() = 10的时候，ArrayList已经申请了15空间， trimToSize就是删除多余的5，只留10。</p>
 <p>或许有人会有疑问：调用Arrays.copyOf复制size长度的元素到elementData，而且由源码看应该是从0复制到size处，那么如果我之前调用过add(int index, E element)呢？比如，list={1，2，3，null，null，4，null，null}，如果调用trimToSize返回的应该是list={1，2，3，null}（因为size=4）。其实上面这种情况不会发生的，因为调用add(int index, E element)时，会检查index的合法性，所以list的元素肯定是相邻的，而不会出现上述这种中间出现null的情况。</p>
-<h2 id="修改元素"><a class="header-anchor" href="#修改元素">✨</a>修改元素</h2>
-<pre><code class="language-java">// 将指定位置的元素改为指定的值 
-public E set(int index, E element) &amp;#123;
+<h2 id="修改元素"><a href="#修改元素" class="headerlink" title="修改元素"></a>修改元素</h2><pre><code class="java">// 将指定位置的元素改为指定的值 
+public E set(int index, E element) &#123;
     rangeCheck(index);    // 检查index是否越界
     E oldValue = elementData(index);
     elementData[index] = element;
     return oldValue;
-&amp;#125;
-</code></pre>
-<h2 id="查找元素"><a class="header-anchor" href="#查找元素">✨</a>查找元素</h2>
-<pre><code class="language-java">//判断ArrayList中是否包含Object(o)
-public boolean contains(Object o) &amp;#123;
+&#125;</code></pre>
+<h2 id="查找元素"><a href="#查找元素" class="headerlink" title="查找元素"></a>查找元素</h2><pre><code class="java">//判断ArrayList中是否包含Object(o)
+public boolean contains(Object o) &#123;
     return indexOf(o) &gt;= 0;
-&amp;#125;
+&#125;
 //返回一个值在数组首次出现的位置，会根据是否为null使用不同方式判断。不存在就返回-1。时间复杂度为O(N)
-public int indexOf(Object o) &amp;#123;
-    if (o == null) &amp;#123;
+public int indexOf(Object o) &#123;
+    if (o == null) &#123;
         for (int i = 0; i &lt; size; i++)                 
             if (elementData[i]==null)
                 return i;
-    &amp;#125; else &amp;#123;
+    &#125; else &#123;
         for (int i = 0; i &lt; size; i++)
             if (o.equals(elementData[i]))
                 return i;
-    &amp;#125;
+    &#125;
     return -1;
-&amp;#125;
+&#125;
 //返回一个值在数组最后一次出现的位置，不存在就返回-1。时间复杂度为O(N)
-public int lastIndexOf(Object o) &amp;#123;
-    if (o == null) &amp;#123;
+public int lastIndexOf(Object o) &#123;
+    if (o == null) &#123;
         for (int i = size-1; i &gt;= 0; i--)
             if (elementData[i]==null)
                 return i;
-    &amp;#125; else &amp;#123;
+    &#125; else &#123;
         for (int i = size-1; i &gt;= 0; i--)
             if (o.equals(elementData[i]))
                 return i;
-    &amp;#125;
+    &#125;
     return -1;
-&amp;#125;
+&#125;
 //返回指定位置的值，因为是数组，所以速度特别快
 @SuppressWarnings(&quot;unchecked&quot;)
-E elementData(int index) &amp;#123;
+E elementData(int index) &#123;
     return (E) elementData[index];
-&amp;#125;
+&#125;
 //返回指定位置的值，但是会检查这个位置数否超出数组长度
-public E get(int index) &amp;#123;
+public E get(int index) &#123;
     rangeCheck(index);
     return elementData(index); //实质上return (E) elementData[index]
-&amp;#125;
-</code></pre>
-<h2 id="序列化"><a class="header-anchor" href="#序列化">✨</a>序列化</h2>
-<pre><code class="language-java">//保存数组实例的状态到一个流（即它序列化）。写入过程数组被更改会抛出异常
-private void writeObject(java.io.ObjectOutputStream s) throws java.io.IOException&amp;#123;
+&#125;</code></pre>
+<h2 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h2><pre><code class="java">//保存数组实例的状态到一个流（即它序列化）。写入过程数组被更改会抛出异常
+private void writeObject(java.io.ObjectOutputStream s) throws java.io.IOException&#123;
     int expectedModCount = modCount;
     s.defaultWriteObject(); //执行默认的反序列化/序列化过程。将当前类的非静态和非瞬态字段写入此流
     // 写入大小
     s.writeInt(size);
     // 按顺序写入所有元素
-    for (int i=0; i&lt;size; i++) &amp;#123;
+    for (int i=0; i&lt;size; i++) &#123;
         s.writeObject(elementData[i]);
-    &amp;#125;
-    if (modCount != expectedModCount) &amp;#123;
+    &#125;
+    if (modCount != expectedModCount) &#123;
         throw new ConcurrentModificationException();
-    &amp;#125;
-&amp;#125;
+    &#125;
+&#125;
 //上面是写，这个就是读了。
-private void readObject(java.io.ObjectInputStream s) throws java.io.IOException, ClassNotFoundException &amp;#123;
+private void readObject(java.io.ObjectInputStream s) throws java.io.IOException, ClassNotFoundException &#123;
     elementData = EMPTY_ELEMENTDATA;
     // 执行默认的序列化/反序列化过程
     s.defaultReadObject();
     // 读入数组长度
     s.readInt();
-    if (size &gt; 0) &amp;#123;
+    if (size &gt; 0) &#123;
         ensureCapacityInternal(size);
         Object[] a = elementData;
         //读入所有元素
-        for (int i=0; i&lt;size; i++) &amp;#123;
+        for (int i=0; i&lt;size; i++) &#123;
             a[i] = s.readObject();
-        &amp;#125;
-    &amp;#125;
-&amp;#125;
-</code></pre>
+        &#125;
+    &#125;
+&#125;</code></pre>
 <p><strong>为什么要自定义序列化、反序列化机制呢？</strong></p>
 <p>保存元素的数组 elementData 使用 transient 修饰，该关键字声明数组默认不会被序列化。</p>
-<pre><code class="language-java">transient Object[] elementData; // non-private to simplify nested class access
-</code></pre>
+<pre><code class="java">transient Object[] elementData; // non-private to simplify nested class access</code></pre>
 <p>由于ArrayList实质上是一个动态数组，往往数组中会有空余的空间，如果采用默认的序列化机制，那些空余的空间会作为null写入本地文件或者在网络中传输，耗费了不必要的资源。所以，ArrayList使用自定义序列化机制，仅写入索引为【0，size）的有效元素以节省资源</p>
 <p>序列化时需要使用 ObjectOutputStream 的 writeObject() 将对象转换为字节流并输出。而 writeObject() 方法在传入的对象存在 writeObject() 的时候会去反射调用该对象的 writeObject() 来实现序列化。反序列化使用的是 ObjectInputStream 的 readObject() 方法，原理类似。</p>
-<pre><code class="language-java">ArrayList list = new ArrayList();
+<pre><code class="java">ArrayList list = new ArrayList();
 ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
-oos.writeObject(list);
-</code></pre>
-<h2 id="迭代器"><a class="header-anchor" href="#迭代器">✨</a>迭代器</h2>
-<pre><code class="language-java">//返回ListIterator，开始位置为指定参数
-public ListIterator&lt;E&gt; listIterator(int index) &amp;#123;
+oos.writeObject(list);</code></pre>
+<h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2><pre><code class="java">//返回ListIterator，开始位置为指定参数
+public ListIterator&lt;E&gt; listIterator(int index) &#123;
     if (index &lt; 0 || index &gt; size)
         throw new IndexOutOfBoundsException(&quot;Index: &quot;+index);
     return new ListItr(index);
-&amp;#125;
+&#125;
 //返回ListIterator，开始位置为0
-public ListIterator&lt;E&gt; listIterator() &amp;#123;
+public ListIterator&lt;E&gt; listIterator() &#123;
     return new ListItr(0);
-&amp;#125;
+&#125;
 //返回普通迭代器
-public Iterator&lt;E&gt; iterator() &amp;#123;
+public Iterator&lt;E&gt; iterator() &#123;
     return new Itr();
-&amp;#125;
+&#125;
 //通用的迭代器实现
-private class Itr implements Iterator&lt;E&gt; &amp;#123;
+private class Itr implements Iterator&lt;E&gt; &#123;
     int cursor;       //游标，下一个元素的索引，默认初始化为0
     int lastRet = -1; //上次访问的元素的位置
     int expectedModCount = modCount;//迭代过程不允许修改数组，否则就抛出异常
     //是否还有下一个
-    public boolean hasNext() &amp;#123;
+    public boolean hasNext() &#123;
         return cursor != size;
-    &amp;#125;
+    &#125;
     //下一个元素
     @SuppressWarnings(&quot;unchecked&quot;)
-    public E next() &amp;#123;
+    public E next() &#123;
         checkForComodification();//检查数组是否被修改
         int i = cursor;
         if (i &gt;= size)
@@ -1380,64 +1707,64 @@ private class Itr implements Iterator&lt;E&gt; &amp;#123;
             throw new ConcurrentModificationException();
         cursor = i + 1; //向后移动游标
         return (E) elementData[lastRet = i];    //设置访问的位置并返回这个值
-    &amp;#125;
+    &#125;
     //删除元素
-    public void remove() &amp;#123;
+    public void remove() &#123;
         if (lastRet &lt; 0)
             throw new IllegalStateException();
         checkForComodification();//检查数组是否被修改
-        try &amp;#123;
+        try &#123;
             ArrayList.this.remove(lastRet);
             cursor = lastRet;
             lastRet = -1;
             expectedModCount = modCount;
-        &amp;#125; catch (IndexOutOfBoundsException ex) &amp;#123;
+        &#125; catch (IndexOutOfBoundsException ex) &#123;
             throw new ConcurrentModificationException();
-        &amp;#125;
-    &amp;#125;
+        &#125;
+    &#125;
     @Override
     @SuppressWarnings(&quot;unchecked&quot;)
-    public void forEachRemaining(Consumer&lt;? super E&gt; consumer) &amp;#123;
+    public void forEachRemaining(Consumer&lt;? super E&gt; consumer) &#123;
         Objects.requireNonNull(consumer);
         final int size = ArrayList.this.size;
         int i = cursor;
-        if (i &gt;= size) &amp;#123;
+        if (i &gt;= size) &#123;
             return;
-        &amp;#125;
+        &#125;
         final Object[] elementData = ArrayList.this.elementData;
-        if (i &gt;= elementData.length) &amp;#123;
+        if (i &gt;= elementData.length) &#123;
             throw new ConcurrentModificationException();
-        &amp;#125;
-        while (i != size &amp;&amp; modCount == expectedModCount) &amp;#123;
+        &#125;
+        while (i != size &amp;&amp; modCount == expectedModCount) &#123;
             consumer.accept((E) elementData[i++]);
-        &amp;#125;
+        &#125;
         cursor = i;
         lastRet = i - 1;
         checkForComodification();
-    &amp;#125;
+    &#125;
     //检查数组是否被修改
-    final void checkForComodification() &amp;#123;
+    final void checkForComodification() &#123;
         if (modCount != expectedModCount)
             throw new ConcurrentModificationException();
-    &amp;#125;
-&amp;#125;
+    &#125;
+&#125;
 //ListIterator迭代器实现
-private class ListItr extends Itr implements ListIterator&lt;E&gt; &amp;#123;
-    ListItr(int index) &amp;#123;
+private class ListItr extends Itr implements ListIterator&lt;E&gt; &#123;
+    ListItr(int index) &#123;
         super();
         cursor = index;
-    &amp;#125;
-    public boolean hasPrevious() &amp;#123;
+    &#125;
+    public boolean hasPrevious() &#123;
         return cursor != 0;
-    &amp;#125;
-    public int nextIndex() &amp;#123;
+    &#125;
+    public int nextIndex() &#123;
         return cursor;
-    &amp;#125;
-    public int previousIndex() &amp;#123;
+    &#125;
+    public int previousIndex() &#123;
         return cursor - 1;
-    &amp;#125;
+    &#125;
     @SuppressWarnings(&quot;unchecked&quot;)
-    public E previous() &amp;#123;
+    public E previous() &#123;
         checkForComodification();
         int i = cursor - 1;
         if (i &lt; 0)
@@ -1447,206 +1774,189 @@ private class ListItr extends Itr implements ListIterator&lt;E&gt; &amp;#123;
             throw new ConcurrentModificationException();
         cursor = i;
         return (E) elementData[lastRet = i];
-    &amp;#125;
-    public void set(E e) &amp;#123;
+    &#125;
+    public void set(E e) &#123;
         if (lastRet &lt; 0)
             throw new IllegalStateException();
         checkForComodification();
-        try &amp;#123;
+        try &#123;
             ArrayList.this.set(lastRet, e);
-        &amp;#125; catch (IndexOutOfBoundsException ex) &amp;#123;
+        &#125; catch (IndexOutOfBoundsException ex) &#123;
             throw new ConcurrentModificationException();
-        &amp;#125;
-    &amp;#125;
-    public void add(E e) &amp;#123;
+        &#125;
+    &#125;
+    public void add(E e) &#123;
         checkForComodification();
-        try &amp;#123;
+        try &#123;
             int i = cursor;
             ArrayList.this.add(i, e);
             cursor = i + 1;
             lastRet = -1;
             expectedModCount = modCount;
-        &amp;#125; catch (IndexOutOfBoundsException ex) &amp;#123;
+        &#125; catch (IndexOutOfBoundsException ex) &#123;
             throw new ConcurrentModificationException();
-        &amp;#125;
-    &amp;#125;
-&amp;#125;
-</code></pre>
+        &#125;
+    &#125;
+&#125;</code></pre>
 <p><strong>Iterator与ListIterator的区别：</strong></p>
 <ol>
 <li>Iterator可以应用于所有的集合，Set、List和Map和这些集合的子类型。而ListIterator只能用于List及其子类型；</li>
 <li>Iterator只能实现顺序向后遍历，ListIterator可实现顺序向后遍历和逆向（顺序向前）遍历；</li>
 <li>Iterator只能实现remove操作，ListIterator可以实现remove操作，add操作，set操作。</li>
 </ol>
-<h2 id="其他方法"><a class="header-anchor" href="#其他方法">✨</a>其他方法</h2>
-<pre><code class="language-java">//返回ArrayList的大小（元素个数）
-public int size() &amp;#123;
+<h2 id="其他方法"><a href="#其他方法" class="headerlink" title="其他方法"></a>其他方法</h2><pre><code class="java">//返回ArrayList的大小（元素个数）
+public int size() &#123;
     return size;
-&amp;#125;
+&#125;
 //判断ArrayList是否为空
-public boolean isEmpty() &amp;#123;
+public boolean isEmpty() &#123;
     return size == 0;
-&amp;#125;
+&#125;
 //返回此 ArrayList实例的浅拷贝（元素本身没有被复制，复制过程数组发生改变会抛出异常）
-public Object clone() &amp;#123;
-    try &amp;#123;
+public Object clone() &#123;
+    try &#123;
         ArrayList&lt;?&gt; v = (ArrayList&lt;?&gt;) super.clone();
         v.elementData = Arrays.copyOf(elementData, size);
         v.modCount = 0;
         return v;
-    &amp;#125; catch (CloneNotSupportedException e) &amp;#123;
+    &#125; catch (CloneNotSupportedException e) &#123;
         throw new InternalError(e);
-    &amp;#125;
-&amp;#125;
+    &#125;
+&#125;
 /*
 浅克隆就是我们所看到的Arrays.copyOf， System.arraycopy，数组是新的，但是里面N个元素全是引用的旧的。
 浅拷贝(影子克隆):只复制基本类型。
 深拷贝(深度克隆):基本类+对象。
 */
 //返回一个包含ArrayList中所有元素的数组
-public Object[] toArray() &amp;#123;
+public Object[] toArray() &#123;
     return Arrays.copyOf(elementData, size);
-&amp;#125;
+&#125;
 // 返回一个数组，使用运行时确定类型，该数组包含在这个列表中的所有元素（从第一到最后一个元素）
 // 返回的数组容量由参数和本数组中较大值确定
 @SuppressWarnings(&quot;unchecked&quot;)
-public &lt;T&gt; T[] toArray(T[] a) &amp;#123;
+public &lt;T&gt; T[] toArray(T[] a) &#123;
     if (a.length &lt; size)
-        // Make a new array of a's runtime type, but my contents:
+        // Make a new array of a&#39;s runtime type, but my contents:
         return (T[]) Arrays.copyOf(elementData, size, a.getClass());
     System.arraycopy(elementData, 0, a, 0, size);
     if (a.length &gt; size)
         a[size] = null;
     return a;
-&amp;#125;
-</code></pre>
-<h2 id="ArrayList相关问题"><a class="header-anchor" href="#ArrayList相关问题">✨</a>ArrayList相关问题</h2>
-<h3 id="Integer-MAX-VALUE-8-这里为什么要减去8？"><a class="header-anchor" href="#Integer-MAX-VALUE-8-这里为什么要减去8？">✨</a>Integer.MAX_VALUE - 8  这里为什么要减去8？</h3>
-<p>主要是考虑到不同的JVM,有的VM会在加入一些数据头,当扩容后的容量大于MAX_ARRAY_SIZE,我们会将最小需要容量和MAX_ARRAY_SIZE做比较,如果比它大, 只能取Integer.MAX_VALUE,否则是Integer.MAX_VALUE -8。<strong>这个是从jdk1.7开始才有的</strong></p>
-<h3 id="jdk1-8的无参构造函数和之前版本的构造函数有什么区别"><a class="header-anchor" href="#jdk1-8的无参构造函数和之前版本的构造函数有什么区别">✨</a>jdk1.8的无参构造函数和之前版本的构造函数有什么区别?</h3>
-<pre><code class="language-java">jdk1.6
-public ArrayList() &amp;#123;    
+&#125;</code></pre>
+<h2 id="ArrayList相关问题"><a href="#ArrayList相关问题" class="headerlink" title="ArrayList相关问题"></a>ArrayList相关问题</h2><h3 id="Integer-MAX-VALUE-8-这里为什么要减去8？"><a href="#Integer-MAX-VALUE-8-这里为什么要减去8？" class="headerlink" title="Integer.MAX_VALUE - 8  这里为什么要减去8？"></a>Integer.MAX_VALUE - 8  这里为什么要减去8？</h3><p>主要是考虑到不同的JVM,有的VM会在加入一些数据头,当扩容后的容量大于MAX_ARRAY_SIZE,我们会将最小需要容量和MAX_ARRAY_SIZE做比较,如果比它大, 只能取Integer.MAX_VALUE,否则是Integer.MAX_VALUE -8。<strong>这个是从jdk1.7开始才有的</strong></p>
+<h3 id="jdk1-8的无参构造函数和之前版本的构造函数有什么区别"><a href="#jdk1-8的无参构造函数和之前版本的构造函数有什么区别" class="headerlink" title="jdk1.8的无参构造函数和之前版本的构造函数有什么区别?"></a>jdk1.8的无参构造函数和之前版本的构造函数有什么区别?</h3><pre><code class="java">jdk1.6
+public ArrayList() &#123;    
     this(10);    
-&amp;#125; 
+&#125; 
 jdk1.7
-public ArrayList() &amp;#123;    
+public ArrayList() &#123;    
     super();    
     this.elementData = EMPTY_ELEMENTDATA;    
-&amp;#125;
+&#125;
 jdk1.8
-public ArrayList() &amp;#123;    
+public ArrayList() &#123;    
     this.elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;    
-&amp;#125;
-</code></pre>
+&#125;</code></pre>
 <p>对比下可以看出：jdk1.6的无参构造方法（默认构造方法）构造的ArrayList的底层数组elementData大小（容量）默认为10；从1.7开始，无参构造方法构造的ArrayList的底层数组elementData大小默认为0。</p>
 <p>java集合类在jdk1.7版本基本上都有一种改动：懒初始化。懒初始化指的是默认构造方法构造的集合类，占据尽可能少的内存空间（对于ArrayList来说，使用空数组来占据尽量少的空间，不使用null是为了避免null判断），在第一次进行包含有添加语义的操作时，才进行真正的<strong>初始化</strong>工作。</p>
 <p>1.7开始的ArrayList，默认构造方法构造的实例，底层数组是空数组，容量为0，在进行第一次add/addAll等操作时才会真正给底层数组赋非empty的值。如果add/addAll添加的元素小于10，则把elementData数组扩容为10个元素大小，否则使用刚好合适的大小（例如，第一次addAll添加6个，那么扩容为10个，第一次添加大于10个的，比如24个，扩容为24个，刚好合适）</p>
 <p>1.8版本，默认构造的实例这个行为没有改变，只是用的数组名字变了。</p>
-<h3 id="jdk1-6中扩容算法的缺陷"><a class="header-anchor" href="#jdk1-6中扩容算法的缺陷">✨</a>jdk1.6中扩容算法的缺陷</h3>
-<p>（由于jdk1.7和jdk1.8在扩容算法方面差别不大，所以下面没有严格区分）</p>
-<pre><code class="language-java">jdk1.6
-public void ensureCapacity(int minCapacity) &amp;#123;  
+<h3 id="jdk1-6中扩容算法的缺陷"><a href="#jdk1-6中扩容算法的缺陷" class="headerlink" title="jdk1.6中扩容算法的缺陷"></a>jdk1.6中扩容算法的缺陷</h3><p>（由于jdk1.7和jdk1.8在扩容算法方面差别不大，所以下面没有严格区分）</p>
+<pre><code class="java">jdk1.6
+public void ensureCapacity(int minCapacity) &#123;  
     modCount++;  
     int oldCapacity = elementData.length;  
-    if (minCapacity &gt; oldCapacity) &amp;#123;  
+    if (minCapacity &gt; oldCapacity) &#123;  
         Object oldData[] = elementData;  
         int newCapacity = (oldCapacity * 3)/2 + 1;  
         if (newCapacity &lt; minCapacity)  
             newCapacity = minCapacity;  
         // minCapacity is usually close to size, so this is a win:  
         elementData = Arrays.copyOf(elementData, newCapacity);  
-    &amp;#125;  
-&amp;#125;
-</code></pre>
+    &#125;  
+&#125;</code></pre>
 <p>从上面的代码可以看出jdk1.6的ensureCapacity方法只是简单进行了逻辑上的操作，没有过多考虑int型溢出的问题，从1.7开始对这个进行了完善。</p>
 <p>而且没考虑入参minCapacity可能因为int溢出变为负数。这个方法可以外部手动调用，手动扩容传入负数这个肯定是应该拦截掉的。但是自动扩容会因为int溢出产生负数，碰到这种情况时应该特殊处理，而不是什么都不做，等着后面抛出一个ArrayIndexOutOfBoundsException。</p>
 <p>还有就是下面这句代码会造成过早溢出</p>
-<pre><code class="language-java">int newCapacity = (oldCapacity * 3)/2 + 1;
-</code></pre>
+<pre><code class="java">int newCapacity = (oldCapacity * 3)/2 + 1;</code></pre>
 <p>虽然上面这行代码和1.7开始的oldCapacity + (oldCapacity &gt;&gt; 1) 差不多，都是相当于1.5倍，但实际上是有区别的。</p>
 <p><strong>这里主要有两个区别</strong></p>
 <p><strong>第一个区别</strong>是jdk1.6的乘除运算的数学结果比后面一个大1比如oldCapacity=10，1.6的算法得到16，1.7开始的算法得到15，这个影响不大；</p>
 <p><strong>第二个区别</strong>就是两者在数字比较大时运算结果不一样，比如oldCapacity=10^9，这个数和Integer.MAX_VALUE位数一样，用1.6的算法得到的会是错误的-647483647，用1.7的则是正确的1500000000，这时候明明可以1.5倍扩容，但是jdk1.6却用的是按需扩容。</p>
 <p>ensureCapacity（称之为手动，是因为此方法是public的，可以外部手动调用）。在1.6版本是只有这个手动的方法，内部自动操作也是调用这个方法，1.7开始进行了区分，并且进一步改进了扩容操作。</p>
 <ul>
-<li>
-<p>从1.7开始将内部扩容和外部可以调用的扩容方法分开了，通过源码可以看出：外部调用的手动扩容方法ensureCapacity要多一个判断条件 minCapacity &gt;  minExpand，这个判断条件拦截掉负数的minCapacity，这样调用内部扩容ensureCapacityInternal方法时，minCapacity一定是正数；内部扩容方法直接就用minCapacity - elementData.length &gt; 0判断，此条件可以检测出int型溢出，碰到溢出最后会抛出一个OOM错误。jdk1.7用OOM，这比jdk1.6用ArrayIndexOutOfBoundsException更好，因为此时数组大小超出了虚拟机对数组的限制，虚拟机无法处理这种情况了，抛出一个ERROR是合理的。</p>
+<li><p>从1.7开始将内部扩容和外部可以调用的扩容方法分开了，通过源码可以看出：外部调用的手动扩容方法ensureCapacity要多一个判断条件 minCapacity &gt;  minExpand，这个判断条件拦截掉负数的minCapacity，这样调用内部扩容ensureCapacityInternal方法时，minCapacity一定是正数；内部扩容方法直接就用minCapacity - elementData.length &gt; 0判断，此条件可以检测出int型溢出，碰到溢出最后会抛出一个OOM错误。jdk1.7用OOM，这比jdk1.6用ArrayIndexOutOfBoundsException更好，因为此时数组大小超出了虚拟机对数组的限制，虚拟机无法处理这种情况了，抛出一个ERROR是合理的。</p>
 </li>
-<li>
-<p>使用这行代码</p>
+<li><p>使用这行代码</p>
 </li>
 </ul>
-<pre><code class="language-java">newCapacity = oldCapacity + (oldCapacity &gt;&gt; 1);
-</code></pre>
+<pre><code class="java">newCapacity = oldCapacity + (oldCapacity &gt;&gt; 1);</code></pre>
 <p>这行代码不仅仅是使用位运算加快执行速度，上面说了，这种做法才是对的，是真正的1.5倍。不仅仅因为那一个大小的差别，更重要的是避免过早出现int溢出的情况，保证了内部自动扩容会尽量按规定的策略执行。同时整个扩容处理流程中多增加了几处if判断，对各种情况处理更加完善。</p>
-<h3 id="为什么ArrayList自动容量扩充选择扩充1-5倍？"><a class="header-anchor" href="#为什么ArrayList自动容量扩充选择扩充1-5倍？">✨</a>为什么ArrayList自动容量扩充选择扩充1.5倍？</h3>
-<p>这种算法构造出来的新的数组长度的增量都会比上一次大( 而且是越来越大) ，避免频繁newInstance 的情况。</p>
-<h3 id="为什么ArrayList-不适合频繁插入和删除操作？"><a class="header-anchor" href="#为什么ArrayList-不适合频繁插入和删除操作？">✨</a>为什么ArrayList 不适合频繁插入和删除操作？</h3>
-<p>由上面分析的增加删除方法可以看出在ArrayList中经常会调用 System.arraycopy 这个效率很低的操作来复制数组，所以导致ArrayList在插入和删除操作中效率不高。</p>
-<h3 id="RandomAccess接口"><a class="header-anchor" href="#RandomAccess接口">✨</a>RandomAccess接口</h3>
-<pre><code class="language-java">public interface RandomAccess &amp;#123;
-&amp;#125;
-</code></pre>
+<h3 id="为什么ArrayList自动容量扩充选择扩充1-5倍？"><a href="#为什么ArrayList自动容量扩充选择扩充1-5倍？" class="headerlink" title="为什么ArrayList自动容量扩充选择扩充1.5倍？"></a>为什么ArrayList自动容量扩充选择扩充1.5倍？</h3><p>这种算法构造出来的新的数组长度的增量都会比上一次大( 而且是越来越大) ，避免频繁newInstance 的情况。</p>
+<h3 id="为什么ArrayList-不适合频繁插入和删除操作？"><a href="#为什么ArrayList-不适合频繁插入和删除操作？" class="headerlink" title="为什么ArrayList 不适合频繁插入和删除操作？"></a>为什么ArrayList 不适合频繁插入和删除操作？</h3><p>由上面分析的增加删除方法可以看出在ArrayList中经常会调用 System.arraycopy 这个效率很低的操作来复制数组，所以导致ArrayList在插入和删除操作中效率不高。</p>
+<h3 id="RandomAccess接口"><a href="#RandomAccess接口" class="headerlink" title="RandomAccess接口"></a>RandomAccess接口</h3><pre><code class="java">public interface RandomAccess &#123;
+&#125;</code></pre>
 <p>查看源码我们发现实际上 <code>RandomAccess</code> 接口中什么都没有定义。所以，在我看来 <code>RandomAccess</code> 接口不过是一个标识罢了。标识什么？ 标识实现这个接口的类具有随机访问功能。</p>
 <p>在 <code>binarySearch（)</code> 方法中，它要判断传入的 list 是否 <code>RamdomAccess</code> 的实例，如果是，调用<code>indexedBinarySearch()</code>方法，如果不是，那么调用<code>iteratorBinarySearch()</code>方法</p>
-<pre><code class="language-java">    public static &lt;T&gt;
-    int binarySearch(List&lt;? extends Comparable&lt;? super T&gt;&gt; list, T key) &amp;#123;
+<pre><code class="java">    public static &lt;T&gt;
+    int binarySearch(List&lt;? extends Comparable&lt;? super T&gt;&gt; list, T key) &#123;
         if (list instanceof RandomAccess || list.size()&lt;BINARYSEARCH_THRESHOLD)
             return Collections.indexedBinarySearch(list, key);
         else
             return Collections.iteratorBinarySearch(list, key);
-    &amp;#125;
-</code></pre>
+    &#125;</code></pre>
 <p><code>ArrayList</code> 实现了 <code>RandomAccess</code> 接口， 而 <code>LinkedList</code> 没有实现。为什么呢？我觉得还是和底层数据结构有关！<code>ArrayList</code> 底层是数组，而 <code>LinkedList</code> 底层是链表。数组天然支持随机访问，时间复杂度为 O(1)，所以称为快速随机访问。链表需要遍历到特定位置才能访问特定位置的元素，时间复杂度为 O(n)，所以不支持快速随机访问。，<code>ArrayList</code> 实现了 <code>RandomAccess</code> 接口，就表明了他具有快速随机访问功能。 <code>RandomAccess</code> 接口只是标识，并不是说 <code>ArrayList</code> 实现 <code>RandomAccess</code> 接口才具有快速随机访问功能的！</p>
 
   
   
+  
+  <div class='footer'>
     
-    <div class='footer'>
-      
-      
-        
+    
+    
   <div class="related_posts">
     <section class='header'>
-      <i class="fas fa-bookmark fa-fw" aria-hidden="true"></i><span>相关文章</span>
+      <i class="fal fa-bookmark fa-fw" aria-hidden="true"></i><span>相关文章</span>
     </section>
     <section class='body'>
-      <div class="vlts-rps"><a class="item" href="\java\collection\ArrayList_grow\" title="ArrayList动态扩容机制" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life9.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life9.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">ArrayList动态扩容机制</span><span class="excerpt">我们通过一个具体的例子看一下ArrayList的扩容效果
-先看一下ArrayList的初始容量
-ArrayList&lt;...</span></a><a class="item" href="\java\collection\Vector\" title="Vector 底层实现原理分析" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life14.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life14.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">Vector 底层实现原理分析</span><span class="excerpt">Vector，一个可变长的数组，底层实现与 ArrayList 大同小异，但Vector是同步的（线程安全），Vector...</span></a><a class="item" href="\java\collection\HashMapAnalysis\" title="HashMap 底层实现原理分析" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life11.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life11.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">HashMap 底层实现原理分析</span><span class="excerpt">HashMap 是 Map 的一个实现类，它代表的是一种键值对的数据存储形式。
-大多数情况下可以直接定位到它的值，因而具有...</span></a><a class="item" href="\java\collection\LinkedHashMap\" title="LinkedHashMap 底层实现原理分析" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life12.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life12.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">LinkedHashMap 底层实现原理分析</span><span class="excerpt">LinkedHashMap继承自HashMap实现了Map接口。基本实现同HashMap一样，不同之处在于LinkedHa...</span></a><a class="item" href="\java\abstract_interface\" title="接口 vs 抽象类的区别？" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg" /><span class="title">接口 vs 抽象类的区别？</span><span class="excerpt">在面向对象编程中，抽象类和接口是两个经常被用到的语法概念，是面向对象四大特性，以及很多设计模式、设计思想、设计原则编程实现...</span></a></div></section></div>
-      
-      
-        <div class='copyright'>
-          <blockquote>
-            
-              
-                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
-
-              
-            
-              
-                <p>本文永久链接是：<a href=https://gyl-coder.top/java/collection/ArrayList/>https://gyl-coder.top/java/collection/ArrayList/</a></p>
-              
-            
-          </blockquote>
-        </div>
-      
-      
-    </div>
-  
-  
+      <div class="vlts-rps"><a class="item" href="\java\collection\ArrayList_grow\" title="ArrayList动态扩容机制" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life9.webp" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life9.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">ArrayList动态扩容机制</span><span class="excerpt">我们通过一个具体的例子看一下ArrayList的扩容效果先看一下ArrayList的初始容量
+ArrayList&lt;I...</span></a><a class="item" href="\java\collection\Vector\" title="Vector 底层实现原理分析" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life14.webp" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life14.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">Vector 底层实现原理分析</span><span class="excerpt">Vector，一个可变长的数组，底层实现与 ArrayList 大同小异，但Vector是同步的（线程安全），Vector...</span></a><a class="item" href="\java\collection\LinkedList\" title="LinkedList 底层实现原理分析" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life13.webp" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life13.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">LinkedList 底层实现原理分析</span><span class="excerpt">
+在Java.util包下
+继承自AbstractSequentialList
+实现 List 接口，能对它进行队列操作。...</span></a><a class="item" href="\java\abstract_interface\" title="接口 vs 抽象类的区别？" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/abstract-interface.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">接口 vs 抽象类的区别？</span><span class="excerpt">在面向对象编程中，抽象类和接口是两个经常被用到的语法概念，是面向对象四大特性，以及很多设计模式、设计思想、设计原则编程实现...</span></a></div></section></div>
     
+    
+    <div class='copyright'>
+      <blockquote>
+        
+        
+        <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+        
+        
+        
+        <p>本文永久链接是：<a href=https://gyl-coder.top/java/collection/ArrayList/>https://gyl-coder.top/java/collection/ArrayList/</a></p>
+        
+        
+      </blockquote>
+    </div>
+    
+    
+  </div>
+  
+  
+  
 
 
   <div class='article-meta' id="bottom">
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-02T17:54:08+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-11-21T08:15:50+08:00">
   <a class='notlink'>
-    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Oct 2, 2020</p>
+    <i class="fal fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Nov 21, 2020</p>
   </a>
 </div>
 
@@ -1655,7 +1965,7 @@ ArrayList&lt;...</span></a><a class="item" href="\java\collection\Vector\" title
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Java/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Java</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E9%9B%86%E5%90%88/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>集合</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/ArrayList/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>ArrayList</p></a></div>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Java/" rel="nofollow"><i class="fal fa-hashtag fa-fw" aria-hidden="true"></i><p>Java</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E9%9B%86%E5%90%88/" rel="nofollow"><i class="fal fa-hashtag fa-fw" aria-hidden="true"></i><p>集合</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/ArrayList/" rel="nofollow"><i class="fal fa-hashtag fa-fw" aria-hidden="true"></i><p>ArrayList</p></a></div>
 
 
         
@@ -1674,11 +1984,12 @@ ArrayList&lt;...</span></a><a class="item" href="\java\collection\Vector\" title
 注意，此实现不是同步的。如果多个线程同时访问一个ArrayList实例，而其中至少一个线程从结构上修改了列表，那么它必须保持外部同步。
 ArrayList这个数据结构比较简单，总体来说，ArrayList底层结构是数组，他的很多方法都是从数组上面演变而来的。
 
+
 下面我们先来看一下ArrayList中的一些初始值"
           
           >
           
-            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg">
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
           
         </a>
       
@@ -1692,11 +2003,12 @@ ArrayList这个数据结构比较简单，总体来说，ArrayList底层结构�
 注意，此实现不是同步的。如果多个线程同时访问一个ArrayList实例，而其中至少一个线程从结构上修改了列表，那么它必须保持外部同步。
 ArrayList这个数据结构比较简单，总体来说，ArrayList底层结构是数组，他的很多方法都是从数组上面演变而来的。
 
+
 下面我们先来看一下ArrayList中的一些初始值"
           
           >
           
-            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg">
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
           
         </a>
       
@@ -1710,11 +2022,12 @@ ArrayList这个数据结构比较简单，总体来说，ArrayList底层结构�
 注意，此实现不是同步的。如果多个线程同时访问一个ArrayList实例，而其中至少一个线程从结构上修改了列表，那么它必须保持外部同步。
 ArrayList这个数据结构比较简单，总体来说，ArrayList底层结构是数组，他的很多方法都是从数组上面演变而来的。
 
+
 下面我们先来看一下ArrayList中的一些初始值"
           
           >
           
-            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg">
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
           
         </a>
       
@@ -1738,30 +2051,29 @@ ArrayList这个数据结构比较简单，总体来说，ArrayList底层结构�
   
 
   
-    <div class="prev-next">
-      
-        <a class='prev' href='/java/collection/ArrayList_grow/'>
-          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>ArrayList动态扩容机制</p>
-          <p class='content'>我们通过一个具体的例子看一下ArrayList的扩容效果
-先看一下ArrayList的初始容量
-ArrayList&lt;Integer&gt; array = new ArrayList&lt...</p>
-        </a>
-      
-      
-        <a class='next' href='/spring/custom-ioc-aop/'>
-          <p class='title'>手写实现IOC 和 AOP<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>通过上一篇 IOC &amp; AOP 详解 我们了解了 IOC 和 AOP 这两个思想，下面我们先不去考虑Spring是如何实现这两个思想的，先通过一个 银行转账 的案例，分析一下该案例在代码...</p>
-        </a>
-      
-    </div>
+  <div class="prev-next">
+    
+    <a class='prev' href='/java/collection/ArrayList_grow/'>
+      <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>ArrayList动态扩容机制</p>
+      <p class='content'>我们通过一个具体的例子看一下ArrayList的扩容效果先看一下ArrayList的初始容量
+ArrayList&lt;Integer&gt; array = new ArrayList&lt;...</p>
+    </a>
+    
+    
+    <a class='next' href='/spring/custom-ioc-aop/'>
+      <p class='title'>手写实现IOC 和 AOP<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+      <p class='content'>通过上一篇 IOC &amp; AOP 详解 我们了解了 IOC 和 AOP 这两个思想，下面我们先不去考虑Spring是如何实现这两个思想的，先通过一个 银行转账 的案例，分析一下该案例在代码...</p>
+    </a>
+    
+  </div>
   
 </article>
 
 
-  
 
-  <article class="post white-box reveal shadow" id="comments">
-    <p ct><i class='fas fa-comments'></i> 评论</p>
+
+  <article class="post white-box reveal shadow floatable" id="comments">
+    <p ct><i class='fal fa-comments'></i> 评论</p>
     
     <div id="valine_container" class="valine_thread">
   <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
@@ -1773,68 +2085,19 @@ ArrayList&lt;Integer&gt; array = new ArrayList&lt...</p>
 
 
 
-
 </div>
-<aside class='l_side'>
-  
-  
-    
-    
-
-
-
-  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
-    
-  <header>
-    
-      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>目录</span>
-    
-  </header>
-
-
-    <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-text">构造函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E5%85%83%E7%B4%A0"><span class="toc-text">添加元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%A9%E5%AE%B9%E7%9B%B8%E5%85%B3"><span class="toc-text">扩容相关</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E5%85%83%E7%B4%A0"><span class="toc-text">删除元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E5%85%83%E7%B4%A0"><span class="toc-text">修改元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E5%85%83%E7%B4%A0"><span class="toc-text">查找元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">序列化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="toc-text">迭代器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E6%96%B9%E6%B3%95"><span class="toc-text">其他方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ArrayList%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98"><span class="toc-text">ArrayList相关问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Integer-MAX-VALUE-8-%E8%BF%99%E9%87%8C%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%87%8F%E5%8E%BB8%EF%BC%9F"><span class="toc-text">Integer.MAX_VALUE - 8  这里为什么要减去8？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jdk1-8%E7%9A%84%E6%97%A0%E5%8F%82%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E4%B9%8B%E5%89%8D%E7%89%88%E6%9C%AC%E7%9A%84%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="toc-text">jdk1.8的无参构造函数和之前版本的构造函数有什么区别?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jdk1-6%E4%B8%AD%E6%89%A9%E5%AE%B9%E7%AE%97%E6%B3%95%E7%9A%84%E7%BC%BA%E9%99%B7"><span class="toc-text">jdk1.6中扩容算法的缺陷</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88ArrayList%E8%87%AA%E5%8A%A8%E5%AE%B9%E9%87%8F%E6%89%A9%E5%85%85%E9%80%89%E6%8B%A9%E6%89%A9%E5%85%851-5%E5%80%8D%EF%BC%9F"><span class="toc-text">为什么ArrayList自动容量扩充选择扩充1.5倍？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88ArrayList-%E4%B8%8D%E9%80%82%E5%90%88%E9%A2%91%E7%B9%81%E6%8F%92%E5%85%A5%E5%92%8C%E5%88%A0%E9%99%A4%E6%93%8D%E4%BD%9C%EF%BC%9F"><span class="toc-text">为什么ArrayList 不适合频繁插入和删除操作？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RandomAccess%E6%8E%A5%E5%8F%A3"><span class="toc-text">RandomAccess接口</span></a></li></ol></li></ol>
-    </div>
-  </section>
-
-
-  
-
-
-</aside>
-
-
-
-        
       </div>
       
   
   <footer class="footer clearfix">
-    <br><br>
+    
     
       
         <div class="aplayer-container">
           
 
-  
-    <meting-js
-      theme='#1BCDFC'
-      autoplay='false'
-      volume='0.7'
-      loop='all'
-      order='list'
-      fixed='false'
-      list-max-height='320px'
-      server='netease'
-      type='song'
-      id='186453'
-      list-folded='true'>
-    </meting-js>
-  
-
 
         </div>
-        <!--
       
     
       
@@ -1847,7 +2110,7 @@ ArrayList&lt;Integer&gt; array = new ArrayList&lt...</p>
                 target="_blank"
                 rel="external nofollow noopener noreferrer">
                 
-                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/020-rss.svg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/020-rss.svg" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/>
+                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/020-rss.svg" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/020-rss.svg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="/>
                 
               </a>
             
@@ -1858,7 +2121,7 @@ ArrayList&lt;Integer&gt; array = new ArrayList&lt...</p>
                 target="_blank"
                 rel="external nofollow noopener noreferrer">
                 
-                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/029-github.svg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/029-github.svg" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/>
+                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/029-github.svg" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/029-github.svg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="/>
                 
               </a>
             
@@ -1869,7 +2132,7 @@ ArrayList&lt;Integer&gt; array = new ArrayList&lt...</p>
                 target="_blank"
                 rel="external nofollow noopener noreferrer">
                 
-                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/010-facebook.svg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/010-facebook.svg" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/>
+                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/010-facebook.svg" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/010-facebook.svg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="/>
                 
               </a>
             
@@ -1880,7 +2143,7 @@ ArrayList&lt;Integer&gt; array = new ArrayList&lt...</p>
                 target="_blank"
                 rel="external nofollow noopener noreferrer">
                 
-                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/018-twitter.svg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/018-twitter.svg" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/>
+                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/018-twitter.svg" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/018-twitter.svg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="/>
                 
               </a>
             
@@ -1891,7 +2154,7 @@ ArrayList&lt;Integer&gt; array = new ArrayList&lt...</p>
                 target="_blank"
                 rel="external nofollow noopener noreferrer">
                 
-                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/045-telegram.svg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/045-telegram.svg" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/>
+                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/045-telegram.svg" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/045-telegram.svg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="/>
                 
               </a>
             
@@ -1902,7 +2165,7 @@ ArrayList&lt;Integer&gt; array = new ArrayList&lt...</p>
                 target="_blank"
                 rel="external nofollow noopener noreferrer">
                 
-                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/006-youtube.svg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/006-youtube.svg" srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg"/>
+                  <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/006-youtube.svg" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/006-youtube.svg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="/>
                 
               </a>
             
@@ -1917,14 +2180,14 @@ ArrayList&lt;Integer&gt; array = new ArrayList&lt...</p>
     
       
         
-          <div><p><span id="lc-sv">本站总访问量为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 次</span> <span id="lc-uv">访客数为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 人</span></p>
+          <div><p><span id="lc-sv">本站总访问量为 <span id='number'><i class="fal fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 次</span> <span id="lc-uv">访客数为 <span id='number'><i class="fal fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 人</span></p>
 </div>
         
       
     
       
         Use
-        <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/4.0.0" target="_blank" class="codename">Volantis</a>
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/1.0" target="_blank" class="codename">Volantis</a>
         as theme, total visits
           <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
           times
@@ -1933,89 +2196,18 @@ ArrayList&lt;Integer&gt; array = new ArrayList&lt...</p>
     
       
         <div class='copyright'>
-        <p><a href="https://gyl-coder.top">Copyright © 2019-2020 Yanliang</a></p>
+        <p><a href="https://gyl-coder.top/">Copyright © 2019-2020 Yanliang</a></p>
 
         </div>
       
     
-    -->
-
-      <!--自定义footer样式-->
-      <!--自定义footer样式-->
-<a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank">
-    <img no-lazy src="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/upyun.png" width="60" height="auto">
-</a>
-<br>
-Copyright <i class="far fa-copyright"></i> 2019-2020
-<a href="/" target="_blank"> YANLIANG'S BLOG </a>丨
-<!-- 在网页底部添加网站运行时间 -->
-<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
-<script>
-    var now = new Date();
-
-    function createtime() {
-        var grt = new Date("07/01/2019 00:00:00");//此处修改你的建站时间或者网站上线时间
-        now.setTime(now.getTime() + 250);
-        days = (now - grt) / 1000 / 60 / 60 / 24;
-        dnum = Math.floor(days);
-        hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
-        hnum = Math.floor(hours);
-        if (String(hnum).length == 1) {
-            hnum = "0" + hnum;
-        }
-        minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
-        mnum = Math.floor(minutes);
-        if (String(mnum).length == 1) {
-            mnum = "0" + mnum;
-        }
-        seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
-        snum = Math.round(seconds);
-        if (String(snum).length == 1) {
-            snum = "0" + snum;
-        }
-        document.getElementById("timeDate").innerHTML = "网站已运行 " + dnum + " 天 ";
-        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
-    }
-
-    setInterval("createtime()", 250);
-</script>
-<br/>
-<br/>
-<div class="github-badge">
-    <a style="color: #fff" rel="license" href="https://hexo.io/" target="_blank" title="由 Hexo 强力驱动">
-        <span class="badge-subject">Powered</span><span class="badge-value bg-blue">Hexo</span></a>
-</div>
-<div class="github-badge">
-    <a style="color: #fff" rel="license" href="https://github.com/" target="_blank"
-       title="静态网页托管于 GitHub Pages 和 Coding Pages">
-        <span class="badge-subject">Hosted</span><span
-                class="badge-value bg-brightgreen">GitHub &amp; Coding</span></a>
-</div>
-<div class="github-badge">
-    <a style="color: #fff" rel="license" href="https://www.aliyun.com/" target="_blank" title="阿里云提供域名相关服务">
-        <span class="badge-subject">DNS</span><span class="badge-value bg-blueviolet">Aliyun</span></a>
-</div>
-<div class="github-badge">
-    <a style="color: #fff" rel="license" href="https://www.jsdelivr.com/" target="_blank"
-       title="jsDelivr 提供 CDN 加速服务">
-        <span class="badge-subject">CDN</span><span class="badge-value bg-orange">jsDelivr</span></a>
-</div>
-<div class="github-badge">
-    <a style="color: #fff" rel="license" href="https://github.com/volantis-x/hexo-theme-volantis/"
-       target="_blank" title="站点使用 Volantis 主题">
-        <span class="badge-subject">Theme</span><span class="badge-value bg-blue">Volantis</span></a>
-</div>
-<div class="github-badge">
-    <a style="color: #fff" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
-       target="_blank" title="本站点采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议进行许可">
-        <span class="badge-subject"><i class="fa fa-copyright"></i></span><span
-                class="badge-value bg-gradient">BY-NC-SA 4.0</span></a>
-</div>
-<div class="github-badge">
-    <a style="color: #fff" rel="license" href="https://github.com/botui/botui" target="_blank" title="A JavaScript framework to create conversational UIs.">
-        <span class="badge-subject">AI机器人</span><span class="badge-value bg-blueviolet">botui</span></a>
-</div>
-
+      
+        
+          <div><script id="ribbon" mobile="true" src="https://cdn.jsdelivr.net/gh/heson525/pic@master/img/ribbons2.js"></script></div>
+        
+      
+    
+    
   </footer>
 
 
@@ -2027,9 +2219,10 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js"></script>
 
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 <script>
   function pjax_fancybox() {
-    $(".md .gallery").find("img").each(function () { //渲染 fancybox
+    $(".md").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
       var element = document.createElement("a"); // a 标签
       $(element).attr("class", "fancybox");
       $(element).attr("pjax-fancybox", "");  // 过滤 pjax
@@ -2050,9 +2243,16 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       $(span).addClass("image-caption");
       $(span).text(caption); // 加描述
       $(this).after(span);  // 再套一层描述
+      // 背景层
+      var bgDiv = document.createElement("div");
+      $(bgDiv).addClass("bg");
+      if ($(this).attr('bg')) {
+        $(bgDiv).css('background', $(this).attr('bg'));
+      }
+      $(this).wrap(bgDiv); // 背景层
       $(this).wrap(element);  // 最后套 a 标签
     })
-    $(".md .gallery").find("img").fancybox({
+    $(".md").find("img").fancybox({
       selector: '[data-fancybox="images"]',
       hash: false,
       loop: false,
@@ -2066,61 +2266,13 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       ]
     });
   };
-  function SCload_fancybox() {
-    if ($(".md .gallery").find("img").length == 0) return;
-    loadCSS("https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css", document.getElementById("loadcss"));
-    setTimeout(function() {
-      loadScript('https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js', pjax_fancybox)
-    }, 1);
-  };
   $(function () {
-    SCload_fancybox();
+    pjax_fancybox();
   });
 </script>
 
 
 <!-- internal -->
-
-  
-  
-  
-    
-<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
-
-    <script type="text/javascript">
-      $(function(){
-        var imgs=["https://cdn.jsdelivr.net/gh/luvying/ying-blog-cdn@master/files/static/images/pictures/pixiv/69752223_p0.jpg"];
-        if ('true' == 'true') {
-          function shuffle(arr){
-            /*From countercurrent-time*/
-            var n = arr.length;
-            while(n--) {
-              var index = Math.floor(Math.random() * n);
-              var temp = arr[index];
-              arr[index] = arr[n];
-              arr[n] = temp;
-            }
-          }
-          shuffle(imgs);
-        }
-        if ('.cover-backstretch') {
-          $('.cover-backstretch').backstretch(
-            imgs,
-          {
-            duration: "2000",
-            fade: "1500"
-          });
-        } else {
-          $.backstretch(
-            imgs,
-          {
-            duration: "2000",
-            fade: "1500"
-          });
-        }
-      });
-    </script>
-  
 
 
 
@@ -2130,7 +2282,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
   <div id="rightmenu-wrapper">
     <ul class="list-v rightmenu" id="rightmenu-content">
       <li class='option'>
-        <a class='vlts-menu opt fix-cursor-default' id='menu-copy-text' onclick="document.execCommand('copy')"><i class='fa fa-copy fa-fw'></i>Copy Text</a>
+        <a class='vlts-menu opt fix-cursor-default' id='menu-copy-text' onclick='document.execCommand("copy")'><i class='fa fa-copy fa-fw'></i>Copy Text</a>
         <hr id='hr-text'>
         <a class='vlts-menu opt fix-cursor-default' id='menu-copy-href'><i class='fa fa-link fa-fw'></i>Copy Link</a>
         <a class='vlts-menu opt fix-cursor-default' id='menu-open-href'><i class='fa fa-external-link-square-alt fa-fw'></i>Open Link in New Tab</a>
@@ -2239,26 +2391,6 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
         
       
         
-          <li class='music name'>
-            <p class='nav music-title fix-cursor-default'></p>
-          </li>
-          <li class='music ctrl'>
-            <a class='nav icon-only backward fix-cursor-default' onclick='aplayerBackward()'><i class='fa fa-step-backward fa-fw'></i></a>
-            <a class='nav icon-only toggle fix-cursor-default' onclick='aplayerToggle()'><i class='fa fa-play fa-fw'></i></a>
-            <a class='nav icon-only forward fix-cursor-default' onclick='aplayerForward()'><i class='fa fa-step-forward fa-fw'></i></a>
-          </li>
-          <li class='music volume'>
-            <a class='nav volume'>
-              <div class="aplayer-volume-bar-wrap">
-                <div class="aplayer-volume-bar fix-cursor-pointer">
-                  <div class="aplayer-volume"></div>
-                  <i class='left fa fa-volume-off fa-fw'></i>
-                  <i class='right fa fa-volume-up fa-fw'></i>
-                </div>
-              </div>
-            </a>
-          </li>
-        
       
     </ul>
   </div>
@@ -2328,10 +2460,8 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       if (href.length == 0) {
         // 选中文本
         if (window.getSelection().toString()) {
-          if ('true' == 'true') {
-            copyText.style.display = 'block';
-            hrText.style.display = 'block';
-          }
+          copyText.style.display = 'block';
+          hrText.style.display = 'block';
         }
       }
 
@@ -2363,7 +2493,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       }
 
       // 有音乐播放器
-      if ('true' == true && ('home,me,album,resume,friends,hr,catchTheCat,hr,music'||[]).includes('music')) {
+      if ('' == true && ('home,me,album,resume,friends,hr,catchTheCat,hr,music'||[]).includes('music')) {
         // 如果有aplayer，初始化一下
       	try {
       		checkAPlayer();
@@ -2392,6 +2522,30 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
 
 
 
+
+
+  <script>
+  function loadIssuesJS() {
+    if ($(".md").find(".issues-api").length == 0) return;
+    setTimeout(function() {
+      loadScript('/js/issues.js');
+    }, 1);
+  };
+  $(function () {
+    loadIssuesJS();
+  });
+</script>
+
+
+
+<!-- optional -->
+
+  <script>
+  
+  var SEARCH_SERVICE = "hexo" || "hexo";
+  var ROOT = "/" || "/";
+  if (!ROOT.endsWith('/')) ROOT += '/';
+</script>
 
 
 
@@ -2427,15 +2581,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
 
   
   
-    <script>
-      window.FPConfig = {
-        delay: 0,
-        ignoreKeywords: [],
-        maxRPS: 5,
-        hoverDelay: 25
-      };
-    </script>
-    <script defer src="https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"></script>
+    <script async src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
   
 
 
@@ -2517,34 +2663,13 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
 
 
 
-  <script>
-  let APlayerController = new Object();
-  APlayerController.id = '186453';  // 设定全局音乐播放ID
-  APlayerController.volume = '0.7';
-</script>
-
-  
-<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script>
-
-
-  
-<script src="https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js"></script>
-
-
-
-
-  
-<script src="/js/aplayer.js"></script>
-
-
-
-
 
 
   <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@3/dist/av-min.js"></script>
 
   
-<script src="/js/valine.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/HCLonely/Valine@latest/dist/Valine.min.js"></script>
+
 
 
 <script>
@@ -2581,7 +2706,7 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
   function pjax_valine() {
     if(!document.querySelectorAll("#valine_container")[0])return;
 
-    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) || "快来评论吧~";
+    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) || "填写邮箱会收到回复提示！粘贴图片可直接上传~";
 
     let path = $.trim($('#pjax-comment-path').text());
     if (path.length == 0) {
@@ -2604,86 +2729,93 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
       highlight: 'true',
       mathJax: 'false',
       enableQQ: 'true',
-      recordIP: 'false',
       requiredFields: requiredFields,
       emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
       emojiMaps: emojiMaps,
-      master: '[]',
-      friends: '[]'
+      master: '[6e52e95ab454c5a82b0eb13055d79bd5]',
+      friends: '[104e5bfa98048a2dac66f28ca4d4d846,e399c5e8f4b4b8b86fc88e2b5bd04497,32d39099d6da89788fe3827cb90b1eb7,a5c27d1df34fcd4d8195e7e7d16675d4,09c82fd631755bf5dbb04b4189225637,b548550ae129b82aa01b60e18ccbf141,6a565e6c47127afdd40d5d46089db2c5,4a713ec085a4431f15a8da0942656713&#34;,58bc3a8cecadf26a676e1b8f217698bc,aaf4fe5dd76d0a1390cbd08cdb16c05f,0a106ca9ec8d5e8a2d14f99e5b8bd863,3ecc56d90844b70e49d9f8a61e9cd98c,8a6f99e8ce4af26a93f20c0cbab8a186,5392ad0ec563aa56f6faf597ef966762,6bcf44de7033a4451f38d576fb6e6822,135ae111f8fcfeecc1ea1f06fde149ab]'
     })
   }
 
   function newcomment() {
-    function queryLeanCloud(k) {
-      let root = this;
-      let len = arguments.length;
-      if (len == 1) {
-        let notExist = new AV.Query("Comment");
-        notExist.doesNotExist('rid');
-        let isEmpty = new AV.Query("Comment");
-        isEmpty.equalTo('rid', '');
-        let q = AV.Query.or(notExist, isEmpty);
-        if (k === '*') q.exists('url');
-        else q.equalTo('url', decodeURI(k));
-        q.addDescending('createdAt');
-        q.addDescending('insertedAt');
-        return q;
-      } else {
-        let ids = JSON.stringify(arguments[1]).replace(/(\[|\])/g, '');
-        let cql = `select * from ${root['config']['clazzName']} where rid in (${ids}) order by -createdAt,-createdAt`;
-        return AV.Query.doCloudQuery(cql)
-      }
-    }
-    var valine = new Valine({
-      el: 'valine_container',
+
+function queryLeanCloud(k) {
+  let root = this;
+  let len = arguments.length;
+  if (len == 1) {
+    let notExist = new AV.Query("Comment");
+    notExist.doesNotExist('rid');
+    let isEmpty = new AV.Query("Comment");
+    isEmpty.equalTo('rid', '');
+    let q = AV.Query.or(notExist, isEmpty);
+    if (k === '*') q.exists('url');
+    else q.equalTo('url', decodeURI(k));
+    q.addDescending('createdAt');
+    q.addDescending('insertedAt');
+    return q;
+  } else {
+    let ids = JSON.stringify(arguments[1]).replace(/(\[|\])/g, '');
+    let cql = `select * from ${root['config']['clazzName']} where rid in (${ids}) order by -createdAt,-createdAt`;
+    return AV.Query.doCloudQuery(cql)
+  }
+}
+var valine = new Valine({
+      el: '#valine_container_ba',
+      notify: false,
+      verify: false,
       app_id: 'wvx2KxLUqgjcKv9QE62FmvUY-MdYXbMMI',
       app_key: 'u1P8dl8u7IlizUpYbwXpc1VN',
-      placeholder: '快来评论吧~',
+      placeholder: '发表您的意见，让我们一起交流，共同提高吧...',
       serverURLs: 'https://wvx2kxlu.api.lncldglobal.com'
-    });
+});
 
-    //判断博主，heson改为自己的昵称
-    function bozhu(e){
-        if (e == "yanliang" || e == "Yanliang"){
-            nick = e + '[博主]'
-            return nick;
-        } else {
-          return e
-        }
+//判断博主，heson改为自己的昵称
+function bozhu(e){
+    if (e == "heson"){
+        nick = e + '[博主]'
+        return nick;
+    } else {
+      return e
     }
+}
 
-    //判断网址
-    function wangzhi(e){
-        http = e.slice(0,4)
-        https = e.slice(0,5)
-        if (http == "http" || https == "https" ){
-            return e
-        } else if (e == "" || e == null || e == undefined){
-          return e
-        } else {
-          e = 'http://'+ e
-          return e
-        }
+//判断网址
+function wangzhi(e){
+    http = e.slice(0,4)
+    https = e.slice(0,5)
+    if (http == "http" || https == "https" ){
+         return e
+    } else if (e == "" || e == null || e == undefined){
+      return e
+    } else {
+      e = 'http://'+ e
+      return e
     }
+}
 
-    //查询评论
-    valine.Q('*').limit(5).find().then(function (comments) {
-      var hotComments = $("#hot-comments");
-      for (var i = 0; i < comments.length; i++) {
-        if (i === 0) {
-          console.log(comments[0]);
-        }
-        var nick = bozhu(comments[i]._serverData.nick);
-        var content = comments[i]._serverData.comment;
-        var newcontent = content.substring(0, 50).replace(/<[^>]+>/g,"");
-        var url = comments[i]._serverData.url;
-        var link = wangzhi(comments[i]._serverData.link);
-        var updatedAt = timeago(comments[i].updatedAt);
-        var commentId = '#' + comments[i].id;
-        hotComments.append('<div class="card-comment-item"><div class="item-header-text"><a href="'+ link +'" target="_blank" rel="nofollow noopener noreferrer" class="newcomment" >' + nick + '</a>&nbsp;发表于' + updatedAt + '</div><div class="item-text"><a href="' + url + commentId +'"  rel="nofollow" style="color:#717171" class="comments-detail" >' + newcontent + '</a></div></div>');
-      }
-    });
-  };
+
+
+
+//查询评论
+valine.Q('*').limit(7).find().then(function (comments) {
+  var hotComments = $("#hot-comments");
+  for (var i = 0; i < comments.length; i++) {
+    if (i === 0) {
+      console.log(comments[0]);
+    }
+    var nick = bozhu(comments[i]._serverData.nick);
+    var content = comments[i]._serverData.comment;
+    var newcontent = content.replace(/<[^>]+>/g,"").replace(/:.*?:/g,"[表情]").substring(0, 50);
+    var url = comments[i]._serverData.url;
+    var link = wangzhi(comments[i]._serverData.link);
+    var updatedAt = timeago(comments[i].updatedAt);
+    var commentId = '#' + comments[i].id;
+    hotComments.append('<div class="card-comment-item"><div class="item-header-text"><a href="'+ link +'" target="_blank" rel="nofollow noopener noreferrer" class="newcomment" >' + nick + '</a>&nbsp;发表于' + updatedAt + '</div><div class="item-text"><a href="' + url + commentId +'"  rel="nofollow" style="color:#717171" class="comments-detail" >' + newcontent + '</a></div></div>');
+  }
+});
+};
+
+
 
   $(function () {
     pjax_valine();
@@ -2692,89 +2824,6 @@ Copyright <i class="far fa-copyright"></i> 2019-2020
 </script>
 
 
-
-
-  
-<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5/lib/darkmode-js.min.js" aysc></script>
-
-<script type="text/javascript">
-function getClientHeight(){
-  var clientHeight=0;
-  if(document.body.clientHeight&&document.documentElement.clientHeight){
-  var clientHeight = (document.body.clientHeight<document.documentElement.clientHeight)?document.body.clientHeight:document.documentElement.clientHeight;
-  }else{
-  var clientHeight = (document.body.clientHeight>document.documentElement.clientHeight)?document.body.clientHeight:document.documentElement.clientHeight;
-  }
-  return clientHeight;
-}
-function supportCss3(style) {
-  var prefix = ['webkit', 'Moz', 'ms', 'o'],
-  i,
-  humpString = [],
-  htmlStyle = document.documentElement.style,
-  _toHumb = function (string) {
-  return string.replace(/-(\w)/g, function ($0, $1) {
-  return $1.toUpperCase();
-  });
-  };
-  for (i in prefix)
-  humpString.push(_toHumb(prefix[i] + '-' + style));
-  humpString.push(_toHumb(style));
-  for (i in humpString)
-  if (humpString[i] in htmlStyle) return true;
-  return false;
-};
-//配置信息
-var options = {
-  bottom: '32px',
-  right: 'unset',
-  left: '16px',
-  time: '0s',
-  mixColor: '#f4f4f4',
-  backgroundColor: '#f4f4f4',
-  buttonColorDark: '#333',
-  buttonColorLight: '#ddd',
-  saveInCookies: true,
-  label: '',
-  autoMatchOsTheme: true
-};
-// 卡片兼容处理 mix-blend-mode 与 effect: [blur] 冲突
-
-function pjax_darkmodejs(){
-  
-  if(!supportCss3('mix-blend-mode'))return;
-  var checkExist2 = setInterval(function() {
-     if (typeof jQuery == 'undefined'){return;}
-     clearInterval(checkExist2);
-     var TopFlag=getClientHeight();
-    $(window).scroll(function(){
-      var top = $(document).scrollTop();
-      if(top > TopFlag) {
-        $(".darkmode-layer").css("mix-blend-mode","normal");
-        $(".darkmode-layer").css("background-color","#222");
-      }else{
-        $(".darkmode-layer").css("mix-blend-mode","difference");
-        $(".darkmode-layer").css("background-color","");
-      }
-    })
-  }, 100);
-  
-}
-// mix-blend-mode support?
-if(supportCss3('mix-blend-mode')){
-  window.darkmode = new Darkmode(options);
-  
-  window.darkmode.showWidget();
-  
-  pjax_darkmodejs();
-}
-////////////////Development///////////////////////
-//////////////darkmode模式切换////////////////////
-//window.darkmode.toggle();                     //
-//////////////darkmode模式判断////////////////////
-//console.log(window.darkmode.isActivated())    //
-//////////////////////////////////////////////////
-</script>
 
 
 
@@ -2790,49 +2839,13 @@ if(supportCss3('mix-blend-mode')){
 
   
     
-<script src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2.6.4/js/search.js"></script>
+<script src="/js/search.js"></script>
 
   
 
 
-<!-- optional -->
-
-  <script>
-const SearchServiceimagePath="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/img/";
-const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
-(function ($) {
-  
-    customSearch = new HexoSearch({
-      imagePath: SearchServiceimagePath
-    });
-  
-})(jQuery);
-
-</script>
 
 
-
-
-
-  
-<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
-
-  <script type="text/javascript">
-    $(function () {
-      Waves.attach('.flat-btn', ['waves-button']);
-      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
-      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
-      Waves.attach('.flat-box', ['waves-block']);
-      Waves.attach('.float-box', ['waves-block', 'waves-float']);
-      Waves.attach('.waves-image');
-      Waves.init();
-    });
-  </script>
-
-
-
-  
-<script src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/comment_typing.js"></script>
 
 
 
@@ -2894,7 +2907,7 @@ const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
       try {
         var currentUrl = window.location.pathname;
         var targetUrl = e.triggerElement.href;
-        var banUrl = [""];
+        var banUrl = ["/bb/"];
         if (banUrl[0] != "") {
           banUrl.forEach(item => {
             if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
@@ -2905,9 +2918,7 @@ const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
       } catch (error) {}
 
       window.subData = null; // 移除标题（用于一二级导航栏切换处）
-      if (typeof $.fancybox != "undefined") {
-        $.fancybox.close();    // 关闭弹窗
-      }
+      $.fancybox.close();    // 关闭弹窗
       $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
       $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
       $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
@@ -2927,7 +2938,7 @@ const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
       // 关于百度统计对 SPA 页面的处理：
       // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
       // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
-      // 
+       
 
       // 关于谷歌统计对 SPA 页面的处理：
       // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
@@ -2940,28 +2951,7 @@ const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
         $(this).parent().append($(this).remove());
       });
       try{
-          if (typeof $.fancybox == "undefined") {
-            SCload_fancybox();
-          } else {
-            pjax_fancybox();
-          }
-        
-          
-          if ('.cover-backstretch') {
-            $('.cover-backstretch').backstretch("resize");
-            if($('.cover-wrapper').is(':hidden')){
-              $('.cover-backstretch').backstretch("pause");
-            }else{
-              $('.cover-backstretch').backstretch("next");
-            }
-          } else {
-            $.backstretch("resize");
-            if($('.cover-wrapper').is(':hidden')){
-              $.backstretch("pause");
-            }else{
-              $.backstretch("next");
-            }
-          }
+        pjax_fancybox();
         
         
         document.querySelectorAll('pre code').forEach((block) => {
@@ -2971,6 +2961,10 @@ const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
         
           pjax_scrollrebeal();
         
+        
+          if (typeof IssuesAPI == "undefined") {
+            loadIssuesJS();
+          }
         
         
           pjax_initCopyCode();
@@ -2982,8 +2976,6 @@ const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
         
         
         
-        
-          pjax_darkmodejs();
         
       } catch (e) {
         console.log(e);
@@ -2999,26 +2991,5 @@ const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
 
     
   </div>
-
-  <!-- 一言API -->
-  <!-- 现代写法，推荐 -->
-  <!-- 兼容低版本浏览器 (包括 IE)，可移除 -->
-  <script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
-  <!--End-->
-  <script>
-    fetch('https://v1.hitokoto.cn')
-      .then(function (res){
-        return res.json();
-      })
-      .then(function (data) {
-        var hitokoto = document.getElementById('hitokoto');
-        hitokoto.innerText = data.hitokoto + '——【' + data.from + '】';
-      })
-      .catch(function (err) {
-        console.error(err);
-      })
-  </script>
-
 </body>
 </html>
