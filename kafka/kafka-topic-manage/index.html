@@ -91,10 +91,13 @@
        </script>
     
 </head>
+<body>
+  <div id="clickCanvas" style=" position:fixed;left:0;top:0;z-index:999999999;pointer-events:none;"></div>
+</body>
 
 <body>
   <!-- 页面点击小红心 -->
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/js/love.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/js/click.js"></script>
   <header class="l_header auto shadow floatable blur" style='opacity: 0' >
   <div class='container'>
   <div class='wrapper'>
@@ -231,11 +234,11 @@
             
             
               <li>
-                <a class="menuitem flat-box faa-parent animated-hover" href=/shuoshuo/
+                <a class="menuitem flat-box faa-parent animated-hover" href=/bb/
                   
                   
                   
-                    id="shuoshuo"
+                    id="bb"
                   >
                   <i class='fas fa-comment-dots fa-fw fa-fw fa-fw'></i>树洞
                 </a>
@@ -558,11 +561,11 @@
               
             
               <li>
-                <a class="menuitem flat-box faa-parent animated-hover" href=/shuoshuo/
+                <a class="menuitem flat-box faa-parent animated-hover" href=/bb/
                   
                   
                   
-                    id="shuoshuo"
+                    id="bb"
                   >
                   <i class='fas fa-comment-dots fa-fw fa-fw fa-fw'></i>树洞
                 </a>
@@ -1171,8 +1174,8 @@
     </section>
     <section class='body'>
       <div class="vlts-rps"><a class="item" href="\kafka\kafka-hw-leo-lso\" title="Kafka中的HW、LEO、LSO等分别代表什么？" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka1.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka1.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">Kafka中的HW、LEO、LSO等分别代表什么？</span><span class="excerpt">HW 、 LEO 等概念和上一篇文章所说的 ISR有着紧密的关系，如果不了解 ISR 可以先看下ISR相关的介绍。
-HW ...</span></a><a class="item" href="\kafka\kafka-isr-ar\" title="kafka中的ISR、AR代表什么？ISR的伸缩性又指什么？" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.jpg" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">kafka中的ISR、AR代表什么？ISR的伸缩性又指什么？</span><span class="excerpt">相信大家已经对 kafka 的基本概念已经有一定的了解了，下面直接来分析一下 ISR 和 AR 的概念。</span></a><a class="item" href="\kafka\kafka-listeners-config\" title="kafka的listeners配置错误导致主线程阻塞" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka6.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka6.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">kafka的listeners配置错误导致主线程阻塞</span><span class="excerpt">问题背景我们在用kafka的时候，偶尔会遇到这样这样一个问题。
-我们写的kafka的客户端程序，在启动的时候，会无缘无故的...</span></a><a class="item" href="\kafka\kafka-rebalance\" title="Kafka Rebalance机制分析" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.3/img/kafka/3951011.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.3/img/kafka/3951011.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">Kafka Rebalance机制分析</span><span class="excerpt">Rebalance 本质上是一种协议，规定了一个 Consumer Group 下的所有 consumer 如何达成一致，...</span></a></div></section></div>
+HW ...</span></a><a class="item" href="\kafka\kafka-listeners-config\" title="kafka的listeners配置错误导致主线程阻塞" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka6.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka6.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">kafka的listeners配置错误导致主线程阻塞</span><span class="excerpt">问题背景我们在用kafka的时候，偶尔会遇到这样这样一个问题。
+我们写的kafka的客户端程序，在启动的时候，会无缘无故的...</span></a><a class="item" href="\kafka\kafka-isr-ar\" title="kafka中的ISR、AR代表什么？ISR的伸缩性又指什么？" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.jpg" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">kafka中的ISR、AR代表什么？ISR的伸缩性又指什么？</span><span class="excerpt">相信大家已经对 kafka 的基本概念已经有一定的了解了，下面直接来分析一下 ISR 和 AR 的概念。</span></a><a class="item" href="\kafka\kafka-rebalance\" title="Kafka Rebalance机制分析" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.3/img/kafka/3951011.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.3/img/kafka/3951011.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">Kafka Rebalance机制分析</span><span class="excerpt">Rebalance 本质上是一种协议，规定了一个 Consumer Group 下的所有 consumer 如何达成一致，...</span></a></div></section></div>
     
     
     <div class='copyright'>
@@ -2074,6 +2077,10 @@ valine.Q('*').limit(7).find().then(function (comments) {
 
 
 
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/comment_typing.js"></script>
 
 
 
