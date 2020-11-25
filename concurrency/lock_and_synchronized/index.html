@@ -1136,8 +1136,8 @@
         <div class="webinfo-item">
           <div>最后活动时间：</div>
           
-            <div id="last-update" style="display: none;">Sat Nov 21 2020 14:44:59 GMT+0800 (GMT+08:00)</div>
-            <div id="last-update-show">2020-11-21 日</div>
+            <div id="last-update" style="display: none;">Wed Nov 25 2020 13:00:24 GMT+0000 (Coordinated Universal Time)</div>
+            <div id="last-update-show">2020-11-25 日</div>
           
         </div>
         
@@ -1187,7 +1187,7 @@
           try {
             document.getElementById('last-update-show').innerHTML = timeago(new Date(lastUpDate));
           } catch (error) {
-            document.getElementById('last-update-show').innerHTML = '2020-11-21 日';
+            document.getElementById('last-update-show').innerHTML = '2020-11-25 日';
           }
         </script>
         
@@ -1445,11 +1445,11 @@ if(lock.tryLock()) &#123;
       <i class="fal fa-bookmark fa-fw" aria-hidden="true"></i><span>相关文章</span>
     </section>
     <section class='body'>
-      <div class="vlts-rps"><a class="item" href="\concurrency\alternate_printing\" title="多个线程交替打印内容" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life1.webp" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life1.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">多个线程交替打印内容</span><span class="excerpt">需求： 启动两个线程，交替打印奇偶数。 效果如下所示
+      <div class="vlts-rps"><a class="item" href="/concurrency/alternate_printing/" title="多个线程交替打印内容" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life1.webp" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life1.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">多个线程交替打印内容</span><span class="excerpt">需求： 启动两个线程，交替打印奇偶数。 效果如下所示
 偶数线程：0
 奇数线程：1
 偶数线程：2
-...</span></a><a class="item" href="\concurrency\waiting_for_notification\" title="等待通知机制" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life3.webp" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life3.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">等待通知机制</span><span class="excerpt">多线程环境中，经常出现这样一种场景。一个线程修改了一个对象的值，而另一个线程感知到了变化，然后进行相应的操作，整个过程开始...</span></a><a class="item" href="\concurrency\why_concurrency\" title="Why Concurrency ?" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life4.webp" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life4.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">Why Concurrency ?</span><span class="excerpt">一门技术的出现必然有其出现的道理，后来需要了解它出现的时代环境和因素，扩充自己的视野，发掘技术发展的经过。分析其优缺点，以...</span></a></div></section></div>
+...</span></a><a class="item" href="/concurrency/waiting_for_notification/" title="等待通知机制" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life3.webp" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life3.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">等待通知机制</span><span class="excerpt">多线程环境中，经常出现这样一种场景。一个线程修改了一个对象的值，而另一个线程感知到了变化，然后进行相应的操作，整个过程开始...</span></a><a class="item" href="/concurrency/why_concurrency/" title="Why Concurrency ?" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life4.webp" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life4.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">Why Concurrency ?</span><span class="excerpt">一门技术的出现必然有其出现的道理，后来需要了解它出现的时代环境和因素，扩充自己的视野，发掘技术发展的经过。分析其优缺点，以...</span></a></div></section></div>
     
     
     <div class='copyright'>
@@ -1478,10 +1478,10 @@ if(lock.tryLock()) &#123;
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-11-21T08:15:50+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-11-25T13:00:07+00:00">
   <a class='notlink'>
     <i class="fal fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Nov 21, 2020</p>
+    <p>更新于：Nov 25, 2020</p>
   </a>
 </div>
 
