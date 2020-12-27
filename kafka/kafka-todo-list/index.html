@@ -23,13 +23,14 @@
 
   
     <meta name="description" content="
-kafka如何保证数据可靠性和数据一致性
-Kafka Rebalance机制分析
-Kafka的用途有哪些？使用场景如何？
+Kafka中的基本概念
 Kafka中的ISR、AR又代表什么？ISR的伸缩又指什么？
 Kafka中的HW、LEO、LSO等分别代表什么？
-Kafka中是怎么体现消息顺序性的？
-">
+kafka如何保证数据可靠性和数据一致性
+Kafka Rebalance机制分析
+kafka 主题管理
+Kafka有哪几处地方有分区分配的概念？简述大致的过程及原理
+Kafk...">
   
 
   <!-- feed -->
@@ -1083,23 +1084,25 @@ Kafka中是怎么体现消息顺序性的？
 
   
   <ol>
-<li><a href="https://gyl-coder.top/2019/10/09/kafka-reliability/">kafka如何保证数据可靠性和数据一致性</a></li>
-<li><a href="https://gyl-coder.top/2019/10/10/kafka-rebalance/">Kafka Rebalance机制分析</a></li>
-<li>Kafka的用途有哪些？使用场景如何？</li>
-<li><a href="https://gyl-coder.top/2019/10/04/kafka-isr-ar/">Kafka中的ISR、AR又代表什么？ISR的伸缩又指什么？</a></li>
-<li><a href="https://gyl-coder.top/2019/10/04/Kafka%E4%B8%AD%E7%9A%84HW%E3%80%81LEO%E3%80%81LSO%E7%AD%89%E5%88%86%E5%88%AB%E4%BB%A3%E8%A1%A8%E4%BB%80%E4%B9%88%EF%BC%9F/">Kafka中的HW、LEO、LSO等分别代表什么？</a></li>
+<li><a href="https://gyl-coder.top/kafka/kafka-concept/">Kafka中的基本概念</a></li>
+<li><a href="https://gyl-coder.top/kafka/kafka-concept/">Kafka中的ISR、AR又代表什么？ISR的伸缩又指什么？</a></li>
+<li><a href="https://gyl-coder.top/kafka/kafka-concept/">Kafka中的HW、LEO、LSO等分别代表什么？</a></li>
+<li><a href="https://gyl-coder.top/kafka/kafka-reliability/">kafka如何保证数据可靠性和数据一致性</a></li>
+<li><a href="https://gyl-coder.top/kafka/kafka-rebalance/">Kafka Rebalance机制分析</a></li>
+<li><a href="https://gyl-coder.top/kafka/kafka-topic-manage/">kafka 主题管理</a></li>
+<li><a href="https://gyl-coder.top/kafka/kafka-partition-alocation/">Kafka有哪几处地方有分区分配的概念？简述大致的过程及原理</a></li>
 <li>Kafka中是怎么体现消息顺序性的？</li>
 </ol>
 <a id="more"></a>
 
-<ol start="7">
-<li>Kafka中的分区器、序列化器、拦截器是否了解？它们之间的处理顺序是什么？</li>
-<li><a href="https://gyl-coder.top/2019/10/03/kafka%20%E4%B8%BB%E9%A2%98%E7%AE%A1%E7%90%86/">kafka 主题管理</a></li>
+<ol start="9">
+<li>Kafka的用途有哪些？使用场景如何？</li>
 <li>Kafka生产者客户端的整体结构是什么样子的？</li>
 <li>Kafka生产者客户端中使用了几个线程来处理？分别是什么？</li>
+<li>Kafka中的分区器、序列化器、拦截器是否了解？它们之间的处理顺序是什么？</li>
+<li>消费再均衡的原理是什么？（提示：消费者协调器和消费组协调器）</li>
+<li>“消费组中的消费者个数如果超过topic的分区，那么就会有消费者消费不到数据” 这句话是否正确？如果正确，那有没有什么hack的手段？</li>
 <li>Kafka的旧版Scala的消费者客户端的设计有什么缺陷？</li>
-<li>“消费组中的消费者个数如果超过topic的分区，那么就会有消费者消费不到数据”这句话是否正确？如果正确，那</li>
-<li>有没有什么hack的手段？</li>
 <li>消费者提交消费位移时提交的是当前消费到的最新消息的offset还是offset+1?</li>
 <li>有哪些情形会造成重复消费？</li>
 <li>那些情景下会造成消息漏消费？</li>
@@ -1111,7 +1114,11 @@ Kafka中是怎么体现消息顺序性的？
 <li>创建topic时如何选择合适的分区数？</li>
 <li>Kafka目前有那些内部topic，它们都有什么特征？各自的作用又是什么？</li>
 <li>优先副本是什么？它有什么特殊的作用？</li>
-<li><a href="https://gyl-coder.top/2019/10/09/kafka-partition-alocation/">Kafka有哪几处地方有分区分配的概念？简述大致的过程及原理</a></li>
+<li>为什么Kafka不支持读写分离？</li>
+<li>Kafka中有那些地方需要选举？这些地方的选举策略又有哪些？</li>
+<li>失效副本是指什么？有那些应对措施？</li>
+<li>多副本下，各个副本中的HW和LEO的演变过程</li>
+<li>聊一聊Kafka控制器的作用</li>
 <li>简述Kafka的日志目录结构</li>
 <li>Kafka中有那些索引文件？</li>
 <li>如果我指定了一个offset，Kafka怎么查找到对应的消息？</li>
@@ -1120,15 +1127,8 @@ Kafka中是怎么体现消息顺序性的？
 <li>聊一聊你对Kafka的Log Compaction的理解</li>
 <li>聊一聊你对Kafka底层存储的理解（页缓存、内核层、块层、设备层）</li>
 <li>聊一聊Kafka的延时操作的原理</li>
-<li>聊一聊Kafka控制器的作用</li>
-<li>消费再均衡的原理是什么？（提示：消费者协调器和消费组协调器）</li>
 <li>Kafka中的幂等是怎么实现的</li>
-<li>Kafka中的事务是怎么实现的（这题我去面试6加被问4次，照着答案念也要念十几分钟，面试官简直凑不要脸</li>
-<li>Kafka中有那些地方需要选举？这些地方的选举策略又有哪些？</li>
-<li>失效副本是指什么？有那些应对措施？</li>
-<li>多副本下，各个副本中的HW和LEO的演变过程</li>
-<li>为什么Kafka不支持读写分离？</li>
-<li>Kafka在可靠性方面做了哪些改进？（HW, LeaderEpoch）</li>
+<li>Kafka中的事务是怎么实现的（这题我去面试6加被问4次，照着答案念也要念十几分钟，面试官简直凑不要脸)</li>
 <li>Kafka中怎么实现死信队列和重试队列？</li>
 <li>Kafka中的延迟队列怎么实现（这题被问的比事务那题还要多！！！听说你会Kafka，那你说说延迟队列怎么实现？）</li>
 <li>Kafka中怎么做消息审计？</li>
@@ -1142,7 +1142,7 @@ Kafka中是怎么体现消息顺序性的？
 <li>还用过什么同质类的其它产品，与Kafka相比有什么优缺点？</li>
 <li>为什么选择Kafka?</li>
 <li>在使用Kafka的过程中遇到过什么困难？怎么解决的？</li>
-<li>怎么样才能确保Kafka极大程度上的可靠性？</li>
+<li><a href="https://gyl-coder.top/kafka/kafka-reliability/">怎么样才能确保Kafka极大程度上的可靠性？</a></li>
 <li>聊一聊你对Kafka生态的理解</li>
 </ol>
 
@@ -1188,7 +1188,7 @@ Kafka中是怎么体现消息顺序性的？
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-12-27T03:41:17+00:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-12-27T04:07:05+00:00">
   <a class='notlink'>
     <i class="fal fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：Dec 27, 2020</p>
@@ -1214,11 +1214,13 @@ Kafka中是怎么体现消息顺序性的？
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
           target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gyl-coder.top/kafka/kafka-todo-list/&title=kafka 问题总结 - yanliang's blog&summary=
-kafka如何保证数据可靠性和数据一致性
-Kafka Rebalance机制分析
-Kafka的用途有哪些？使用场景如何？
+Kafka中的基本概念
 Kafka中的ISR、AR又代表什么？ISR的伸缩又指什么？
 Kafka中的HW、LEO、LSO等分别代表什么？
+kafka如何保证数据可靠性和数据一致性
+Kafka Rebalance机制分析
+kafka 主题管理
+Kafka有哪几处地方有分区分配的概念？简述大致的过程及原理
 Kafka中是怎么体现消息顺序性的？
 "
           
@@ -1233,11 +1235,13 @@ Kafka中是怎么体现消息顺序性的？
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
           target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://gyl-coder.top/kafka/kafka-todo-list/&title=kafka 问题总结 - yanliang's blog&summary=
-kafka如何保证数据可靠性和数据一致性
-Kafka Rebalance机制分析
-Kafka的用途有哪些？使用场景如何？
+Kafka中的基本概念
 Kafka中的ISR、AR又代表什么？ISR的伸缩又指什么？
 Kafka中的HW、LEO、LSO等分别代表什么？
+kafka如何保证数据可靠性和数据一致性
+Kafka Rebalance机制分析
+kafka 主题管理
+Kafka有哪几处地方有分区分配的概念？简述大致的过程及原理
 Kafka中是怎么体现消息顺序性的？
 "
           
@@ -1252,11 +1256,13 @@ Kafka中是怎么体现消息顺序性的？
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
           target="_blank" href="http://service.weibo.com/share/share.php?url=https://gyl-coder.top/kafka/kafka-todo-list/&title=kafka 问题总结 - yanliang's blog&summary=
-kafka如何保证数据可靠性和数据一致性
-Kafka Rebalance机制分析
-Kafka的用途有哪些？使用场景如何？
+Kafka中的基本概念
 Kafka中的ISR、AR又代表什么？ISR的伸缩又指什么？
 Kafka中的HW、LEO、LSO等分别代表什么？
+kafka如何保证数据可靠性和数据一致性
+Kafka Rebalance机制分析
+kafka 主题管理
+Kafka有哪几处地方有分区分配的概念？简述大致的过程及原理
 Kafka中是怎么体现消息顺序性的？
 "
           
