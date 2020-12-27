@@ -5,6 +5,8 @@
   <!-- SEO相关 -->
   
     
+      <meta name="robots" content="index,follow">
+    
   
   <!-- 渲染优化 -->
   <meta name="renderer" content="webkit">
@@ -16,13 +18,9 @@
 
   <!-- 页面元数据 -->
   
-  <title>kafka中的ISR、AR代表什么？ISR的伸缩性又指什么？ - yanliang&#39;s blog</title>
-  
-    <meta name="keywords" content="kafka">
+  <title>Tag: 一致性 - yanliang&#39;s blog</title>
   
 
-  
-    <meta name="description" content="相信大家已经对 kafka 的基本概念已经有一定的了解了，下面直接来分析一下 ISR 和 AR 的概念。">
   
 
   <!-- feed -->
@@ -761,7 +759,7 @@
 
   
   
-      <div class='cover-wrapper post featured' style="display: none;">
+      <div class='cover-wrapper  featured' style="display: none;">
         <canvas id="header_canvas" style="position:absolute;bottom:0;z-index: 1;" width="900" height="350"></canvas>
         
           <div class='cover-bg lazyload placeholder' data-bg="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/home_top_bg.webp"></div>
@@ -835,8 +833,8 @@
 
 
 <div id="pjax-data" style="display: none">
-  <div id="pjax-ispage">true</div>
-  <div id="pjax-pageTitle">kafka中的ISR、AR代表什么？ISR的伸缩性又指什么？</div>
+  <div id="pjax-ispage">false</div>
+  <div id="pjax-pageTitle"></div>
   <div id="pjax-enable-cover">true</div>
   <div id="pjax-comment-path"></div>
   <div id="pjax-comment-placeholder"></div>
@@ -845,14 +843,14 @@
 
 <script>
   // 处理封面 此时 jquery 还没加载
-  if ("half" == "none") { // 移除封面
+  if ("none" == "none") { // 移除封面
     document.getElementsByClassName('cover-wrapper')[0].style.display = "none";
     document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show");
   } else {
-    if ("half" == "half") { // 半屏
+    if ("none" == "half") { // 半屏
       document.getElementsByClassName('cover-wrapper')[0].setAttribute('id', 'half');
       document.getElementsByClassName('scroll-down')[0].style.display = "none";
-    } else if ("half" == "full") { // 全屏
+    } else if ("none" == "full") { // 全屏
       document.getElementsByClassName('cover-wrapper')[0].setAttribute('id', 'full');
       document.getElementsByClassName('scroll-down')[0].style.display = "";
     }
@@ -864,6 +862,7 @@
 
         
         
+
 
 <aside class='l_side'>
   <div style="margin-bottom: 16px;border-radius: 8px;" class='shadow floatable widget_author desktop'>
@@ -928,7 +927,7 @@
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
 
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">31</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -992,22 +991,331 @@
     
     
 
+<section class="widget text shadow floatable desktop mobile">
+  
+  <header>
+    
+      <i class="fa fa-quote-left fa-fw fa-fw" aria-hidden="true"></i><span class='name'>一言（ヒトコト）</span>
+    
+  </header>
 
 
-  <section class="widget toc-wrapper shadow floatable desktop mobile" id="toc-div" >
+  <div class='content'>
+    
+      <p id="hitokoto">恰沐春风共同游，终只叹，木已舟。</a></p>
+    
+      <p><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs//images/my_bg.gif" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs//images/my_bg.gif" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="Wow"></p>
+
+    
+  </div>
+</section>
+
+  
+
+  
+    
+    
+
+<section class="widget list shadow floatable desktop mobile">
+  
+  <header>
+    
+      <a href='friends/'><i class="fa fa-mars fa-fw" aria-hidden="true"></i><span class='name'>都是大佬呀~</span></a>
+    
+  </header>
+
+
+  <div class='content'>
+    <ul class="list entry navigation">
+      
+        <li><a class="flat-box" title="https://xaoxuu.com" target="_blank" rel="noopener" href="https://xaoxuu.com"
+          
+          
+          id="https:xaoxuucom"
+          >
+          <div class='name'>
+            
+              <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" id="round">
+            
+            xaoxuu
+          </div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="https://sublimerui.top/" target="_blank" rel="noopener" href="https://sublimerui.top/"
+          
+          
+          id="https:sublimeruitop"
+          >
+          <div class='name'>
+            
+              <img src="https://cdn.jsdelivr.net/gh/cwxyr/mycdn@master/favicon_new.ico" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/cwxyr/mycdn@master/favicon_new.ico" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" id="round">
+            
+            果子小酱
+          </div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="https://www.antmoe.com/" target="_blank" rel="noopener" href="https://www.antmoe.com/"
+          
+          
+          id="https:wwwantmoecom"
+          >
+          <div class='name'>
+            
+              <img src="https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/avatar.jpg" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/avatar.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" id="round">
+            
+            小康博客
+          </div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="https://www.heson10.com" target="_blank" rel="noopener" href="https://www.heson10.com"
+          
+          
+          id="https:wwwheson10com"
+          >
+          <div class='name'>
+            
+              <img src="https://cdn.jsdelivr.net/gh/heson525/pic@master/pic/avatar03.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/heson525/pic@master/pic/avatar03.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" id="round">
+            
+            黑石博客
+          </div>
+          
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+  
+
+  
+    
+    
+
+<section class="widget text shadow floatable desktop">
+  
+  <header>
+    
+      <i class="far fa-comments fa-fw" aria-hidden="true"></i><span class='name'>最新评论</span>
+    
+  </header>
+
+
+  <div class='content'>
+    
+      <div id="hot-comments"></div>
+    
+  </div>
+</section>
+
+  
+
+  
+    
+    
+  
+
+  <section class="widget category shadow floatable desktop">
     
   <header>
     
-      <i class="fal fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+      <a href='/categories/'><i class="fal fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
     
   </header>
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ISR-and-AR"><span class="toc-text">ISR and AR</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ISR-%E7%9A%84%E4%BC%B8%E7%BC%A9%E6%80%A7"><span class="toc-text">ISR 的伸缩性</span></a></li></ol>
+      <ul class="entry navigation">
+        
+          <li><a class="flat-box"
+            title="/categories/Java/" href="/categories/Java/"
+            id="categoriesJava"
+            ><div class='name'>Java</div><div class='badge'>(13)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/Mybatis/" href="/categories/Mybatis/"
+            id="categoriesMybatis"
+            ><div class='name'>Mybatis</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/Spring/" href="/categories/Spring/"
+            id="categoriesSpring"
+            ><div class='name'>Spring</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/kafka/" href="/categories/kafka/"
+            id="categorieskafka"
+            ><div class='name'>kafka</div><div class='badge'>(7)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E5%B9%B6%E5%8F%91/" href="/categories/%E5%B9%B6%E5%8F%91/"
+            id="categoriesE5B9B6E58F91"
+            ><div class='name'>并发</div><div class='badge'>(4)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E8%AE%BE%E8%AE%A1/" href="/categories/%E8%AE%BE%E8%AE%A1/"
+            id="categoriesE8AEBEE8AEA1"
+            ><div class='name'>设计</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"
+            id="categoriesE8AEBEE8AEA1E6A8A1E5BC8F"
+            ><div class='name'>设计模式</div><div class='badge'>(2)</div></a></li>
+        
+      </ul>
     </div>
   </section>
 
+
+  
+
+  
+    
+    
+  
+
+  <section class="widget tagcloud shadow floatable desktop mobile">
+    
+  <header>
+    
+      <a href='/tags/'><i class="fal fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
+    
+  </header>
+
+
+    <div class='content'>
+      <a href="/tags/AOP/" style="font-size: 16.5px; color: #888">AOP</a> <a href="/tags/ArrayList/" style="font-size: 16.5px; color: #888">ArrayList</a> <a href="/tags/Concurrency/" style="font-size: 14px; color: #999">Concurrency</a> <a href="/tags/HashMap/" style="font-size: 14px; color: #999">HashMap</a> <a href="/tags/IOC/" style="font-size: 16.5px; color: #888">IOC</a> <a href="/tags/Immutability%E6%A8%A1%E5%BC%8F/" style="font-size: 14px; color: #999">Immutability模式</a> <a href="/tags/Int/" style="font-size: 14px; color: #999">Int</a> <a href="/tags/Integer/" style="font-size: 14px; color: #999">Integer</a> <a href="/tags/Java/" style="font-size: 24px; color: #555">Java</a> <a href="/tags/LinkedHashMap/" style="font-size: 14px; color: #999">LinkedHashMap</a> <a href="/tags/LinkedList/" style="font-size: 14px; color: #999">LinkedList</a> <a href="/tags/Mybatis/" style="font-size: 14px; color: #999">Mybatis</a> <a href="/tags/Settings/" style="font-size: 14px; color: #999">Settings</a> <a href="/tags/Spring/" style="font-size: 16.5px; color: #888">Spring</a> <a href="/tags/Vector/" style="font-size: 14px; color: #999">Vector</a> <a href="/tags/json/" style="font-size: 14px; color: #999">json</a> <a href="/tags/json-%E8%A7%A3%E6%9E%90%E5%99%A8/" style="font-size: 14px; color: #999">json 解析器</a> <a href="/tags/kafka/" style="font-size: 21.5px; color: #666">kafka</a> <a href="/tags/topic/" style="font-size: 14px; color: #999">topic</a> <a href="/tags/try-catch/" style="font-size: 14px; color: #999">try-catch</a> <a href="/tags/%E4%B8%80%E8%87%B4%E6%80%A7/" style="font-size: 14px; color: #999">一致性</a> <a href="/tags/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/" style="font-size: 16.5px; color: #888">动态代理</a> <a href="/tags/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" style="font-size: 14px; color: #999">单例模式</a> <a href="/tags/%E5%8F%AF%E9%9D%A0%E6%80%A7/" style="font-size: 14px; color: #999">可靠性</a> <a href="/tags/%E5%B9%B6%E5%8F%91/" style="font-size: 19px; color: #777">并发</a> <a href="/tags/%E6%8A%BD%E8%B1%A1/" style="font-size: 14px; color: #999">抽象</a> <a href="/tags/%E6%8E%A5%E5%8F%A3/" style="font-size: 14px; color: #999">接口</a> <a href="/tags/%E7%AD%89%E5%BE%85%E9%80%9A%E7%9F%A5%E6%9C%BA%E5%88%B6/" style="font-size: 14px; color: #999">等待通知机制</a> <a href="/tags/%E7%BA%BF%E7%A8%8B%E9%98%BB%E5%A1%9E/" style="font-size: 14px; color: #999">线程阻塞</a> <a href="/tags/%E8%AE%BE%E8%AE%A1/" style="font-size: 14px; color: #999">设计</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 16.5px; color: #888">设计模式</a> <a href="/tags/%E9%99%90%E6%B5%81%E7%AE%97%E6%B3%95/" style="font-size: 14px; color: #999">限流算法</a> <a href="/tags/%E9%9B%86%E5%90%88/" style="font-size: 21.5px; color: #666">集合</a>
+    </div>
+  </section>
+
+
+  
+
+  
+
+  
+    
+    
+
+<section class="widget shadow floatable desktop mobile">
+  
+  <header>
+    
+      <i class="fal fa-award fa-fw" aria-hidden="true"></i><span class='name'>站点信息</span>
+    
+  </header>
+
+
+  <div class='content'>
+    <div class="webinfo">
+      
+        <div class="webinfo-item">
+          <div>文章数目：</div>
+          <div>31 篇</div>
+        </div>
+      
+
+      
+        <div class="webinfo-item">
+          <div>已运行时间：</div>
+          <div id="webinfo-runtime-count" publish_date="03/24/2020 21:34:09"></div>
+        </div>
+        <script>
+          var BirthDay = new Date(new Date('2020/07/06'));
+          var today = new Date();
+          var timeold = (today.getTime() - BirthDay.getTime());
+          var daysold = Math.floor(timeold / (24 * 60 * 60 * 1000));
+          document.getElementById('webinfo-runtime-count').innerHTML = daysold + ' 天';
+        </script>
+      
+
+
+      
+        <div class="webinfo-item">
+          <div>本站总字数：</div>
+          <div>91.7k 字</div>
+        </div>
+      
+
+      
+        <div class="webinfo-item">
+          <div>本站访客数：</div>
+          <div><span id="busuanzi_value_site_uv"><i class="fas fa-fan fa-spin fa-fw" aria-hidden="true"></i></span> 人</div>
+        </div>
+      
+
+      
+        <div class="webinfo-item">
+          <div>本站总访问量：</div>
+          <div><span id="busuanzi_value_site_pv"><i class="fas fa-fan fa-spin fa-fw" aria-hidden="true"></i></span> 次</div>
+        </div>
+      
+
+      
+        <div class="webinfo-item">
+          <div>最后活动时间：</div>
+          
+            <div id="last-update" style="display: none;">Sun Dec 27 2020 03:41:37 GMT+0000 (Coordinated Universal Time)</div>
+            <div id="last-update-show">2020-12-27 日</div>
+          
+        </div>
+        
+        <script>
+          function timeago(dateTimeStamp) {
+              var minute = 1000 * 60; //把分，时，天，周，半个月，一个月用毫秒表示
+              var hour = minute * 60;
+              var day = hour * 24;
+              var week = day * 7;
+              var month = day * 30;
+              var now = new Date().getTime(); //获取当前时间毫秒
+              var diffValue = now - dateTimeStamp; //时间差
+              if (diffValue < 0) {
+                  return;
+              }
+              var minC = diffValue / minute; //计算时间差的分，时，天，周，月
+              var hourC = diffValue / hour;
+              var dayC = diffValue / day;
+              var weekC = diffValue / week;
+              var monthC = diffValue / month;
+              if (monthC >= 1 && monthC <= 3) {
+                  result = " " + parseInt(monthC) + " 月前"
+              } else if (weekC >= 1 && weekC <= 3) {
+                  result = " " + parseInt(weekC) + " 周前"
+              } else if (dayC >= 1 && dayC <= 6) {
+                  result = " " + parseInt(dayC) + " 天前"
+              } else if (hourC >= 1 && hourC <= 23) {
+                  result = " " + parseInt(hourC) + " 小时前"
+              } else if (minC >= 1 && minC <= 59) {
+                  result = " " + parseInt(minC) + " 分钟前"
+              } else if (diffValue >= 0 && diffValue <= minute) {
+                  result = "刚刚"
+              } else {
+                  var datetime = new Date();
+                  datetime.setTime(dateTimeStamp);
+                  var Nyear = datetime.getFullYear();
+                  var Nmonth = datetime.getMonth() + 1 < 10 ? "0" + (datetime.getMonth() + 1) : datetime.getMonth() + 1;
+                  var Ndate = datetime.getDate() < 10 ? "0" + datetime.getDate() : datetime.getDate();
+                  var Nhour = datetime.getHours() < 10 ? "0" + datetime.getHours() : datetime.getHours();
+                  var Nminute = datetime.getMinutes() < 10 ? "0" + datetime.getMinutes() : datetime.getMinutes();
+                  var Nsecond = datetime.getSeconds() < 10 ? "0" + datetime.getSeconds() : datetime.getSeconds();
+                  result = Nyear + "-" + Nmonth + "-" + Ndate
+              }
+              return result;
+          }
+          var lastUpDate = document.getElementById('last-update').innerHTML;
+          try {
+            document.getElementById('last-update-show').innerHTML = timeago(new Date(lastUpDate));
+          } catch (error) {
+            document.getElementById('last-update-show').innerHTML = '2020-12-27 日';
+          }
+        </script>
+        
+      
+    </div>
+  </div>
+</section>
 
   
 
@@ -1015,247 +1323,82 @@
 </aside>
 
 <div class='l_main'>
-  <article
-  class="article post white-box reveal md shadow floatable article-type-post"
-  id="post" itemscope itemprop="blogPost">
   
-
-
+    
+      
+  <section class="post-list">
+    
+      
+        
+          
+        
+      
+    
+    
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable">
   
-  <div class="article-meta" id="top">
+  
+  
+  
     
+    <h2 class="article-title" >
+      <a href="/kafka/kafka-reliability/">
+        kafka 如何保障数据可靠性？
+      </a>
+    </h2>
+  
+  <div class='md'>
     
+      <p>Kafka 中采用了多副本的机制，这是大多数分布式系统中惯用的手法，以此来实现水平扩展、提供容灾能力、提升可用性和可靠性等。</p>
+<p>我们对此可以引申出一系列的疑问：</p>
+<ul>
+<li>Kafka 多副本之间如何进行数据同步，尤其是在发生异常时候的处理机制又是什么？</li>
+<li>多副本间的数据一致性如何解决，基于的一致性协议又是什么？</li>
+<li>如何确保Kafka 的可靠性？ </li>
+<li>Kafka 中的可靠性和可用性之间的关系又如何？</li>
+</ul>
+<p>下面从副本的角度切入来看看Kafka如何保障数据一致性、数据可靠性等问题，主要包括副本剖析、日志同步机制和可靠性分析等内容。</p>
     
-      <h1 class="title">
-        kafka中的ISR、AR代表什么？ISR的伸缩性又指什么？
-      </h1>
-      <div class='new-meta-box'>
-        
-          
-            
-<div class='new-meta-item author'>
-  <a class='author' target="_blank" href="https://gyl-coder.github.io" rel="nofollow noopener">
-    <img no-lazy src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/touxiang.webp">
-    <p>yanliang</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  <div class='new-meta-item category'>
-    <a class='notlink'>
-      <i class="fal fa-folder-open fa-fw" aria-hidden="true"></i>
-      <a class="category-link" href="/categories/kafka/">kafka</a>
-    </a>
   </div>
-
-
-          
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        <time>2019-12-06</time>
         
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fal fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Dec 2, 2019</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  <div class="new-meta-item browse busuanzi">
-    <a class='notlink'>
-      <i class="fal fa-eye fa-fw" aria-hidden="true"></i>
-      <p>
-        <span id="busuanzi_value_page_pv">
-          <i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i>
-        </span>
-        次浏览
-      </p>
-    </a>
-  </div>
-
-
-          
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/kafka/">kafka</a>
         
       </div>
-    
-  </div>
-
-
-  
-
-  
-  <p>相信大家已经对 <code>kafka</code> 的基本概念已经有一定的了解了，下面直接来分析一下 ISR 和 AR 的概念。</p>
-<a id="more"></a>
-
-<h2 id="ISR-and-AR"><a href="#ISR-and-AR" class="headerlink" title="ISR and AR"></a>ISR and AR</h2><p>简单来说，分区中的所有副本统称为 <code>AR</code> (Assigned Replicas)。所有与leader副本保持一定程度同步的副本（包括leader副本在内）组成 <code>ISR</code> (In Sync Replicas)。 ISR 集合是 AR 集合的一个子集。消息会先发送到leader副本，然后follower副本才能从leader中拉取消息进行同步。同步期间，follow副本相对于leader副本而言会有一定程度的滞后。前面所说的 ”一定程度同步“ 是指可忍受的滞后范围，这个范围可以通过参数进行配置。于leader副本同步滞后过多的副本（不包括leader副本）将组成 <code>OSR</code> （Out-of-Sync Replied）由此可见，AR = ISR + OSR。正常情况下，所有的follower副本都应该与leader 副本保持  一定程度的同步，即AR=ISR，OSR集合为空。</p>
-<h2 id="ISR-的伸缩性"><a href="#ISR-的伸缩性" class="headerlink" title="ISR 的伸缩性"></a>ISR 的伸缩性</h2><p><strong>leader副本负责维护和跟踪</strong> <code>ISR</code> 集合中所有follower副本的滞后状态，当follower副本落后太多或失效时，leader副本会把它从 ISR 集合中剔除。如果 <code>OSR</code> 集合中所有follower副本“追上”了leader副本，那么leader副本会把它从 OSR 集合转移至 ISR 集合。默认情况下，当leader副本发生故障时，只有在 ISR 集合中的follower副本才有资格被选举为新的leader，而在 OSR 集合中的副本则没有任何机会（不过这个可以通过配置来改变）。</p>
-
-  
-  
-  
-  <div class='footer'>
-    
-    
-    
-  <div class="related_posts">
-    <section class='header'>
-      <i class="fal fa-bookmark fa-fw" aria-hidden="true"></i><span>相关文章</span>
-    </section>
-    <section class='body'>
-      <div class="vlts-rps"><a class="item" href="/kafka/kafka-hw-leo-lso/" title="Kafka中的HW、LEO、LSO等分别代表什么？" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka1.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka1.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">Kafka中的HW、LEO、LSO等分别代表什么？</span><span class="excerpt">HW 、 LEO 等概念和上一篇文章所说的 ISR有着紧密的关系，如果不了解 ISR 可以先看下ISR相关的介绍。
-HW ...</span></a><a class="item" href="/kafka/kafka-listeners-config/" title="kafka的listeners配置错误导致主线程阻塞" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka6.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/kafka/kafka6.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">kafka的listeners配置错误导致主线程阻塞</span><span class="excerpt">问题背景我们在用kafka的时候，偶尔会遇到这样这样一个问题。
-我们写的kafka的客户端程序，在启动的时候，会无缘无故的...</span></a><a class="item" href="/kafka/kafka-rebalance/" title="Kafka Rebalance机制分析" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.3/img/kafka/3951011.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.3/img/kafka/3951011.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">Kafka Rebalance机制分析</span><span class="excerpt">Rebalance 本质上是一种协议，规定了一个 Consumer Group 下的所有 consumer 如何达成一致，...</span></a><a class="item" href="/kafka/kafka-reliability/" title="kafka 如何保证数据的可靠性和一致性" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.2/img/kafka/1567762579648.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/gyl-coder.github.com@v1.0.2/img/kafka/1567762579648.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">kafka 如何保证数据的可靠性和一致性</span><span class="excerpt">数据可靠性Kafka 作为一个商业级消息中间件，消息可靠性的重要性可想而知。本文从 Producter 往 Broker ...</span></a></div></section></div>
-    
-    
-    <div class='copyright'>
-      <blockquote>
-        
-        
-        <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
-
-        
-        
-        
-        <p>本文永久链接是：<a href=https://gyl-coder.top/kafka/kafka-isr-ar/>https://gyl-coder.top/kafka/kafka-isr-ar/</a></p>
-        
-        
-      </blockquote>
-    </div>
-    
-    
-  </div>
-  
-  
-  
-
-
-  <div class='article-meta' id="bottom">
-    <div class='new-meta-box'>
       
-        
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-11-25T13:00:07+00:00">
-  <a class='notlink'>
-    <i class="fal fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Nov 25, 2020</p>
-  </a>
-</div>
-
-        
-      
-        
-          
-  
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/kafka/" rel="nofollow"><i class="fal fa-hashtag fa-fw" aria-hidden="true"></i><p>kafka</p></a></div>
-
-
-        
-      
-        
-          
-  <div class="new-meta-item share -mob-share-list">
-  <div class="-mob-share-list share-body">
-    
-      
-        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
-          
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gyl-coder.top/kafka/kafka-isr-ar/&title=kafka中的ISR、AR代表什么？ISR的伸缩性又指什么？ - yanliang's blog&summary=相信大家已经对 kafka 的基本概念已经有一定的了解了，下面直接来分析一下 ISR 和 AR 的概念。"
-          
-          >
-          
-            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
-          
-        </a>
-      
-    
-      
-        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
-          
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://gyl-coder.top/kafka/kafka-isr-ar/&title=kafka中的ISR、AR代表什么？ISR的伸缩性又指什么？ - yanliang's blog&summary=相信大家已经对 kafka 的基本概念已经有一定的了解了，下面直接来分析一下 ISR 和 AR 的概念。"
-          
-          >
-          
-            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
-          
-        </a>
-      
-    
-      
-        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
-          
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://gyl-coder.top/kafka/kafka-isr-ar/&title=kafka中的ISR、AR代表什么？ISR的伸缩性又指什么？ - yanliang's blog&summary=相信大家已经对 kafka 的基本概念已经有一定的了解了，下面直接来分析一下 ISR 和 AR 的概念。"
-          
-          >
-          
-            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
-          
-        </a>
-      
-    
-      
-    
-      
-    
-  </div>
-</div>
-
-
-
-        
+        <div>
+            <a class='readmore' href='/kafka/kafka-reliability/'>
+            Read More
+          </a>
+        </div>
       
     </div>
-  </div>
-
-
-  
   
 
-  
-  <div class="prev-next">
-    
-    <a class='prev' href='/kafka/kafka-listeners-config/'>
-      <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>kafka的listeners配置错误导致主线程阻塞</p>
-      <p class='content'>问题背景我们在用kafka的时候，偶尔会遇到这样这样一个问题。
-我们写的kafka的客户端程序，在启动的时候，会无缘无故的 卡住（阻塞） 如下图所示：
-
-
-
-
-这时程序会长时间阻塞在这里，无法继...</p>
-    </a>
-    
-    
-    <a class='next' href='/kafka/kafka-hw-leo-lso/'>
-      <p class='title'>Kafka中的HW、LEO、LSO等分别代表什么？<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-      <p class='content'>HW 、 LEO 等概念和上一篇文章所说的 ISR有着紧密的关系，如果不了解 ISR 可以先看下ISR相关的介绍。
-HW （High Watermark）俗称高水位，它标识了一个特定的消息偏移量...</p>
-    </a>
-    
-  </div>
-  
-</article>
-
-
-
-
-  <article class="post white-box reveal shadow floatable" id="comments">
-    <p ct><i class='fal fa-comments'></i> 评论</p>
-    
-    <div id="valine_container" class="valine_thread">
-  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
-  </article>
+          </div>
+        
+      
+    
+  </section>
+  
+    
+  
 
 
-
-
-
+    
+  
 </div>
+
+
       </div>
       
   
