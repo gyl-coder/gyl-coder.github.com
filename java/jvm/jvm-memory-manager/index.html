@@ -113,7 +113,7 @@
         
         <a class="title flat-box" target="_self" href='/'>
           
-            <img no-lazy class='logo' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/logo/logo1200x200.png'/>
+            <img no-lazy class='logo' src='https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/logo/logo.png'/>
           
           
           
@@ -926,19 +926,19 @@
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
 
-                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-count">35</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
             <div class="site-state-item site-state-categories">
               <a href="/categories/">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
             <div class="site-state-item site-state-tags">
               <a href="/tags/">
-                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-count">38</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1006,12 +1006,17 @@
           <li><a class="flat-box"
             title="/categories/Java/" href="/categories/Java/"
             id="categoriesJava"
-            ><div class='name'>Java</div><div class='badge'>(15)</div></a></li>
+            ><div class='name'>Java</div><div class='badge'>(17)</div></a></li>
         
           <li><a class="flat-box child"
             title="/categories/Java/JVM/" href="/categories/Java/JVM/"
             id="categoriesJavaJVM"
-            ><div class='name'>JVM</div><div class='badge'>(2)</div></a></li>
+            ><div class='name'>JVM</div><div class='badge'>(4)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/Java/JVM/%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8/" href="/categories/Java/JVM/%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8/"
+            id="categoriesJavaJVME7B1BBE58AA0E8BDBDE599A8"
+            ><div class='name'>类加载器</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box"
             title="/categories/Mybatis/" href="/categories/Mybatis/"
@@ -1092,7 +1097,7 @@
       
         <div class="webinfo-item">
           <div>文章数目：</div>
-          <div>33 篇</div>
+          <div>35 篇</div>
         </div>
       
 
@@ -1114,7 +1119,7 @@
       
         <div class="webinfo-item">
           <div>本站总字数：</div>
-          <div>103.2k 字</div>
+          <div>109.5k 字</div>
         </div>
       
 
@@ -1136,8 +1141,8 @@
         <div class="webinfo-item">
           <div>最后活动时间：</div>
           
-            <div id="last-update" style="display: none;">Sun Dec 27 2020 09:38:25 GMT+0000 (Coordinated Universal Time)</div>
-            <div id="last-update-show">2020-12-27 日</div>
+            <div id="last-update" style="display: none;">Sun Jan 10 2021 09:39:22 GMT+0000 (Coordinated Universal Time)</div>
+            <div id="last-update-show">2021-01-10 日</div>
           
         </div>
         
@@ -1187,7 +1192,7 @@
           try {
             document.getElementById('last-update-show').innerHTML = timeago(new Date(lastUpDate));
           } catch (error) {
-            document.getElementById('last-update-show').innerHTML = '2020-12-27 日';
+            document.getElementById('last-update-show').innerHTML = '2021-01-10 日';
           }
         </script>
         
@@ -1802,12 +1807,9 @@ at org.fenixsoft.oom.DMOOM.main(DMOOM.java:20)</code></pre>
       <i class="fal fa-bookmark fa-fw" aria-hidden="true"></i><span>相关文章</span>
     </section>
     <section class='body'>
-      <div class="vlts-rps"><a class="item" href="/java/jvm/jvm/" title="JVM 基础知识" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/jvm/jvm-1.jpg" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/jvm/jvm-1.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">JVM 基础知识</span></a><a class="item" href="/concurrency/alternate_printing/" title="多个线程交替打印内容" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life1.webp" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life1.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">多个线程交替打印内容</span><span class="excerpt">需求： 启动两个线程，交替打印奇偶数。 效果如下所示
-偶数线程：0
-奇数线程：1
-偶数线程：2
-...</span></a><a class="item" href="/concurrency/lock_and_synchronized/" title="Lock & Synchronized" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life2.webp" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/life/life2.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">Lock & Synchronized</span><span class="excerpt">首先我们来考虑一个问题？
-在Lock出现之前我们一直使用synchronized来实现同步访问。那为什么还要提供lock呢...</span></a></div></section></div>
+      <div class="vlts-rps"><a class="item" href="/java/jvm/jvm/" title="JVM 基础知识" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/jvm/jvm-1.jpg" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/jvm/jvm-1.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">JVM 基础知识</span></a><a class="item" href="/java/jvm/jvm-class-loader/" title="JVM 类加载机制" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/jvm/jvm-3.jpg" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/jvm/jvm-3.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">JVM 类加载机制</span><span class="excerpt">类加载子系统主要包含如下几项功能：
+
+负责从文件系统或是网络中加载.class文件，class文件在文件开头有特定的文件标...</span></a><a class="item" href="/java/jvm/jvm-class-loader2/" title="类加载器" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/jvm/jvm-4.jpg" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/gyl-coder/blogImgs/images/java/jvm/jvm-4.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">类加载器</span><span class="excerpt">类的加载指的是将类的.class文件中的二进制数据读入到内存中，将其放在运行时数据区的方法区内，然后在创建一个java.l...</span></a></div></section></div>
     
     
     <div class='copyright'>
@@ -1836,10 +1838,10 @@ at org.fenixsoft.oom.DMOOM.main(DMOOM.java:20)</code></pre>
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-12-27T09:38:11+00:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-01-10T09:39:02+00:00">
   <a class='notlink'>
     <i class="fal fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Dec 27, 2020</p>
+    <p>更新于：Jan 10, 2021</p>
   </a>
 </div>
 
@@ -1914,6 +1916,14 @@ at org.fenixsoft.oom.DMOOM.main(DMOOM.java:20)</code></pre>
 
   
   <div class="prev-next">
+    
+    <a class='prev' href='/java/jvm/jvm-class-loader/'>
+      <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>JVM 类加载机制</p>
+      <p class='content'>类加载子系统主要包含如下几项功能：
+
+负责从文件系统或是网络中加载.class文件，class文件在文件开头有特定的文件标识。 
+把加载后的class类信息存放于方法区，除了类信息之外，方法区还...</p>
+    </a>
     
     
     <a class='next' href='/java/jvm/jvm/'>
